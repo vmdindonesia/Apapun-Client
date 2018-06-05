@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableNativeFeedback, Image } from 'react-native'
-import { COLOR } from '../../shared/lb.config';
+import { COLOR } from '../../shared/config';
 
 class ButtonOrder extends Component {
   render() {
@@ -13,7 +13,7 @@ class ButtonOrder extends Component {
       >
         <View style={[secondary ? styles.secondaryButtonStyle : styles.primaryButtonStyle, style]}>
           <View style={{margin: 5, marginRight: 10}}>
-            <Image source={require('../../assets/images/buat-permintaan.png')} style={{width: 24, height: 24}} />
+            {/* <Image source={require('../../assets/images/buat-permintaan.png')} style={{width: 24, height: 24}} /> */}
           </View>
           <Text style={[secondary ? styles.secondaryTextStyle : styles.primaryTextStyle, textStyle]}>{this.props.children}</Text>
         </View>

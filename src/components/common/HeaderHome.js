@@ -6,12 +6,12 @@ import { SearchBar } from 'react-native-elements';
 const HeaderHome = () => {
     return (
         <View style={{ flex: 1, flexDirection: 'row', }}>
-            <View>
+            {/* <View>
                 <Image
-                    style={styles.menuStyle}
-                    source={require('./../../assets/image/menuButton.png')}
+                    // style={styles.menuStyle}
+                    // source={require('./../../assets/image/menuButton.png')}
                 />
-            </View>
+            </View> */}
 
             <View>
                 <SearchBar
@@ -20,12 +20,12 @@ const HeaderHome = () => {
                 />
             </View>
 
-            <View>
+            {/* <View>
                 <Image
                     style={styles.bellStyle}
                     source={require('./../../assets/image/bell.png')}
                 />
-            </View>
+            </View> */}
         </View>
     );
 };
