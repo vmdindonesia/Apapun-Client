@@ -19,6 +19,9 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
+  Order: {
+    screen: OrderPage
+  },
   Login: {
     screen: LoginPage
   }
