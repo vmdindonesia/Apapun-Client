@@ -13,8 +13,12 @@ import { setCustomText } from 'react-native-global-props';
 
 import { createStackNavigator } from 'react-navigation';
 import { LoginPage } from './pages/login.js';
+import { DashboardPage } from './pages/dashboard.js';
 
 const Routes = createStackNavigator({
+  Dashboard: {
+    screen: DashboardPage
+  },
   Login: {
     screen: LoginPage
   }
