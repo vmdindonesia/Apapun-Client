@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput } from 'react-native'
-import { COLOR } from '../shared/lb.config';
+import { COLOR } from '../shared/config';
 
 class AutoComplete extends Component {
 		constructor(props) {
