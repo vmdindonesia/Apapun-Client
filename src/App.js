@@ -14,13 +14,14 @@ import { setCustomText } from 'react-native-global-props';
 import { createStackNavigator } from 'react-navigation';
 import { LoginPage } from './pages/login.js';
 import { DashboardPage } from './pages/dashboard.js';
+import { OrderPage } from './pages/order.js';
 
 const Routes = createStackNavigator({
-  Dashboard: {
-    screen: DashboardPage
-  },
   Order: {
     screen: OrderPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   },
   Login: {
     screen: LoginPage
@@ -28,8 +29,8 @@ const Routes = createStackNavigator({
 });
 
 // font
-const customTextProps = { 
-  style: { 
+const customTextProps = {
+  style: {
     fontFamily: 'Quicksand-Regular'
   }
 }
