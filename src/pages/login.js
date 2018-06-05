@@ -12,7 +12,7 @@ export class LoginPage extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>HALLO MOTHERFUCKER ! </Text>
+                <Text style={{ fontFamily: 'Quicksand-Regular' }}>apapun ! </Text>
             </View>
         )
     }

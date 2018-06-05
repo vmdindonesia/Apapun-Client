@@ -9,6 +9,7 @@ import {
   View,
   StyleSheet
 } from 'react-native';
+import { setCustomText } from 'react-native-global-props';
 
 import { createStackNavigator } from 'react-navigation';
 import { LoginPage } from './pages/login.js';
@@ -18,6 +19,14 @@ const Routes = createStackNavigator({
     screen: LoginPage
   }
 });
+
+// font
+const customTextProps = { 
+  style: { 
+    fontFamily: 'Quicksand-Regular'
+  }
+}
+setCustomText(customTextProps)
 
 class App extends Component<{}> {
 
