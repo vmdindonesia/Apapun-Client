@@ -74,6 +74,7 @@ class Input extends Component {
 
 const styles = {
 	formWrapper: {
+		height: 30,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -90,13 +91,12 @@ const styles = {
 		fontSize: 14,
 		flex: 1,
 		padding: 8,
-		fontFamily: 'Muli-Regular'
 	},
 	labelStyle: {
 		color: '#5e5e5e',
+		fontWeight: 'bold',
 		fontSize: 14,
 		flex: 1,
-		fontFamily: 'Muli-Regular',
 		marginBottom: 10,
 		marginTop: 10,
 	},

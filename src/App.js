@@ -16,6 +16,9 @@ import { LoginPage } from './pages/login.js';
 import { DashboardPage } from './pages/dashboard.js';
 import { OrderPage } from './pages/order.js';
 
+
+console.disableYellowBox = true;
+
 const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
