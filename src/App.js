@@ -15,11 +15,15 @@ import { createStackNavigator } from 'react-navigation';
 import { LoginPage } from './pages/login.js';
 import { DashboardPage } from './pages/dashboard.js';
 import { OrderPage } from './pages/order.js';
+import { StartScreenPage } from './pages/StartScreen';
 
 
 console.disableYellowBox = true;
 
 const Routes = createStackNavigator({
+  Screen: {
+    screen: StartScreenPage
+  },
   Order: {
     screen: OrderPage
   },

@@ -2,12 +2,18 @@ import React, { Component } from 'react'
 import { Text, View, TextInput, Image } from 'react-native'
 import { COLOR } from './../../shared/config';
 
-class InputDate extends Component {
+class InputLogin extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			isFocus: false
 		}
+	}
+
+	onFocus = () => {
+		this.setState({
+			isFocus: true,
+		})
 	}
 
 	onBlur = () => {
@@ -18,15 +24,15 @@ class InputDate extends Component {
 
 	imageIcon = (icon) => {
 		switch (icon) {
-			case 'ic_user':
-				return require('../../assets/images/ic_username.png')
+			case 'ic_username':
+				return require('./../../assets/images/ic_username.png')
 			default:
-				return require('../../assets/images/ic_password.png')
+				return require('./../../assets/images/ic_password.png')
 		}
 	}
 
 	render() {
-		const { label, value, onChangeText, placeholder, onFocus, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
+		const { label, value, onChangeText, placeholder, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
 		const { inputStyle, labelStyle, containerStyle } = styles
 
 		return (
@@ -53,7 +59,7 @@ class InputDate extends Component {
 						multiline={multiline}
 						editable={editable}
 						onBlur={() => this.onBlur()}
-						onFocus={onFocus}
+						onFocus={() => this.onFocus()}
 						underlineColorAndroid={'transparent'}
 						numberOfLines={lines || 1}
 						textAlignVertical={textAlignVertical}
@@ -66,6 +72,7 @@ class InputDate extends Component {
 
 const styles = {
 	formWrapper: {
+		height: 50,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -81,16 +88,15 @@ const styles = {
 	inputStyle: {
 		fontSize: 14,
 		flex: 1,
-		padding: 8,
-		fontFamily: 'Muli-Regular'
+		// padding: 8,
 	},
 	labelStyle: {
 		color: '#5e5e5e',
+		fontWeight: 'bold',
 		fontSize: 14,
 		flex: 1,
-		fontFamily: 'Muli-Regular',
 		marginBottom: 10,
-		marginTop: 10,
+		// marginTop: 10,
 	},
 	onFocus: {
 		borderColor: COLOR.secondary_a
@@ -100,4 +106,4 @@ const styles = {
 	}
 }
 
-export { InputDate }
+export { InputLogin }

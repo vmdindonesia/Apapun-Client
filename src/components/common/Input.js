@@ -24,10 +24,8 @@ class Input extends Component {
 
 	imageIcon = (icon) => {
 		switch (icon) {
-			case 'ic_user':
-				return require('../../assets/images/ic_user.png')
-					case 'ic_search':
-						return require('../../assets/images/ic_search.png')
+			case 'ic_username':
+				return require('../../assets/images/ic_username.png')
 			default:
 				return require('../../assets/images/ic_password.png')
 		}
