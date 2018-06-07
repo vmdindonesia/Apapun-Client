@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, Image } from 'react-native'
+import { Text, View, TextInput, Image, TouchableNativeFeedback } from 'react-native'
 import { COLOR } from './../../shared/config';
 
-class Input extends Component {
+class InputNumber extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			isFocus: false
 		}
-	}
-
-	onFocus = () => {
-		this.setState({
-			isFocus: true,
-		})
 	}
 
 	onBlur = () => {
@@ -22,17 +16,40 @@ class Input extends Component {
 		})
 	}
 
+	minus = () => {
+		console.log('PROPS MINUS');
+		// this.props.isMinus();
+	}
+
+	plus = () => {
+		console.log('PROPS PLUS');
+		// this.props.isPlus();
+	}
+
 	imageIcon = (icon) => {
 		switch (icon) {
-			case 'ic_username':
-				return require('../../assets/images/ic_username.png')
+			case 'minus':
+				return require('../../assets/images/minus.png')
+			case 'plus':
+				return require('../../assets/images/plus.png')
 			default:
-				return require('../../assets/images/ic_password.png')
+				return require('../../assets/images/plus.png')
+		}
+	}
+
+	imageIcons = (icons) => {
+		switch (icons) {
+			case 'minus':
+				return require('../../assets/images/minus.png')
+			case 'plus':
+				return require('../../assets/images/plus.png')
+			default:
+				return require('../../assets/images/plus.png')
 		}
 	}
 
 	render() {
-		const { label, value, onChangeText, placeholder, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
+		const { label, value, onChangeText, placeholder, onFocus, secureTextEntry, keyboardType, multiline, lines, editable, icon, icons, textAlignVertical } = this.props
 		const { inputStyle, labelStyle, containerStyle } = styles
 
 		return (
@@ -40,15 +57,18 @@ class Input extends Component {
 				{
 					label ?
 						<Text style={labelStyle}>{label}</Text>
-					:
+						:
 						<View />
 				}
 
-				<View style={{...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
+				<View style={{ ...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
 					{
-						icon ? <Image source={this.imageIcon(icon)} style={{width: 24, height: 24}} /> : <View />
+						icon ?
+							<Image source={this.imageIcon(icon)} style={{ width: 24, height: 24 }} />
+							:
+							<View />
 					}
-					<TextInput 
+					<TextInput
 						secureTextEntry={secureTextEntry}
 						placeholder={placeholder}
 						autoCorrect={false}
@@ -59,11 +79,17 @@ class Input extends Component {
 						multiline={multiline}
 						editable={editable}
 						onBlur={() => this.onBlur()}
-						onFocus={() => this.onFocus()}
+						onFocus={onFocus}
 						underlineColorAndroid={'transparent'}
 						numberOfLines={lines || 1}
 						textAlignVertical={textAlignVertical}
 					/>
+					{
+						icons ?
+							<Image source={this.imageIcons(icons)} style={{ width: 21, height: 21 }} />
+							:
+							<View />
+					}
 				</View>
 			</View>
 		)
@@ -79,6 +105,7 @@ const styles = {
 		borderColor: '#a9a9a9',
 		borderRadius: 4,
 		paddingLeft: 7,
+		paddingRight: 7,
 		backgroundColor: '#fff'
 	},
 	lockedForm: {
@@ -88,12 +115,13 @@ const styles = {
 		fontSize: 14,
 		flex: 1,
 		padding: 8,
+		fontFamily: 'Muli-Regular'
 	},
 	labelStyle: {
 		color: '#5e5e5e',
-		fontWeight: 'bold',
 		fontSize: 14,
 		flex: 1,
+		fontFamily: 'Muli-Regular',
 		marginBottom: 10,
 		marginTop: 10,
 	},
@@ -105,4 +133,4 @@ const styles = {
 	}
 }
 
-export { Input }
+export { InputNumber }
