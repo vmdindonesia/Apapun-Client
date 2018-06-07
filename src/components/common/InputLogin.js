@@ -31,8 +31,17 @@ class InputLogin extends Component {
 		}
 	}
 
+	imageIcons = (icons) => {
+		switch (icons) {
+			case 'ic_garis':
+				return require('./../../assets/images/ic_garis.png')
+			default:
+				return require('./../../assets/images/ic_garis.png')
+		}
+	}
+
 	render() {
-		const { label, value, onChangeText, placeholder, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
+		const { label, value, onChangeText, placeholder, icons, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
 		const { inputStyle, labelStyle, containerStyle } = styles
 
 		return (
@@ -40,15 +49,18 @@ class InputLogin extends Component {
 				{
 					label ?
 						<Text style={labelStyle}>{label}</Text>
-					:
+						:
 						<View />
 				}
 
-				<View style={{...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
+				<View style={{ ...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
 					{
-						icon ? <Image source={this.imageIcon(icon)} style={{width: 24, height: 24}} /> : <View />
+						icon ? <Image source={this.imageIcon(icon)} style={{ marginLeft: 5, width: 24, height: 24 }} /> : <View />
 					}
-					<TextInput 
+					{
+						icons ? <Image source={this.imageIcons(icons)} style={{ marginLeft: 15, marginRight: 15, width: 1, height: 24 }} /> : <View />
+					}
+					<TextInput
 						secureTextEntry={secureTextEntry}
 						placeholder={placeholder}
 						autoCorrect={false}
@@ -78,9 +90,10 @@ const styles = {
 		justifyContent: 'center',
 		borderWidth: 1,
 		borderColor: '#a9a9a9',
-		borderRadius: 4,
+		borderRadius: 9,
 		paddingLeft: 7,
-		backgroundColor: '#fff'
+		// backgroundColor: '#fff'
+		backgroundColor: 'rgba(110,104,104,0.5)'
 	},
 	lockedForm: {
 		opacity: 0.6

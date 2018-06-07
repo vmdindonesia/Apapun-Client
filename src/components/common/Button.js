@@ -40,7 +40,7 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: COLOR.secondary_a,
-    borderRadius: 8,
+    borderRadius: 50,
   },
   secondaryButtonStyle: {
     flex: 1,
