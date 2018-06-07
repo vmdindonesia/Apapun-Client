@@ -69,7 +69,7 @@ class InputSearch extends Component {
 					{
 						icon ?
 							<TouchableOpacity onPress={() => this.isCancel(value)}>
-								<Image source={this.imageIcon(icon)} style={{ width: 20, height: 20, marginRight: 10 }} />
+								<Image source={this.imageIcon(icon)} style={{ width: 22, height: 22, marginRight: 10, backgroundColor: '#FF0000', borderRadius : 50000000 }} />
 							</TouchableOpacity>
 							: <View />
 					}
@@ -86,33 +86,33 @@ const styles = {
 		justifyContent: 'center',
 		// borderWidth: 1,
 		borderColor: '#a9a9a9',
-		borderRadius: 5,
-		paddingLeft: 7,
+		borderRadius: 50,
+		// paddingLeft: 7,
 		backgroundColor: '#fff'
 	},
-	lockedForm: {
-		opacity: 0.6
-	},
+	// lockedForm: {
+	// 	opacity: 0.6
+	// },
 	inputStyle: {
 		fontSize: 14,
 		flex: 1,
 		padding: 8,
 		fontFamily: 'Muli-Regular'
 	},
-	labelStyle: {
-		color: '#5e5e5e',
-		fontSize: 14,
-		flex: 1,
-		fontFamily: 'Muli-Regular',
-		marginBottom: 10,
-		marginTop: 10,
-	},
+	// labelStyle: {
+	// 	color: '#5e5e5e',
+	// 	fontSize: 14,
+	// 	flex: 1,
+	// 	fontFamily: 'Muli-Regular',
+	// 	marginBottom: 10,
+	// 	marginTop: 10,
+	// },
 	onFocus: {
 		borderColor: COLOR.secondary_a
 	},
-	containerStyle: {
-		flex: 1
-	}
+	// containerStyle: {
+	// 	flex: 1
+	// }
 }
 
 export { InputSearch }

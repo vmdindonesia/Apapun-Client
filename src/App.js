@@ -20,7 +20,21 @@ import { StartScreenPage } from './pages/StartScreen';
 
 console.disableYellowBox = true;
 
+<<<<<<< Updated upstream
 
+=======
+const Routes = createStackNavigator({
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Login: {
+    screen: LoginPage
+  }
+});
+>>>>>>> Stashed changes
 
 // font
 const customTextProps = {
