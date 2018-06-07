@@ -11,7 +11,7 @@ export class StartScreenPage extends React.Component {
 	renderButton = () => {
 		return (
 			<Button
-				onPress={() => this.login()}
+				onPress={() => this.props.navigation.navigate('Dashboard')}
 				style={{ backgroundColor: 'rgb(209, 0, 0)' }}
 			>
 				Login
