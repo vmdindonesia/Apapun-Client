@@ -20,6 +20,17 @@ import { StartScreenPage } from './pages/StartScreen';
 
 console.disableYellowBox = true;
 
+
+
+// font
+const customTextProps = {
+  style: {
+    fontFamily: 'Quicksand-Regular'
+  }
+}
+setCustomText(customTextProps)
+
+
 const Routes = createStackNavigator({
   Screen: {
     screen: StartScreenPage
@@ -29,19 +40,8 @@ const Routes = createStackNavigator({
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  Login: {
-    screen: LoginPage
   }
 });
-
-// font
-const customTextProps = {
-  style: {
-    fontFamily: 'Quicksand-Regular'
-  }
-}
-setCustomText(customTextProps)
 
 class App extends Component<{}> {
 
