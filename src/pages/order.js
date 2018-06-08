@@ -75,8 +75,8 @@ export class OrderPage extends React.Component {
                                             resizeMode='stretch'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                                <Text style={{color: 'white', marginTop: 30,  textAlign: 'center', fontWeight: 'bold'}}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
-                                            </View>
+                                            <Text style={{ color: 'white', marginTop: 30, textAlign: 'center', fontWeight: 'bold' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
+                                        </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
                                             style={styles.button}
@@ -137,8 +137,8 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                                <Text style={{color: 'white', marginTop: 10, marginLeft: 30, marginRight: 30, textAlign: 'center', fontWeight: 'bold'}}>Pilih material yang sesuai dengan desain Anda.</Text>
-                                            </View>
+                                            <Text style={{ color: 'white', marginTop: 10, marginLeft: 30, marginRight: 30, textAlign: 'center', fontWeight: 'bold' }}>Pilih material yang sesuai dengan desain Anda.</Text>
+                                        </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
                                             style={styles.buttons}
@@ -257,11 +257,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginTop: 120,
         marginLeft: 30,
-        // marginRight: 70,
         justifyContent: 'center',
-        alignItems: 'center',
-        // paddingLeft: 30,
-        // paddingRight: 30
+        alignItems: 'center'
     },
     buttons: {
         backgroundColor: 'rgb(220, 220, 220)',
@@ -273,11 +270,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginTop: 70,
         marginLeft: 30,
-        // marginRight: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        // paddingLeft: 30,
-        // paddingRight: 30
     },
     textBackground: {
         position: 'absolute'
