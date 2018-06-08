@@ -23,7 +23,7 @@ export class LoginPage extends React.Component {
 		return (
 			<ImageBackground
 				source={require('./../assets/images/bg.jpg')}
-				style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
+				style={{ width: '100%', height: '100%', backgroundColor: COLOR.secondary_c }}
 			>
 				<View style={styles.container}>
 					{/* <View style={{ marginTop: -100 }}>
