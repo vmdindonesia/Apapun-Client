@@ -27,11 +27,11 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  Login: {
-    screen: LoginPage
-  },
   Dashboard: {
     screen: DashboardPage
+  },
+  Login: {
+    screen: LoginPage
   },
   Order: {
     screen: OrderPage

@@ -207,7 +207,7 @@ export class DashboardPage extends React.Component {
                                 />
                             </View>
                             <View style={styles.textHomeScreen}>
-                                <Text style={{marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CAPTURE N`GET </Text>
+                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CAPTURE N`GET </Text>
                                 <Text style={{ color: 'white', fontSize: 12.5 }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
 
                                 <TouchableOpacity style={styles.buttonGo}>
@@ -284,7 +284,7 @@ export class DashboardPage extends React.Component {
                         </View>
                     </View>
 
-                     <View style={styles.containerHomeScreen}>
+                    <View style={styles.containerHomeScreen}>
                         <View style={styles.containerSomeHomeScreen}>
                             <View style={styles.photoHomeScreen}>
                                 <Image
@@ -293,7 +293,7 @@ export class DashboardPage extends React.Component {
                                 />
                             </View>
                             <View style={styles.textHomeScreen}>
-                                <Text style={{marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>IDEA MARKET </Text>
+                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>IDEA MARKET </Text>
                                 <Text style={{ color: 'white', fontSize: 12.5 }}>Disini kamu bisa melihat hasil karya unik dan menarik teman-temanmu dan kamu bisa membelinya loh! </Text>
 
                                 <TouchableOpacity style={styles.buttonIdea}>
@@ -329,7 +329,7 @@ export class DashboardPage extends React.Component {
                         </View>
                     </View>
 
-                     <View style={styles.containerHomeScreen}>
+                    <View style={styles.containerHomeScreen}>
                         <View style={styles.containerSomeHomeScreen}>
                             <View style={styles.photoHomeScreen}>
                                 <Image
@@ -338,7 +338,7 @@ export class DashboardPage extends React.Component {
                                 />
                             </View>
                             <View style={styles.textHomeScreen}>
-                                <Text style={{marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CUSTOM </Text>
+                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CUSTOM </Text>
                                 <Text style={{ color: 'white', fontSize: 12.5 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
                                 <TouchableOpacity style={styles.buttonCustom}>
@@ -373,6 +373,160 @@ export class DashboardPage extends React.Component {
                             </View>
                         </View>
                     </View>
+
+                    <View style={styles.containerHomeScreen}>
+                        <View style={styles.containerSomeHomeScreen}>
+                            <View style={styles.photoHomeScreen}>
+                                <Image
+                                    style={styles.cngImage}
+                                    source={require('./../assets/images/crafter_list.png')}
+                                />
+                            </View>
+                            <View style={styles.textHomeScreen}>
+                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CRAFTER LIST </Text>
+                                <Text style={{ color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
+
+                                <TouchableOpacity style={styles.buttonGo}>
+                                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        <View style={styles.containerBodyCrafter}>
+
+                            <View style={styles.bodyCrafterList}>
+                                <View style={styles.CrafterListLeft}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/fashion_crafter.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>FASHION</Text>
+                                            <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>1254 Crafter</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                                <View style={styles.CrafterListRight}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/diy_crafter.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>DIY, Hobbies, Toys</Text>
+                                            <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>199 Crafter</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+
+                            <View style={styles.bodyCrafterList}>
+                                <View style={styles.CrafterListLeft}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/furniture_crafter.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Furniture</Text>
+                                            <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>723 Crafter</Text>
+                                        </View>
+                                    </View>
+
+                                </View>
+                                <View style={styles.CrafterListRight}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/beauty_crafter.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Beauty</Text>
+                                            <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>269 Crafter</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+
+
+
+
+                        </View>
+                    </View>
+
+                    <View style={styles.containerHomeScreen}>
+                        <View style={styles.containerSomeHomeScreen}>
+                            <View style={styles.photoHomeScreen}>
+                                <Image
+                                    style={styles.cngImage}
+                                    source={require('./../assets/images/crafter_menu.png')}
+                                />
+                            </View>
+                            <View style={styles.textHomeScreen}>
+                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CRAFTER MENU </Text>
+                                <Text style={{ color: 'white', fontSize: 12.5 }}>Lihat profil kamu sebagai crafter dan permintaan dari seluruh indonesia</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.containerBodyCrafter}>
+
+                            <View style={styles.bodyCrafterList}>
+                                <View style={styles.crafterMenu}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/edit_profil.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Edit Profil</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                
+                            </View>
+
+                            <View style={styles.bodyCrafterList}>
+                                <View style={styles.crafterMenu}>
+                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconsCrafterMenu}
+                                                source={require('./../assets/images/cari_pesanan.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Cari Pesanan</Text>
+                                        </View>
+                                    </View>
+
+                                </View>
+                         
+                            </View>
+
+
+
+
+                        </View>
+                    </View>
+
+
+
+
+
+
+
+
 
                 </ScrollView >
             </ImageBackground >
@@ -502,12 +656,20 @@ const styles = StyleSheet.create({
     },
     containerMenu: {
         flex: 1,
-        alignItems: 'center',
+        alignSelf: 'center',
         justifyContent: 'center',
+        width: 80,
+        height: 30 * 2,
+        backgroundColor: 'red',
+        borderRadius: 90,
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        marginTop: 10
     },
     containerButtonLogo: {
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        borderRadius: 20,
+        // backgroundColor: 'rgba(0,0,0,0.5)',
+        // borderRadius: 20,
         padding: 10,
         marginBottom: 20,
         shadowColor: '#000',
@@ -515,6 +677,7 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         shadowOpacity: 0.35,
         marginTop: 15,
+        alignItems: 'center'
     },
     Logo: {
         height: 50,
@@ -625,6 +788,53 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // justifyContent :'center'
     },
+    containerBodyCrafter: {
+        flex: 1,
+        borderRadius: 20,
+        flexDirection: 'column',
+        height: 20,
+        width: 340,
+        // backgroundColor: 'blue',
+        marginTop: 5,
+    },
+    bodyCrafterList: {
+        // flex: 2,
+        flexDirection: 'row',
+        height: 70,
+        width: 340,
+        // alignItems: 'center',
+        // backgroundColor: 'yellow',
+        // borderWidth: 0.5,
+        // borderColor: '#d6d7da',
+
+    },
+    CrafterListLeft: {
+        height: 70,
+        width: 150,
+        // justifyContent: 'center',
+        // backgroundColor: 'blue',
+        // borderWidth: 0.5,
+        // borderColor: '#d6d7da',
+    },
+    CrafterListRight: {
+        height: 70,
+        width: 190,
+        // alignItems: 'center',
+        // backgroundColor: 'yellow',
+        // borderWidth: 0.5,
+        // borderColor: '#d6d7da',
+    },
+    iconsCrafterMenu: {
+        height: 55,
+        width: 55,
+        // borderRadius: 100,
+    },
+    crafterMenu : {
+        height: 70,
+        width: 340,
+        marginLeft : 100
+    }
+
 
 
 });
