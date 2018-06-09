@@ -63,6 +63,7 @@ class InputLogin extends Component {
 					<TextInput
 						secureTextEntry={secureTextEntry}
 						placeholder={placeholder}
+						placeholderTextColor='#fff'
 						autoCorrect={false}
 						value={value}
 						onChangeText={onChangeText}
@@ -101,6 +102,8 @@ const styles = {
 	inputStyle: {
 		fontSize: 14,
 		flex: 1,
+		fontFamily: 'Quicksand-Regular',
+		color: '#fff'
 		// padding: 8,
 	},
 	labelStyle: {

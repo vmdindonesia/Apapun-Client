@@ -12,7 +12,7 @@ export class LoginPage extends React.Component {
 		return (
 			<Button
 				onPress={() => this.props.navigation.navigate('Dashboard')}
-				style={{ backgroundColor: 'rgb(209, 0, 0)' }}
+				style={{ backgroundColor: 'rgb(209, 0, 0)', fontFamily: 'Quicksand-Regular' }}
 			>
 				Login
 			</Button>
@@ -26,11 +26,7 @@ export class LoginPage extends React.Component {
 				style={{ width: '100%', height: '100%', backgroundColor: COLOR.secondary_c }}
 			>
 				<View style={styles.container}>
-					{/* <View style={{ marginTop: -100 }}>
-						<Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', fontWeight: 'bold', marginBottom: 120, fontSize: 100, color: 'white' }}>apapun</Text>
-					</View> */}
 					<Container>
-
 						<ContainerSection>
 							<InputLogin style={styles.Input}
 								placeholder="email or username"
@@ -38,8 +34,6 @@ export class LoginPage extends React.Component {
 								icons="ic_garis"
 							/>
 						</ContainerSection>
-
-						<View style={{ marginTop: 15 }} />
 
 						<ContainerSection>
 							<InputLogin
@@ -57,7 +51,7 @@ export class LoginPage extends React.Component {
 					</Container>
 
 					<TouchableOpacity>
-						<Text style={{ textAlign: 'center', marginTop: 10, color: '#fff' }}>
+						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
 							Lupa Kata Sandi?
 						</Text>
 					</TouchableOpacity>
@@ -71,7 +65,7 @@ const styles = {
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		marginTop: 250
+		marginTop: 200
 	},
 
 	input: {

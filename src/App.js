@@ -10,25 +10,46 @@ import {
   StyleSheet
 } from 'react-native';
 import { setCustomText } from 'react-native-global-props';
-
+import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
-import { DashboardPage } from './pages/dashboard.js'; 
+import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
 
 console.disableYellowBox = true;
 
+// font
+const customTextProps = { 
+  style: { 
+    fontFamily: 'Quicksand-Regular'
+  }
+}
+setCustomText(customTextProps)
+
 const Routes = createStackNavigator({
-  Order: {
-    screen: OrderPage
-  },
   Login: {
     screen: LoginPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   },
   Order: {
     screen: OrderPage
   }
-});
+},{
+    cardStyle: { backgroundColor: '#fafafa' },
+    navigationOptions: {
+      headerTitleStyle: {
+        color: '#ffffff',
+        fontFamily: 'Muli-Bold',
+        fontWeight: '300',
+      },
+      headerStyle: {
+        backgroundColor: COLOR.secondary_b,
+      },
+      headerTintColor: '#ffffff',
+    }
+  });
 
 class App extends Component<{}> {
 
