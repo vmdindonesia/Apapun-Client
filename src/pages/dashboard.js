@@ -127,10 +127,10 @@ export class DashboardPage extends React.Component {
                     </View>
 
                     <View style={styles.containerUploadIdea}>
-                        <View style={{ flex: 1, marginTop: 10, marginLeft: 30 }}>
+                        <View style={{ flex: 1, marginTop: 10, marginLeft: 20 }}>
                             <Text style={{ color: 'white' }}>Idea Recently Upload</Text>
                             <Text style={{ color: 'grey', fontSize: 10 }}>Checkout our friend new brilliant ideas</Text>
-                            <Text style={{ color: 'red', alignSelf: 'flex-end', flex: 1, marginRight: 30, marginTop: -25 }}>See all</Text>
+                            <Text style={{ color: 'red', alignSelf: 'flex-end', flex: 1, marginRight: 25, marginTop: -23 }}>See all</Text>
                         </View>
                     </View>
                 </ScrollView >
