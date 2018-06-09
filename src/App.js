@@ -12,25 +12,15 @@ import {
 import { setCustomText } from 'react-native-global-props';
 
 import { createStackNavigator } from 'react-navigation';
-import { DashboardPage } from './pages/dashboard.js';
+import { DashboardPage } from './pages/dashboard.js'; 
+import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
-import { LoginPage } from './pages/login';
-
 
 console.disableYellowBox = true;
 
-// font
-const customTextProps = {
-  style: {
-    fontFamily: 'Quicksand-Regular'
-  }
-}
-setCustomText(customTextProps)
-
-
 const Routes = createStackNavigator({
-  Dashboard: {
-    screen: DashboardPage
+  Order: {
+    screen: OrderPage
   },
   Login: {
     screen: LoginPage

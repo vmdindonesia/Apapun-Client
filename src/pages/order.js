@@ -70,12 +70,12 @@ export class OrderPage extends React.Component {
                                 uploadDesign === null ?
                                     <View>
                                         <Image
-                                            source={require('../assets/images/create-design.jpg')}
-                                            style={{ width: '100%' }}
-                                            resizeMode='stretch'
+                                            source={require('../assets/images/create-design.png')}
+                                            style={{ width: '100%', height: 300 }}
+                                            resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ color: 'white', marginTop: 30, textAlign: 'center', fontWeight: 'bold' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
+                                            <Text style={{ color: 'white', marginTop: 80, textAlign: 'center' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -83,10 +83,10 @@ export class OrderPage extends React.Component {
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                 <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 60 }} name='md-images' />
+                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 50 }}> <Image style={{ width: 30, height: 30 }} source={require('../assets/images/logo-image.png')} /> </Icon>
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 4 }}>Tambah Gambar</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 5 }}>Tambah Gambar</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -132,12 +132,12 @@ export class OrderPage extends React.Component {
                                 uploadMaterial === null ?
                                     <View>
                                         <Image
-                                            source={require('../assets/images/create-material.jpg')}
-                                            style={{ width: '100%', height: 130 }}
+                                            source={require('../assets/images/create-material.png')}
+                                            style={{ width: '100%', height: 100 }}
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ color: 'white', marginTop: 10, marginLeft: 30, marginRight: 30, textAlign: 'center', fontWeight: 'bold' }}>Pilih material yang sesuai dengan desain Anda.</Text>
+                                            <Text style={{ color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center' }}>Pilih material yang sesuai dengan desain Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -145,14 +145,15 @@ export class OrderPage extends React.Component {
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                 <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 60 }} name='md-paper' />
+                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 50 }}> <Image style={{ width: 30, height: 30 }} source={require('../assets/images/logo-material.png')} /> </Icon>
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 33, marginTop: 4 }}>Pemilihan Material</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 35, marginTop: 5 }}>Pemilihan Material</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
                                     </View>
+
                                     :
                                     <Image source={uploadMaterial} />
                             }
@@ -191,9 +192,16 @@ export class OrderPage extends React.Component {
                         </View>
                     </View>
                 </ContainerSection>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View>
+                        <Text style={{ fontWeight: 'bold', padding: 5 }}> Catatan Tambahan </Text>
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        <Icon size={26} style={{}}> <Image style={{ width: 25, height: 25 }} source={require('../assets/images/Information.png')} /> </Icon>
+                    </View>
+                </View>
                 <ContainerSection>
                     <Input
-                        label='Catatan Tambahan'
                         value={catatanTambahan}
                         onChangeText={v => this.onChangeInput('catatanTambahan', v)}
                     />
@@ -255,10 +263,13 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 35,
         position: 'absolute',
-        marginTop: 120,
+        marginTop: 220,
         marginLeft: 30,
+        // marginRight: 70,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        // paddingLeft: 30,
+        // paddingRight: 30
     },
     buttons: {
         backgroundColor: 'rgb(220, 220, 220)',
@@ -268,10 +279,13 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 35,
         position: 'absolute',
-        marginTop: 70,
+        marginTop: 55,
         marginLeft: 30,
+        // marginRight: 70,
         justifyContent: 'center',
         alignItems: 'center',
+        // paddingLeft: 30,
+        // paddingRight: 30
     },
     textBackground: {
         position: 'absolute'
