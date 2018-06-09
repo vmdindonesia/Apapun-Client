@@ -41,6 +41,7 @@ export class OrderPage extends React.Component {
                 />
                 <ContainerSection>
                     <Input
+                        placeholder='Nama Produk'
                         label='Nama Produk'
                         value={nameProduct}
                         onChangeText={v => this.onChangeInput('nameProduct', v)}
@@ -117,8 +118,8 @@ export class OrderPage extends React.Component {
                             // onValueChange={v => this.onChangeInput('unitFish', v)}
                             >
                                 <Picker.Item label='Pilih Ukuran' value='' />
-                                <Picker.Item label='PCS' value='Kg' />
-                                <Picker.Item label='LUSIN' value='Cm' />
+                                <Picker.Item label='Pcs' value='Kg' />
+                                <Picker.Item label='Lusin' value='Cm' />
                             </Picker>
                         </View>
                     </View>
@@ -197,11 +198,12 @@ export class OrderPage extends React.Component {
                         <Text style={{ fontWeight: 'bold', padding: 5 }}> Catatan Tambahan </Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Icon size={26} style={{}}> <Image style={{ width: 25, height: 25 }} source={require('../assets/images/Information.png')} /> </Icon>
+                        <Image style={{ width: 13, height: 13, marginTop: 10 }} source={require('../assets/images/Information.png')} />
                     </View>
                 </View>
                 <ContainerSection>
                     <Input
+                        placeholder='Catatan Tambahan'
                         value={catatanTambahan}
                         onChangeText={v => this.onChangeInput('catatanTambahan', v)}
                     />
@@ -215,7 +217,7 @@ export class OrderPage extends React.Component {
                             marginTop: 30,
                             marginLeft: '15%',
                             marginRight: '15%',
-                            marginBottom: 50
+                            marginBottom: 20
                         }}>
                         Mencari Crafter
                     </Button>
@@ -252,7 +254,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingLeft: 7,
         borderWidth: 1,
-        height: 47,
+        height: 45,
         backgroundColor: '#fff'
     },
     button: {
