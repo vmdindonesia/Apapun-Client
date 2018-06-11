@@ -1,18 +1,87 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, AsyncStorage, TouchableOpacity } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner } from '../components/common';
-import { COLOR } from './../shared/config'
+import axios from 'axios';
+import { COLOR } from './../shared/config';
+import { NavigationActions, StackActions } from 'react-navigation';
+import { IPSERVER } from './../shared/config';
 
 export class LoginPage extends React.Component {
 	static navigationOptions = {
 		header: null
 	}
 
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			email: '',
+			password: '',
+			loading: false
+		}
+	}
+
+	componentWillMount() {
+		AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
+			console.log(result, 'STORAGE')
+			if (result) {
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
+			}
+		})
+	}
+
+	onChange = (name, value) => {
+		this.setState({ [name]: value }, () => {
+			console.log(this.state[name]);
+		})
+	}
+
+	loginIn = () => {
+		this.setState({ loading: true });
+
+		const { email, password } = this.state;
+		axios.post(`${IPSERVER}/ApapunUsers/UserAuth`, {
+			email,
+			password
+		}, {
+				headers: {
+					'Content-Type': 'application/json',
+				}
+			}).then(response => {
+				console.log(response.data.id);
+				this.setState({
+					email: '',
+					password: '',
+					loading: false
+				});
+				AsyncStorage.setItem('VMDDEVELOPER', response.data, () => {
+					AsyncStorage.getItem('VMDDEVELOPER', (error, result) => {
+						console.log(result, 'Result');
+					})
+					// const resetAction = StackActions.reset({
+					// 	index: 0,
+					// 	actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+					// });
+					// this.props.navigation.dispatch(resetAction);
+				});
+			}).catch(error => {
+				console.log(error, 'ERROR LOGIN');
+				this.setState({ loading: false });
+			});
+	}
+
 	renderButton = () => {
+		if (this.state.loading) {
+			return <Spinner size="small" />
+		}
 		return (
 			<Button
-				onPress={() => this.props.navigation.navigate('Dashboard')}
-				style={{ backgroundColor: 'rgb(209, 0, 0)', fontFamily: 'Quicksand-Regular' }}
+				onPress={() => this.loginIn()}
+				style={{ backgroundColor: 'rgb(209, 0, 0)' }}
 			>
 				Login
 			</Button>
@@ -20,6 +89,7 @@ export class LoginPage extends React.Component {
 	}
 
 	render() {
+		const { email, password } = this.state;
 		return (
 			<ImageBackground
 				source={require('./../assets/images/bg.jpg')}
@@ -32,6 +102,8 @@ export class LoginPage extends React.Component {
 								placeholder="email or username"
 								icon="ic_username"
 								icons="ic_garis"
+								onChangeText={val => this.onChange('email', val)}
+								value={email}
 							/>
 						</ContainerSection>
 
@@ -40,6 +112,8 @@ export class LoginPage extends React.Component {
 								placeholder="password"
 								icon="ic_password"
 								icons="ic_garis"
+								onChangeText={val => this.onChange('password', val)}
+								value={password}
 							/>
 						</ContainerSection>
 
@@ -50,7 +124,9 @@ export class LoginPage extends React.Component {
 						</View>
 					</Container>
 
-					<TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => this.loginIn()}
+					>
 						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
 							Lupa Kata Sandi?
 						</Text>

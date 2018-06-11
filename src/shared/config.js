@@ -1,4 +1,6 @@
 
+export const IPSERVER = 'http://192.168.1.13:3000/api/';
+
 // COLOR
 export const COLOR = {
   primary: '#006aaf',

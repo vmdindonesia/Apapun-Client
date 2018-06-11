@@ -481,7 +481,7 @@ export class DashboardPage extends React.Component {
 
                             <View style={styles.bodyCrafterList}>
                                 <View style={styles.crafterMenu}>
-                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                    <View style={{ marginLeft: 80, marginTop: 6 }}>
                                         <View style={{ flex: 1 }}>
                                             <Image
                                                 style={styles.iconsCrafterMenu}
@@ -489,16 +489,16 @@ export class DashboardPage extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Edit Profil</Text>
+                                            <Text style={{ color: 'white', marginTop: 18, paddingLeft: 70, fontSize: 12 }}>Edit Profil</Text>
                                         </View>
                                     </View>
                                 </View>
-                
+
                             </View>
 
                             <View style={styles.bodyCrafterList}>
                                 <View style={styles.crafterMenu}>
-                                    <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                    <View style={{ marginLeft: 80, marginTop: 15 }}>
                                         <View style={{ flex: 1 }}>
                                             <Image
                                                 style={styles.iconsCrafterMenu}
@@ -506,26 +506,120 @@ export class DashboardPage extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Cari Pesanan</Text>
+                                            <Text style={{ color: 'white', marginTop: 20, paddingLeft: 68, fontSize: 12 }}>Cari Pesanan</Text>
                                         </View>
                                     </View>
 
                                 </View>
-                         
+
                             </View>
-
-
-
-
                         </View>
                     </View>
 
+                    <View style={styles.containerProfileHomeScreen}>
+                        <View style={styles.profileHomeScreen}>
+                            <View>
+                                <Text style={{ color: 'white', marginTop: 20, alignSelf: 'center', fontSize: 20, fontWeight: 'bold' }}>Gal Gadot</Text>
+                                <View style={{ flex: 1 }}>
+                                    <Image
+                                        style={styles.locationIcon}
+                                        source={require('./../assets/images/location_icon.png')}
+                                    />
+                                </View>
+                                <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 13 }}>Bali</Text>
+                            </View>
+
+                            <View style={{ alignSelf: 'center' }}>
+                                <Image
+                                    style={styles.photoProfileHomeScreen}
+                                    source={require('./../assets/images/profile.png')}
+                                />
+                            </View>
+                            <Text style={{ color: 'white', marginTop: 30, alignSelf: 'center', fontSize: 20, fontWeight: 'bold' }}>PROFILE</Text>
+                            <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 13 }}>Lihat dan atur segala informasi</Text>
+                            <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 13 }}>profil anda disini </Text>
 
 
+                        </View>
+
+                        <View style={styles.containerBodyProfile}>
+
+                            <View style={styles.listProfileIcon}>
+                                <View style={styles.profileMenu}>
+                                    <View style={{ marginLeft: 80, marginTop: 6 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconProfile}
+                                                source={require('./../assets/images/edit_profil.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 18, paddingLeft: 70, fontSize: 12 }}>Edit Profil</Text>
+                                        </View>
+                                        {/* <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.arrowIcon}
+                                                source={require('./../assets/images/arrow.png')}
+                                            />
+                                        </View> */}
+                                    </View>
+                                </View>
+
+                            </View>
+
+                            <View style={styles.listProfileIcon}>
+                                <View style={styles.profileMenu}>
+                                    <View style={{ marginLeft: 85, marginTop: 25 }}>
+                                        <View style={{ flex: 1 }}>
+                                            <Image
+                                                style={styles.iconLogOut}
+                                                source={require('./../assets/images/logout.png')}
+                                            />
+                                        </View>
+                                        <View style={{ flex: 1 }}>
+                                            <Text style={{ color: 'white', marginTop: 7, paddingLeft: 65, fontSize: 12 }}>Log Out</Text>
+                                        </View>
+                                    </View>
+
+                                </View>
+
+                            </View>
+                        </View>
+
+                    </View>
 
 
+                    <View style={styles.containerBodyJoinCrafter}>
+
+                        <View style={styles.photoJoinCrafter}>
+                            <Image
+                                style={styles.joinImage}
+                                source={require('./../assets/images/crafter_menu.png')}
+                            />
+                        </View>
+
+                        <View styles={{ flex: 1 }}>
+
+                            <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>Daftarkan diri anda </Text>
+                            <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>menjadi partner kami</Text>
+                            <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>sebagai CRAFTER </Text>
+
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ color: 'white', marginTop: 3, paddingLeft: 125, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                            <Image
+                                style={styles.iconQuestion}
+                                source={require('./../assets/images/question.png')}
+                            />
+
+                            <TouchableOpacity style={styles.buttonJoin}>
+                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontWeight: 'bold' }}>JOIN</Text>
+                            </TouchableOpacity>
+                        </View>
 
 
+                    </View>
 
 
                 </ScrollView >
@@ -795,7 +889,7 @@ const styles = StyleSheet.create({
         height: 20,
         width: 340,
         // backgroundColor: 'blue',
-        marginTop: 5,
+        marginTop: 10,
     },
     bodyCrafterList: {
         // flex: 2,
@@ -829,11 +923,132 @@ const styles = StyleSheet.create({
         width: 55,
         // borderRadius: 100,
     },
-    crafterMenu : {
+    crafterMenu: {
         height: 70,
         width: 340,
-        marginLeft : 100
+        // marginLeft: 100
+    },
+    containerProfileHomeScreen: {
+        flex: 2,
+        borderRadius: 20,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, heigth: 2 },
+        shadowRadius: 2,
+        flexDirection: 'column',
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        height: 500
+    },
+    profileHomeScreen: {
+        borderRadius: 20,
+        flexDirection: 'column',
+        height: 320,
+        width: 340,
+        // backgroundColor: 'yellow'
+    },
+    photoProfileHomeScreen: {
+        // flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 130,
+        width: 130,
+        borderRadius: 100,
+        marginTop: 30
+    },
+    locationIcon: {
+        height: 15,
+        width: 10,
+        marginLeft: 145,
+        marginTop: 5
+    },
+    containerBodyProfile: {
+        flex: 1,
+        borderRadius: 20,
+        flexDirection: 'column',
+        height: 20,
+        width: 340,
+        // backgroundColor: 'blue',
+        marginTop: 20,
+    },
+    listProfileIcon: {
+        flexDirection: 'row',
+        height: 70,
+        width: 340,
+    },
+    profileMenu: {
+        height: 70,
+        width: 340,
+        // marginLeft: 100,
+        // backgroundColor: 'blue'
+    },
+    iconProfile: {
+        height: 55,
+        width: 55,
+    },
+    iconLogOut: {
+        height: 30,
+        width: 45,
+    },
+    arrowIcon: {
+        height: 20,
+        width: 5,
+        paddingLeft: 70
+    },
+    containerBodyJoinCrafter: {
+        flex: 2,
+        borderRadius: 20,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, heigth: 2 },
+        shadowRadius: 2,
+        flexDirection: 'column',
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        height: 500
+    },
+    bodyJoinCrafter: {
+        borderRadius: 20,
+        flexDirection: 'column',
+        height: 320,
+        width: 340,
+        // backgroundColor: 'yellow'
+    },
+    photoJoinCrafter: {
+        height: 180,
+        width: 170,
+        borderRadius: 25,
+        alignSelf: 'center',
+        marginTop: 30
+
+    },
+    joinImage: {
+        height: 180,
+        width: 170,
+    },
+    buttonJoin: {
+        // marginTop: 30,
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 35,
+        width: 180,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginTop: 60
+    },
+    iconQuestion: {
+        height: 18,
+        width: 15,
+        marginLeft: 99,
+        marginTop: -15
     }
+
+
+
+
+
 
 
 

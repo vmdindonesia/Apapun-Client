@@ -19,24 +19,24 @@ import { OrderPage } from './pages/order.js';
 console.disableYellowBox = true;
 
 // font
-const customTextProps = { 
-  style: { 
+const customTextProps = {
+  style: {
     fontFamily: 'Quicksand-Regular'
   }
 }
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  Dashboard: {
-    screen: DashboardPage
-  },
   Login: {
     screen: LoginPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   },
   Order: {
     screen: OrderPage
   }
-},{
+}, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerTitleStyle: {
