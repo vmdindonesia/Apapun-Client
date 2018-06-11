@@ -93,7 +93,6 @@ const styles = {
 		borderColor: '#a9a9a9',
 		borderRadius: 9,
 		paddingLeft: 7,
-		// backgroundColor: '#fff'
 		backgroundColor: 'rgba(110,104,104,0.5)'
 	},
 	lockedForm: {
