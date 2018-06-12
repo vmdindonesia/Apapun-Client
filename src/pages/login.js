@@ -21,19 +21,6 @@ export class LoginPage extends React.Component {
 		}
 	}
 
-	componentWillMount() {
-		AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
-			console.log(result, 'STORAGE')
-			if (result) {
-				const resetAction = StackActions.reset({
-					index: 0,
-					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-				});
-				this.props.navigation.dispatch(resetAction);
-			}
-		})
-	}
-
 	onChange = (name, value) => {
 		this.setState({ [name]: value }, () => {
 			console.log(this.state[name]);
@@ -51,23 +38,18 @@ export class LoginPage extends React.Component {
 				headers: {
 					'Content-Type': 'application/json',
 				}
-			}).then(response => {
-				console.log(response.data.id);
-				this.setState({
-					email: '',
-					password: '',
-					loading: false
+			}).then(async response => {
+				try {
+					await AsyncStorage.setItem('VMD', 'VMDDEVELOPER');
+				} catch (error) {
+					console.log(error, 'Error Saving Storage');
+					// Error saving data
+				}
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
 				});
-				AsyncStorage.setItem('VMDDEVELOPER', response.data, () => {
-					AsyncStorage.getItem('VMDDEVELOPER', (error, result) => {
-						console.log(result, 'Result');
-					})
-					// const resetAction = StackActions.reset({
-					// 	index: 0,
-					// 	actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-					// });
-					// this.props.navigation.dispatch(resetAction);
-				});
+				this.props.navigation.dispatch(resetAction);
 			}).catch(error => {
 				console.log(error, 'ERROR LOGIN');
 				this.setState({ loading: false });
@@ -109,6 +91,7 @@ export class LoginPage extends React.Component {
 
 						<ContainerSection>
 							<InputLogin
+								secureTextEntry
 								placeholder="password"
 								icon="ic_password"
 								icons="ic_garis"
@@ -128,7 +111,15 @@ export class LoginPage extends React.Component {
 						onPress={() => this.loginIn()}
 					>
 						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-							Lupa Kata Sandi?
+							Forget password?
+						</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						onPress={() => this.props.navigation.navigate('Registration')}
+					>
+						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
+							Don't have account ? Register!
 						</Text>
 					</TouchableOpacity>
 				</View>

@@ -12,10 +12,12 @@ import {
 import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
+
+import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
-import {RegistrationPage } from './pages/registration.js'
+import { RegistrationPage } from './pages/registration.js'
 
 console.disableYellowBox = true;
 
@@ -28,14 +30,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  Dashboard: {
-    screen: DashboardPage
-  },
-  Registration : {
-    screen : RegistrationPage
+  StartScreen: {
+    screen: StartScreen
   },
   Login: {
     screen: LoginPage
+  },
+  Registration: {
+    screen: RegistrationPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   },
   Order: {
     screen: OrderPage

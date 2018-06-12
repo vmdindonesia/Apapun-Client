@@ -348,7 +348,7 @@ export class DashboardPage extends React.Component {
                                                                                                     <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CUSTOM </Text>
                                                                                                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-                                                                                                    <TouchableOpacity style={styles.buttonCustom}>
+                                                                                                    <TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
                                                                                                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
                                                                                                     </TouchableOpacity>
                                                                                                 </View>

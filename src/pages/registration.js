@@ -9,7 +9,7 @@ import { CheckBox } from 'react-native-elements'
 
 export class RegistrationPage extends React.Component {
     static navigationOptions = {
-        header: null
+        headerTitle: 'Register'
     }
 
     state = {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     containerForm: {
         flex: 1,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: '#ffffff',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
@@ -130,7 +130,10 @@ const styles = StyleSheet.create({
         width: 320,
         alignItems: 'center',
         alignSelf: 'center',
-        zIndex: 1
+        zIndex: 1,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+    
     },
     iconCamera: {
         height: 40,
