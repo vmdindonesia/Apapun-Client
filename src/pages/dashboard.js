@@ -9,6 +9,7 @@ import {
 import { Button } from './../components/common'
 import Swiper from 'react-native-swiper';
 import { COLOR } from './../shared/config';
+import { Icon } from 'react-native-elements';
 
 
 export class DashboardPage extends React.Component {
@@ -16,6 +17,7 @@ export class DashboardPage extends React.Component {
         header: null
     }
 
+<<<<<<< Updated upstream
     render() {
         return (
             <ImageBackground
@@ -24,6 +26,16 @@ export class DashboardPage extends React.Component {
             >
                 <ScrollView>
                     <View style={{ height: 250 }}>
+=======
+    constructor(props) {
+        super(props);
+        this.state = {
+            sideMenu: false,
+            statusMenu: 'profile',
+            orderStatus: ''
+        };
+    }
+>>>>>>> Stashed changes
 
                         <Swiper
                             style={styles.wrapper}
@@ -70,10 +82,37 @@ export class DashboardPage extends React.Component {
 
                     </View>
 
+<<<<<<< Updated upstream
                     <View style={styles.containerProfile}>
                         <View style={styles.containerInsideProfileOne}>
                             <View style={styles.containerPhoto}>
                                 <View>
+=======
+    OrderStatus = (value) => {
+        console.log(value, 'Value')
+        this.setState({
+            orderStatus: value
+        })
+    }
+
+    render() {
+        const { sideMenu, statusMenu, orderStatus } = this.state;
+        return (
+            <View style={{ flex: 1 }}>
+                <ImageBackground
+                    source={require('./../assets/images/bg-dashboard.png')}
+                    style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
+                >
+                    <ScrollView>
+                        <View style={{ height: 250, flex: 1 }}>
+                            <Swiper
+                                style={styles.wrapper}
+                                autoplay
+                                showsButtons={true}
+                                dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                            >
+                                <View style={styles.slide1}>
+>>>>>>> Stashed changes
                                     <Image
                                         style={styles.profileImage}
                                         source={require('./../assets/images/profile.png')}
@@ -156,6 +195,7 @@ export class DashboardPage extends React.Component {
                                         />
                                     </View>
                                 </View>
+<<<<<<< Updated upstream
                             </View>
                         </View>
                     </View>
@@ -310,6 +350,8 @@ export class DashboardPage extends React.Component {
                                 />
                                 <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Custom</Text>
 
+=======
+>>>>>>> Stashed changes
                             </View>
                             <View style={styles.DefaultBody}>
                                 <Image
@@ -514,6 +556,7 @@ export class DashboardPage extends React.Component {
 
                             </View>
                         </View>
+<<<<<<< Updated upstream
                     </View>
 
                     <View style={styles.containerProfileHomeScreen}>
@@ -579,14 +622,500 @@ export class DashboardPage extends React.Component {
                                         <View style={{ flex: 1 }}>
                                             <Text style={{ color: 'white', marginTop: 7, paddingLeft: 65, fontSize: 12 }}>Log Out</Text>
                                         </View>
+=======
+                    </ScrollView>
+                    {
+                        sideMenu === true ?
+                            <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', width: '100%', height: '100%', position: 'absolute' }}>
+
+                                <View style={{ height: '70%' }}>
+                                    {
+                                        statusMenu === 'home' ?
+                                            <View style={styles.containerHome}>
+                                                <View style={styles.containerHomeLogo}>
+                                                    <Image
+                                                        style={{ height: 50, width: 50, marginBottom: 5, marginTop: 15 }}
+                                                        source={require('./../assets/images/daftar_pesanan.png')}
+                                                    />
+                                                    <Text style={{ color: 'white' }}>Daftar</Text>
+                                                    <Text style={{ color: 'white' }}>Pesanan</Text>
+                                                </View>
+                                                <View style={styles.containerHomeLogo}>
+                                                    <Image
+                                                        style={styles.containerImageHome}
+                                                        source={require('./../assets/images/notifikasi.png')}
+                                                    />
+                                                    <Text style={{ color: 'white' }}> Notifikasi </Text>
+                                                </View>
+                                                <View style={styles.containerHomeLogo}>
+                                                    <Image
+                                                        style={styles.containerImageHome}
+                                                        source={require('./../assets/images/setting.png')}
+                                                    />
+                                                    <Text style={{ color: 'white' }}> Setting </Text>
+                                                </View>
+                                                <View style={styles.containerHomeLogo}>
+                                                    <Image
+                                                        style={styles.containerImageHome}
+                                                        source={require('./../assets/images/bantuan.png')}
+                                                    />
+                                                    <Text style={{ color: 'white' }}> Help </Text>
+                                                </View>
+                                            </View>
+                                            :
+                                            <View style={{ height: '100%' }}>
+                                                {
+                                                    statusMenu === 'crafterList' ?
+                                                        <View style={styles.containerHomeScreen}>
+                                                            <View style={styles.containerSomeHomeScreen}>
+                                                                <View style={styles.photoHomeScreen}>
+                                                                    <Image
+                                                                        style={styles.cngImage}
+                                                                        source={require('./../assets/images/crafter_list.png')}
+                                                                    />
+                                                                </View>
+                                                                <View style={styles.textHomeScreen}>
+                                                                    <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CRAFTER LIST </Text>
+                                                                    <Text style={{ color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
+
+                                                                    <TouchableOpacity style={[styles.buttonGo, style={marginTop: 40}]}>
+                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+
+                                                            <View style={styles.containerBodyCrafter}>
+                                                                <View style={styles.bodyCrafterList}>
+                                                                    <View style={styles.CrafterListLeft}>
+                                                                        <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Image
+                                                                                    style={styles.iconsCrafterMenu}
+                                                                                    source={require('./../assets/images/fashion_crafter.png')}
+                                                                                />
+                                                                            </View>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>FASHION</Text>
+                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>1254 Crafter</Text>
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
+                                                                    <View style={styles.CrafterListRight}>
+                                                                        <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Image
+                                                                                    style={styles.iconsCrafterMenu}
+                                                                                    source={require('./../assets/images/diy_crafter.png')}
+                                                                                />
+                                                                            </View>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>DIY, Hobbies, Toys</Text>
+                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>199 Crafter</Text>
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
+                                                                </View>
+
+                                                                <View style={styles.bodyCrafterList}>
+                                                                    <View style={styles.CrafterListLeft}>
+                                                                        <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Image
+                                                                                    style={styles.iconsCrafterMenu}
+                                                                                    source={require('./../assets/images/furniture_crafter.png')}
+                                                                                />
+                                                                            </View>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Furniture</Text>
+                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>723 Crafter</Text>
+                                                                            </View>
+                                                                        </View>
+
+                                                                    </View>
+                                                                    <View style={styles.CrafterListRight}>
+                                                                        <View style={{ marginLeft: 10, marginTop: 6 }}>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Image
+                                                                                    style={styles.iconsCrafterMenu}
+                                                                                    source={require('./../assets/images/beauty_crafter.png')}
+                                                                                />
+                                                                            </View>
+                                                                            <View style={{ flex: 1 }}>
+                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 12 }}>Beauty</Text>
+                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 10 }}>269 Crafter</Text>
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+                                                        </View>
+                                                        :
+                                                        <View style={{ height: '100%' }}>
+                                                            {
+                                                                statusMenu === 'order' ?
+                                                                    <View style={styles.containerHomeScreen}>
+                                                                        {
+                                                                            orderStatus === '' ?
+                                                                                <View style={styles.containerSomeHomeScreen}>
+                                                                                    <View style={styles.photoHomeScreen}>
+                                                                                        <Image
+                                                                                            style={styles.cngImage}
+                                                                                            source={require('./../assets/images/order_default.png')}
+                                                                                        />
+                                                                                    </View>
+                                                                                    <View style={styles.textHomeScreen}>
+                                                                                        <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>ORDER </Text>
+                                                                                        <Text style={{ color: 'white', fontSize: 12.5 }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+                                                                                    </View>
+                                                                                </View>
+                                                                                :
+                                                                                <View>
+                                                                                    {
+                                                                                        orderStatus === 'custom' ?
+                                                                                            <View style={styles.containerSomeHomeScreen}>
+                                                                                                <View style={styles.photoHomeScreen}>
+                                                                                                    <Image
+                                                                                                        style={styles.cngImage}
+                                                                                                        source={require('./../assets/images/Custom.png')}
+                                                                                                    />
+                                                                                                </View>
+                                                                                                <View style={styles.textHomeScreen}>
+                                                                                                    <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CUSTOM </Text>
+                                                                                                    <Text style={{ color: 'white', fontSize: 12.5 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
+
+                                                                                                    <TouchableOpacity style={styles.buttonCustom}>
+                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                    </TouchableOpacity>
+                                                                                                </View>
+                                                                                            </View>
+                                                                                            :
+                                                                                            <View>
+                                                                                                {
+                                                                                                    orderStatus === 'captureAndGet' ?
+                                                                                                        <View style={styles.containerSomeHomeScreen}>
+                                                                                                            <View style={styles.photoHomeScreen}>
+                                                                                                                <Image
+                                                                                                                    style={styles.cngImage}
+                                                                                                                    source={require('./../assets/images/CapturenGet.png')}
+                                                                                                                />
+                                                                                                            </View>
+                                                                                                            <View style={styles.textHomeScreen}>
+                                                                                                                <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CAPTURE N`GET </Text>
+                                                                                                                <Text style={{ color: 'white', fontSize: 12.5 }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
+
+                                                                                                                <TouchableOpacity style={[styles.buttonGo, style={marginTop: 40}]}>
+                                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                                </TouchableOpacity>
+                                                                                                            </View>
+                                                                                                        </View>
+                                                                                                        :
+                                                                                                        <View>
+                                                                                                            {
+                                                                                                                orderStatus === 'ideaMarket' ?
+                                                                                                                    <View style={styles.containerSomeHomeScreen}>
+                                                                                                                        <View style={styles.photoHomeScreen}>
+                                                                                                                            <Image
+                                                                                                                                style={styles.cngImage}
+                                                                                                                                source={require('./../assets/images/idea_market.png')}
+                                                                                                                            />
+                                                                                                                        </View>
+                                                                                                                        <View style={styles.textHomeScreen}>
+                                                                                                                            <Text style={{ marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>IDEA MARKET </Text>
+                                                                                                                            <Text style={{ color: 'white', fontSize: 12.5 }}>Disini kamu bisa melihat hasil karya unik dan menarik teman-temanmu dan kamu bisa membelinya loh! </Text>
+
+                                                                                                                            <TouchableOpacity style={styles.buttonIdea}>
+                                                                                                                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                                            </TouchableOpacity>
+                                                                                                                        </View>
+                                                                                                                    </View>
+                                                                                                                    :
+                                                                                                                    <View />
+
+                                                                                                            }
+                                                                                                        </View>
+                                                                                                }
+                                                                                            </View>
+
+                                                                                    }
+                                                                                </View>
+                                                                        }
+
+                                                                        <View style={styles.containerBodyHome}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('custom')}
+                                                                            >
+                                                                                <View style={styles.DefaultBody}>
+                                                                                    <Image
+                                                                                        source={require('./../assets/images/linehome.png')}
+                                                                                    />
+                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>Custom</Text>
+                                                                                </View>
+                                                                            </TouchableOpacity>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('captureAndGet')}
+                                                                            >
+                                                                                <View style={styles.DefaultBody}>
+                                                                                    <Image
+                                                                                        source={require('./../assets/images/linehome.png')}
+                                                                                    />
+                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Capture n` Get</Text>
+                                                                                </View>
+                                                                            </TouchableOpacity>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('ideaMarket')}
+                                                                            >
+                                                                                <View style={styles.DefaultBody}>
+                                                                                    <Image
+                                                                                        source={require('./../assets/images/linehome.png')}
+                                                                                    />
+                                                                                    <Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Idea Market</Text>
+                                                                                    <Image
+                                                                                        source={require('./../assets/images/linehome.png')}
+                                                                                    />
+                                                                                </View>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                    </View>
+                                                                    :
+                                                                    <View style={{ height: '100%' }}>
+                                                                        {
+                                                                            statusMenu === 'profile' ?
+                                                                                <View style={styles.containerProfileHomeScreen}>
+                                                                                    <View style={styles.profileHomeScreen}>
+                                                                                        <View>
+                                                                                            <Text style={{ color: 'white', marginTop: 20, alignSelf: 'center', fontSize: 16, fontWeight: 'bold' }}>Gal Gadot</Text>
+                                                                                            <View style={{ flex: 1 }}>
+                                                                                                <Icon size={10} name="md-map-marker" color="e00" />
+                                                                                            </View>
+                                                                                            <Text style={{ color: 'white', alignSelf: 'center', fontSize: 12 }}>Bali</Text>
+                                                                                        </View>
+
+                                                                                        <View style={{ alignSelf: 'center' }}>
+                                                                                            <Image
+                                                                                                style={styles.photoProfileHomeScreen}
+                                                                                                source={require('./../assets/images/profile.png')}
+                                                                                            />
+                                                                                        </View>
+                                                                                        <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontWeight: 'bold' }}>PROFILE</Text>
+                                                                                        <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
+                                                                                        <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
+                                                                                    </View>
+                                                                                    <View style={styles.containerBodyProfile}>
+                                                                                        <View style={styles.listProfileIcon}>
+                                                                                            <View style={styles.profileMenu}>
+                                                                                                <View style={{ marginLeft: 80, marginTop: 6 }}>
+                                                                                                    <View style={{ flex: 1 }}>
+                                                                                                        <Image
+                                                                                                            style={styles.iconProfile}
+                                                                                                            source={require('./../assets/images/edit_profil.png')}
+                                                                                                        />
+                                                                                                    </View>
+                                                                                                    <View style={{ flex: 1 }}>
+                                                                                                        <Text style={{ color: 'white', marginTop: 18, paddingLeft: 70, fontSize: 12 }}>Edit Profil</Text>
+                                                                                                    </View>
+                                                                                                    <View style={{ flex: 1 }}>
+                                                                                                        <Icon
+                                                                                                            size={20}
+                                                                                                            name="md-angle-right"
+                                                                                                            color="#fff"
+                                                                                                        />
+                                                                                                    </View>
+                                                                                                </View>
+                                                                                            </View>
+
+                                                                                        </View>
+
+                                                                                        <View style={styles.listProfileIcon}>
+                                                                                            <View style={styles.profileMenu}>
+                                                                                                <View style={{ marginLeft: 85, marginTop: 25 }}>
+                                                                                                    <View style={{ flex: 1 }}>
+                                                                                                        <Image
+                                                                                                            style={styles.iconLogOut}
+                                                                                                            source={require('./../assets/images/logout.png')}
+                                                                                                        />
+                                                                                                    </View>
+                                                                                                    <View style={{ flex: 1 }}>
+                                                                                                        <Text style={{ color: 'white', marginTop: 7, paddingLeft: 65, fontSize: 12 }}>Log Out</Text>
+                                                                                                    </View>
+                                                                                                </View>
+
+                                                                                            </View>
+
+                                                                                        </View>
+                                                                                    </View>
+                                                                                    </View>                                                                                
+                                                                                :
+                                                                                <View style={{ height: '100%' }}>
+                                                                                    {
+                                                                                        statusMenu === 'crafterMenu' ?
+                                                                                            <View style={styles.containerBodyJoinCrafter}>
+
+                                                                                                <View style={styles.photoJoinCrafter}>
+                                                                                                    <Image
+                                                                                                        style={styles.joinImage}
+                                                                                                        source={require('./../assets/images/crafter_menu.png')}
+                                                                                                    />
+                                                                                                </View>
+
+                                                                                                <View styles={{ flex: 1 }}>
+
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>Daftarkan diri anda </Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>menjadi partner kami</Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>sebagai CRAFTER </Text>
+
+                                                                                                </View>
+
+                                                                                                <View style={{ flex: 1 }}>
+                                                                                                    <Icon size={15} name="md-question-mark" color="#fff" />
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, paddingLeft: 125, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                                                                                                    <TouchableOpacity style={styles.buttonJoin}>
+                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontWeight: 'bold' }}>JOIN</Text>
+                                                                                                    </TouchableOpacity>
+                                                                                                </View>
+                                                                                            </View>
+                                                                                            :
+                                                                                            <View />
+                                                                                    }
+                                                                                </View>
+                                                                        }
+                                                                    </View>
+
+                                                            }
+                                                        </View>
+                                                }
+                                            </View>
+                                    }
+                                </View>
+
+                                <View style={{
+                                    flex: 1,
+                                    flexDirection: 'row',
+                                    width: '100%',
+                                    height: 50,
+                                    backgroundColor: 'rgba(70,70,71,0.5)',
+                                    marginBottom: '25%',
+                                    marginTop: 5
+                                }}>
+
+                                    {/* INI MENU BUTTON */}
+                                    <View style={{ width: 64, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={() => this.statusMenus('home')}
+                                        >
+                                            {
+                                                statusMenu === 'home' ?
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30 }}
+                                                            source={require('./../assets/images/umum-enabled.png')}
+                                                        />
+                                                    </View>
+                                                    :
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/umum-disabled.png')}
+                                                        />
+                                                    </View>
+                                            }
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={{ width: 64, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={() => this.statusMenus('profile')}
+                                        >
+                                            {
+                                                statusMenu === 'profile' ?
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/profil-enable.png')}
+                                                        />
+                                                    </View>
+                                                    :
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/profil-disable.png')}
+                                                        />
+                                                    </View>
+                                            }
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={{ width: 64, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={() => this.statusMenus('order')}
+                                        >
+                                            {
+                                                statusMenu === 'order' ?
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/order-enable.png')}
+                                                        />
+                                                    </View>
+                                                    :
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/order-disable.png')}
+                                                        />
+                                                    </View>
+                                            }
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={{ width: 64, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={() => this.statusMenus('crafterList')}
+                                        >
+                                            {
+                                                statusMenu === 'crafterList' ?
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/crafter-list-enable.png')}
+                                                        />
+                                                    </View>
+                                                    :
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/crafter-list-disable.png')}
+                                                        />
+                                                    </View>
+                                            }
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={{ width: 64, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
+                                            onPress={() => this.statusMenus('crafterMenu')}
+                                        >
+                                            {
+                                                statusMenu === 'crafterMenu' ?
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/crafter-menu-enable.png')}
+                                                        />
+                                                    </View>
+                                                    :
+                                                    <View>
+                                                        <Image
+                                                            style={{ width: 30, height: 30, }}
+                                                            source={require('./../assets/images/crafter-menu-disable.png')}
+                                                        />
+                                                    </View>
+                                            }
+                                        </TouchableOpacity>
+>>>>>>> Stashed changes
                                     </View>
 
                                 </View>
-
                             </View>
                         </View>
 
                     </View>
+<<<<<<< Updated upstream
 
 
                     <View style={styles.containerBodyJoinCrafter}>
@@ -624,6 +1153,10 @@ export class DashboardPage extends React.Component {
 
                 </ScrollView >
             </ImageBackground >
+=======
+                </ImageBackground>
+            </View>
+>>>>>>> Stashed changes
         )
     }
 
@@ -826,9 +1359,8 @@ const styles = StyleSheet.create({
     },
     photoHomeScreen: {
         height: 170,
-        width: 170,
+        width: 150,
         borderRadius: 25,
-        // backgroundColor: 'yellow'
     },
     textHomeScreen: {
         height: 165,
@@ -837,31 +1369,30 @@ const styles = StyleSheet.create({
         // backgroundColor: 'skyblue'
     },
     cngImage: {
-        height: 180,
-        width: 170,
+        height: 170,
+        width: 140,
     },
     buttonGo: {
-        marginTop: 60,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 165,
+        width: 150,
         justifyContent: 'center'
     },
     buttonIdea: {
-        marginTop: 33,
+        marginTop: 25,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 165,
+        width: 150,
         justifyContent: 'center'
     },
     buttonCustom: {
-        marginTop: 45,
+        marginTop: 30,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 165,
+        width: 150,
         justifyContent: 'center'
     },
     containerBodyHome: {
@@ -926,7 +1457,25 @@ const styles = StyleSheet.create({
     crafterMenu: {
         height: 70,
         width: 340,
+<<<<<<< Updated upstream
         // marginLeft: 100
+=======
+        marginLeft: 100
+    },
+    profileHomeScreen: {
+        borderRadius: 20,
+        flexDirection: 'column',
+        height: 350,
+        width: 300
+    },
+    photoProfileHomeScreen: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 100,
+        width: 100,
+        borderRadius: 100,
+        marginTop: 15
+>>>>>>> Stashed changes
     },
     containerProfileHomeScreen: {
         flex: 2,
@@ -941,6 +1490,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         height: 500
     },
+<<<<<<< Updated upstream
     profileHomeScreen: {
         borderRadius: 20,
         flexDirection: 'column',
@@ -957,6 +1507,8 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginTop: 30
     },
+=======
+>>>>>>> Stashed changes
     locationIcon: {
         height: 15,
         width: 10,
@@ -969,8 +1521,12 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         height: 20,
         width: 340,
+<<<<<<< Updated upstream
         // backgroundColor: 'blue',
         marginTop: 20,
+=======
+        marginTop: 20
+>>>>>>> Stashed changes
     },
     listProfileIcon: {
         flexDirection: 'row',
@@ -984,18 +1540,41 @@ const styles = StyleSheet.create({
         // backgroundColor: 'blue'
     },
     iconProfile: {
+<<<<<<< Updated upstream
         height: 55,
         width: 55,
     },
     iconLogOut: {
         height: 30,
         width: 45,
+=======
+        height: 40,
+        width: 40,
+    },
+    iconLogOut: {
+        height: 25,
+        width: 35,
+>>>>>>> Stashed changes
     },
     arrowIcon: {
         height: 20,
         width: 5,
         paddingLeft: 70
     },
+<<<<<<< Updated upstream
+=======
+    cone: {
+        width: 0,
+        height: 0,
+        borderLeftWidth: 30,
+        borderLeftColor: 'transparent',
+        borderRightWidth: 30,
+        borderRightColor: 'transparent',
+        borderTopWidth: 60,
+        borderTopColor: 'red',
+        borderRadius: 55
+    },
+>>>>>>> Stashed changes
     containerBodyJoinCrafter: {
         flex: 2,
         borderRadius: 20,
