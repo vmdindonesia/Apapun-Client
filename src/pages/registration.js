@@ -24,8 +24,8 @@ export class RegistrationPage extends React.Component {
         return (
 
             <ImageBackground
-                source={require('./../assets/images/bg-dashboard.png')}
-                style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
+                // source={require('./../assets/images/bg-dashboard.png')}
+                style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
             >
 
                 <ScrollView>

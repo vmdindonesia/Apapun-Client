@@ -100,7 +100,7 @@ export class DashboardPage extends React.Component {
                             </Swiper>
                         </View>
 
-                        <View style={styles.containerProfile}>
+                        <View style={styles.containerDashboard}>
                             <View style={styles.containerInsideProfileOne}>
                                 <View style={styles.containerPhoto}>
                                     <View>
@@ -721,10 +721,25 @@ const styles = StyleSheet.create({
         marginRight: 10,
         borderRadius: 50
     },
-    containerProfile: {
+    containerDashboard: {
         flex: 1,
         borderRadius: 20,
         backgroundColor: 'rgba(0,0,0,0.5)',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, heigth: 2 },
+        shadowRadius: 2,
+        flexDirection: 'row',
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 160
+    },
+    containerProfile: {
+        flex: 1,
+        borderRadius: 20,
+        backgroundColor: 'rgba(0,0,0,0)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
@@ -848,7 +863,7 @@ const styles = StyleSheet.create({
     containerHome: {
         flex: 4,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
@@ -875,7 +890,7 @@ const styles = StyleSheet.create({
     containerHomeScreen: {
         flex: 2,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
@@ -1019,7 +1034,7 @@ const styles = StyleSheet.create({
     containerProfileHomeScreen: {
         flex: 2,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 0,
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
@@ -1082,7 +1097,7 @@ const styles = StyleSheet.create({
     containerBodyJoinCrafter: {
         flex: 2,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,

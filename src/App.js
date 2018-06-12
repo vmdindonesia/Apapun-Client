@@ -15,6 +15,7 @@ import { createStackNavigator } from 'react-navigation';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
+import {RegistrationPage } from './pages/registration.js'
 
 console.disableYellowBox = true;
 
@@ -29,6 +30,9 @@ setCustomText(customTextProps)
 const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
+  },
+  Registration : {
+    screen : RegistrationPage
   },
   Login: {
     screen: LoginPage
