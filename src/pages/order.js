@@ -53,7 +53,7 @@ export class OrderPage extends React.Component {
                         <View style={styles.pickerStyle}>
                             <Picker
                                 selectedValue={categoryProduct}
-                                onValueChange={v => this.onChangeInput('categoryProduct', v)}
+                                onValueChange={(v) => this.onChangeInput('categoryProduct', v)}
                             >
                                 <Picker.Item label='Pilih Kategori Produk' value='0' />
                                 <Picker.Item label='Fashion' value='Fashion' />
@@ -76,7 +76,7 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ color: 'white', marginTop: 80, textAlign: 'center' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
+                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 80, textAlign: 'center' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -84,10 +84,10 @@ export class OrderPage extends React.Component {
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                 <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 50 }}> <Image style={{ width: 30, height: 30 }} source={require('../assets/images/logo-image.png')} /> </Icon>
+                                                    <Image style={{ width: 20, height: 20, marginLeft: 85, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 5 }}>Tambah Gambar</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 70, marginTop: 6 }}>Tambah Gambar</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -98,21 +98,29 @@ export class OrderPage extends React.Component {
                         </View>
                     </View>
                 </ContainerSection>
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Jumlah yang dipesan</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 5, flexDirection: 'column' }}>
+                        <Text style={styles.pickerTextStyle}>Jumlah yang dipesan</Text>
+                    </View>
+                    <TouchableOpacity style={{flex: 1}}>
+                        <Image
+                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 5}}
+                        source={require('../assets/images/plus.png')}
+                        />
+                        </TouchableOpacity>
+                    <View style={{ flex: 1, height: 40 }}>
                         <InputNumber
-                            placeholder='Unit'
-                            icon="minus"
-                            icons="plus"
-                        // value={bidAmount ? numeral(parseInt(bidAmount, 0)).format('0,0') : ''}
-                        // onChangeText={v => this.onChangeInput('bidAmount', v.replace(/\./g, ''))}
+                            keyboardType='numeric'
                         />
                     </View>
-
-                    <View style={{ marginLeft: 10, flex: 1 }}>
-                        <View style={styles.pickerUnitStyle}>
+                    <TouchableOpacity style={{flex: 1, paddingLeft: 5}}>
+                        <Image
+                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8}}
+                        source={require('../assets/images/minus.png')}
+                        />
+                        </TouchableOpacity>
+                    <View style={{ flex: 2}}>
+                        <View style={[styles.pickerUnitStyle, {height: 40 }]}>
                             <Picker
                             // selectedValue={unitFish}
                             // onValueChange={v => this.onChangeInput('unitFish', v)}
@@ -134,11 +142,11 @@ export class OrderPage extends React.Component {
                                     <View>
                                         <Image
                                             source={require('../assets/images/create-material.png')}
-                                            style={{ width: '100%', height: 100 }}
+                                            style={{ width: '100%', height: 120 }}
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center' }}>Pilih material yang sesuai dengan desain Anda.</Text>
+                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center' }}>Pilih material yang sesuai dengan desain Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -146,10 +154,10 @@ export class OrderPage extends React.Component {
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                 <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'center', marginLeft: 50 }}> <Image style={{ width: 30, height: 30 }} source={require('../assets/images/logo-material.png')} /> </Icon>
+                                                    <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 80 }} source={require('../assets/images/logo-material.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 35, marginTop: 5 }}>Pemilihan Material</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 60, marginTop: 6 }}>Pemilihan Material</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -198,7 +206,7 @@ export class OrderPage extends React.Component {
                         <Text style={{ fontWeight: 'bold', padding: 5 }}> Catatan Tambahan </Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Image style={{ width: 13, height: 13, marginTop: 10 }} source={require('../assets/images/Information.png')} />
+                        <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
                     </View>
                 </View>
                 <ContainerSection>
@@ -267,11 +275,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginTop: 220,
         marginLeft: 30,
-        // marginRight: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        // paddingLeft: 30,
-        // paddingRight: 30
+       
     },
     buttons: {
         backgroundColor: 'rgb(220, 220, 220)',
@@ -281,7 +287,7 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 35,
         position: 'absolute',
-        marginTop: 55,
+        marginTop: 75,
         marginLeft: 30,
         // marginRight: 70,
         justifyContent: 'center',
