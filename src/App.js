@@ -44,7 +44,7 @@ const Routes = createStackNavigator({
   },
   Dashboard: {
     screen: DashboardPage
-  },
+  }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {

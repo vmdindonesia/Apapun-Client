@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation'
-import { StatusBar, StyleSheet, ScrollView, BackHandler, Text, Picker, Alert, Keyboard, ToastAndroid, TouchableOpacity, View, Image } from 'react-native'
-import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common'
-import AutoComplete from '../components/AutoComplete'
+import { NavigationActions } from 'react-navigation';
+import { StatusBar, StyleSheet, ScrollView, BackHandler, Text, Picker, Alert, Keyboard, ToastAndroid, TouchableOpacity, View, Image } from 'react-native';
+import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common';
+import AutoComplete from '../components/AutoComplete';
 import { COLOR } from './../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -76,7 +76,7 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 80, textAlign: 'center' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
+                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -87,7 +87,7 @@ export class OrderPage extends React.Component {
                                                     <Image style={{ width: 20, height: 20, marginLeft: 85, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 70, marginTop: 6 }}>Tambah Gambar</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 70, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Gambar</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -146,7 +146,7 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center' }}>Pilih material yang sesuai dengan desain Anda.</Text>
+                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Pilih material yang sesuai dengan desain Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
@@ -157,7 +157,7 @@ export class OrderPage extends React.Component {
                                                     <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 80 }} source={require('../assets/images/logo-material.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 60, marginTop: 6 }}>Pemilihan Material</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 60, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Pemilihan Material</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -203,7 +203,7 @@ export class OrderPage extends React.Component {
                 </ContainerSection>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View>
-                        <Text style={{ fontWeight: 'bold', padding: 5 }}> Catatan Tambahan </Text>
+                        <Text style={{ fontWeight: 'bold', padding: 5, fontFamily: 'Quicksand-Regular' }}> Catatan Tambahan </Text>
                     </View>
                     <View style={{ flex: 1 }}>
                         <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
@@ -250,6 +250,7 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     pickerTextStyle: {
+        fontFamily: 'Quicksand-Regular',
         color: '#5e5e5e',
         fontSize: 14,
         fontWeight: 'bold',
