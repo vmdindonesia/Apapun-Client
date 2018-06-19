@@ -20,7 +20,7 @@ export class StartScreen extends React.Component {
     componentWillMount() {
         // to do: check token expired
 
-        AsyncStorage.getItem('VMD', (err, result) => {
+        AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
             console.log(result, 'Get Storage');
             if (result) {
                 this.redirect();

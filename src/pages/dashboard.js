@@ -599,14 +599,16 @@ export class DashboardPage extends React.Component {
                                                 statusMenu === 'home' ?
                                                     <View>
                                                         <Image
-                                                            style={{ width: 30, height: 30 }}
+                                                            resizeMode='stretch'
+                                                            style={{ width: 30, height: 7 }}
                                                             source={require('./../assets/images/umum-enabled.png')}
                                                         />
                                                     </View>
                                                     :
                                                     <View>
                                                         <Image
-                                                            style={{ width: 30, height: 30, }}
+                                                            resizeMode='stretch'
+                                                            style={{ width: 30, height: 7, }}
                                                             source={require('./../assets/images/umum-disabled.png')}
                                                         />
                                                     </View>
@@ -713,8 +715,7 @@ export class DashboardPage extends React.Component {
                             onPress={() => this.sideMenus('Open')}
                         >
                             {
-                                sideMenu === 'Open' ?
-
+                                sideMenu === true ?
                                     <Image
                                         style={styles.Logo2}
                                         source={require('./../assets/images/ic_logo2.png')}
@@ -882,13 +883,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     Logo: {
-        height: 80,
-        width: 80,
-        marginBottom: 20
+        height: 85,
+        width: 85,
+        marginBottom: 25
     },
     Logo2: {
-        height: 50,
-        width: 50,
+        height: 60,
+        width: 60,
     },
     containerHome: {
         flex: 4,
