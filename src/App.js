@@ -31,6 +31,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -39,9 +42,6 @@ const Routes = createStackNavigator({
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   Order: {
     screen: OrderPage

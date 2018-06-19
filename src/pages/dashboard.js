@@ -556,7 +556,7 @@ export class DashboardPage extends React.Component {
                                                                                                 </View>
 
                                                                                                 <View style={{ flex: 1 }}>
-                                                                                                    <Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                                                                                                    <Text style={{ color: 'white', paddingLeft: 145, marginTop: 3, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
                                                                                                     <Image
                                                                                                         style={styles.iconQuestion}
                                                                                                         source={require('./../assets/images/question.png')}
@@ -955,13 +955,32 @@ const styles = StyleSheet.create({
         height: 170,
         width: 160,
     },
+    buttonCustom: {
+        marginTop: 55,
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 35,
+        width: 175,
+        justifyContent: 'center',
+        marginLeft: 12,
+        // position: 'relative',
+    },
+    buttonIdea: {
+        marginTop: 42.5,
+        marginLeft: 12,
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 35,
+        width: 175,
+        justifyContent: 'center',
+    },
     buttonCapture: {
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
         width: 175,
         justifyContent: 'center',
-        marginTop: 50.5,
+        marginTop: 55,
         marginLeft: 12
     },
     ButtonCrafterList: {
@@ -979,25 +998,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold'
     },
-    buttonIdea: {
-        marginTop: 21.5,
-        marginLeft: 12,
-        backgroundColor: 'red',
-        borderRadius: 20,
-        height: 35,
-        width: 175,
-        justifyContent: 'center',
-    },
-    buttonCustom: {
-        marginTop: 36,
-        backgroundColor: 'red',
-        borderRadius: 20,
-        height: 35,
-        width: 175,
-        justifyContent: 'center',
-        marginLeft: 12,
-        // position: 'relative',
-    },
+
     containerBodyHome: {
         flex: 3,
         borderRadius: 20,
@@ -1156,7 +1157,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     buttonJoin: {
-        // marginTop: 30,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
@@ -1168,7 +1168,7 @@ const styles = StyleSheet.create({
     iconQuestion: {
         height: 20,
         width: 20,
-        marginLeft: 100,
+        marginLeft: 110,
         marginTop: -15
     }
 });
