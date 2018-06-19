@@ -45,7 +45,7 @@ export class LoginPage extends React.Component {
 			}).then(async response => {
 				console.log(response.data, 'Data Login')
 				try {
-					const dataLogin = response.data.id;
+					const dataLogin = response.data;
 					await AsyncStorage.setItem('VMDDEVELOPER', dataLogin);
 				} catch (error) {
 					console.log(error, 'Error Saving Storage');
