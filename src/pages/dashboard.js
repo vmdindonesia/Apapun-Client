@@ -6,11 +6,11 @@ import {
     StyleSheet,
     Image
 } from 'react-native';
-import { Button } from './../components/common'
+import { Button, ContainerSection, CardSectionRegistration } from './../components/common'
 import Swiper from 'react-native-swiper';
 import { COLOR } from './../shared/config';
 import { Icon } from 'react-native-elements';
-
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class DashboardPage extends React.Component {
     static navigationOptions = {
@@ -46,20 +46,43 @@ export class DashboardPage extends React.Component {
         })
     }
 
+    // ButtonLogo = () => {
+    //     if (this.sideMenu) {
+    //         return
+    //         <TouchableOpacity style={{ color: 'yellow' }}>
+    //             <Image
+    //                 style={styles.Logo2}
+    //                 source={require("./../assets/images/ic_logo2.png")}
+    //             />
+    //         </TouchableOpacity>
+    //     }
+    //     return (
+    //         <TouchableOpacity
+    //             onPress={() => this.sideMenus()}
+    //             style={{ color: 'blue' }}>
+    //             <Image
+    //                 style={styles.Logo}
+    //                 source={require("./../assets/images/ic_logo1.png")}
+    //             />
+    //         </TouchableOpacity>
+    //     )
+    // }
+
+
     render() {
         const { sideMenu, statusMenu, orderStatus } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <ImageBackground
-                    source={require('./../assets/images/bg-dashboard.png')}
+                    source={require('./../assets/images/back_home.png')}
                     style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
                 >
-                    <ScrollView>
-                        <View style={{ height: 250, flex: 1 }}>
+                    <View style={styles.container}>
+                        <View style={styles.containerSlide}>
                             <Swiper
                                 style={styles.wrapper}
                                 autoplay
-                                showsButtons={true}
+                                showsButtons={false}
                                 dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
                             >
                                 <View style={styles.slide1}>
@@ -100,6 +123,7 @@ export class DashboardPage extends React.Component {
                             </Swiper>
                         </View>
 
+
                         <View style={styles.containerDashboard}>
                             <View style={styles.containerInsideProfileOne}>
                                 <View style={styles.containerPhoto}>
@@ -114,18 +138,18 @@ export class DashboardPage extends React.Component {
 
                             <View style={styles.containerInsideProfileTwo}>
                                 <View style={styles.containerUp}>
-                                    <View style={{ marginLeft: 10, marginTop: 20 }}>
+                                    <View style={{ marginLeft: 10, marginTop: 15 }}>
                                         <Text style={{ color: 'grey' }}>Hi, Welcome!</Text>
                                         <Text style={{ color: 'white' }}>Gal Gadot</Text>
                                     </View>
                                 </View>
 
                                 <View style={styles.containerMiddleProfileTwo}>
-                                    <View style={{ marginLeft: 10, marginTop: 10 }}>
+                                    <View style={{ marginLeft: 10, marginTop: 5 }}>
                                         <View style={{ flex: 1 }}>
                                             <Image
                                                 style={styles.icons}
-                                                source={require('./../assets/images/wallet.png')}
+                                                source={require('./../assets/images/ic_wallet.png')}
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
@@ -141,7 +165,7 @@ export class DashboardPage extends React.Component {
                                         <View style={{ flex: 1 }}>
                                             <Image
                                                 style={styles.icons}
-                                                source={require('./../assets/images/paper.png')}
+                                                source={require('./../assets/images/ic_design.png')}
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
@@ -155,12 +179,13 @@ export class DashboardPage extends React.Component {
                             </View>
                         </View>
 
+
+
                         <View style={styles.containerUploadIdea}>
                             <View style={{ flex: 1, marginTop: 10, marginLeft: 20 }}>
                                 <Text style={{ color: 'white' }}>Idea Recently Upload</Text>
                                 <Text style={{ color: 'grey', fontSize: 10 }}>Checkout our friend new brilliant ideas</Text>
-                                <Text style={{ color: 'red', alignSelf: 'flex-end', flex: 1, marginRight: 30, marginTop: -25 }}>See all</Text>
-
+                                <Text style={{ color: 'red', alignSelf: 'flex-end', flex: 1, marginRight: 20, marginTop: -25 }}>See all</Text>
                                 <View style={styles.containerImageIdea}>
                                     <View style={styles.containerImageInsideIdea}>
                                         <Image
@@ -188,7 +213,9 @@ export class DashboardPage extends React.Component {
                                 </View>
                             </View>
                         </View>
-                    </ScrollView>
+
+
+                    </View>
                     {
                         sideMenu === true ?
                             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', width: '100%', height: '100%', position: 'absolute' }}>
@@ -198,11 +225,10 @@ export class DashboardPage extends React.Component {
                                         statusMenu === 'home' ?
                                             <View style={styles.containerHome}>
                                                 <View style={styles.containerHomeLogo}>
-                                                    <Image
-                                                        style={{ height: 50, width: 50, marginBottom: 5, marginTop: 15 }}
+                                                    <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
                                                         source={require('./../assets/images/daftar_pesanan.png')}
                                                     />
-                                                    <Text style={{ color: 'white' }}>Daftar</Text>
+                                                    <Text style={{ color: 'white', marginTop: 5 }}>Daftar</Text>
                                                     <Text style={{ color: 'white' }}>Pesanan</Text>
                                                 </View>
                                                 <View style={styles.containerHomeLogo}>
@@ -243,8 +269,8 @@ export class DashboardPage extends React.Component {
                                                                     <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CRAFTER LIST </Text>
                                                                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
-                                                                    <TouchableOpacity style={styles.buttonGo}>
-                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                    <TouchableOpacity style={styles.ButtonCrafterList}>
+                                                                        <Text style={styles.TextButtonGo}>GO</Text>
                                                                     </TouchableOpacity>
                                                                 </View>
                                                             </View>
@@ -368,7 +394,7 @@ export class DashboardPage extends React.Component {
                                                                                                                 <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CAPTURE N`GET </Text>
                                                                                                                 <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
 
-                                                                                                                <TouchableOpacity style={styles.buttonGo}>
+                                                                                                                <TouchableOpacity style={styles.buttonCapture}>
                                                                                                                     <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
                                                                                                                 </TouchableOpacity>
                                                                                                             </View>
@@ -467,30 +493,28 @@ export class DashboardPage extends React.Component {
                                                                                         <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontWeight: 'bold' }}>PROFILE</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
+
                                                                                     </View>
                                                                                     <View style={styles.containerBodyProfile}>
                                                                                         <View style={styles.listProfileIcon}>
                                                                                             <View style={styles.profileMenu}>
-                                                                                                <View style={{ marginLeft: 85, marginTop: 25 }}>
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <Image
-                                                                                                            style={styles.iconProfile}
-                                                                                                            source={require('./../assets/images/edit_profil.png')}
-                                                                                                        />
-                                                                                                    </View>
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <Text style={{ color: 'white', marginTop: 13, paddingLeft: 60, fontSize: 12 }}>Edit Profil</Text>
-                                                                                                    </View>
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <Icon
-                                                                                                            size={20}
-                                                                                                            name="md-angle-right"
-                                                                                                            color="#fff"
-                                                                                                        />
-                                                                                                    </View>
+                                                                                                <View style={{ paddingTop: 25, paddingLeft: 120 }}>
+                                                                                                    <Icon
+                                                                                                        name='chevron-right'
+                                                                                                        color='white'
+                                                                                                    />
                                                                                                 </View>
-                                                                                            </View>
+                                                                                                {/* <View style={{ marginLeft: 85, marginTop: 25 }}> */}
+                                                                                                <View style={{ flex: 1, marginTop: -32, paddingLeft: 85 }}>
+                                                                                                    <Image
+                                                                                                        style={styles.iconProfile}
+                                                                                                        source={require('./../assets/images/edit_profil.png')}
+                                                                                                    />
+                                                                                                    <Text style={{ color: 'white', paddingLeft: 60, fontSize: 12, marginTop: -27 }}>Edit Profil </Text>
+                                                                                                </View>
+                                                                                                {/* </View> */}
 
+                                                                                            </View>
                                                                                         </View>
 
                                                                                         <View style={styles.listProfileIcon}>
@@ -506,9 +530,7 @@ export class DashboardPage extends React.Component {
                                                                                                         <Text style={{ color: 'white', marginTop: 7, paddingLeft: 53, fontSize: 12 }}>Log Out</Text>
                                                                                                     </View>
                                                                                                 </View>
-
                                                                                             </View>
-
                                                                                         </View>
                                                                                     </View>
                                                                                 </View>
@@ -534,7 +556,7 @@ export class DashboardPage extends React.Component {
                                                                                                 </View>
 
                                                                                                 <View style={{ flex: 1 }}>
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, paddingLeft: 125, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                                                                                                    <Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
                                                                                                     <Image
                                                                                                         style={styles.iconQuestion}
                                                                                                         source={require('./../assets/images/question.png')}
@@ -685,11 +707,25 @@ export class DashboardPage extends React.Component {
                             <View />
                     }
                     <View style={styles.containerMenu}>
+
                         <TouchableOpacity
                             style={styles.containerButtonLogo}
-                            onPress={() => this.sideMenus()}
+                            onPress={() => this.sideMenus('Open')}
                         >
-                            <Image style={styles.Logo} source={require("./../assets/images/Logo.png")} />
+                            {
+                                sideMenu === 'Open' ?
+
+                                    <Image
+                                        style={styles.Logo2}
+                                        source={require('./../assets/images/ic_logo2.png')}
+                                    />
+                                    :
+                                    <Image
+                                        style={styles.Logo}
+                                        source={require('./../assets/images/ic_logo1.png')}
+                                    />
+
+                            }
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
@@ -701,7 +737,14 @@ export class DashboardPage extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        alignItems: 'center'
+    },
+    containerSlide: {
+        width: '100%',
+        height: 160
     },
     slide1: {
         flex: 1,
@@ -713,43 +756,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    containerSearchBox: {
-        flex: 1,
-        marginTop: 15,
-        // marginBottom: 5,
-        marginLeft: 10,
-        marginRight: 10,
-        borderRadius: 50
-    },
     containerDashboard: {
-        flex: 1,
+        // flex: 1,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0.8)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
+        // shadowRadius: 20,
+        // shadowOpacity: 100,
+        // borderColor :'black',
         flexDirection: 'row',
-        marginTop: 15,
-        marginLeft: 10,
-        marginRight: 10,
+        marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 160
-    },
-    containerProfile: {
-        flex: 1,
-        borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0)',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
-        flexDirection: 'row',
-        marginTop: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 160
+        height: 175,
+        width: '95%',
+        // backgroundColor: 'blue'
     },
     containerPhoto: {
         flex: 1,
@@ -777,6 +799,7 @@ const styles = StyleSheet.create({
     containerUp: {
         width: 200,
         height: 60,
+
     },
     containerMiddleProfileTwo: {
         width: 200,
@@ -787,18 +810,18 @@ const styles = StyleSheet.create({
         height: 50,
     },
     containerUploadIdea: {
-        flex: 2,
+        // flex: 2,
         borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        shadowColor: '#000',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        shadowColor: '#009',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
         flexDirection: 'row',
-        marginTop: 15,
-        marginLeft: 10,
-        marginRight: 10,
+        marginTop: 10,
         marginBottom: 70,
-        height: 160
+        height: 160,
+        width: '95%',
+        // backgroundColor: 'yellow'
     },
     containerFlexUp: {
         width: 350,
@@ -824,15 +847,17 @@ const styles = StyleSheet.create({
     containerImageIdea: {
         flex: 3,
         height: 70,
-        width: 290,
+        width: 300,
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginBottom: 20
+        marginBottom: 20,
+        marginTop: 10,
+        // backgroundColor:'red'
     },
     containerImageInsideIdea: {
         height: 100,
-        width: 95,
+        width: 98,
     },
     containerMenu: {
         position: 'absolute',
@@ -844,7 +869,7 @@ const styles = StyleSheet.create({
         borderRadius: 90,
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
-        backgroundColor: 'white'
+        backgroundColor: '#C1C1C1'
     },
     containerButtonLogo: {
         padding: 10,
@@ -857,6 +882,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     Logo: {
+        height: 80,
+        width: 80,
+        marginBottom: 20
+    },
+    Logo2: {
         height: 50,
         width: 50,
     },
@@ -868,24 +898,24 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
         flexDirection: 'row',
-        marginTop: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        height: 160
+        height: '100%',
+        width: '100%',
+        // backgroundColor: 'yellow'
     },
     containerHomeLogo: {
         flex: 1,
-        height: 50,
+        height: 150,
         width: 50,
         // backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 320
+        marginTop: 285
     },
     containerImageHome: {
         height: 50,
         width: 50,
         marginBottom: 5,
+        // backgroundColor: 'blue'
     },
     containerHomeScreen: {
         flex: 2,
@@ -895,61 +925,78 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
         flexDirection: 'column',
-        marginTop: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        height: 360
+        height: '100%',
+        width: '100%',
+        // backgroundColor : 'red',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     containerSomeHomeScreen: {
         borderRadius: 20,
         flexDirection: 'row',
         height: 170,
         width: 340,
-        // backgroundColor: 'red',
-        marginTop: 65
+        // backgroundColor: 'yellow',
+        marginTop: 65,
+        alignSelf: 'center'
     },
     photoHomeScreen: {
         height: 170,
-        width: 150,
+        width: 160,
         borderRadius: 25,
-        paddingLeft: 10
+        marginLeft: -7
     },
     textHomeScreen: {
         height: 165,
         width: 185,
-        // marginTop: 5,
         // backgroundColor: 'skyblue'
     },
     cngImage: {
         height: 170,
-        width: 140,
+        width: 160,
     },
-    buttonGo: {
+    buttonCapture: {
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 170,
+        width: 175,
         justifyContent: 'center',
-        marginTop: 50,
+        marginTop: 50.5,
         marginLeft: 12
     },
+    ButtonCrafterList: {
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 35,
+        width: 173,
+        justifyContent: 'center',
+        marginTop: 50.5,
+        marginLeft: 12
+    },
+    TextButtonGo: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
     buttonIdea: {
-        marginTop: 21,
+        marginTop: 21.5,
         marginLeft: 12,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 170,
-        justifyContent: 'center'
+        width: 175,
+        justifyContent: 'center',
     },
     buttonCustom: {
-        marginTop: 35,
+        marginTop: 36,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 170,
+        width: 175,
         justifyContent: 'center',
-        marginLeft: 12
+        marginLeft: 12,
+        // position: 'relative',
     },
     containerBodyHome: {
         flex: 3,
@@ -963,47 +1010,31 @@ const styles = StyleSheet.create({
     DefaultBody: {
         height: 55,
         width: 340,
-        // backgroundColor: 'yellow',
-        // borderWidth: 0.5,
-        // borderColor: '#d6d7da',
         alignItems: 'center',
-        // justifyContent :'center'
+
     },
     containerBodyCrafter: {
         flex: 1,
         borderRadius: 20,
         flexDirection: 'column',
         height: 20,
-        width: 340,
-        // backgroundColor: 'blue',
+        width: '100%',
+        // backgroundColor: 'skyblue',
         marginTop: 5,
     },
     bodyCrafterList: {
-        // flex: 2,
         flexDirection: 'row',
         height: 70,
         width: 340,
-        // alignItems: 'center',
-        // backgroundColor: 'yellow',
-        // borderWidth: 0.5,
-        // borderColor: '#d6d7da',
 
     },
     CrafterListLeft: {
         height: 70,
         width: 150,
-        // justifyContent: 'center',
-        // backgroundColor: 'blue',
-        // borderWidth: 0.5,
-        // borderColor: '#d6d7da',
     },
     CrafterListRight: {
         height: 70,
         width: 190,
-        // alignItems: 'center',
-        // backgroundColor: 'yellow',
-        // borderWidth: 0.5,
-        // borderColor: '#d6d7da',
     },
     iconsCrafterMenu: {
         height: 55,
@@ -1051,23 +1082,25 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     containerBodyProfile: {
-        flex: 1,
+        flex: 2,
         borderRadius: 20,
         flexDirection: 'column',
-        height: 20,
-        width: 340,
+        height: '100%',
+        width: '100%',
         // marginTop: 10,
         // backgroundColor: 'red'
     },
     listProfileIcon: {
         flexDirection: 'row',
         height: 70,
-        width: 340,
+        width: '100%',
+        // borderWidth: 0.5,
+        // borderColor: '#d6d7da',
+        // backgroundColor: 'yellow'
     },
     profileMenu: {
         height: 70,
-        width: 340,
-        // marginLeft: 100,
+        width: '100%',
         // backgroundColor: 'blue'
     },
     iconProfile: {
@@ -1102,29 +1135,25 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
         flexDirection: 'column',
-        marginTop: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        height: 500
-    },
-    bodyJoinCrafter: {
-        borderRadius: 20,
-        flexDirection: 'column',
-        height: 320,
-        width: 340,
-        // backgroundColor: 'yellow'
+        height: '100%',
+        width: '100%',
+        // backgroundColor: 'blue',
+        alignContent: 'center'
     },
     photoJoinCrafter: {
-        height: 180,
-        width: 170,
+        height: 190,
+        width: 190,
         borderRadius: 25,
         alignSelf: 'center',
-        marginTop: 30
-
+        alignContent: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+        // backgroundColor: 'yellow',
     },
     joinImage: {
-        height: 180,
-        width: 170,
+        height: 190,
+        width: 190,
+        alignSelf: 'center'
     },
     buttonJoin: {
         // marginTop: 30,
@@ -1139,7 +1168,7 @@ const styles = StyleSheet.create({
     iconQuestion: {
         height: 20,
         width: 20,
-        marginLeft: 99,
+        marginLeft: 100,
         marginTop: -15
     }
 });

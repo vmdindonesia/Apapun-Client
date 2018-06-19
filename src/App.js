@@ -17,7 +17,8 @@ import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
-import { RegistrationPage } from './pages/registration.js'
+import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
+import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
 
 console.disableYellowBox = true;
 
@@ -30,6 +31,15 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -38,9 +48,6 @@ const Routes = createStackNavigator({
   },
   Login: {
     screen: LoginPage
-  },
-  Registration: {
-    screen: RegistrationPage
   },
   Dashboard: {
     screen: DashboardPage
