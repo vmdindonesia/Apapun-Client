@@ -21,6 +21,10 @@ export class LoginPage extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		AsyncStorage.removeItem('VMDDEVELOPER');
+	}
+
 	onChange = (name, value) => {
 		this.setState({ [name]: value }, () => {
 			console.log(this.state[name]);
@@ -39,8 +43,9 @@ export class LoginPage extends React.Component {
 					'Content-Type': 'application/json',
 				}
 			}).then(async response => {
+				console.log(response, 'Data Login')
 				try {
-					await AsyncStorage.setItem('VMD', 'VMDDEVELOPER');
+					await AsyncStorage.setItem('VMDDEVELOPER', response.data);
 				} catch (error) {
 					console.log(error, 'Error Saving Storage');
 					// Error saving data

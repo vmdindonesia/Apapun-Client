@@ -23,18 +23,15 @@ export class StartScreen extends React.Component {
         AsyncStorage.getItem('VMD', (err, result) => {
             console.log(result, 'Get Storage');
             if (result) {
-                setTimeout(() => {
-                    this.redirect();
-                }, 1000)
+                this.redirect();
             }
             else {
-                setTimeout(() => {
-                    const resetAction = StackActions.reset({
-                        index: 0,
-                        actions: [NavigationActions.navigate({ routeName: 'Login' })],
-                    });
-                    this.props.navigation.dispatch(resetAction);
-                }, 3000)
+                console.log('Kosong Storage');
+                const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({ routeName: 'Login' })],
+                });
+                this.props.navigation.dispatch(resetAction);
             }
         })
     }
