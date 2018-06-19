@@ -459,7 +459,7 @@ export class DashboardPage extends React.Component {
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
-                                                                                    <Text style={{ marginTop: 15, marginBottom: 20, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Idea Market</Text>
+                                                                                    <Text style={{ marginTop: 17, marginBottom: 17, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Idea Market</Text>
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
@@ -1009,9 +1009,10 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     DefaultBody: {
-        height: 55,
-        width: 340,
+        height: 60,
+        width: '100%',
         alignItems: 'center',
+        // backgroundColor:'skyblue'
 
     },
     containerBodyCrafter: {
