@@ -17,7 +17,8 @@ import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
-import { RegistrationPage } from './pages/registration.js'
+import { RegistrationPage } from './pages/registration.js';
+import { FindingCrafterPage } from './pages/findingCrafter';
 
 console.disableYellowBox = true;
 
@@ -30,8 +31,14 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  Order: {
-    screen: OrderPage
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Registration: {
+    screen: RegistrationPage
   },
   StartScreen: {
     screen: StartScreen
@@ -39,11 +46,8 @@ const Routes = createStackNavigator({
   Login: {
     screen: LoginPage
   },
-  Registration: {
-    screen: RegistrationPage
-  },
-  Dashboard: {
-    screen: DashboardPage
+  Order: {
+    screen: OrderPage
   }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
