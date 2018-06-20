@@ -519,17 +519,19 @@ export class DashboardPage extends React.Component {
 
                                                                                         <View style={styles.listProfileIcon}>
                                                                                             <View style={styles.profileMenu}>
-                                                                                                <View style={{ marginLeft: 91, marginTop: 15 }}>
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <Image
-                                                                                                            style={styles.iconLogOut}
-                                                                                                            source={require('./../assets/images/logout.png')}
-                                                                                                        />
+                                                                                                <TouchableOpacity
+                                                                                                    onPress={() => this.props.navigation.navigate('Login')}
+                                                                                                >
+                                                                                                    <View style={{ marginLeft: 91, height: 90 }}>
+                                                                                                        <View style={{ flex: 1 }}>
+                                                                                                            <Image
+                                                                                                                style={styles.iconLogOut}
+                                                                                                                source={require('./../assets/images/logout.png')}
+                                                                                                            />
+                                                                                                            <Text style={{ color: 'white', marginTop: -20, paddingLeft: 53, fontSize: 12 }}>Log Out</Text>
+                                                                                                        </View>
                                                                                                     </View>
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <Text style={{ color: 'white', marginTop: 7, paddingLeft: 53, fontSize: 12 }}>Log Out</Text>
-                                                                                                    </View>
-                                                                                                </View>
+                                                                                                </TouchableOpacity>
                                                                                             </View>
                                                                                         </View>
                                                                                     </View>

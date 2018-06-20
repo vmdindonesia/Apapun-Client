@@ -60,15 +60,20 @@ export class LoginPage extends React.Component {
 				headers: {
 					'Content-Type': 'application/json',
 				}
-			}).then(async response => {
-				console.log(response.data, 'Data Login')
-				try {
-					const dataLogin = response.data;
-					await AsyncStorage.setItem('VMDDEVELOPER', dataLogin);
-				} catch (error) {
-					console.log(error, 'Error Saving Storage');
-					// Error saving data
-				}
+			}).then(response => {
+				console.log(response.data, 'Data Login');
+				const IdUser = response.data.userId;
+				AsyncStorage.setItem('VMDDEVELOPER', IdUser.toString(), (err, result) => {
+					console.log(result, 'Sukses Storage');
+					console.log(err, 'error storage');
+				});
+				// try {
+				// 	const dataLogin = response.data;
+				// 	await AsyncStorage.setItem('VMDDEVELOPER', JSON.parse(dataLogin));
+				// } catch (error) {
+				// 	console.log(error, 'Error Saving Storage');
+				// 	// Error saving data
+				// }
 				const resetAction = StackActions.reset({
 					index: 0,
 					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
