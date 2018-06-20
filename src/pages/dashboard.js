@@ -959,7 +959,7 @@ const styles = StyleSheet.create({
         width: 160,
     },
     buttonCustom: {
-        marginTop: 55,
+        marginTop: 41,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
@@ -969,7 +969,7 @@ const styles = StyleSheet.create({
         // position: 'relative',
     },
     buttonIdea: {
-        marginTop: 42.5,
+        marginTop: 25,
         marginLeft: 12,
         backgroundColor: 'red',
         borderRadius: 20,
