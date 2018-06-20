@@ -74,7 +74,7 @@ export class DashboardPage extends React.Component {
             <View style={{ flex: 1 }}>
                 <ImageBackground
                     source={require('./../assets/images/back_home.png')}
-                    style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
+                    style={styles.backgroundStyle}
                 >
                     <StatusBar
                         backgroundColor={COLOR.statusBar}
@@ -86,7 +86,7 @@ export class DashboardPage extends React.Component {
                                 style={styles.wrapper}
                                 autoplay
                                 showsButtons={false}
-                                dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                                dot={<View style={styles.formatSwiper} />}
                             >
                                 <View style={styles.slide1}>
                                     <Image
@@ -554,14 +554,14 @@ export class DashboardPage extends React.Component {
 
                                                                                                 <View styles={{ flex: 1 }}>
 
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>Daftarkan diri anda </Text>
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>menjadi partner kami</Text>
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>sebagai CRAFTER </Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
 
                                                                                                 </View>
 
                                                                                                 <View style={{ flex: 1 }}>
-                                                                                                    <Text style={{ color: 'white', paddingLeft: 145, marginTop: 3, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                                                                                                    <Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
                                                                                                     <Image
                                                                                                         style={styles.iconQuestion}
                                                                                                         source={require('./../assets/images/question.png')}
@@ -742,6 +742,21 @@ export class DashboardPage extends React.Component {
 };
 
 const styles = StyleSheet.create({
+    backgroundStyle: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: COLOR.element_a1
+    },
+    formatSwiper: {
+        backgroundColor: '#FFFFFF',
+        width: 5,
+        height: 5,
+        borderRadius: 4,
+        marginLeft: 3,
+        marginRight: 3,
+        marginTop: 3,
+        marginBottom: 3
+    },
     container: {
         flex: 1,
         width: '100%',
@@ -1175,7 +1190,7 @@ const styles = StyleSheet.create({
     iconQuestion: {
         height: 20,
         width: 20,
-        marginLeft: 110,
+        marginLeft: 103,
         marginTop: -15
     }
 });
