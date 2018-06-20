@@ -34,6 +34,9 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  Login: {
+    screen: LoginPage
+  },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -46,9 +49,6 @@ const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
   },
-  Login: {
-    screen: LoginPage
-  },
   Dashboard: {
     screen: DashboardPage
   }
@@ -57,11 +57,11 @@ const Routes = createStackNavigator({
     navigationOptions: {
       headerTitleStyle: {
         color: '#ffffff',
-        fontFamily: 'Muli-Bold',
+        fontFamily: 'Quicksand-Bold',
         fontWeight: '300',
       },
       headerStyle: {
-        backgroundColor: COLOR.secondary_b,
+        backgroundColor: COLOR.statusBar,
       },
       headerTintColor: '#ffffff',
     }

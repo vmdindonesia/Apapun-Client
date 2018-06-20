@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TextInput, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -19,38 +19,14 @@ export class RegistrationBuyerPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isModalVisible: true,
+            isModalVisible: false,
             pathPhotoRegistBuyer: null,
-            // genderMale: [],
-            // genderFemale: []
-
-
+           
         };
     }
     setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
+        this.setState({ isModalVisible: visible });
     }
-
-    // selectedGenderMale(value) {
-    //     this.state.genderFemale.slice(1);
-    //     const newMaleGender = this.state.genderMale;
-    //     newMaleGender[0] = value;
-    //     this.setState({ genderMale: newMaleGender }, () => {
-    //         console.log(this.state.genderMale, '1');
-    //         console.log(this.state.genderFemale, '1');
-    //     });
-    // }
-
-    // selectedGenderFemale(value) {
-    //     this.state.genderMale.slice(1);
-    //     const newFemaleGender = this.state.genderMale;
-    //     newFemaleGender[0] = value;
-    //     this.setState({ genderMale: newFemaleGender }, () => {
-    //         console.log(this.state.genderFemale, '2');
-    //         console.log(this.state.genderMale, '2');
-    //     });
-    // }
-
 
     selectPhotoRegisterBuyer() {
         const options = {
@@ -93,9 +69,13 @@ export class RegistrationBuyerPage extends React.Component {
     render() {
         return (
 
-            <ImageBackground
+            <View
                 style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
             >
+                <StatusBar
+                    backgroundColor={COLOR.headerBar}
+                    barStyle="dark-content"
+                />
 
                 <ScrollView>
 
@@ -152,8 +132,6 @@ export class RegistrationBuyerPage extends React.Component {
                                                 title='Male'
                                                 checkedIcon='dot-circle-o'
                                                 uncheckedIcon='circle-o'
-                                                // checked={this.selectedGenderMale('Male')}
-                                            // onChange={(checked) => this.maleconsole.log('I am checked', checked)}
                                             />
                                         </TouchableHighlight>
                                     </View>
@@ -165,7 +143,6 @@ export class RegistrationBuyerPage extends React.Component {
                                             title='Female'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
-                                            // checked={this.selectedGenderFemale()}
                                         />
                                     </View>
                                 </View>
@@ -287,109 +264,109 @@ export class RegistrationBuyerPage extends React.Component {
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
 
-                    <View style={{ marginTop: 22 }}>
+                    <View style={{ marginTop: 65 }}>
                         <Modal
                             animationType="slide"
                             transparent={true}
-                            visible={this.state.modalVisible}
+                            visible={this.state.isModalVisible}
                             onRequestClose={() => {
                                 alert('Modal has been closed.');
                             }}>
-                            <View style={{ marginTop: 22 }}>
+                            <View style={{ marginTop: 65 }}>
                                 <View style={styles.modalAddress}>
-                                    <View style={{ paddingTop: 20, height: 80 }}>
-                                        <View >
-                                            <Text style={styles.textStyle}>Location</Text>
-                                        </View>
-                                        <View>
-                                            <ContainerSection>
-                                                <Input
-                                                    placeholder='please input your location'
-                                                />
-                                            </ContainerSection>
-                                        </View>
-                                    </View>
-
-                                    <View style={styles.textaddressModal}>
-                                        <View >
-                                            <Text style={styles.textStyle}>Province</Text>
-                                        </View>
-                                        <View>
-                                            <ContainerSection>
-                                                <Input
-                                                    placeholder='please input your province'
-                                                />
-                                            </ContainerSection>
-                                        </View>
-                                    </View>
-
-                                    <View style={styles.textaddressModal}>
-                                        <View >
-                                            <Text style={styles.textStyle}>District</Text>
-                                        </View>
-                                        <View>
-                                            <ContainerSection>
-                                                <Input
-                                                    placeholder='please input your district'
-                                                />
-                                            </ContainerSection>
-                                        </View>
-                                    </View>
-
-                                    <View style={styles.textaddressModal}>
-                                        <View >
-                                            <Text style={styles.textStyle}>Address Detail</Text>
-                                        </View>
-                                        <View>
-                                            <ContainerSection>
-                                                <Input style={{ height: 30 }}
-
-                                                    placeholder='please input your detail address'
-                                                />
-                                            </ContainerSection>
-                                        </View>
-                                    </View>
-
-
-
-                                    <View style={styles.buttonOnModalAddress}>
-
-                                        <View style={{}}>
-                                            <TouchableHighlight
-                                                onPress={() => {
-                                                    this.setModalVisible(!this.state.modalVisible);
-                                                }}>
-                                                <Text style={{ fontWeight: 'bold', color: 'black' }}>Cancel</Text>
-                                            </TouchableHighlight>
+                                    <ScrollView>
+                                        <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Location</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your location'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
                                         </View>
 
-                                        <View style={{ paddingLeft: 20 }}>
-                                            <TouchableHighlight
-                                                onPress={() => {
-                                                    this.setModalVisible(!this.state.modalVisible);
-                                                }}>
-                                                <Text style={{ fontWeight: 'bold', color: 'red' }}>Save</Text>
-                                            </TouchableHighlight>
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Province</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
                                         </View>
 
-                                    </View>
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>District</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Address Detail</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input style={{ height: 30 }}
+                                                        multiline={true}
+                                                        numberOfLines={150}
+
+                                                        placeholder='please input your detail address'
+
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+
+
+                                        <View style={styles.buttonOnModalAddress}>
+
+                                            <View>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                                </TouchableHighlight>
+                                            </View>
+
+                                            <View style={{ paddingLeft: 20 }}>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextSave}>Save</Text>
+                                                </TouchableHighlight>
+                                            </View>
+
+                                        </View>
+                                    </ScrollView>
                                 </View>
 
                             </View>
                         </Modal>
 
-                        <TouchableHighlight
-                            onPress={() => {
-                                this.setModalVisible(true);
-                            }}>
-                            <Text>Show Modal</Text>
-                        </TouchableHighlight>
-                        
+
+
                     </View>
 
 
                 </ScrollView>
-            </ImageBackground >
+            </View >
         );
     }
 }
@@ -446,7 +423,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         zIndex: 4,
         marginTop: -17,
-        marginBottom: 30
+        // marginBottom: 20
     },
     formPosition: {
         flex: 8,
@@ -494,7 +471,8 @@ const styles = StyleSheet.create({
     textAgree: {
         paddingTop: 10,
         height: 120,
-
+        // backgroundColor:'red',
+        alignItems: 'center',
         fontFamily: 'Quicksand-Regular'
     },
     signupButton: {
@@ -507,10 +485,13 @@ const styles = StyleSheet.create({
     },
     modalAddress: {
         width: '95%',
-        height: '79%',
+        height: '99%',
         backgroundColor: '#ffffff',
         alignSelf: 'center',
-        borderRadius: 20
+        borderRadius: 10,
+        borderWidth: 0.9,
+        shadowColor: '#000',
+        shadowOpacity: 1.0,
     },
     textaddressModal: {
         paddingTop: 5,
@@ -524,6 +505,16 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 70,
         // backgroundColor: 'red'
+    },
+    AddressTextSave: {
+        fontWeight: 'bold',
+        color: 'red',
+        fontFamily: 'Quicksand-Regular'
+    },
+    AddressTextCancel: {
+        fontWeight: 'bold',
+        color: 'black',
+        fontFamily: 'Quicksand-Regular'
     }
 });
 

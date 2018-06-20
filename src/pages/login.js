@@ -122,7 +122,7 @@ export class LoginPage extends React.Component {
 					</TouchableOpacity>
 
 					<TouchableOpacity
-						onPress={() => this.props.navigation.navigate('Registration')}
+						onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
 					>
 						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
 							Don't have account ? Register!
