@@ -17,6 +17,8 @@ import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
+import { RegistrationPage } from './pages/registration.js';
+import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
 
@@ -31,11 +33,23 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Registration: {
+    screen: RegistrationPage
+  },
   StartScreen: {
     screen: StartScreen
   },
   Login: {
     screen: LoginPage
+  },
+  Order: {
+    screen: OrderPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage

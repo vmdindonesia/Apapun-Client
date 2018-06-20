@@ -23,7 +23,7 @@ export class OrderPage extends React.Component {
             addressDelivery: '',
             catatanTambahan: ''
         }
-    }
+    }re
 
     render() {
 
