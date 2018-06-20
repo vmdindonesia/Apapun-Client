@@ -19,12 +19,14 @@ import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
 import { RegistrationPage } from './pages/registration.js';
 import { FindingCrafterPage } from './pages/findingCrafter';
+import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
+import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
 
 console.disableYellowBox = true;
 
 // font
-const customTextProps = {
-  style: {
+const customTextProps = { 
+  style: { 
     fontFamily: 'Quicksand-Regular'
   }
 }
@@ -48,17 +50,32 @@ const Routes = createStackNavigator({
   },
   Order: {
     screen: OrderPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerTitleStyle: {
         color: '#ffffff',
-        fontFamily: 'Muli-Bold',
+        fontFamily: 'Quicksand-Bold',
         fontWeight: '300',
       },
       headerStyle: {
-        backgroundColor: COLOR.secondary_b,
+        backgroundColor: COLOR.statusBar,
       },
       headerTintColor: '#ffffff',
     }

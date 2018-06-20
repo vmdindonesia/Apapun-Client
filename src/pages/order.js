@@ -35,10 +35,6 @@ export class OrderPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <StatusBar
-                    backgroundColor={COLOR.primary}
-                    barStyle="light-content"
-                />
                 <ContainerSection>
                     <Input
                         placeholder='Nama Produk'

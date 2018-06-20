@@ -1,5 +1,5 @@
 
-export const IPSERVER = 'http://192.168.1.3:3000/api/';
+export const IPSERVER = 'http://103.82.242.217:3005/api/';
 
 // COLOR
 export const COLOR = {
@@ -11,6 +11,7 @@ export const COLOR = {
   element_b2: '#faa51a',
   element_b3: '#f36e21',
   element_b4: '#ef3f2c',
-
+  headerBar: '#422508',
+  statusBar :'#281a0a',
   secondary_c: '#000000'
 }
