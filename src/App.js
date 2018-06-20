@@ -23,8 +23,8 @@ import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
 console.disableYellowBox = true;
 
 // font
-const customTextProps = {
-  style: {
+const customTextProps = { 
+  style: { 
     fontFamily: 'Quicksand-Regular'
   }
 }
