@@ -61,7 +61,7 @@ const Routes = createStackNavigator({
         fontWeight: '300',
       },
       headerStyle: {
-        backgroundColor: COLOR.statusBar,
+        backgroundColor: COLOR.headerBar,
       },
       headerTintColor: '#ffffff',
     }

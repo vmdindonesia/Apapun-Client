@@ -88,10 +88,11 @@ const styles = {
 		fontSize: 14,
 		flex: 1,
 		padding: 8,
+		fontFamily: 'Quicksand-Regular'
 	},
 	labelStyle: {
 		color: '#5e5e5e',
-		fontWeight: 'bold',
+		fontFamily: 'Quicksand-Bold',
 		fontSize: 14,
 		flex: 1,
 		marginBottom: 10,

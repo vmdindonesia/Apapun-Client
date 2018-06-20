@@ -83,7 +83,7 @@ export class OrderPage extends React.Component {
                                                     <Image style={{ width: 20, height: 20, marginLeft: 85, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 70, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Gambar</Text>
+                                                    <Text style={{ fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -96,12 +96,12 @@ export class OrderPage extends React.Component {
                 </ContainerSection>
                 <ContainerSection>
                     <View style={{ flex: 5, flexDirection: 'column' }}>
-                        <Text style={styles.pickerTextStyle}>Jumlah yang dipesan</Text>
+                        <Text style={styles.pickerTextStyle}>Jumlah yang dipesan :</Text>
                     </View>
                     <TouchableOpacity style={{flex: 1}}>
                         <Image
-                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 5}}
-                        source={require('../assets/images/plus.png')}
+                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 2}}
+                        source={require('../assets/images/minus.png')}
                         />
                         </TouchableOpacity>
                     <View style={{ flex: 1, height: 40 }}>
@@ -112,16 +112,16 @@ export class OrderPage extends React.Component {
                     <TouchableOpacity style={{flex: 1, paddingLeft: 5}}>
                         <Image
                         style={{width: 25, height: 25, borderRadius: 2, marginTop: 8}}
-                        source={require('../assets/images/minus.png')}
+                        source={require('../assets/images/plus.png')}
                         />
                         </TouchableOpacity>
                     <View style={{ flex: 2}}>
-                        <View style={[styles.pickerUnitStyle, {height: 40 }]}>
+                        <View style={[styles.pickerUnitStyle, { height: 40, paddingBottom: 10 }]}>
                             <Picker
                             // selectedValue={unitFish}
                             // onValueChange={v => this.onChangeInput('unitFish', v)}
                             >
-                                <Picker.Item label='Pilih Ukuran' value='' />
+                                <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Kg' />
                                 <Picker.Item label='Lusin' value='Cm' />
                             </Picker>
@@ -153,7 +153,7 @@ export class OrderPage extends React.Component {
                                                     <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 80 }} source={require('../assets/images/logo-material.png')} />
                                                 </View>
                                                 <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 60, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Pemilihan Material</Text>
+                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Pemilihan Material</Text>
                                                 </View>
                                             </View>
                                         </TouchableOpacity>
@@ -246,10 +246,9 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     pickerTextStyle: {
-        fontFamily: 'Quicksand-Regular',
+        fontFamily: 'Quicksand-Bold',
         color: '#5e5e5e',
         fontSize: 14,
-        fontWeight: 'bold',
         flex: 1,
         marginTop: 10,
         marginBottom: 10
@@ -257,7 +256,7 @@ const styles = StyleSheet.create({
     pickerUnitStyle: {
         borderColor: '#a9a9a9',
         borderRadius: 5,
-        paddingLeft: 7,
+        paddingLeft: 4,
         borderWidth: 1,
         height: 45,
         backgroundColor: '#fff'
