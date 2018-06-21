@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
-        headerTitle: 'Pengaturan Pesanan'
+        headerTitle: 'Custom Order'
     }
 
     constructor(props) {
@@ -23,7 +23,7 @@ export class OrderPage extends React.Component {
             addressDelivery: '',
             catatanTambahan: ''
         }
-    }re
+    } re
 
     render() {
 
@@ -98,24 +98,24 @@ export class OrderPage extends React.Component {
                     <View style={{ flex: 5, flexDirection: 'column' }}>
                         <Text style={styles.pickerTextStyle}>Jumlah yang dipesan :</Text>
                     </View>
-                    <TouchableOpacity style={{flex: 1}}>
+                    <TouchableOpacity style={{ flex: 1 }}>
                         <Image
-                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 2}}
-                        source={require('../assets/images/minus.png')}
+                            style={{ width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 2 }}
+                            source={require('../assets/images/minus.png')}
                         />
-                        </TouchableOpacity>
+                    </TouchableOpacity>
                     <View style={{ flex: 1, height: 40 }}>
                         <InputNumber
                             keyboardType='numeric'
                         />
                     </View>
-                    <TouchableOpacity style={{flex: 1, paddingLeft: 5}}>
+                    <TouchableOpacity style={{ flex: 1, paddingLeft: 5 }}>
                         <Image
-                        style={{width: 25, height: 25, borderRadius: 2, marginTop: 8}}
-                        source={require('../assets/images/plus.png')}
+                            style={{ width: 25, height: 25, borderRadius: 2, marginTop: 8 }}
+                            source={require('../assets/images/plus.png')}
                         />
-                        </TouchableOpacity>
-                    <View style={{ flex: 2}}>
+                    </TouchableOpacity>
+                    <View style={{ flex: 2 }}>
                         <View style={[styles.pickerUnitStyle, { height: 40, paddingBottom: 10 }]}>
                             <Picker
                             // selectedValue={unitFish}
@@ -199,7 +199,7 @@ export class OrderPage extends React.Component {
                 </ContainerSection>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View>
-                        <Text style={{ fontWeight: 'bold', padding: 5, fontFamily: 'Quicksand-Regular' }}> Catatan Tambahan </Text>
+                        <Text style={{ padding: 5, fontFamily: 'Quicksand-Bold' }}> Catatan Tambahan </Text>
                     </View>
                     <View style={{ flex: 1 }}>
                         <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
@@ -223,7 +223,9 @@ export class OrderPage extends React.Component {
                             marginRight: '15%',
                             marginBottom: 20
                         }}>
-                        Mencari Crafter
+                        <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+                            Mencari Crafter
+                        </Text>
                     </Button>
                 </ContainerSection>
             </ScrollView>
@@ -273,7 +275,7 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         justifyContent: 'center',
         alignItems: 'center',
-       
+
     },
     buttons: {
         backgroundColor: 'rgb(220, 220, 220)',
