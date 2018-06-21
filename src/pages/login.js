@@ -125,7 +125,8 @@ export class LoginPage extends React.Component {
 
 					<Container>
 						<ContainerSection>
-							<InputLogin style={styles.Input}
+							<InputLogin 
+								style={styles.Input}
 								placeholder="email or username"
 								icon="ic_username"
 								icons="ic_garis"

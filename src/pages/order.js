@@ -21,13 +21,49 @@ export class OrderPage extends React.Component {
             uploadMaterial: null,
             serveDelivery: '',
             addressDelivery: '',
-            catatanTambahan: ''
+            catatanTambahan: '',
+            numberPcs: 0
         }
-    } re
+    }
+
+    onChange = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+        })
+    }
+
+    minusNumber() {
+        console.log('Minus');
+        if (this.state.numberPcs === 0) {
+            this.setState({
+                numberPcs: this.state.numberPcs
+            });
+        } else {
+            this.setState({
+                numberPcs: this.state.numberPcs - 1
+            });
+        }
+    }
+
+    plusNumber() {
+        console.log('Plus');
+        this.setState({
+            numberPcs: this.state.numberPcs + 1
+        });
+    }
 
     render() {
 
-        const { nameProduct, categoryProduct, uploadDesign, uploadMaterial, serveDelivery, addressDelivery, catatanTambahan } = this.state;
+        const {
+            nameProduct,
+            categoryProduct,
+            uploadDesign,
+            uploadMaterial,
+            serveDelivery,
+            addressDelivery,
+            catatanTambahan,
+            numberPcs
+        } = this.state;
 
         return (
             <ScrollView
@@ -95,28 +131,30 @@ export class OrderPage extends React.Component {
                     </View>
                 </ContainerSection>
                 <ContainerSection>
-                    <View style={{ flex: 5, flexDirection: 'column' }}>
-                        <Text style={styles.pickerTextStyle}>Jumlah yang dipesan :</Text>
+                    <View style={{ flex: 3, flexDirection: 'column' }}>
+                        <Text style={styles.pickerTextStyle}>Jumlah dipesan :</Text>
                     </View>
-                    <TouchableOpacity style={{ flex: 1 }}>
+                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ marginLeft: -30 }}>
                         <Image
-                            style={{ width: 25, height: 25, borderRadius: 2, marginTop: 8, marginLeft: 2 }}
+                            style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8, marginLeft: 2 }}
                             source={require('../assets/images/minus.png')}
                         />
                     </TouchableOpacity>
-                    <View style={{ flex: 1, height: 40 }}>
+                    <View style={{ height: 40, width: 60, marginLeft: 4 }}>
                         <InputNumber
+                            value={numberPcs.toString()}
+                            onChangeText={val => this.onChange('numberPcs', val)}
                             keyboardType='numeric'
                         />
                     </View>
-                    <TouchableOpacity style={{ flex: 1, paddingLeft: 5 }}>
+                    <TouchableOpacity onPress={() => this.plusNumber()} style={{ marginLeft: 4, marginRight: 4 }}>
                         <Image
-                            style={{ width: 25, height: 25, borderRadius: 2, marginTop: 8 }}
+                            style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8 }}
                             source={require('../assets/images/plus.png')}
                         />
                     </TouchableOpacity>
                     <View style={{ flex: 2 }}>
-                        <View style={[styles.pickerUnitStyle, { height: 40, paddingBottom: 10 }]}>
+                        <View style={styles.pickerUnitStyle }>
                             <Picker
                             // selectedValue={unitFish}
                             // onValueChange={v => this.onChangeInput('unitFish', v)}
@@ -228,7 +266,7 @@ export class OrderPage extends React.Component {
                         </Text>
                     </Button>
                 </ContainerSection>
-            </ScrollView>
+            </ScrollView >
         );
     }
 
@@ -260,7 +298,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingLeft: 4,
         borderWidth: 1,
-        height: 45,
+        height: 40,
         backgroundColor: '#fff'
     },
     button: {
