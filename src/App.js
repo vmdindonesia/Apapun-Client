@@ -17,10 +17,11 @@ import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
-import { RegistrationPage } from './pages/registration.js';
-import { FindingCrafterPage } from './pages/findingCrafter';
-import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
-import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
+import { FindingCrafterPage } from './pages/findingCrafter.js';
+import { RegistrationBuyerPage } from './pages/registrationBuyer.js';
+import { RegistrationCrafterPage } from './pages/registrationCrafter.js';
+import { MyOrderPage } from './pages/myOrder.js';
+import { CrafterPage } from './pages/crafter.js';
 
 console.disableYellowBox = true;
 
@@ -33,17 +34,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
+  MyOrder: {
+    screen: MyOrderPage
+  },
   Dashboard: {
     screen: DashboardPage
-  },
-  Registration: {
-    screen: RegistrationPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   Login: {
     screen: LoginPage
@@ -65,6 +66,10 @@ const Routes = createStackNavigator({
   },
   Dashboard: {
     screen: DashboardPage
+  },
+
+  Crafter: {
+    screen: CrafterPage
   }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
