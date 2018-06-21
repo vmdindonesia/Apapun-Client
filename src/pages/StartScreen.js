@@ -22,6 +22,7 @@ export class StartScreen extends React.Component {
 
         AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
             console.log(result, 'Get Storage');
+            console.log(JSON.parse(result), 'Json Parse');
             if (result) {
                 this.redirect();
             }

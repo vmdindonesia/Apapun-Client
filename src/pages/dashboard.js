@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
+import { ImageBackground, TouchableOpacity, StatusBar } from 'react-native';
 import {
     View,
     Text,
     StyleSheet,
     Image
 } from 'react-native';
-import { Button, ContainerSection, CardSectionRegistration } from './../components/common'
 import Swiper from 'react-native-swiper';
 import { COLOR } from './../shared/config';
 import { Icon } from 'react-native-elements';
@@ -75,15 +74,19 @@ export class DashboardPage extends React.Component {
             <View style={{ flex: 1 }}>
                 <ImageBackground
                     source={require('./../assets/images/back_home.png')}
-                    style={{ width: '100%', height: '100%', backgroundColor: COLOR.element_a1 }}
+                    style={styles.backgroundStyle}
                 >
+                    <StatusBar
+                        backgroundColor={COLOR.statusBar}
+                        barStyle="dark-content"
+                    />
                     <View style={styles.container}>
                         <View style={styles.containerSlide}>
                             <Swiper
                                 style={styles.wrapper}
                                 autoplay
                                 showsButtons={false}
-                                dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                                dot={<View style={styles.formatSwiper} />}
                             >
                                 <View style={styles.slide1}>
                                     <Image
@@ -266,7 +269,7 @@ export class DashboardPage extends React.Component {
                                                                     />
                                                                 </View>
                                                                 <View style={styles.textHomeScreen}>
-                                                                    <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CRAFTER LIST </Text>
+                                                                    <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CRAFTER LIST </Text>
                                                                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
                                                                     <TouchableOpacity style={styles.ButtonCrafterList}>
@@ -355,7 +358,7 @@ export class DashboardPage extends React.Component {
                                                                                         />
                                                                                     </View>
                                                                                     <View style={styles.textHomeScreen}>
-                                                                                        <Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontWeight: 'bold' }}>ORDER </Text>
+                                                                                        <Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>ORDER </Text>
                                                                                         <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
                                                                                     </View>
                                                                                 </View>
@@ -371,11 +374,11 @@ export class DashboardPage extends React.Component {
                                                                                                     />
                                                                                                 </View>
                                                                                                 <View style={styles.textHomeScreen}>
-                                                                                                    <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CUSTOM </Text>
+                                                                                                    <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CUSTOM </Text>
                                                                                                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
                                                                                                     <TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
-                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
                                                                                                     </TouchableOpacity>
                                                                                                 </View>
                                                                                             </View>
@@ -391,11 +394,11 @@ export class DashboardPage extends React.Component {
                                                                                                                 />
                                                                                                             </View>
                                                                                                             <View style={styles.textHomeScreen}>
-                                                                                                                <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>CAPTURE N`GET </Text>
+                                                                                                                <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N`GET </Text>
                                                                                                                 <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
 
                                                                                                                 <TouchableOpacity style={styles.buttonCapture}>
-                                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
                                                                                                                 </TouchableOpacity>
                                                                                                             </View>
                                                                                                         </View>
@@ -411,11 +414,11 @@ export class DashboardPage extends React.Component {
                                                                                                                             />
                                                                                                                         </View>
                                                                                                                         <View style={styles.textHomeScreen}>
-                                                                                                                            <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontWeight: 'bold' }}>IDEA MARKET </Text>
+                                                                                                                            <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET </Text>
                                                                                                                             <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Disini kamu bisa melihat hasil karya unik dan menarik teman-temanmu dan kamu bisa membelinya loh! </Text>
 
                                                                                                                             <TouchableOpacity style={styles.buttonIdea}>
-                                                                                                                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontWeight: 'bold' }}>GO</Text>
+                                                                                                                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
                                                                                                                             </TouchableOpacity>
                                                                                                                         </View>
                                                                                                                     </View>
@@ -439,7 +442,7 @@ export class DashboardPage extends React.Component {
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
-                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>Custom</Text>
+                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
                                                                                 </View>
                                                                             </TouchableOpacity>
                                                                             <TouchableOpacity
@@ -449,7 +452,7 @@ export class DashboardPage extends React.Component {
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
-                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Capture n` Get</Text>
+                                                                                    <Text style={{ marginTop: 20, color: 'white', fontSize: 16, fontFamily: 'Quicksand-Bold' }}>Capture n` Get</Text>
                                                                                 </View>
                                                                             </TouchableOpacity>
                                                                             <TouchableOpacity
@@ -459,7 +462,7 @@ export class DashboardPage extends React.Component {
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
-                                                                                    <Text style={{ marginTop: 17, marginBottom: 17, color: 'white', fontSize: 16, fontWeight: 'bold' }}>Idea Market</Text>
+                                                                                    <Text style={{ marginTop: 17, marginBottom: 17, color: 'white', fontSize: 16, fontFamily: 'Quicksand-Bold' }}>Idea Market</Text>
                                                                                     <Image
                                                                                         source={require('./../assets/images/linehome.png')}
                                                                                     />
@@ -474,7 +477,7 @@ export class DashboardPage extends React.Component {
                                                                                 <View style={styles.containerProfileHomeScreen}>
                                                                                     <View style={styles.profileHomeScreen}>
                                                                                         <View>
-                                                                                            <Text style={{ color: 'white', marginTop: 20, alignSelf: 'center', fontSize: 20, fontWeight: 'bold' }}>Gal Gadot</Text>
+                                                                                            <Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
                                                                                             <View style={{ flex: 1 }}>
                                                                                                 <Image
                                                                                                     style={styles.locationIcon}
@@ -490,7 +493,7 @@ export class DashboardPage extends React.Component {
                                                                                                 source={require('./../assets/images/profile.png')}
                                                                                             />
                                                                                         </View>
-                                                                                        <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontWeight: 'bold' }}>PROFILE</Text>
+                                                                                        <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold'  }}>PROFILE</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 
@@ -551,20 +554,21 @@ export class DashboardPage extends React.Component {
 
                                                                                                 <View styles={{ flex: 1 }}>
 
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>Daftarkan diri anda </Text>
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>menjadi partner kami</Text>
-                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13 }}>sebagai CRAFTER </Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+                                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
 
                                                                                                 </View>
 
                                                                                                 <View style={{ flex: 1 }}>
-                                                                                                    <Text style={{ color: 'white', paddingLeft: 145, marginTop: 3, fontSize: 13, marginTop: 30 }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+                                                                                                    <Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
                                                                                                     <Image
                                                                                                         style={styles.iconQuestion}
                                                                                                         source={require('./../assets/images/question.png')}
                                                                                                     />
-                                                                                                    <TouchableOpacity style={styles.buttonJoin}>
-                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontWeight: 'bold' }}>JOIN</Text>
+                                                                                                    <TouchableOpacity style={styles.buttonJoin}
+                                                                                                    	onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
+                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
                                                                                                     </TouchableOpacity>
                                                                                                 </View>
                                                                                             </View>
@@ -739,6 +743,21 @@ export class DashboardPage extends React.Component {
 };
 
 const styles = StyleSheet.create({
+    backgroundStyle: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: COLOR.element_a1
+    },
+    formatSwiper: {
+        backgroundColor: '#FFFFFF',
+        width: 5,
+        height: 5,
+        borderRadius: 4,
+        marginLeft: 3,
+        marginRight: 3,
+        marginTop: 3,
+        marginBottom: 3
+    },
     container: {
         flex: 1,
         width: '100%',
@@ -959,7 +978,7 @@ const styles = StyleSheet.create({
         width: 160,
     },
     buttonCustom: {
-        marginTop: 55,
+        marginTop: 41,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
@@ -969,7 +988,7 @@ const styles = StyleSheet.create({
         // position: 'relative',
     },
     buttonIdea: {
-        marginTop: 42.5,
+        marginTop: 25,
         marginLeft: 12,
         backgroundColor: 'red',
         borderRadius: 20,
@@ -999,7 +1018,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 20,
-        fontWeight: 'bold'
+        fontFamily: 'Quicksand-Bold'
     },
 
     containerBodyHome: {
@@ -1172,7 +1191,7 @@ const styles = StyleSheet.create({
     iconQuestion: {
         height: 20,
         width: 20,
-        marginLeft: 110,
+        marginLeft: 103,
         marginTop: -15
     }
 });

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input } from '../components/common';
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
 // import { NavigationActions, StackActions } from 'react-navigation';
 // import { IPSERVER } from './../shared/config';
 import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 export class RegistrationBuyerPage extends React.Component {
 
@@ -21,9 +23,13 @@ export class RegistrationBuyerPage extends React.Component {
         this.state = {
             isModalVisible: false,
             pathPhotoRegistBuyer: null,
-           
+            BirthdayDate: false,
+            datePickBirthday: '',
+            viewBirthday: ''
         };
     }
+
+
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible });
     }
@@ -63,14 +69,37 @@ export class RegistrationBuyerPage extends React.Component {
         });
     }
 
+    showBirthdayDateFocus = () => this.setState({ BirthdayDate: true });
 
+    hideDateBirthday = () => this.setState({ BirthdayDate: false });
+
+    handleDatePickedBirthday = (date) => {
+        console.log(date, 'Date Nya DP')
+        const dateTemp = moment(date).format('YYYY-MM-DD h:mm:ss');
+        const dateNow = moment(date).format('DD/MM/YYYY');
+        this.setState({ viewBirthday: dateNow, datePickBirthday: dateTemp })
+        this.hideDateBirthday();
+    };
+
+    onChangeInput = (name, v) => {
+        this.setState({ [name]: v }, () => {
+            console.log(this.state[name], 'Birth');
+        });
+    }
 
 
     render() {
+
+        const {
+            viewBirthday
+        } = this.state
+
+
         return (
 
-            <View
-                style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
+            < View
+                style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }
+                }
             >
                 <StatusBar
                     backgroundColor={COLOR.headerBar}
@@ -80,7 +109,7 @@ export class RegistrationBuyerPage extends React.Component {
                 <ScrollView>
 
                     <View style={styles.containerImage}>
-                        <TouchableOpacity onPress={this.selectPhotoRegisterBuyer.bind(this)}>
+                        <TouchableWithoutFeedback onPress={this.selectPhotoRegisterBuyer.bind(this)}>
                             <View>
                                 {this.state.pathPhotoRegistBuyer == null ?
                                     <Image
@@ -98,14 +127,14 @@ export class RegistrationBuyerPage extends React.Component {
                                     source={require('./../assets/images/Icon_camera.png')}
                                 />
                             </View>
-                        </TouchableOpacity>
+                        </TouchableWithoutFeedback>
                     </View>
 
                     <View style={styles.containerForm}>
                         <View style={styles.formPosition}>
 
 
-                            <View style={{ paddingTop: 30, height: 100 }}>
+                            <View style={{ paddingTop: 20, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Username</Text>
                                 </View>
@@ -153,32 +182,22 @@ export class RegistrationBuyerPage extends React.Component {
                                 <View >
                                     <Text style={styles.textStyle}>Birthday</Text>
                                 </View>
-                                <View style={{ flex: 3, flexDirection: 'row', height: 55, width: '100%', }} >
-
-                                    <View style={{ width: 92 }} >
-                                        <ContainerSection>
-                                            <Input
-                                                placeholder='Date'
-                                            />
-                                        </ContainerSection>
-                                    </View>
-                                    <View style={{ width: 92 }} >
-                                        <ContainerSection>
-                                            <Input
-                                                placeholder='Month'
-                                            />
-                                        </ContainerSection>
-                                    </View>
-                                    <View style={{ width: 92 }} >
-                                        <ContainerSection>
-                                            <Input
-                                                placeholder='Year'
-                                            />
-                                        </ContainerSection>
-                                    </View>
-
-
-                                </View>
+                                <ContainerSection>
+                                    <InputDate
+                                        placeholder='please input your date of birthday'
+                                        value={viewBirthday}
+                                        onChangeText={v => this.onChangeInput('viewBirthday', v)}
+                                        onFocus={() => {
+                                            this.showBirthdayDateFocus()
+                                        }}
+                                    />
+                                </ContainerSection>
+                                <DateTimePicker
+                                    isVisible={this.state.BirthdayDate}
+                                    onConfirm={this.handleDatePickedBirthday}
+                                    onCancel={this.hideDateBirthday}
+                                    maximumDate={new Date()}
+                                />
                             </View>
 
                             <View style={{ paddingTop: 10, height: 80 }}>
@@ -395,13 +414,13 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
         flexDirection: 'column',
-        marginTop: -75,
+        marginTop: -65,
         height: 750,
         width: '90%',
         alignItems: 'center',
         alignSelf: 'center',
         zIndex: 1,
-        borderWidth: 0.5,
+        borderWidth: 0.10,
         borderColor: '#d6d7da',
     },
     iconCamera: {
@@ -422,8 +441,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,
-        marginTop: -17,
-        // marginBottom: 20
+        marginTop: -22.5,
+        marginBottom: -30
     },
     formPosition: {
         flex: 8,
@@ -451,17 +470,16 @@ const styles = StyleSheet.create({
         // alignItems: 'center'
     },
     checkBoxMale: {
-        marginLeft: 40,
-        height: 55,
-        width: 90,
+        marginLeft: 35,
+        height: 60,
+        width: 100,
         // backgroundColor: 'yellow'
         // backgroundColor: 'transparent',
         // borderColor: 'transparent'
     },
     checkBoxFemale: {
-        height: 55,
+        height: 60,
         width: 110,
-        // backgroundColor: 'red'
     },
     textBox: {
         paddingTop: 10,
@@ -481,7 +499,6 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         fontFamily: 'Quicksand-Regular'
-
     },
     modalAddress: {
         width: '95%',

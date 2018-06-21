@@ -1,26 +1,69 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TextInput, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, Modal } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
 // import { NavigationActions, StackActions } from 'react-navigation';
 // import { IPSERVER } from './../shared/config';
 import { CheckBox } from 'react-native-elements'
+import ImagePicker from 'react-native-image-picker';
 
 export class RegistrationCrafterPage extends React.Component {
-
-    state = {
-        isModalVisible: true,
-    };
-
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
-    }
-
 
     static navigationOptions = {
         headerTitle: 'Register Crafter'
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isModalVisible: false,
+            pathPhotoRegistCrafter: null,
+
+        };
+    }
+
+    setModalVisible(visible) {
+        this.setState({ isModalVisible: visible });
+    }
+
+    selectPhotoRegister() {
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    pathPhotoRegistCrafter: source
+                });
+            }
+        });
+    }
+
+
+
 
     render() {
         return (
@@ -31,18 +74,25 @@ export class RegistrationCrafterPage extends React.Component {
                 <ScrollView>
 
                     <View style={styles.containerImage}>
-                        <View>
-                            <Image
-                                style={styles.containerUpload}
-                                source={require('./../assets/images/icon_profile.png')}
-                            />
-                        </View>
-                    </View>
-                    <View>
-                        <Image
-                            style={styles.iconCamera}
-                            source={require('./../assets/images/Icon_camera.png')}
-                        />
+                        <TouchableWithoutFeedback onPress={this.selectPhotoRegister.bind(this)}>
+                            <View>
+                                {this.state.pathPhotoRegistCrafter == null ?
+                                    <Image
+                                        style={styles.containerUpload}
+                                        source={require('./../assets/images/icon_profile.png')}
+                                    />
+                                    :
+                                    <Image
+                                        style={styles.containerUpload}
+                                        resizeMode='cover'
+                                        source={this.state.pathPhotoRegistBuyer} />
+                                }
+                                <Image
+                                    style={styles.iconCamera}
+                                    source={require('./../assets/images/Icon_camera.png')}
+                                />
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
 
                     <View style={styles.containerForm}>
@@ -187,6 +237,9 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
+                                            onFocus={() => {
+                                                this.setModalVisible(true);
+                                            }}
                                             placeholder='please input your name address'
                                         />
                                     </ContainerSection>
@@ -215,6 +268,108 @@ export class RegistrationCrafterPage extends React.Component {
                     <TouchableOpacity style={styles.buttonSignUp}>
                         <Text style={styles.signupButtonText}>Sign Up</Text>
                     </TouchableOpacity>
+
+
+
+                    <View style={{ marginTop: 65 }}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={this.state.isModalVisible}
+                            onRequestClose={() => {
+                                alert('Modal has been closed.');
+                            }}>
+                            <View style={{ marginTop: 65 }}>
+                                <View style={styles.modalAddress}>
+                                    <ScrollView>
+                                        <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Location</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your location'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Province</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>District</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Address Detail</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input style={{ height: 30 }}
+                                                        multiline={true}
+                                                        numberOfLines={150}
+
+                                                        placeholder='please input your detail address'
+
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+
+
+                                        <View style={styles.buttonOnModalAddress}>
+
+                                            <View>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                                </TouchableHighlight>
+                                            </View>
+
+                                            <View style={{ paddingLeft: 20 }}>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextSave}>Save</Text>
+                                                </TouchableHighlight>
+                                            </View>
+
+                                        </View>
+                                    </ScrollView>
+                                </View>
+
+                            </View>
+                        </Modal>
+
+
+
+                    </View>
 
 
 
@@ -269,7 +424,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         zIndex: 3,
         marginTop: -40,
-        marginLeft: 200
+        marginLeft: 100
     },
     buttonSignUp: {
         // marginTop: 60,
@@ -281,7 +436,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         zIndex: 4,
         marginTop: -17,
-        marginBottom: 30
+        marginBottom: -30
     },
     signupButtonText: {
         textAlign: 'center',
@@ -369,6 +524,46 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         height: 120
     },
+    modalAddress: {
+        width: '95%',
+        height: '99%',
+        backgroundColor: '#ffffff',
+        alignSelf: 'center',
+        borderRadius: 10,
+        borderWidth: 0.9,
+        shadowColor: '#000',
+        shadowOpacity: 1.0,
+    },
+    textStyle: {
+        color: 'black',
+        marginLeft: 5,
+        fontSize: 12,
+        fontWeight: 'bold',
+        fontFamily: 'Quicksand-Regular'
+    },
+    textaddressModal: {
+        paddingTop: 5,
+        height: 80
+    },
+    buttonOnModalAddress: {
+        paddingTop: 10,
+        flex: 2,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        width: '95%',
+        height: 70,
+        // backgroundColor: 'red'
+    },
+    AddressTextSave: {
+        fontWeight: 'bold',
+        color: 'red',
+        fontFamily: 'Quicksand-Regular'
+    },
+    AddressTextCancel: {
+        fontWeight: 'bold',
+        color: 'black',
+        fontFamily: 'Quicksand-Regular'
+    }
 });
 
 export default RegistrationCrafterPage
