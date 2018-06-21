@@ -20,18 +20,34 @@ import { OrderPage } from './pages/order.js';
 import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
+import { ProfileBuyerPage } from './pages/ProfileBuyer.js'
+import { EditProfileBuyerPage } from './pages/EditProfileBuyer.js'
+import { SettingAddressBuyerPage } from './pages/SettingAddressBuyer.js'
+import { SettingAddressDetailBuyerPage } from './pages/SettingAddressDetailBuyer'
 
 console.disableYellowBox = true;
 
 // font
-const customTextProps = { 
-  style: { 
+const customTextProps = {
+  style: {
     fontFamily: 'Quicksand-Regular'
   }
 }
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+  SettingAddressDetailBuyer: {
+    screen: SettingAddressDetailBuyerPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
   StartScreen: {
     screen: StartScreen
   },

@@ -566,7 +566,8 @@ export class DashboardPage extends React.Component {
                                                                                                         style={styles.iconQuestion}
                                                                                                         source={require('./../assets/images/question.png')}
                                                                                                     />
-                                                                                                    <TouchableOpacity style={styles.buttonJoin}>
+                                                                                                    <TouchableOpacity style={styles.buttonJoin}
+                                                                                                    	onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
                                                                                                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
                                                                                                     </TouchableOpacity>
                                                                                                 </View>
