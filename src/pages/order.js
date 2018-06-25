@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { StatusBar, StyleSheet, ScrollView, BackHandler, Text, Picker, Alert, Keyboard, ToastAndroid, TouchableOpacity, View, Image } from 'react-native';
+import { StatusBar, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common';
-import AutoComplete from '../components/AutoComplete';
-import { COLOR } from './../shared/config';
-import Icon from 'react-native-vector-icons/Ionicons';
+import ImagePicker from 'react-native-image-picker';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
@@ -17,8 +15,10 @@ export class OrderPage extends React.Component {
         this.state = {
             nameProduct: '',
             categoryProduct: '',
-            uploadDesign: null,
+            tempUploadDesign: '',
+            uploadDesign: [],
             uploadMaterial: null,
+            notice: false,
             serveDelivery: '',
             addressDelivery: '',
             catatanTambahan: '',
@@ -52,8 +52,8 @@ export class OrderPage extends React.Component {
         });
     }
 
-    render() {
-
+    onValidation() {
+        Keyboard.dismiss();
         const {
             nameProduct,
             categoryProduct,
@@ -65,6 +65,113 @@ export class OrderPage extends React.Component {
             numberPcs
         } = this.state;
 
+        switch (nameProduct) {
+            case '':
+                return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
+            default:
+                switch (categoryProduct) {
+                    case '':
+                        return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
+                    default:
+                        const designPhoto = uploadDesign.length;
+                        switch (designPhoto) {
+                            case 0:
+                                return ToastAndroid.show('Design Poto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
+                            default:
+                                console.log('Sukses Semua');
+                        }
+                }
+        }
+    }
+
+    designPhotoUpload(name) {
+        var names = name;
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({ [names]: source }, () => {
+                    console.log(this.state[name], 'Name State');
+                    const newUploadDesign = this.state.uploadDesign;
+                    newUploadDesign[this.state.uploadDesign.length] = source;
+                    this.setState({ uploadDesign: newUploadDesign }, () => {
+                        console.log(this.state.uploadDesign, 'Ship Name Max');
+                        return this.returnDesignPhoto()
+                    });
+                });
+            }
+        });
+    }
+
+    renderProductItem = (itemPhoto) => {
+        console.log(itemPhoto, 'Render Poto');
+        return (
+            <View style={{ paddingRight: 5 }}>
+                <TouchableOpacity
+                    key={itemPhoto}
+                // onPress={() => { this.props.navi.navigate('DetailFishes', { datas: itemProduct.item.Fish }) }}
+                >
+                    <Image
+                        source={itemPhoto}
+                        style={{ width: 85, height: 70 }}
+                        resizeMode='cover'
+                    />
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
+    returnDesignPhoto() {
+        console.log(this.state.uploadDesign, 'XAXAXA');
+        return (
+            <View>
+                <FlatList
+                    data={this.state.uploadDesign}
+                    extraData={this.state}
+                    horizontal
+                    keyExtractor={(index) => index.uri}
+                    renderItem={({ item }) => this.renderProductItem(item)}
+                    showsHorizontalScrollIndicator={false}
+                />
+            </View>
+        )
+    }
+
+    render() {
+        const {
+            nameProduct,
+            categoryProduct,
+            uploadDesign,
+            uploadMaterial,
+            serveDelivery,
+            addressDelivery,
+            catatanTambahan,
+            numberPcs
+        } = this.state;
+
+        console.log(this.state.uploadDesign.length);
         return (
             <ScrollView
                 style={styles.containerStyle}
@@ -76,7 +183,7 @@ export class OrderPage extends React.Component {
                         placeholder='Nama Produk'
                         label='Nama Produk'
                         value={nameProduct}
-                        onChangeText={v => this.onChangeInput('nameProduct', v)}
+                        onChangeText={v => this.onChange('nameProduct', v)}
                     />
                 </ContainerSection>
                 <ContainerSection>
@@ -85,7 +192,7 @@ export class OrderPage extends React.Component {
                         <View style={styles.pickerStyle}>
                             <Picker
                                 selectedValue={categoryProduct}
-                                onValueChange={(v) => this.onChangeInput('categoryProduct', v)}
+                                onValueChange={(v) => this.onChange('categoryProduct', v)}
                             >
                                 <Picker.Item label='Pilih Kategori Produk' value='0' />
                                 <Picker.Item label='Fashion' value='Fashion' />
@@ -100,7 +207,7 @@ export class OrderPage extends React.Component {
                     <View style={{ flex: 1, width: '100%' }}>
                         <View>
                             {
-                                uploadDesign === null ?
+                                uploadDesign.length < 5 ?
                                     <View>
                                         <Image
                                             source={require('../assets/images/create-design.png')}
@@ -108,28 +215,37 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
+                                            <Text style={{ fontSize: 13, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
-                                            // onPress={() => this.onItemSelected(item)}
+                                            onPress={() => this.designPhotoUpload('tempUploadDesign')}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <View style={{ flex: 1 }}>
-                                                    <Image style={{ width: 20, height: 20, marginLeft: 85, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
-                                                </View>
-                                                <View>
-                                                    <Text style={{ fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
-                                                </View>
+                                                <Image style={{ width: 20, height: 20, marginLeft: 5, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 10, fontSize: 14, textAlign: 'center', color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                             </View>
                                         </TouchableOpacity>
                                     </View>
                                     :
-                                    <Image source={uploadDesign} />
+                                    <Text>
+                                        Image Sudah 5
+                                    </Text>
                             }
                         </View>
                     </View>
                 </ContainerSection>
+
+                {
+                    this.state.uploadDesign.length > 0 ?
+                        <View style={styles.containerFlatList}>
+                            {this.returnDesignPhoto()}
+                        </View>
+                        :
+                        <View style={{ marginBottom: 20 }} />
+
+                }
+
                 <ContainerSection>
                     <View style={{ flex: 3, flexDirection: 'column' }}>
                         <Text style={styles.pickerTextStyle}>Jumlah dipesan :</Text>
@@ -154,10 +270,10 @@ export class OrderPage extends React.Component {
                         />
                     </TouchableOpacity>
                     <View style={{ flex: 2 }}>
-                        <View style={styles.pickerUnitStyle }>
+                        <View style={styles.pickerUnitStyle}>
                             <Picker
                             // selectedValue={unitFish}
-                            // onValueChange={v => this.onChangeInput('unitFish', v)}
+                            // onValueChange={v => this.onChange('unitFish', v)}
                             >
                                 <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Kg' />
@@ -180,19 +296,15 @@ export class OrderPage extends React.Component {
                                             resizeMode='cover'
                                         />
                                         <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 18, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Pilih material yang sesuai dengan desain Anda.</Text>
+                                            <Text style={{ fontSize: 13, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Pilih material yang sesuai dengan desain Anda.</Text>
                                         </View>
                                         <TouchableOpacity
                                             // onPress={() => this.onItemSelected(item)}
                                             style={styles.buttons}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <View style={{ flex: 1 }}>
-                                                    <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 80 }} source={require('../assets/images/logo-material.png')} />
-                                                </View>
-                                                <View>
-                                                    <Text style={{ fontWeight: 'bold', fontSize: 14, flex: 1, textAlign: 'center', marginRight: 50, marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Pemilihan Material</Text>
-                                                </View>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 5 }} source={require('../assets/images/logo-material.png')} />
+                                                <Text style={{ paddingLeft: 10, fontSize: 14, textAlign: 'center', color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Pemilihan Material</Text>
                                             </View>
                                         </TouchableOpacity>
                                     </View>
@@ -209,7 +321,7 @@ export class OrderPage extends React.Component {
                         <View style={styles.pickerStyle}>
                             <Picker
                                 selectedValue={serveDelivery}
-                                onValueChange={v => this.onChangeInput('serveDelivery', v)}
+                                onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
                                 <Picker.Item label='JNE' value='JNE' />
@@ -226,7 +338,7 @@ export class OrderPage extends React.Component {
                         <View style={styles.pickerStyle}>
                             <Picker
                                 selectedValue={addressDelivery}
-                                onValueChange={v => this.onChangeInput('addressDelivery', v)}
+                                onValueChange={v => this.onChange('addressDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Alamat Pengiriman' value='0' />
                                 <Picker.Item label='Home' value='Home' />
@@ -235,19 +347,32 @@ export class OrderPage extends React.Component {
                         </View>
                     </View>
                 </ContainerSection>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View>
-                        <Text style={{ padding: 5, fontFamily: 'Quicksand-Bold' }}> Catatan Tambahan </Text>
+                <ContainerSection>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View>
+                            <Text style={{ padding: 5, fontFamily: 'Quicksand-Bold' }}> Catatan Tambahan </Text>
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <TouchableOpacity onPress={() => this.setState({ notice: !this.state.notice })}>
+                                <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={{ flex: 1 }}>
-                        <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
-                    </View>
-                </View>
+                </ContainerSection>
+                {
+                    this.state.notice === false ?
+                        <View />
+                        :
+                        <Text style={{ paddingLeft: 15, fontSize: 10, color: 'red' }}>
+                            ***) Anda dapat menuliskan informasi penting tambahan lainya agar crafter mudah memahami pesanan anda.
+                            contoh: Ukuran, Nama Produk (Jika anda tahu nama produk nya), dsb.
+                        </Text>
+                }
                 <ContainerSection>
                     <Input
                         placeholder='Catatan Tambahan'
                         value={catatanTambahan}
-                        onChangeText={v => this.onChangeInput('catatanTambahan', v)}
+                        onChangeText={v => this.onChange('catatanTambahan', v)}
                     />
                 </ContainerSection>
                 <ContainerSection>
@@ -260,7 +385,9 @@ export class OrderPage extends React.Component {
                             marginLeft: '15%',
                             marginRight: '15%',
                             marginBottom: 20
-                        }}>
+                        }}
+                        onPress={() => this.onValidation()}
+                    >
                         <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
                             Mencari Crafter
                         </Text>
@@ -274,6 +401,12 @@ export class OrderPage extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1
+    },
+    containerFlatList: {
+        paddingBottom: 20,
+        paddingRight: 5,
+        paddingLeft: 5,
+        paddingTop: 5
     },
     pickerContainer: {
         flex: 1,
@@ -302,8 +435,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     button: {
-        backgroundColor: 'rgb(220, 220, 220)',
-        borderColor: 'red',
+        backgroundColor: 'rgb(45, 45, 45)',
         borderWidth: 1,
         borderRadius: 30,
         width: '80%',
@@ -316,8 +448,7 @@ const styles = StyleSheet.create({
 
     },
     buttons: {
-        backgroundColor: 'rgb(220, 220, 220)',
-        borderColor: 'red',
+        backgroundColor: 'rgb(45, 45, 45)',
         borderWidth: 1,
         borderRadius: 30,
         width: '80%',
@@ -325,11 +456,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         marginTop: 75,
         marginLeft: 30,
-        // marginRight: 70,
         justifyContent: 'center',
-        alignItems: 'center',
-        // paddingLeft: 30,
-        // paddingRight: 30
+        alignItems: 'center'
     },
     textBackground: {
         position: 'absolute'
