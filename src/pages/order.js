@@ -3,6 +3,8 @@ import { NavigationActions } from 'react-navigation';
 import { StatusBar, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
+import Carousel from 'react-native-snap-carousel';
+import { sliderWidth, itemWidth } from './../shared/slider.styles';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
@@ -159,6 +161,24 @@ export class OrderPage extends React.Component {
         )
     }
 
+    _renderItem = (item, index) => {
+        console.log(item, 'Item Paralax');
+        const number = parseInt(item.index) + 1;
+        console.log(number, 'LPLPLPLPLP');
+        return (
+            <View>
+                <Image
+                    source={item.item}
+                    style={{ width: sliderWidth, height: 200 }}
+                    resizeMode='stretch'
+                />
+                <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
+                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
+                </View>
+            </View>
+        )
+    }
+
     render() {
         const {
             nameProduct,
@@ -207,7 +227,7 @@ export class OrderPage extends React.Component {
                     <View style={{ flex: 1, width: '100%' }}>
                         <View>
                             {
-                                uploadDesign.length < 5 ?
+                                uploadDesign.length < 2 ?
                                     <View>
                                         <Image
                                             source={require('../assets/images/create-design.png')}
@@ -228,9 +248,15 @@ export class OrderPage extends React.Component {
                                         </TouchableOpacity>
                                     </View>
                                     :
-                                    <Text>
-                                        Image Sudah 5
-                                    </Text>
+                                    <View>
+                                        <Carousel
+                                            ref={(c) => { this._carousel = c; }}
+                                            data={this.state.uploadDesign}
+                                            renderItem={this._renderItem}
+                                            sliderWidth={sliderWidth}
+                                            itemWidth={itemWidth}
+                                        />
+                                    </View>
                             }
                         </View>
                     </View>
