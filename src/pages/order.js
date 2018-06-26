@@ -5,6 +5,7 @@ import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import axios from 'axios';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
