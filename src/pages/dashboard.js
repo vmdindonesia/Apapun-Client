@@ -92,35 +92,35 @@ export class DashboardPage extends React.Component {
                                     <Image
                                         style={styles.imageStyle}
                                         source={require('./../assets/images/swiperFirst.png')}
-                                        resizeMode='contain'
+                                        resizeMode='cover'
                                     />
                                 </View>
                                 <View style={styles.slide2}>
                                     <Image
                                         style={styles.imageStyle}
                                         source={require('./../assets/images/swiperSecond.png')}
-                                        resizeMode='contain'
+                                        resizeMode='cover'
                                     />
                                 </View>
                                 <View style={styles.slide2}>
                                     <Image
                                         style={styles.imageStyle}
                                         source={require('./../assets/images/swiperThird.png')}
-                                        resizeMode='contain'
+                                        resizeMode='cover'
                                     />
                                 </View>
                                 <View style={styles.slide2}>
                                     <Image
                                         style={styles.imageStyle}
                                         source={require('./../assets/images/swiperFour.png')}
-                                        resizeMode='contain'
+                                        resizeMode='cover'
                                     />
                                 </View>
                                 <View style={styles.slide2}>
                                     <Image
                                         style={styles.imageStyle}
                                         source={require('./../assets/images/swiperFive.png')}
-                                        resizeMode='contain'
+                                        resizeMode='cover'
                                     />
                                 </View>
                             </Swiper>
