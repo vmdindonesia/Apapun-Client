@@ -38,61 +38,26 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
+  SettingAddressBuyerPage : { 
+    screen : SettingAddressBuyerPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  MyOrder: {
-    screen: MyOrderPage
-  },
-  Dashboard: {
-    screen: DashboardPage
-  },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
-  SettingAddressDetailBuyer: {
-    screen: SettingAddressDetailBuyerPage
-  },
+
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
   StartScreen: {
     screen: StartScreen
   },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
-  Login: {
-    screen: LoginPage
-  },
-  Order: {
-    screen: OrderPage
-  },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
+ 
   Dashboard: {
     screen: DashboardPage
   },
   Order: {
     screen: OrderPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
-
   Crafter: {
     screen: CrafterPage
   }
