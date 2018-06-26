@@ -111,7 +111,6 @@ export class OrderPage extends React.Component {
                                             <Text style={{ fontSize: 18, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
-                                            // onPress={() => this.onItemSelected(item)}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
