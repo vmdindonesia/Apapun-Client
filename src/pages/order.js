@@ -5,6 +5,7 @@ import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import axios from 'axios';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
@@ -238,7 +239,10 @@ export class OrderPage extends React.Component {
                                             <Text style={{ fontSize: 13, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
+<<<<<<< HEAD
+=======
                                             onPress={() => this.designPhotoUpload('tempUploadDesign')}
+>>>>>>> 0d457b119f83a76427a6762f74995c7c0aee30c6
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
