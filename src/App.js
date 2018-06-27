@@ -26,6 +26,11 @@ import { SettingAddressBuyerPage } from './pages/SettingAddressBuyer.js'
 import { SettingAddressDetailBuyerPage } from './pages/SettingAddressDetailBuyer'
 import { MyOrderPage } from './pages/myOrder.js';
 import { CrafterPage } from './pages/crafter.js';
+import { CrafterListPage } from './pages/CrafterList';
+import { BerandaCrafterPage } from './pages/BerandaCrafter';
+import { FashionCrafterPage } from './pages/FashionCrafter';
+import { FurnitureCrafterPage } from './pages/FurnitureCrafter';
+import { BeautyCrafterPage } from './pages/BeautyCrafter';
 
 console.disableYellowBox = true;
 
@@ -38,12 +43,35 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  SettingAddressBuyerPage : { 
-    screen : SettingAddressBuyerPage
+  StartScreen: {
+    screen: StartScreen
   },
-
+  Login: {
+    screen: LoginPage
+  },
+  CrafterList: {
+    screen: CrafterListPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+  SettingAddressDetailBuyer: {
+    screen: SettingAddressDetailBuyerPage
+  },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
   },
   StartScreen: {
     screen: StartScreen
@@ -51,9 +79,55 @@ const Routes = createStackNavigator({
   FindingCrafter: {
     screen: FindingCrafterPage
   },
- 
   Dashboard: {
     screen: DashboardPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+
+  BerandaCrafter: {
+    screen: BerandaCrafterPage
+  },
+  FashionCrafter: {
+    screen: FashionCrafterPage
+  },
+  FurnitureCrafter: {
+    screen: FurnitureCrafterPage
+  },
+  BeautyCrafter: {
+    screen: BeautyCrafterPage
+  },
+  SettingAddressBuyerPage: {
+    screen: SettingAddressBuyerPage
+  },
+  SettingAddressBuyerPage: {
+    screen: SettingAddressBuyerPage
+  },
+
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
   },
   Order: {
     screen: OrderPage
