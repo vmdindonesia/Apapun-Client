@@ -32,6 +32,12 @@ import { BerandaCrafterPage } from './pages/BerandaCrafter';
 import { FashionCrafterPage } from './pages/FashionCrafter';
 import { FurnitureCrafterPage } from './pages/FurnitureCrafter';
 import { BeautyCrafterPage } from './pages/BeautyCrafter';
+import { CrafterMyOrderPage } from './pages/CrafterMyOder';
+import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
+import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
+import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
+import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+
 
 console.disableYellowBox = true;
 
@@ -44,6 +50,21 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  DetailOrder : {
+    screen : DetailOrderPage
+  },
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+  WhislistOnMyOrder: {
+    screen: WishlistOnMyOrderPage
+  },
+  HistoryOnMyOrder: {
+    screen : HistoryOnMyOrderPage
+  },
   StartScreen: {
     screen: StartScreen
   },
