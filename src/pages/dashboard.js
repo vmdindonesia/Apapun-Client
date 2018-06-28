@@ -272,7 +272,7 @@ export class DashboardPage extends React.Component {
                                                                     <Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CRAFTER LIST </Text>
                                                                     <Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
-                                                                    <TouchableOpacity style={styles.ButtonCrafterList}>
+                                                                    <TouchableOpacity style={styles.ButtonCrafterList} onPress={() => this.props.navigation.navigate('CrafterList')} >
                                                                         <Text style={styles.TextButtonGo}>GO</Text>
                                                                     </TouchableOpacity>
                                                                 </View>
@@ -493,7 +493,7 @@ export class DashboardPage extends React.Component {
                                                                                                 source={require('./../assets/images/profile.png')}
                                                                                             />
                                                                                         </View>
-                                                                                        <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold'  }}>PROFILE</Text>
+                                                                                        <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
                                                                                         <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 
@@ -567,7 +567,7 @@ export class DashboardPage extends React.Component {
                                                                                                         source={require('./../assets/images/question.png')}
                                                                                                     />
                                                                                                     <TouchableOpacity style={styles.buttonJoin}
-                                                                                                    	onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
+                                                                                                        onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
                                                                                                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
                                                                                                     </TouchableOpacity>
                                                                                                 </View>

@@ -65,12 +65,10 @@ const styles = StyleSheet.create({
     flex: 4
   },
   tabContainer: {
-    backgroundColor: COLOR.element_a3,
     height: 50,
     justifyContent: 'center'
   },
   tabContainerActive: {
-    backgroundColor: COLOR.element_a4,
     height: 50,
     justifyContent: 'center'
   },

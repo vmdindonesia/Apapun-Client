@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, FlatList, Text, TextInput, Alert, Keyboard, ToastAndroid, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, ScrollView, FlatList, Text, View, Image } from 'react-native';
 import { Input } from '../components/common';
-import { COLOR } from './../shared/config';
 import Swiper from 'react-native-swiper';
 
 
@@ -156,6 +155,44 @@ export class MyOrderPage extends React.Component {
                     }}>
                         <Text style={{ textAlign: 'center' }}>Plastik : Kresek</Text>
                     </View>
+                </View>
+                <Text style={{
+                    fontFamily: 'Quicksand-Bold',
+                    marginTop: 10, marginLeft: 5
+                }}>
+                    Catatan Tambahan </Text>
+                <View style={{ marginLeft: 5, marginRight: 5, backgroundColor: '#fff' }}>
+                    <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, marginTop: 5, marginRight: 5 }}>
+                        Di bagian alas meja tolong diberikan ukiran "CEMARA", bentuk tulisan saya percayakan kepada anda
+                        </Text>
+                </View>
+                <Text style={{
+                    fontFamily: 'Quicksand-Bold',
+                    marginTop: 10, marginLeft: 5
+                }}>
+                    Jasa Pengiriman </Text>
+                <View
+                    style={{ marginLeft: 5, marginRight: 5, flex: 1, flexDirection: 'row', backgroundColor: '#fff' }}>
+                    <Image
+                        style={{ marginTop: 10, marginBottom: 10, width: '40%', height: 70 }}
+                        source={require('../assets/images/pos-indonesia.png')}
+                        resizeMode='contain'
+                    />
+                    <Text style={{
+                        marginLeft: 10, marginTop: 35, flex: 1, fontFamily: 'Quicksand-Bold'
+                    }}>
+                        Pos Indonesia</Text>
+                </View>
+                <Text style={{
+                    fontFamily: 'Quicksand-Bold',
+                    marginTop: 10, marginLeft: 5
+                }}>
+                    Alamat Pengiriman </Text>
+                <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 5, marginRight: 5, marginTop: 5 }}>
+                    <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5 }}>Home 1 {'\n'}</Text>
+                    <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold' }}>Judy {'\n'}{'\n'}</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5}}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
+                            DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
                 </View>
             </ScrollView>
         );
