@@ -6,6 +6,7 @@ import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from './../shared/slider.styles';
 import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
@@ -18,6 +19,7 @@ export class OrderPage extends React.Component {
         this.state = {
             nameProduct: '',
             categoryProduct: '',
+            subCategoryProduct: '',
             tempUploadDesign: '',
             uploadDesign: [],
             uploadMaterial: null,
@@ -25,13 +27,47 @@ export class OrderPage extends React.Component {
             serveDelivery: '',
             addressDelivery: '',
             catatanTambahan: '',
-            numberPcs: 0
+            numberPcs: 0,
+            dataCategory: '',
+            dataSubCategory: ''
         }
+    }
+
+    componentDidMount() {
+        axios.get(`${IPSERVER}/ApapunKategoris`)
+            .then(response => {
+                console.log(response.data, 'Response Kategori');
+                this.setState({ dataCategory: response.data });
+            }).catch(error => {
+                console.log(error, 'Error Kategori');
+            })
+    }
+
+    fetchSubKategori() {
+        axios.post(`${IPSERVER}/ApapunSubkategoris/getSubkategori`, {
+            params: {
+                kategoriId: this.state.categoryProduct
+            }
+        })
+            .then(response => {
+                console.log(response.data, 'Response Sub Kategori');
+                this.setState({ dataSubCategory: response.data });
+                return this.renderSubKategori();
+            }).catch(error => {
+                console.log(error, 'Error Sub Kategori');
+            })
     }
 
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log(this.state[name]);
+        })
+    }
+
+    onChangePicker = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log('Kategori Picker');
+            this.fetchSubKategori();
         })
     }
 
@@ -111,7 +147,7 @@ export class OrderPage extends React.Component {
             }
             else {
                 let source = { uri: response.uri };
-
+                this.imageUpload(source);
                 // You can also display the image using data:
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
@@ -121,11 +157,32 @@ export class OrderPage extends React.Component {
                     newUploadDesign[this.state.uploadDesign.length] = source;
                     this.setState({ uploadDesign: newUploadDesign }, () => {
                         console.log(this.state.uploadDesign, 'Ship Name Max');
-                        return this.returnDesignPhoto()
+                        return this.returnDesignPhoto();
                     });
                 });
             }
         });
+    }
+
+    imageUpload(uriPhoto) {
+        console.log('Upload Foto On Fire!');
+        var data = new FormData();
+        console.log(data, 'OAKWDOAKWODKWOAKD');
+        // data.append('picture', { uri: uriPhoto, name: 'selfie.jpg', type: 'image/jpg' });
+
+        // const principal = {
+        //     'Content-Type': 'multipart/form-data;'
+        // }
+
+        // axios.post(`${IPSERVER}/ApapunStorages/storage/upload`, data, {
+        //     headers: {
+        //         principal
+        //     }
+        // }).then(response => {
+        //     console.log(response.data, 'Sukses Upload Foto');
+        // }).catch(error => {
+        //     console.log(error, 'Error Upload Foto');
+        // })
     }
 
     renderProductItem = (itemPhoto) => {
@@ -180,6 +237,26 @@ export class OrderPage extends React.Component {
         )
     }
 
+    renderKategori = () => {
+        const resultKategori = this.state.dataCategory;
+        if (resultKategori) {
+            return resultKategori.map((data, index) => {
+                return <Picker.Item label={data.name} value={data.id} key={index} />
+            })
+        }
+        return <Picker.Item label='Tidak ada Kategori' value='0' />
+    }
+
+    renderSubKategori = () => {
+        const resultSubKategori = this.state.dataSubCategory;
+        if (resultSubKategori) {
+            return resultSubKategori.map((data, index) => {
+                return <Picker.Item label={data.name} value={data.id} key={index} />
+            })
+        }
+        return <Picker.Item label='Anda harus  memilih kategori' value='0' />
+    }
+
     render() {
         const {
             nameProduct,
@@ -189,10 +266,11 @@ export class OrderPage extends React.Component {
             serveDelivery,
             addressDelivery,
             catatanTambahan,
-            numberPcs
+            numberPcs,
+            subCategoryProduct
         } = this.state;
 
-        console.log(this.state.uploadDesign.length);
+        console.log(this.state.categoryProduct, 'OKOKOKOK');
         return (
             <ScrollView
                 style={styles.containerStyle}
@@ -213,16 +291,30 @@ export class OrderPage extends React.Component {
                         <View style={styles.pickerStyle}>
                             <Picker
                                 selectedValue={categoryProduct}
-                                onValueChange={(v) => this.onChange('categoryProduct', v)}
+                                onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
                             >
                                 <Picker.Item label='Pilih Kategori Produk' value='0' />
-                                <Picker.Item label='Fashion' value='Fashion' />
-                                <Picker.Item label='Lifestyle' value='Lifestyle' />
-                                <Picker.Item label='Lainnya' value='Lainnya' />
+                                {this.renderKategori()}
                             </Picker>
                         </View>
                     </View>
                 </ContainerSection>
+
+                <ContainerSection>
+                    <View style={styles.pickerContainer}>
+                        <Text style={styles.pickerTextStyle}>Sub Kategori Produk</Text>
+                        <View style={styles.pickerStyle}>
+                            <Picker
+                                selectedValue={subCategoryProduct}
+                                onValueChange={(v) => this.onChange('subCategoryProduct', v)}
+                            >
+                                <Picker.Item label='Pilih Sub Kategori Produk' value='0' />
+                                {this.renderSubKategori()}
+                            </Picker>
+                        </View>
+                    </View>
+                </ContainerSection>
+
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
