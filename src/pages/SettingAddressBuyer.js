@@ -9,7 +9,16 @@ import { COLOR } from './../shared/config';
 export class SettingAddressBuyerPage extends React.Component {
 
     static navigationOptions = {
-        headerTitle: 'Edit Address'
+        headerTitle: 'Edit Address',
+        headerRight:
+            <TouchableOpacity>
+                <View>
+                    <Image
+                        style={{ height: 20, width: 20, margin: 20 }}
+                        source={require('./../assets/images/icon_plus.jpg')}
+                    />
+                </View>
+            </TouchableOpacity>
     }
 
     render() {
@@ -103,13 +112,121 @@ export class SettingAddressBuyerPage extends React.Component {
                     </View>
 
 
-                     <View style={{
+                    <View style={{
                         width: '78%',
                         height: 20,
                         // backgroundColor: 'skyblue',
                         alignSelf: 'center',
                         marginTop: 5
-                        
+
+                    }}>
+                        <View>
+                            <Text style={{ fontSize: 12, color: 'red' }}>Alamat Utama </Text>
+                        </View>
+
+                    </View>
+
+
+
+
+                </View>
+
+
+
+
+
+                <View style={styles.containerMainAddress}>
+
+
+                    <View style={{
+                        width: '100%',
+                        height: 50,
+                        // backgroundColor: 'red',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        marginTop: 5
+                    }}>
+
+                        <View style={{
+                            width: '45%',
+                            height: 50,
+                            // backgroundColor: 'yellow'
+                        }}>
+
+                            <View style={{
+                                paddingTop: 10
+                            }}>
+                                <Text style={{ fontWeight: 'bold', fontSize: 15 }}> Office Tangerang</Text>
+                            </View>
+                            <View>
+                                <Text style={{ fontSize: 13.5, paddingTop: 3 }}> Penerima : Judy </Text>
+                            </View>
+
+
+                        </View>
+
+                        <View style={{
+                            width: '35%',
+                            height: 35,
+                            // backgroundColor: 'skyblue'
+                            flexDirection: 'row',
+                            justifyContent: 'flex-end'
+                        }}>
+                            <View style={{
+                                paddingTop: 7
+                            }}>
+                                <TouchableWithoutFeedback>
+                                    <Image style={{ height: 20, width: 20, borderRadius: 0, }}
+                                        source={require('./../assets/images/pen_address.png')}
+                                    />
+
+                                </TouchableWithoutFeedback>
+                            </View>
+
+                            <View style={{
+                                paddingLeft: 8, paddingTop: 7
+                            }}>
+                                <TouchableWithoutFeedback>
+                                    <Image style={{ height: 20, width: 15, borderRadius: 0 }}
+                                        source={require('./../assets/images/trash_address.png')}
+                                    />
+                                </TouchableWithoutFeedback>
+                            </View>
+
+
+
+                        </View>
+                    </View>
+
+
+                    <View style={{
+                        width: '78%',
+                        height: 50,
+                        // backgroundColor: 'red',
+                        alignSelf: 'center',
+                        marginTop: 5
+                    }}>
+
+                        <View>
+                            <Text style={{ fontSize: 12 }}>(+62)<Text> 84485300 </Text></Text>
+
+
+                            <Text style={{ fontSize: 12 }}>Jl. Ruko Golden No.08 </Text>
+
+                            <Text style={{ fontSize: 12 }} >Kebon Jeruk, Jakarta Barat </Text>
+                        </View>
+
+
+                    </View>
+
+
+                    <View style={{
+                        width: '78%',
+                        height: 20,
+                        // backgroundColor: 'skyblue',
+                        alignSelf: 'center',
+                        marginTop: 5
+
                     }}>
                         <View>
                             <Text style={{ fontSize: 12, color: 'red' }}>Alamat Utama </Text>
@@ -133,7 +250,14 @@ export class SettingAddressBuyerPage extends React.Component {
 
 
 
+
+
+
+
+
+
             </View>
+
 
 
 

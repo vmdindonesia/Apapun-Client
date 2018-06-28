@@ -12,11 +12,12 @@ import {
 import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
-
 import { StartScreen } from './pages/StartScreen';
+
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
+import { PengaturanBankPage } from './pages/pengaturanBank.js'
 import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
@@ -55,6 +56,9 @@ const Routes = createStackNavigator({
   },
   SettingAddressBuyerPage : { 
     screen : SettingAddressBuyerPage
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
   },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
