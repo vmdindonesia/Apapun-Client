@@ -147,7 +147,8 @@ export class OrderPage extends React.Component {
             }
             else {
                 let source = { uri: response.uri };
-                this.imageUpload(source);
+                console.log(response, 'DATA IMAGEEEE');
+                this.imageUpload(source, response);
                 // You can also display the image using data:
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
@@ -165,24 +166,22 @@ export class OrderPage extends React.Component {
     }
 
     imageUpload(uriPhoto) {
-        console.log('Upload Foto On Fire!');
-        var data = new FormData();
-        console.log(data, 'OAKWDOAKWODKWOAKD');
-        // data.append('picture', { uri: uriPhoto, name: 'selfie.jpg', type: 'image/jpg' });
+        console.log(uriPhoto, 'URI TOD');
+        var photo = {
+            uri: uriPhoto.uri,
+            type: 'image/jpeg',
+            name: 'photo.jpg',
+        };
 
-        // const principal = {
-        //     'Content-Type': 'multipart/form-data;'
-        // }
+        var body = new FormData();
+        body.append('photo', photo);
 
-        // axios.post(`${IPSERVER}/ApapunStorages/storage/upload`, data, {
-        //     headers: {
-        //         principal
-        //     }
-        // }).then(response => {
-        //     console.log(response.data, 'Sukses Upload Foto');
-        // }).catch(error => {
-        //     console.log(error, 'Error Upload Foto');
-        // })
+        axios.open('POST', `${IPSERVER}/ApapunStorages/storage/upload`, body
+        ).then(response => {
+            console.log(response, 'Image Berhasil Upload');
+        }).catch(error => {
+            console.log(error, 'Error Upload Poto');
+        })
     }
 
     renderProductItem = (itemPhoto) => {
@@ -331,10 +330,7 @@ export class OrderPage extends React.Component {
                                             <Text style={{ fontSize: 13, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
                                         </View>
                                         <TouchableOpacity
-<<<<<<< HEAD
-=======
                                             onPress={() => this.designPhotoUpload('tempUploadDesign')}
->>>>>>> 0d457b119f83a76427a6762f74995c7c0aee30c6
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
