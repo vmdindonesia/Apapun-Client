@@ -12,11 +12,12 @@ import {
 import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
-
 import { StartScreen } from './pages/StartScreen';
+
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
+import { PengaturanBankPage } from './pages/pengaturanBank.js'
 import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
@@ -31,6 +32,12 @@ import { BerandaCrafterPage } from './pages/BerandaCrafter';
 import { FashionCrafterPage } from './pages/FashionCrafter';
 import { FurnitureCrafterPage } from './pages/FurnitureCrafter';
 import { BeautyCrafterPage } from './pages/BeautyCrafter';
+import { CrafterMyOrderPage } from './pages/CrafterMyOder';
+import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
+import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
+import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
+import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+
 
 console.disableYellowBox = true;
 
@@ -43,6 +50,21 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  DetailOrder : {
+    screen : DetailOrderPage
+  },
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+  WhislistOnMyOrder: {
+    screen: WishlistOnMyOrderPage
+  },
+  HistoryOnMyOrder: {
+    screen : HistoryOnMyOrderPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -66,6 +88,9 @@ const Routes = createStackNavigator({
   },
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
   },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage

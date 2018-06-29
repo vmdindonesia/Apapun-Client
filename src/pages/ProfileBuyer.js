@@ -15,272 +15,292 @@ export class ProfileBuyerPage extends React.Component {
     render() {
         return (
 
-
-            <ImageBackground
-                source={require('./../assets/images/background_profile.jpeg')}
-                style={styles.backgroundStyle}
+            <ScrollView
+                style={styles.containerStyle}
+                keyboardShouldPersistTaps="always"
+                ref={ref => this.scrollView = ref}
             >
-                <StatusBar
-                    backgroundColor={COLOR.headerBar}
-                    barStyle="dark-content"
-                />
-
-                <View
-                // style={{ flex: 1 }}
+                <ImageBackground
+                    source={require('./../assets/images/background_profile.jpeg')}
+                    style={styles.backgroundStyle}
                 >
+                    <StatusBar
+                        backgroundColor={COLOR.headerBar}
+                        barStyle="dark-content"
+                    />
 
-                    <View style={styles.containerImage}>
-                        <Image style={styles.containerPhoto}
-                            source={require('./../assets/images/profile.png')}
-                        />
-                    </View>
+                    <View
+                    // style={{ flex: 1 }}
+                    >
 
-                    <View style={styles.containerMainForm}>
+                        <View style={styles.containerImage}>
+                            <Image style={styles.containerPhoto}
+                                source={require('./../assets/images/profile.png')}
+                            />
+                        </View>
 
-                        <View style={{ flexDirection: 'row', height: 60, width: '85%', alignItems: 'center', }}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                                Gal Gadot
+                        <View style={styles.containerMainForm}>
+
+                            <View style={{ flexDirection: 'row', height: 60, width: '85%', alignItems: 'center', }}>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                                    Gal Gadot
                             </Text>
-                            <View>
-                                <TouchableWithoutFeedback>
-                                    <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 165 }}
-                                        source={require('./../assets/images/pen_mainprof.png')}
+                                <View>
+                                    <TouchableWithoutFeedback>
+                                        <TouchableOpacity style={styles.button}
+                                            onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                            <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 165 }}
+                                                source={require('./../assets/images/pen_mainprof.png')}
+                                            />
+                                        </TouchableOpacity>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            </View>
+
+                            <View style={{ width: '85%', borderColor: 'rgba(226, 226, 226, 0.2)', borderWidth: 1, marginTop: -5 }} />
+
+
+                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                        source={require('./../assets/images/envelope.png')}
                                     />
-                                </TouchableWithoutFeedback>
-                            </View>
-                        </View>
+                                </View>
 
-                        <View style={{ width: '85%', borderColor: 'rgba(226, 226, 226, 0.2)', borderWidth: 1, marginTop: -5 }} />
-
-
-                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
-
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                    source={require('./../assets/images/envelope.png')}
-                                />
-                            </View>
-
-                            <View style={{
-                                flexDirection: 'row',
-                                // backgroundColor: 'skyblue', 
-                                height: '100%', width: '85%',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
-                                    galgadot@gmail.com
+                                <View style={{
+                                    flexDirection: 'row',
+                                    // backgroundColor: 'skyblue', 
+                                    height: '100%', width: '85%',
+                                    alignItems: 'center',
+                                }}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
+                                        galgadot@gmail.com
                             </Text>
+                                </View>
+
                             </View>
 
-                        </View>
 
+                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
 
-                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                        source={require('./../assets/images/telp_mainprof.png')}
+                                    />
+                                </View>
 
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                    source={require('./../assets/images/telp_mainprof.png')}
-                                />
-                            </View>
-
-                            <View style={{
-                                flexDirection: 'row',
-                                // backgroundColor: 'skyblue', 
-                                height: '100%', width: '85%',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
-                                    081284485300
+                                <View style={{
+                                    flexDirection: 'row',
+                                    // backgroundColor: 'skyblue', 
+                                    height: '100%', width: '85%',
+                                    alignItems: 'center',
+                                }}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
+                                        081284485300
                             </Text>
+                                </View>
+
+                            </View>
+
+                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                        source={require('./../assets/images/birthday_cake.png')}
+                                    />
+                                </View>
+
+                                <View style={{
+                                    flexDirection: 'row',
+                                    // backgroundColor: 'skyblue', 
+                                    height: '100%', width: '85%',
+                                    alignItems: 'center',
+                                }}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
+                                        30 Januari 1995
+                                    </Text>
+                                </View>
+
+                            </View>
+
+                            <View style={{ flexDirection: 'row', height: 70, width: '85%', marginTop: 5 }}>
+
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    // alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                        source={require('./../assets/images/black_loc_mainprof.png')}
+                                    />
+                                </View>
+
+                                <View style={{
+                                    flexDirection: 'column',
+                                    // backgroundColor: 'skyblue', 
+                                    height: '100%', width: '85%',
+                                    // alignItems: 'center',
+                                }}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
+                                        Banten, Kabupaten Tangerang, Kelapa Dua
+                                    </Text>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 10, textAlign: 'left' }}>
+                                        Jalan Komodo
+                                    </Text>
+                                </View>
+
+                            </View>
+                        </View>
+
+
+
+                        <View style={styles.containerSecondForm}>
+
+
+                            <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
+
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    alignItems: 'center',
+                                    // justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                        source={require('./../assets/images/ic_wallet.png')}
+                                    />
+                                </View>
+
+                                <View style={{
+                                    flexDirection: 'column',
+                                    // backgroundColor: 'skyblue',
+                                    height: '100%', width: '85%',
+                                    // alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
+                                        Total Apresiasi Design Anda
+                                     </Text>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
+                                        Rp.120.000
+                                     </Text>
+                                </View>
+
                             </View>
 
                         </View>
 
-                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+
+
+                        <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                alignItems: 'center',
-                                justifyContent: 'center'
+                                //  backgroundColor: 'yellow', 
+                                height: 70, width: '85%',
                             }}>
-                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                    source={require('./../assets/images/birthday_cake.png')}
-                                />
-                            </View>
 
-                            <View style={{
-                                flexDirection: 'row',
-                                // backgroundColor: 'skyblue', 
-                                height: '100%', width: '85%',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10 }}>
-                                    30 Januari 1995
+                                <View style={{
+                                    flexDirection: 'row',
+                                    //  backgroundColor: 'blue',
+                                    height: '100%', width: '15%',
+                                    alignItems: 'center',
+                                    // justifyContent: 'center'
+                                }}>
+                                    <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                        source={require('./../assets/images/ic_design.png')}
+                                    />
+                                </View>
+
+                                <View style={{
+                                    // flexDirection: 'column',
+                                    // backgroundColor: 'skyblue',
+                                    height: '100%', width: '85%',
+                                    // alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
+                                        Total Design Anda
                                     </Text>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
+                                        3 Design
+                                    </Text>
+                                </View>
                             </View>
-
                         </View>
 
-                        <View style={{ flexDirection: 'row', height: 70, width: '85%', marginTop: 5 }}>
 
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                // alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                    source={require('./../assets/images/black_loc_mainprof.png')}
-                                />
-                            </View>
 
-                            <View style={{
-                                flexDirection: 'column',
-                                // backgroundColor: 'skyblue', 
-                                height: '100%', width: '85%',
-                                // alignItems: 'center',
-                            }}>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
-                                    Banten, Kabupaten Tangerang, Kelapa Dua
-                                    </Text>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 10, textAlign: 'left' }}>
-                                    Jalan Komodo
-                                    </Text>
-                            </View>
 
-                        </View>
+
+
+
+
+
+
                     </View>
 
-
-
-                    <View style={styles.containerSecondForm}>
-
-
-                        <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
-
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                alignItems: 'center',
-                                // justifyContent: 'center'
-                            }}>
-                                <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                    source={require('./../assets/images/ic_wallet.png')}
-                                />
-                            </View>
-
-                            <View style={{
-                                flexDirection: 'column',
-                                // backgroundColor: 'skyblue',
-                                height: '100%', width: '85%',
-                                // alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
-                                    Total Apresiasi Design Anda
-                                     </Text>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
-                                    Rp.120.000
-                                     </Text>
-                            </View>
-
-                        </View>
-
-                    </View>
-
-
-
-                    <View style={styles.containerThirdForm}>
+                    <View style={styles.containerTh}>
 
                         <View style={{
                             flexDirection: 'row',
                             //  backgroundColor: 'yellow', 
                             height: 70, width: '85%',
                         }}>
-
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'blue',
-                                height: '100%', width: '15%',
-                                alignItems: 'center',
-                                // justifyContent: 'center'
-                            }}>
-                                <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                    source={require('./../assets/images/ic_design.png')}
-                                />
-                            </View>
-
                             <View style={{
                                 // flexDirection: 'column',
                                 // backgroundColor: 'skyblue',
                                 height: '100%', width: '85%',
-                                // alignItems: 'center',
+                                alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
+                                <Text style={{ fontSize: 13, paddingLeft: 10, fontWeight: 'bold', textAlign: 'left' }}>
+                                    Hargai Designmu
+            </Text>
                                 <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
-                                    Total Design Anda
-                                    </Text>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
-                                    3 Design
-                                    </Text>
+                                    Share dan opresiasikan design anda di seluruh indonsia
+            </Text>
+
+                    <TouchableOpacity style={styles.buttonSignUp}
+                     onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                        <Text style={styles.signupButton}>Pengaturan</Text>
+                    </TouchableOpacity>
                             </View>
-
                         </View>
-
                     </View>
 
 
 
 
 
-
-
-
-
-
-                </View>
-
-
-
-
-            </ImageBackground >
+                </ImageBackground >
+            </ScrollView >
 
 
 
         );
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
@@ -368,11 +388,46 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
+    containerTh: {
+        borderRadius: 50,
+        backgroundColor: '#ffffff',
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'row',
+        marginTop: 5,
+        height: 120,
+        width: '90%',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+    },
     icons: {
         height: 30,
         width: 30,
         borderRadius: 100,
     },
+    signupButton: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 17,
+        fontWeight: 'bold',
+        fontFamily: 'Quicksand-Regular'
+    },
+    buttonSignUp: {
+        // marginTop: 60,
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 40,
+        width: 165,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        zIndex: 4,
+        marginBottom: -50
+    }
 });
 
 export default ProfileBuyerPage
