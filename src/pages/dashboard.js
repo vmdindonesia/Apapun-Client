@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { COLOR } from './../shared/config';
-import { Icon } from 'react-native-elements';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class DashboardPage extends React.Component {
 	static navigationOptions = {
@@ -490,723 +489,708 @@ export class DashboardPage extends React.Component {
 																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 13 }}>Bali</Text>
 																						</View>
 
-																						
-																							<View style={{ alignSelf: 'center' }}>
+
+																						<View style={{ alignSelf: 'center' }}>
 																							<TouchableOpacity style={styles.button}
-																							onPress={() => this.props.navigation.navigate('')}>
+																								onPress={() => this.props.navigation.navigate('')}>
 																								<Image
 																									style={styles.photoProfileHomeScreen}
 																									source={require('./../assets/images/profile.png')}
 																								/>
-																								</TouchableOpacity>
-																							</View>
-																						
+																							</TouchableOpacity>
+																						</View>
 
-																							<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
-																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
-																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 
+																						<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
+																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
+																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 																					</View>
-																						<View style={styles.containerBodyProfile}>
-																							<View style={styles.listProfileIcon}>
-																								<View style={styles.profileMenu}>
-																									<View style={{ paddingTop: 25, paddingLeft: 120 }}>
-																										<Icon
-																											name='chevron-right'
-																											color='white'
-																										/>
-																									</View>
-																									{/* <View style={{ marginLeft: 85, marginTop: 25 }}> */}
-																									<View style={{ flex: 1, marginTop: -32, paddingLeft: 85 }}>
-																										<TouchableOpacity
-																											onPress={() => this.props.navigation.navigate('ProfilePage')}
-																										>
-																											<Image
-																												style={styles.iconProfile}
-																												source={require('./../assets/images/edit_profil.png')}
-																											/>
-																											<Text style={{ color: 'white', paddingLeft: 60, fontSize: 12, marginTop: -27 }}>Edit Profil </Text>
-																										</TouchableOpacity>
-																									</View>
-																									{/* </View> */}
+
+
+																					<View style={{ flexDirection: 'column', paddingTop: 20 }}>
+																						<TouchableOpacity
+																							onPress={() => this.props.navigation.navigate('ProfilePage')}
+																						>
+																							<View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+																								<Image
+																									style={styles.iconProfile}
+																									source={require('./../assets/images/edit_profil.png')}
+																								/>
+																								<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Edit Profil </Text>
+																								<Icon size={24} name="md-arrow-forward" color="#fff" />
+																							</View>
+																						</TouchableOpacity>
+																					</View>
+
+																					<View style={{ flexDirection: 'column', paddingTop: 20, marginLeft: 93 }}>
+																						<TouchableOpacity
+																							onPress={() => this.props.navigation.navigate('Login')}
+																						>
+																							<View style={{ flexDirection: 'row' }}>
+																								<Image
+																									style={styles.iconProfile}
+																									source={require('./../assets/images/logout.png')}
+																								/>
+																								<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Log out</Text>
+																							</View>
+																						</TouchableOpacity>
+																					</View>
+																				</View>
+																				:
+																				<View style={{ height: '100%' }}>
+																					{
+																						statusMenu === 'crafterMenu' ?
+																							<View style={styles.containerBodyJoinCrafter}>
+
+																								<View style={styles.photoJoinCrafter}>
+																									<Image
+																										style={styles.joinImage}
+																										source={require('./../assets/images/crafter_menu.png')}
+																									/>
+																								</View>
+
+																								<View styles={{ flex: 1 }}>
+
+																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
 
 																								</View>
-																							</View>
 
-																							<View style={styles.listProfileIcon}>
-																								<View style={styles.profileMenu}>
-																									<TouchableOpacity
-																										onPress={() => this.props.navigation.navigate('Login')}
-																									>
-																										<View style={{ marginLeft: 91, height: 90 }}>
-																											<View style={{ flex: 1 }}>
-																												<Image
-																													style={styles.iconLogOut}
-																													source={require('./../assets/images/logout.png')}
-																												/>
-																												<Text style={{ color: 'white', marginTop: -20, paddingLeft: 53, fontSize: 12 }}>Log Out</Text>
-																											</View>
-																										</View>
+																								<View style={{ flex: 1 }}>
+																									<Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
+																									<Image
+																										style={styles.iconQuestion}
+																										source={require('./../assets/images/question.png')}
+																									/>
+																									<TouchableOpacity style={styles.buttonJoin}
+																										onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
+																										<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
 																									</TouchableOpacity>
 																								</View>
 																							</View>
-																						</View>
-																					</View>
-																					:
-																				<View style={{ height: '100%' }}>
-																						{
-																							statusMenu === 'crafterMenu' ?
-																								<View style={styles.containerBodyJoinCrafter}>
-
-																									<View style={styles.photoJoinCrafter}>
-																										<Image
-																											style={styles.joinImage}
-																											source={require('./../assets/images/crafter_menu.png')}
-																										/>
-																									</View>
-
-																									<View styles={{ flex: 1 }}>
-
-																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
-																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
-																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
-
-																									</View>
-
-																									<View style={{ flex: 1 }}>
-																										<Text style={{ color: 'white', paddingLeft: 130, marginTop: 3, fontSize: 13, marginTop: 30, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115' }}>CRAFTER ?</Text></Text>
-																										<Image
-																											style={styles.iconQuestion}
-																											source={require('./../assets/images/question.png')}
-																										/>
-																										<TouchableOpacity style={styles.buttonJoin}
-																											onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
-																											<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
-																										</TouchableOpacity>
-																									</View>
-																								</View>
-																								:
-																								<View />
-																						}
-																					</View>
+																							:
+																							<View />
 																					}
+																				</View>
+																		}
 																	</View>
 
-															}
-																	</View>
 															}
 														</View>
 												}
 											</View>
-
-											<View style={{
-												flex: 1,
-												flexDirection: 'row',
-												width: '100%',
-												height: 50,
-												backgroundColor: 'rgba(70,70,71,0.5)',
-												marginBottom: '25%',
-												marginTop: 20
-											}}>
-
-												{/* INI MENU BUTTON */}
-												<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-													<TouchableOpacity
-														onPress={() => this.statusMenus('home')}
-													>
-														{
-															statusMenu === 'home' ?
-																<View>
-																	<Image
-																		resizeMode='stretch'
-																		style={{ width: 30, height: 7 }}
-																		source={require('./../assets/images/umum-enabled.png')}
-																	/>
-																</View>
-																:
-																<View>
-																	<Image
-																		resizeMode='stretch'
-																		style={{ width: 30, height: 7, }}
-																		source={require('./../assets/images/umum-disabled.png')}
-																	/>
-																</View>
-														}
-													</TouchableOpacity>
-												</View>
-												<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-													<TouchableOpacity
-														onPress={() => this.statusMenus('profile')}
-													>
-														{
-															statusMenu === 'profile' ?
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/profil-enable.png')}
-																	/>
-																</View>
-																:
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/profil-disable.png')}
-																	/>
-																</View>
-														}
-													</TouchableOpacity>
-												</View>
-												<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-													<TouchableOpacity
-														onPress={() => this.statusMenus('order')}
-													>
-														{
-															statusMenu === 'order' ?
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/order-enable.png')}
-																	/>
-																</View>
-																:
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/order-disable.png')}
-																	/>
-																</View>
-														}
-													</TouchableOpacity>
-												</View>
-												<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-													<TouchableOpacity
-														onPress={() => this.statusMenus('crafterList')}
-													>
-														{
-															statusMenu === 'crafterList' ?
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/crafter-list-enable.png')}
-																	/>
-																</View>
-																:
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/crafter-list-disable.png')}
-																	/>
-																</View>
-														}
-													</TouchableOpacity>
-												</View>
-												<View style={{ width: 73, height: 76, justifyContent: 'center', alignItems: 'center' }}>
-													<TouchableOpacity
-														onPress={() => this.statusMenus('crafterMenu')}
-													>
-														{
-															statusMenu === 'crafterMenu' ?
-																<View>
-																	<Image
-																		style={{ width: 30, height: 30, }}
-																		source={require('./../assets/images/crafter-menu-enable.png')}
-																	/>
-																</View>
-																:
-																<View>
-																	<Image
-																		style={{ width: 50, height: 30, }}
-																		source={require('./../assets/images/crafter-menu-disable.png')}
-																	/>
-																</View>
-														}
-													</TouchableOpacity>
-												</View>
-											</View>
-							</View>
-									:
-							<View />
 									}
-					<View style={styles.containerMenu}>
+								</View>
 
+								<View style={{
+									flex: 1,
+									flexDirection: 'row',
+									width: '100%',
+									height: 50,
+									backgroundColor: 'rgba(70,70,71,0.5)',
+									marginBottom: '25%',
+									marginTop: 20
+								}}>
+
+									{/* INI MENU BUTTON */}
+									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
 										<TouchableOpacity
-											style={styles.containerButtonLogo}
-											onPress={() => this.sideMenus('Open')}
+											onPress={() => this.statusMenus('home')}
 										>
 											{
-												sideMenu === true ?
-													<Image
-														style={styles.Logo2}
-														source={require('./../assets/images/ic_logo2.png')}
-													/>
+												statusMenu === 'home' ?
+													<View>
+														<Image
+															resizeMode='stretch'
+															style={{ width: 30, height: 7 }}
+															source={require('./../assets/images/umum-enabled.png')}
+														/>
+													</View>
 													:
-													<Image
-														style={styles.Logo}
-														source={require('./../assets/images/ic_logo1.png')}
-													/>
-
+													<View>
+														<Image
+															resizeMode='stretch'
+															style={{ width: 30, height: 7, }}
+															source={require('./../assets/images/umum-disabled.png')}
+														/>
+													</View>
 											}
 										</TouchableOpacity>
 									</View>
-				</ImageBackground>
+									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+										<TouchableOpacity
+											onPress={() => this.statusMenus('profile')}
+										>
+											{
+												statusMenu === 'profile' ?
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/profil-enable.png')}
+														/>
+													</View>
+													:
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/profil-disable.png')}
+														/>
+													</View>
+											}
+										</TouchableOpacity>
+									</View>
+									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+										<TouchableOpacity
+											onPress={() => this.statusMenus('order')}
+										>
+											{
+												statusMenu === 'order' ?
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/order-enable.png')}
+														/>
+													</View>
+													:
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/order-disable.png')}
+														/>
+													</View>
+											}
+										</TouchableOpacity>
+									</View>
+									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
+										<TouchableOpacity
+											onPress={() => this.statusMenus('crafterList')}
+										>
+											{
+												statusMenu === 'crafterList' ?
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/crafter-list-enable.png')}
+														/>
+													</View>
+													:
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/crafter-list-disable.png')}
+														/>
+													</View>
+											}
+										</TouchableOpacity>
+									</View>
+									<View style={{ width: 73, height: 76, justifyContent: 'center', alignItems: 'center' }}>
+										<TouchableOpacity
+											onPress={() => this.statusMenus('crafterMenu')}
+										>
+											{
+												statusMenu === 'crafterMenu' ?
+													<View>
+														<Image
+															style={{ width: 30, height: 30, }}
+															source={require('./../assets/images/crafter-menu-enable.png')}
+														/>
+													</View>
+													:
+													<View>
+														<Image
+															style={{ width: 50, height: 30, }}
+															source={require('./../assets/images/crafter-menu-disable.png')}
+														/>
+													</View>
+											}
+										</TouchableOpacity>
+									</View>
+								</View>
 							</View>
-		)
+							:
+							<View />
 					}
-				
-				};
-				
+					<View style={styles.containerMenu}>
+
+						<TouchableOpacity
+							style={styles.containerButtonLogo}
+							onPress={() => this.sideMenus('Open')}
+						>
+							{
+								sideMenu === true ?
+									<Image
+										style={styles.Logo2}
+										source={require('./../assets/images/ic_logo2.png')}
+									/>
+									:
+									<Image
+										style={styles.Logo}
+										source={require('./../assets/images/ic_logo1.png')}
+									/>
+
+							}
+						</TouchableOpacity>
+					</View>
+				</ImageBackground>
+			</View>
+		)
+	}
+
+};
+
 const styles = StyleSheet.create({
-						backgroundStyle: {
-						width: '100%',
-					height: '100%',
-					backgroundColor: COLOR.element_a1
-				},
+	backgroundStyle: {
+		width: '100%',
+		height: '100%',
+		backgroundColor: COLOR.element_a1
+	},
 	formatSwiper: {
-						backgroundColor: '#FFFFFF',
-					width: 5,
-					height: 5,
-					borderRadius: 4,
-					marginLeft: 3,
-					marginRight: 3,
-					marginTop: 3,
-					marginBottom: 3
-				},
+		backgroundColor: '#FFFFFF',
+		width: 5,
+		height: 5,
+		borderRadius: 4,
+		marginLeft: 3,
+		marginRight: 3,
+		marginTop: 3,
+		marginBottom: 3
+	},
 	container: {
-						flex: 1,
-					width: '100%',
-					height: '100%',
-					alignItems: 'center'
-				},
+		flex: 1,
+		width: '100%',
+		height: '100%',
+		alignItems: 'center'
+	},
 	containerSlide: {
-						width: '100%',
-					height: 160
-				},
+		width: '100%',
+		height: 160
+	},
 	slide1: {
-						flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center'
-				},
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 	slide2: {
-						flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center'
-				},
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 	containerDashboard: {
-						// flex: 1,
-						borderRadius: 20,
-					backgroundColor: 'rgba(0,0,0,0.8)',
-					shadowColor: '#000',
-		shadowOffset: {width: 0, heigth: 2 },
-					// shadowRadius: 20,
-					// shadowOpacity: 100,
-					// borderColor :'black',
-					flexDirection: 'row',
-					marginTop: 10,
-					justifyContent: 'center',
-					alignItems: 'center',
-					height: 175,
-					width: '95%',
-					// backgroundColor: 'blue'
-				},
+		// flex: 1,
+		borderRadius: 20,
+		backgroundColor: 'rgba(0,0,0,0.8)',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, heigth: 2 },
+		// shadowRadius: 20,
+		// shadowOpacity: 100,
+		// borderColor :'black',
+		flexDirection: 'row',
+		marginTop: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: 175,
+		width: '95%',
+		// backgroundColor: 'blue'
+	},
 	containerPhoto: {
-						flex: 1,
-					justifyContent: 'center',
-					alignItems: 'center',
-				},
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 	containerInsidePhoto: {
-						justifyContent: 'center',
-					height: 120,
-					width: 120,
-					alignSelf: 'center',
-					margin: 8,
-					borderRadius: 100
-				},
+		justifyContent: 'center',
+		height: 120,
+		width: 120,
+		alignSelf: 'center',
+		margin: 8,
+		borderRadius: 100
+	},
 	containerInsideProfileOne: {
-						width: 150,
-					height: 160,
-				},
+		width: 150,
+		height: 160,
+	},
 	containerInsideProfileTwo: {
-						flex: 3,
-					height: 160,
-					justifyContent: 'center',
-					alignItems: 'center',
-				},
+		flex: 3,
+		height: 160,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 	containerUp: {
-						width: 200,
-					height: 60,
-			
-				},
+		width: 200,
+		height: 60,
+
+	},
 	containerMiddleProfileTwo: {
-						width: 200,
-					height: 50,
-				},
+		width: 200,
+		height: 50,
+	},
 	containerBottomProfileTwo: {
-						width: 200,
-					height: 50,
-				},
+		width: 200,
+		height: 50,
+	},
 	containerUploadIdea: {
-						// flex: 2,
-						borderRadius: 20,
-					backgroundColor: 'rgba(0,0,0,0.8)',
-					shadowColor: '#009',
-		shadowOffset: {width: 0, heigth: 2 },
-					shadowRadius: 2,
-					flexDirection: 'row',
-					marginTop: 10,
-					marginBottom: 70,
-					height: 160,
-					width: '95%',
-					// backgroundColor: 'yellow'
-				},
+		// flex: 2,
+		borderRadius: 20,
+		backgroundColor: 'rgba(0,0,0,0.8)',
+		shadowColor: '#009',
+		shadowOffset: { width: 0, heigth: 2 },
+		shadowRadius: 2,
+		flexDirection: 'row',
+		marginTop: 10,
+		marginBottom: 70,
+		height: 160,
+		width: '95%',
+		// backgroundColor: 'yellow'
+	},
 	containerFlexUp: {
-						width: 350,
-					height: 125,
-				},
+		width: 350,
+		height: 125,
+	},
 	containerCategory: {
-						width: 350,
-					height: 75,
-				},
+		width: 350,
+		height: 75,
+	},
 	imageStyle: {
-						resizeMode: 'cover'
-				},
+		resizeMode: 'cover'
+	},
 	profileImage: {
-						height: 110,
-					width: 110,
-					borderRadius: 100,
-				},
+		height: 110,
+		width: 110,
+		borderRadius: 100,
+	},
 	icons: {
-						height: 30,
-					width: 30,
-					borderRadius: 100,
-				},
+		height: 30,
+		width: 30,
+		borderRadius: 100,
+	},
 	containerImageIdea: {
-						flex: 3,
-					height: 70,
-					width: 300,
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					flexDirection: 'row',
-					marginBottom: 20,
-					marginTop: 10,
-					// backgroundColor:'red'
-				},
+		flex: 3,
+		height: 70,
+		width: 300,
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		flexDirection: 'row',
+		marginBottom: 20,
+		marginTop: 10,
+		// backgroundColor:'red'
+	},
 	containerImageInsideIdea: {
-						height: 100,
-					width: 98,
-				},
+		height: 100,
+		width: 98,
+	},
 	containerMenu: {
-						position: 'absolute',
-					bottom: 0,
-					alignSelf: 'center',
-					justifyContent: 'center',
-					width: 125,
-					height: 30 * 2,
-					borderRadius: 90,
-					borderBottomRightRadius: 0,
-					borderBottomLeftRadius: 0,
-					backgroundColor: '#C1C1C1'
-				},
+		position: 'absolute',
+		bottom: 0,
+		alignSelf: 'center',
+		justifyContent: 'center',
+		width: 125,
+		height: 30 * 2,
+		borderRadius: 90,
+		borderBottomRightRadius: 0,
+		borderBottomLeftRadius: 0,
+		backgroundColor: '#C1C1C1'
+	},
 	containerButtonLogo: {
-						padding: 10,
-					marginBottom: 20,
-					shadowColor: '#000',
-		shadowOffset: {width: 0, height: 5 },
-					shadowRadius: 10,
-					shadowOpacity: 0.35,
-					marginTop: 15,
-					alignItems: 'center'
-				},
+		padding: 10,
+		marginBottom: 20,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 5 },
+		shadowRadius: 10,
+		shadowOpacity: 0.35,
+		marginTop: 15,
+		alignItems: 'center'
+	},
 	Logo: {
-						height: 85,
-					width: 85,
-					marginBottom: 25
-				},
+		height: 85,
+		width: 85,
+		marginBottom: 25
+	},
 	Logo2: {
-						height: 60,
-					width: 60,
-				},
+		height: 60,
+		width: 60,
+	},
 	containerHome: {
-						flex: 4,
-					borderRadius: 20,
-					backgroundColor: 'rgba(0,0,0,0)',
-					shadowColor: '#000',
-		shadowOffset: {width: 0, heigth: 2 },
-					shadowRadius: 2,
-					flexDirection: 'row',
-					height: '100%',
-					width: '100%',
-					// backgroundColor: 'yellow'
-				},
+		flex: 4,
+		borderRadius: 20,
+		backgroundColor: 'rgba(0,0,0,0)',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, heigth: 2 },
+		shadowRadius: 2,
+		flexDirection: 'row',
+		height: '100%',
+		width: '100%',
+		// backgroundColor: 'yellow'
+	},
 	containerHomeLogo: {
-						flex: 1,
-					height: 150,
-					width: 50,
-					// backgroundColor: 'red',
-					alignItems: 'center',
-					justifyContent: 'center',
-					marginTop: 285
-				},
+		flex: 1,
+		height: 150,
+		width: 50,
+		// backgroundColor: 'red',
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginTop: 285
+	},
 	containerImageHome: {
-						height: 50,
-					width: 50,
-					marginBottom: 5,
-					// backgroundColor: 'blue'
-				},
+		height: 50,
+		width: 50,
+		marginBottom: 5,
+		// backgroundColor: 'blue'
+	},
 	containerHomeScreen: {
-						flex: 2,
-					borderRadius: 20,
-					backgroundColor: 'rgba(0,0,0,0)',
-					shadowColor: '#000',
-		shadowOffset: {width: 0, heigth: 2 },
-					shadowRadius: 2,
-					flexDirection: 'column',
-					height: '100%',
-					width: '100%',
-					// backgroundColor : 'red',
-					justifyContent: 'center',
-					alignItems: 'center'
-				},
+		flex: 2,
+		borderRadius: 20,
+		backgroundColor: 'rgba(0,0,0,0)',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, heigth: 2 },
+		shadowRadius: 2,
+		flexDirection: 'column',
+		height: '100%',
+		width: '100%',
+		// backgroundColor : 'red',
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 	containerSomeHomeScreen: {
-						borderRadius: 20,
-					flexDirection: 'row',
-					height: 170,
-					width: 340,
-					// backgroundColor: 'yellow',
-					marginTop: 65,
-					alignSelf: 'center'
-				},
+		borderRadius: 20,
+		flexDirection: 'row',
+		height: 170,
+		width: 340,
+		// backgroundColor: 'yellow',
+		marginTop: 65,
+		alignSelf: 'center'
+	},
 	photoHomeScreen: {
-						height: 170,
-					width: 160,
-					borderRadius: 25,
-					marginLeft: -7
-				},
+		height: 170,
+		width: 160,
+		borderRadius: 25,
+		marginLeft: -7
+	},
 	textHomeScreen: {
-						height: 165,
-					width: 185,
-					// backgroundColor: 'skyblue'
-				},
+		height: 165,
+		width: 185,
+		// backgroundColor: 'skyblue'
+	},
 	cngImage: {
-						height: 170,
-					width: 160,
-				},
+		height: 170,
+		width: 160,
+	},
 	buttonCustom: {
-						marginTop: 41,
-					backgroundColor: 'red',
-					borderRadius: 20,
-					height: 35,
-					width: 175,
-					justifyContent: 'center',
-					marginLeft: 12,
-					// position: 'relative',
-				},
+		marginTop: 41,
+		backgroundColor: 'red',
+		borderRadius: 20,
+		height: 35,
+		width: 175,
+		justifyContent: 'center',
+		marginLeft: 12,
+		// position: 'relative',
+	},
 	buttonIdea: {
-						marginTop: 25,
-					marginLeft: 12,
-					backgroundColor: 'red',
-					borderRadius: 20,
-					height: 35,
-					width: 175,
-					justifyContent: 'center',
-				},
+		marginTop: 25,
+		marginLeft: 12,
+		backgroundColor: 'red',
+		borderRadius: 20,
+		height: 35,
+		width: 175,
+		justifyContent: 'center',
+	},
 	buttonCapture: {
-						backgroundColor: 'red',
-					borderRadius: 20,
-					height: 35,
-					width: 175,
-					justifyContent: 'center',
-					marginTop: 55,
-					marginLeft: 12
-				},
+		backgroundColor: 'red',
+		borderRadius: 20,
+		height: 35,
+		width: 175,
+		justifyContent: 'center',
+		marginTop: 55,
+		marginLeft: 12
+	},
 	ButtonCrafterList: {
-						backgroundColor: 'red',
-					borderRadius: 20,
-					height: 35,
-					width: 173,
-					justifyContent: 'center',
-					marginTop: 50.5,
-					marginLeft: 12
-				},
+		backgroundColor: 'red',
+		borderRadius: 20,
+		height: 35,
+		width: 173,
+		justifyContent: 'center',
+		marginTop: 50.5,
+		marginLeft: 12
+	},
 	TextButtonGo: {
-						textAlign: 'center',
-					color: 'white',
-					fontSize: 20,
-					fontFamily: 'Quicksand-Bold'
-				},
-			
+		textAlign: 'center',
+		color: 'white',
+		fontSize: 20,
+		fontFamily: 'Quicksand-Bold'
+	},
+
 	containerBodyHome: {
-						flex: 3,
-					borderRadius: 20,
-					flexDirection: 'column',
-					height: 20,
-					width: 340,
-					// backgroundColor: 'blue',
-					marginTop: 5
-				},
+		flex: 3,
+		borderRadius: 20,
+		flexDirection: 'column',
+		height: 20,
+		width: 340,
+		// backgroundColor: 'blue',
+		marginTop: 5
+	},
 	DefaultBody: {
-						height: 60,
-					width: '100%',
-					alignItems: 'center',
-					// backgroundColor:'skyblue'
-			
-				},
+		height: 60,
+		width: '100%',
+		alignItems: 'center',
+		// backgroundColor:'skyblue'
+
+	},
 	containerBodyCrafter: {
-						flex: 1,
-					borderRadius: 20,
-					flexDirection: 'column',
-					height: 20,
-					width: '100%',
-					// backgroundColor: 'skyblue',
-					marginTop: 5,
-				},
+		flex: 1,
+		borderRadius: 20,
+		flexDirection: 'column',
+		height: 20,
+		width: '100%',
+		// backgroundColor: 'skyblue',
+		marginTop: 5,
+	},
 	bodyCrafterList: {
-						flexDirection: 'row',
-					height: 70,
-					width: 340,
-			
-				},
+		flexDirection: 'row',
+		height: 70,
+		width: 340,
+
+	},
 	CrafterListLeft: {
-						height: 70,
-					width: 150,
-				},
+		height: 70,
+		width: 150,
+	},
 	CrafterListRight: {
-						height: 70,
-					width: 190,
-				},
+		height: 70,
+		width: 190,
+	},
 	iconsCrafterMenu: {
-						height: 55,
-					width: 55,
-					// borderRadius: 100,
-				},
+		height: 55,
+		width: 55,
+		// borderRadius: 100,
+	},
 	crafterMenu: {
-						height: 70,
-					width: 340,
-					marginLeft: 100
-				},
+		height: 70,
+		width: 340,
+		marginLeft: 100
+	},
 	profileHomeScreen: {
-						borderRadius: 20,
-					flexDirection: 'column',
-					height: 250,
-					width: 300,
-					alignSelf: 'center',
-					// backgroundColor: 'blue'
-				},
+		borderRadius: 20,
+		flexDirection: 'column',
+		height: 250,
+		width: 300,
+		alignSelf: 'center',
+		// backgroundColor: 'blue'
+	},
 	photoProfileHomeScreen: {
-						justifyContent: 'center',
-					alignItems: 'center',
-					height: 100,
-					width: 100,
-					borderRadius: 100,
-					marginTop: 15,
-				},
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: 100,
+		width: 100,
+		borderRadius: 100,
+		marginTop: 15,
+	},
 	containerProfileHomeScreen: {
-						flex: 2,
-					borderRadius: 20,
-					backgroundColor: 0,
-					shadowColor: '#000',
-		shadowOffset: {width: 0, heigth: 2 },
-					shadowRadius: 2,
-					flexDirection: 'column',
-					marginTop: 15,
-					marginLeft: 10,
-					marginRight: 10,
-					height: 500
-				},
+		flex: 2,
+		borderRadius: 20,
+		backgroundColor: 0,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, heigth: 2 },
+		shadowRadius: 2,
+		flexDirection: 'column',
+		marginTop: 15,
+		marginLeft: 10,
+		marginRight: 10,
+		height: 500
+	},
 	locationIcon: {
-						height: 15,
-					width: 10,
-					marginLeft: 125,
-					marginTop: 5
-				},
+		height: 15,
+		width: 10,
+		marginLeft: 125,
+		marginTop: 5
+	},
 	containerBodyProfile: {
-						flex: 2,
-					borderRadius: 20,
-					flexDirection: 'column',
-					height: '100%',
-					width: '100%',
-					// marginTop: 10,
-					// backgroundColor: 'red'
-				},
+		flex: 2,
+		borderRadius: 20,
+		flexDirection: 'column',
+		height: '100%',
+		width: '100%',
+		// marginTop: 10,
+		// backgroundColor: 'red'
+	},
 	listProfileIcon: {
-						flexDirection: 'row',
-					height: 70,
-					width: '100%',
-					// borderWidth: 0.5,
-					// borderColor: '#d6d7da',
-					// backgroundColor: 'yellow'
-				},
+		flexDirection: 'row',
+		height: 70,
+		width: '100%',
+		// borderWidth: 0.5,
+		// borderColor: '#d6d7da',
+		// backgroundColor: 'yellow'
+	},
 	profileMenu: {
-						height: 70,
-					width: '100%',
-					// backgroundColor: 'blue'
-				},
+		height: 70,
+		width: '100%',
+		// backgroundColor: 'blue'
+	},
 	iconProfile: {
-						height: 40,
-					width: 40,
-				},
+		height: 30,
+		width: 30,
+	},
 	iconLogOut: {
-						height: 30,
-					width: 27,
-				},
+		height: 30,
+		width: 27,
+	},
 	arrowIcon: {
-						height: 20,
-					width: 5,
-					paddingLeft: 70
-				},
+		height: 20,
+		width: 5,
+		paddingLeft: 70
+	},
 	cone: {
-						width: 0,
-					height: 0,
-					borderLeftWidth: 30,
-					borderLeftColor: 'transparent',
-					borderRightWidth: 30,
-					borderRightColor: 'transparent',
-					borderTopWidth: 60,
-					borderTopColor: 'red',
-					borderRadius: 55
-				},
+		width: 0,
+		height: 0,
+		borderLeftWidth: 30,
+		borderLeftColor: 'transparent',
+		borderRightWidth: 30,
+		borderRightColor: 'transparent',
+		borderTopWidth: 60,
+		borderTopColor: 'red',
+		borderRadius: 55
+	},
 	containerBodyJoinCrafter: {
-						flex: 2,
-					borderRadius: 20,
-					backgroundColor: 'rgba(0,0,0,0)',
-					shadowColor: '#000',
-		shadowOffset: {width: 0, heigth: 2 },
-					shadowRadius: 2,
-					flexDirection: 'column',
-					height: '100%',
-					width: '100%',
-					// backgroundColor: 'blue',
-					alignContent: 'center'
-				},
+		flex: 2,
+		borderRadius: 20,
+		backgroundColor: 'rgba(0,0,0,0)',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, heigth: 2 },
+		shadowRadius: 2,
+		flexDirection: 'column',
+		height: '100%',
+		width: '100%',
+		// backgroundColor: 'blue',
+		alignContent: 'center'
+	},
 	photoJoinCrafter: {
-						height: 190,
-					width: 190,
-					borderRadius: 25,
-					alignSelf: 'center',
-					alignContent: 'center',
-					justifyContent: 'center',
-					marginTop: 30,
-					// backgroundColor: 'yellow',
-				},
+		height: 190,
+		width: 190,
+		borderRadius: 25,
+		alignSelf: 'center',
+		alignContent: 'center',
+		justifyContent: 'center',
+		marginTop: 30,
+		// backgroundColor: 'yellow',
+	},
 	joinImage: {
-						height: 190,
-					width: 190,
-					alignSelf: 'center'
-				},
+		height: 190,
+		width: 190,
+		alignSelf: 'center'
+	},
 	buttonJoin: {
-						backgroundColor: 'red',
-					borderRadius: 20,
-					height: 35,
-					width: 180,
-					alignSelf: 'center',
-					justifyContent: 'center',
-					marginTop: 50
-				},
+		backgroundColor: 'red',
+		borderRadius: 20,
+		height: 35,
+		width: 180,
+		alignSelf: 'center',
+		justifyContent: 'center',
+		marginTop: 50
+	},
 	iconQuestion: {
-						height: 20,
-					width: 20,
-					marginLeft: 103,
-					marginTop: -15
-				}
-			});
-			
+		height: 20,
+		width: 20,
+		marginLeft: 103,
+		marginTop: -15
+	}
+});
+
 export default DashboardPage;

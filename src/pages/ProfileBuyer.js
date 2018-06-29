@@ -9,7 +9,7 @@ import { COLOR } from './../shared/config';
 export class ProfileBuyerPage extends React.Component {
 
     static navigationOptions = {
-        header: null
+        headerTitle: 'Profile'
     }
 
     render() {
@@ -24,14 +24,8 @@ export class ProfileBuyerPage extends React.Component {
                     source={require('./../assets/images/background_profile.jpeg')}
                     style={styles.backgroundStyle}
                 >
-                    <StatusBar
-                        backgroundColor={COLOR.headerBar}
-                        barStyle="dark-content"
-                    />
 
-                    <View
-                    // style={{ flex: 1 }}
-                    >
+                    <View>
 
                         <View style={styles.containerImage}>
                             <Image style={styles.containerPhoto}

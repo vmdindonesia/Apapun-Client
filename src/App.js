@@ -50,6 +50,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
@@ -64,9 +67,6 @@ const Routes = createStackNavigator({
   },
   HistoryOnMyOrder: {
     screen : HistoryOnMyOrderPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   Login: {
     screen: LoginPage
