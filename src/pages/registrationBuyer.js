@@ -12,7 +12,6 @@ import moment from 'moment';
 
 export class RegistrationBuyerPage extends React.Component {
 
-
     static navigationOptions = {
         headerTitle: 'Register Buyer'
 
