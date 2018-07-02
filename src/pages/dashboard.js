@@ -222,7 +222,6 @@ export class DashboardPage extends React.Component {
                     {
                         sideMenu === true ?
                             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', width: '100%', height: '100%', position: 'absolute' }}>
-
                                 <View style={{ height: '70%' }}>
                                     {
                                         statusMenu === 'home' ?

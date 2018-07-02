@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, BackHandler, Text, TouchableNativeFeedback, Picker, Alert, Keyboard, ToastAndroid, TouchableOpacity, View, Image } from 'react-native';
-import { COLOR } from './../shared/config';
+import { StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
 import { MyOrderPage } from './myOrder';
 import { CrafterPage } from './crafter';
 
@@ -58,9 +57,6 @@ export class FindingCrafterPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   menuContainerStyle: {
     flex: 4
   },

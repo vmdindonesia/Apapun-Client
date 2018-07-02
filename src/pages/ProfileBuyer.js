@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
-// import axios from 'axios';
 import { COLOR } from './../shared/config';
 
 
@@ -26,7 +24,6 @@ export class ProfileBuyerPage extends React.Component {
                 />
 
                 <View
-                // style={{ flex: 1 }}
                 >
 
                     <View style={styles.containerImage}>
@@ -265,22 +262,6 @@ export class ProfileBuyerPage extends React.Component {
 
         );
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

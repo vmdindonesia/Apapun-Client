@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 
 export class CrafterPage extends React.Component {
 
     constructor(props) {
         super(props)
+    }
+
+    alert = (msg) => {
+        console.log(msg)
     }
 
     render() {
@@ -66,7 +70,17 @@ export class CrafterPage extends React.Component {
                     <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'orange' }]}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'red' }]}>
+                    <TouchableOpacity
+                        style={[styles.buttonStop, { backgroundColor: 'red' }]}
+                        onPress={() => Alert.alert(
+                            'BATALKAN PESANAN',
+                            'apakah anda yakin ingin membatalkan pesanannya?',
+                            [
+                                { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+                                { text: 'OK', onPress: this.onDeleteBTN }, //ondelete blm dibuat
+                            ],
+                        )}>
+                        >
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Batalkan Pesanan</Text>
                     </TouchableOpacity>
                 </View>
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
         top: 140,
         marginLeft: 10,
         flexDirection: 'row',
-      
+
     },
     buttonStop: {
         flex: 1,
