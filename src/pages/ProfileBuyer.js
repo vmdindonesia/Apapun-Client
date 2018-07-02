@@ -167,7 +167,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        <View style={styles.containerSecondForm}>
+                        {/* <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -201,11 +201,11 @@ export class ProfileBuyerPage extends React.Component {
 
                             </View>
 
-                        </View>
+                        </View> */}
 
 
 
-                        <View style={styles.containerThirdForm}>
+                        {/* <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -240,25 +240,15 @@ export class ProfileBuyerPage extends React.Component {
                                     </Text>
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
 
-
-
-
-
-
-
-
-
-
-                    </View>
 
                     <View style={styles.containerTh}>
 
                         <View style={{
                             flexDirection: 'row',
                             //  backgroundColor: 'yellow', 
-                            height: 70, width: '85%',
+                            height: '100%', width: '85%',
                         }}>
                             <View style={{
                                 // flexDirection: 'column',
@@ -267,21 +257,22 @@ export class ProfileBuyerPage extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
-                                <Text style={{ fontSize: 13, paddingLeft: 10, fontWeight: 'bold', textAlign: 'left' }}>
+                                <Text style={{ fontSize: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>
                                     Hargai Designmu
-            </Text>
+                                 </Text>
                                 <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
                                     Share dan opresiasikan design anda di seluruh indonsia
-            </Text>
-
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                    
                     <TouchableOpacity style={styles.buttonSignUp}
                      onPress={() => this.props.navigation.navigate('pengaturanBank')}>
                         <Text style={styles.signupButton}>Pengaturan</Text>
                     </TouchableOpacity>
-                            </View>
-                        </View>
-                    </View>
-
+                    
+             </View>
 
 
 
@@ -381,21 +372,23 @@ const styles = StyleSheet.create({
         borderColor: '#d6d7da',
     },
     containerTh: {
-        borderRadius: 50,
+        borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
         shadowOffset: { width: 10, heigth: 10 },
         shadowRadius: 5,
         shadowOpacity: 1.0,
         elevation: 3,
-        flexDirection: 'row',
-        marginTop: 5,
-        height: 120,
+        flexDirection: 'column',
+        marginTop: 15,
+        height: 130,
         width: '90%',
-        justifyContent: 'center',
+        alignItems: 'center',
+        // justifyContent: 'center',
         alignSelf: 'center',
+        // zIndex: 1,
         borderWidth: 0.5,
-        borderColor: '#d6d7da',
+        borderColor: '#d6d7da'
     },
     icons: {
         height: 30,
@@ -414,10 +407,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
-        width: 165,
+        width: 150,
         justifyContent: 'center',
         alignSelf: 'center',
-        zIndex: 4,
+        // zIndex: 4,
         marginBottom: -50
     }
 });
