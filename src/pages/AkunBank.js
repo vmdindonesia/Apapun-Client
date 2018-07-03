@@ -5,13 +5,11 @@ import { Container, ContainerSection, Button, Input, InputDate } from '../compon
 import { COLOR } from './../shared/config';
 import { CheckBox } from 'react-native-elements';
 
-export class PengaturanBankPage extends React.Component {
+export class AkunBankPage extends React.Component {
 
     static navigationOptions = {
-        headerTitle: 'Pengaturan Akun Bank'
-
+        headerTitle: 'Akun Bank'
     }
-
 
     render() {
         return (
@@ -20,14 +18,24 @@ export class PengaturanBankPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <Text style={[styles.pickerTextStyle]}>
-                    Total apresiasi anda akan di transfer ke akun bank yang telah anda daftarkan dan akan di transferkan setiap blannya.
-        </Text>
+
+                <View style={{ flexDirection: 'row', height: 80, width: '100%', alignItems: 'center' }}>
 
 
-                <Text style={{ marginLeft: 5, marginTop: 10, }}>Nama Akun Apapun Anda</Text>
+                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                        source={require('./../assets/images/envelope.png')}
+                    />
 
-                <ContainerSection>
+                    <Text style={{ fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
+                        total apresiasi design
+                        </Text>
+                </View>
+
+                    <Text style={{ fontSize: 30, fontFamily: 'Quicksand-Bold'}}>
+                        Rp. 120.000
+                    </Text>
+
+             <ContainerSection>
                     <Input
                         Text=''
                         label='Nama Depan'
@@ -140,27 +148,20 @@ export class PengaturanBankPage extends React.Component {
                         // onChange={(checked) => console.log('I am checked', checked)}
                         />
                     </View>
-                    <TouchableOpacity style={styles.button}
-                    onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                    <TouchableOpacity style={styles.button}>
                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>OK</Text>
                     </TouchableOpacity>
                 </View>
 
 
 
-            </ScrollView>
+
+            </ScrollView >
         )
     }
 }
 
 const styles = StyleSheet.create({
-    pickerTextStyle: {
-        fontFamily: 'Quicksand-Bold',
-        color: '#5e5e5e',
-        fontSize: 14,
-        flex: 1,
-        marginTop: 10
-    },
     button: {
         backgroundColor: 'red',
         borderRadius: 20,
@@ -170,12 +171,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 20
     },
-    textAgree: {
-        paddingTop: 10,
-        height: 120
-    },
 
 
 })
 
-export default PengaturanBankPage
+export default AkunBankPage

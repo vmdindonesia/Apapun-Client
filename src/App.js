@@ -22,6 +22,7 @@ import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
 import { ProfileBuyerPage } from './pages/ProfileBuyer.js'
+import { AkunBankPage } from './pages/AkunBank'
 import { EditProfileBuyerPage } from './pages/EditProfileBuyer.js'
 import { SettingAddressBuyerPage } from './pages/SettingAddressBuyer.js'
 import { SettingAddressDetailBuyerPage } from './pages/SettingAddressDetailBuyer'
@@ -50,14 +51,20 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  pengaturanBank: {
-    screen: PengaturanBankPage
+  Dashboard: {
+    screen: DashboardPage
+  },
+  AkunBank: {
+    screen: AkunBankPage
   },
   StartScreen: {
     screen: StartScreen
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
   },
   DetailOrder : {
     screen : DetailOrderPage
@@ -82,9 +89,6 @@ const Routes = createStackNavigator({
   },
   MyOrder: {
     screen: MyOrderPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage

@@ -167,7 +167,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        {/* <View style={styles.containerSecondForm}>
+                        <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -179,9 +179,14 @@ export class ProfileBuyerPage extends React.Component {
                                     alignItems: 'center',
                                     // justifyContent: 'center'
                                 }}>
+                                    <TouchableWithoutFeedback>
+                                    <TouchableOpacity
+                                    onPress={() => this.props.navigation.navigate('AkunBank')}>
                                     <Image style={{ height: 40, width: 40, borderRadius: 0, }}
                                         source={require('./../assets/images/ic_wallet.png')}
                                     />
+                                    </TouchableOpacity>
+                                    </TouchableWithoutFeedback>
                                 </View>
 
                                 <View style={{
@@ -201,11 +206,11 @@ export class ProfileBuyerPage extends React.Component {
 
                             </View>
 
-                        </View> */}
+                        </View>
 
 
 
-                        {/* <View style={styles.containerThirdForm}>
+                        <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -220,9 +225,14 @@ export class ProfileBuyerPage extends React.Component {
                                     alignItems: 'center',
                                     // justifyContent: 'center'
                                 }}>
+                                    <TouchableWithoutFeedback>
+                                    <TouchableOpacity
+                                      onPress={() => this.props.navigation.navigate('')}>
                                     <Image style={{ height: 40, width: 40, borderRadius: 0, }}
                                         source={require('./../assets/images/ic_design.png')}
                                     />
+                                    </TouchableOpacity>
+                                    </TouchableWithoutFeedback>
                                 </View>
 
                                 <View style={{
@@ -240,39 +250,39 @@ export class ProfileBuyerPage extends React.Component {
                                     </Text>
                                 </View>
                             </View>
-                        </View> */}
+                        </View>
 
 
-                    <View style={styles.containerTh}>
+                        <View style={styles.containerTh}>
 
-                        <View style={{
-                            flexDirection: 'row',
-                            //  backgroundColor: 'yellow', 
-                            height: '100%', width: '85%',
-                        }}>
                             <View style={{
-                                // flexDirection: 'column',
-                                // backgroundColor: 'skyblue',
+                                flexDirection: 'row',
+                                //  backgroundColor: 'yellow', 
                                 height: '100%', width: '85%',
-                                alignItems: 'center',
-                                justifyContent: 'center'
                             }}>
-                                <Text style={{ fontSize: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>
-                                    Hargai Designmu
+                                <View style={{
+                                    // flexDirection: 'column',
+                                    // backgroundColor: 'skyblue',
+                                    height: '100%', width: '85%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Text style={{ fontSize: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>
+                                        Hargai Designmu
                                  </Text>
-                                <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
-                                    Share dan opresiasikan design anda di seluruh indonsia
+                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
+                                        Share dan opresiasikan design anda di seluruh indonesia
                                 </Text>
+                                    <TouchableOpacity style={styles.buttonSignUp}
+                                        onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                                        <Text style={styles.signupButton}>Pengaturan</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
+
+
                     </View>
-                    
-                    <TouchableOpacity style={styles.buttonSignUp}
-                     onPress={() => this.props.navigation.navigate('pengaturanBank')}>
-                        <Text style={styles.signupButton}>Pengaturan</Text>
-                    </TouchableOpacity>
-                    
-             </View>
 
 
 
