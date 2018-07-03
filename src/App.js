@@ -56,8 +56,8 @@ const Routes = createStackNavigator({
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-  DetailOrder : {
-    screen : DetailOrderPage
+  DetailOrder: {
+    screen: DetailOrderPage
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
@@ -66,7 +66,7 @@ const Routes = createStackNavigator({
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
-    screen : HistoryOnMyOrderPage
+    screen: HistoryOnMyOrderPage
   },
   Login: {
     screen: LoginPage

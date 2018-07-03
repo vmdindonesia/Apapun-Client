@@ -53,6 +53,16 @@ export class OrderOnMyOrderPage extends React.Component {
                         </TouchableOpacity>
                     </View>
 
+                    <Image
+                        style={{
+                            width: 18,
+                            height: 35,
+                            borderRadius: 0,
+                            alignSelf: 'center'
+                        }}
+                        source={require('./../assets/images/line_vertical.png')}
+                    />
+
                     <View style={{
                         width: '50%',
                         height: '100%',
