@@ -520,13 +520,16 @@ export class DashboardPage extends React.Component {
 																						</TouchableOpacity>
 																					</View>
 
-																					<View style={{ flexDirection: 'column', paddingTop: 20, marginLeft: 93 }}>
+																					<View style={{ flexDirection: 'column', paddingTop: 20, marginLeft: 75 }}>
 																						<TouchableOpacity
 																							onPress={() => this.props.navigation.navigate('Login')}
 																						>
 																							<View style={{ flexDirection: 'row' }}>
 																								<Image
-																									style={styles.iconProfile}
+																									style={{
+																										height: 26,
+																										width: 26,
+																									}}
 																									source={require('./../assets/images/logout.png')}
 																								/>
 																								<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Log out</Text>
