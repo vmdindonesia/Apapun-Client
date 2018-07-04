@@ -23,7 +23,6 @@ export class OrderPage extends React.Component {
             userId: '',
             nameProduct: '',
             categoryProduct: '',
-            subCategoryProduct: '',
             tempUploadDesign: '',
             uploadDesign: [],
             nameFileImages: [],
@@ -67,21 +66,6 @@ export class OrderPage extends React.Component {
         this.setState({ modalVisible: visible });
     }
 
-    fetchSubKategori() {
-        axios.post(`${IPSERVER}/ApapunSubkategoris/getSubkategori`, {
-            params: {
-                kategoriId: this.state.categoryProduct
-            }
-        })
-            .then(response => {
-                console.log(response.data, 'Response Sub Kategori');
-                this.setState({ dataSubCategory: response.data });
-                return this.renderSubKategori();
-            }).catch(error => {
-                console.log(error, 'Error Sub Kategori');
-            })
-    }
-
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log(this.state[name]);
@@ -91,7 +75,6 @@ export class OrderPage extends React.Component {
     onChangePicker = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log('Kategori Picker');
-            this.fetchSubKategori();
         })
     }
 
@@ -126,7 +109,6 @@ export class OrderPage extends React.Component {
             serveDelivery,
             addressDelivery,
             numberPcs,
-            subCategoryProduct,
             unitQuantity
         } = this.state;
 
@@ -160,20 +142,13 @@ export class OrderPage extends React.Component {
                                                     case 0:
                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
-                                                        switch (subCategoryProduct) {
+                                                        switch (unitQuantity) {
                                                             case '':
-                                                                return ToastAndroid.show('Sub Kategori tidak boleh kosong', ToastAndroid.SHORT);
+                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             case 0:
-                                                                return ToastAndroid.show('Sub Kategori tidak boleh kosong', ToastAndroid.SHORT);
+                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
-                                                                switch (unitQuantity) {
-                                                                    case '':
-                                                                        return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                                    case 0:
-                                                                        return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                                    default:
-                                                                        return this.prosesOrder();
-                                                                }
+                                                                return this.prosesOrder();
                                                         }
                                                 }
                                         }
@@ -194,7 +169,6 @@ export class OrderPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            subCategoryProduct,
             nameFileImages
         } = this.state;
 
@@ -208,7 +182,6 @@ export class OrderPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            subCategoryProduct,
             nameFileImages
         })
             .then(response => {
@@ -218,8 +191,8 @@ export class OrderPage extends React.Component {
                 console.log(error, 'Error Order Proses');
                 this.setState({ loading: true });
             })
-            this.setState({ loading: false });
-            return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
+        this.setState({ loading: false });
+        return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
     }
 
     designPhotoUpload(name) {
@@ -408,7 +381,6 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            subCategoryProduct,
             unitQuantity
         } = this.state;
 
@@ -437,21 +409,6 @@ export class OrderPage extends React.Component {
                             >
                                 <Picker.Item label='Pilih Kategori Produk' value='0' />
                                 {this.renderKategori()}
-                            </Picker>
-                        </View>
-                    </View>
-                </ContainerSection>
-
-                <ContainerSection>
-                    <View style={styles.pickerContainer}>
-                        <Text style={styles.pickerTextStyle}>Sub Kategori Produk</Text>
-                        <View style={styles.pickerStyle}>
-                            <Picker
-                                selectedValue={subCategoryProduct}
-                                onValueChange={(v) => this.onChange('subCategoryProduct', v)}
-                            >
-                                <Picker.Item label='Pilih Sub Kategori Produk' value='0' />
-                                {this.renderSubKategori()}
                             </Picker>
                         </View>
                     </View>
@@ -509,7 +466,7 @@ export class OrderPage extends React.Component {
 
                 <ContainerSection>
                     <View style={{ flex: 3, flexDirection: 'column' }}>
-                        <Text style={styles.pickerTextStyle}>Jumlah dipesan :</Text>
+                        <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
                     </View>
                     <TouchableOpacity onPress={() => this.minusNumber()} style={{ marginLeft: -30 }}>
                         <Image
@@ -517,7 +474,7 @@ export class OrderPage extends React.Component {
                             source={require('../assets/images/minus.png')}
                         />
                     </TouchableOpacity>
-                    <View style={{ height: 40, width: 60, marginLeft: 4 }}>
+                    <View style={{ height: 40, width: 50, marginLeft: 4 }}>
                         <InputNumber
                             value={numberPcs.toString()}
                             onChangeText={val => this.onChange('numberPcs', val)}
@@ -530,13 +487,12 @@ export class OrderPage extends React.Component {
                             source={require('../assets/images/plus.png')}
                         />
                     </TouchableOpacity>
-                    <View style={{ flex: 2 }}>
+                    <View style={{ width: 80 }}>
                         <View style={styles.pickerUnitStyle}>
                             <Picker
                                 selectedValue={unitQuantity}
                                 onValueChange={v => this.onChange('unitQuantity', v)}
                             >
-                                <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Pcs' />
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
@@ -710,7 +666,8 @@ const styles = StyleSheet.create({
         paddingLeft: 4,
         borderWidth: 1,
         height: 40,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        justifyContent: 'center' 
     },
     button: {
         backgroundColor: 'rgb(45, 45, 45)',

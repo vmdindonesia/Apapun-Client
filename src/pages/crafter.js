@@ -16,7 +16,7 @@ export class CrafterPage extends React.Component {
             <View >
                 <ScrollView>
                     <View>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU{'\n'}{'\n'}</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
                         <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15 }}>Sedang dalam proses mencari crafter untuk produkmu</Text>
                     </View>
                     <View style={styles.containerCrafter}>
@@ -30,7 +30,7 @@ export class CrafterPage extends React.Component {
                             </View>
                             <View style={styles.boxName}>
                                 <View>
-                                    <Text style={{ textAlign: 'right' }}>Sempurna{'\n'}</Text>
+                                    <Text style={{ textAlign: 'right' }}>Sempurna</Text>
                                     <Text style={{ fontFamily: 'Quicksand-Bold' }}>Roy Kiyoshi</Text>
                                     <View>
                                         <Image
@@ -52,7 +52,7 @@ export class CrafterPage extends React.Component {
                             </View>
                             <View style={styles.boxName}>
                                 <View>
-                                    <Text style={{ textAlign: 'right' }}>Sempurna{'\n'}</Text>
+                                    <Text style={{ textAlign: 'right' }}>Sempurna</Text>
                                     <Text style={{ fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
                                     <View>
                                         <Image
@@ -71,16 +71,15 @@ export class CrafterPage extends React.Component {
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={[styles.buttonStop, { backgroundColor: 'red' }]}
+                        style={styles.buttonStop}
                         onPress={() => Alert.alert(
                             'BATALKAN PESANAN',
                             'apakah anda yakin ingin membatalkan pesanannya?',
                             [
                                 { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
-                                { text: 'OK', onPress: this.onDeleteBTN }, //ondelete blm dibuat
+                                { text: 'OK', onPress: () => this.onDeleteBTN }, //ondelete blm dibuat
                             ],
                         )}>
-                        >
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Batalkan Pesanan</Text>
                     </TouchableOpacity>
                 </View>
@@ -136,6 +135,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'red' ,
         borderRadius: 25
     }
 });

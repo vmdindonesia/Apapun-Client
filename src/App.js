@@ -37,6 +37,7 @@ import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
 import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+import { SettingProductPage } from './pages/settingProduct.js';
 
 
 console.disableYellowBox = true;
@@ -50,6 +51,24 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
+  Order: {
+    screen: OrderPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  }, 
+  Crafter: {
+    screen: CrafterPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -74,12 +93,6 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  MyOrder: {
-    screen: MyOrderPage
-  },
   Dashboard: {
     screen: DashboardPage
   },
@@ -98,17 +111,11 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  Order: {
-    screen: OrderPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
@@ -125,10 +132,6 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  Crafter: {
-    screen: CrafterPage
-  },
-
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
