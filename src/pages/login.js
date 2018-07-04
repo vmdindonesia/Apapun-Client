@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard, ScrollView } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner } from '../components/common';
 import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -96,6 +96,8 @@ export class LoginPage extends React.Component {
 	render() {
 		const { email, password } = this.state;
 		return (
+			// <View style={styles.container}>
+
 			<ImageBackground
 				source={require('./../assets/images/bg-login.jpg')}
 				style={{ width: '100%', height: '100%', backgroundColor: COLOR.secondary_c }}
@@ -105,27 +107,26 @@ export class LoginPage extends React.Component {
 					barStyle="dark-content"
 				/>
 
+				<ScrollView keyboardShouldPersistTaps="always">
 
-				<View style={styles.container}>
-
-					<View style={{ marginBottom: 60 }}>
+					<View style={{ marginTop: 30, marginBottom: 48 }}>
 						<View style={{ alignItems: 'center' }}>
 							<Image
 								style={styles.image}
 								source={require('./../assets/images/ic_logo2.png')}
 							/>
-							<Text style={{ marginTop: -30, fontSize: 60, color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+							<Text style={{ marginTop: -30, fontSize: 50, color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
 								apapun
 							</Text>
 						</View>
-						<Text style={{ marginTop: -8, fontSize: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Bold', marginRight: 75, textAlign: 'right' }}>
+						<Text style={{ marginTop: -8, fontSize: 8, color: '#FFFFFF', fontFamily: 'Quicksand-Bold', marginLeft: '55%' }}>
 							ANYTHING CAN BE
 						</Text>
 					</View>
 
 					<Container>
 						<ContainerSection>
-							<InputLogin 
+							<InputLogin
 								style={styles.Input}
 								placeholder="email or username"
 								icon="ic_username"
@@ -135,7 +136,7 @@ export class LoginPage extends React.Component {
 							/>
 						</ContainerSection>
 
-						<View style={{ padding: 7 }} />
+						<View style={{ padding: 2 }} />
 
 						<ContainerSection>
 							<InputLogin
@@ -148,38 +149,46 @@ export class LoginPage extends React.Component {
 							/>
 						</ContainerSection>
 
-						<View style={{ marginTop: 35 }}>
+						<View style={{ paddingLeft: '53%' }}>
+							<TouchableOpacity
+								onPress={() => ToastAndroid.show('Under Development', ToastAndroid.SHORT)}
+							>
+								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
+									Forget password?
+								</Text>
+							</TouchableOpacity>
+						</View>
+
+						<View style={{ marginTop: 15 }}>
 							<ContainerSection>
 								{this.renderButton()}
 							</ContainerSection>
 						</View>
 					</Container>
 
-					<TouchableOpacity
-						onPress={() => ToastAndroid.show('Under Development', ToastAndroid.SHORT)}
-					>
-						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-							Forget password?
+					<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
+						<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
+							Belum punya akun? {`\n`}
 						</Text>
-					</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
+						>
+							<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+								Daftar disini
+						</Text>
+						</TouchableOpacity>
+					</View>
+				</ScrollView>
+			</ImageBackground>
 
-					<TouchableOpacity
-						onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
-					>
-						<Text style={{ textAlign: 'center', marginTop: 10, color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-							Don't have account ? Register!
-						</Text>
-					</TouchableOpacity>
-				</View>
-			</ImageBackground >
+
 		)
 	}
 }
 
 const styles = {
 	container: {
-		flex: 1,
-		justifyContent: 'center'
+		flex: 1
 	},
 	input: {
 		height: 36,
@@ -192,8 +201,8 @@ const styles = {
 		backgroundColor: 'rgba(0,0,0,0)',
 	},
 	image: {
-		width: 150,
-		height: 150
+		width: 120,
+		height: 120
 	}
 }
 
