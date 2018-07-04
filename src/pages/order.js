@@ -494,7 +494,7 @@ export class OrderPage extends React.Component {
                     />
                 </ContainerSection>
                 <ContainerSection>
-                    <Button
+                    <Button onPress={() => this.props.navigation.navigate('FindingCrafter')}
                         style={{
                             backgroundColor: '#FF1000',
                             justifyContent: 'center',
@@ -504,7 +504,8 @@ export class OrderPage extends React.Component {
                             marginRight: '15%',
                             marginBottom: 20
                         }}
-                        onPress={() => this.onValidation()}
+                        // onPress={() => this.onValidation()}
+                        
                     >
                         <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
                             Mencari Crafter

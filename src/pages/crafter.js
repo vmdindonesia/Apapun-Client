@@ -13,10 +13,10 @@ export class CrafterPage extends React.Component {
 
     render() {
         return (
-            <View>
+            <View >
                 <ScrollView>
                     <View>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU{'\n'}</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU{'\n'}{'\n'}</Text>
                         <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15 }}>Sedang dalam proses mencari crafter untuk produkmu</Text>
                     </View>
                     <View style={styles.containerCrafter}>
