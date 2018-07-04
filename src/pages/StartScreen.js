@@ -17,14 +17,16 @@ export class StartScreen extends React.Component {
         }
     }
 
-    componentWillMount() {
-        // to do: check token expired
-
-        AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
-            console.log(result, 'Get Storage');
-            console.log(JSON.parse(result), 'Json Parse');
-            if (result) {
-                this.redirect();
+    componentDidMount() {
+        console.log('Start Screen On Fire!');
+        AsyncStorage.getItem("VMDDEVELOPER").then((value) => {
+            console.log(JSON.parse(value), 'Json Parse');
+            if (value) {
+                const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+                });
+                this.props.navigation.dispatch(resetAction);
             }
             else {
                 console.log('Kosong Storage');
@@ -34,15 +36,7 @@ export class StartScreen extends React.Component {
                 });
                 this.props.navigation.dispatch(resetAction);
             }
-        })
-    }
-
-    redirect = () => {
-        const resetAction = StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-        });
-        this.props.navigation.dispatch(resetAction);
+        }).done();
     }
 
     render() {

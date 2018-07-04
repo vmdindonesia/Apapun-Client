@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { StatusBar, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList } from 'react-native';
-import { Container, ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common';
+import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
+import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from './../shared/slider.styles';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
+import uuid from 'react-native-uuid';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
@@ -17,19 +18,25 @@ export class OrderPage extends React.Component {
         super(props)
 
         this.state = {
+            loading: false,
+            modalVisible: false,
+            userId: '',
             nameProduct: '',
             categoryProduct: '',
             subCategoryProduct: '',
             tempUploadDesign: '',
             uploadDesign: [],
+            nameFileImages: [],
             uploadMaterial: null,
             notice: false,
             serveDelivery: '',
             addressDelivery: '',
             catatanTambahan: '',
             numberPcs: 0,
+            unitQuantity: '',
             dataCategory: '',
-            dataSubCategory: ''
+            dataSubCategory: '',
+            dataAddress: ''
         }
     }
 
@@ -38,9 +45,26 @@ export class OrderPage extends React.Component {
             .then(response => {
                 console.log(response.data, 'Response Kategori');
                 this.setState({ dataCategory: response.data });
+                AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
+                    console.log(JSON.parse(result), 'Data Login');
+                    const dataLog = JSON.parse(result);
+                    console.log(dataLog.userId, 'userID');
+                    const idUser = dataLog.userId;
+                    this.setState({ userId: idUser });
+                    axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
+                        console.log(response, 'Response Address')
+                        this.setState({ dataAddress: response.data })
+                    }).catch(error => {
+                        console.log(error, 'Error Address');
+                    })
+                });
             }).catch(error => {
                 console.log(error, 'Error Kategori');
             })
+    }
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
     }
 
     fetchSubKategori() {
@@ -93,6 +117,7 @@ export class OrderPage extends React.Component {
 
     onValidation() {
         Keyboard.dismiss();
+
         const {
             nameProduct,
             categoryProduct,
@@ -100,8 +125,9 @@ export class OrderPage extends React.Component {
             uploadMaterial,
             serveDelivery,
             addressDelivery,
-            catatanTambahan,
-            numberPcs
+            numberPcs,
+            subCategoryProduct,
+            unitQuantity
         } = this.state;
 
         switch (nameProduct) {
@@ -109,18 +135,91 @@ export class OrderPage extends React.Component {
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
             default:
                 switch (categoryProduct) {
+                    case 0:
+                        return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
                         const designPhoto = uploadDesign.length;
                         switch (designPhoto) {
                             case 0:
-                                return ToastAndroid.show('Design Poto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                             default:
                                 console.log('Sukses Semua');
+                                switch (serveDelivery) {
+                                    case '':
+                                        return ToastAndroid.show('Jasa Pengiriman tidak boleh kosong', ToastAndroid.SHORT);
+                                    default:
+                                        switch (numberPcs) {
+                                            case 0:
+                                                return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
+                                            default:
+                                                switch (addressDelivery) {
+                                                    case '':
+                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
+                                                    case 0:
+                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
+                                                    default:
+                                                        switch (subCategoryProduct) {
+                                                            case '':
+                                                                return ToastAndroid.show('Sub Kategori tidak boleh kosong', ToastAndroid.SHORT);
+                                                            case 0:
+                                                                return ToastAndroid.show('Sub Kategori tidak boleh kosong', ToastAndroid.SHORT);
+                                                            default:
+                                                                switch (unitQuantity) {
+                                                                    case '':
+                                                                        return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
+                                                                    case 0:
+                                                                        return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
+                                                                    default:
+                                                                        return this.prosesOrder();
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
                         }
                 }
         }
+    }
+
+    prosesOrder() {
+        this.setState({ loading: true });
+        const {
+            nameProduct,
+            userId,
+            addressDelivery,
+            catatanTambahan,
+            numberPcs,
+            unitQuantity,
+            serveDelivery,
+            categoryProduct,
+            subCategoryProduct,
+            nameFileImages
+        } = this.state;
+
+        console.log(this.state);
+        axios.post(`${IPSERVER}/ApapunOrders/CreateOrder`, {
+            userId,
+            nameProduct,
+            addressDelivery,
+            catatanTambahan,
+            numberPcs,
+            unitQuantity,
+            serveDelivery,
+            categoryProduct,
+            subCategoryProduct,
+            nameFileImages
+        })
+            .then(response => {
+                console.log(response, 'Response Order Proses');
+                this.setState({ loading: true });
+            }).catch(error => {
+                console.log(error, 'Error Order Proses');
+                this.setState({ loading: true });
+            })
+            this.setState({ loading: false });
+            return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
     }
 
     designPhotoUpload(name) {
@@ -149,17 +248,17 @@ export class OrderPage extends React.Component {
                 let source = { uri: response.uri };
                 console.log(response, 'DATA IMAGEEEE');
                 this.imageUpload(source, response);
-                // You can also display the image using data:
-                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                 this.setState({ [names]: source }, () => {
                     console.log(this.state[name], 'Name State');
+
                     const newUploadDesign = this.state.uploadDesign;
                     newUploadDesign[this.state.uploadDesign.length] = source;
                     this.setState({ uploadDesign: newUploadDesign }, () => {
                         console.log(this.state.uploadDesign, 'Ship Name Max');
                         return this.returnDesignPhoto();
                     });
+
                 });
             }
         });
@@ -167,21 +266,31 @@ export class OrderPage extends React.Component {
 
     imageUpload(uriPhoto) {
         console.log(uriPhoto, 'URI TOD');
+        const nameFile = 'IMG_' + uuid.v1();
+        console.log(nameFile, 'UUID');
+
+
         var photo = {
             uri: uriPhoto.uri,
             type: 'image/jpeg',
-            name: 'photo.jpg',
+            name: nameFile.toUpperCase() + '.jpg'
         };
 
         var body = new FormData();
         body.append('photo', photo);
 
-        axios.open('POST', `${IPSERVER}/ApapunStorages/storage/upload`, body
-        ).then(response => {
-            console.log(response, 'Image Berhasil Upload');
-        }).catch(error => {
-            console.log(error, 'Error Upload Poto');
-        })
+        const newnameFileImages = this.state.nameFileImages;
+        newnameFileImages[this.state.nameFileImages.length] = nameFile.toUpperCase() + '.jpg';
+        this.setState({ nameFileImages: newnameFileImages }, () => {
+            console.log(this.state.nameFileImages, 'List Name Images Design');
+
+            axios.post(`${IPSERVER}/ApapunStorages/images/upload`, body
+            ).then(response => {
+                console.log(response, 'Image Berhasil Upload');
+            }).catch(error => {
+                console.log(error, 'Error Upload Poto');
+            })
+        });
     }
 
     renderProductItem = (itemPhoto) => {
@@ -246,6 +355,17 @@ export class OrderPage extends React.Component {
         return <Picker.Item label='Tidak ada Kategori' value='0' />
     }
 
+    renderAddress = () => {
+        const resultAddress = this.state.dataAddress;
+        console.log(resultAddress, 'Data Address');
+        if (resultAddress) {
+            return resultAddress.map((data, index) => {
+                return <Picker.Item label={data.type} value={data.addressId} key={index} />
+            })
+        }
+        return <Picker.Item label='Tidak ada Address' value='0' />
+    }
+
     renderSubKategori = () => {
         const resultSubKategori = this.state.dataSubCategory;
         if (resultSubKategori) {
@@ -254,6 +374,28 @@ export class OrderPage extends React.Component {
             })
         }
         return <Picker.Item label='Anda harus  memilih kategori' value='0' />
+    }
+
+    renderButton = () => {
+        if (this.state.loading) {
+            return <Spinner size="small" />
+        }
+        return (
+            <Button
+                style={{
+                    backgroundColor: '#FF1000',
+                    justifyContent: 'center',
+                    borderRadius: 30,
+                    marginTop: 30,
+                    marginLeft: '15%',
+                    marginRight: '15%',
+                    marginBottom: 20
+                }}
+                onPress={() => this.onValidation()}
+            >
+                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
+            </Button>
+        )
     }
 
     render() {
@@ -266,7 +408,8 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            subCategoryProduct
+            subCategoryProduct,
+            unitQuantity
         } = this.state;
 
         console.log(this.state.categoryProduct, 'OKOKOKOK');
@@ -390,12 +533,12 @@ export class OrderPage extends React.Component {
                     <View style={{ flex: 2 }}>
                         <View style={styles.pickerUnitStyle}>
                             <Picker
-                            // selectedValue={unitFish}
-                            // onValueChange={v => this.onChange('unitFish', v)}
+                                selectedValue={unitQuantity}
+                                onValueChange={v => this.onChange('unitQuantity', v)}
                             >
                                 <Picker.Item label='Pilih' value='' />
-                                <Picker.Item label='Pcs' value='Kg' />
-                                <Picker.Item label='Lusin' value='Cm' />
+                                <Picker.Item label='Pcs' value='Pcs' />
+                                <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
                         </View>
                     </View>
@@ -417,7 +560,10 @@ export class OrderPage extends React.Component {
                                             <Text style={{ fontSize: 13, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Pilih material yang sesuai dengan desain Anda.</Text>
                                         </View>
                                         <TouchableOpacity
-                                            // onPress={() => this.onItemSelected(item)}
+                                            onPress={() => {
+                                                // this.setModalVisible(true)
+                                                return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT);
+                                            }}
                                             style={styles.buttons}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -459,8 +605,7 @@ export class OrderPage extends React.Component {
                                 onValueChange={v => this.onChange('addressDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Alamat Pengiriman' value='0' />
-                                <Picker.Item label='Home' value='Home' />
-                                <Picker.Item label='Office' value='Offic' />
+                                {this.renderAddress()}
                             </Picker>
                         </View>
                     </View>
@@ -494,24 +639,38 @@ export class OrderPage extends React.Component {
                     />
                 </ContainerSection>
                 <ContainerSection>
-                    <Button onPress={() => this.props.navigation.navigate('FindingCrafter')}
-                        style={{
-                            backgroundColor: '#FF1000',
-                            justifyContent: 'center',
-                            borderRadius: 30,
-                            marginTop: 30,
-                            marginLeft: '15%',
-                            marginRight: '15%',
-                            marginBottom: 20
-                        }}
-                        // onPress={() => this.onValidation()}
-                        
-                    >
-                        <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-                            Mencari Crafter
-                        </Text>
-                    </Button>
+                    {this.renderButton()}
                 </ContainerSection>
+
+                {/* <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        alert('Modal has been closed.');
+                    }}>
+                    <View style={{ marginTop: 22 }}>
+                        <View>
+                            <InputSearch
+                                autoFocus
+                                onChangeText={(text) => {
+                                    this.querySuggestion(text);
+                                }}
+                                value={txt}
+                                // onChangeText={v => this.onChangeInput('txt', v)}
+                                placeholder="Cari Material..."
+                                icon={ic_search}
+                            />
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.setModalVisible(!this.state.modalVisible);
+                                }}>
+                                <Text>Hide Modal</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal> */}
             </ScrollView >
         );
     }
