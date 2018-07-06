@@ -44,15 +44,9 @@ import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
 import { PageDesignPage } from './pages/PageDesign';
 import { SettingProductPage } from './pages/settingProduct.js';
 import { DetailInformationOrderPage } from './pages/detailInformationOrder';
-<<<<<<< HEAD
 import { FinalProcessOrderPage } from './pages/finalProcessOrder'
-import { ProfileCrafterPage } from './pages/profileCrafter'
 import { ReviewProductPage } from './pages/reviewProduct'
-=======
-import { FinalProcessOrderPage } from './pages/finalProcessOrder';
 import { ProfileCrafterPage } from './pages/profileCrafter';
-import { ReviewProductPage } from './pages/reviewProduct';
->>>>>>> c9273ff4916b19c363ac3b5bd3ae5008ddb09a70
 
 
 console.disableYellowBox = true;
@@ -66,7 +60,6 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-<<<<<<< HEAD
   StartScreen: {
     screen: StartScreen
   },
@@ -79,29 +72,18 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-=======
-  Dashboard: {
-    screen: DashboardPage
-  },
-  StartScreen: {
-    screen: StartScreen
-  },
->>>>>>> c9273ff4916b19c363ac3b5bd3ae5008ddb09a70
   AkunBank: {
     screen: AkunBankPage
   },
   InformasiBank: {
     screen: InformasiBankPage
   },
-<<<<<<< HEAD
-=======
   PageDesign: {
     screen: PageDesignPage
   },
   DesignSaya: {
     screen: DesignSayaPage
   },
->>>>>>> c9273ff4916b19c363ac3b5bd3ae5008ddb09a70
   ReviewProduct: {
     screen: ReviewProductPage
   },
