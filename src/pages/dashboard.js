@@ -381,20 +381,46 @@ export class DashboardPage extends React.Component {
 																	<View style={styles.containerHomeScreen}>
 																		{
 																			orderStatus === '' ?
-																				<View style={styles.containerSomeHomeScreen}>
-																					<View style={styles.photoHomeScreen}>
+																				// <View style={styles.containerSomeHomeScreen}>
+																				// 	<View style={styles.photoHomeScreen}>
+																				// 		<Image
+																				// 			style={styles.cngImage}
+																				// 			source={require('./../assets/images/order_default.png')}
+																				// 		/>
+																				// 	</View>
+																				// 	<View style={styles.textHomeScreen}>
+																				// 		<Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>ORDER </Text>
+																				// 		<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																				// 	</View>
+																				// </View>
+																				<View style={{
+																					flexDirection: 'row',
+																					marginTop: 65,
+																				}}>
+																					<View style={{
+																						height: 170,
+																						borderRadius: 25
+																					}} >
 																						<Image
 																							style={styles.cngImage}
 																							source={require('./../assets/images/order_default.png')}
 																						/>
 																					</View>
-																					<View style={styles.textHomeScreen}>
-																						<Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>ORDER </Text>
-																						<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																					<View style={{
+																						flex: 1, flexDirection: 'column',
+																						borderRadius: 25
+																					}} >
+																						<Text
+																							style={{
+																								paddingLeft: 15, marginTop: 5, color: 'white',
+																								fontSize: 20, fontFamily: 'Quicksand-Bold'
+																							}}>ORDER </Text>
+																						<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																						<View style={{ flex: 1 }} />
 																					</View>
 																				</View>
 																				:
-																				<View>
+																				<View style={{}}>
 																					{
 																						orderStatus === 'custom' ?
 																							<View style={styles.containerSomeHomeScreen}>
@@ -404,9 +430,12 @@ export class DashboardPage extends React.Component {
 																										source={require('./../assets/images/Custom.png')}
 																									/>
 																								</View>
-																								<View style={styles.textHomeScreen}>
-																									<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CUSTOM </Text>
-																									<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
+																								<View style={{
+																									flex: 1, flexDirection: 'column',
+																									borderRadius: 25
+																								}} >
+																									<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CUSTOM ORDER</Text>
+																									<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
 																									<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																										<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
@@ -424,11 +453,14 @@ export class DashboardPage extends React.Component {
 																													source={require('./../assets/images/CapturenGet.png')}
 																												/>
 																											</View>
-																											<View style={styles.textHomeScreen}>
-																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N`GET </Text>
-																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
+																											<View style={{
+																												flex: 1, flexDirection: 'column',
+																												borderRadius: 25
+																											}} >
+																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N GET</Text>
+																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																												<TouchableOpacity style={styles.buttonCapture}>
+																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																													<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																												</TouchableOpacity>
 																											</View>
@@ -444,11 +476,14 @@ export class DashboardPage extends React.Component {
 																																source={require('./../assets/images/idea_market.png')}
 																															/>
 																														</View>
-																														<View style={styles.textHomeScreen}>
-																															<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET </Text>
-																															<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Disini kamu bisa melihat hasil karya unik dan menarik teman-temanmu dan kamu bisa membelinya loh! </Text>
+																														<View style={{
+																															flex: 1, flexDirection: 'column',
+																															borderRadius: 25
+																														}} >
+																															<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET</Text>
+																															<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																															<TouchableOpacity style={styles.buttonIdea}>
+																															<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																																<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																															</TouchableOpacity>
 																														</View>
@@ -529,65 +564,32 @@ export class DashboardPage extends React.Component {
 																							</TouchableOpacity>
 																						</View>
 
-
 																						<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 																					</View>
-
-																					<View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'yellow', marginTop: 20, height: 100 }}>
-																						<TouchableOpacity
+																					<View style={{ flex: 1, flexDirection: 'column' }}>
+																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
 																							onPress={() => this.props.navigation.navigate('ProfilePage')}
 																						>
-																							<View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
-
-																								{/* <Image
-																									style={styles.iconProfile}
-																									source={require('./../assets/images/edit_profil.png')}
-																								/>
-																								<Text style={{ color: 'white', marginRight: '25%', marginTop: 7, marginLeft: 10 }}>Edit Profile</Text>
-																								<Icon size={24} name="md-arrow-forward" color="#fff" style={{ marginTop: 5 }} /> */}
-																							</View>
+																							<Image
+																								style={styles.iconProfile}
+																								source={require('./../assets/images/edit_profil.png')}
+																							/>
+																							<Text style={{ color: 'white', marginRight: '25%', marginTop: 7, marginLeft: 10 }}>Edit Profile</Text>
+																							<Icon size={24} name="md-arrow-forward" color="#fff" style={{ marginTop: 5 }} />
 																						</TouchableOpacity>
-
-																						<View style={{ flex: 1, flexDirection: 'row', marginLeft: '20%', backgroundColor: 'black' }}>
+																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
+																							onPress={() => this.props.navigation.navigate('Login')}
+																						>
 																							<Image
 																								style={styles.iconProfile}
 																								source={require('./../assets/images/logout.png')}
+																								resizeMode='contain'
 																							/>
-																							<Text style={{ color: 'white', marginRight: 10, marginTop: 27, marginLeft: 10 }}>Log  Out</Text>
-																						</View>
-																						{/* <View style={{ flex: 1 }}>
-																							<TouchableOpacity
-																								onPress={() => this.props.navigation.navigate('ProfilePage')}
-																							>
-																								<View style={{ flex: 1, flexDirection: 'row' }}>
-																									<Image
-																										style={styles.iconProfile}
-																										source={require('./../assets/images/edit_profil.png')}
-																									/>
-																									<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Edit Profil </Text>
-																									<Icon size={24} name="md-arrow-forward" color="#fff" />
-																								</View>
-																							</TouchableOpacity>
-																						</View> */}
+																							<Text style={{ color: 'white', marginRight: 10, marginTop: 7, marginLeft: 10 }}>Log  Out</Text>
+																						</TouchableOpacity>
 
-																						{/* <View style={{ flex: 1 }}>
-																							<TouchableOpacity
-																								onPress={() => this.props.navigation.navigate('Login')}
-																							>
-																								<View style={{ flex: 1, flexDirection: 'row' }}>
-																									<Image
-																										style={{
-																											height: 26,
-																											width: 26,
-																										}}
-																										source={require('./../assets/images/logout.png')}
-																									/>
-																									<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Log out</Text>
-																								</View>
-																							</TouchableOpacity>
-																						</View> */}
 																					</View>
 																				</View>
 																				:
@@ -844,7 +846,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		height: 175,
 		width: '95%',
-		// backgroundColor: 'blue'
 	},
 	containerPhoto: {
 		flex: 1,
@@ -994,10 +995,9 @@ const styles = StyleSheet.create({
 		height: 50,
 		width: 50,
 		marginBottom: 5,
-		// backgroundColor: 'blue'
 	},
 	containerHomeScreen: {
-		flex: 2,
+		flex: 1,
 		borderRadius: 20,
 		backgroundColor: 'rgba(0,0,0,0)',
 		shadowColor: '#000',
@@ -1006,7 +1006,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		height: '100%',
 		width: '100%',
-		// backgroundColor : 'red',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -1021,28 +1020,26 @@ const styles = StyleSheet.create({
 	},
 	photoHomeScreen: {
 		height: 170,
-		width: 160,
 		borderRadius: 25,
-		marginLeft: -7
+		marginLeft: -7,
+		// backgroundColor:'red'
 	},
 	textHomeScreen: {
 		height: 165,
 		width: 185,
-		// backgroundColor: 'skyblue'
 	},
 	cngImage: {
 		height: 170,
 		width: 160,
 	},
 	buttonCustom: {
-		marginTop: 41,
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
-		marginLeft: 12,
-		// position: 'relative',
+		marginLeft: 10,
+		flex: 1
 	},
 	item: {
 		height: 85,
@@ -1052,22 +1049,22 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover'
 	},
 	buttonIdea: {
-		marginTop: 25,
-		marginLeft: 12,
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
+		marginLeft: 10,
+		flex: 1
 	},
 	buttonCapture: {
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
-		marginTop: 55,
-		marginLeft: 12
+		marginLeft: 10,
+		flex: 1
 	},
 	ButtonCrafterList: {
 		backgroundColor: 'red',
@@ -1098,7 +1095,6 @@ const styles = StyleSheet.create({
 		height: 60,
 		width: '100%',
 		alignItems: 'center',
-		// backgroundColor:'skyblue'
 
 	},
 	containerBodyCrafter: {
@@ -1162,7 +1158,7 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginRight: 10,
 		height: 500,
-		backgroundColor: 'red'
+		// backgroundColor: 'red'
 	},
 	locationIcon: {
 		height: 15,
