@@ -41,16 +41,12 @@ import { CrafterMyOrderPage } from './pages/CrafterMyOder';
 import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
-<<<<<<< HEAD
 import { PageDesignPage } from './pages/PageDesign';
-=======
-import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
 import { SettingProductPage } from './pages/settingProduct.js';
 import { DetailInformationOrderPage } from './pages/detailInformationOrder';
 import { FinalProcessOrderPage } from './pages/finalProcessOrder'
 import { ProfileCrafterPage } from './pages/profileCrafter'
 import { ReviewProductPage } from './pages/reviewProduct'
->>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
 
 
 console.disableYellowBox = true;
@@ -64,6 +60,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   PageDesign: {
     screen: PageDesignPage
   },
@@ -73,16 +72,12 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
-<<<<<<< HEAD
   AkunBank: {
     screen: AkunBankPage
   },
   InformasiBank: {
     screen: InformasiBankPage
-=======
+  },
   ReviewProduct: {
     screen: ReviewProductPage
   },
@@ -94,12 +89,10 @@ const Routes = createStackNavigator({
   },
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
->>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-<<<<<<< HEAD
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
@@ -108,13 +101,12 @@ const Routes = createStackNavigator({
   },
   DetailOrder : {
     screen : DetailOrderPage
-=======
+  },
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
   },
   DetailOrder: {
     screen: DetailOrderPage
->>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
   },
   Order: {
     screen: OrderPage
@@ -143,16 +135,14 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-<<<<<<< HEAD
   FindingCrafter: {
     screen: FindingCrafterPage
   },
   MyOrder: {
     screen: MyOrderPage
-=======
+  },
   Dashboard: {
     screen: DashboardPage
->>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
   },
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage

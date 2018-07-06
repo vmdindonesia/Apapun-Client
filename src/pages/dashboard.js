@@ -580,15 +580,18 @@ export class DashboardPage extends React.Component {
 																							<Text style={{ color: 'white', marginRight: '25%', marginTop: 7, marginLeft: 10 }}>Edit Profile</Text>
 																							<Icon size={24} name="md-arrow-forward" color="#fff" style={{ marginTop: 5 }} />
 																						</TouchableOpacity>
-																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
+																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}
 																							onPress={() => this.props.navigation.navigate('Login')}
 																						>
 																							<Image
-																								style={styles.iconProfile}
+																								style={[styles.iconProfile, { marginLeft: 63, }]}
 																								source={require('./../assets/images/logout.png')}
 																								resizeMode='contain'
 																							/>
-																							<Text style={{ color: 'white', marginRight: 10, marginTop: 7, marginLeft: 10 }}>Log  Out</Text>
+																							<Text style={{
+																								textAlign: 'center', color: 'white',
+																								marginLeft: 8
+																							}}>Log  Out</Text>
 																						</TouchableOpacity>
 
 																					</View>
@@ -768,34 +771,35 @@ export class DashboardPage extends React.Component {
 					}
 
 					<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.sideMenus('Open')}>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => console.log("notes tapped!")}>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/umum-enabled.png')}
+								resizeMode='contain'
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="Notifications" onPress={() => this.statusMenus('profile')}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/profil-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('order')}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/order-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterList')}>
 							<Image
 								style={{ width: 20, height: 20, }}
 								source={require('./../assets/images/crafter-list-enable.png')}
 							/>
 						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="Notifications" onPress={() => { }}>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterMenu')}>
 							<Image
 								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-list-enable.png')}
-							/>
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-list-enable.png')}
-							/>
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-list-enable.png')}
-							/>
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-list-enable.png')}
+								source={require('./../assets/images/crafter-menu-enable.png')}
 							/>
 						</ActionButton.Item>
 					</ActionButton>
