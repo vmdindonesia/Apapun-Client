@@ -37,6 +37,11 @@ import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
 import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+import { SettingProductPage } from './pages/settingProduct.js';
+import { DetailInformationOrderPage } from './pages/detailInformationOrder';
+import { FinalProcessOrderPage } from './pages/finalProcessOrder'
+import { ProfileCrafterPage } from './pages/profileCrafter'
+import { ReviewProductPage } from './pages/reviewProduct'
 
 
 console.disableYellowBox = true;
@@ -53,11 +58,38 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  ReviewProduct: {
+    screen: ReviewProductPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  DetailInformationOrder: {
+    screen: DetailInformationOrderPage
+  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
+  FinalProcessOrder: {
+    screen: FinalProcessOrderPage
+  },
   DetailOrder: {
     screen: DetailOrderPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
@@ -73,12 +105,6 @@ const Routes = createStackNavigator({
   },
   CrafterList: {
     screen: CrafterListPage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  MyOrder: {
-    screen: MyOrderPage
   },
   Dashboard: {
     screen: DashboardPage
@@ -98,17 +124,11 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  Order: {
-    screen: OrderPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
@@ -125,10 +145,6 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  Crafter: {
-    screen: CrafterPage
-  },
-
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
