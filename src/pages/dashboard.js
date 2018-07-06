@@ -771,7 +771,7 @@ export class DashboardPage extends React.Component {
 							<View />
 					}
 
-					<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.sideMenus('Open')}>
+					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
 							{
 								statusMenu === 'home' ?
