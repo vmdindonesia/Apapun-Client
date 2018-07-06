@@ -17,7 +17,10 @@ import { StartScreen } from './pages/StartScreen';
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
+import { DesignSayaPage } from './pages/DesignSaya.js';
 import { PengaturanBankPage } from './pages/pengaturanBank.js'
+import { InformasiBankPage } from './pages/InformasiBank.js';
+import { DetailTransaksiPage } from './pages/DetailTransaksi.js';
 import { FindingCrafterPage } from './pages/findingCrafter';
 import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
 import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
@@ -33,11 +36,12 @@ import { BerandaCrafterPage } from './pages/BerandaCrafter';
 import { FashionCrafterPage } from './pages/FashionCrafter';
 import { FurnitureCrafterPage } from './pages/FurnitureCrafter';
 import { BeautyCrafterPage } from './pages/BeautyCrafter';
+import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
 import { CrafterMyOrderPage } from './pages/CrafterMyOder';
 import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
-import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+import { PageDesignPage } from './pages/PageDesign';
 
 
 console.disableYellowBox = true;
@@ -51,17 +55,29 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  DesignSaya: {
+    screen: DesignSayaPage
+  },
   Dashboard: {
     screen: DashboardPage
-  },
-  AkunBank: {
-    screen: AkunBankPage
   },
   StartScreen: {
     screen: StartScreen
   },
+  AkunBank: {
+    screen: AkunBankPage
+  },
+  InformasiBank: {
+    screen: InformasiBankPage
+  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
+  },
+  DetailTransaksi: {
+    screen: DetailTransaksiPage
   },
   pengaturanBank: {
     screen: PengaturanBankPage
@@ -76,7 +92,7 @@ const Routes = createStackNavigator({
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
-    screen : HistoryOnMyOrderPage
+    screen: HistoryOnMyOrderPage
   },
   Login: {
     screen: LoginPage

@@ -41,7 +41,7 @@ export class ProfileBuyerPage extends React.Component {
                                     <TouchableWithoutFeedback>
                                         <TouchableOpacity style={styles.button}
                                             onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                            <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 165 }}
+                                            <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 150 }}
                                                 source={require('./../assets/images/pen_mainprof.png')}
                                             />
                                         </TouchableOpacity>
@@ -148,6 +148,7 @@ export class ProfileBuyerPage extends React.Component {
                                     />
                                 </View>
 
+
                                 <View style={{
                                     flexDirection: 'column',
                                     // backgroundColor: 'skyblue', 
@@ -157,8 +158,8 @@ export class ProfileBuyerPage extends React.Component {
                                     <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left' }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 10, textAlign: 'left' }}>
-                                        Jalan Komodo
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 5, textAlign: 'left' }}>
+                                        Jalan Komodo 
                                     </Text>
                                 </View>
 
@@ -227,7 +228,7 @@ export class ProfileBuyerPage extends React.Component {
                                 }}>
                                     <TouchableWithoutFeedback>
                                     <TouchableOpacity
-                                      onPress={() => this.props.navigation.navigate('')}>
+                                      onPress={() => this.props.navigation.navigate('DesignSaya')}>
                                     <Image style={{ height: 40, width: 40, borderRadius: 0, }}
                                         source={require('./../assets/images/ic_design.png')}
                                     />
@@ -257,21 +258,19 @@ export class ProfileBuyerPage extends React.Component {
 
                             <View style={{
                                 flexDirection: 'row',
-                                //  backgroundColor: 'yellow', 
-                                height: '100%', width: '85%',
+                                height: '100%', width: '100%'
                             }}>
                                 <View style={{
-                                    // flexDirection: 'column',
-                                    // backgroundColor: 'skyblue',
-                                    height: '100%', width: '85%',
+                                    flexDirection: 'column',
+                                    height: '100%', width: '100%',
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <Text style={{ fontSize: 20, paddingLeft: 10, fontWeight: 'bold', textAlign: 'center' }}>
+                                    <Text style={{ fontSize: 20, paddingTop: -50, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center' }}>
                                         Hargai Designmu
                                  </Text>
-                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
-                                        Share dan opresiasikan design anda di seluruh indonesia
+                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center' }}>
+                                        Share dan opresiasikan designmu di seluruh indonesia
                                 </Text>
                                     <TouchableOpacity style={styles.buttonSignUp}
                                         onPress={() => this.props.navigation.navigate('pengaturanBank')}>
@@ -391,10 +390,10 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'column',
         marginTop: 15,
-        height: 130,
+        height: 170,
         width: '90%',
         alignItems: 'center',
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignSelf: 'center',
         // zIndex: 1,
         borderWidth: 0.5,

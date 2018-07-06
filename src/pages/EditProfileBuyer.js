@@ -136,14 +136,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 50
     },
-    // buttonAlamat: {
-    //     backgroundColor: 'silver',
-    //     borderRadius: 200,
-    //     height: 35,
-    //     width: 500,
-    //     alignSelf: 'center',
-    //     // justifyContent: 'center'
-    // },
+
 
 });
 
