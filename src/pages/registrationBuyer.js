@@ -96,16 +96,11 @@ export class RegistrationBuyerPage extends React.Component {
 
         return (
 
-            < View
-                style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }
-                }
+            <View
+                style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
             >
-                <StatusBar
-                    backgroundColor={COLOR.headerBar}
-                    barStyle="dark-content"
-                />
 
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps="always">
 
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegisterBuyer.bind(this)}>
