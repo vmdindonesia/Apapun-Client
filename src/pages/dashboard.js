@@ -10,6 +10,7 @@ import {
 import Swiper from 'react-native-swiper';
 import { COLOR, IPSERVER } from './../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ActionButton from 'react-native-circular-action-menu';
 
 export class DashboardPage extends React.Component {
 	static navigationOptions = {
@@ -639,7 +640,7 @@ export class DashboardPage extends React.Component {
 									}
 								</View>
 
-								<View style={{
+								{/* <View style={{
 									flex: 1,
 									flexDirection: 'row',
 									width: '100%',
@@ -648,8 +649,6 @@ export class DashboardPage extends React.Component {
 									marginBottom: '25%',
 									marginTop: 20
 								}}>
-
-									{/* INI MENU BUTTON */}
 									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
 										<TouchableOpacity
 											onPress={() => this.statusMenus('home')}
@@ -762,12 +761,46 @@ export class DashboardPage extends React.Component {
 											}
 										</TouchableOpacity>
 									</View>
-								</View>
+								</View> */}
 							</View>
 							:
 							<View />
 					}
-					<View style={styles.containerMenu}>
+
+					<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.sideMenus('Open')}>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => console.log("notes tapped!")}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/crafter-list-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="Notifications" onPress={() => { }}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/crafter-list-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/crafter-list-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/crafter-list-enable.png')}
+							/>
+						</ActionButton.Item>
+						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => { }}>
+							<Image
+								style={{ width: 20, height: 20, }}
+								source={require('./../assets/images/crafter-list-enable.png')}
+							/>
+						</ActionButton.Item>
+					</ActionButton>
+
+					{/* <View style={styles.containerMenu}>
 
 						<TouchableOpacity
 							style={styles.containerButtonLogo}
@@ -787,7 +820,7 @@ export class DashboardPage extends React.Component {
 
 							}
 						</TouchableOpacity>
-					</View>
+					</View> */}
 				</ImageBackground>
 			</View>
 		)
