@@ -305,7 +305,7 @@ export class DashboardPage extends React.Component {
 																	<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
 																	<TouchableOpacity style={styles.ButtonCrafterList}
-																	onPress={() => this.props.navigation.navigate('CrafterList')}>
+																		onPress={() => this.props.navigation.navigate('CrafterList')}>
 																		<Text style={styles.TextButtonGo}>GO</Text>
 																	</TouchableOpacity>
 																</View>
@@ -570,31 +570,41 @@ export class DashboardPage extends React.Component {
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 																					</View>
-																					<View style={{ flex: 1, flexDirection: 'column' }}>
-																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
-																							onPress={() => this.props.navigation.navigate('ProfilePage')}
-																						>
+
+
+																					<View style={{ paddingTop: 50, flex: 1, flexDirection: 'row', paddingLeft: 30, paddingRight: 30 }}>
+																						<View style={{ flex: 1 }}>
+																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
+																								onPress={() => this.props.navigation.navigate('ProfilePage')}
+																							>
+																								<Image
+																									style={[styles.iconProfile, { marginBottom: 15 }]}
+																									source={require('./../assets/images/edit_profil.png')}
+																								/>
+																								<Text style={{ textAlign: 'center', color: 'white' }}>Edit Profile</Text>
+																							</TouchableOpacity>
+																						</View>
+
+																						<View style={{ flex: 1, alignItems: 'center' }}>
 																							<Image
-																								style={styles.iconProfile}
-																								source={require('./../assets/images/edit_profil.png')}
-																							/>
-																							<Text style={{ color: 'white', marginRight: '25%', marginTop: 7, marginLeft: 10 }}>Edit Profile</Text>
-																							<Icon size={24} name="md-arrow-forward" color="#fff" style={{ marginTop: 5 }} />
-																						</TouchableOpacity>
-																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}
-																							onPress={() => this.props.navigation.navigate('Login')}
-																						>
-																							<Image
-																								style={[styles.iconProfile, { marginLeft: 63, }]}
-																								source={require('./../assets/images/logout.png')}
+																								style={{ height: 70 }}
+																								source={require('./../assets/images/shad.png')}
 																								resizeMode='contain'
 																							/>
-																							<Text style={{
-																								textAlign: 'center', color: 'white',
-																								marginLeft: 8
-																							}}>Log  Out</Text>
-																						</TouchableOpacity>
+																						</View>
 
+																						<View style={{ flex: 1 }}>
+																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
+																								onPress={() => this.props.navigation.navigate('ProfilePage')}
+																							>
+																								<Image
+																									style={[styles.iconProfile, { marginBottom: 15 }]}
+																									source={require('./../assets/images/logout.png')}
+																									resizeMode='contain'
+																								/>
+																								<Text style={{ textAlign: 'center', color: 'white' }}>Log Out</Text>
+																							</TouchableOpacity>
+																						</View>
 																					</View>
 																				</View>
 																				:
@@ -643,135 +653,12 @@ export class DashboardPage extends React.Component {
 											</View>
 									}
 								</View>
-
-								{/* <View style={{
-									flex: 1,
-									flexDirection: 'row',
-									width: '100%',
-									height: 50,
-									backgroundColor: 'rgba(70,70,71,0.5)',
-									marginBottom: '25%',
-									marginTop: 20
-								}}>
-									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-										<TouchableOpacity
-											onPress={() => this.statusMenus('home')}
-										>
-											{
-												statusMenu === 'home' ?
-													<View>
-														<Image
-															resizeMode='stretch'
-															style={{ width: 30, height: 7 }}
-															source={require('./../assets/images/umum-enabled.png')}
-														/>
-													</View>
-													:
-													<View>
-														<Image
-															resizeMode='stretch'
-															style={{ width: 30, height: 7, }}
-															source={require('./../assets/images/umum-disabled.png')}
-														/>
-													</View>
-											}
-										</TouchableOpacity>
-									</View>
-									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-										<TouchableOpacity
-											onPress={() => this.statusMenus('profile')}
-										>
-											{
-												statusMenu === 'profile' ?
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/profil-enable.png')}
-														/>
-													</View>
-													:
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/profil-disable.png')}
-														/>
-													</View>
-											}
-										</TouchableOpacity>
-									</View>
-									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-										<TouchableOpacity
-											onPress={() => this.statusMenus('order')}
-										>
-											{
-												statusMenu === 'order' ?
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/order-enable.png')}
-														/>
-													</View>
-													:
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/order-disable.png')}
-														/>
-													</View>
-											}
-										</TouchableOpacity>
-									</View>
-									<View style={{ width: 73, borderRightWidth: 2, borderRightColor: 'black', height: 76, justifyContent: 'center', alignItems: 'center' }}>
-										<TouchableOpacity
-											onPress={() => this.statusMenus('crafterList')}
-										>
-											{
-												statusMenu === 'crafterList' ?
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/crafter-list-enable.png')}
-														/>
-													</View>
-													:
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/crafter-list-disable.png')}
-														/>
-													</View>
-											}
-										</TouchableOpacity>
-									</View>
-									<View style={{ width: 73, height: 76, justifyContent: 'center', alignItems: 'center' }}>
-										<TouchableOpacity
-											onPress={() => this.statusMenus('crafterMenu')}
-										>
-											{
-												statusMenu === 'crafterMenu' ?
-													<View>
-														<Image
-															style={{ width: 30, height: 30, }}
-															source={require('./../assets/images/crafter-menu-enable.png')}
-														/>
-													</View>
-													:
-													<View>
-														<Image
-															style={{ width: 50, height: 30, }}
-															source={require('./../assets/images/crafter-menu-disable.png')}
-														/>
-													</View>
-											}
-										</TouchableOpacity>
-									</View>
-								</View> */}
 							</View>
 							:
 							<View />
 					}
 
-					<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => this.sideMenus('Open')}>
+					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
 							<Image
 								style={{ width: 20, height: 20, }}
@@ -804,28 +691,6 @@ export class DashboardPage extends React.Component {
 							/>
 						</ActionButton.Item>
 					</ActionButton>
-
-					{/* <View style={styles.containerMenu}>
-
-						<TouchableOpacity
-							style={styles.containerButtonLogo}
-							onPress={() => this.sideMenus('Open')}
-						>
-							{
-								sideMenu === true ?
-									<Image
-										style={styles.Logo2}
-										source={require('./../assets/images/ic_logo2.png')}
-									/>
-									:
-									<Image
-										style={styles.Logo}
-										source={require('./../assets/images/ic_logo1.png')}
-									/>
-
-							}
-						</TouchableOpacity>
-					</View> */}
 				</ImageBackground>
 			</View>
 		)
@@ -1196,7 +1061,7 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginRight: 10,
 		height: 500,
-		// backgroundColor: 'red'
+		// backgroundColor: 'red'f
 	},
 	locationIcon: {
 		height: 15,
