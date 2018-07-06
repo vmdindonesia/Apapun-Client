@@ -464,11 +464,11 @@ export class OrderPage extends React.Component {
 
                 }
 
-                <ContainerSection>
-                    <View style={{ flex: 3, flexDirection: 'column' }}>
+                <View style={{ flexDirection: 'row'  }}>
+                    <View style={{ flex: 3 }}>
                         <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
                     </View>
-                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ marginLeft: -30 }}>
+                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ width: '5%', flex: 1}}>
                         <Image
                             style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8, marginLeft: 2 }}
                             source={require('../assets/images/minus.png')}
@@ -481,7 +481,7 @@ export class OrderPage extends React.Component {
                             keyboardType='numeric'
                         />
                     </View>
-                    <TouchableOpacity onPress={() => this.plusNumber()} style={{ marginLeft: 4, marginRight: 4 }}>
+                    <TouchableOpacity onPress={() => this.plusNumber()} style={{ marginLeft: 4, marginRight: 4, flex: 1 }}>
                         <Image
                             style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8 }}
                             source={require('../assets/images/plus.png')}
@@ -498,7 +498,7 @@ export class OrderPage extends React.Component {
                             </Picker>
                         </View>
                     </View>
-                </ContainerSection>
+                </View>
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
                 <ContainerSection>

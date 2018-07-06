@@ -16,7 +16,7 @@ export class RegisToIdeaMarketPage extends React.Component {
         return (
             <ImageBackground
                 style={{ width: '100%', height: '100%' }}
-                source={require('./../assets/images/bg-login.jpg')}
+                source={require('./../assets/images/bg-review.jpg')}
             >
                 <View style={{ flexDirection: 'column' }}>
                     <View style={styles.containerTextTop}>

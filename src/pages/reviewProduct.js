@@ -23,28 +23,28 @@ export class ReviewProductPage extends React.Component {
                         <Text
                             style={{
                                 marginLeft: 30, marginRight: 30, fontFamily: 'Quicksand-Regular',
-                                fontSize: 12, marginTop: 20, color: 'white', textAlign: 'center'
+                                fontSize: 12, marginTop: 10, color: 'white', textAlign: 'center', flex: 1
                             }}
                         >
                             Kami harap anda mendapatkan pesanan anda sesuai dengan yang anda inginkan. Silahkan tentukan rating anda terhadap crafter dan review agar crafter dapat menjadi lebih baik
                         </Text>
                     </View>
-                    <View style={{ width: '100%', height: '30%', flexDirection: 'row' }}>
-                        <View style={{ width: '50%', paddingLeft: 20 }}>
+                    <View style={{ width: '100%', height: '30%', flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <View style={{ flex: 1 }}>
                             <Text style={styles.textMid}>Desain</Text>
                             <View>
                                 <Image
-                                    style={{ width: 150, height: 150, alignSelf: 'center', marginTop: 5 }}
+                                    style={{ width: 130, height: 130, alignSelf: 'center', marginTop: 5 }}
                                     source={require('./../assets/images/design1.jpg')}
                                     resizeMode='contain'
                                 />
                             </View>
                         </View>
-                        <View style={{ width: '50%', paddingRight: 20 }}>
+                        <View style={{ flex: 1 }}>
                             <Text style={styles.textMid}>Hasil</Text>
                             <View>
                                 <Image
-                                    style={{ width: 150, height: 150, alignSelf: 'center', marginTop: 5 }}
+                                    style={{ width: 130, height: 130, alignSelf: 'center', marginTop: 5 }}
                                     source={require('./../assets/images/design1.jpg')}
                                     resizeMode='contain'
                                 />
@@ -55,48 +55,48 @@ export class ReviewProductPage extends React.Component {
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                             <TouchableOpacity
                                 style={{
-                                    borderWidth: 2, borderRadius: 25, height: 100, width: 130, backgroundColor: 'white',
+                                    borderWidth: 2, borderRadius: 25, height: 100, width: 95, backgroundColor: 'white',
                                     borderColor: 'transparent'
                                 }}
                             >
                                 <Image
-                                    style={{ width: 60, height: 60, alignSelf: 'center', marginTop: 10 }}
+                                    style={{ width: 80, height: 65, alignSelf: 'center', marginTop: 10 }}
                                     source={require('./../assets/images/Buruk.png')}
                                     resizeMode='contain'
                                 />
-                                <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>Buruk</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Buruk</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
-                                    borderWidth: 2, borderRadius: 25, height: 100, width: 130, backgroundColor: 'white',
+                                    borderWidth: 2, borderRadius: 25, height: 100, width: 95, backgroundColor: 'white',
                                     borderColor: 'transparent'
                                 }}
                             >
                                 <Image
-                                    style={{ width: 60, height: 60, alignSelf: 'center', marginTop: 10 }}
+                                    style={{ width: 80, height: 65, alignSelf: 'center', marginTop: 10 }}
                                     source={require('./../assets/images/Cukup.png')}
                                     resizeMode='contain'
                                 />
-                                <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>Cukup</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Cukup</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                             <TouchableOpacity
                                 style={{
-                                    borderWidth: 2, borderRadius: 25, height: 100, width: 130, backgroundColor: 'white',
+                                    borderWidth: 2, borderRadius: 25, height: 100, width: 95, backgroundColor: 'white',
                                     borderColor: 'transparent'
                                 }}
                             >
                                 <Image
-                                    style={{ width: 60, height: 60, alignSelf: 'center', marginTop: 10 }}
+                                    style={{ width: 80, height: 65, alignSelf: 'center', marginTop: 10 }}
                                     source={require('./../assets/images/Bagus.png')}
                                     resizeMode='contain'
                                 />
-                                <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>Bagus</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Bagus</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
-                                    borderWidth: 2, borderRadius: 25, height: 100, width: 130, backgroundColor: 'white',
+                                    borderWidth: 2, borderRadius: 25, height: 100, width: 95, backgroundColor: 'white',
                                     borderColor: 'transparent'
                                 }}
                             >
@@ -105,7 +105,7 @@ export class ReviewProductPage extends React.Component {
                                     source={require('./../assets/images/sempurna.png')}
                                     resizeMode='contain'
                                 />
-                                <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>Sempurna</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Sempurna</Text>
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalReview')}
@@ -126,7 +126,8 @@ export class ReviewProductPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerTextTop: {
-        marginTop: 20,
+        flex: 1,
+        marginTop: 5,
         alignItems: 'center',
         height: '20%',
         width: '100%'

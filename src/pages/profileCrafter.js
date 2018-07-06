@@ -209,8 +209,9 @@ export class ProfileCrafterPage extends React.Component {
                         <View style={{ width: '10%', height: '100%' }}>
                             <TouchableOpacity>
                                 <Image style={{ width: 15, height: 15, marginLeft: 10, marginTop: 30 }}
-                                    source={require('../assets/images/Information.png')} />
+                                    source={require('../assets/images/Information.png')} /> 
                             </TouchableOpacity>
+                            {/* popup informasi ketika ditouch */}
                         </View>
                         <View style={{ width: '30%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
                             <View>
@@ -226,7 +227,7 @@ export class ProfileCrafterPage extends React.Component {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{ width: '30%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
+                        <View style={{ width: '25%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
                             <View>
                                 <Text style={{ color: 'white', fontSize: 12, textAlign: 'center' }}>Estimasi Selesai</Text>
                             </View>
@@ -236,8 +237,9 @@ export class ProfileCrafterPage extends React.Component {
                             </Text>
                             </View>
                         </View>
-                        <TouchableOpacity style={{ width: '10%', height: '100%' }}>
-                            <Icon size={30} style={{ alignSelf: 'center', marginTop: 23 }} name='md-send' />
+                        <TouchableOpacity style={{ width: '15%', height: '100%' }}>
+                            <Image style={{ width: 40, height: 40, marginLeft: 10, marginTop: 20 }}
+                                    source={require('../assets/images/Chat.png')} />
                         </TouchableOpacity>
                         <View style={{ width: '30%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
                             <TouchableOpacity
