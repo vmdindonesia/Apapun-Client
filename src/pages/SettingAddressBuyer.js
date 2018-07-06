@@ -11,14 +11,14 @@ export class SettingAddressBuyerPage extends React.Component {
     static navigationOptions = {
         headerTitle: 'Edit Address',
         headerRight:
-            <TouchableOpacity>
-                <View>
+            <View>
+                <TouchableOpacity>
                     <Image
                         style={{ height: 20, width: 20, margin: 20 }}
                         source={require('./../assets/images/icon_plus.jpg')}
                     />
-                </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
     }
 
     render() {
