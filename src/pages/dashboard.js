@@ -585,14 +585,6 @@ export class DashboardPage extends React.Component {
 																							</TouchableOpacity>
 																						</View>
 
-																						<View style={{ flex: 1, alignItems: 'center' }}>
-																							<Image
-																								style={{ height: 70 }}
-																								source={require('./../assets/images/shad.png')}
-																								resizeMode='contain'
-																							/>
-																						</View>
-
 																						<View style={{ flex: 1 }}>
 																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
 																								onPress={() => this.props.navigation.navigate('ProfilePage')}
