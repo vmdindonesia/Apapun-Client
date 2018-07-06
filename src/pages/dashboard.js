@@ -587,7 +587,7 @@ export class DashboardPage extends React.Component {
 
 																						<View style={{ flex: 1 }}>
 																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-																								onPress={() => this.props.navigation.navigate('ProfilePage')}
+																								onPress={() => this.props.navigation.navigate('Login')}
 																							>
 																								<Image
 																									style={[styles.iconProfile, { marginBottom: 15 }]}

@@ -113,15 +113,10 @@ export class LoginPage extends React.Component {
 						<View style={{ alignItems: 'center' }}>
 							<Image
 								style={styles.image}
-								source={require('./../assets/images/ic_logo2.png')}
+								source={require('./../assets/images/apapun_logo_white.png')}
+								resizeMode='contain'
 							/>
-							<Text style={{ marginTop: -30, fontSize: 50, color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-								apapun
-							</Text>
 						</View>
-						<Text style={{ marginTop: -8, fontSize: 8, color: '#FFFFFF', fontFamily: 'Quicksand-Bold', marginLeft: '55%' }}>
-							ANYTHING CAN BE
-						</Text>
 					</View>
 
 					<Container>
@@ -149,7 +144,7 @@ export class LoginPage extends React.Component {
 							/>
 						</ContainerSection>
 
-						<View style={{ paddingLeft: '53%' }}>
+						<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
 							<TouchableOpacity
 								onPress={() => ToastAndroid.show('Under Development', ToastAndroid.SHORT)}
 							>
@@ -201,8 +196,8 @@ const styles = {
 		backgroundColor: 'rgba(0,0,0,0)',
 	},
 	image: {
-		width: 120,
-		height: 120
+		width: 200,
+		height: 150
 	}
 }
 
