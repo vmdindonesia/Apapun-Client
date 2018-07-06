@@ -32,7 +32,7 @@ export class PageDesignPage extends React.Component {
                         position: 'relative', bottom: 300, left: 300, justifyContent: 'center'
                     }}>
                         <Image
-                            style={{ width: 20, height: 20, alignSelf: 'center' }}
+                            style={{ width: 20, height: 20, alignSelf: 'center', }}
                             source={require('./../assets/images/pen_mainprof.png')}
                         />
                     </TouchableOpacity>

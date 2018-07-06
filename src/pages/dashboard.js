@@ -303,7 +303,8 @@ export class DashboardPage extends React.Component {
 																	<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CRAFTER LIST </Text>
 																	<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
-																	<TouchableOpacity style={styles.ButtonCrafterList}>
+																	<TouchableOpacity style={styles.ButtonCrafterList}
+																	onPress={() => this.props.navigation.navigate('CrafterList')}>
 																		<Text style={styles.TextButtonGo}>GO</Text>
 																	</TouchableOpacity>
 																</View>
