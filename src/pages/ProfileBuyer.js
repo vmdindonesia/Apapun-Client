@@ -251,7 +251,7 @@ export class ProfileBuyerPage extends React.Component {
                         </View>
 
 
-                        <View style={styles.containerTh}>
+                        {/* <View style={styles.containerTh}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -273,7 +273,7 @@ export class ProfileBuyerPage extends React.Component {
 
                               
                             </View>
-                        </View>
+                        </View> */}
                       
 
 
