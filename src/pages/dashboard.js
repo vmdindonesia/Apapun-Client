@@ -660,35 +660,96 @@ export class DashboardPage extends React.Component {
 
 					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/umum-enabled.png')}
-								resizeMode='contain'
-							/>
+							{
+								statusMenu === 'home' ?
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/umum-enabled.png')}
+											resizeMode='contain'
+										/>
+									</View>
+									:
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/umum-disabled.png')}
+											resizeMode='contain'
+										/>
+									</View>
+							}
 						</ActionButton.Item>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="Notifications" onPress={() => this.statusMenus('profile')}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/profil-enable.png')}
-							/>
+							{
+								statusMenu === 'profile' ?
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/profil-enable.png')}
+										/>
+									</View>
+									:
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/profil-disable.png')}
+										/>
+									</View>
+							}
 						</ActionButton.Item>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('order')}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/order-enable.png')}
-							/>
+							{
+								statusMenu === 'order' ?
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/order-enable.png')}
+										/>
+									</View>
+									:
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/order-disable.png')}
+										/>
+									</View>
+							}
 						</ActionButton.Item>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterList')}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-list-enable.png')}
-							/>
+							{
+								statusMenu === 'crafterList' ?
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/crafter-list-enable.png')}
+										/>
+									</View>
+									:
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/crafter-list-disable.png')}
+										/>
+									</View>
+							}
 						</ActionButton.Item>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterMenu')}>
-							<Image
-								style={{ width: 20, height: 20, }}
-								source={require('./../assets/images/crafter-menu-enable.png')}
-							/>
+							{
+								statusMenu === 'crafterMenu' ?
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/crafter-menu-enable.png')}
+										/>
+									</View>
+									:
+									<View>
+										<Image
+											style={{ width: 20, height: 20, }}
+											source={require('./../assets/images/crafter-menu-disable.png')}
+										/>
+									</View>
+							}
 						</ActionButton.Item>
 					</ActionButton>
 				</ImageBackground>
