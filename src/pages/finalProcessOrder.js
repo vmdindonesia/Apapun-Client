@@ -17,7 +17,7 @@ export class FinalProcessOrderPage extends React.Component {
             <View style={{ flex: 1 }}>
                 <ImageBackground
                     style={{ width: '100%', height: '100%' }}
-                    source={require('./../assets/images/bg-login.jpg')}
+                    source={require('./../assets/images/bg-review.jpg')}
                 >
                     <View style={styles.containerBtnHome}>
                         <TouchableHighlight

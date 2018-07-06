@@ -41,7 +41,16 @@ import { CrafterMyOrderPage } from './pages/CrafterMyOder';
 import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
+<<<<<<< HEAD
 import { PageDesignPage } from './pages/PageDesign';
+=======
+import { DetailOrderPage } from './pages/DetailOrderOnMyOrder';
+import { SettingProductPage } from './pages/settingProduct.js';
+import { DetailInformationOrderPage } from './pages/detailInformationOrder';
+import { FinalProcessOrderPage } from './pages/finalProcessOrder'
+import { ProfileCrafterPage } from './pages/profileCrafter'
+import { ReviewProductPage } from './pages/reviewProduct'
+>>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
 
 
 console.disableYellowBox = true;
@@ -67,15 +76,30 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+<<<<<<< HEAD
   AkunBank: {
     screen: AkunBankPage
   },
   InformasiBank: {
     screen: InformasiBankPage
+=======
+  ReviewProduct: {
+    screen: ReviewProductPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  DetailInformationOrder: {
+    screen: DetailInformationOrderPage
+>>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
+<<<<<<< HEAD
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
@@ -84,6 +108,25 @@ const Routes = createStackNavigator({
   },
   DetailOrder : {
     screen : DetailOrderPage
+=======
+  FinalProcessOrder: {
+    screen: FinalProcessOrderPage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+>>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
+  },
+  Order: {
+    screen: OrderPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
@@ -100,11 +143,16 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
+<<<<<<< HEAD
   FindingCrafter: {
     screen: FindingCrafterPage
   },
   MyOrder: {
     screen: MyOrderPage
+=======
+  Dashboard: {
+    screen: DashboardPage
+>>>>>>> 3944e910ad1fa906d140e37e955e84bf936906b1
   },
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
@@ -118,17 +166,11 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  Order: {
-    screen: OrderPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
@@ -145,10 +187,6 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  Crafter: {
-    screen: CrafterPage
-  },
-
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
@@ -200,9 +238,9 @@ class App extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
+      // <View>
         <Routes />
-      </View>
+      // </View>
     );
   }
 }

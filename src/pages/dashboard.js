@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { ImageBackground, TouchableOpacity, StatusBar } from 'react-native';
+import { ImageBackground, TouchableOpacity, FlatList, TouchableWithoutFeedback, BackHandler, Alert } from 'react-native';
 import {
 	View,
 	Text,
 	StyleSheet,
-	Image
+	Image,
+	ScrollView
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { COLOR } from './../shared/config';
+import { COLOR, IPSERVER } from './../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class DashboardPage extends React.Component {
@@ -20,8 +21,48 @@ export class DashboardPage extends React.Component {
 		this.state = {
 			sideMenu: false,
 			statusMenu: 'profile',
-			orderStatus: ''
+			orderStatus: '',
+			images: [
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+				'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
+			]
 		};
+	}
+
+	componentWillMount() {
+		console.log(this.state.sideMenu, 'Side Menu Status')
+		BackHandler.addEventListener('hardwareBackPress', this.backPressed);
+	}
+
+	componentWillUnmount() {
+		BackHandler.removeEventListener('hardwareBackPress', this.backPressed);
+	}
+
+	backPressed = () => {
+		console.log(this.state.sideMenu, 'Side Menu Status')
+		if (this.state.sideMenu === true) {
+			return this.sideMenus();
+		} else if (this.state.sideMenu === false) {
+			Alert.alert(
+				'Exit App',
+				'Exiting the application?', [{
+					text: 'Cancel',
+					onPress: () => {
+						console.log(this.state.sideMenu, 'Sidemenu Cancel Button');
+						console.log('Cancel Pressed')
+					},
+					style: 'cancel'
+				}, {
+					text: 'OK',
+					onPress: () => BackHandler.exitApp()
+				},]
+			)
+			return true;
+		}
 	}
 
 	sideMenus = () => {
@@ -37,6 +78,8 @@ export class DashboardPage extends React.Component {
 		})
 	}
 
+	keyExtractor = (item) => item.id;
+
 	OrderStatus = (value) => {
 		console.log(value, 'Value')
 		this.setState({
@@ -44,27 +87,28 @@ export class DashboardPage extends React.Component {
 		})
 	}
 
-	// ButtonLogo = () => {
-	//     if (this.sideMenu) {
-	//         return
-	//         <TouchableOpacity style={{ color: 'yellow' }}>
-	//             <Image
-	//                 style={styles.Logo2}
-	//                 source={require("./../assets/images/ic_logo2.png")}
-	//             />
-	//         </TouchableOpacity>
-	//     }
-	//     return (
-	//         <TouchableOpacity
-	//             onPress={() => this.sideMenus()}
-	//             style={{ color: 'blue' }}>
-	//             <Image
-	//                 style={styles.Logo}
-	//                 source={require("./../assets/images/ic_logo1.png")}
-	//             />
-	//         </TouchableOpacity>
-	//     )
-	// }
+	renderIdeaPhoto = (itemProduct) => {
+		const imageSource = itemProduct.item;
+		console.log(imageSource, 'Idea Market');
+		return (
+			<TouchableWithoutFeedback onPress={() => { }}>
+				<View style={{
+					borderRadius: 4,
+					elevation: 2,
+					marginRight: 2,
+					height: 110,
+					flex: 1,
+					marginTop: 10
+				}}>
+					<Image
+						style={styles.item}
+						source={{ uri: `${imageSource}` }}
+						resizeMode='contain'
+					/>
+				</View>
+			</TouchableWithoutFeedback>
+		)
+	}
 
 
 	render() {
@@ -75,150 +119,137 @@ export class DashboardPage extends React.Component {
 					source={require('./../assets/images/back_home.png')}
 					style={styles.backgroundStyle}
 				>
-					<StatusBar
-						backgroundColor={COLOR.statusBar}
-						barStyle="dark-content"
-					/>
-					<View style={styles.container}>
-						<View style={styles.containerSlide}>
-							<Swiper
-								style={styles.wrapper}
-								autoplay
-								showsButtons={false}
-								dot={<View style={styles.formatSwiper} />}
-							>
-								<View style={styles.slide1}>
-									<Image
-										style={styles.imageStyle}
-										source={require('./../assets/images/swiperFirst.png')}
-										resizeMode='cover'
-									/>
-								</View>
-								<View style={styles.slide2}>
-									<Image
-										style={styles.imageStyle}
-										source={require('./../assets/images/swiperSecond.png')}
-										resizeMode='cover'
-									/>
-								</View>
-								<View style={styles.slide2}>
-									<Image
-										style={styles.imageStyle}
-										source={require('./../assets/images/swiperThird.png')}
-										resizeMode='cover'
-									/>
-								</View>
-								<View style={styles.slide2}>
-									<Image
-										style={styles.imageStyle}
-										source={require('./../assets/images/swiperFour.png')}
-										resizeMode='cover'
-									/>
-								</View>
-								<View style={styles.slide2}>
-									<Image
-										style={styles.imageStyle}
-										source={require('./../assets/images/swiperFive.png')}
-										resizeMode='cover'
-									/>
-								</View>
-							</Swiper>
-						</View>
+					<ScrollView>
 
-
-						<View style={styles.containerDashboard}>
-							<View style={styles.containerInsideProfileOne}>
-								<View style={styles.containerPhoto}>
-									<View>
-										<TouchableOpacity style={styles.button}
-											onPress={() => this.props.navigation.navigate('')}>
-											<Image
-												style={styles.profileImage}
-												source={require('./../assets/images/profile.png')}
-											/>
-										</TouchableOpacity>
-									</View>
-								</View>
-							</View>
-
-							<View style={styles.containerInsideProfileTwo}>
-								<View style={styles.containerUp}>
-									<View style={{ marginLeft: 10, marginTop: 15 }}>
-										<Text style={{ color: 'grey' }}>Hi, Welcome!</Text>
-										<Text style={{ color: 'white' }}>Gal Gadot</Text>
-									</View>
-								</View>
-
-								<View style={styles.containerMiddleProfileTwo}>
-									<View style={{ marginLeft: 10, marginTop: 5 }}>
-										<View style={{ flex: 1 }}>
-											<Image
-												style={styles.icons}
-												source={require('./../assets/images/ic_wallet.png')}
-											/>
-										</View>
-										<View style={{ flex: 1 }}>
-											<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Apresiasi Design Anda</Text>
-											<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>Rp. 250.000</Text>
-										</View>
-									</View>
-
-								</View>
-
-								<View style={styles.containerBottomProfileTwo}>
-									<View style={{ marginLeft: 10, marginTop: -5 }}>
-										<View style={{ flex: 1 }}>
-											<Image
-												style={styles.icons}
-												source={require('./../assets/images/ic_design.png')}
-											/>
-										</View>
-										<View style={{ flex: 1 }}>
-											<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
-											<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
-										</View>
-									</View>
-								</View>
-
-
-							</View>
-						</View>
-
-
-
-						<View style={styles.containerUploadIdea}>
-							<View style={{ flex: 1, marginTop: 10, marginLeft: 20 }}>
-								<Text style={{ color: 'white' }}>Idea Recently Upload</Text>
-								<Text style={{ color: 'grey', fontSize: 10 }}>Checkout our friend new brilliant ideas</Text>
-								<Text style={{ color: 'red', alignSelf: 'flex-end', flex: 1, marginRight: 20, marginTop: -25 }}>See all</Text>
-								<View style={styles.containerImageIdea}>
-									<View style={styles.containerImageInsideIdea}>
+						<View style={styles.container}>
+							<View style={styles.containerSlide}>
+								<Swiper
+									style={styles.wrapper}
+									autoplay
+									showsButtons={false}
+									dot={<View style={styles.formatSwiper} />}
+								>
+									<View style={styles.slide1}>
 										<Image
-											style={styles.containerImageInsideIdea}
-											source={require('./../assets/images/imageideaone.jpg')}
+											style={styles.imageStyle}
+											source={require('./../assets/images/swiperFirst.png')}
+											resizeMode='cover'
 										/>
 									</View>
-									<View style={styles.containerImageInsideIdea}>
-										<View style={styles.containerImageInsideIdea}>
-											<Image
-												style={styles.containerImageInsideIdea}
-												source={require('./../assets/images/imageideatwo.jpg')}
-											/>
-										</View>
+									<View style={styles.slide2}>
+										<Image
+											style={styles.imageStyle}
+											source={require('./../assets/images/swiperSecond.png')}
+											resizeMode='cover'
+										/>
 									</View>
+									<View style={styles.slide2}>
+										<Image
+											style={styles.imageStyle}
+											source={require('./../assets/images/swiperThird.png')}
+											resizeMode='cover'
+										/>
+									</View>
+									<View style={styles.slide2}>
+										<Image
+											style={styles.imageStyle}
+											source={require('./../assets/images/swiperFour.png')}
+											resizeMode='cover'
+										/>
+									</View>
+									<View style={styles.slide2}>
+										<Image
+											style={styles.imageStyle}
+											source={require('./../assets/images/swiperFive.png')}
+											resizeMode='cover'
+										/>
+									</View>
+								</Swiper>
+							</View>
 
-									<View style={styles.containerImageInsideIdea}>
-										<View style={styles.containerImageInsideIdea}>
-											<Image
-												style={styles.containerImageInsideIdea}
-												source={require('./../assets/images/imageideathree.jpg')}
-											/>
+
+							<View style={styles.containerDashboard}>
+								<View style={styles.containerInsideProfileOne}>
+									<View style={styles.containerPhoto}>
+										<View>
+											<TouchableOpacity style={styles.button}
+												onPress={() => this.props.navigation.navigate('')}>
+												<Image
+													style={styles.profileImage}
+													source={require('./../assets/images/profile.png')}
+												/>
+											</TouchableOpacity>
 										</View>
 									</View>
 								</View>
+
+								<View style={styles.containerInsideProfileTwo}>
+									<View style={styles.containerUp}>
+										<View style={{ marginLeft: 10, marginTop: 15 }}>
+											<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
+											<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
+										</View>
+									</View>
+
+									<View style={styles.containerMiddleProfileTwo}>
+										<View style={{ marginLeft: 10, marginTop: 5 }}>
+											<View style={{ flex: 1 }}>
+												<Image
+													style={styles.icons}
+													source={require('./../assets/images/ic_wallet.png')}
+												/>
+											</View>
+											<View style={{ flex: 1 }}>
+												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
+												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
+											</View>
+										</View>
+
+									</View>
+
+									<View style={styles.containerBottomProfileTwo}>
+										<View style={{ marginLeft: 10, marginTop: -5 }}>
+											<View style={{ flex: 1 }}>
+												<Image
+													style={styles.icons}
+													source={require('./../assets/images/ic_design.png')}
+												/>
+											</View>
+											<View style={{ flex: 1 }}>
+												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
+												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
+											</View>
+										</View>
+									</View>
+
+
+								</View>
+							</View>
+
+
+
+							<View style={styles.containerUploadIdea}>
+								<View style={{ flex: 1, flexDirection: 'row' }}>
+									<View style={{ flex: 1, flexDirection: 'column', marginTop: 10, marginLeft: 20 }}>
+										<Text style={{ color: 'white' }}>Idea Recently Upload</Text>
+										<Text style={{ color: 'grey', fontSize: 10 }}>Checkout our friend new brilliant ideas</Text>
+									</View>
+									<View>
+										<Text style={{ color: 'red', flex: 1, marginTop: 15, marginRight: 17 }}>See all</Text>
+									</View>
+								</View>
+								<View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: -85 }}>
+									<FlatList
+										data={this.state.images}
+										horizontal
+										keyExtractor={this.keyExtractor}
+										renderItem={this.renderIdeaPhoto.bind(this)}
+										showsHorizontalScrollIndicator={false}
+									/>
+								</View>
 							</View>
 						</View>
-					</View>
+					</ScrollView>
 					{
 						sideMenu === true ?
 							<View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', width: '100%', height: '100%', position: 'absolute' }}>
@@ -350,20 +381,46 @@ export class DashboardPage extends React.Component {
 																	<View style={styles.containerHomeScreen}>
 																		{
 																			orderStatus === '' ?
-																				<View style={styles.containerSomeHomeScreen}>
-																					<View style={styles.photoHomeScreen}>
+																				// <View style={styles.containerSomeHomeScreen}>
+																				// 	<View style={styles.photoHomeScreen}>
+																				// 		<Image
+																				// 			style={styles.cngImage}
+																				// 			source={require('./../assets/images/order_default.png')}
+																				// 		/>
+																				// 	</View>
+																				// 	<View style={styles.textHomeScreen}>
+																				// 		<Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>ORDER </Text>
+																				// 		<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																				// 	</View>
+																				// </View>
+																				<View style={{
+																					flexDirection: 'row',
+																					marginTop: 65,
+																				}}>
+																					<View style={{
+																						height: 170,
+																						borderRadius: 25
+																					}} >
 																						<Image
 																							style={styles.cngImage}
 																							source={require('./../assets/images/order_default.png')}
 																						/>
 																					</View>
-																					<View style={styles.textHomeScreen}>
-																						<Text style={{ paddingLeft: 15, marginTop: 35, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>ORDER </Text>
-																						<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																					<View style={{
+																						flex: 1, flexDirection: 'column',
+																						borderRadius: 25
+																					}} >
+																						<Text
+																							style={{
+																								paddingLeft: 15, marginTop: 5, color: 'white',
+																								fontSize: 20, fontFamily: 'Quicksand-Bold'
+																							}}>ORDER </Text>
+																						<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
+																						<View style={{ flex: 1 }} />
 																					</View>
 																				</View>
 																				:
-																				<View>
+																				<View style={{}}>
 																					{
 																						orderStatus === 'custom' ?
 																							<View style={styles.containerSomeHomeScreen}>
@@ -373,9 +430,12 @@ export class DashboardPage extends React.Component {
 																										source={require('./../assets/images/Custom.png')}
 																									/>
 																								</View>
-																								<View style={styles.textHomeScreen}>
-																									<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CUSTOM </Text>
-																									<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
+																								<View style={{
+																									flex: 1, flexDirection: 'column',
+																									borderRadius: 25
+																								}} >
+																									<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CUSTOM ORDER</Text>
+																									<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
 																									<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																										<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
@@ -393,11 +453,14 @@ export class DashboardPage extends React.Component {
 																													source={require('./../assets/images/CapturenGet.png')}
 																												/>
 																											</View>
-																											<View style={styles.textHomeScreen}>
-																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N`GET </Text>
-																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Cari produk hanya dengan upload foto, kamu bisa dapetin produk itu </Text>
+																											<View style={{
+																												flex: 1, flexDirection: 'column',
+																												borderRadius: 25
+																											}} >
+																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N GET</Text>
+																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																												<TouchableOpacity style={styles.buttonCapture}>
+																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																													<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																												</TouchableOpacity>
 																											</View>
@@ -413,11 +476,14 @@ export class DashboardPage extends React.Component {
 																																source={require('./../assets/images/idea_market.png')}
 																															/>
 																														</View>
-																														<View style={styles.textHomeScreen}>
-																															<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET </Text>
-																															<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify' }}>Disini kamu bisa melihat hasil karya unik dan menarik teman-temanmu dan kamu bisa membelinya loh! </Text>
+																														<View style={{
+																															flex: 1, flexDirection: 'column',
+																															borderRadius: 25
+																														}} >
+																															<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET</Text>
+																															<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																															<TouchableOpacity style={styles.buttonIdea}>
+																															<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
 																																<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																															</TouchableOpacity>
 																														</View>
@@ -477,7 +543,7 @@ export class DashboardPage extends React.Component {
 																				<View style={styles.containerProfileHomeScreen}>
 																					<View style={styles.profileHomeScreen}>
 																						<View>
-																							<Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
+																							<Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 20, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text>
 																							<View style={{ flex: 1 }}>
 																								<Image
 																									style={styles.locationIcon}
@@ -498,40 +564,32 @@ export class DashboardPage extends React.Component {
 																							</TouchableOpacity>
 																						</View>
 
-
 																						<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 18, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>Lihat dan atur segala informasi</Text>
 																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 12.5 }}>profil anda disini </Text>
 																					</View>
-
-
-																					<View style={{ flexDirection: 'column', paddingTop: 20 }}>
-																						<TouchableOpacity
+																					<View style={{ flex: 1, flexDirection: 'column' }}>
+																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
 																							onPress={() => this.props.navigation.navigate('ProfilePage')}
 																						>
-																							<View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-																								<Image
-																									style={styles.iconProfile}
-																									source={require('./../assets/images/edit_profil.png')}
-																								/>
-																								<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Edit Profil </Text>
-																								<Icon size={24} name="md-arrow-forward" color="#fff" />
-																							</View>
+																							<Image
+																								style={styles.iconProfile}
+																								source={require('./../assets/images/edit_profil.png')}
+																							/>
+																							<Text style={{ color: 'white', marginRight: '25%', marginTop: 7, marginLeft: 10 }}>Edit Profile</Text>
+																							<Icon size={24} name="md-arrow-forward" color="#fff" style={{ marginTop: 5 }} />
 																						</TouchableOpacity>
-																					</View>
-
-																					<View style={{ flexDirection: 'column', paddingTop: 20, marginLeft: 93 }}>
-																						<TouchableOpacity
+																						<TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}
 																							onPress={() => this.props.navigation.navigate('Login')}
 																						>
-																							<View style={{ flexDirection: 'row' }}>
-																								<Image
-																									style={styles.iconProfile}
-																									source={require('./../assets/images/logout.png')}
-																								/>
-																								<Text style={{ color: 'white', paddingLeft: 20, paddingTop: 7, paddingRight: 20 }}>Log out</Text>
-																							</View>
+																							<Image
+																								style={styles.iconProfile}
+																								source={require('./../assets/images/logout.png')}
+																								resizeMode='contain'
+																							/>
+																							<Text style={{ color: 'white', marginRight: 10, marginTop: 7, marginLeft: 10 }}>Log  Out</Text>
 																						</TouchableOpacity>
+
 																					</View>
 																				</View>
 																				:
@@ -788,7 +846,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		height: 175,
 		width: '95%',
-		// backgroundColor: 'blue'
 	},
 	containerPhoto: {
 		flex: 1,
@@ -827,13 +884,13 @@ const styles = StyleSheet.create({
 		height: 50,
 	},
 	containerUploadIdea: {
-		// flex: 2,
+		flex: 1,
 		borderRadius: 20,
 		backgroundColor: 'rgba(0,0,0,0.8)',
 		shadowColor: '#009',
 		shadowOffset: { width: 0, heigth: 2 },
 		shadowRadius: 2,
-		flexDirection: 'row',
+		// flexDirection: 'row',
 		marginTop: 10,
 		marginBottom: 70,
 		height: 160,
@@ -852,8 +909,8 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover'
 	},
 	profileImage: {
-		height: 110,
-		width: 110,
+		height: 100,
+		width: 100,
 		borderRadius: 100,
 	},
 	icons: {
@@ -862,19 +919,25 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 	},
 	containerImageIdea: {
-		flex: 3,
-		height: 70,
-		width: 300,
-		justifyContent: 'space-between',
-		alignItems: 'center',
+		flex: 1,
+		height: 90,
+		width: '96%',
 		flexDirection: 'row',
-		marginBottom: 20,
+		marginBottom: 30,
 		marginTop: 10,
-		// backgroundColor:'red'
+		backgroundColor: 'red'
 	},
 	containerImageInsideIdea: {
-		height: 100,
-		width: 98,
+		height: 150,
+		width: 90,
+		alignSelf: 'stretch',
+		resizeMode: 'cover'
+	},
+	containerFlatList: {
+		flex: 1,
+		marginLeft: -3,
+		paddingRight: 13,
+		marginTop: -20
 	},
 	containerMenu: {
 		position: 'absolute',
@@ -932,10 +995,9 @@ const styles = StyleSheet.create({
 		height: 50,
 		width: 50,
 		marginBottom: 5,
-		// backgroundColor: 'blue'
 	},
 	containerHomeScreen: {
-		flex: 2,
+		flex: 1,
 		borderRadius: 20,
 		backgroundColor: 'rgba(0,0,0,0)',
 		shadowColor: '#000',
@@ -944,7 +1006,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		height: '100%',
 		width: '100%',
-		// backgroundColor : 'red',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -959,46 +1020,51 @@ const styles = StyleSheet.create({
 	},
 	photoHomeScreen: {
 		height: 170,
-		width: 160,
 		borderRadius: 25,
-		marginLeft: -7
+		marginLeft: -7,
+		// backgroundColor:'red'
 	},
 	textHomeScreen: {
 		height: 165,
 		width: 185,
-		// backgroundColor: 'skyblue'
 	},
 	cngImage: {
 		height: 170,
 		width: 160,
 	},
 	buttonCustom: {
-		marginTop: 41,
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
-		marginLeft: 12,
-		// position: 'relative',
+		marginLeft: 10,
+		flex: 1
+	},
+	item: {
+		height: 85,
+		width: 87,
+		borderRadius: 4,
+		alignSelf: 'stretch',
+		resizeMode: 'cover'
 	},
 	buttonIdea: {
-		marginTop: 25,
-		marginLeft: 12,
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
+		marginLeft: 10,
+		flex: 1
 	},
 	buttonCapture: {
+		marginTop: 35,
+		marginBottom: 18,
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
-		width: 175,
 		justifyContent: 'center',
-		marginTop: 55,
-		marginLeft: 12
+		marginLeft: 10,
+		flex: 1
 	},
 	ButtonCrafterList: {
 		backgroundColor: 'red',
@@ -1029,7 +1095,6 @@ const styles = StyleSheet.create({
 		height: 60,
 		width: '100%',
 		alignItems: 'center',
-		// backgroundColor:'skyblue'
 
 	},
 	containerBodyCrafter: {
@@ -1082,7 +1147,7 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 	},
 	containerProfileHomeScreen: {
-		flex: 2,
+		flex: 1,
 		borderRadius: 20,
 		backgroundColor: 0,
 		shadowColor: '#000',
@@ -1092,7 +1157,8 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 		marginLeft: 10,
 		marginRight: 10,
-		height: 500
+		height: 500,
+		// backgroundColor: 'red'
 	},
 	locationIcon: {
 		height: 15,
@@ -1123,8 +1189,9 @@ const styles = StyleSheet.create({
 		// backgroundColor: 'blue'
 	},
 	iconProfile: {
-		height: 30,
-		width: 30,
+		// marginTop: 10,
+		height: 35,
+		width: 35,
 	},
 	iconLogOut: {
 		height: 30,

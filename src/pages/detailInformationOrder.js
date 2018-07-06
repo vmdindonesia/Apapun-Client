@@ -15,7 +15,7 @@ export class DetailInformationOrderPage extends React.Component {
     render() {
         return (
             <View style={{ flexDirection: 'column' }}>
-                <View style={{ width: '100%', height: '90%' }}>
+                <View style={{ width: '100%', height: '88%' }}>
                     <ScrollView>
                         <View style={styles.container}>
                             <Text style={{ fontFamily: 'Quicksand-Bold' }}>Pesanan: 171227155OPQ</Text>
@@ -160,7 +160,7 @@ export class DetailInformationOrderPage extends React.Component {
                     </ScrollView>
                 </View>
                 <View style={{
-                    width: '100%', height: '10%', backgroundColor: 'rgba(0, 0, 0, 0.9)', flexDirection: 'row',
+                    width: '100%', height: '12%', backgroundColor: 'rgba(0, 0, 0, 0.9)', flexDirection: 'row',
                     paddingTop: 10, paddingBottom: 10
                 }} >
                     <View style={{ width: '15%', height: '100%', justifyContent: 'center' }}>
@@ -171,16 +171,16 @@ export class DetailInformationOrderPage extends React.Component {
                             <Text style={{ color: 'white', fontSize: 12, textAlign: 'justify' }}>Pesanan akan terkunci setelah menekan tombol PROSES</Text>
                         </View>
                     </View>
-                    <View style={{ width: '45%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
+                    <View style={{ width: '45%', height: '100%', justifyContent: 'center', marginLeft: 80 }}>
                         <TouchableOpacity
                             style={{
-                                borderWidth: 0, borderRadius: 15, backgroundColor: 'red',
-                                height: 35, width: 150, justifyContent: 'center'
+                                borderWidth: 0, borderRadius: 100, backgroundColor: 'red',
+                                height: 50, width: 50, justifyContent: 'center'
                             }}
                         >
                             <Text style={{
                                 color: 'white', fontFamily: 'Quicksand-Bold', textAlign: 'center',
-                                fontSize: 18
+                                fontSize: 16
                             }}>Proses</Text>
                         </TouchableOpacity>
                     </View>
