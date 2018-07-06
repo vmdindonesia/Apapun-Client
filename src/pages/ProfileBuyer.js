@@ -14,9 +14,6 @@ export class ProfileBuyerPage extends React.Component {
         return (
 
             <ScrollView
-                style={styles.containerStyle}
-                keyboardShouldPersistTaps="always"
-                ref={ref => this.scrollView = ref}
             >
                 <ImageBackground
                     source={require('./../assets/images/background_profile.jpeg')}
@@ -262,26 +259,30 @@ export class ProfileBuyerPage extends React.Component {
                             }}>
                                 <View style={{
                                     flexDirection: 'column',
-                                    height: '100%', width: '100%',
+                                    height: '50%', width: '100%',
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <Text style={{ fontSize: 20, paddingTop: -50, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center' }}>
+                                    <Text style={{ fontSize: 20, paddingTop: 20, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center' }}>
                                         Hargai Designmu
                                  </Text>
                                     <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center' }}>
                                         Share dan opresiasikan designmu di seluruh indonesia
                                 </Text>
-                                    <TouchableOpacity style={styles.buttonSignUp}
-                                        onPress={() => this.props.navigation.navigate('pengaturanBank')}>
-                                        <Text style={styles.signupButton}>Pengaturan</Text>
-                                    </TouchableOpacity>
                                 </View>
+
+                              
                             </View>
                         </View>
+                      
 
 
                     </View>
+                    {/* <TouchableOpacity style={styles.buttonSignUp}
+                                        onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                                        <Text style={styles.signupButton}>Pengaturan</Text>
+                    </TouchableOpacity> */}
+
 
 
 
@@ -381,22 +382,17 @@ const styles = StyleSheet.create({
         borderColor: '#d6d7da',
     },
     containerTh: {
-        borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
-        shadowOffset: { width: 10, heigth: 10 },
-        shadowRadius: 5,
-        shadowOpacity: 1.0,
         elevation: 3,
-        flexDirection: 'column',
-        marginTop: 15,
-        height: 170,
+        flexDirection: 'row',
+        marginTop: 5,
+        height: 70,
         width: '90%',
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
         // zIndex: 1,
-        borderWidth: 0.5,
         borderColor: '#d6d7da'
     },
     icons: {
@@ -415,12 +411,13 @@ const styles = StyleSheet.create({
         // marginTop: 60,
         backgroundColor: 'red',
         borderRadius: 20,
-        height: 40,
+        height: 10,
         width: 150,
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 4,
-        marginBottom: -50
+        zIndex: 1,
+        marginBottom: -50,
+        marginTop: 40
     }
 });
 

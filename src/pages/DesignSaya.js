@@ -95,7 +95,8 @@ export class DesignSayaPage extends React.Component {
                         flexDirection: 'column'
                     }}>
 
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ alignSelf: 'center' }}
+                        onPress={() => this.props.navigation.navigate('PageDesign')}>
                             <Image
                                 style={{
                                     width: 150,
@@ -121,7 +122,8 @@ export class DesignSayaPage extends React.Component {
                         alignContent: 'center',
                         flexDirection: 'column'
                     }}>
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ alignSelf: 'center' }}
+                        onPress={() => this.props.navigation.navigate('PageDesign')}>
                             <Image
                                 style={{
                                     width: 150,
