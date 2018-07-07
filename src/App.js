@@ -47,6 +47,8 @@ import { DetailInformationOrderPage } from './pages/detailInformationOrder';
 import { FinalProcessOrderPage } from './pages/finalProcessOrder'
 import { ReviewProductPage } from './pages/reviewProduct'
 import { ProfileCrafterPage } from './pages/profileCrafter';
+import { IdeaMarketPage } from './pages/IdeaMarket';
+import { IdeaFashionPage } from './pages/IdeaFashion';
 
 
 console.disableYellowBox = true;
@@ -60,6 +62,12 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+  IdeaFashion: {
+    screen: IdeaFashionPage
+  },
   StartScreen: {
     screen: StartScreen
   },
