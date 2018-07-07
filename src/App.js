@@ -62,20 +62,27 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+ 
+  StartScreen: {
+    screen: StartScreen
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
   IdeaMarket: {
     screen: IdeaMarketPage
   },
   IdeaFashion: {
     screen: IdeaFashionPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
   PageDesign: {
     screen: PageDesignPage
-  },
-  DesignSaya: {
-    screen: DesignSayaPage
   },
   Dashboard: {
     screen: DashboardPage
@@ -113,8 +120,8 @@ const Routes = createStackNavigator({
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-  DetailOrder : {
-    screen : DetailOrderPage
+  DetailOrder: {
+    screen: DetailOrderPage
   },
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
@@ -158,18 +165,11 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
+
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   FindingCrafter: {
     screen: FindingCrafterPage
   },
@@ -203,13 +203,6 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-  SettingAddressBuyerPage: {
-    screen: SettingAddressBuyerPage
-  },
-  SettingAddressBuyerPage: {
-    screen: SettingAddressBuyerPage
-  },
-
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
@@ -243,7 +236,7 @@ class App extends Component<{}> {
   render() {
     return (
       // <View>
-        <Routes />
+      <Routes />
       // </View>
     );
   }

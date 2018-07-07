@@ -67,7 +67,9 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 7
                             }}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                   onPress={() => this.props.navigation.navigate('SettingAddressDetailBuyer')}>
+                                
                                     <Image style={{ height: 20, width: 20, borderRadius: 0, }}
                                         source={require('./../assets/images/pen_address.png')}
                                     />

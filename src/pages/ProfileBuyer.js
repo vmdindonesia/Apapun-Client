@@ -37,7 +37,7 @@ export class ProfileBuyerPage extends React.Component {
                                 <View>
                                     <TouchableWithoutFeedback>
                                         <TouchableOpacity style={styles.button}
-                                            onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                            onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}>
                                             <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 150 }}
                                                 source={require('./../assets/images/pen_mainprof.png')}
                                             />
