@@ -53,6 +53,15 @@ import { OrderTrackConfirmPage } from './pages/orderTrackConfirm';
 import { OrderReceivedPage } from './pages/orderReceived';
 import { CrafterMenuPage } from './pages/crafterMenu';
 import { OrderForCrafterPage } from './pages/orderForCrafter';
+import { IdeaMarketPage } from './pages/IdeaMarket';
+import { IdeaFashionPage } from './pages/IdeaFashion';
+import { HelpMenuPage } from './pages/HelpMenu';
+import { SettingManuPage } from './pages/SettingMenu';
+import { TermsAndAgreementPage } from './pages/TermsAgreement';
+import { ThanksToPage } from './pages/ThanksTo';
+import { NotificationMenuPage } from './pages/NotificationMenu';
+import { NotificationSystemPage } from './pages/NotificationSystem';
+import { NotificationTransactionPage } from './pages/NotificationTransaction';
 
 console.disableYellowBox = true;
 
@@ -80,9 +89,6 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
@@ -104,11 +110,45 @@ const Routes = createStackNavigator({
   Login: {
     screen: LoginPage
   },
+  NotificationMenu: {
+    screen: NotificationMenuPage
+  },
+  NotificationSystem: {
+    screen: NotificationSystemPage
+  },
+  NotificationTransaction: {
+    screen: NotificationTransactionPage
+  },
+  ThanksTo: {
+    screen: ThanksToPage
+  },
+  TermsAndAgreement: {
+    screen: TermsAndAgreementPage
+  },
+  SettingMenu: {
+    screen: SettingManuPage
+  },
+  HelpMenu: {
+    screen: HelpMenuPage
+  },
+
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+  IdeaFashion: {
+    screen: IdeaFashionPage
+  },
   PageDesign: {
     screen: PageDesignPage
-  },
-  DesignSaya: {
-    screen: DesignSayaPage
   },
   Dashboard: {
     screen: DashboardPage
@@ -181,18 +221,11 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
+
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   FindingCrafter: {
     screen: FindingCrafterPage
   },
@@ -220,13 +253,6 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-  SettingAddressBuyerPage: {
-    screen: SettingAddressBuyerPage
-  },
-  SettingAddressBuyerPage: {
-    screen: SettingAddressBuyerPage
-  },
-
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },

@@ -384,32 +384,47 @@ export class DashboardPage extends React.Component {
 										statusMenu === 'home' ?
 											<View style={styles.containerHome}>
 												<View style={styles.containerHomeLogo}>
-													<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-														source={require('./../assets/images/daftar_pesanan.png')}
-													/>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+														<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+															source={require('./../assets/images/daftar_pesanan.png')}
+														/>
+													</TouchableOpacity>
 													<Text style={{ color: 'white', marginTop: 5 }}>Daftar</Text>
 													<Text style={{ color: 'white' }}>Pesanan</Text>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/notifikasi.png')}
-													/>
-													<Text style={{ color: 'white' }}> Notifikasi </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('NotificationMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/notifikasi.png')}
+														/>
+														<Text style={{ color: 'white' }}> Notifikasi </Text>
+													</TouchableOpacity>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/setting.png')}
-													/>
-													<Text style={{ color: 'white' }}> Setting </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('SettingMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/setting.png')}
+														/>
+														<Text style={{ color: 'white' }}> Setting </Text>
+													</TouchableOpacity>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/bantuan.png')}
-													/>
-													<Text style={{ color: 'white' }}> Help </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('HelpMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/bantuan.png')}
+														/>
+														<Text style={{ color: 'white' }}> Help </Text>
+													</TouchableOpacity>
 												</View>
 											</View>
 											:
@@ -598,7 +613,7 @@ export class DashboardPage extends React.Component {
 																															<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET</Text>
 																															<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																															<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
+																															<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('IdeaMarket')}>
 																																<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																															</TouchableOpacity>
 																														</View>
