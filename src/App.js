@@ -49,7 +49,13 @@ import { ReviewProductPage } from './pages/reviewProduct'
 import { ProfileCrafterPage } from './pages/profileCrafter';
 import { IdeaMarketPage } from './pages/IdeaMarket';
 import { IdeaFashionPage } from './pages/IdeaFashion';
-
+import { HelpMenuPage } from './pages/HelpMenu';
+import { SettingManuPage } from './pages/SettingMenu';
+import { TermsAndAgreementPage } from './pages/TermsAgreement';
+import { ThanksToPage } from './pages/ThanksTo';
+import { NotificationMenuPage } from './pages/NotificationMenu';
+import { NotificationSystemPage } from './pages/NotificationSystem';
+import { NotificationTransactionPage } from './pages/NotificationTransaction';
 
 console.disableYellowBox = true;
 
@@ -62,10 +68,31 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
- 
   StartScreen: {
     screen: StartScreen
   },
+  NotificationMenu: {
+    screen: NotificationMenuPage
+  },
+  NotificationSystem: {
+    screen: NotificationSystemPage
+  },
+  NotificationTransaction: {
+    screen: NotificationTransactionPage
+  },
+  ThanksTo: {
+    screen: ThanksToPage
+  },
+  TermsAndAgreement: {
+    screen: TermsAndAgreementPage
+  },
+  SettingMenu: {
+    screen: SettingManuPage
+  },
+  HelpMenu: {
+    screen: HelpMenuPage
+  },
+
   ProfilePage: {
     screen: ProfileBuyerPage
   },

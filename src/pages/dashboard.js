@@ -270,25 +270,37 @@ export class DashboardPage extends React.Component {
 													<Text style={{ color: 'white' }}>Pesanan</Text>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/notifikasi.png')}
-													/>
-													<Text style={{ color: 'white' }}> Notifikasi </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('NotificationMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/notifikasi.png')}
+														/>
+														<Text style={{ color: 'white' }}> Notifikasi </Text>
+													</TouchableOpacity>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/setting.png')}
-													/>
-													<Text style={{ color: 'white' }}> Setting </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('SettingMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/setting.png')}
+														/>
+														<Text style={{ color: 'white' }}> Setting </Text>
+													</TouchableOpacity>
 												</View>
 												<View style={styles.containerHomeLogo}>
-													<Image
-														style={styles.containerImageHome}
-														source={require('./../assets/images/bantuan.png')}
-													/>
-													<Text style={{ color: 'white' }}> Help </Text>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('HelpMenu')}
+													>
+														<Image
+															style={styles.containerImageHome}
+															source={require('./../assets/images/bantuan.png')}
+														/>
+														<Text style={{ color: 'white' }}> Help </Text>
+													</TouchableOpacity>
 												</View>
 											</View>
 											:
