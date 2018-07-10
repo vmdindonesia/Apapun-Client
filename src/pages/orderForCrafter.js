@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, FlatList, Text, View, Image } from 'react-native';
-import { Input } from '../components/common';
+import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Input, InputNumber } from '../components/common';
 import Swiper from 'react-native-swiper';
 
-
-export class MyOrderPage extends React.Component {
+export class OrderForCrafterPage extends React.Component {
 
     constructor(props) {
         super(props)
@@ -123,37 +122,33 @@ export class MyOrderPage extends React.Component {
                         // onChangeText={v => this.onChangeInput('nameProduct', v)}
                         />
                     </View>
-                </View>
-                <Text style={{
-                    fontFamily: 'Quicksand-Bold',
-                    marginTop: 10, marginLeft: 5
-                }}>
-                    Material </Text>
+                    <View style={{ marginTop: 10, marginLeft: 5, height: 40, width: '15%' }}>
+                        <Input
+                            editable={false}
+                            value='PCS'
+                        />
 
+                    </View>
+                </View>
+                <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 5, fontSize: 15, marginLeft: 5 }}>Material</Text>
                 <View style={styles.containerForText}>
                     <View style={{
-                        marginTop: 3, height: 45, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35
+                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
+                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center' }}>Plastik : Kresek</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
                     </View>
                     <View style={{
-                        marginTop: 3, height: 45, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35
+                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
+                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center' }}>Plastik : Kresek</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
                     </View>
                     <View style={{
-                        marginTop: 3, height: 45, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35
+                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
+                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center' }}>Plastik : Kresek</Text>
-                    </View>
-                    <View style={{
-                        marginTop: 3, height: 45, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35
-                    }}>
-                        <Text style={{ textAlign: 'center' }}>Plastik : Kresek</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
                     </View>
                 </View>
                 <Text style={{
@@ -191,8 +186,28 @@ export class MyOrderPage extends React.Component {
                 <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 5, marginRight: 5, marginTop: 5 }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5 }}>Home 1 {'\n'}</Text>
                     <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold' }}>Judy {'\n'}{'\n'}</Text>
-                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5}}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
+                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
                             DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
+                </View>
+                <View style={{ flex: 1, marginTop: 5, marginLeft: 5, paddingRight: 5, paddingLeft: 5}}>
+                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Harga</Text>
+                <View style={{ flex: 1,  flexDirection: 'row', marginTop: 5 }}>
+                    <View
+                        style={{
+                            borderRadius: 100, backgroundColor: 'black', width: 30, height: 30,
+                            justifyContent: 'center', flexDirection: 'row', marginTop: 3
+                        }}
+                    >
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 20, color: 'white', textAlign: 'center' }}>Rp</Text>
+                    </View>
+                    <View style={{ flex: 1, width: '30%', marginLeft: 10 }}>
+                    <InputNumber
+                            // value={numberPcs.toString()}
+                            // onChangeText={val => this.onChange('numberPcs', val)}
+                            keyboardType='numeric'
+                        />
+                        </View>
+                </View>
                 </View>
             </ScrollView>
         );
@@ -240,7 +255,7 @@ const styles = StyleSheet.create({
         height: 80
     },
     containerForText: {
-        flex: 3,
+        flex: 1,
         flexDirection: 'row',
         width: '100%',
         marginTop: 5,
@@ -255,4 +270,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default MyOrderPage;
+export default OrderForCrafterPage;

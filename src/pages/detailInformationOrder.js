@@ -87,7 +87,7 @@ export class DetailInformationOrderPage extends React.Component {
                                             source={require('./../assets/images/location_icon.png')}
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Indonesia, Kalimantan Selatan</Text>
+                                            <Text style={{ marginLeft: 10, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Indonesia, Kalimantan Selatan</Text>
                                         </View>
                                     </View>
                                     <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>
@@ -96,7 +96,7 @@ export class DetailInformationOrderPage extends React.Component {
                                             source={require('./../assets/images/smiley.png')}
                                         />
                                         < View style={{ flex: 1 }}>
-                                            <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Sempurna (35)</Text>
+                                            <Text style={{ marginLeft: 7, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Rating: Sempurna (35)</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -125,23 +125,23 @@ export class DetailInformationOrderPage extends React.Component {
                             <View style={{ width: '100%', height: 90, backgroundColor: '#fff', padding: 10 }}>
                                 <View style={{ flexDirection: 'row' }}>
                                     <View style={{ width: '60%', borderRightWidth: 0.3, }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 12 }}>Harga Produk</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Harga Produk</Text>
                                     </View>
                                     <View style={{ marginLeft: 5 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 12 }}>Rp 840.000</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Rp 840.000</Text>
                                     </View>
                                 </View>
                                 <View style={{ flexDirection: 'row', marginTop: 3 }}>
                                     <View style={{ width: '60%', borderRightWidth: 0.3, }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 12 }}>Pengiriman</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Pengiriman</Text>
                                     </View>
                                     <View style={{ marginLeft: 5 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 12 }}>Rp 20.000</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Rp 20.000</Text>
                                     </View>
                                 </View>
                                 <View style={{ flexDirection: 'row', marginTop: 3 }}>
                                     <View style={{ width: '60%', borderRightWidth: 0.3 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 12 }}>Jumlah yang dipesan</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Jumlah yang dipesan</Text>
                                     </View>
                                     <View style={{ marginLeft: 5 }}>
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 12 }}>1 PCS</Text>
@@ -193,8 +193,8 @@ export class DetailInformationOrderPage extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginLeft: 5,
-        marginRight: 5,
+        marginLeft: 10,
+        marginRight: 10,
         marginTop: 5
     }
 });

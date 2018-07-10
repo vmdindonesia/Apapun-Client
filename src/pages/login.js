@@ -146,8 +146,7 @@ export class LoginPage extends React.Component {
 
 						<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
 							<TouchableOpacity
-								onPress={() => ToastAndroid.show('Under Development', ToastAndroid.SHORT)}
-							>
+								onPress={() => this.props.navigation.navigate('ForgotPassword')}>
 								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
 									Forget password?
 								</Text>

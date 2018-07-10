@@ -3,10 +3,9 @@ import { StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native';
 import { MyOrderPage } from './myOrder';
 import { CrafterPage } from './crafter';
 
-export class FindingCrafterPage extends React.Component {
+export class CrafterMenuPage extends React.Component {
   static navigationOptions = {
-    headerTitle: 'Mencari Crafter',
-    headerRight: <View/>
+    headerTitle: 'Crafter Menu'
   }
 
   constructor(props) {
@@ -17,7 +16,7 @@ export class FindingCrafterPage extends React.Component {
   }
 
   renderScreen = () => {
-    if (this.state.screen === 'myOrder') {
+    if (this.state.screen === 'orderForCrafter') {
       return <MyOrderPage navi={this.props.navigation} />
     }else if (this.state.screen === 'crafter') {
       return <CrafterPage navi={this.props.navigation} />
@@ -35,9 +34,9 @@ export class FindingCrafterPage extends React.Component {
         <View style={menuContainerStyle}>
           <View style={{ flexDirection: 'row' }}>
             <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
-              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'myOrder' })}>
-                <View style={screen === 'myOrder' ? tabContainerActive : tabContainer}>
-                  <Text style={screen === 'myOrder' ? tabTextActive : tabText}>Pesanan Saya</Text>
+              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafterMenu' })}>
+                <View style={screen === 'crafterMenu' ? tabContainerActive : tabContainer}>
+                  <Text style={screen === 'crafterMenu' ? tabTextActive : tabText}>Pesanan</Text>
                 </View>
               </TouchableNativeFeedback>
             </View>
@@ -81,4 +80,4 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand-Regular'
   }
 })
-export default FindingCrafterPage;
+export default CrafterMenuPage;

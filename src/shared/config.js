@@ -11,7 +11,7 @@ export const COLOR = {
   element_b2: '#faa51a',
   element_b3: '#f36e21',
   element_b4: '#ef3f2c',
-  headerBar: '#422508',
+  headerBar: '#fff',
   statusBar :'#cbae8f',
   secondary_c: '#000000',
   black: '#1a1917'

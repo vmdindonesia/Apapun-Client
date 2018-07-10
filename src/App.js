@@ -47,7 +47,12 @@ import { DetailInformationOrderPage } from './pages/detailInformationOrder';
 import { FinalProcessOrderPage } from './pages/finalProcessOrder'
 import { ReviewProductPage } from './pages/reviewProduct'
 import { ProfileCrafterPage } from './pages/profileCrafter';
-
+import { ForgotPasswordPage } from './pages/forgotPassword';
+import { OrderWithTrackPage } from './pages/orderWithTrack.js';
+import { OrderTrackConfirmPage } from './pages/orderTrackConfirm';
+import { OrderReceivedPage } from './pages/orderReceived';
+import { CrafterMenuPage } from './pages/crafterMenu';
+import { OrderForCrafterPage } from './pages/orderForCrafter';
 
 console.disableYellowBox = true;
 
@@ -60,8 +65,44 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  OrderForCrafter: {
+    screen: OrderForCrafterPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
   StartScreen: {
     screen: StartScreen
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  OrderReceived: {
+    screen: OrderReceivedPage
+  },
+  OrderTrackConfirm: {
+    screen: OrderTrackConfirmPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
+  ForgotPassword: {
+    screen: ForgotPasswordPage
+  },
+  Login: {
+    screen: LoginPage
   },
   PageDesign: {
     screen: PageDesignPage
@@ -87,17 +128,12 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-  SettingProduct: {
-    screen: SettingProductPage
-  },
+
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
   },
   DetailTransaksi: {
     screen: DetailTransaksiPage
@@ -105,8 +141,8 @@ const Routes = createStackNavigator({
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-  DetailOrder : {
-    screen : DetailOrderPage
+  DetailOrder: {
+    screen: DetailOrderPage
   },
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
@@ -117,9 +153,7 @@ const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
+
   Crafter: {
     screen: CrafterPage
   },
@@ -134,9 +168,6 @@ const Routes = createStackNavigator({
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
-  },
-  Login: {
-    screen: LoginPage
   },
   CrafterList: {
     screen: CrafterListPage
@@ -167,12 +198,6 @@ const Routes = createStackNavigator({
   },
   Dashboard: {
     screen: DashboardPage
-  },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
   },
   Dashboard: {
     screen: DashboardPage
@@ -217,15 +242,20 @@ const Routes = createStackNavigator({
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
+      headerRight: <View/>,
       headerTitleStyle: {
-        color: '#ffffff',
-        fontFamily: 'Quicksand-Bold',
+        color: '#000',
+        fontFamily: 'Muli-Bold',
         fontWeight: '300',
+        justifyContent: 'space-between',
+        textAlign: 'center',
+        alignSelf:'center',
+        flex: 1
       },
       headerStyle: {
         backgroundColor: COLOR.headerBar,
       },
-      headerTintColor: '#ffffff',
+      headerTintColor: '#000',
     }
   });
 
@@ -235,7 +265,7 @@ class App extends Component<{}> {
   render() {
     return (
       // <View>
-        <Routes />
+      <Routes />
       // </View>
     );
   }
