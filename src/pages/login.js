@@ -125,7 +125,7 @@ export class LoginPage extends React.Component {
 								style={styles.Input}
 								placeholder="email or username"
 								icon="ic_username"
-								icons="ic_garis"
+								icons
 								onChangeText={val => this.onChange('email', val)}
 								value={email}
 							/>

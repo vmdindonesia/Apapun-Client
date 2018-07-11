@@ -32,12 +32,7 @@ class InputLogin extends Component {
 	}
 
 	imageIcons = (icons) => {
-		switch (icons) {
-			case 'ic_garis':
-				return require('./../../assets/images/ic_garis.png')
-			default:
-				return require('./../../assets/images/ic_garis.png')
-		}
+		return require('./../../assets/images/ic_garis.png')
 	}
 
 	render() {
