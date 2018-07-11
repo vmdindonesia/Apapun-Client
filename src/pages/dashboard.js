@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { COLOR, IPSERVER } from './../shared/config';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { NavigationActions, StackActions } from 'react-navigation';
 import ActionButton from 'react-native-circular-action-menu';
 
 export class DashboardPage extends React.Component {
@@ -81,7 +81,7 @@ export class DashboardPage extends React.Component {
 
 	keyExtractor = (item) => item.id;
 
-	
+
 
 	OrderStatus = (value) => {
 		console.log(value, 'Value')
@@ -171,125 +171,125 @@ export class DashboardPage extends React.Component {
 
 
 							<View style={styles.containerDashboard}>
-							<Swiper
+								<Swiper
 									style={styles.wrapper}
 									showsPagination={false}
 									showsButtons={false}
 									dot={<View style={styles.formatSwiper} />}
 								>
-								<View style={{ flexDirection: 'row' }}>
-								<View style={styles.containerInsideProfileOne}>
-									<View style={styles.containerPhoto}>
-										<View>
-											<TouchableOpacity style={styles.button}
-												onPress={() => this.props.navigation.navigate('')}>
-												<Image
-													style={styles.profileImage}
-													source={require('./../assets/images/profile.png')}
-												/>
-											</TouchableOpacity>
-										</View>
-									</View>
-								</View>
-
-								<View style={styles.containerInsideProfileTwo}>
-									<View style={styles.containerUp}>
-										<View style={{ marginLeft: 10, marginTop: 15 }}>
-											<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
-											<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
-										</View>
-									</View>
-
-									<View style={styles.containerMiddleProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: 5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_wallet.png')}
-												/>
-											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
+									<View style={{ flexDirection: 'row' }}>
+										<View style={styles.containerInsideProfileOne}>
+											<View style={styles.containerPhoto}>
+												<View>
+													<TouchableOpacity style={styles.button}
+														onPress={() => this.props.navigation.navigate('')}>
+														<Image
+															style={styles.profileImage}
+															source={require('./../assets/images/profile.png')}
+														/>
+													</TouchableOpacity>
+												</View>
 											</View>
 										</View>
 
-									</View>
+										<View style={styles.containerInsideProfileTwo}>
+											<View style={styles.containerUp}>
+												<View style={{ marginLeft: 10, marginTop: 15 }}>
+													<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
+													<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
+												</View>
+											</View>
 
-									<View style={styles.containerBottomProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: -5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_design.png')}
-												/>
+											<View style={styles.containerMiddleProfileTwo}>
+												<View style={{ marginLeft: 10, marginTop: 5 }}>
+													<View style={{ flex: 1 }}>
+														<Image
+															style={styles.icons}
+															source={require('./../assets/images/ic_wallet.png')}
+														/>
+													</View>
+													<View style={{ flex: 1 }}>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
+													</View>
+												</View>
+
 											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
+
+											<View style={styles.containerBottomProfileTwo}>
+												<View style={{ marginLeft: 10, marginTop: -5 }}>
+													<View style={{ flex: 1 }}>
+														<Image
+															style={styles.icons}
+															source={require('./../assets/images/ic_design.png')}
+														/>
+													</View>
+													<View style={{ flex: 1 }}>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
+													</View>
+												</View>
 											</View>
+
+
 										</View>
 									</View>
-
-
-								</View>
-								</View>
-								<View style={{ flexDirection: 'row' }}>
-								<View style={styles.containerInsideProfileOne}>
-									<View style={styles.containerPhoto}>
-										<View>
-											<TouchableOpacity style={styles.button}
-												onPress={() => this.props.navigation.navigate('')}>
-												<Image
-													style={styles.profileImage}
-													source={require('./../assets/images/yukikato.jpg')}
-												/>
-											</TouchableOpacity>
-										</View>
-									</View>
-								</View>
-
-								<View style={styles.containerInsideProfileTwo}>
-									<View style={styles.containerUp}>
-										<View style={{ marginLeft: 10, marginTop: 15 }}>
-											<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
-											<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Yuki Kato</Text>
-										</View>
-									</View>
-
-									<View style={styles.containerMiddleProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: 5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_wallet.png')}
-												/>
-											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
+									<View style={{ flexDirection: 'row' }}>
+										<View style={styles.containerInsideProfileOne}>
+											<View style={styles.containerPhoto}>
+												<View>
+													<TouchableOpacity style={styles.button}
+														onPress={() => this.props.navigation.navigate('')}>
+														<Image
+															style={styles.profileImage}
+															source={require('./../assets/images/yukikato.jpg')}
+														/>
+													</TouchableOpacity>
+												</View>
 											</View>
 										</View>
 
-									</View>
+										<View style={styles.containerInsideProfileTwo}>
+											<View style={styles.containerUp}>
+												<View style={{ marginLeft: 10, marginTop: 15 }}>
+													<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
+													<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Yuki Kato</Text>
+												</View>
+											</View>
 
-									<View style={styles.containerBottomProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: -5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_design.png')}
-												/>
+											<View style={styles.containerMiddleProfileTwo}>
+												<View style={{ marginLeft: 10, marginTop: 5 }}>
+													<View style={{ flex: 1 }}>
+														<Image
+															style={styles.icons}
+															source={require('./../assets/images/ic_wallet.png')}
+														/>
+													</View>
+													<View style={{ flex: 1 }}>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
+													</View>
+												</View>
+
 											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
+
+											<View style={styles.containerBottomProfileTwo}>
+												<View style={{ marginLeft: 10, marginTop: -5 }}>
+													<View style={{ flex: 1 }}>
+														<Image
+															style={styles.icons}
+															source={require('./../assets/images/ic_design.png')}
+														/>
+													</View>
+													<View style={{ flex: 1 }}>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
+													</View>
+												</View>
 											</View>
+
+
 										</View>
-									</View>
-
-
-								</View>
 									</View>
 
 								</Swiper>
@@ -522,7 +522,7 @@ export class DashboardPage extends React.Component {
 																	<View style={styles.containerHomeScreen}>
 																		{
 																			orderStatus === '' ?
-																			
+
 																				<View style={{
 																					flexDirection: 'row',
 																					marginTop: 65,
@@ -715,8 +715,14 @@ export class DashboardPage extends React.Component {
 
 																						<View style={{ flex: 1 }}>
 																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-																								onPress={() => this.props.navigation.navigate('Login')}
-																							>
+																								onPress={() => {
+																									const resetAction = StackActions.reset({
+																										index: 0,
+																										actions: [NavigationActions.navigate({ routeName: 'Login' })],
+																									});
+																									this.props.navigation.dispatch(resetAction);
+																								}
+																								}>
 																								<Image
 																									style={[styles.iconProfile, { marginBottom: 15 }]}
 																									source={require('./../assets/images/logout.png')}
