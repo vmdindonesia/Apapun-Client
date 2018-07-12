@@ -78,8 +78,6 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-<<<<<<< Updated upstream
-=======
   Chat: {
     screen: ChatPage
   },
@@ -98,7 +96,6 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
->>>>>>> Stashed changes
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
