@@ -62,6 +62,7 @@ import { ThanksToPage } from './pages/ThanksTo';
 import { NotificationMenuPage } from './pages/NotificationMenu';
 import { NotificationSystemPage } from './pages/NotificationSystem';
 import { NotificationTransactionPage } from './pages/NotificationTransaction';
+import { ChatPage } from './pages/Chat';
 
 console.disableYellowBox = true;
 
@@ -77,6 +78,27 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+<<<<<<< Updated upstream
+=======
+  Chat: {
+    screen: ChatPage
+  },
+  OrderTrackConfirm: {
+    screen: OrderTrackConfirmPage
+  },
+  FinalProcessOrder: {
+    screen: FinalProcessOrderPage
+  },
+  OrderReceived: {
+    screen: OrderReceivedPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+>>>>>>> Stashed changes
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -91,15 +113,6 @@ const Routes = createStackNavigator({
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
-  },
-  OrderReceived: {
-    screen: OrderReceivedPage
-  },
-  OrderTrackConfirm: {
-    screen: OrderTrackConfirmPage
-  },
-  OrderWithTrack: {
-    screen: OrderWithTrackPage
   },
   SettingProduct: {
     screen: SettingProductPage
@@ -131,7 +144,6 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
@@ -150,9 +162,6 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   AkunBank: {
     screen: AkunBankPage
   },
@@ -168,7 +177,6 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
@@ -184,16 +192,12 @@ const Routes = createStackNavigator({
   DetailOrder: {
     screen: DetailOrderPage
   },
-  FinalProcessOrder: {
-    screen: FinalProcessOrderPage
-  },
   DetailOrder: {
     screen: DetailOrderPage
   },
   Order: {
     screen: OrderPage
   },
-
   Crafter: {
     screen: CrafterPage
   },
@@ -225,7 +229,6 @@ const Routes = createStackNavigator({
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
-
   FindingCrafter: {
     screen: FindingCrafterPage
   },
@@ -268,14 +271,14 @@ const Routes = createStackNavigator({
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
-      headerRight: <View/>,
+      headerRight: <View />,
       headerTitleStyle: {
         color: '#000',
         fontFamily: 'Muli-Bold',
         fontWeight: '300',
         justifyContent: 'space-between',
         textAlign: 'center',
-        alignSelf:'center',
+        alignSelf: 'center',
         flex: 1
       },
       headerStyle: {

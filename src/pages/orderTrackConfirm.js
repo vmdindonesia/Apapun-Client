@@ -126,7 +126,7 @@ export class OrderTrackConfirmPage extends React.Component {
                                     marginTop: 3, height: 30, padding: 10, marginRight: 5,
                                     borderWidth: 1, borderRadius: 35, justifyContent: 'center'
                                 }}>
-                                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13}}>Plastik : Kresek</Text>
+                                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
                                 </View>
                             </View>
                             <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 5, fontSize: 15 }}>Catatan Tambahan</Text>
@@ -292,6 +292,7 @@ export class OrderTrackConfirmPage extends React.Component {
                             style={{
                                 height: 50, width: 50, marginRight: 25
                             }}
+                            onPress={() => this.props.navigation.navigate('Chat')}
                         >
                             <Image
                                 style={{ width: 30, height: 30 }}

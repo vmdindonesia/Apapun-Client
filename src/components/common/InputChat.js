@@ -8,7 +8,7 @@ class InputChat extends Component {
 
 		return (
 			<View style={containerStyle}>
-				<TextInput 
+				<TextInput
 					secureTextEntry={secureTextEntry}
 					placeholder={placeholder}
 					autoCorrect={false}
@@ -32,8 +32,9 @@ const styles = {
 		flex: 1,
 	},
 	containerStyle: {
-		minHeight: 60,
+		// minHeight: 50,
 		flex: 1,
+
 	}
 }
 
