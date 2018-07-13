@@ -215,7 +215,7 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                         <View style={{ width: '30%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
                             <View>
-                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 12 }}>Harga Pesanan</Text>
+                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 13 }}>Harga Pesanan</Text>
                             </View>
                             <View style={{ flex: 1 }}>
                                 <Text

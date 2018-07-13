@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native';
 import { OrderForCrafterPage } from './orderForCrafter';
 import { CrafterPage } from './crafter';
+import { MenuCrafterPage } from './menuCrafter';
 
 export class CrafterMenuPage extends React.Component {
   static navigationOptions = {
@@ -11,15 +12,15 @@ export class CrafterMenuPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      screen: 'crafter'
+      screen: 'menuCrafter'
     }
   }
 
   renderScreen = () => {
     if (this.state.screen === 'orderForCrafter') {
       return <OrderForCrafterPage navi={this.props.navigation} />
-    }else if (this.state.screen === 'crafter') {
-      return <CrafterPage navi={this.props.navigation} />
+    }else if (this.state.screen === 'menuCrafter') {
+      return <MenuCrafterPage navi={this.props.navigation} />
     }
   }
 
@@ -41,9 +42,9 @@ export class CrafterMenuPage extends React.Component {
               </TouchableNativeFeedback>
             </View>
             <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
-              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafter' })}>
-                <View style={screen === 'crafter' ? tabContainerActive : tabContainer}>
-                  <Text style={screen === 'crafter' ? tabTextActive : tabText}>Crafter</Text>
+              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
+                <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
+                  <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
                 </View>
               </TouchableNativeFeedback>
             </View>

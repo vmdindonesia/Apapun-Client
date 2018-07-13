@@ -105,6 +105,7 @@ export class MenuCrafterPage extends React.Component {
                     </View>
                     <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20 }}>
                         <TouchableOpacity
+                            onPress={() => this.props.navi.navigate('EditProfileCrafter')}
                             style={{
                                 backgroundColor: 'black', width: '100%', height: 40,
                                 borderRadius: 15, justifyContent: 'center'
@@ -118,11 +119,12 @@ export class MenuCrafterPage extends React.Component {
                             <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
                                 <View style={styles.card}>
                                     <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }}>
+                                        <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
+                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                 <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
                                                 <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={imageExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
+                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                                 </View>
                                             </View>
                                         </TouchableWithoutFeedback>

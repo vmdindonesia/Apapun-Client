@@ -59,6 +59,7 @@ export class EditProfileBuyerPage extends React.Component {
                     <Input
                         Text=''
                         label='No Telfon'
+                        keyboardType='numeric'
                     />
                 </ContainerSection>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { CheckBox } from 'react-native-elements'
 
 
@@ -28,7 +29,14 @@ export class EditProfileCrafterPage extends React.Component {
                     marginRight: '15%',
                     marginBottom: 20
                 }}
-            // onPress={() => this.onValidation()}
+
+                onPress={() => {const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({ routeName: 'MenuCrafter' })],
+                });
+                    this.props.navigation.dispatch(resetAction);
+                }
+            }
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Simpan</Text>
             </Button>
@@ -37,113 +45,113 @@ export class EditProfileCrafterPage extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, flexDirection: 'column' }}>
-                <View style={{ flex: 1 }}>
-                    <ImageBackground
-                        source={require('./../assets/images/background_profile.jpeg')}
-                        style={styles.backgroundStyle}
-                    >
-                        <View style={styles.containerImage}>
-                            <Image style={styles.containerPhoto}
-                                source={require('./../assets/images/profile.png')}
-                            />
-                        </View>
-                    </ImageBackground >
-                    <ScrollView>
-                        <View style={{ flex: 1, marginTop: '25%' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Nama sebagai Crafter</Text>
-                            <ContainerSection>
-                                <Input />
-                            </ContainerSection>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Biodata</Text>
-                            <ContainerSection>
-                                <Input
-                                    multiline={true}
-                                />
-                            </ContainerSection>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Bidang Kemampuan</Text>
-                            <View style={{ flex: 1 }}>
-                                <CheckBox
-                                    fontFamily='Quicksand-Regular'
-                                    title='Fashion'
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                />
-                                <CheckBox
-                                    fontFamily='Quicksand-Regular'
-                                    title='Furniture & Appliances'
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                />
-                                <CheckBox
-                                    fontFamily='Quicksand-Regular'
-                                    title='Beauty'
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                />
-                                <CheckBox
-                                    fontFamily='Quicksand-Regular'
-                                    title='DIY, Hobbies & Toys'
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                />
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Jasa Pengiriman Pribadi</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                                    <CheckBox
-                                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        center
-                                        title='Punya'
-                                        checkedIcon='dot-circle-o'
-                                        uncheckedIcon='circle-o'
-                                    //   checked={this.state.checked}
-                                    />
-                                    <CheckBox
-                                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        center
-                                        title='Tidak Punya'
-                                        checkedIcon='dot-circle-o'
-                                        uncheckedIcon='circle-o'
-                                    //   checked={this.state.checked}
-                                    />
-                                </View>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '40%', padding: 15 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>E - Mail</Text>
-                                    </View>
-                                    <View style={{ width: '60%', padding: 15 }}>
-                                        <Input />
-                                        <TouchableHighlight>
-                                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'red', textAlign: 'right' }}>'Verifikasi'</Text>
-                                        </TouchableHighlight>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '40%', padding: 15 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Nomor Telepon</Text>
-                                    </View>
-                                    <View style={{ width: '60%', padding: 15 }}>
-                                        <Input />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ width: '40%', padding: 15 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Ganti Kata Sandi</Text>
-                                    </View>
-                                    <View style={{ width: '60%', padding: 15 }}>
-                                        <Input />
-                                    </View>
-                                </View>
-                            </View>
-                            <View>
-                                {this.renderButton()}
-                            </View>
+            <View style={{ flex: 1 }}>
+                <ScrollView
+                    keyboardShouldPersistTaps="always"
+                >
+                    <View style={{ flex: 1 }}>
+                        <Image
+                            style={{ width: '100%', height: 150 }}
+                            source={require('./../assets/images/background_profile.jpeg')}
+                            resizeMode='cover'
+                        />
+                    </View>
+                    <View style={styles.containerImage}>
+                        <Image style={styles.containerPhoto}
+                            source={require('./../assets/images/profile.png')}
+                        />
+                    </View>
 
+                    <View style={{ flex: 1, marginTop: '25%' }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Nama sebagai Crafter</Text>
+                        <ContainerSection>
+                            <Input />
+                        </ContainerSection>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Biodata</Text>
+                        <ContainerSection>
+                            <Input
+                                multiline={true}
+                            />
+                        </ContainerSection>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Bidang Kemampuan</Text>
+                        <View style={{ flex: 1 }}>
+                            <CheckBox
+                                fontFamily='Quicksand-Regular'
+                                title='Fashion'
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                            />
+                            <CheckBox
+                                fontFamily='Quicksand-Regular'
+                                title='Furniture & Appliances'
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                            />
+                            <CheckBox
+                                fontFamily='Quicksand-Regular'
+                                title='Beauty'
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                            />
+                            <CheckBox
+                                fontFamily='Quicksand-Regular'
+                                title='DIY, Hobbies & Toys'
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                            />
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Jasa Pengiriman Pribadi</Text>
+                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+                                <CheckBox
+                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                    center
+                                    title='Punya'
+                                    checkedIcon='dot-circle-o'
+                                    uncheckedIcon='circle-o'
+                                //   checked={this.state.checked}
+                                />
+                                <CheckBox
+                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                    center
+                                    title='Tidak Punya'
+                                    checkedIcon='dot-circle-o'
+                                    uncheckedIcon='circle-o'
+                                //   checked={this.state.checked}
+                                />
+                            </View>
                         </View>
-                    </ScrollView>
-                </View>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>E - Mail</Text>
+                            </View>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Input />
+                                <TouchableHighlight>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'red', textAlign: 'right' }}>'Verifikasi'</Text>
+                                </TouchableHighlight>
+                            </View>
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Nomor Telepon</Text>
+                            </View>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Input 
+                                keyboardType='numeric'
+                                />
+                            </View>
+                        </View>
+
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Ganti Kata Sandi</Text>
+                            </View>
+                            <View style={{ flex: 1, padding: 15 }}>
+                                <Input />
+                            </View>
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            {this.renderButton()}
+                        </View>
+                    </View>
+                </ScrollView>
             </View>
+
         );
     }
 }
@@ -158,12 +166,11 @@ const styles = StyleSheet.create({
         flex: 4
     },
     backgroundStyle: {
-        width: '100%',
-        height: '30%'
+        flex: 1
     },
     containerImage: {
         alignSelf: 'center',
-        top: 90,
+        marginTop: 70,
         // left: 15,
         position: 'absolute',
     },

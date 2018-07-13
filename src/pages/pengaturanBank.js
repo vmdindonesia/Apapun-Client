@@ -141,7 +141,7 @@ export class PengaturanBankPage extends React.Component {
                         />
                     </View>
                     <TouchableOpacity style={styles.button}
-                    onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                    onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); this.props.navigation.navigate('CrafterMenu')}}>
                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>OK</Text>
                     </TouchableOpacity>
                 </View>

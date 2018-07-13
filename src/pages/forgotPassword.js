@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { View, Text, Image, AsyncStorage, ToastAndroid, } from 'react-native'
-import { Container, ContainerSection, Spinner, Input, Button } from '../components/common';
-=======
 import { View, Text, Image, ScrollView, TouchableOpacity, ToastAndroid, } from 'react-native'
-import { Container, ContainerSection, Spinner, Input } from '../components/common';
+import { Container, ContainerSection, Spinner, Input, Button } from '../components/common';
 import { NavigationActions, StackActions } from 'react-navigation';
->>>>>>> a86d8653fc5a838f013c5806240d5f8ea38a1d27
 
 
 export class ForgotPasswordPage extends React.Component {
@@ -36,13 +31,8 @@ export class ForgotPasswordPage extends React.Component {
             return <Spinner size="small" />
         }
         return (
-<<<<<<< HEAD
             <Button
-                onPress={() => this.onLogin()}
-=======
-            <TouchableOpacity
                 onPress={() => this.onForget()}
->>>>>>> a86d8653fc5a838f013c5806240d5f8ea38a1d27
                 style={styles.buttonSend}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>

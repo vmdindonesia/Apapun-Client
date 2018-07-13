@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, Modal, ToastAndroid } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -225,6 +225,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <ContainerSection>
                                         <Input
                                             placeholder='please input your phone number'
+                                            keyboardType='numeric'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -265,7 +266,8 @@ export class RegistrationCrafterPage extends React.Component {
 
 
 
-                    <TouchableOpacity style={styles.buttonSignUp}>
+                    <TouchableOpacity style={styles.buttonSignUp}
+                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); this.props.navigation.navigate('pengaturanBank')}}>
                         <Text style={styles.signupButtonText}>Sign Up</Text>
                     </TouchableOpacity>
 
