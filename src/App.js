@@ -62,6 +62,15 @@ import { ThanksToPage } from './pages/ThanksTo';
 import { NotificationMenuPage } from './pages/NotificationMenu';
 import { NotificationSystemPage } from './pages/NotificationSystem';
 import { NotificationTransactionPage } from './pages/NotificationTransaction';
+import { CrafterInputResiPage } from './pages/crafterInputResi';
+import { CrafterSentPage } from './pages/crafterSent';
+import { MenuCrafterPage } from './pages/menuCrafter';
+import { EditProfileCrafterPage } from './pages/editProfileCrafter';
+import { CatatanPage } from './pages/catatan';
+import { GambarPage } from './pages/gambar';
+import { UlasanPage } from './pages/ulasan';
+import { EditCatatanPage } from './pages/editCatatan';
+import { DetailDeliveryPage } from './pages/detailDelivery';
 
 console.disableYellowBox = true;
 
@@ -74,20 +83,53 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
+  DetailDelivery: {
+    screen: DetailDeliveryPage
+  },
+  Gambar: {
+    screen: GambarPage
+  },
+  EditCatatan: {
+    screen: EditCatatanPage
+  },
+  Ulasan: {
+    screen: UlasanPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  Catatan: {
+    screen: CatatanPage
+  },
+  EditProfileCrafter: {
+    screen: EditProfileCrafterPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  OrderForCrafter: {
+    screen: OrderForCrafterPage
+  },
+  CrafterSent: {
+    screen: CrafterSentPage
+  },
+  CrafterInputResi: {
+    screen: CrafterInputResiPage
+  },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
-  },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
@@ -131,12 +173,8 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
-  },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
   },
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
@@ -168,10 +206,6 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
@@ -193,7 +227,6 @@ const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
   },
-
   Crafter: {
     screen: CrafterPage
   },
@@ -212,34 +245,11 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  MyOrder: {
-    screen: MyOrderPage
-  },
-  Dashboard: {
-    screen: DashboardPage
-  },
-
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
-
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  Dashboard: {
-    screen: DashboardPage
-  },
-  Dashboard: {
-    screen: DashboardPage
-  },
   Order: {
     screen: OrderPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
@@ -256,26 +266,21 @@ const Routes = createStackNavigator({
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  Order: {
-    screen: OrderPage
-  },
+
   Crafter: {
     screen: CrafterPage
   }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
-      headerRight: <View/>,
+      headerRight: <View />,
       headerTitleStyle: {
         color: '#000',
-        fontFamily: 'Muli-Bold',
+        fontFamily: 'Quicksand-Bold',
         fontWeight: '300',
         justifyContent: 'space-between',
         textAlign: 'center',
-        alignSelf:'center',
+        alignSelf: 'center',
         flex: 1
       },
       headerStyle: {

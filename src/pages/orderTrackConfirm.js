@@ -21,7 +21,7 @@ export class OrderTrackConfirmPage extends React.Component {
                             <View style={{ flex: 1 }}>
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, textAlign: 'center' }}>Konfirmasi Penerimaan</Text>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center' }}>Pastikan anda sudah menerima barangnya</Text>
-                                <TouchableOpacity style={{ width: '100%', height: 30, borderRadius: 15, backgroundColor: 'black', justifyContent: 'center', marginTop: 10 }}>
+                                <TouchableOpacity style={{ width: '100%', height: 40, borderRadius: 15, backgroundColor: 'black', justifyContent: 'center', marginTop: 10 }}>
                                     <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 13, textAlign: 'center' }}>Barang Telah Diterima</Text>
                                 </TouchableOpacity>
                             </View>

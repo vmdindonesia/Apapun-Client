@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
-import { Input, InputNumber, ContainerSection, InputDate, Button } from '../components/common';
+import { Input } from '../components/common';
 import Swiper from 'react-native-swiper';
-import DatePicker from 'react-native-datepicker'
-// import moment from 'moment';
 
-export class OrderForCrafterPage extends React.Component {
+export class CrafterSentPage extends React.Component {
 
     constructor(props) {
         super(props)
@@ -21,49 +19,7 @@ export class OrderForCrafterPage extends React.Component {
 
 
             ],
-            // estimationTime: '',
-            date: ""
         }
-    }
-
-    // showEstimateTimeFocus = () => this.setState({ BirthdayDate: true });
-
-    // hideEstimateTime = () => this.setState({ BirthdayDate: false });
-
-    // handleDatePickedBirthday = (date) => {
-    //     console.log(date, 'Date Nya DP')
-    //     const dateTemp = moment(date).format('YYYY-MM-DD h:mm:ss');
-    //     const dateNow = moment(date).format('DD/MM/YYYY');
-    //     this.setState({ estimationTime: dateNow, datePickBirthday: dateTemp })
-    //     this.hideEstimateTime();
-    // };
-
-    // onChangeInput = (name, v) => {
-    //     this.setState({ [name]: v }, () => {
-    //         console.log(this.state[name], 'Birth');
-    //     });
-    // }
-
-    renderButton = () => {
-        if (this.state.loading) {
-            return <Spinner size="small" />
-        }
-        return (
-            <Button
-                style={{
-                    backgroundColor: '#FF1000',
-                    justifyContent: 'center',
-                    borderRadius: 30,
-                    marginTop: 30,
-                    marginLeft: '15%',
-                    marginRight: '15%',
-                    marginBottom: 20
-                }}
-            // onPress={() => this.onValidation()}
-            >
-                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Ambil Pesanan</Text>
-            </Button>
-        )
     }
 
     renderProductItem = (data) => {
@@ -87,14 +43,13 @@ export class OrderForCrafterPage extends React.Component {
     }
 
     render() {
-
-        // const {
-        //     estimationTime
-        // } = this.state
-
         return (
             <ScrollView>
                 <View style={styles.container}>
+                    <View style={{ flex: 1, width: '100%', backgroundColor: '#fff', marginTop: 5, padding: 10 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, textAlign: 'center', marginTop: 5 }}>TERIMA KASIH ATAS KERJA KERASNYA</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', marginTop: 5 }}>Silahkan menunggu hasil review buyer mengenai produk Anda.</Text>
+                    </View>
                     <View style={styles.containerSlide}>
                         <Swiper
                             style={styles.wrapper}
@@ -238,62 +193,6 @@ export class OrderForCrafterPage extends React.Component {
                         <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
                             DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
                 </View>
-                <View style={{ flex: 1, marginTop: 10, marginLeft: 5, paddingRight: 5, paddingLeft: 5, backgroundColor: '#fff' }}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Harga</Text>
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5 }}>
-                        <View
-                            style={{
-                                borderRadius: 100, backgroundColor: 'black', width: 30, height: 30,
-                                justifyContent: 'center', flexDirection: 'row', marginTop: 3
-                            }}
-                        >
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 20, color: 'white', textAlign: 'center' }}>Rp</Text>
-                        </View>
-                        <View style={{ flex: 1, marginLeft: 10, marginRight: 5 }}>
-                            <InputNumber
-                                // value={numberPcs.toString()}
-                                // onChangeText={val => this.onChange('numberPcs', val)}
-                                keyboardType='numeric'
-                            />
-                        </View>
-                    </View>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginTop: 5 }}>Selesai Pembuatan</Text>
-                    <ContainerSection>
-                        {/* <InputDate
-                            placeholder=''
-                            value={estimationTime}
-                            onChangeText={v => this.onChangeInput('estimationTime', v)}
-                            onFocus={() => {
-                                this.showEstimateTimeFocus()
-                            }}
-                        /> */}
-                        <DatePicker
-                        style={{ flex: 1 }}
-                            date={this.state.date}
-                            androidMode='spinner'
-                            placeholder="select date"
-                            format="DD-MM-YYYY"
-                            confirmBtnText="Confirm"
-                            cancelBtnText="Cancel"
-                            customStyles={{
-                                dateIcon: {
-                                  position: 'absolute',
-                                  left: 0,
-                                  top: 4,
-                                  marginLeft: 0
-                                },
-                                dateInput: {
-                                  marginLeft: 36
-                                }
-                            }}
-                            onDateChange={(date) => {this.setState({date: date})}}
-                        />
-                    </ContainerSection>
-
-                    <ContainerSection>
-                        {this.renderButton()}
-                    </ContainerSection>
-                </View>
             </ScrollView>
         );
     }
@@ -355,4 +254,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default OrderForCrafterPage;
+export default CrafterSentPage;

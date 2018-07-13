@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native';
-import { MyOrderPage } from './myOrder';
+import { OrderForCrafterPage } from './orderForCrafter';
 import { CrafterPage } from './crafter';
 
 export class CrafterMenuPage extends React.Component {
@@ -17,7 +17,7 @@ export class CrafterMenuPage extends React.Component {
 
   renderScreen = () => {
     if (this.state.screen === 'orderForCrafter') {
-      return <MyOrderPage navi={this.props.navigation} />
+      return <OrderForCrafterPage navi={this.props.navigation} />
     }else if (this.state.screen === 'crafter') {
       return <CrafterPage navi={this.props.navigation} />
     }
@@ -33,14 +33,14 @@ export class CrafterMenuPage extends React.Component {
     return (
         <View style={menuContainerStyle}>
           <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
-              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafterMenu' })}>
-                <View style={screen === 'crafterMenu' ? tabContainerActive : tabContainer}>
-                  <Text style={screen === 'crafterMenu' ? tabTextActive : tabText}>Pesanan</Text>
+            <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
+              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'orderForCrafter' })}>
+                <View style={screen === 'orderForCrafter' ? tabContainerActive : tabContainer}>
+                  <Text style={screen === 'orderForCrafter' ? tabTextActive : tabText}>Pesanan</Text>
                 </View>
               </TouchableNativeFeedback>
             </View>
-            <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
+            <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
               <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafter' })}>
                 <View style={screen === 'crafter' ? tabContainerActive : tabContainer}>
                   <Text style={screen === 'crafter' ? tabTextActive : tabText}>Crafter</Text>
@@ -62,22 +62,22 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     height: 50,
-    justifyContent: 'center'
-  },
-  tabContainerActive: {
+    justifyContent: 'center',
+},
+tabContainerActive: {
     height: 50,
-    justifyContent: 'center'
-  },
-  tabText: {
-    color: '#67a6e3',
+    justifyContent: 'center',
+    borderBottomColor: 'red',
+    borderBottomWidth: 1
+},
+tabText: {
     textAlign: 'center',
-    fontSize: 14
-  },
-  tabTextActive: {
-    color: '#fff',
+    fontSize: 15
+},
+tabTextActive: {
     textAlign: 'center',
-    fontSize: 14,
-    fontFamily: 'Quicksand-Regular'
-  }
+    fontSize: 15,
+    fontFamily: 'Quicksand-Bold'
+},
 })
 export default CrafterMenuPage;

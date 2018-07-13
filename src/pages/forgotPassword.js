@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Image, AsyncStorage, TouchableOpacity, ToastAndroid, } from 'react-native'
-import { Container, ContainerSection, Spinner, Input } from '../components/common';
+import { View, Text, Image, AsyncStorage, ToastAndroid, } from 'react-native'
+import { Container, ContainerSection, Spinner, Input, Button } from '../components/common';
 
 
 export class ForgotPasswordPage extends React.Component {
@@ -28,14 +28,14 @@ export class ForgotPasswordPage extends React.Component {
             return <Spinner size="small" />
         }
         return (
-            <TouchableOpacity
+            <Button
                 onPress={() => this.onLogin()}
                 style={styles.buttonSend}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>
                     Kirim
 				</Text>
-            </TouchableOpacity>
+            </Button>
         )
     }
 
