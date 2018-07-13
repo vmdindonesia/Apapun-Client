@@ -96,7 +96,6 @@ export class LoginPage extends React.Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-			// <View style={styles.container}>
 
 			<ImageBackground
 				source={require('./../assets/images/bg-login.jpg')}
@@ -109,7 +108,7 @@ export class LoginPage extends React.Component {
 
 				<ScrollView keyboardShouldPersistTaps="always">
 
-					<View style={{ marginTop: 30, marginBottom: 48 }}>
+					<View style={{ marginTop: 100, marginBottom: 100 }}>
 						<View style={{ alignItems: 'center' }}>
 							<Image
 								style={styles.image}
@@ -122,23 +121,20 @@ export class LoginPage extends React.Component {
 					<Container>
 						<ContainerSection>
 							<InputLogin
-								style={styles.Input}
-								placeholder="email or username"
+								placeholder="Email or username"
 								icon="ic_username"
-								icons
 								onChangeText={val => this.onChange('email', val)}
 								value={email}
 							/>
 						</ContainerSection>
 
-						<View style={{ padding: 2 }} />
+						<View style={{ padding: 1 }} />
 
 						<ContainerSection>
 							<InputLogin
 								secureTextEntry
-								placeholder="password"
+								placeholder="Password"
 								icon="ic_password"
-								icons="ic_garis"
 								onChangeText={val => this.onChange('password', val)}
 								value={password}
 							/>
@@ -147,13 +143,13 @@ export class LoginPage extends React.Component {
 						<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
 							<TouchableOpacity
 								onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-									Forget password?
+								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
+									FORGET YOUR PASSWORD?
 								</Text>
 							</TouchableOpacity>
 						</View>
 
-						<View style={{ marginTop: 15 }}>
+						<View style={{ marginTop: 50 }}>
 							<ContainerSection>
 								{this.renderButton()}
 							</ContainerSection>
@@ -162,13 +158,13 @@ export class LoginPage extends React.Component {
 
 					<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
 						<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-							Belum punya akun? {`\n`}
+							Don't have an account? {`\n`}
 						</Text>
 						<TouchableOpacity
 							onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
 						>
 							<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-								Daftar disini
+								Sign Up
 						</Text>
 						</TouchableOpacity>
 					</View>
@@ -188,7 +184,7 @@ const styles = {
 		height: 36,
 		padding: 10,
 		margin: 18,
-		fontSize: 18,
+		fontSize: 15,
 		borderWidth: 1,
 		borderRadius: 10,
 		borderColor: '#48BBEC',
