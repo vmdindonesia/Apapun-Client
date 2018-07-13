@@ -19,7 +19,7 @@ export class IdeaMarketPage extends React.Component {
 
                 <ScrollView>
                     <View style={{ flex: 1, flexDirection: 'column', height: '100%', marginTop: 10 }}>
-                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10,  width: '95%' }}>
+                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10, width: '95%' }}>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('IdeaFashion')}
                             >
@@ -36,8 +36,10 @@ export class IdeaMarketPage extends React.Component {
                             </TouchableOpacity>
                         </View>
 
-                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10,  width: '95%' }}>
-                            <TouchableOpacity >
+                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10, width: '95%' }}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('IdeaFurniture')}
+                            >
                                 <Image
                                     style={{
                                         // flex: 1,
@@ -51,8 +53,10 @@ export class IdeaMarketPage extends React.Component {
                             </TouchableOpacity >
                         </View>
 
-                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10,  width: '95%' }}>
-                            <TouchableOpacity >
+                        <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10, width: '95%' }}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('Ideadht')}
+                            >
                                 <Image
                                     style={{
                                         // flex: 1,
@@ -68,7 +72,9 @@ export class IdeaMarketPage extends React.Component {
 
 
                         <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10, width: '95%' }}>
-                            <TouchableOpacity >
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('IdeaBeauty')}
+                            >
                                 <Image
                                     style={{
                                         // flex: 1,

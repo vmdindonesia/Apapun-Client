@@ -590,7 +590,7 @@ export class DashboardPage extends React.Component {
 																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>CAPTURE N GET</Text>
 																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 12.5, textAlign: 'justify', flex: 1 }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
+																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Captureandget')}>
 																													<Text style={{ textAlign: 'center', color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																												</TouchableOpacity>
 																											</View>

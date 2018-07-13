@@ -14,8 +14,8 @@ class CardRegistration extends Component {
 const styles = {
 	containerStyle: {
 		elevation: 1,
-		marginLeft: 15,
-		marginRight: 15,
+		// marginLeft: 15,
+		// marginRight: 15,
 		marginTop: 10
 	}
 }

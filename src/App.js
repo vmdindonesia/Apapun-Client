@@ -13,7 +13,6 @@ import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
 import { StartScreen } from './pages/StartScreen';
-
 import { DashboardPage } from './pages/dashboard.js';
 import { LoginPage } from './pages/login.js';
 import { OrderPage } from './pages/order.js';
@@ -72,6 +71,12 @@ import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
 import { ChatPage } from './pages/Chat';
+import { PaymentMethodPage } from './pages/PaymentMethod';
+import { CaptureandgetPage } from './pages/CaptureNGet';
+import { IdeaFurniturePage } from './pages/IdeaFurniture';
+import { IdeadhtPage } from './pages/IdeaDHT';
+import { IdeaBeautyPage } from './pages/IdeaBeauty';
+
 
 console.disableYellowBox = true;
 
@@ -86,6 +91,33 @@ setCustomText(customTextProps)
 const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  OrderForCrafter: {
+    screen: OrderForCrafterPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  AkunBank: {
+    screen: AkunBankPage
+  },
+  IdeaBeauty: {
+    screen: IdeaBeautyPage
+  },
+  Ideadht: {
+    screen: IdeadhtPage
+  },
+  IdeaFurniture: {
+    screen: IdeaFurniturePage
+  },
+  Captureandget: {
+    screen: CaptureandgetPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
   },
   Chat: {
     screen: ChatPage
@@ -201,9 +233,7 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-  AkunBank: {
-    screen: AkunBankPage
-  },
+
   InformasiBank: {
     screen: InformasiBankPage
   },
@@ -216,6 +246,7 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
+
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
