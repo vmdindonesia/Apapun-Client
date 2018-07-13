@@ -45,9 +45,7 @@ export class NotificationTransactionPage extends React.Component {
 
                                 <Text style={{ color: 'black', }}>16 Januari 2018, 21 30</Text>
                             </View>
-                            {/* <View style={{ height: '50%' }}>
-                            <Text style={{ color: 'black', fontWeight: 'bold', backgroundColor: 'skyblue' }}>16 Januari 2018, 21.30</Text>
-                        </View> */}
+                          
 
                         </View>
 

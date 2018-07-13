@@ -31,17 +31,9 @@ class InputLogin extends Component {
 		}
 	}
 
-	imageIcons = (icons) => {
-		switch (icons) {
-			case 'ic_garis':
-				return require('./../../assets/images/ic_garis.png')
-			default:
-				return require('./../../assets/images/ic_garis.png')
-		}
-	}
 
 	render() {
-		const { label, value, onChangeText, placeholder, icons, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
+		const { label, value, onChangeText, placeholder, secureTextEntry, keyboardType, multiline, lines, editable, icon, textAlignVertical } = this.props
 		const { inputStyle, labelStyle, containerStyle } = styles
 
 		return (
@@ -54,12 +46,8 @@ class InputLogin extends Component {
 				}
 
 				<View style={{ ...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
-					{
-						icon ? <Image source={this.imageIcon(icon)} style={{ marginLeft: 5, width: 24, height: 24 }} /> : <View />
-					}
-					{
-						icons ? <Image source={this.imageIcons(icons)} style={{ marginLeft: 15, marginRight: 15, width: 1, height: 24 }} /> : <View />
-					}
+					<Image source={this.imageIcon(icon)} style={{ marginLeft: 5, width: 24, height: 24 }} />
+					<Image source={require('./../../assets/images/ic_garis.png')} style={{ marginLeft: 15, marginRight: 15, width: 1, height: 24 }} />
 					<TextInput
 						secureTextEntry={secureTextEntry}
 						placeholder={placeholder}

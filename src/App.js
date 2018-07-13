@@ -71,6 +71,7 @@ import { GambarPage } from './pages/gambar';
 import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
+import { ChatPage } from './pages/Chat';
 
 console.disableYellowBox = true;
 
@@ -85,6 +86,27 @@ setCustomText(customTextProps)
 const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
+  },
+  Chat: {
+    screen: ChatPage
+  },
+  OrderTrackConfirm: {
+    screen: OrderTrackConfirmPage
+  },
+  FinalProcessOrder: {
+    screen: FinalProcessOrderPage
+  },
+  OrderReceived: {
+    screen: OrderReceivedPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
   },
   DetailDelivery: {
     screen: DetailDeliveryPage
@@ -134,15 +156,6 @@ const Routes = createStackNavigator({
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-  OrderReceived: {
-    screen: OrderReceivedPage
-  },
-  OrderTrackConfirm: {
-    screen: OrderTrackConfirmPage
-  },
-  OrderWithTrack: {
-    screen: OrderWithTrackPage
-  },
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -188,9 +201,6 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   AkunBank: {
     screen: AkunBankPage
   },
@@ -217,9 +227,6 @@ const Routes = createStackNavigator({
   },
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  FinalProcessOrder: {
-    screen: FinalProcessOrderPage
   },
   DetailOrder: {
     screen: DetailOrderPage
