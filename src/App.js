@@ -89,6 +89,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -116,9 +119,7 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
+
   Chat: {
     screen: ChatPage
   },
