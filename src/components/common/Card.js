@@ -15,8 +15,8 @@ const styles = {
   containerStyle: {
     borderRadius: 2,
     elevation: 1,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 20,
+    marginRight: 20,
     marginTop: 10,
     backgroundColor: '#fff'
   }
