@@ -422,7 +422,7 @@ export class OrderPage extends React.Component {
                                 uploadDesign.length < 2 ?
                                     <View>
                                         <Image
-                                            source={require('../assets/images/create-design.png')}
+                                            source={require('../assets/images/create-design.jpg')}
                                             style={{ width: '100%', height: 300 }}
                                             resizeMode='cover'
                                         />

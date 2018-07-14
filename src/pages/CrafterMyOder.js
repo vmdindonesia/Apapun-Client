@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -12,7 +12,7 @@ import { HistoryOnMyOrderPage } from './HistoryOnMyOrder';
 export class CrafterMyOrderPage extends React.Component {
 
     static navigationOptions = {
-        headerTitle: 'Daftar Pesanan'
+        headerTitle: 'Pesanan Saya'
     }
 
     constructor(props) {
@@ -67,9 +67,9 @@ export class CrafterMyOrderPage extends React.Component {
                     height: 50,
                     flexDirection: 'row',
                     // flex:4,
-                    borderBottomWidth: 2, 
-                    marginBottom : 3,
-                    borderColor:'#e5e5e5'
+                    borderBottomWidth: 2,
+                    marginBottom: 3,
+                    borderColor: '#e5e5e5'
                 }}>
 
                     <View
@@ -82,9 +82,12 @@ export class CrafterMyOrderPage extends React.Component {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                        <TouchableOpacity onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}>
+                        <TouchableOpacity
+                            // onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
+                            onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                        >
                             <View style={screen === 'OrderOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>My List Order</Text>
+                                <Text>Pesanan Saya</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -102,7 +105,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'WishlistOnMyOrderPage' })}>
                             <View style={screen === 'WishlistOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>Whislist</Text>
+                                <Text>Wishlist</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -126,9 +129,9 @@ export class CrafterMyOrderPage extends React.Component {
                     </View>
 
                 </View>
-               
-                    {this.renderScreen()}
-             
+
+                {this.renderScreen()}
+
             </View>
         )
     }

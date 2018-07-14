@@ -82,14 +82,14 @@ export class BerandaCrafterPage extends React.Component {
                         </View>
 
 
-                        <View style={{ borderBottomWidth: 1.5, borderColor: 'gray', width: '90%' }} />
+                        <View style={{ borderBottomWidth: 1.3, borderColor: '#e5e5e5', width: '90%' }} />
 
 
                         <View style={{
                             flex: 1,
                             // backgroundColor: 'skyblue',
-                            height: 45,
-                            width: '90%',
+                            height: 80,
+                            width: '95%',
                             marginTop: 17,
                             flexDirection: 'row',
                             justifyContent: 'center'
@@ -99,16 +99,16 @@ export class BerandaCrafterPage extends React.Component {
                                 height: '10%',
                                 width: '75%'
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Profesional Crafter</Text>
-                                <Text style={{ color: 'red', fontSize: 10, paddingTop: 2 }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
+                                <Text style={{ fontWeight: 'bold', fontSize: 15, }}>Profesional Crafter</Text>
+                                <Text style={{ color: 'red', fontSize: 13, paddingTop: 2, }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
                             </View>
 
                             <View style={{
                                 height: '10%',
-                                width: '15%'
+                                width: '20%'
                             }}>
                                 <TouchableWithoutFeedback>
-                                    <Text style={{ color: 'red', fontSize: 12, fontWeight: 'bold', paddingLeft: 15 }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15, }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>
@@ -153,7 +153,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Gal Gadot</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 13 }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -197,7 +197,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Chelsea Islan</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 13 }}>Chelsea Islan</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -242,7 +242,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Pevita Pearce</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 13 }}>Pevita Pearce</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -253,7 +253,7 @@ export class BerandaCrafterPage extends React.Component {
                                             borderRadius: 0,
                                             alignSelf: 'center'
                                         }}
-                                        source={require('./../assets/images/smile_icon.png')}
+                                        source={require('./../assets/images/smile_icon.jpg')}
                                     />
 
                                 </View>
@@ -263,33 +263,33 @@ export class BerandaCrafterPage extends React.Component {
 
                         </View>
 
-                        <View style={{ borderBottomWidth: 1.5, borderColor: 'gray', width: '90%' }} />
+                        <View style={{ borderBottomWidth: 1.3, borderColor: '#e5e5e5', width: '90%', marginTop: 5 }} />
 
 
                         <View style={{
                             flex: 1,
                             // backgroundColor: 'skyblue',
                             height: 30,
-                            width: '90%',
+                            width: '95%',
                             marginTop: 17,
                             flexDirection: 'row',
                             justifyContent: 'center'
                         }}>
 
                             <View style={{
-                                // height: '5%',
+                                height: '5%',
                                 width: '75%'
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Crafter On Debut</Text>
+                                <Text style={{ paddingLeft: 5, fontSize: 15, fontWeight: 'bold' }}>Crafter On Debut</Text>
                                 {/* <Text style={{ color: 'red', fontSize: 10, paddingTop: 2 }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text> */}
                             </View>
 
                             <View style={{
                                 height: '10%',
-                                width: '15%'
+                                width: '20%',
                             }}>
                                 <TouchableWithoutFeedback>
-                                    <Text style={{ color: 'red', fontSize: 12, fontWeight: 'bold', paddingLeft: 15 }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15 }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>
@@ -332,7 +332,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Raisa</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 15 }}>Raisa</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -376,7 +376,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Nia Ramadhani</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 15 }}>Nia Ramadhani</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -421,7 +421,7 @@ export class BerandaCrafterPage extends React.Component {
                                 </View>
 
                                 <View>
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Ariel Tatum</Text>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 15 }}>Ariel Tatum</Text>
                                 </View>
 
                                 <View style={{ paddingTop: 5 }}>
@@ -432,7 +432,7 @@ export class BerandaCrafterPage extends React.Component {
                                             borderRadius: 0,
                                             alignSelf: 'center'
                                         }}
-                                        source={require('./../assets/images/smile_icon.png')}
+                                        source={require('./../assets/images/smile_icon.jpg')}
                                     />
 
                                 </View>

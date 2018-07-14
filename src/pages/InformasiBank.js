@@ -75,7 +75,7 @@ export class InformasiBankPage extends React.Component {
 
                         <View>
                             <Image
-                                source={require('../assets/images/dua-lipa.jpg')}
+                                source={require('../assets/images/ariel.jpg')}
                                 style={{ width: '100%', height: 300 }}
                                 resizeMode='cover'
                             />

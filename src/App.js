@@ -92,6 +92,9 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
   PaymentMethod: {
     screen: PaymentMethodPage
   },
@@ -183,9 +186,7 @@ const Routes = createStackNavigator({
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
+
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },

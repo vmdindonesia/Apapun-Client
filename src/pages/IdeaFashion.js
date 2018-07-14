@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal, ToastAndroid } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 import { Card, CheckBox } from 'react-native-elements'
 // import axios from 'axios';
@@ -60,7 +60,8 @@ export class IdeaFashionPage extends React.Component {
                             }}>
                                 <ContainerSection>
                                     <TouchableWithoutFeedback
-                                        onPress={() => { this.setState({ requestManExpanded: !requestManExpanded }); }}
+                                        // onPress={() => { this.setState({ requestManExpanded: !requestManExpanded }); }}
+                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                                     >
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15 }}>Atasan Pria</Text>
@@ -117,7 +118,8 @@ export class IdeaFashionPage extends React.Component {
                             }}>
                                 <ContainerSection>
                                     <TouchableWithoutFeedback
-                                        onPress={() => { this.setState({ requestWomanExpanded: !requestWomanExpanded }); }}
+                                        // onPress={() => { this.setState({ requestWomanExpanded: !requestWomanExpanded }); }}
+                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                                     >
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15 }}>Atasan Wanita</Text>
@@ -139,7 +141,8 @@ export class IdeaFashionPage extends React.Component {
                             }}>
                                 <ContainerSection>
                                     <TouchableWithoutFeedback
-                                        onPress={() => { this.setState({ requestAccessoriesExpanded: !requestAccessoriesExpanded }); }}
+                                        // onPress={() => { this.setState({ requestAccessoriesExpanded: !requestAccessoriesExpanded }); }}
+                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                                     >
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15 }}>Accessories</Text>

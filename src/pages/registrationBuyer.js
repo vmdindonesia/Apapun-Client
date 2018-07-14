@@ -21,8 +21,30 @@ export class RegistrationBuyerPage extends React.Component {
             pathPhotoRegistBuyer: null,
             BirthdayDate: false,
             datePickBirthday: '',
-            viewBirthday: ''
+            viewBirthday: '',
+            male: true,
+            female: false,
+            gendermale: '',
+            genderfemale: '',
+            agree: false,
+            agreeterms: ''
         };
+    }
+
+    checkedMale = () => {
+        this.setState({ male: true, female: false }, () => {
+            if (this.state.male === true) { this.setState({ gendermale: "Pria", genderfemale: '' }) }
+        });
+    }
+
+    checkedFemale = () => {
+        this.setState({ female: !this.state.female, male: false }, () => {
+            if (this.state.female === true) { this.setState({ genderfelame: "Perempuan", gendermale: '' }) }
+        });
+    }
+
+    checkedAgree = () => {
+        this.setState({ agree: !this.state.agree })
     }
 
 
@@ -87,7 +109,10 @@ export class RegistrationBuyerPage extends React.Component {
     render() {
 
         const {
-            viewBirthday
+            viewBirthday,
+            male,
+            female,
+            agree
         } = this.state
 
 
@@ -146,14 +171,18 @@ export class RegistrationBuyerPage extends React.Component {
                                 <View style={styles.containerCheckBox}>
 
                                     <View style={styles.checkBoxMale}>
-                                        <TouchableHighlight>
-                                            <CheckBox
-                                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                                title='Male'
-                                                checkedIcon='dot-circle-o'
-                                                uncheckedIcon='circle-o'
-                                            />
-                                        </TouchableHighlight>
+
+                                        <CheckBox
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            title='Male'
+                                            checkedIcon='dot-circle-o'
+                                            uncheckedIcon='circle-o'
+                                            onPress={() => this.checkedMale()}
+                                            // checked={() => { this.setState({ male: !this.state.female }) }}
+                                            checked={male}
+
+                                        />
+
                                     </View>
 
 
@@ -163,6 +192,9 @@ export class RegistrationBuyerPage extends React.Component {
                                             title='Female'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
+                                            onPress={() => this.checkedFemale()}
+                                            // checked={() => { this.setState({ female: !this.state.male }) }}
+                                            checked={female}
                                         />
                                     </View>
                                 </View>
@@ -255,8 +287,8 @@ export class RegistrationBuyerPage extends React.Component {
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                         title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
-                                    // checked={true}
-                                    // onChange={(checked) => console.log('I am checked', checked)}
+                                        onPress={() => this.checkedAgree()}
+                                        checked={agree}
                                     />
                                 </View>
                             </View>
@@ -270,7 +302,7 @@ export class RegistrationBuyerPage extends React.Component {
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
 
-                    <View style={{ marginTop: 65 }}>
+                    <View style={{ flex: 1, marginTop: 65 }}>
                         <Modal
                             animationType="slide"
                             transparent={true}
@@ -285,12 +317,22 @@ export class RegistrationBuyerPage extends React.Component {
                                             <View >
                                                 <Text style={styles.textStyle}>Location</Text>
                                             </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your location'
-                                                    />
-                                                </ContainerSection>
+                                            <View style={{ flexDirection: 'row', width: '100%' }}>
+                                                <View style={{ width: '90%' }}>
+                                                    <ContainerSection>
+                                                        <Input
+                                                            placeholder='please input your location'
+                                                        />
+                                                    </ContainerSection>
+                                                </View>
+                                                <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            style={{ height: 40, width: 25 }}
+                                                            source={require('./../assets/images/location_icon.png')}
+                                                        />
+                                                    </TouchableOpacity>
+                                                </View>
                                             </View>
                                         </View>
 
@@ -443,7 +485,7 @@ const styles = StyleSheet.create({
     textStyle: {
         color: 'black',
         marginLeft: 5,
-        fontSize: 12,
+        fontSize: 15,
         fontWeight: 'bold',
         fontFamily: 'Quicksand-Regular'
     },

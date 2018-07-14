@@ -187,7 +187,7 @@ export class FashionCrafterPage extends React.Component {
                                         borderRadius: 0,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/smile_icon.png')}
+                                    source={require('./../assets/images/smile_icon.jpg')}
                                 />
 
                             </View>

@@ -19,9 +19,50 @@ export class RegistrationCrafterPage extends React.Component {
         this.state = {
             isModalVisible: false,
             pathPhotoRegistCrafter: null,
-
+            fashion: false,
+            furniture: false,
+            DIY: false,
+            beauty: false,
+            sendserviceone: false,
+            sendservicetwo: false,
+            agree: false,
         };
     }
+
+    checkBoxFashion = () => {
+        this.setState({ fashion: !this.state.fashion });
+    }
+
+    checkBoxFurniture = () => {
+        this.setState({ furniture: !this.state.furniture });
+    }
+
+    checkBoxDIY = () => {
+        this.setState({ DIY: !this.state.DIY });
+    }
+
+    checkBoxBeauty = () => {
+        this.setState({ beauty: !this.state.beauty });
+    }
+
+    checkedIHave = () => {
+        this.setState({ sendserviceone: true, sendservicetwo: false }, () => {
+            if (this.state.sendserviceone === true) { this.setState({ sendserviceone: "Punya", sendservicetwo: '' }) }
+        });
+    }
+
+    checkedNoIdontHave = () => {
+        this.setState({ sendservicetwo: !this.state.sendservicetwo, sendserviceone: false }, () => {
+            if (this.state.sendservicetwo === true) { this.setState({ sendservicetwo: "Perempuan", sendserviceone: '' }) }
+        });
+    }
+
+    checkedAgreement = () => {
+        this.setState({ agree: !this.state.agree });
+    }
+
+
+
 
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible });
@@ -66,7 +107,19 @@ export class RegistrationCrafterPage extends React.Component {
 
 
     render() {
+
+        const {
+            fashion,
+            furniture,
+            DIY,
+            beauty,
+            sendserviceone,
+            sendservicetwo,
+            agree
+        } = this.state
+
         return (
+
 
             <ImageBackground
                 style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
@@ -85,7 +138,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <Image
                                         style={styles.containerUpload}
                                         resizeMode='cover'
-                                        source={this.state.pathPhotoRegistBuyer} />
+                                        source={this.state.pathPhotoRegistCrafter} />
                                 }
                                 <Image
                                     style={styles.iconCamera}
@@ -121,8 +174,8 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Fashion'
-                                            checked={this.state.checked}
-                                            onChange={() => this.setState({ checked: !this.state.checked })}
+                                            checked={fashion}
+                                            onPress={() => this.checkBoxFashion()}
                                         />
                                     </View>
                                 </View>
@@ -131,8 +184,8 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Furniture & Appliances'
-                                            checked={this.state.checked}
-                                            onChange={() => this.setState({ checked: !this.state.checked })}
+                                            checked={furniture}
+                                            onPress={() => this.checkBoxFurniture()}
                                         />
                                     </View>
                                 </View>
@@ -141,8 +194,8 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Beauty'
-                                            checked={this.state.checked}
-                                            onChange={() => this.setState({ checked: !this.state.checked })}
+                                            checked={beauty}
+                                            onPress={() => this.checkBoxBeauty()}
                                         />
 
                                     </View>
@@ -152,8 +205,8 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='DIY, Hobbies & Toys'
-                                            checked={true}
-                                            onChange={() => this.setState({ checked: !this.state.checked })}
+                                            checked={DIY}
+                                            onPress={() => this.checkBoxDIY()}
                                         />
                                     </View>
                                 </View>
@@ -171,8 +224,9 @@ export class RegistrationCrafterPage extends React.Component {
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Yes, I Have'
                                             checkedIcon='dot-circle-o'
-                                            uncheckedIcon='dot-circle-o'
-                                            checked={true}
+                                            uncheckedIcon='circle-o'
+                                            checked={sendserviceone}
+                                            onPress={() => this.checkedIHave()}
                                         // onChange={(checked) => console.log('I am checked', checked)}
                                         />
                                     </View>
@@ -183,8 +237,8 @@ export class RegistrationCrafterPage extends React.Component {
                                             title='No, I Dont Have'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
-                                            checked={false}
-                                        // onChange={(checked) => console.log('I am checked', checked)}
+                                            checked={sendservicetwo}
+                                            onPress={() => this.checkedNoIdontHave()}
                                         />
                                     </View>
                                 </View>
@@ -254,8 +308,9 @@ export class RegistrationCrafterPage extends React.Component {
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                         title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
-                                    // checked={true}
-                                    // onChange={(checked) => console.log('I am checked', checked)}
+                                        checked={agree}
+                                        onPress={() => this.checkedAgreement()}
+
                                     />
                                 </View>
                             </View>
@@ -267,7 +322,8 @@ export class RegistrationCrafterPage extends React.Component {
 
 
                     <TouchableOpacity style={styles.buttonSignUp}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); this.props.navigation.navigate('pengaturanBank')}}>
+                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                    >
                         <Text style={styles.signupButtonText}>Sign Up</Text>
                     </TouchableOpacity>
 
@@ -288,12 +344,22 @@ export class RegistrationCrafterPage extends React.Component {
                                             <View >
                                                 <Text style={styles.textStyle}>Location</Text>
                                             </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your location'
-                                                    />
-                                                </ContainerSection>
+                                            <View style={{ flexDirection: 'row', width: '100%' }}>
+                                                <View style={{ width: '90%' }}>
+                                                    <ContainerSection>
+                                                        <Input
+                                                            placeholder='please input your location'
+                                                        />
+                                                    </ContainerSection>
+                                                </View>
+                                                <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity>
+                                                        <Image
+                                                            style={{ height: 40, width: 25 }}
+                                                            source={require('./../assets/images/location_icon.png')}
+                                                        />
+                                                    </TouchableOpacity>
+                                                </View>
                                             </View>
                                         </View>
 
@@ -518,9 +584,9 @@ const styles = StyleSheet.create({
     },
     iDontHave: {
         height: 55,
-        width: '60%',
+        width: '65%',
         // backgroundColor: 'red',
-        marginLeft: -10
+        marginLeft: -20
     },
     textAgree: {
         paddingTop: 10,

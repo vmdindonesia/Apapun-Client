@@ -586,7 +586,7 @@ export class DashboardPage extends React.Component {
 																												<Text style={{ paddingLeft: 15, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CAPTURE N' Get</Text>
 																												<Text style={{ paddingLeft: 15, color: 'white', fontSize: 13, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
 
-																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
+																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Captureandget')}>
 																													<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																												</TouchableOpacity>
 																											</View>
@@ -743,7 +743,7 @@ export class DashboardPage extends React.Component {
 																										source={require('./../assets/images/question.png')}
 																									/>
 																									<Text style={{ marginLeft: 5, color: 'white', fontSize: 13, marginTop: 40, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text></Text>
-																									</View>
+																								</View>
 																								<TouchableOpacity style={styles.buttonJoin}
 																									onPress={() => this.props.navigation.navigate('RegistrationCrafter')}>
 																									<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>

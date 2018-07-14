@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 // import axios from 'axios';
 
 export class OrderOnMyOrderPage extends React.Component {
@@ -81,7 +81,8 @@ export class OrderOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
                     <TouchableOpacity
-                        onPress={() => this.pressBUtton()}
+                        // onPress={() => this.pressBUtton()}
+                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                     >
                         <View style={{
                             height: 165,
@@ -265,9 +266,9 @@ export class OrderOnMyOrderPage extends React.Component {
                                         <View style={{ alignSelf: 'center' }}>
                                             {/* <TouchableOpacity> */}
                                             <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1934378UDJA9</Text>
-                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Vans Shoes</Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Vans Shoes</Text>
                                             <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari : </Text>
-                                            <Text style={{ color: 'red', fontSize: 12, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
+                                            <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
                                             {/* </TouchableOpacity> */}
                                         </View>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -159,7 +159,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                             paddingRight: 10,
                             marginRight: 10
                         }}>
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}>
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}
+                              onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            >
                                 <Image
                                     style={{
                                         width: 20,
@@ -168,6 +170,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         // alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/pen_white.png')}
+                                  
                                 />
                             </TouchableOpacity>
 
@@ -182,7 +185,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                                 source={require('./../assets/images/line_vertical.png')}
                             />
 
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}>
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}
+                             onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            >
                                 <Image
                                     style={{
                                         width: 18,
@@ -191,6 +196,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/trash_white.png')}
+                                   
                                 />
                             </TouchableOpacity>
 
@@ -276,13 +282,16 @@ export class WishlistOnMyOrderPage extends React.Component {
                             paddingRight: 10,
                             marginRight: 10
                         }}>
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}>
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2, }}
+                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            >
                                 <Image
                                     style={{
                                         width: 20,
                                         height: 20,
                                         borderRadius: 0,
                                         // alignSelf: 'center'
+
                                     }}
                                     source={require('./../assets/images/pen_white.png')}
                                 />
@@ -299,7 +308,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                                 source={require('./../assets/images/line_vertical.png')}
                             />
 
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}>
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}
+                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            >
                                 <Image
                                     style={{
                                         width: 18,

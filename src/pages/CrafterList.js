@@ -90,7 +90,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BerandaCrafterPage' })}>
                                 <View style={screen === 'BerandaCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text>Beranda</Text>
+                                    <Text style={{ fontSize: 15 }}>Beranda</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -108,7 +108,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FashionCrafterPage' })}>
                                 <View style={screen === 'FashionCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text>Fashion</Text>
+                                    <Text style={{ fontSize: 15 }}>Fashion</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -126,7 +126,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FurnitureCrafterPage' })}>
                                 <View style={screen === 'FurnitureCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text>Furniture & Appliance</Text>
+                                    <Text style={{ fontSize: 15 }}>Furniture & Appliance</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -144,7 +144,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BeautyCrafterPage' })}>
                                 <View style={screen === 'BeautyCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text>Beauty</Text>
+                                    <Text style={{ fontSize: 15 }}>Beauty</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
-        borderColor :'red'
+        borderColor: 'red'
     },
     tabContainer: {
         // backgroundColor: COLOR.element_a3,
