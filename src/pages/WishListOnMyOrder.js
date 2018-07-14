@@ -18,6 +18,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                     // marginTop: 5,
                     width: '100%',
                     height: '12.5%',
+                    paddingTop: 10,
+                    paddingBottom: 10,
                     // flex : 1, 
                     // backgroundColor: 'yellow',
                     flexDirection: 'row'
@@ -29,7 +31,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                         // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -42,20 +45,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
-
-                    <Image
-                        style={{
-                            width: 18,
-                            height: 35,
-                            borderRadius: 0,
-                            alignSelf: 'center'
-                        }}
-                        source={require('./../assets/images/line_vertical.png')}
-                    />
-
                     <View style={{
                         width: '50%',
                         height: '100%',
@@ -75,7 +67,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -145,9 +137,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>Elegant Pottery</Text>
-                                    <Text style={{ fontSize: 12, paddingTop: 5, }}>Dipesan Dari :
-                                          <Text style={{ color: 'red', fontSize: 12, paddingTop: 3 }}>Workshop</Text></Text>
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Elegant Pottery</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                          <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text></Text>
 
 
                                 </View>
@@ -262,9 +254,9 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>Air Jordan</Text>
-                                    <Text style={{ fontSize: 12, paddingTop: 5, }}>Dipesan Dari :
-                                          <Text style={{ color: 'red', fontSize: 12, paddingTop: 3 }}>Market</Text></Text>
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Air Jordan</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                          <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Market</Text></Text>
 
 
                                 </View>

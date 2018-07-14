@@ -18,6 +18,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                     // marginTop: 5,
                     width: '100%',
                     height: '12.5%',
+                    paddingTop: 10,
+                    paddingBottom: 10,
                     // flex : 1, 
                     // backgroundColor: 'yellow',
                     flexDirection: 'row'
@@ -29,7 +31,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                         // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -42,19 +45,9 @@ export class HistoryOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
-
-                    <Image
-                        style={{
-                            width: 18,
-                            height: 35,
-                            borderRadius: 0,
-                            alignSelf: 'center'
-                        }}
-                        source={require('./../assets/images/line_vertical.png')}
-                    />
 
                     <View style={{
                         width: '50%',
@@ -75,7 +68,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -96,10 +89,11 @@ export class HistoryOnMyOrderPage extends React.Component {
                         }}>
                             <Text style={{
                                 color: 'black',
-                                fontSize: 12,
+                                fontSize: 13,
                                 marginBottom: -7,
                                 marginTop: 7,
-                                paddingRight: 10
+                                paddingRight: 10,
+                                fontFamily: 'Quicksand-Regular'
                             }}>Dipesan pada 18 Februari 2018</Text>
                         </View>
 
@@ -166,10 +160,10 @@ export class HistoryOnMyOrderPage extends React.Component {
                                         }}>
                                             <View style={{ paddingLeft: 15 }}>
 
-                                                <Text style={{ fontSize: 12, color: 'red' }}>19749373437D</Text>
-                                                <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>My Own Table</Text>
-                                                <Text style={{ fontSize: 10, paddingTop: 5 }}>Dipesan Dari :
-                                             <Text style={{ color: 'red', fontSize: 10, paddingTop: 3 }}>Workshop</Text>
+                                                <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
+                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>My Own Table</Text>
+                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular'}}>Workshop</Text>
                                                 </Text>
 
 
@@ -214,10 +208,11 @@ export class HistoryOnMyOrderPage extends React.Component {
                         }}>
                             <Text style={{
                                 color: 'black',
-                                fontSize: 12,
+                                fontSize: 13,
                                 marginBottom: -7,
                                 marginTop: 7,
-                                paddingRight: 10
+                                paddingRight: 10,
+                                fontFamily: 'Quicksand-Regular'
                             }}>Dipesan pada 20 Januari 2018</Text>
                         </View>
 
@@ -284,10 +279,10 @@ export class HistoryOnMyOrderPage extends React.Component {
                                         }}>
                                             <View style={{ paddingLeft: 15 }}>
 
-                                                <Text style={{ fontSize: 12, color: 'red' }}>1974937873B6B</Text>
-                                                <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>Elegant Table</Text>
-                                                <Text style={{ fontSize: 10, paddingTop: 5 }}>Dipesan Dari :
-                                             <Text style={{ color: 'red', fontSize: 10, paddingTop: 3 }}>Market</Text>
+                                                <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1974937873B6B</Text>
+                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Elegant Table</Text>
+                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quciksand-Regular' }}>Dipesan Dari :
+                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Market</Text>
                                                 </Text>
 
 

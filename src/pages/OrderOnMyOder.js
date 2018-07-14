@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
-
-
-
 
 export class OrderOnMyOrderPage extends React.Component {
 
@@ -25,8 +20,9 @@ export class OrderOnMyOrderPage extends React.Component {
                     // marginTop: 5,
                     width: '100%',
                     height: '12.5%',
-                    // flex : 1, 
-                    // backgroundColor: 'yellow',
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    // flex : 1,
                     flexDirection: 'row'
                 }}>
 
@@ -36,7 +32,8 @@ export class OrderOnMyOrderPage extends React.Component {
                         // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
-                        flexDirection: 'column'
+                        flexDirection: 'column',
+                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -45,23 +42,14 @@ export class OrderOnMyOrderPage extends React.Component {
                                     width: 18,
                                     height: 18,
                                     borderRadius: 0,
-                                    alignSelf: 'center'
+                                    alignSelf: 'center',
+
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
-
-                    <Image
-                        style={{
-                            width: 18,
-                            height: 35,
-                            borderRadius: 0,
-                            alignSelf: 'center'
-                        }}
-                        source={require('./../assets/images/line_vertical.png')}
-                    />
 
                     <View style={{
                         width: '50%',
@@ -81,7 +69,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -155,10 +143,10 @@ export class OrderOnMyOrderPage extends React.Component {
                                     }}>
                                         <View style={{ alignSelf: 'center' }}>
 
-                                            <Text style={{ fontSize: 12, color: 'red' }}>19749373437D</Text>
-                                            <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>My Own Table</Text>
-                                            <Text style={{ fontSize: 10, paddingTop: 5 }}>Dipesan Dari : </Text>
-                                            <Text style={{ color: 'red', fontSize: 10, paddingTop: 3 }}>Workshop</Text>
+                                            <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
+                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>My Own Table</Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari : </Text>
+                                            <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text>
 
                                         </View>
 
@@ -198,7 +186,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 12, textAlign: 'center' }}>Jumlah : (2)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Jumlah : (2)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -206,7 +194,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 12, textAlign: 'center', fontWeight: 'bold' }} >Rp. 1.500.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold' }} >Rp. 1.500.000 </Text>
                                     </View>
                                 </View>
 
@@ -276,10 +264,10 @@ export class OrderOnMyOrderPage extends React.Component {
                                     }}>
                                         <View style={{ alignSelf: 'center' }}>
                                             {/* <TouchableOpacity> */}
-                                            <Text style={{ fontSize: 12, color: 'red' }}>1934378UDJA9</Text>
-                                            <Text style={{ fontSize: 15, paddingTop: 5, fontWeight: 'bold' }}>Vans Shoes</Text>
-                                            <Text style={{ fontSize: 10, paddingTop: 5 }}>Dipesan Dari : </Text>
-                                            <Text style={{ color: 'red', fontSize: 10, paddingTop: 3 }}>Seija Company</Text>
+                                            <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1934378UDJA9</Text>
+                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Vans Shoes</Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari : </Text>
+                                            <Text style={{ color: 'red', fontSize: 12, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
                                             {/* </TouchableOpacity> */}
                                         </View>
 
@@ -320,7 +308,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 12, textAlign: 'center' }}>Jumlah : (1)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Jumlah : (1)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -328,7 +316,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 12, textAlign: 'center', fontWeight: 'bold' }} >Rp. 900.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold' }} >Rp. 900.000 </Text>
                                     </View>
                                 </View>
 
