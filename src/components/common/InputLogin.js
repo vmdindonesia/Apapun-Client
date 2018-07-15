@@ -46,7 +46,7 @@ class InputLogin extends Component {
 				}
 
 				<View style={{ ...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
-					<Image source={this.imageIcon(icon)} style={{ marginLeft: 5, width: 24, height: 24 }} />
+					<Image source={this.imageIcon(icon)} style={{ marginLeft: 5, width: 24, height: 24 }} resizeMode='stretch' />
 					<Image source={require('./../../assets/images/ic_garis.png')} style={{ marginLeft: 15, marginRight: 15, width: 1, height: 24 }} />
 					<TextInput
 						secureTextEntry={secureTextEntry}

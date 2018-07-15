@@ -19,10 +19,10 @@ class InputSearch extends Component {
 
 	imageIcon = (icon) => {
 		switch (icon) {
-			case 'ic_user':
-				return require('./../../assets/images/ic_username.png')
+			case 'ic_username':
+				return require('../../assets/images/ic_username.png')
 			default:
-				return require('./../../assets/images/ic_password.png')
+				return require('../../assets/images/ic_password.png')
 		}
 	}
 

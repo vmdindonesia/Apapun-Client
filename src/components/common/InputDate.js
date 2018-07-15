@@ -18,7 +18,7 @@ class InputDate extends Component {
 
 	imageIcon = (icon) => {
 		switch (icon) {
-			case 'ic_user':
+			case 'ic_username':
 				return require('../../assets/images/ic_username.png')
 			default:
 				return require('../../assets/images/ic_password.png')
