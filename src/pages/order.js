@@ -297,34 +297,43 @@ export class OrderPage extends React.Component {
         });
     }
 
-    renderProductItem = (itemPhoto) => {
-        console.log(itemPhoto, 'Render Poto');
+    renderProductItem = (itemPhoto, index) => {
+        console.log(index, 'Index Poto');
+        const { tempPhoto } = this.state
         return (
             <View style={{ paddingRight: 5 }}>
-                <TouchableOpacity
-                    key={itemPhoto}
-                // onPress={() => { this.props.navi.navigate('DetailFishes', { datas: itemProduct.item.Fish }) }}
-                >
-                    <Image
-                        source={itemPhoto}
-                        style={{ width: 85, height: 70 }}
-                        resizeMode='cover'
-                    />
-                </TouchableOpacity>
+                {
+                    tempPhoto === true ?
+                        <Image
+                            source={itemPhoto}
+                            style={{ width: 85, height: 70 }}
+                            resizeMode='cover'
+                        />
+                        :
+                        <TouchableOpacity
+                            onPress={() => this.designPhotoUpload('tempUploadDesign')}
+                        >
+                            <Image
+                                source={itemPhoto}
+                                style={{ width: 85, height: 70 }}
+                                resizeMode='cover'
+                            />
+                        </TouchableOpacity>
+                }
             </View>
         )
     }
 
     returnDesignPhoto() {
-        console.log(this.state.uploadDesign, 'XAXAXA');
+        console.log(this.state.photoTemp, 'XAXAXA');
         return (
             <View>
                 <FlatList
-                    data={this.state.uploadDesign}
+                    data={this.state.photoTemp}
                     extraData={this.state}
                     horizontal
                     keyExtractor={(index) => index.uri}
-                    renderItem={({ item }) => this.renderProductItem(item)}
+                    renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
             </View>
@@ -332,7 +341,6 @@ export class OrderPage extends React.Component {
     }
 
     _renderItem = (item, index) => {
-        console.log(item, 'Item Paralax');
         const number = parseInt(item.index) + 1;
         console.log(number, 'LPLPLPLPLP');
         return (
@@ -391,8 +399,8 @@ export class OrderPage extends React.Component {
                     justifyContent: 'center',
                     borderRadius: 30,
                     marginTop: 30,
-                    marginLeft: '15%',
-                    marginRight: '15%',
+                    marginLeft: '5%',
+                    marginRight: '5%',
                     marginBottom: 20
                 }}
                 onPress={() => this.onValidation()}
@@ -447,124 +455,131 @@ export class OrderPage extends React.Component {
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
-                        <View>
-                            {
-                                uploadDesign.length < 2 ?
-                                    <View>
-                                        <Image
-                                            source={require('../assets/images/create-design.jpg')}
-                                            style={{ width: '100%', height: 300 }}
-                                            resizeMode='cover'
-                                        />
-                                        <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 13, color: 'white', marginTop: 80, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.</Text>
-                                        </View>
+                    {
+                        this.state.photoTemp.length === 0 ?
+                            <View style={{ flex: 1, height: 430, backgroundColor: 'grey', }}>
+                                <Image
+                                    source={require('../assets/images/create-design.jpg')}
+                                    style={{ height: 600, width: '100%' }}
+                                    resizeMode='stretch'
+                                />
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute' }}>
+                                    <Text style={{ fontSize: 15, color: 'white', paddingTop: '45%', textAlign: 'center', justifyContent: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                        Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 1, position: 'absolute', marginTop: '90%', alignItems: 'center', alignSelf: 'center' }}>
+                                    <ContainerSection>
                                         <TouchableOpacity
                                             onPress={() => this.designPhotoUpload('tempUploadDesign')}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginLeft: 5, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
-                                                <Text style={{ paddingLeft: 10, fontSize: 14, textAlign: 'center', color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                             </View>
                                         </TouchableOpacity>
-                                    </View>
-                                    :
-                                    <View>
-                                        <Carousel
-                                            ref={(c) => { this._carousel = c; }}
-                                            data={this.state.uploadDesign}
-                                            renderItem={this._renderItem}
-                                            sliderWidth={sliderWidth}
-                                            itemWidth={itemWidth}
-                                        />
-                                    </View>
-                            }
-                        </View>
-                    </View>
+                                    </ContainerSection>
+                                </View>
+                            </View>
+                            :
+                            <View>
+                                <Carousel
+                                    ref={(c) => { this._carousel = c; }}
+                                    data={this.state.photoTemp}
+                                    extraData={this.state}
+                                    renderItem={this._renderItem}
+                                    sliderWidth={sliderWidth}
+                                    itemWidth={itemWidth}
+                                />
+                            </View>
+                    }
                 </ContainerSection>
-
                 {
-                    this.state.uploadDesign.length > 0 ?
+                    this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
                             {this.returnDesignPhoto()}
                         </View>
                         :
                         <View style={{ marginBottom: 20 }} />
-
                 }
-
-                <View style={{ flexDirection: 'row'  }}>
-                    <View style={{ flex: 3 }}>
-                        <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
-                    </View>
-                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ width: '5%', flex: 1}}>
-                        <Image
-                            style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8, marginLeft: 2 }}
-                            source={require('../assets/images/minus.png')}
-                        />
-                    </TouchableOpacity>
-                    <View style={{ height: 40, width: 50, marginLeft: 4 }}>
-                        <InputNumber
-                            value={numberPcs.toString()}
-                            onChangeText={val => this.onChange('numberPcs', val)}
-                            keyboardType='numeric'
-                        />
-                    </View>
-                    <TouchableOpacity onPress={() => this.plusNumber()} style={{ marginLeft: 4, marginRight: 4, flex: 1 }}>
-                        <Image
-                            style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8 }}
-                            source={require('../assets/images/plus.png')}
-                        />
-                    </TouchableOpacity>
-                    <View style={{ width: 80 }}>
-                        <View style={styles.pickerUnitStyle}>
-                            <Picker
-                                selectedValue={unitQuantity}
-                                onValueChange={v => this.onChange('unitQuantity', v)}
+                <ContainerSection>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View>
+                            <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', width: '30%' }}>
+                            <TouchableOpacity
+                                onPress={() => this.minusNumber()}
+                                style={{ marginTop: -3, marginLeft: 15, marginRight: 3 }}
                             >
-                                <Picker.Item label='Pcs' value='Pcs' />
-                                <Picker.Item label='Lusin' value='Lusin' />
-                            </Picker>
+                                <Image
+                                    style={{ width: 35, height: 35, borderRadius: 5, marginTop: 8 }}
+                                    source={require('../assets/images/minus.png')}
+                                />
+                            </TouchableOpacity>
+
+                            <InputNumber
+                                value={numberPcs.toString()}
+                                onChangeText={val => this.onChange('numberPcs', val)}
+                                keyboardType='numeric'
+                            />
+
+                            <TouchableOpacity
+                                onPress={() => this.plusNumber()}
+                                style={{ marginTop: -3, marginLeft: 3, marginRight: 15 }}
+                            >
+                                <Image
+                                    style={{ width: 35, height: 35, borderRadius: 5, marginTop: 8 }}
+                                    source={require('../assets/images/plus.png')}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ width: 90 }}>
+                            <View style={styles.pickerUnitStyle}>
+                                <Picker
+                                    selectedValue={unitQuantity}
+                                    onValueChange={v => this.onChange('unitQuantity', v)}
+                                >
+                                    <Picker.Item label='Pcs' value='Pcs' />
+                                    <Picker.Item label='Lusin' value='Lusin' />
+                                </Picker>
+                            </View>
                         </View>
                     </View>
-                </View>
-
+                </ContainerSection>
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
-                        <View>
-                            {
-                                uploadMaterial === null ?
-                                    <View>
-                                        <Image
-                                            source={require('../assets/images/create-material.png')}
-                                            style={{ width: '100%', height: 120 }}
-                                            resizeMode='cover'
-                                        />
-                                        <View style={[styles.textBackground, { flex: 1, flexDirection: 'row' }]}>
-                                            <Text style={{ fontSize: 13, color: 'white', marginTop: 12, marginLeft: 30, marginRight: 30, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Pilih material yang sesuai dengan desain Anda.</Text>
-                                        </View>
+                    {
+                        uploadMaterial === null ?
+                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', }}>
+                                <Image
+                                    source={require('../assets/images/create-material.png')}
+                                    style={{ width: '100%', height: 170 }}
+                                    resizeMode='cover'
+                                />
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center' }}>
+                                    <Text style={{ fontSize: 15, color: 'white', paddingTop: '10%', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                        Pilih material yang sesuai untuk desain Anda
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 1, position: 'absolute', marginTop: '28%', alignItems: 'center', alignSelf: 'center' }}>
+                                    <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => {
-                                                // this.setModalVisible(true)
-                                                return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT);
-                                            }}
-                                            style={styles.buttons}
+                                            onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}
+                                            style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6, marginLeft: 5 }} source={require('../assets/images/logo-material.png')} />
-                                                <Text style={{ paddingLeft: 10, fontSize: 14, textAlign: 'center', color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Pemilihan Material</Text>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Material</Text>
                                             </View>
                                         </TouchableOpacity>
-                                    </View>
-
-                                    :
-                                    <Image source={uploadMaterial} />
-                            }
-                        </View>
-                    </View>
+                                    </ContainerSection>
+                                </View>
+                            </View>
+                            :
+                            <Image source={uploadMaterial} />
+                    }
                 </ContainerSection>
                 <ContainerSection>
                     <View style={styles.pickerContainer}>
@@ -575,10 +590,11 @@ export class OrderPage extends React.Component {
                                 onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
-                                <Picker.Item label='JNE' value='JNE' />
-                                <Picker.Item label='TIKI' value='TIKI' />
-                                <Picker.Item label='Pos Indonesia' value='Pos Indonesia' />
-                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='JNE Reguler' value='JNEREG' />
+                                <Picker.Item label='JNE Oke' value='JNEOK' />
+                                <Picker.Item label='TIKI Reguler' value='TIKIREG' />
+                                <Picker.Item label='POS Kilat Indonesia' value='POSKILAT' />
+                                <Picker.Item label='GOJEK' value='Gojek' />
                             </Picker>
                         </View>
                     </View>
@@ -613,10 +629,10 @@ export class OrderPage extends React.Component {
                     this.state.notice === false ?
                         <View />
                         :
-                        <Text style={{ paddingLeft: 15, fontSize: 10, color: 'red' }}>
+                        <Text style={{ paddingLeft: 15, fontSize: 13, color: 'red' }}>
                             ***) Anda dapat menuliskan informasi penting tambahan lainya agar crafter mudah memahami pesanan anda.
                             contoh: Ukuran, Nama Produk (Jika anda tahu nama produk nya), dsb.
-                        </Text>
+                            </Text>
                 }
                 <ContainerSection>
                     <Input
@@ -628,36 +644,6 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     {this.renderButton()}
                 </ContainerSection>
-
-                {/* <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                        alert('Modal has been closed.');
-                    }}>
-                    <View style={{ marginTop: 22 }}>
-                        <View>
-                            <InputSearch
-                                autoFocus
-                                onChangeText={(text) => {
-                                    this.querySuggestion(text);
-                                }}
-                                value={txt}
-                                // onChangeText={v => this.onChangeInput('txt', v)}
-                                placeholder="Cari Material..."
-                                icon={ic_search}
-                            />
-
-                            <TouchableOpacity
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}>
-                                <Text>Hide Modal</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal> */}
             </ScrollView >
         );
     }
@@ -696,34 +682,30 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingLeft: 4,
         borderWidth: 1,
-        height: 40,
+        height: 47,
         backgroundColor: '#fff',
-        justifyContent: 'center' 
+        justifyContent: 'center'
     },
     button: {
-        backgroundColor: 'rgb(45, 45, 45)',
+        backgroundColor: 'rgb(0, 0, 0)',
         borderWidth: 1,
         borderRadius: 30,
-        width: '80%',
-        height: 35,
-        position: 'absolute',
-        marginTop: 220,
-        marginLeft: 30,
-        justifyContent: 'center',
+        width: '93%',
+        height: 38,
         alignItems: 'center',
-
+        // textAlign: 'center',
+        paddingTop: 2
     },
     buttons: {
-        backgroundColor: 'rgb(45, 45, 45)',
+        backgroundColor: 'rgb(0, 0, 0)',
         borderWidth: 1,
         borderRadius: 30,
-        width: '80%',
-        height: 35,
+        width: '93%',
+        height: 38,
         position: 'absolute',
-        marginTop: 75,
-        marginLeft: 30,
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        // textAlign: 'center',
+        paddingTop: 2
     },
     textBackground: {
         position: 'absolute'
