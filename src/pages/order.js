@@ -236,8 +236,34 @@ export class OrderPage extends React.Component {
                             return this.returnDesignPhoto();
                         });
                     });
+                } else {
+                    if (this.state.photoTemp.length < 5) {
+                        console.log(this.state.photoTemp.length, 'HOY');
+                        let pushSecond = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
 
-                });
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto.splice(parseInt(this.state.photoTemp.length) - 1, parseInt(this.state.photoTemp.length) - 1);
+                        newSplicePhoto[this.state.photoTemp.length] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            const newUriPhoto = this.state.photoTemp;
+                            newUriPhoto[this.state.photoTemp.length] = pushSecond;
+                            this.setState({ photoTemp: newUriPhoto }, () => {
+                                console.log(this.state.photoTemp, 'Splice & Re-Push Foto');
+                                return this.returnDesignPhoto();
+                            });
+                        });
+                    } else {
+                        console.log(this.state.photoTemp.length, 'HYE');
+                        const newFiveSlice = this.state.photoTemp;
+                        newFiveSlice.splice(4, 4)
+                        newFiveSlice[this.state.photoTemp.length] = source;
+                        this.setState({ photoTemp: newFiveSlice }, () => {
+                            console.log(this.state.photoTemp, 'Splice & Re-Push & Last Foto');
+                            this.setState({ tempPhoto: true })
+                            return this.returnDesignPhoto();
+                        });
+                    }
+                }
             }
         });
     }
