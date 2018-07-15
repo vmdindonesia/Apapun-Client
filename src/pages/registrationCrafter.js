@@ -287,7 +287,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.textBox}>
                                 <View >
-                                    <Text style={styles.textStyle}>Address</Text>
+                                    <Text style={styles.textStyle}>Alamat</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>

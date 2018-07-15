@@ -7,7 +7,7 @@ import { COLOR } from './../shared/config';
 export class ProfileBuyerPage extends React.Component {
 
     static navigationOptions = {
-        headerTitle: 'Profile'
+        header: ''
     }
 
     render() {
@@ -39,7 +39,7 @@ export class ProfileBuyerPage extends React.Component {
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
                                     <View style={{ height: 35, width: 35, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
                                         <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}>
+                                            onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
                                             <Image style={{ height: 18, width: 18, borderRadius: 0, }}
                                                 source={require('./../assets/images/pen_white.png')}
                                             />

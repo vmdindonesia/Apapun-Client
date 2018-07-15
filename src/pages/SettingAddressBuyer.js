@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, ToastAndroid, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -12,7 +12,9 @@ export class SettingAddressBuyerPage extends React.Component {
         headerTitle: 'Edit Address',
         headerRight:
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                >
                     <Image
                         style={{ height: 20, width: 20, margin: 20 }}
                         source={require('./../assets/images/icon_plus.jpg')}
@@ -51,7 +53,7 @@ export class SettingAddressBuyerPage extends React.Component {
                                 <Text style={{ fontWeight: 'bold', fontSize: 15 }}> Home 1</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 13.5, paddingTop: 3 }}> Penerima : Judy </Text>
+                                <Text style={{ fontSize: 13, paddingTop: 3 }}> Penerima : Judy </Text>
                             </View>
 
 
@@ -59,17 +61,17 @@ export class SettingAddressBuyerPage extends React.Component {
 
                         <View style={{
                             width: '35%',
-                            height: 35,
-                            // backgroundColor: 'skyblue'
+                            height: 50,
+                            // backgroundColor: 'skyblue',
                             flexDirection: 'row',
                             justifyContent: 'flex-end'
                         }}>
                             <View style={{
-                                paddingTop: 7
+                                paddingTop: 10
                             }}>
                                 <TouchableWithoutFeedback
-                                   onPress={() => this.props.navigation.navigate('SettingAddressDetailBuyer')}>
-                                
+                                    onPress={() => this.props.navigation.navigate('SettingAddressDetailBuyer')}>
+
                                     <Image style={{ height: 20, width: 20, borderRadius: 0, }}
                                         source={require('./../assets/images/pen_address.png')}
                                     />
@@ -78,9 +80,11 @@ export class SettingAddressBuyerPage extends React.Component {
                             </View>
 
                             <View style={{
-                                paddingLeft: 8, paddingTop: 7
+                                paddingLeft: 15, paddingTop: 10
                             }}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                    onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                >
                                     <Image style={{ height: 20, width: 15, borderRadius: 0 }}
                                         source={require('./../assets/images/trash_address.png')}
                                     />
@@ -169,15 +173,17 @@ export class SettingAddressBuyerPage extends React.Component {
 
                         <View style={{
                             width: '35%',
-                            height: 35,
+                            height: 50,
                             // backgroundColor: 'skyblue'
                             flexDirection: 'row',
                             justifyContent: 'flex-end'
                         }}>
                             <View style={{
-                                paddingTop: 7
+                                paddingTop: 10
                             }}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                    onPress={() => this.props.navigation.navigate('SettingAddressDetailBuyer')}
+                                >
                                     <Image style={{ height: 20, width: 20, borderRadius: 0, }}
                                         source={require('./../assets/images/pen_address.png')}
                                     />
@@ -186,9 +192,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             </View>
 
                             <View style={{
-                                paddingLeft: 8, paddingTop: 7
+                                paddingLeft: 15, paddingTop: 10
                             }}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                    onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}>
                                     <Image style={{ height: 20, width: 15, borderRadius: 0 }}
                                         source={require('./../assets/images/trash_address.png')}
                                     />
@@ -222,7 +229,7 @@ export class SettingAddressBuyerPage extends React.Component {
                     </View>
 
 
-                    <View style={{
+                    {/* <View style={{
                         width: '78%',
                         height: 20,
                         // backgroundColor: 'skyblue',
@@ -230,11 +237,9 @@ export class SettingAddressBuyerPage extends React.Component {
                         marginTop: 5
 
                     }}>
-                        <View>
-                            <Text style={{ fontSize: 12, color: 'red' }}>Alamat Utama </Text>
-                        </View>
+                    
 
-                    </View>
+                    </View> */}
 
 
 
@@ -290,6 +295,7 @@ const styles = StyleSheet.create({
         // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
+        marginBottom: 7.5
     },
 
     containerSecondAddress: {

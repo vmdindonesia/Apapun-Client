@@ -92,6 +92,24 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+  SettingAddressDetailBuyer: {
+    screen: SettingAddressDetailBuyerPage
+  },
+  InformasiBank: {
+    screen: InformasiBankPage
+  },
+  AkunBank: {
+    screen: AkunBankPage
+  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -111,9 +129,7 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   Order: {
     screen: OrderPage
   },
@@ -129,9 +145,7 @@ const Routes = createStackNavigator({
   CrafterMenu: {
     screen: CrafterMenuPage
   },
-  AkunBank: {
-    screen: AkunBankPage
-  },
+
   IdeaBeauty: {
     screen: IdeaBeautyPage
   },
@@ -186,9 +200,7 @@ const Routes = createStackNavigator({
   EditProfileCrafter: {
     screen: EditProfileCrafterPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
+
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
@@ -239,9 +251,7 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
+
   IdeaMarket: {
     screen: IdeaMarketPage
   },
@@ -252,9 +262,7 @@ const Routes = createStackNavigator({
     screen: PageDesignPage
   },
 
-  InformasiBank: {
-    screen: InformasiBankPage
-  },
+
   PageDesign: {
     screen: PageDesignPage
   },
@@ -294,9 +302,7 @@ const Routes = createStackNavigator({
     screen: HistoryOnMyOrderPage
   },
 
-  SettingAddressDetailBuyer: {
-    screen: SettingAddressDetailBuyerPage
-  },
+
   Order: {
     screen: OrderPage
   },
