@@ -108,7 +108,7 @@ export class LoginPage extends React.Component {
 
 				<ScrollView keyboardShouldPersistTaps="always">
 
-					<View style={{ marginTop: 100, marginBottom: 100 }}>
+					<View style={{ marginTop: 100, marginBottom: 80 }}>
 						<View style={{ alignItems: 'center' }}>
 							<Image
 								style={styles.image}
