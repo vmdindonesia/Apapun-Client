@@ -26,6 +26,8 @@ export class OrderPage extends React.Component {
             tempUploadDesign: '',
             uploadDesign: [],
             nameFileImages: [],
+            photoTemp: [],
+            tempPhoto: false,
             uploadMaterial: null,
             notice: false,
             serveDelivery: '',
