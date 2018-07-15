@@ -373,6 +373,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'row',
         marginTop: 5,
+        marginBottom: 30,
         height: 70,
         width: '90%',
         // alignItems: 'center',
