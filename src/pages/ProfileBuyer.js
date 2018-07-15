@@ -238,7 +238,8 @@ export class ProfileBuyerPage extends React.Component {
                                     // backgroundColor: 'skyblue',
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
+                                    marginBottom: 30
                                 }}>
                                     <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left' }}>
                                         Total Design Anda
