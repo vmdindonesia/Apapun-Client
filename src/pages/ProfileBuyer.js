@@ -30,19 +30,21 @@ export class ProfileBuyerPage extends React.Component {
 
                         <View style={styles.containerMainForm}>
 
-                            <View style={{ flexDirection: 'row', height: 60, width: '85%', alignItems: 'center', }}>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                                    Gal Gadot
-                            </Text>
-                                <View>
-                                    <TouchableWithoutFeedback>
-                                        <TouchableOpacity style={styles.button}
+                            <View style={{ flex: 1, flexDirection: 'row', height: 60, width: '85%' }}>
+
+                                <View style={{ flex: 1, alignSelf: 'center' }}>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Gal Gadot</Text>
+                                </View>
+
+                                <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+                                    <View style={{ height: 35, width: 35, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                        <TouchableOpacity
                                             onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}>
-                                            <Image style={{ height: 18, width: 18, borderRadius: 0, marginLeft: 150 }}
-                                                source={require('./../assets/images/pen_mainprof.png')}
+                                            <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                source={require('./../assets/images/pen_white.png')}
                                             />
                                         </TouchableOpacity>
-                                    </TouchableWithoutFeedback>
+                                    </View>
                                 </View>
                             </View>
 
@@ -156,7 +158,7 @@ export class ProfileBuyerPage extends React.Component {
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
                                     <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 5, textAlign: 'left' }}>
-                                        Jalan Komodo 
+                                        Jalan Komodo
                                     </Text>
                                 </View>
 
@@ -178,12 +180,12 @@ export class ProfileBuyerPage extends React.Component {
                                     // justifyContent: 'center'
                                 }}>
                                     <TouchableWithoutFeedback>
-                                    <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate('AkunBank')}>
-                                    <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                        source={require('./../assets/images/ic_wallet.png')}
-                                    />
-                                    </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={() => this.props.navigation.navigate('AkunBank')}>
+                                            <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                                source={require('./../assets/images/ic_wallet.png')}
+                                            />
+                                        </TouchableOpacity>
                                     </TouchableWithoutFeedback>
                                 </View>
 
@@ -224,12 +226,12 @@ export class ProfileBuyerPage extends React.Component {
                                     // justifyContent: 'center'
                                 }}>
                                     <TouchableWithoutFeedback>
-                                    <TouchableOpacity
-                                      onPress={() => this.props.navigation.navigate('DesignSaya')}>
-                                    <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                        source={require('./../assets/images/ic_design.png')}
-                                    />
-                                    </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={() => this.props.navigation.navigate('DesignSaya')}>
+                                            <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                                source={require('./../assets/images/ic_design.png')}
+                                            />
+                                        </TouchableOpacity>
                                     </TouchableWithoutFeedback>
                                 </View>
 
@@ -275,7 +277,7 @@ export class ProfileBuyerPage extends React.Component {
                               
                             </View>
                         </View> */}
-                      
+
 
 
                     </View>
@@ -341,6 +343,7 @@ const styles = StyleSheet.create({
         // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
+        // backgroundColor: 'red'
     },
     containerSecondForm: {
         // flex: 1,

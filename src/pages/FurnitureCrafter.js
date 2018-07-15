@@ -83,7 +83,7 @@ export class FurnitureCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/raisa.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -127,7 +127,7 @@ export class FurnitureCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/chelsea_islan.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -172,7 +172,7 @@ export class FurnitureCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/diansastro.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 

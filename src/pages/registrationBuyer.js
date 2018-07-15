@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import { COLOR } from './../shared/config';
 import { CheckBox } from 'react-native-elements'
@@ -10,7 +10,7 @@ import moment from 'moment';
 export class RegistrationBuyerPage extends React.Component {
 
     static navigationOptions = {
-        headerTitle: 'Register Buyer'
+        headerTitle: 'Register'
 
     }
 
@@ -163,7 +163,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.textBox}>
+                            <View style={{ paddingTop: 10, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Gender</Text>
                                 </View>
@@ -201,7 +201,7 @@ export class RegistrationBuyerPage extends React.Component {
 
                             </View>
 
-                            <View style={{ height: 80, paddingTop: 10, }}>
+                            <View style={{ height: 90, paddingTop: 5, }}>
                                 <View >
                                     <Text style={styles.textStyle}>Birthday</Text>
                                 </View>
@@ -223,7 +223,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 />
                             </View>
 
-                            <View style={{ paddingTop: 10, height: 80 }}>
+                            <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Password</Text>
                                 </View>
@@ -237,7 +237,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.textBox}>
+                            <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>E-mail</Text>
                                 </View>
@@ -250,7 +250,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.textBox}>
+                            <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Phone Number</Text>
                                 </View>
@@ -263,7 +263,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.textBox}>
+                            <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Address</Text>
                                 </View>
@@ -298,7 +298,10 @@ export class RegistrationBuyerPage extends React.Component {
                         </View>
 
                     </View>
-                    <TouchableOpacity style={styles.buttonSignUp}>
+                    <TouchableOpacity style={styles.buttonSignUp}
+                        // onPress={() => this.props.navigation.navigate('Login')}
+                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                    >
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
 
@@ -444,7 +447,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         flexDirection: 'column',
         marginTop: -65,
-        height: 750,
+        height: 800,
         width: '90%',
         alignItems: 'center',
         alignSelf: 'center',
@@ -516,7 +519,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Quicksand-Regular'
     },
     textAgree: {
-        paddingTop: 10,
+
         height: 120,
         // backgroundColor:'red',
         alignItems: 'center',

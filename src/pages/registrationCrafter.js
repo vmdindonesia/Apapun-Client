@@ -154,7 +154,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={{ paddingTop: 30, height: 100 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Name As a Crafter</Text>
+                                    <Text style={styles.textStyle}>Nama sebagi Crafter</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
@@ -167,7 +167,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.BoxAblity}>
                                 <View style={{ marginBottom: 5 }}>
-                                    <Text style={styles.textStyle}>Delivery Services</Text>
+                                    <Text style={styles.textStyle}>Bidang Kemampuan</Text>
                                 </View>
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
@@ -215,7 +215,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.textBox}>
                                 <View >
-                                    <Text style={styles.textStyle}>Name As a Crafter</Text>
+                                    <Text style={styles.textStyle}>Jasa Pengiriman Pribadi</Text>
                                 </View>
                                 <View style={styles.containerCheckBoxDeliveryServices}>
 
@@ -246,7 +246,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.textBox}>
                                 <View >
-                                    <Text style={styles.textStyle}>Password</Text>
+                                    <Text style={styles.textStyle}>Kata Sandi</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
@@ -273,7 +273,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.textBox}>
                                 <View >
-                                    <Text style={styles.textStyle}>Phone Number</Text>
+                                    <Text style={styles.textStyle}>Nomor Telepon</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>

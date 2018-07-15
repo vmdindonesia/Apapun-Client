@@ -83,7 +83,7 @@ export class BeautyCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/ariel.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -127,7 +127,7 @@ export class BeautyCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/yukikato.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -172,7 +172,7 @@ export class BeautyCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/nia.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 

@@ -82,7 +82,7 @@ export class FashionCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/chelsea_islan.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -126,7 +126,7 @@ export class FashionCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/ariel.jpg')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 
@@ -171,7 +171,7 @@ export class FashionCrafterPage extends React.Component {
                                         borderRadius: 100,
                                         alignSelf: 'center'
                                     }}
-                                    source={require('./../assets/images/pev_pearce.png')}
+                                    source={require('./../assets/images/icon_profile.png')}
                                 />
                             </View>
 

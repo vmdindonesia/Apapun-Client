@@ -4,11 +4,11 @@ import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, Touchab
 
 export class OrderOnMyOrderPage extends React.Component {
 
-    pressBUtton() {
-        console.log('Press!');
-        console.log(this.props, 'Props')
-        this.props.navi.navigate('DetailOrder')
-    }
+    // pressBUtton() {
+    //     console.log('Press!');
+    //     console.log(this.props, 'Props')
+    //     this.props.navi.navigate('DetailOrder')
+    // }
 
     render() {
         return (
@@ -82,7 +82,7 @@ export class OrderOnMyOrderPage extends React.Component {
                 }}>
                     <TouchableOpacity
                         // onPress={() => this.pressBUtton()}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                        onPress={() => this.props.navigation.navigate('OrderWithTrack')}
                     >
                         <View style={{
                             height: 165,
@@ -206,7 +206,9 @@ export class OrderOnMyOrderPage extends React.Component {
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('OrderWithTrack')}
+                    >
                         <View style={{
                             height: 165,
                             width: '100%',

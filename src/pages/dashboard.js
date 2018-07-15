@@ -181,8 +181,8 @@ export class DashboardPage extends React.Component {
 										<View style={styles.containerInsideProfileOne}>
 											<View style={styles.containerPhoto}>
 												<View>
-													<TouchableOpacity style={styles.button}
-														onPress={() => this.props.navigation.navigate('')}>
+													<TouchableOpacity
+														onPress={() => this.props.navigation.navigate('ProfilePage')}>
 														<Image
 															style={styles.profileImage}
 															source={require('./../assets/images/profile.png')}
@@ -354,13 +354,21 @@ export class DashboardPage extends React.Component {
 
 
 							<View style={styles.containerUploadIdea}>
-								<View style={{ flex: 1, flexDirection: 'row' }}>
-									<View style={{ flex: 1, flexDirection: 'column', marginTop: 10, marginLeft: 20 }}>
+								<View style={{ flex: 1, flexDirection: 'row', }}>
+									<View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
 										<Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Idea Recently Upload</Text>
 										<Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Checkout our friend new brilliant ideas</Text>
 									</View>
-									<View>
-										<Text style={{ color: 'red', flex: 1, marginTop: 15, marginRight: 17, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>See all</Text>
+									<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
+										<TouchableOpacity
+											onPress={() => this.props.navigation.navigate('IdeaMarket')}
+										>
+											<Text
+												style={{
+													color: 'red', flex: 1, fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 20, paddingRight: 20
+												}}
+											>See all</Text>
+										</TouchableOpacity>
 									</View>
 								</View>
 								<View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: -85 }}>

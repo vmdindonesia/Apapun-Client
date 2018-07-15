@@ -92,11 +92,30 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  Order: {
-    screen: OrderPage
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
   },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  CrafterList: {
+    screen: CrafterListPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  Order: {
+    screen: OrderPage
   },
   PaymentMethod: {
     screen: PaymentMethodPage
@@ -138,15 +157,11 @@ const Routes = createStackNavigator({
   OrderReceived: {
     screen: OrderReceivedPage
   },
-  OrderWithTrack: {
-    screen: OrderWithTrackPage
-  },
+
   Dashboard: {
     screen: DashboardPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
+
   DetailDelivery: {
     screen: DetailDeliveryPage
   },
@@ -190,9 +205,7 @@ const Routes = createStackNavigator({
     screen: RegistrationBuyerPage
   },
 
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
+
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -273,18 +286,14 @@ const Routes = createStackNavigator({
   MyOrder: {
     screen: MyOrderPage
   },
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
-  },
+
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
   },
-  CrafterList: {
-    screen: CrafterListPage
-  },
+
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
