@@ -11,7 +11,7 @@ import uuid from 'react-native-uuid';
 
 export class OrderPage extends React.Component {
     static navigationOptions = {
-        headerTitle: 'Custom Order'
+        headerTitle: 'Rancangan Pesanan'
     }
 
     constructor(props) {
