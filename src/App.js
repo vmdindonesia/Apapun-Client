@@ -267,9 +267,6 @@ const Routes = createStackNavigator({
   DetailOrder: {
     screen: DetailOrderPage
   },
-  Order: {
-    screen: OrderPage
-  },
   Crafter: {
     screen: CrafterPage
   },
