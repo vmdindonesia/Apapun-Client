@@ -92,6 +92,9 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  Order: {
+    screen: OrderPage
+  },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
