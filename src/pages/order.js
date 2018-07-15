@@ -221,17 +221,7 @@ export class OrderPage extends React.Component {
             }
             else {
                 let source = { uri: response.uri };
-                console.log(response, 'DATA IMAGEEEE');
-                this.imageUpload(source, response);
 
-                this.setState({ [names]: source }, () => {
-                    console.log(this.state[name], 'Name State');
-
-                    const newUploadDesign = this.state.uploadDesign;
-                    newUploadDesign[this.state.uploadDesign.length] = source;
-                    this.setState({ uploadDesign: newUploadDesign }, () => {
-                        console.log(this.state.uploadDesign, 'Ship Name Max');
-                        return this.returnDesignPhoto();
                     });
 
                 });
