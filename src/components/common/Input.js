@@ -93,7 +93,7 @@ const styles = {
 	labelStyle: {
 		color: '#5e5e5e',
 		fontFamily: 'Quicksand-Bold',
-		fontSize: 14,
+		fontSize: 15,
 		flex: 1,
 		marginBottom: 10,
 		marginTop: 10,
