@@ -96,7 +96,7 @@ export class OrderPage extends React.Component {
     plusNumber() {
         console.log('Plus');
         this.setState({
-            numberPcs: this.state.numberPcs + 1
+            numberPcs: parseInt(this.state.numberPcs) + 1
         });
     }
 
