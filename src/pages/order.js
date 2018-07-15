@@ -222,6 +222,19 @@ export class OrderPage extends React.Component {
             else {
                 let source = { uri: response.uri };
 
+                if (this.state.photoTemp.length === 0) {
+                    let pushFirst = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
+
+                    const newUriPhoto = this.state.photoTemp;
+                    newUriPhoto[this.state.photoTemp.length] = source;
+                    this.setState({ photoTemp: newUriPhoto }, () => {
+                        console.log(this.state.photoTemp, 'First Foto');
+                        const newUriPhoto = this.state.photoTemp;
+                        newUriPhoto[this.state.photoTemp.length] = pushFirst;
+                        this.setState({ photoTemp: newUriPhoto }, () => {
+                            console.log(this.state.photoTemp, 'Second Foto');
+                            return this.returnDesignPhoto();
+                        });
                     });
 
                 });
