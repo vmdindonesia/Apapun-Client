@@ -3,14 +3,21 @@ import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Scr
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
 export class BeautyCrafterPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Crafter List'
-    }
+    });
 
     render() {
         return (

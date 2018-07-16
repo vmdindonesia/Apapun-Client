@@ -7,13 +7,20 @@ import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from './../shared/slider.styles';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
+import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
 
 export class CaptureandgetPage extends React.Component {
-    
-    static navigationOptions = {
-        headerTitle: 'Capture And Get'
-    }
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Rancangan Pesanan'
+    });
 
     constructor(props) {
         super(props)
@@ -462,11 +469,11 @@ export class CaptureandgetPage extends React.Component {
 
                 }
 
-                <View style={{ flexDirection: 'row'  }}>
+                <View style={{ flexDirection: 'row' }}>
                     <View style={{ flex: 3 }}>
                         <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
                     </View>
-                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ width: '5%', flex: 1}}>
+                    <TouchableOpacity onPress={() => this.minusNumber()} style={{ width: '5%', flex: 1 }}>
                         <Image
                             style={{ width: 25, height: 25, borderRadius: 5, marginTop: 8, marginLeft: 2 }}
                             source={require('../assets/images/minus.png')}
@@ -630,7 +637,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         height: 40,
         backgroundColor: '#fff',
-        justifyContent: 'center' 
+        justifyContent: 'center'
     },
     button: {
         backgroundColor: 'rgb(45, 45, 45)',

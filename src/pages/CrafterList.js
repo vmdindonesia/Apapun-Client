@@ -7,12 +7,29 @@ import { BerandaCrafterPage } from './BerandaCrafter';
 import { FashionCrafterPage } from './FashionCrafter';
 import { FurnitureCrafterPage } from './FurnitureCrafter';
 import { BeautyCrafterPage } from './BeautyCrafter';
+import Icon from 'react-native-vector-icons/Ionicons';
 // import { NavigationActions } from 'react-navigation';
 
 
 export class CrafterListPage extends React.Component {
 
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Crafter List'
+    });
+
     static navigationOptions = {
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { console.log(this.props, 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Crafter List'
     }
 
