@@ -47,7 +47,7 @@ export class PageDesignPage extends React.Component {
                         <View style={{
                             flexDirection: 'column',
                             height: '100%', width: '50%',
-                            justifyContent: 'center', backgroundColor: 'red', paddingLeft: 5
+                            justifyContent: 'center'
                         }}>
                             <Text style={{ fontSize: 15, paddingLeft: 2, textAlign: 'left', fontWeight: 'bold' }}>
                                 Elegant Plain
@@ -162,19 +162,19 @@ export class PageDesignPage extends React.Component {
                     </View>
 
                     <View>
-                        <Text style={{ fontWeight: 'bold', fontSize: 15 }}> Ukuran</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 15, paddingTop: 10, fontFamily: 'Quicksand-Bold' }}> Ukuran</Text>
 
-                        <Text style={{ fontSize: 12, paddingTop: 3 }}> Bahu Jalan : 12cm </Text>
+                        <Text style={{ fontSize: 12, paddingTop: 3, fontFamily: 'Quicksand-Bold' }}> Bahu Jalan : 12cm </Text>
 
-                        <Text style={{ fontSize: 12 }}>Panjang Lengan : 11cm </Text>
+                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Panjang Lengan : 11cm </Text>
 
-                        <Text style={{ fontSize: 12 }}>Lingkar Dada : 99cm</Text>
+                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Lingkar Dada : 99cm</Text>
 
-                        <Text style={{ fontSize: 12 }} >Panjang Bahu : 35cm </Text>
+                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }} >Panjang Bahu : 35cm </Text>
 
-                        <Text style={{ fontWeight: 'bold', fontSize: 15, paddingTop: 5 }}> Deskripsi</Text>
+                        <Text style={{ fontWeight: 'bold', fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}> Deskripsi</Text>
 
-                        <Text style={{ fontSize: 12 }}> kaos pria yang simple tapi fashionable, Bahan menyerap keringat dan nyaman dipakai </Text>
+                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}> kaos pria yang simple tapi fashionable, Bahan menyerap keringat dan nyaman dipakai </Text>
 
                     </View>
 
@@ -205,34 +205,28 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'row',
         marginTop: -30,
-        height: 100,
+        height: 170,
         width: '90%',
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
         // zIndex: 1,
         borderWidth: 0.5,
-        borderColor: '#d6d7da',
+        borderColor: '#d6d7da'
     },
     containerMainAddress: {
         // flex: 1,
-        borderRadius: 20,
         backgroundColor: '#ffffff',
-        shadowColor: 'black',
-        shadowOffset: { width: 10, heigth: 10 },
         shadowRadius: 5,
         shadowOpacity: 1.0,
         elevation: 3,
-        flexDirection: 'column',
+        flexDirection: 'row',
         marginTop: 5,
-        height: 180,
+        height: 250,
         width: '90%',
-        // alignItems: 'center',
-        // justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
         borderWidth: 0.5,
-        borderColor: '#d6d7da',
+        borderColor: '#d6d7da'
     },
     anzz: {
         backgroundColor: '#ffffff',

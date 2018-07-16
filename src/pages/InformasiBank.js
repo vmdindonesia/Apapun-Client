@@ -21,62 +21,140 @@ export class InformasiBankPage extends React.Component {
                 <View style={{ flexDirection: 'row', height: 80, width: '100%', alignItems: 'center' }}>
 
 
-                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                    <Image style={{ marginLeft: 70, height: 18, width: 18, borderRadius: 0, }}
                         source={require('./../assets/images/envelope.png')}
                     />
 
-                    <Text style={{ fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
+                    <Text style={{ marginLeft: 20, fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
                         total apresiasi design
                         </Text>
                 </View>
 
-                    <Text style={{ fontSize: 30, fontFamily: 'Quicksand-Bold'}}>
-                        Rp. 120.000
+                <Text style={{ fontSize: 30, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                    Rp. 120.000
                     </Text>
 
-             <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Depan'
-                    />
-                </ContainerSection>
 
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Belakang'
-                    />
-                </ContainerSection>
+                <View style={styles.containerMainAddress}>
 
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='No Rekening'
-                    />
-                </ContainerSection>
 
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Bank'
-                    />
-                </ContainerSection>
+                    <View style={{
+                        width: '100%',
+                        height: 100,
+                        backgroundColor: '',
+                        flexDirection: 'row',
+                        marginTop: 5
+                    }}>
 
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Cabang'
-                    />
-                </ContainerSection>
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            paddingTop: 15,
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >gal</Text>
+                            </View>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo Profil Asli</Text>
+                        </View>
+
+                        <View style={{
+                            width: '50%',
+                            paddingTop: 15,
+                            flexDirection: 'column',
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >Gadod</Text>
+                            </View>
+                        </View>
+
+
+                    </View>
+
+                    <View style={{
+                        width: '150%',
+                        height: 70,
+                        backgroundColor: '',
+                        flexDirection: 'row',
+                        marginTop: 5
+                    }}>
+
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            paddingTop: 15,
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>No Rekening</Text>
+                            <View style={{ width: '150%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >1234567</Text>
+                            </View>
+
+                        </View>
+                    </View>
+
+                    <View style={{
+                        width: '100%',
+                        height: 100,
+                        backgroundColor: '',
+                        flexDirection: 'row',
+                        marginTop: 5
+                    }}>
+
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            paddingTop: 15,
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Bank</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >Mandiri</Text>
+                            </View>
+
+                        </View>
+
+                        <View style={{
+                            width: '50%',
+                            paddingTop: 15,
+                            flexDirection: 'column',
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Cabang</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >Gading Serpong</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+
+
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 20 }]}>Photo Profil Asli</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
+                    <View style={{ flex: 1, width: '50%' }}>
 
                         <View>
                             <Image
                                 source={require('../assets/images/ariel.jpg')}
-                                style={{ width: '100%', height: 300 }}
+                                style={{ width: '35%', height: 250 }}
                                 resizeMode='cover'
                             />
 
@@ -86,7 +164,7 @@ export class InformasiBankPage extends React.Component {
                 </ContainerSection>
 
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo KTP</Text>
+                <Text style={[styles.pickerTextStyle, { marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo KTP</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -102,7 +180,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo Rekening Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo Rekening Anda</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -118,7 +196,6 @@ export class InformasiBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-
             </ScrollView >
         )
     }
@@ -126,14 +203,23 @@ export class InformasiBankPage extends React.Component {
 
 
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: 'red',
+    containerMainAddress: {
+        // flex: 1,
         borderRadius: 20,
-        height: 35,
-        width: 180,
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'column',
+        marginTop: 5,
+        height: 300,
+        width: '90%',
+        // alignItems: 'center',
+        // justifyContent: 'center',
         alignSelf: 'center',
-        justifyContent: 'center',
-        marginTop: 20
+        // zIndex: 1,
+        borderColor: '#d6d7da',
     },
 
 
