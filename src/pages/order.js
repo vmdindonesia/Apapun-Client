@@ -11,7 +11,7 @@ import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class OrderPage extends React.Component {
-    
+
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
@@ -89,8 +89,13 @@ export class OrderPage extends React.Component {
     }
 
     minusNumber() {
-        console.log('Minus');
-        if (this.state.numberPcs === 0) {
+        console.log(this.state.numberPcs, 'Angka Minus');
+        if (this.state.numberPcs === '') {
+            this.setState({
+                numberPcs: 0
+            });
+        }
+        else if (this.state.numberPcs === 0) {
             this.setState({
                 numberPcs: this.state.numberPcs
             });
