@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class CatatanPage extends React.Component {
 
-    static navigationOptions = {
-        headerTitle: 'Catatan '
-
-    }
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Catatan'
+    });
 
     renderButton = () => {
         // if (this.state.loading) {

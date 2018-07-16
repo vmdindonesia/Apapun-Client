@@ -9,7 +9,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export class ProfileCrafterPage extends React.Component {
 
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Profil Crafter'
+    });
+
     static navigationOptions = {
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { console.log(this.props, 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         header: null
     }
 
@@ -209,7 +225,7 @@ export class ProfileCrafterPage extends React.Component {
                         <View style={{ width: '10%', height: '100%' }}>
                             <TouchableOpacity>
                                 <Image style={{ width: 15, height: 15, marginLeft: 10, marginTop: 30 }}
-                                    source={require('../assets/images/Information.png')} /> 
+                                    source={require('../assets/images/Information.png')} />
                             </TouchableOpacity>
                             {/* popup informasi ketika ditouch */}
                         </View>
@@ -239,7 +255,7 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                         <TouchableOpacity style={{ width: '15%', height: '100%' }}>
                             <Image style={{ width: 40, height: 40, marginLeft: 10, marginTop: 20 }}
-                                    source={require('../assets/images/Chat.png')} />
+                                source={require('../assets/images/Chat.png')} />
                         </TouchableOpacity>
                         <View style={{ width: '30%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
                             <TouchableOpacity

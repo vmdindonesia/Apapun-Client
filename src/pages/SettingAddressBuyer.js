@@ -3,12 +3,18 @@ import { View, Text, ImageBackground, Image, AsyncStorage, ToastAndroid, Touchab
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class SettingAddressBuyerPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { console.log(this.props, 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Edit Address',
         headerRight:
             <View>
@@ -21,7 +27,8 @@ export class SettingAddressBuyerPage extends React.Component {
                     />
                 </TouchableOpacity>
             </View>
-    }
+    });
+
 
     render() {
         return (

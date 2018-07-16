@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View, FlatList, ScrollView, Picker, TextInput } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { Input } from '../components/common';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class SettingProductPage extends React.Component {
-    static navigationOptions = {
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Pengaturan Produk'
-    }
+    });
 
     constructor(props) {
         super(props)
