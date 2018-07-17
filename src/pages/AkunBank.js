@@ -41,33 +41,34 @@ export class AkunBankPage extends React.Component {
     } = styles;
 
     return (
-      <View style={menuContainerStyle}>
+      <View style={{
+        flex: 1
+    }}>
 
-        <View style={{ flex: 1 }}>
-          <View style={{
-            width: '100%',
+      <View style={{
+        width: '100%',
+        flexDirection: 'row',
+        borderBottomWidth: 2,
+        marginBottom: 3,
+        // flex: 1,
+        borderColor: '#e5e5e5'
+      }}>
+
+        <View
+          style={{
+            flex: 1,
             height: 50,
             flexDirection: 'row',
-            borderBottomWidth: 2,
-            marginBottom: 3,
-            borderColor: '#e5e5e5'
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
-
-            <View
-              style={{
-                flex: 1,
-                height: 50,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
-                <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
-                  <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
-                </View>
-              </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
+            <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
+              <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
             </View>
-         
+          </TouchableNativeFeedback>
+        </View>
+
 
         <View
           style={{
@@ -82,43 +83,40 @@ export class AkunBankPage extends React.Component {
               <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
             </View>
           </TouchableNativeFeedback>
-          </View>
-          </View>
         </View>
+      </View>
 
       
-          <View style={styles.menuContainerStyle}>
-            {this.renderScreen()}
-          </View>
-        </View>
-        );
-      }
-    }
-    
+            { this.renderScreen() }
+            </View>
+
+         
+      
+        )
+  }
+}
+
 const styles = StyleSheet.create({
-          menuContainerStyle: {
-          flex: 4
-      },
   tabContainer: {
-          height: 50,
-        justifyContent: 'center'
-      },
+    height: 50,
+    justifyContent: 'center'
+  },
   tabContainerActive: {
-          height: 50,
-        justifyContent: 'center',
-        borderBottomWidth: 3,
-        borderColor: 'red'
-      },
+    height: 50,
+    justifyContent: 'center',
+    borderBottomWidth: 3,
+    borderColor: 'red'
+  },
   tabText: {
-          color: 'black',
-        textAlign: 'center',
-        fontSize: 14
-      },
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 14
+  },
   tabTextActive: {
-          textAlign: 'center',
-        fontSize: 14,
-        fontFamily: 'Quicksand-Regular'
-      }
-    })
-    
+    textAlign: 'center',
+    fontSize: 14,
+    fontFamily: 'Quicksand-Regular'
+  }
+})
+
 export default AkunBankPage;

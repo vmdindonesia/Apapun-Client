@@ -41,7 +41,7 @@ export class DetailTransaksiPage extends React.Component {
                 </Text>
 
             
-                <View style={styles.containerMainAddress}>
+                <View style={styles.containerMainForm}>
 
 
                     <View style={{
@@ -127,6 +127,14 @@ export class DetailTransaksiPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    containerMainForm: {
+        backgroundColor: '#ffffff',
+        flexDirection: 'column',
+        height: 230,
+        width: '90%',
+        alignItems: 'center',
+        alignSelf: 'center'
+    }
 
 
 })
