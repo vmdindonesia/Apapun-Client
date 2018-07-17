@@ -17,27 +17,25 @@ export class InformasiBankPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
+                <View style={{ backgroundColor: 'white' }}>
+                <View style={{ flexDirection: 'row', height: 50, width: '100%', alignItems: 'center' }}>
 
-                <View style={{ flexDirection: 'row', height: 80, width: '100%', alignItems: 'center' }}>
 
-
-                    <Image style={{ marginLeft: 70, height: 18, width: 18, borderRadius: 0, }}
+                    <Image style={{ marginLeft: 50, height: 18, width: 18}}
                         source={require('./../assets/images/envelope.png')}
                     />
 
-                    <Text style={{ marginLeft: 20, fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
-                        total apresiasi design
+                    <Text style={{ marginLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
+                        Total Apresiasi Design Anda
                         </Text>
                 </View>
 
-                <Text style={{ fontSize: 30, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                <Text style={{ fontSize: 25, margintop: 20, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
                     Rp. 120.000
                     </Text>
+                </View>
 
-
-                <View style={styles.containerMainAddress}>
-
-
+                <View style={ styles.containerMainAddress }>
                     <View style={{
                         width: '100%',
                         height: 100,
@@ -50,10 +48,11 @@ export class InformasiBankPage extends React.Component {
                             width: '50%',
                             flexDirection: 'column',
                             paddingTop: 15,
+                            justifyContent: 'center',
                             height: 100
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Depan</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -65,11 +64,12 @@ export class InformasiBankPage extends React.Component {
                         <View style={{
                             width: '50%',
                             paddingTop: 15,
+                            justifyContent: 'center',
                             flexDirection: 'column',
                             height: 100
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -95,7 +95,7 @@ export class InformasiBankPage extends React.Component {
                             height: 100
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>No Rekening</Text>
-                            <View style={{ width: '150%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <View style={{ width: '150%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -120,7 +120,7 @@ export class InformasiBankPage extends React.Component {
                             height: 100
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Bank</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -136,18 +136,16 @@ export class InformasiBankPage extends React.Component {
                             height: 100
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Cabang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
-                                >Gading Serpong</Text>
+                                >Serpong</Text>
                             </View>
                         </View>
                     </View>
-                </View>
 
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 20 }]}>Photo Profil Asli</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 15, paddingTop: 50 }]}>Photo Profil Asli</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -162,9 +160,9 @@ export class InformasiBankPage extends React.Component {
 
                     </View>
                 </ContainerSection>
+            </View>
 
-
-                <Text style={[styles.pickerTextStyle, { marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo KTP</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 300, fontFamily: 'Quicksand-Bold' }]}>Photo KTP</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -180,7 +178,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo Rekening Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 50, fontFamily: 'Quicksand-Bold' }]}>Photo Rekening Anda</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -205,21 +203,13 @@ export class InformasiBankPage extends React.Component {
 const styles = StyleSheet.create({
     containerMainAddress: {
         // flex: 1,
-        borderRadius: 20,
-        shadowColor: 'black',
-        shadowOffset: { width: 10, heigth: 10 },
-        shadowRadius: 5,
-        shadowOpacity: 1.0,
-        elevation: 3,
         flexDirection: 'column',
         marginTop: 5,
-        height: 300,
+        height: 350,
         width: '90%',
         // alignItems: 'center',
         // justifyContent: 'center',
-        alignSelf: 'center',
-        // zIndex: 1,
-        borderColor: '#d6d7da',
+        alignSelf: 'center'
     },
 
 

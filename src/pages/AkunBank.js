@@ -8,12 +8,13 @@ export class AkunBankPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerLeft:
+    
       <TouchableOpacity
         onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
       >
-        <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+        <Icon size={30} style={{ marginLeft: 25 }} name='ios-arrow-back' />
       </TouchableOpacity>,
-    headerTitle: 'Akun Bnk'
+    headerTitle: 'Akun Bank'
   });
 
   constructor(props) {
@@ -42,14 +43,16 @@ export class AkunBankPage extends React.Component {
     return (
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
+          <View style={{ flex: 1 }}>
+
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
               <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
                 <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
+
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
               <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
                 <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
@@ -57,6 +60,7 @@ export class AkunBankPage extends React.Component {
             </TouchableNativeFeedback>
           </View>
         </View>
+        
         <View style={styles.menuContainerStyle}>
           {this.renderScreen()}
         </View>
@@ -74,16 +78,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tabContainerActive: {
+    // backgroundColor: COLOR.element_a4,
     height: 50,
-    justifyContent: 'center'
-  },
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: 'red'
+},
   tabText: {
     color: 'black',
     textAlign: 'center',
     fontSize: 14
   },
   tabTextActive: {
-    color: 'red',
     textAlign: 'center',
     fontSize: 14,
     fontFamily: 'Quicksand-Regular'
