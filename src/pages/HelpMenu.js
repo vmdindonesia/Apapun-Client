@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputSearch } from '../components/common';
-// import axios from 'axios';
-import { COLOR } from './../shared/config';
-
-
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView } from 'react-native'
+import { InputSearch } from '../components/common';
 
 export class HelpMenuPage extends React.Component {
 
@@ -36,9 +32,7 @@ export class HelpMenuPage extends React.Component {
                                 height: '100%',
                                 flexDirection: 'column',
                                 backgroundColor: 'rgba(0,0,0,0.8)',
-                                justifyContent: 'flex-end',
-                                // alignSelf: 'center',
-                                // marginTop: 60,
+                                justifyContent: 'flex-end'
                             }}>
                                 <View style={{ marginBottom: 5, width: '95%', height: 40, justifyContent: 'center', alignSelf: 'center' }}>
                                     <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontWeight: 'bold' }}>Gal Gadot</Text></Text>
@@ -92,8 +86,7 @@ export class HelpMenuPage extends React.Component {
                         flex: 2,
                         flexDirection: 'column',
                         height: 325,
-                        backgroundColor: '#e5e5e5',
-                        // marginBottom: 10
+                        backgroundColor: '#e5e5e5'
                     }}>
 
                         <View>
@@ -113,7 +106,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 95, width: 95 }}
                                         source={require('./../assets/images/ic_help_one.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <Text style={{ marginTop: 5, fontSize: 15, }}>Umum</Text>
@@ -124,7 +116,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 95, width: 95 }}
                                         source={require('./../assets/images/ic_help_two.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <Text style={{ marginTop: 5, fontSize: 15, }}>Fitur</Text>
@@ -144,7 +135,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 95, width: 95 }}
                                         source={require('./../assets/images/ic_help_three.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <Text style={{ marginTop: 5, fontSize: 15, }}>Crafter</Text>
@@ -156,7 +146,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 95, width: 95 }}
                                         source={require('./../assets/images/ic_help_four.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <Text style={{ marginTop: 5, fontSize: 15, }}> Transaksi</Text>
@@ -183,40 +172,36 @@ export class HelpMenuPage extends React.Component {
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderTopWidth: 1.5, borderColor: '#e1e3e8', borderBottomWidth: 1.5, flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal' }}>Pengguna</Text>
+                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Regular' }}>Pengguna</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image
                                         style={{ height: 40, width: 40, marginRight: 10 }}
                                         source={require('./../assets/images/ic_ig.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <TouchableOpacity>
                                     <Image
                                         style={{ height: 40, width: 40, marginRight: 10 }}
                                         source={require('./../assets/images/ic_fb.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                             </View>
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderBottomWidth: 1.5, borderColor: '#e1e3e8', flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal' }}>Crafter</Text>
+                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Regular' }}>Crafter</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image
                                         style={{ height: 40, width: 40, marginRight: 10 }}
                                         source={require('./../assets/images/ic_ig.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                                 <TouchableOpacity>
                                     <Image
                                         style={{ height: 40, width: 40, marginRight: 10 }}
                                         source={require('./../assets/images/ic_fb.jpg')}
-                                    // resizeMode='contain'
                                     />
                                 </TouchableOpacity>
                             </View>
@@ -251,7 +236,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 45, width: 45 }}
                                         source={require('./../assets/images/ic_conversation.png')}
-                                    // resizeMode='contain'
                                     />
                                 </View>
                                 <TouchableOpacity>
@@ -267,7 +251,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 45, width: 45 }}
                                         source={require('./../assets/images/ic_sendemail.png')}
-                                    // resizeMode='contain'
                                     />
                                 </View>
                                 <TouchableOpacity>
@@ -283,7 +266,6 @@ export class HelpMenuPage extends React.Component {
                                     <Image
                                         style={{ height: 45, width: 45 }}
                                         source={require('./../assets/images/ic_call.png')}
-                                    // resizeMode='contain'
                                     />
                                 </View>
                                 <TouchableOpacity>
@@ -295,30 +277,12 @@ export class HelpMenuPage extends React.Component {
 
                         </View>
                     </View>
-
-
-
-
-
-
                 </ScrollView>
-
-
-
-
             </View >
-
-
-
         )
     }
 
 }
 
-const styles = StyleSheet.create({
-
-
-
-});
 
 export default HelpMenuPage

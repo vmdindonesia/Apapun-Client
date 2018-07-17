@@ -307,7 +307,7 @@ export class OrderPage extends React.Component {
                         <Image
                             source={itemPhoto}
                             style={{ width: 85, height: 70 }}
-                            resizeMode='cover'
+                            resizeMode='contain'
                         />
                         :
                         <TouchableOpacity
@@ -316,7 +316,7 @@ export class OrderPage extends React.Component {
                             <Image
                                 source={itemPhoto}
                                 style={{ width: 85, height: 70 }}
-                                resizeMode='cover'
+                                resizeMode='contain'
                             />
                         </TouchableOpacity>
                 }
@@ -347,8 +347,8 @@ export class OrderPage extends React.Component {
             <View>
                 <Image
                     source={item.item}
-                    style={{ width: sliderWidth, height: 200 }}
-                    resizeMode='stretch'
+                    style={{ width: '100%', height: 200 }}
+                    resizeMode='contain'
                 />
                 <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
                     <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
@@ -457,18 +457,18 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     {
                         this.state.photoTemp.length === 0 ?
-                            <View style={{ flex: 1, height: 430, backgroundColor: 'grey', }}>
+                            <View style={{ flex: 1, height: 374, backgroundColor: 'grey', }}>
                                 <Image
                                     source={require('../assets/images/create-design.jpg')}
-                                    style={{ height: 600, width: '100%' }}
-                                    resizeMode='stretch'
+                                    style={{ height: '100%', width: '100%' }}
+                                    resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute' }}>
-                                    <Text style={{ fontSize: 15, color: 'white', paddingTop: '45%', textAlign: 'center', justifyContent: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150 }}>
+                                    <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular', justifyContent: 'center' }}>
                                         Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
                                     </Text>
                                 </View>
-                                <View style={{ flex: 1, position: 'absolute', marginTop: '90%', alignItems: 'center', alignSelf: 'center' }}>
+                                <View style={{ flex: 1, position: 'absolute', top: 300, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
                                             onPress={() => this.designPhotoUpload('tempUploadDesign')}
@@ -558,12 +558,12 @@ export class OrderPage extends React.Component {
                                     style={{ width: '100%', height: 170 }}
                                     resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center' }}>
-                                    <Text style={{ fontSize: 15, color: 'white', paddingTop: '10%', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center', top: 25 }}>
+                                    <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
                                         Pilih material yang sesuai untuk desain Anda
                                     </Text>
                                 </View>
-                                <View style={{ flex: 1, position: 'absolute', marginTop: '28%', alignItems: 'center', alignSelf: 'center' }}>
+                                <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
                                             onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}

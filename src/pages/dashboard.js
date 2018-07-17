@@ -494,7 +494,7 @@ export class DashboardPage extends React.Component {
 
 																<View style={styles.bodyCrafterList}>
 																	<View style={styles.CrafterListLeft}>
-																		<View style={{ marginLeft: 10, marginTop: 6 }}>
+																		<View style={{ marginLeft: 10, marginTop: 10 }}>
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
@@ -509,13 +509,13 @@ export class DashboardPage extends React.Component {
 
 																	</View>
 																	<View style={styles.CrafterListRight}>
-																		<View style={{ marginTop: 6 }}>
+																		<View style={{ marginTop: 10 }}>
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
 																					source={require('./../assets/images/beauty_crafter.png')}
 																				/>
-																			</View>
+																			</View >
 																			<View style={{ flex: 1 }}>
 																				<Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 13 }}>Beauty</Text>
 																				<Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 13 }}>269 Crafter</Text>
@@ -1101,9 +1101,7 @@ const styles = StyleSheet.create({
 	},
 	photoHomeScreen: {
 		height: 170,
-		borderRadius: 25,
-		marginLeft: -7,
-		// backgroundColor:'red'
+		borderRadius: 25
 	},
 	textHomeScreen: {
 		height: 165,
@@ -1179,19 +1177,17 @@ const styles = StyleSheet.create({
 
 	},
 	containerBodyCrafter: {
-		flex: 1,
+		// flex: 1,
 		borderRadius: 20,
 		flexDirection: 'column',
-		height: 20,
+		height: '32%',
 		width: '100%',
-		// backgroundColor: 'skyblue',
-		marginTop: 5,
+		// backgroundColor: 'pink',
+		paddingLeft: 5
 	},
 	bodyCrafterList: {
 		flexDirection: 'row',
-		height: 70,
 		flex: 1
-
 	},
 	CrafterListLeft: {
 		height: 70,
