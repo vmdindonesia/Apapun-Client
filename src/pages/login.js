@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard, ScrollView } from 'react-native'
+import { View, Text, KeyboardAvoidingView, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard, ScrollView } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner } from '../components/common';
 import axios from 'axios';
 import { COLOR } from './../shared/config';
@@ -96,82 +96,79 @@ export class LoginPage extends React.Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-
-			<ImageBackground
-				source={require('./../assets/images/bg-login.jpg')}
-				style={{ width: '100%', height: '100%', backgroundColor: COLOR.secondary_c }}
-			>
-				<StatusBar
-					backgroundColor={COLOR.statusBar}
-					barStyle="dark-content"
-				/>
-
-				<ScrollView keyboardShouldPersistTaps="always">
-
-					<View style={{ marginTop: 60, marginBottom: 60 }}>
-						<View style={{ alignItems: 'center' }}>
-							<Image
-								style={styles.image}
-								source={require('./../assets/images/apapun_logo_white.png')}
-								resizeMode='contain'
-							/>
-						</View>
+			// <ScrollView style={{ position: 'relative' }} keyboardShouldPersistTaps="always">
+				<View style={styles.container}>
+					<View style={{ width: '100%', height: '100%', flex: 1, backgroundColor: 'grey', justifyContent: 'flex-start', flexDirection: 'row', position: 'relative' }} >
+						<Image
+							style={{ width: '100%', height: '100%', }}
+							source={require('./../assets/images/bg-login.png')}
+							resizeMode='stretch'
+						/>
 					</View>
 
-					<Container>
-						<ContainerSection>
-							<InputLogin
-								placeholder="Email or username"
-								icon="ic_username"
-								onChangeText={val => this.onChange('email', val)}
-								value={email}
-							/>
-						</ContainerSection>
 
-						<View style={{ padding: 1 }} />
+					<View style={{ flex: 1, alignSelf: 'center', position: 'absolute', marginTop: 70, marginBottom: 60 }}>
+						<Image
+							style={styles.image}
+							source={require('./../assets/images/apapun_logo_white.png')}
+							resizeMode='contain'
+						/>
+					</View>
 
-						<ContainerSection>
-							<InputLogin
-								secureTextEntry
-								placeholder="Password"
-								icon="ic_password"
-								onChangeText={val => this.onChange('password', val)}
-								value={password}
-							/>
-						</ContainerSection>
+					<View style={{ flex: 1, position: 'absolute', alignSelf: 'center', width: '100%', marginTop: '75%' }}>
+						<KeyboardAvoidingView>
+							<Container>
+								<ContainerSection>
+									<InputLogin
+										placeholder="Email or username"
+										icon="ic_username"
+										onChangeText={val => this.onChange('email', val)}
+										value={email}
+									/>
+								</ContainerSection>
 
-						<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
-							<TouchableOpacity
-								onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
-									FORGET YOUR PASSWORD?
+								<ContainerSection>
+									<InputLogin
+										secureTextEntry
+										placeholder="Password"
+										icon="ic_password"
+										onChangeText={val => this.onChange('password', val)}
+										value={password}
+									/>
+								</ContainerSection>
+
+								<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
+									<TouchableOpacity
+										onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+										<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
+											FORGET YOUR PASSWORD?
+										</Text>
+									</TouchableOpacity>
+								</View>
+
+								<View style={{ marginTop: 50 }}>
+									<ContainerSection>
+										{this.renderButton()}
+									</ContainerSection>
+								</View>
+							</Container>
+
+							<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
+								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
+									Don't have an account? {`\n`}
 								</Text>
-							</TouchableOpacity>
-						</View>
-
-						<View style={{ marginTop: 50 }}>
-							<ContainerSection>
-								{this.renderButton()}
-							</ContainerSection>
-						</View>
-					</Container>
-
-					<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
-						<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-							Don't have an account? {`\n`}
-						</Text>
-						<TouchableOpacity
-							onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
-						>
-							<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-								Sign Up
-						</Text>
-						</TouchableOpacity>
+								<TouchableOpacity
+									onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
+								>
+									<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+										Sign Up
+									</Text>
+								</TouchableOpacity>
+							</View>
+						</KeyboardAvoidingView>
 					</View>
-				</ScrollView>
-			</ImageBackground>
-
-
+				</View>
+			// </ScrollView>
 		)
 	}
 }
@@ -179,6 +176,13 @@ export class LoginPage extends React.Component {
 const styles = {
 	container: {
 		flex: 1
+	},
+	containerImage: {
+		width: '100%',
+		height: null,
+		flex: 1,
+		justifyContent: 'center',
+		alignSelf: 'center'
 	},
 	input: {
 		height: 36,
