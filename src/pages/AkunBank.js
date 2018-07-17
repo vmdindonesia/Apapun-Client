@@ -8,7 +8,7 @@ export class AkunBankPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerLeft:
-    
+
       <TouchableOpacity
         onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
       >
@@ -42,58 +42,83 @@ export class AkunBankPage extends React.Component {
 
     return (
       <View style={menuContainerStyle}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1 }}>
 
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
-              <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
-              </View>
-            </TouchableNativeFeedback>
+        <View style={{ flex: 1 }}>
+          <View style={{
+            width: '100%',
+            height: 50,
+            flexDirection: 'row',
+            borderBottomWidth: 2,
+            marginBottom: 3,
+            borderColor: '#e5e5e5'
+          }}>
+
+            <View
+              style={{
+                flex: 1,
+                height: 50,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+              <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
+                <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
+                  <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
+                </View>
+              </TouchableNativeFeedback>
+            </View>
+         
+
+        <View
+          style={{
+            flex: 1,
+            height: 50,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
+            <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
+              <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
+            </View>
+          </TouchableNativeFeedback>
           </View>
-
-          <View style={{ flex: 1 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
-              <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
-              </View>
-            </TouchableNativeFeedback>
           </View>
         </View>
-        
-        <View style={styles.menuContainerStyle}>
-          {this.renderScreen()}
-        </View>
-      </View>
-    );
-  }
-}
 
+      
+          <View style={styles.menuContainerStyle}>
+            {this.renderScreen()}
+          </View>
+        </View>
+        );
+      }
+    }
+    
 const styles = StyleSheet.create({
-  menuContainerStyle: {
-    flex: 4
-  },
+          menuContainerStyle: {
+          flex: 4
+      },
   tabContainer: {
-    height: 50,
-    justifyContent: 'center'
-  },
+          height: 50,
+        justifyContent: 'center'
+      },
   tabContainerActive: {
-    // backgroundColor: COLOR.element_a4,
-    height: 50,
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderColor: 'red'
-},
+          height: 50,
+        justifyContent: 'center',
+        borderBottomWidth: 3,
+        borderColor: 'red'
+      },
   tabText: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 14
-  },
+          color: 'black',
+        textAlign: 'center',
+        fontSize: 14
+      },
   tabTextActive: {
-    textAlign: 'center',
-    fontSize: 14,
-    fontFamily: 'Quicksand-Regular'
-  }
-})
-
+          textAlign: 'center',
+        fontSize: 14,
+        fontFamily: 'Quicksand-Regular'
+      }
+    })
+    
 export default AkunBankPage;
