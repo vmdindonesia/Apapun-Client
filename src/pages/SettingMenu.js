@@ -4,14 +4,20 @@ import { Container, ContainerSection, Button, Input, InputSearch, InputDate } fr
 // import axios from 'axios';
 import { COLOR } from './../shared/config';
 import SwitchToggle from 'react-native-switch-toggle';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class SettingManuPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Pengaturan'
-    }
+    });
 
     constructor(props) {
         super(props);

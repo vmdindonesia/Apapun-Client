@@ -91,25 +91,18 @@ export class DashboardPage extends React.Component {
 	}
 
 	renderIdeaPhoto = (itemProduct) => {
-		const imageSource = itemProduct.item;
-		console.log(imageSource, 'Idea Market');
 		return (
-			<TouchableWithoutFeedback onPress={() => { }}>
-				<View style={{
-					borderRadius: 4,
-					elevation: 2,
-					marginRight: 2,
-					height: 110,
-					flex: 1,
-					marginTop: 10
-				}}>
-					<Image
-						style={styles.item}
-						source={{ uri: `${imageSource}` }}
-						resizeMode='contain'
-					/>
-				</View>
-			</TouchableWithoutFeedback>
+			<View>
+				<TouchableWithoutFeedback onPress={() => { }}>
+					<View style={{ borderRadius: 4, elevation: 2, marginRight: 2, height: 110, flex: 1, marginTop: 10 }}>
+						<Image
+							style={styles.item}
+							source={{ uri: `${itemProduct.item}` }}
+							resizeMode='contain'
+						/>
+					</View>
+				</TouchableWithoutFeedback>
+			</View>
 		)
 	}
 
@@ -378,6 +371,7 @@ export class DashboardPage extends React.Component {
 										keyExtractor={this.keyExtractor}
 										renderItem={this.renderIdeaPhoto.bind(this)}
 										showsHorizontalScrollIndicator={false}
+										extraData={this.state}
 									/>
 								</View>
 							</View>

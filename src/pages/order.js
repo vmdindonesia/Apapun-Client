@@ -8,11 +8,19 @@ import { sliderWidth, itemWidth } from './../shared/slider.styles';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
 import uuid from 'react-native-uuid';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class OrderPage extends React.Component {
-    static navigationOptions = {
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Rancangan Pesanan'
-    }
+    });
 
     constructor(props) {
         super(props)
@@ -81,8 +89,13 @@ export class OrderPage extends React.Component {
     }
 
     minusNumber() {
-        console.log('Minus');
-        if (this.state.numberPcs === 0) {
+        console.log(this.state.numberPcs, 'Angka Minus');
+        if (this.state.numberPcs === '') {
+            this.setState({
+                numberPcs: 0
+            });
+        }
+        else if (this.state.numberPcs === 0) {
             this.setState({
                 numberPcs: this.state.numberPcs
             });

@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, Dimensions, Picker } from 'react-native'
 import { Container, Button, ContainerSection, Input, InputNumber } from '../components/common';
 const { width, height } = Dimensions.get('window');
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class DetailDeliveryPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Detail Pengiriman'
-    }
+    });
 
     constructor(props) {
         super(props)
@@ -95,8 +102,8 @@ export class DetailDeliveryPage extends React.Component {
                         borderWidth: 1
                     }}>
                         <Picker
-                            // selectedValue={serveDelivery}
-                            // onValueChange={v => this.onChange('serveDelivery', v)}
+                        // selectedValue={serveDelivery}
+                        // onValueChange={v => this.onChange('serveDelivery', v)}
                         >
                             <Picker.Item label='JNE' value='JNE' />
                             <Picker.Item label='TIKI' value='TIKI' />
@@ -116,9 +123,9 @@ export class DetailDeliveryPage extends React.Component {
                         borderWidth: 1
                     }}>
                         <Picker
-                        mode='dropdown'
-                            // selectedValue={serveDelivery}
-                            // onValueChange={v => this.onChange('serveDelivery', v)}
+                            mode='dropdown'
+                        // selectedValue={serveDelivery}
+                        // onValueChange={v => this.onChange('serveDelivery', v)}
                         >
                             <Picker.Item label='Home' value='Home' />
                             <Picker.Item label='Office' value='Office' />

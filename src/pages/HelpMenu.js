@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { InputSearch } from '../components/common';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export class HelpMenuPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Bantuan'
-    }
+    });
 
     render() {
         return (
@@ -172,7 +180,7 @@ export class HelpMenuPage extends React.Component {
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderTopWidth: 1.5, borderColor: '#e1e3e8', borderBottomWidth: 1.5, flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Regular' }}>Pengguna</Text>
+                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Bold' }}>Pengguna</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image
@@ -190,7 +198,7 @@ export class HelpMenuPage extends React.Component {
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderBottomWidth: 1.5, borderColor: '#e1e3e8', flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Regular' }}>Crafter</Text>
+                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Bold' }}>Crafter</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image

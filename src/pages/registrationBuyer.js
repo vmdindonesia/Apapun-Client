@@ -6,13 +6,20 @@ import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export class RegistrationBuyerPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Register'
-
-    }
+    });
 
     constructor(props) {
         super(props);

@@ -7,16 +7,26 @@ import { COLOR } from './../shared/config';
 // import { IPSERVER } from './../shared/config';
 import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class RegistrationCrafterPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Register Crafter'
-    }
+    });
 
     constructor(props) {
         super(props);
         this.state = {
+            latitude: null,
+            longitude: null,
+            error: null,
             isModalVisible: false,
             pathPhotoRegistCrafter: null,
             fashion: false,
@@ -27,6 +37,26 @@ export class RegistrationCrafterPage extends React.Component {
             sendservicetwo: false,
             agree: false,
         };
+    }
+
+    componentDidMount() {
+        console.log('Registration Start');
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                console.log(position, 'Get Position');
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    error: null,
+                }, () => {
+                    console.log(this.state.latitude, 'Latitude');
+                    console.log(this.state.longitude, 'Longtitude');
+                    console.log(this.state.error, 'Error');
+                });
+            },
+            (error) => this.setState({ error: error.message }, () => { console.log(this.state.error, 'Error'); }),
+            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+        );
     }
 
     checkBoxFashion = () => {
@@ -329,125 +359,112 @@ export class RegistrationCrafterPage extends React.Component {
 
 
 
-                    <View style={{ marginTop: 65 }}>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={this.state.isModalVisible}
-                            onRequestClose={() => {
-                                alert('Modal has been closed.');
-                            }}>
-                            <View style={{ marginTop: 65 }}>
-                                <View style={styles.modalAddress}>
-                                    <ScrollView>
-                                        <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Location</Text>
-                                            </View>
-                                            <View style={{ flexDirection: 'row', width: '100%' }}>
-                                                <View style={{ width: '90%' }}>
-                                                    <ContainerSection>
-                                                        <Input
-                                                            placeholder='please input your location'
-                                                        />
-                                                    </ContainerSection>
-                                                </View>
-                                                <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
-                                                    <TouchableOpacity>
-                                                        <Image
-                                                            style={{ height: 40, width: 25 }}
-                                                            source={require('./../assets/images/location_icon.png')}
-                                                        />
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
+                    {/* <View style={{ marginTop: 65 }}> */}
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={this.state.isModalVisible}
+                        onRequestClose={() => {
+                            alert('Modal has been closed.');
+                        }}>
+                        {/* <View style={{ marginTop: 65 }}> */}
+                        <View style={styles.modalAddress}>
+                            <ScrollView>
+                                <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
+                                    <View >
+                                        <Text style={styles.textStyle}>Location</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', width: '100%' }}>
+                                        <View style={{ width: '90%' }}>
+                                            <ContainerSection>
+                                                <Input
+                                                    placeholder='please input your location'
+                                                />
+                                            </ContainerSection>
                                         </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Province</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your province'
-                                                    />
-                                                </ContainerSection>
-                                            </View>
+                                        <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
+                                            <TouchableOpacity>
+                                                <Image
+                                                    style={{ height: 40, width: 25 }}
+                                                    source={require('./../assets/images/location_icon.png')}
+                                                />
+                                            </TouchableOpacity>
                                         </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>District</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your district'
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Address Detail</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input style={{ height: 30 }}
-                                                        multiline={true}
-                                                        numberOfLines={150}
-
-                                                        placeholder='please input your detail address'
-
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-
-
-                                        <View style={styles.buttonOnModalAddress}>
-
-                                            <View>
-                                                <TouchableHighlight
-                                                    onPress={() => {
-                                                        this.setModalVisible(!this.state.isModalVisible);
-                                                    }}>
-                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
-                                                </TouchableHighlight>
-                                            </View>
-
-                                            <View style={{ paddingLeft: 20 }}>
-                                                <TouchableHighlight
-                                                    onPress={() => {
-                                                        this.setModalVisible(!this.state.isModalVisible);
-                                                    }}>
-                                                    <Text style={styles.AddressTextSave}>Save</Text>
-                                                </TouchableHighlight>
-                                            </View>
-
-                                        </View>
-                                    </ScrollView>
+                                    </View>
                                 </View>
 
-                            </View>
-                        </Modal>
+                                <View style={styles.textaddressModal}>
+                                    <View >
+                                        <Text style={styles.textStyle}>Province</Text>
+                                    </View>
+                                    <View>
+                                        <ContainerSection>
+                                            <Input
+                                                placeholder='please input your province'
+                                            />
+                                        </ContainerSection>
+                                    </View>
+                                </View>
+
+                                <View style={styles.textaddressModal}>
+                                    <View >
+                                        <Text style={styles.textStyle}>District</Text>
+                                    </View>
+                                    <View>
+                                        <ContainerSection>
+                                            <Input
+                                                placeholder='please input your district'
+                                            />
+                                        </ContainerSection>
+                                    </View>
+                                </View>
+
+                                <View style={styles.textaddressModal}>
+                                    <View >
+                                        <Text style={styles.textStyle}>Address Detail</Text>
+                                    </View>
+                                    <View>
+                                        <ContainerSection>
+                                            <Input style={{ height: 30 }}
+                                                multiline={true}
+                                                numberOfLines={150}
+
+                                                placeholder='please input your detail address'
+
+                                            />
+                                        </ContainerSection>
+                                    </View>
+                                </View>
 
 
 
-                    </View>
+                                <View style={styles.buttonOnModalAddress}>
 
+                                    <View>
+                                        <TouchableHighlight
+                                            onPress={() => {
+                                                this.setModalVisible(!this.state.isModalVisible);
+                                            }}>
+                                            <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                        </TouchableHighlight>
+                                    </View>
 
-
-
-
-
+                                    <View style={{ paddingLeft: 20 }}>
+                                        <TouchableHighlight
+                                            onPress={() => {
+                                                this.setModalVisible(!this.state.isModalVisible);
+                                            }}>
+                                            <Text style={styles.AddressTextSave}>Save</Text>
+                                        </TouchableHighlight>
+                                    </View>
+                                </View>
+                            </ScrollView>
+                        </View>
+                        {/* </View> */}
+                    </Modal>
+                    {/* </View> */}
                 </ScrollView>
             </ImageBackground>
-
-
         );
     };
 };
@@ -593,14 +610,10 @@ const styles = StyleSheet.create({
         height: 120
     },
     modalAddress: {
-        width: '95%',
-        height: '99%',
+        width: '100%',
+        height: '100%',
         backgroundColor: '#ffffff',
-        alignSelf: 'center',
-        borderRadius: 10,
-        borderWidth: 0.9,
-        shadowColor: '#000',
-        shadowOpacity: 1.0,
+        alignSelf: 'center'
     },
     textStyle: {
         color: 'black',

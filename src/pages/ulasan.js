@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class UlasanPage extends React.Component {
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Ulasan'
-
-    }
+    });
 
     constructor(props) {
         super(props)
@@ -54,7 +60,7 @@ export class UlasanPage extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1  }}>
+                <View style={{ flex: 1 }}>
                     <View style={{ height: 150, margin: 10, backgroundColor: '#fff' }}>
                         <View style={{ height: '40%', flexDirection: 'row', alignItems: 'center' }}>
                             <Image
@@ -109,7 +115,7 @@ export class UlasanPage extends React.Component {
                             }}>Crafter yang handal dan bisa dipercaya</Text>
                         </View>
                     </View>
-                    
+
                 </View>
             </View>
         );

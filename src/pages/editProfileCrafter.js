@@ -3,16 +3,21 @@ import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Scr
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { CheckBox } from 'react-native-elements'
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
 export class EditProfileCrafterPage extends React.Component {
 
-    static navigationOptions = {
-        headerTitle: 'Crafter Menu '
-
-    }
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Crafter Menu'
+    });
 
     renderButton = () => {
         // if (this.state.loading) {
@@ -30,13 +35,14 @@ export class EditProfileCrafterPage extends React.Component {
                     marginBottom: 20
                 }}
 
-                onPress={() => {const resetAction = StackActions.reset({
-                    index: 0,
-                    actions: [NavigationActions.navigate({ routeName: 'MenuCrafter' })],
-                });
+                onPress={() => {
+                    const resetAction = StackActions.reset({
+                        index: 0,
+                        actions: [NavigationActions.navigate({ routeName: 'MenuCrafter' })],
+                    });
                     this.props.navigation.dispatch(resetAction);
                 }
-            }
+                }
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Simpan</Text>
             </Button>
@@ -131,8 +137,8 @@ export class EditProfileCrafterPage extends React.Component {
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Nomor Telepon</Text>
                             </View>
                             <View style={{ flex: 1, padding: 15 }}>
-                                <Input 
-                                keyboardType='numeric'
+                                <Input
+                                    keyboardType='numeric'
                                 />
                             </View>
                         </View>
