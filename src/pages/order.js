@@ -35,6 +35,7 @@ export class OrderPage extends React.Component {
             uploadDesign: [],
             nameFileImages: [],
             photoTemp: [],
+            photoTempCarousel: [],
             tempPhoto: false,
             uploadMaterial: null,
             notice: false,
@@ -236,44 +237,47 @@ export class OrderPage extends React.Component {
                 let source = { uri: response.uri };
 
                 if (this.state.photoTemp.length === 0) {
-                    let pushFirst = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
+                    let pushFirst = { uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`, data: 1 };
 
                     const newUriPhoto = this.state.photoTemp;
                     newUriPhoto[this.state.photoTemp.length] = source;
                     this.setState({ photoTemp: newUriPhoto }, () => {
-                        console.log(this.state.photoTemp, 'First Foto');
                         const newUriPhoto = this.state.photoTemp;
-                        newUriPhoto[this.state.photoTemp.length] = pushFirst;
+                        for (let i = 0; i < 4; i++) {
+                            newUriPhoto[this.state.photoTemp.length] = pushFirst;
+                        }
                         this.setState({ photoTemp: newUriPhoto }, () => {
-                            console.log(this.state.photoTemp, 'Second Foto');
                             return this.returnDesignPhoto();
                         });
                     });
                 } else {
-                    if (this.state.photoTemp.length < 5) {
-                        console.log(this.state.photoTemp.length, 'HOY');
-                        let pushSecond = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
-
+                    console.log(this.state.photoTemp, 'Foto-Foto');
+                    const identify = this.state.photoTemp;
+                    if (identify[1].data === 1) {
+                        console.log('Foto Sama');
                         const newSplicePhoto = this.state.photoTemp;
-                        newSplicePhoto.splice(parseInt(this.state.photoTemp.length) - 1, parseInt(this.state.photoTemp.length) - 1);
-                        newSplicePhoto[this.state.photoTemp.length] = source;
+                        newSplicePhoto[1] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
-                            const newUriPhoto = this.state.photoTemp;
-                            newUriPhoto[this.state.photoTemp.length] = pushSecond;
-                            this.setState({ photoTemp: newUriPhoto }, () => {
-                                console.log(this.state.photoTemp, 'Splice & Re-Push Foto');
-                                return this.returnDesignPhoto();
-                            });
+                            console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else {
-                        console.log(this.state.photoTemp.length, 'HYE');
-                        const newFiveSlice = this.state.photoTemp;
-                        newFiveSlice.splice(4, 4)
-                        newFiveSlice[this.state.photoTemp.length] = source;
-                        this.setState({ photoTemp: newFiveSlice }, () => {
-                            console.log(this.state.photoTemp, 'Splice & Re-Push & Last Foto');
+                    } else if (identify[2].data === 1) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[2] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
+                        });
+                    } else if (identify[3].data === 1) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[3] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
+                        });
+                    } else if (identify[4].data === 1) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[4] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
                             this.setState({ tempPhoto: true })
-                            return this.returnDesignPhoto();
                         });
                     }
                 }
@@ -311,10 +315,9 @@ export class OrderPage extends React.Component {
     }
 
     renderProductItem = (itemPhoto, index) => {
-        console.log(index, 'Index Poto');
         const { tempPhoto } = this.state
         return (
-            <View style={{ paddingRight: 5 }}>
+            <View key={index} style={{ paddingRight: 5 }}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -338,14 +341,12 @@ export class OrderPage extends React.Component {
     }
 
     returnDesignPhoto() {
-        console.log(this.state.photoTemp, 'XAXAXA');
         return (
             <View>
                 <FlatList
                     data={this.state.photoTemp}
                     extraData={this.state}
                     horizontal
-                    keyExtractor={(index) => index.uri}
                     renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
@@ -382,7 +383,6 @@ export class OrderPage extends React.Component {
 
     renderAddress = () => {
         const resultAddress = this.state.dataAddress;
-        console.log(resultAddress, 'Data Address');
         if (resultAddress) {
             return resultAddress.map((data, index) => {
                 return <Picker.Item label={data.type} value={data.addressId} key={index} />
@@ -436,7 +436,6 @@ export class OrderPage extends React.Component {
             unitQuantity
         } = this.state;
 
-        console.log(this.state.categoryProduct, 'OKOKOKOK');
         return (
             <ScrollView
                 style={styles.containerStyle}
