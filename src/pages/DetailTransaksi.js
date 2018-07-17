@@ -110,7 +110,6 @@ export class DetailTransaksiPage extends React.Component {
 
                     <View style={{
                             width: '50%',
-                            paddingTop: 15,
                             flexDirection: 'column',
                             height: 100
                         }}>
@@ -148,7 +147,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         // zIndex: 1,
         borderColor: '#d6d7da',
-    },
+    }
 
 
 })

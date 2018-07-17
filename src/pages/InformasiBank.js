@@ -149,11 +149,11 @@ export class InformasiBankPage extends React.Component {
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 20 }]}>Photo Profil Asli</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '50%' }}>
+                    <View style={{ flex: 1, width: '100%' }}>
 
                         <View>
                             <Image
-                                source={require('../assets/images/ariel.jpg')}
+                                source={require('../assets/images/icon_profile.png')}
                                 style={{ width: '35%', height: 250 }}
                                 resizeMode='cover'
                             />
@@ -170,7 +170,7 @@ export class InformasiBankPage extends React.Component {
 
                         <View>
                             <Image
-                                source={require('../assets/images/ktp.jpg')}
+                                source={require('../assets/images/icon_profile.png')}
                                 style={{ width: '100%', height: 300 }}
                                 resizeMode='cover'
                             />
@@ -186,7 +186,7 @@ export class InformasiBankPage extends React.Component {
 
                         <View>
                             <Image
-                                source={require('../assets/images/rekening.jpg')}
+                                source={require('../assets/images/icon_profile.png')}
                                 style={{ width: '100%', height: 300 }}
                                 resizeMode='cover'
                             />
