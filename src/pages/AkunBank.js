@@ -8,12 +8,13 @@ export class AkunBankPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerLeft:
+
       <TouchableOpacity
         onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
       >
-        <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+        <Icon size={30} style={{ marginLeft: 25 }} name='ios-arrow-back' />
       </TouchableOpacity>,
-    headerTitle: 'Akun Bnk'
+    headerTitle: 'Akun Bank'
   });
 
   constructor(props) {
@@ -40,42 +41,71 @@ export class AkunBankPage extends React.Component {
     } = styles;
 
     return (
-      <View style={menuContainerStyle}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
-              <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
-              </View>
-            </TouchableNativeFeedback>
-          </View>
-          <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
-              <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
-              </View>
-            </TouchableNativeFeedback>
-          </View>
+      <View style={{
+        flex: 1
+    }}>
+
+      <View style={{
+        width: '100%',
+        flexDirection: 'row',
+        borderBottomWidth: 2,
+        marginBottom: 3,
+        // flex: 1,
+        borderColor: '#e5e5e5'
+      }}>
+
+        <View
+          style={{
+            flex: 1,
+            height: 50,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
+            <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
+              <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
+            </View>
+          </TouchableNativeFeedback>
         </View>
-        <View style={styles.menuContainerStyle}>
-          {this.renderScreen()}
+
+
+        <View
+          style={{
+            flex: 1,
+            height: 50,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
+            <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
+              <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
+            </View>
+          </TouchableNativeFeedback>
         </View>
       </View>
-    );
+
+      
+            { this.renderScreen() }
+            </View>
+
+         
+      
+        )
   }
 }
 
 const styles = StyleSheet.create({
-  menuContainerStyle: {
-    flex: 4
-  },
   tabContainer: {
     height: 50,
     justifyContent: 'center'
   },
   tabContainerActive: {
     height: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderBottomWidth: 3,
+    borderColor: 'red'
   },
   tabText: {
     color: 'black',
@@ -83,7 +113,6 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   tabTextActive: {
-    color: 'red',
     textAlign: 'center',
     fontSize: 14,
     fontFamily: 'Quicksand-Regular'
