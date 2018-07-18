@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         alignItems: 'center',
         marginTop: 50,
-        // zIndex: 2,
+        zIndex: 0,
         // backgroundColor: 'yellow'
 
     },
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
+        zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
         // backgroundColor: 'red'
@@ -403,8 +403,8 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        zIndex: 1,
         borderWidth: 0.5,
+        zIndex:0,
         borderColor: '#d6d7da'
     },
     icons: {
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 15,
-        fontFamily: 'Quicksand-normal'
+        fontFamily: 'Quicksand-Reguler'
     },
     buttonSignUp: {
         backgroundColor: 'red',
@@ -426,8 +426,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,
-        marginTop: -17,
-        marginBottom: 80
+        marginBottom: 50
     }
 });
 

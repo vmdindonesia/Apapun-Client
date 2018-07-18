@@ -73,14 +73,14 @@ export class PengaturanBankPage extends React.Component {
                     />
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo Profil Asli</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>Foto Profil Asli</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
+                    <View style={{ flex: 1 }}>
 
                         <View>
                             <Image
                                 source={require('../assets/images/Upload-Photo.png')}
-                                style={{ width: '35%', height: 200 }}
+                                style={{ width: '50%', height: 200, backgroundColor: 'red', justifyContent:'center', alignItems:'center' }}
                                 resizeMode='cover'
                             />
 
@@ -90,7 +90,7 @@ export class PengaturanBankPage extends React.Component {
                 </ContainerSection>
 
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo KTP</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>KTP</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -106,7 +106,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo Rekening Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>Foto Buku Rekening</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -129,7 +129,7 @@ export class PengaturanBankPage extends React.Component {
                     />
                 </ContainerSection>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.buttons}>
                     <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Kirim Kode Verifikasi</Text>
                 </TouchableOpacity>
 
@@ -176,7 +176,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 20,
         height: 35,
-        width: 180,
+        width: 300,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        marginTop: 20
+    },
+    buttons: {
+        backgroundColor: 'black',
+        borderRadius: 20,
+        height: 35,
+        width: 300,
         alignSelf: 'center',
         justifyContent: 'center',
         marginTop: 20

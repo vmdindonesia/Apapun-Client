@@ -25,6 +25,7 @@ export class DesignSayaPage extends React.Component {
 
                 <View style={{
                     width: '100%',
+                    backgroundColor: 'white',
                     height: '12.5%',
                     flexDirection: 'row'
                 }}>
@@ -87,9 +88,11 @@ export class DesignSayaPage extends React.Component {
                 </View>
 
                 <ScrollView>
+                    <View style={styles.jing}>
                     <View style={{
                         width: '100%',
                         height: '25%',
+                        paddingTop: 50,
                         flexDirection: 'row'
                     }}>
 
@@ -151,6 +154,7 @@ export class DesignSayaPage extends React.Component {
 
 
                     </View>
+                    </View>
 
 
                 </ScrollView>
@@ -180,6 +184,10 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
+    jing: {
+        flex: 1,
+        paddingTop: 50
+    }
 
 
 
