@@ -361,30 +361,6 @@ export class RegistrationCrafterPage extends React.Component {
 
 
 
-<<<<<<< Updated upstream
-                    {/* <View style={{ marginTop: 65 }}> */}
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={this.state.isModalVisible}
-                        onRequestClose={() => {
-                            alert('Modal has been closed.');
-                        }}>
-                        {/* <View style={{ marginTop: 65 }}> */}
-                        <View style={styles.modalAddress}>
-                            <ScrollView>
-                                <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
-                                    <View >
-                                        <Text style={styles.textStyle}>Location</Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', width: '100%' }}>
-                                        <View style={{ width: '90%' }}>
-                                            <ContainerSection>
-                                                <Input
-                                                    placeholder='please input your location'
-                                                />
-                                            </ContainerSection>
-=======
                     <View style={{ marginTop: 65 }}>
                         <Modal
                             animationType="slide"
@@ -393,63 +369,12 @@ export class RegistrationCrafterPage extends React.Component {
                             onRequestClose={() => {
                                 alert('Modal has been closed.');
                             }}>
-                            <View style={{ flex: 1, marginTop: 50 }}>
-                                <View style={styles.modalAddress}>
-                                    <ScrollView>
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Province</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your province'
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
 
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>District</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your district'
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Address Detail</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input style={{ height: 30 }}
-                                                        multiline={true}
-                                                        numberOfLines={150}
-
-                                                        placeholder='please input your detail address'
-
-                                                    />
-                                                </ContainerSection>
-                                            </View>
->>>>>>> Stashed changes
-                                        </View>
-                                        <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
-                                            <TouchableOpacity>
-                                                <Image
-                                                    style={{ height: 40, width: 25 }}
-                                                    source={require('./../assets/images/location_icon.png')}
-                                                />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </View>
-
+                        </Modal>
+                    </View>
+                    <View style={{ flex: 1, marginTop: 50 }}>
+                        <View style={styles.modalAddress}>
+                            <ScrollView>
                                 <View style={styles.textaddressModal}>
                                     <View >
                                         <Text style={styles.textStyle}>Province</Text>
@@ -493,8 +418,6 @@ export class RegistrationCrafterPage extends React.Component {
                                     </View>
                                 </View>
 
-
-
                                 <View style={styles.buttonOnModalAddress}>
 
                                     <View>
@@ -517,11 +440,10 @@ export class RegistrationCrafterPage extends React.Component {
                                 </View>
                             </ScrollView>
                         </View>
-                        {/* </View> */}
-                    </Modal>
-                    {/* </View> */}
+                    </View>
+
                 </ScrollView>
-            </ImageBackground>
+            </ImageBackground >
         );
     };
 };
@@ -680,14 +602,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: '#ffffff',
-<<<<<<< Updated upstream
-        alignSelf: 'center'
-=======
         alignSelf: 'center',
         borderWidth: 0.9,
         shadowColor: '#000',
         shadowOpacity: 1.0,
->>>>>>> Stashed changes
     },
     textaddressModal: {
         marginLeft: 10,
