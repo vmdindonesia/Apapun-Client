@@ -319,7 +319,7 @@ export class OrderPage extends React.Component {
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ paddingRight: 5 }}>
+            <View key={index} style={{ marginRight: -10 }}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -503,6 +503,25 @@ export class OrderPage extends React.Component {
                             </View>
                             :
                             <View>
+                                <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
+                                    <TouchableOpacity style={{ justifyContent: 'center' }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Image.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }}>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
+                                    <Image
+                                        style={{ width: 20, height: 20 }}
+                                        source={require('./../assets/images/Trash.png')}
+                                        resizeMode='contain'
+                                    />
+                                    </TouchableOpacity>
+                                </View>
                                 <Carousel
                                     ref={(c) => { this._carousel = c; }}
                                     data={this.state.photoTemp}
@@ -518,51 +537,46 @@ export class OrderPage extends React.Component {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
                             {this.returnDesignPhoto()}
+                            <Text style={{ flex: 1, textAlign: 'right', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 5 }}>Maksimal upload 5 gambar</Text>
                         </View>
+
                         :
                         <View style={{ marginBottom: 20 }} />
                 }
 
                 <ContainerSection>
-                    <View style={{ height: '100%', width: '100%', flexDirection: 'row', marginLeft: 10, marginRight: 10 }}>
-
-                        <View style={{ alignItems: 'center', height: '100%', flexDirection: 'row', width: 105, }}>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah Order :</Text>
+                    <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
+                        <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah yang dipesan :</Text>
+                            <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+                                <TouchableOpacity
+                                    onPress={() => this.minusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/minus.png')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={{ width: 60, height: 40 }}>
+                                    <InputNumber
+                                        style={{ alignSelf: 'center', textAlign: 'center' }}
+                                        value={numberPcs.toString()}
+                                        onChangeText={val => this.onChange('numberPcs', val)}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                                <TouchableOpacity
+                                    onPress={() => this.plusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/plus.png')}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.minusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/minus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={{ flexDirection: 'row', height: '100%', width: 100, marginLeft: 3, marginRight: 3, backgroundColor: 'green', borderRadius: 5 }}>
-                            <InputNumber
-                                style={{ alignSelf: 'center' }}
-                                value={numberPcs.toString()}
-                                onChangeText={val => this.onChange('numberPcs', val)}
-                                keyboardType='numeric'
-                            />
-                        </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.plusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/plus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
                         <View style={styles.pickerUnitStyle}>
                             <Picker
                                 selectedValue={unitQuantity}
@@ -572,7 +586,6 @@ export class OrderPage extends React.Component {
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
                         </View>
-
                     </View>
                 </ContainerSection>
 
@@ -837,16 +850,14 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerFlatList: {
-        paddingBottom: 20,
+        paddingBottom: 5,
         paddingRight: 5,
         paddingLeft: 5,
-        paddingTop: 5
+        paddingTop: 5,
     },
     pickerContainer: {
         flex: 1,
-        marginBottom: 5,
-        // marginLeft: 10,
-        // marginRight: 10
+        marginBottom: 5
     },
     pickerStyle: {
         borderColor: '#a9a9a9',
@@ -864,18 +875,15 @@ const styles = StyleSheet.create({
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
-        // flexDirection: 'row',
-        height: '100%',
-        width: 80,
+        width: 120,
         marginLeft: 3,
-        marginRight: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,
-        // paddingLeft: 4,
         borderWidth: 1,
         height: 45,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignSelf: 'flex-end'
     },
     button: {
         backgroundColor: 'rgb(0, 0, 0)',
