@@ -18,7 +18,7 @@ export class DetailTransaksiPage extends React.Component {
                 ref={ref => this.scrollView = ref}
             >
                   <View style={{ backgroundColor: 'white' }}>
-                <View style={{ flexDirection: 'row', height: 50, width: '100%', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', height: 70, width: '100%', alignItems: 'center' }}>
 
 
                     <Image style={{ marginLeft: 50, height: 18, width: 18, borderRadius: 0, }}
