@@ -13,7 +13,7 @@ export class AkunBankPage extends React.Component {
       >
         <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
       </TouchableOpacity>,
-    headerTitle: 'Akun Bnk'
+    headerTitle: 'Akun Bank'
   });
 
   constructor(props) {
@@ -75,17 +75,18 @@ const styles = StyleSheet.create({
   },
   tabContainerActive: {
     height: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'red'
   },
   tabText: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 14
+    fontSize: 15
   },
   tabTextActive: {
-    color: 'red',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Quicksand-Regular'
   }
 })

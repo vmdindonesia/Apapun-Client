@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
     flex: 4
   },
   tabContainer: {
-    height: 50,
+    height: 55,
     justifyContent: 'center',
   },
   tabContainerActive: {
-    height: 50,
+    height: 55,
     justifyContent: 'center',
     borderBottomColor: 'red',
     borderBottomWidth: 1

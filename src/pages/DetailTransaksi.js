@@ -19,29 +19,20 @@ export class DetailTransaksiPage extends React.Component {
             >
 
                 <View style={{ flexDirection: 'row', height: 80, width: '100%', alignItems: 'center' }}>
-
-
                     <Image style={{ marginLeft: 70, height: 18, width: 18, borderRadius: 0, }}
                         source={require('./../assets/images/envelope.png')}
                     />
-
                     <Text style={{ marginLeft: 20, fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
                         total apresiasi design
     </Text>
                 </View>
-
                 <Text style={{ fontSize: 30, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
                     Rp. 120.000
 </Text>
-
                 <Text style={{ fontSize: 14, fontFamily: 'Quicksand-Bold', paddingTop: 50, paddingLeft: 30 }}>
                     April 2018
                 </Text>
-
-            
                 <View style={styles.containerMainAddress}>
-
-
                     <View style={{
                         width: '100%',
                         height: 100,
@@ -49,7 +40,6 @@ export class DetailTransaksiPage extends React.Component {
                         flexDirection: 'row',
                         marginTop: 5
                     }}>
-
                         <View style={{
                             width: '50%',
                             flexDirection: 'column',
@@ -63,9 +53,7 @@ export class DetailTransaksiPage extends React.Component {
                                 }}
                                 >12:30 PM</Text>
                             </View>
-
                         </View>
-
                         <View style={{
                             width: '50%',
                             paddingTop: 15,
@@ -76,15 +64,11 @@ export class DetailTransaksiPage extends React.Component {
                                 paddingTop: -10
                             }}>
                             </View>
-                            <Text style={{ fontSize: 13, paddingTop: 5, paddingLeft: 30,  fontFamily: 'Quicksand-Regular' }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
+                            <Text style={{ fontSize: 13, paddingTop: 5, paddingLeft: 30, fontFamily: 'Quicksand-Regular' }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
                             <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
                             </View>
                         </View>
-
-
                     </View>
-
-
                     <View style={{
                         width: '100%',
                         height: 100,
@@ -93,37 +77,34 @@ export class DetailTransaksiPage extends React.Component {
                         marginTop: 5
                     }}>
 
-                    <View style={{
-                        width: '50%',
-                        flexDirection: 'column',
-                        height: 100
-                    }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 30 }}>28 April 2015</Text>
-                        <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
-                            <Text style={{
-                                fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 5, fontSize: 13, paddingLeft: 30
-                            }}
-                            >12:30 PM</Text>
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 30 }}>28 April 2015</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 5, fontSize: 13, paddingLeft: 30
+                                }}
+                                >12:30 PM</Text>
+                            </View>
+
                         </View>
-
-                    </View>
-
-                    <View style={{
+                        <View style={{
                             width: '50%',
                             paddingTop: 15,
                             flexDirection: 'column',
                             height: 100
                         }}>
-                            <Text style={{ fontSize: 13, paddingTop: 5, paddingLeft: 30,  fontFamily: 'Quicksand-Regular' }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
+                            <Text style={{ fontSize: 13, paddingTop: 5, paddingLeft: 30, fontFamily: 'Quicksand-Regular' }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
                             <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
                             </View>
                         </View>
 
 
+                    </View>
                 </View>
-            </View>
-
-
             </ScrollView>
         )
     }
@@ -143,14 +124,9 @@ const styles = StyleSheet.create({
         marginTop: 5,
         height: 250,
         width: '90%',
-        // alignItems: 'center',
-        // justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
         borderColor: '#d6d7da',
     },
-
-
 })
 
 export default DetailTransaksiPage

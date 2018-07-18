@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate, InputSearch } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
 import { BerandaCrafterPage } from './BerandaCrafter';
 import { FashionCrafterPage } from './FashionCrafter';
 import { FurnitureCrafterPage } from './FurnitureCrafter';
@@ -82,26 +81,20 @@ export class CrafterListPage extends React.Component {
             <View style={{
                 flex: 1,
             }}>
-
-
-
                 <View style={{
-                    // backgroundColor: 'red',
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
-                    // flex:4,
                 }}>
                     <ScrollView
+                        showsHorizontalScrollIndicator={false}
                         horizontal={true}
                     >
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
@@ -115,11 +108,9 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
@@ -133,11 +124,9 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 170,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
@@ -151,11 +140,9 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
@@ -183,17 +170,14 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     tabContainerActive: {
-        // backgroundColor: COLOR.element_a4,
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
         borderColor: 'red'
     },
     tabContainer: {
-        // backgroundColor: COLOR.element_a3,
         height: 50,
         justifyContent: 'center',
-        // borderBottomWidth: 1,
     },
 });
 

@@ -286,66 +286,7 @@ export class DashboardPage extends React.Component {
 									</View>
 
 								</Swiper>
-
-								{/* <View style={styles.containerInsideProfileOne}>
-									<View style={styles.containerPhoto}>
-										<View>
-											<TouchableOpacity style={styles.button}
-												onPress={() => this.props.navigation.navigate('')}>
-												<Image
-													style={styles.profileImage}
-													source={require('./../assets/images/profile.png')}
-												/>
-											</TouchableOpacity>
-										</View>
-									</View>
-								</View>
-
-								<View style={styles.containerInsideProfileTwo}>
-									<View style={styles.containerUp}>
-										<View style={{ marginLeft: 10, marginTop: 15 }}>
-											<Text style={{ color: 'grey', fontSize: 9 }}>Hi, Welcome!</Text>
-											<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
-										</View>
-									</View>
-
-									<View style={styles.containerMiddleProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: 5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_wallet.png')}
-												/>
-											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 9 }}>Total Apresiasi Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 9, color: 'white' }}>Rp. 250.000</Text>
-											</View>
-										</View>
-
-									</View>
-
-									<View style={styles.containerBottomProfileTwo}>
-										<View style={{ marginLeft: 10, marginTop: -5 }}>
-											<View style={{ flex: 1 }}>
-												<Image
-													style={styles.icons}
-													source={require('./../assets/images/ic_design.png')}
-												/>
-											</View>
-											<View style={{ flex: 1 }}>
-												<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 10 }}>Total Design Anda</Text>
-												<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 10, color: 'white' }}>3 Design</Text>
-											</View>
-										</View>
-									</View>
-
-
-								</View> */}
 							</View>
-
-
-
 							<View style={styles.containerUploadIdea}>
 								<View style={{ flex: 1, flexDirection: 'row', }}>
 									<View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
