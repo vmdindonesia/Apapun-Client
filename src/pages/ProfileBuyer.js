@@ -39,7 +39,7 @@ export class ProfileBuyerPage extends React.Component {
                             <View style={{ flex: 1, flexDirection: 'row', height: 60, width: '85%' }}>
 
                                 <View style={{ flex: 1, alignSelf: 'center' }}>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 20, fontFamily: 'Quicksand-Regular', }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
@@ -105,7 +105,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
                                         081284485300
                             </Text>
                                 </View>
@@ -132,7 +132,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
                                         30 Januari 1995
                                     </Text>
                                 </View>
@@ -160,10 +160,10 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular' }}>
                                         Jalan Komodo
                                     </Text>
                                 </View>
@@ -202,10 +202,10 @@ export class ProfileBuyerPage extends React.Component {
                                     // alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Total Apresiasi Design Anda
                                      </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
                                         Rp.120.000
                                      </Text>
                                 </View>
@@ -249,10 +249,10 @@ export class ProfileBuyerPage extends React.Component {
                                     justifyContent: 'center',
                                     marginBottom: 30
                                 }}>
-                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Total Design Anda
                                     </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
                                         3 Design
                                     </Text>
                                 </View>

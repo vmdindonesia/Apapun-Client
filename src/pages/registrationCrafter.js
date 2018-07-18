@@ -250,21 +250,23 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxDeliveryServices}>
 
                                     <View style={styles.iHave}>
+
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                            title='Yes, I Have'
+                                            title='Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             checked={sendserviceone}
                                             onPress={() => this.checkedIHave()}
                                         // onChange={(checked) => console.log('I am checked', checked)}
                                         />
+
                                     </View>
 
                                     <View style={styles.iDontHave}>
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                            title='No, I Dont Have'
+                                            title='Tidak Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             checked={sendservicetwo}
@@ -359,40 +361,20 @@ export class RegistrationCrafterPage extends React.Component {
 
 
 
-                    {/* <View style={{ marginTop: 65 }}> */}
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={this.state.isModalVisible}
-                        onRequestClose={() => {
-                            alert('Modal has been closed.');
-                        }}>
-                        {/* <View style={{ marginTop: 65 }}> */}
+                    <View style={{ marginTop: 65 }}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={this.state.isModalVisible}
+                            onRequestClose={() => {
+                                alert('Modal has been closed.');
+                            }}>
+
+                        </Modal>
+                    </View>
+                    <View style={{ flex: 1, marginTop: 50 }}>
                         <View style={styles.modalAddress}>
                             <ScrollView>
-                                <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
-                                    <View >
-                                        <Text style={styles.textStyle}>Location</Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', width: '100%' }}>
-                                        <View style={{ width: '90%' }}>
-                                            <ContainerSection>
-                                                <Input
-                                                    placeholder='please input your location'
-                                                />
-                                            </ContainerSection>
-                                        </View>
-                                        <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
-                                            <TouchableOpacity>
-                                                <Image
-                                                    style={{ height: 40, width: 25 }}
-                                                    source={require('./../assets/images/location_icon.png')}
-                                                />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </View>
-
                                 <View style={styles.textaddressModal}>
                                     <View >
                                         <Text style={styles.textStyle}>Province</Text>
@@ -436,8 +418,6 @@ export class RegistrationCrafterPage extends React.Component {
                                     </View>
                                 </View>
 
-
-
                                 <View style={styles.buttonOnModalAddress}>
 
                                     <View>
@@ -460,11 +440,10 @@ export class RegistrationCrafterPage extends React.Component {
                                 </View>
                             </ScrollView>
                         </View>
-                        {/* </View> */}
-                    </Modal>
-                    {/* </View> */}
+                    </View>
+
                 </ScrollView>
-            </ImageBackground>
+            </ImageBackground >
         );
     };
 };
@@ -494,7 +473,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         flexDirection: 'column',
         marginTop: -75,
-        height: 870,
+        height: 855,
         width: '90%',
         alignItems: 'center',
         alignSelf: 'center',
@@ -567,12 +546,14 @@ const styles = StyleSheet.create({
         height: 80
     },
     containerCheckBoxAbility: {
-        height: 40,
+        height: 38,
         width: '100%',
         flexDirection: 'row',
         // backgroundColor: 'red',
         // justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: 5,
+        marginRight: 5
     },
     checkBoxAbility: {
         flex: 1,
@@ -589,49 +570,55 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // backgroundColor: 'blue',
         // justifyContent: 'center',
-        // alignItems: 'center'
+        // alignItems: 'center',
+        // alignContent: 'center'
     },
     iHave: {
         // marginLeft: 40,
         height: 55,
         width: '50%',
-        // backgroundColor: 'yellow'
+        // backgroundColor: 'yellow',
         // backgroundColor: 'transparent',
         // borderColor: 'transparent'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     iDontHave: {
         height: 55,
-        width: '65%',
+        width: '50%',
         // backgroundColor: 'red',
-        marginLeft: -20
+        marginLeft: -12.5,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textAgree: {
-        paddingTop: 10,
-        height: 120
+        // paddingTop: 10,
+        height: 60,
+        // backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     modalAddress: {
         width: '100%',
         height: '100%',
         backgroundColor: '#ffffff',
-        alignSelf: 'center'
-    },
-    textStyle: {
-        color: 'black',
-        marginLeft: 5,
-        fontSize: 12,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        alignSelf: 'center',
+        borderWidth: 0.9,
+        shadowColor: '#000',
+        shadowOpacity: 1.0,
     },
     textaddressModal: {
-        paddingTop: 5,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
         height: 80
     },
     buttonOnModalAddress: {
-        paddingTop: 10,
+        marginTop: 10,
         flex: 2,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        width: '95%',
+        width: '96%',
         height: 70,
         // backgroundColor: 'red'
     },
