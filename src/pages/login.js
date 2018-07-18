@@ -96,27 +96,20 @@ export class LoginPage extends React.Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-			// <ScrollView style={{ position: 'relative' }} keyboardShouldPersistTaps="always">
 				<View style={styles.container}>
-					<View style={{ width: '100%', height: '100%', flex: 1, backgroundColor: 'grey', justifyContent: 'flex-start', flexDirection: 'row', position: 'relative' }} >
-						<Image
-							style={{ width: '100%', height: '100%', }}
-							source={require('./../assets/images/bg-login.png')}
-							resizeMode='stretch'
-						/>
-					</View>
-
-
-					<View style={{ flex: 1, alignSelf: 'center', position: 'absolute', marginTop: 70, marginBottom: 60 }}>
-						<Image
-							style={styles.image}
-							source={require('./../assets/images/apapun_logo_white.png')}
-							resizeMode='contain'
-						/>
-					</View>
-
-					<View style={{ flex: 1, position: 'absolute', alignSelf: 'center', width: '100%', marginTop: '75%' }}>
-						<KeyboardAvoidingView>
+					<ImageBackground
+						style={{ width: '100%', height: '100%' }}
+						source={require('./../assets/images/bg-login.png')}
+						resizeMode='cover'
+					>
+						<View style={{ alignSelf: 'center', marginTop: 70, height: '30%' }}>
+							<Image
+								style={styles.image}
+								source={require('./../assets/images/apapun_logo_white.png')}
+								resizeMode='contain'
+							/>
+						</View>
+						<View style={{ flex: 1, alignSelf: 'center', width: '100%', marginTop: 30 }}>
 							<Container>
 								<ContainerSection>
 									<InputLogin
@@ -137,7 +130,7 @@ export class LoginPage extends React.Component {
 									/>
 								</ContainerSection>
 
-								<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
+								<View style={{ height: 20, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
 									<TouchableOpacity
 										onPress={() => this.props.navigation.navigate('ForgotPassword')}>
 										<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
@@ -146,14 +139,14 @@ export class LoginPage extends React.Component {
 									</TouchableOpacity>
 								</View>
 
-								<View style={{ marginTop: 50 }}>
+								<View style={{ marginTop: 40 }}>
 									<ContainerSection>
 										{this.renderButton()}
 									</ContainerSection>
 								</View>
 							</Container>
 
-							<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
+							<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center', marginTop: 50 }}>
 								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
 									Don't have an account? {`\n`}
 								</Text>
@@ -165,10 +158,10 @@ export class LoginPage extends React.Component {
 									</Text>
 								</TouchableOpacity>
 							</View>
-						</KeyboardAvoidingView>
-					</View>
+						</View>
+
+					</ImageBackground>
 				</View>
-			// </ScrollView>
 		)
 	}
 }

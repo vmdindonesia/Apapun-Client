@@ -51,7 +51,6 @@ export class DetailTransaksiPage extends React.Component {
                         flexDirection: 'row',
                         marginTop: 5
                     }}>
-
                         <View style={{
                             width: '50%',
                             flexDirection: 'column',
@@ -65,9 +64,7 @@ export class DetailTransaksiPage extends React.Component {
                                 }}
                                 >12:30 PM</Text>
                             </View>
-
                         </View>
-
                         <View style={{
                             width: '50%',
                             paddingTop: 15,
@@ -78,11 +75,7 @@ export class DetailTransaksiPage extends React.Component {
                             <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2 }}>
                             </View>
                         </View>
-
-
                     </View>
-
-
                     <View style={{
                         width: '100%',
                         height: 100,
@@ -91,22 +84,21 @@ export class DetailTransaksiPage extends React.Component {
                         marginTop: 5
                     }}>
 
-                    <View style={{
-                        width: '50%',
-                        flexDirection: 'column',
-                        height: 100
-                    }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 30 }}>28 April 2015</Text>
-                        <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
-                            <Text style={{
-                                fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 5, fontSize: 13, paddingLeft: 30
-                            }}
-                            >12:30 PM</Text>
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            height: 100
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 30 }}>28 April 2015</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 5, fontSize: 13, paddingLeft: 30
+                                }}
+                                >12:30 PM</Text>
+                            </View>
+
                         </View>
-
-                    </View>
-
-                    <View style={{
+                        <View style={{
                             width: '50%',
                             flexDirection: 'column',
                             height: 100
@@ -117,10 +109,8 @@ export class DetailTransaksiPage extends React.Component {
                         </View>
 
 
+                    </View>
                 </View>
-            </View>
-
-
             </ScrollView>
         )
     }

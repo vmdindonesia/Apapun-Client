@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
   tabText: {
     color: 'black',
     textAlign: 'center',
-    fontSize: 14
+    fontSize: 15
   },
   tabTextActive: {
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Quicksand-Regular'
   }
 })

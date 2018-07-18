@@ -25,9 +25,6 @@ export class GambarPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
-
-
-
             ],
         }
     }

@@ -69,11 +69,9 @@ export class CrafterMyOrderPage extends React.Component {
             }}>
 
                 <View style={{
-                    // backgroundColor: 'red',
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
-                    // flex:4,
                     borderBottomWidth: 2,
                     marginBottom: 3,
                     borderColor: '#e5e5e5'
@@ -81,11 +79,9 @@ export class CrafterMyOrderPage extends React.Component {
 
                     <View
                         style={{
-                            // backgroundColor: 'skyblue',
                             width: '33.3%',
                             height: 50,
                             flexDirection: 'row',
-                            // flex:4,
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
@@ -93,7 +89,7 @@ export class CrafterMyOrderPage extends React.Component {
                             onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
                         >
                             <View style={screen === 'OrderOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>Pesanan Saya</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>Pesanan Saya</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -111,7 +107,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'WishlistOnMyOrderPage' })}>
                             <View style={screen === 'WishlistOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>Wishlist</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>Wishlist</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -129,7 +125,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'HistoryOnMyOrderPage' })}>
                             <View style={screen === 'HistoryOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>History</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>History</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -146,7 +142,6 @@ export class CrafterMyOrderPage extends React.Component {
 
 const styles = StyleSheet.create({
     tabContainerActive: {
-        // backgroundColor: COLOR.element_a4,
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
