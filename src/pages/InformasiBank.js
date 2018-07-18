@@ -17,43 +17,42 @@ export class InformasiBankPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
+                <View style={{ backgroundColor: 'white' }}>
+                <View style={{ flexDirection: 'row', height: 70, width: '100%', alignItems: 'center' }}>
 
-                <View style={{ flexDirection: 'row', height: 80, width: '100%', alignItems: 'center' }}>
 
-
-                    <Image style={{ marginLeft: 70, height: 18, width: 18, borderRadius: 0, }}
+                    <Image style={{ marginLeft: 50, height: 18, width: 18}}
                         source={require('./../assets/images/envelope.png')}
                     />
 
-                    <Text style={{ marginLeft: 20, fontSize: 20, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
-                        total apresiasi design
+                    <Text style={{ marginLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
+                        Total Apresiasi Design Anda
                         </Text>
                 </View>
 
-                <Text style={{ fontSize: 30, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                <Text style={{ fontSize: 25, margintop: 10, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
                     Rp. 120.000
                     </Text>
+                </View>
 
-
-                <View style={styles.containerMainAddress}>
-
-
+                <View style={ styles.containerMainAddress }>
                     <View style={{
                         width: '100%',
-                        height: 100,
+                        height: 50,
                         backgroundColor: '',
-                        flexDirection: 'row',
-                        marginTop: 5
+                        flexDirection: 'row'
                     }}>
 
                         <View style={{
                             width: '50%',
                             flexDirection: 'column',
-                            paddingTop: 15,
-                            height: 100
+                            marginTop: 10,
+                            justifyContent: 'center',
+                            backgroundColor:'',
+                            height: 50
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Nama Depan</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -64,12 +63,13 @@ export class InformasiBankPage extends React.Component {
 
                         <View style={{
                             width: '50%',
-                            paddingTop: 15,
+                            marginTop: 10,
+                            justifyContent: 'center',
                             flexDirection: 'column',
-                            height: 100
+                            height: 50
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Belakang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, }}>Nama Belakang</Text>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -95,7 +95,7 @@ export class InformasiBankPage extends React.Component {
                             height: 100
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>No Rekening</Text>
-                            <View style={{ width: '150%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2 }}>
+                            <View style={{ width: '150%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -107,20 +107,19 @@ export class InformasiBankPage extends React.Component {
 
                     <View style={{
                         width: '100%',
-                        height: 100,
+                        height: 50,
                         backgroundColor: '',
-                        flexDirection: 'row',
-                        marginTop: 5
+                        flexDirection: 'row'
                     }}>
 
                         <View style={{
                             width: '50%',
                             flexDirection: 'column',
-                            paddingTop: 15,
-                            height: 100
+                            margintop: 10,
+                            height: 50
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Nama Bank</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
@@ -131,30 +130,28 @@ export class InformasiBankPage extends React.Component {
 
                         <View style={{
                             width: '50%',
-                            paddingTop: 15,
+                            margintop: 10,
                             flexDirection: 'column',
-                            height: 100
+                            height: 50
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}>Cabang</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 50, paddingLeft: 2, paddingTop: 2, backgroundColor: '' }}>
+                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
-                                >Gading Serpong</Text>
+                                >Serpong</Text>
                             </View>
                         </View>
                     </View>
-                </View>
 
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 20 }]}>Photo Profil Asli</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontFamily: 'Quicksand-Bold', margintop: 15, paddingTop: 50, fontSize: 15, }]}>Photo Profil Asli</Text>
                 <ContainerSection>
-                    <View style={{ flex: 1, width: '50%' }}>
+                    <View style={{ flex: 1, width: '100%' }}>
 
                         <View>
                             <Image
-                                source={require('../assets/images/ariel.jpg')}
-                                style={{ width: '35%', height: 250 }}
+                                source={require('../assets/images/icon_profile.png')}
+                                style={{ width: '35%', height: 200 }}
                                 resizeMode='cover'
                             />
 
@@ -162,15 +159,15 @@ export class InformasiBankPage extends React.Component {
 
                     </View>
                 </ContainerSection>
+            </View>
 
-
-                <Text style={[styles.pickerTextStyle, { marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo KTP</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, fontSize: 15, marginTop: 180, fontFamily: 'Quicksand-Bold' }]}>Photo KTP</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
                         <View>
                             <Image
-                                source={require('../assets/images/ktp.jpg')}
+                                source={require('../assets/images/icon_profile.png')}
                                 style={{ width: '100%', height: 300 }}
                                 resizeMode='cover'
                             />
@@ -180,13 +177,13 @@ export class InformasiBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 20, fontFamily: 'Quicksand-Bold' }]}>Photo Rekening Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 50, fontFamily: 'Quicksand-Bold', fontSize: 15, }]}>Photo Rekening Anda</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
                         <View>
                             <Image
-                                source={require('../assets/images/rekening.jpg')}
+                                source={require('../assets/images/icon_profile.png')}
                                 style={{ width: '100%', height: 300 }}
                                 resizeMode='cover'
                             />
@@ -205,22 +202,14 @@ export class InformasiBankPage extends React.Component {
 const styles = StyleSheet.create({
     containerMainAddress: {
         // flex: 1,
-        borderRadius: 20,
-        shadowColor: 'black',
-        shadowOffset: { width: 10, heigth: 10 },
-        shadowRadius: 5,
-        shadowOpacity: 1.0,
-        elevation: 3,
         flexDirection: 'column',
         marginTop: 5,
-        height: 300,
+        height: 350,
         width: '90%',
         // alignItems: 'center',
         // justifyContent: 'center',
-        alignSelf: 'center',
-        // zIndex: 1,
-        borderColor: '#d6d7da',
-    },
+        alignSelf: 'center'
+    }
 
 
 })

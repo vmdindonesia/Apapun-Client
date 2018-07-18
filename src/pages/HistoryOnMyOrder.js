@@ -32,7 +32,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                         justifyContent: 'center',
                         alignContent: 'center',
                         flexDirection: 'column',
-                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
+                        // borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -48,6 +48,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                             <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
+
+                      <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
 
                     <View style={{
                         width: '50%',

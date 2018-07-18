@@ -245,8 +245,8 @@ export class DashboardPage extends React.Component {
 										<View style={styles.containerInsideProfileTwo}>
 											<View style={styles.containerUp}>
 												<View style={{ marginLeft: 10, marginTop: 15 }}>
-													<Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
-													<Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Yuki Kato</Text>
+													<Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Hi, Welcome!</Text>
+													<Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15 }}>Yuki Kato</Text>
 												</View>
 											</View>
 
@@ -290,7 +290,7 @@ export class DashboardPage extends React.Component {
 							<View style={styles.containerUploadIdea}>
 								<View style={{ flex: 1, flexDirection: 'row', }}>
 									<View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
-										<Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Idea Recently Upload</Text>
+										<Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Idea Recently Upload</Text>
 										<Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Checkout our friend new brilliant ideas</Text>
 									</View>
 									<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
@@ -299,7 +299,7 @@ export class DashboardPage extends React.Component {
 										>
 											<Text
 												style={{
-													color: 'red', flex: 1, fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 20, paddingRight: 20
+													color: 'red', flex: 1, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingTop: 10, paddingRight: 20
 												}}
 											>See all</Text>
 										</TouchableOpacity>
@@ -570,27 +570,27 @@ export class DashboardPage extends React.Component {
 																		}
 
 																		<View style={styles.containerBodyHome}>
-																			<TouchableOpacity
-																				onPress={() => this.OrderStatus('custom')}
-																			>
-																				<View style={{ borderTopWidth: 2, borderTopColor: 'white' }}>
+																			<View style={{ borderTopWidth: 2, borderTopColor: 'white' }}>
+																				<TouchableOpacity
+																					onPress={() => this.OrderStatus('custom')}
+																				>
 																					<Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-																				</View>
-																			</TouchableOpacity>
-																			<TouchableOpacity
-																				onPress={() => this.OrderStatus('captureAndGet')}
-																			>
-																				<View style={{ borderTopWidth: 2, borderTopColor: 'white' }}>
+																				</TouchableOpacity>
+																			</View>
+																			<View style={{ borderTopWidth: 2, borderTopColor: 'white', borderBottomColor: 'white', borderBottomWidth: 2 }}>
+																				<TouchableOpacity
+																					onPress={() => this.OrderStatus('captureAndGet')}
+																				>
 																					<Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n` Get</Text>
-																				</View>
-																			</TouchableOpacity>
-																			<TouchableOpacity
-																				onPress={() => this.OrderStatus('ideaMarket')}
-																			>
-																				<View style={{ borderBottomWidth: 2, borderTopWidth: 2, borderTopColor: 'white', borderBottomColor: 'white' }}>
+																				</TouchableOpacity>
+																			</View>
+																			<View style={{ borderBottomWidth: 2, borderBottomColor: 'white' }}>
+																				<TouchableOpacity
+																					onPress={() => this.OrderStatus('ideaMarket')}
+																				>
 																					<Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-																				</View>
-																			</TouchableOpacity>
+																				</TouchableOpacity>
+																			</View>
 																		</View>
 																	</View>
 																	:
@@ -860,13 +860,16 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
+		// alignContent: 'center',
 		height: 175,
 		width: '95%',
 	},
 	containerPhoto: {
 		flex: 1,
+		width: 125,
 		justifyContent: 'center',
 		alignItems: 'center',
+		// backgroundColor: 'red'
 	},
 	containerInsidePhoto: {
 		justifyContent: 'center',
@@ -878,26 +881,33 @@ const styles = StyleSheet.create({
 	},
 	containerInsideProfileOne: {
 		width: 130,
-		height: 160,
+		height: 180,
+		justifyContent: 'center',
+		alignItems: 'center',
+		// backgroundColor: 'red',
+		marginLeft: 10
 	},
 	containerInsideProfileTwo: {
 		flex: 1,
 		height: 160,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		// backgroundColor: 'yellow'
 	},
 	containerUp: {
-		width: 200,
+		width: 230,
 		height: 60,
-
+		// backgroundColor: 'blue'
 	},
 	containerMiddleProfileTwo: {
-		width: 200,
+		width: 230,
 		height: 50,
+		// backgroundColor: 'blue'
 	},
 	containerBottomProfileTwo: {
-		width: 200,
+		width: 230,
 		height: 50,
+		// backgroundColor: 'blue'
 	},
 	containerUploadIdea: {
 		flex: 1,
@@ -925,8 +935,8 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover'
 	},
 	profileImage: {
-		height: 100,
-		width: 100,
+		height: 110,
+		width: 110,
 		borderRadius: 100,
 	},
 	icons: {

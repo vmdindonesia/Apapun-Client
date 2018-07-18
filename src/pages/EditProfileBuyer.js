@@ -103,18 +103,6 @@ export class EditProfileBuyerPage extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1, height: 75, backgroundColor: 'white', marginTop: 22, flexDirection: "row" }}>
-                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 30, marginLeft: 30, alignItems: 'center' }}>
-                        <Image
-                            style={{ height: 42.5, width: 42.5, }}
-                            source={require('./../assets/images/profile_out.png')}
-                        />
-                        <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 15, paddingLeft: 15, fontWeight: 'bold' }}>KELUAR</Text>
-                        </View>
-                    </View>
-                </View>
-
                 <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
                     <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontWeight: 'bold' }}>Simpan</Text>
                 </View>

@@ -86,8 +86,7 @@ export class CrafterMyOrderPage extends React.Component {
                             justifyContent: 'center'
                         }}>
                         <TouchableOpacity
-                            // onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
-                            onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
                         >
                             <View style={screen === 'OrderOnMyOrderPage' ? tabContainerActive : tabContainer}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>Pesanan Saya</Text>

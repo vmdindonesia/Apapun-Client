@@ -121,7 +121,7 @@ export class BerandaCrafterPage extends React.Component {
                                 width: '75%'
                             }}>
                                 <Text style={{ fontWeight: 'bold', fontSize: 15, }}>Profesional Crafter</Text>
-                                <Text style={{ color: 'red', fontSize: 13, paddingTop: 2, }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
+                                <Text style={{ color: 'black', fontSize: 13, paddingTop: 2, }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
                             </View>
 
                             <View style={{

@@ -27,12 +27,16 @@ export class PengaturanBankPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <Text style={[styles.pickerTextStyle]}>
+                <View style={{ backgroundColor: '', justifyContent: 'center', textAlign: 'center', alignContent: 'center', height: 100, fontSize: 15 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold'}}>
                     Total apresiasi anda akan di transfer ke akun bank yang telah anda daftarkan dan akan di transferkan setiap blannya.
-        </Text>
+                </Text>
+                </View>
 
 
-                <Text style={{ marginLeft: 5, marginTop: 10, }}>Nama Akun Apapun Anda</Text>
+                <View style={{ backgroundColor: 'white' }}>
+                <Text style={{ marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Nama Akun Apapun Anda</Text>
+
 
                 <ContainerSection>
                     <Input
@@ -69,7 +73,24 @@ export class PengaturanBankPage extends React.Component {
                     />
                 </ContainerSection>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo Profil Asli</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo Profil Asli</Text>
+                <ContainerSection>
+                    <View style={{ flex: 1, width: '100%' }}>
+
+                        <View>
+                            <Image
+                                source={require('../assets/images/Upload-Photo.png')}
+                                style={{ width: '35%', height: 200 }}
+                                resizeMode='cover'
+                            />
+
+                        </View>
+
+                    </View>
+                </ContainerSection>
+
+
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo KTP</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -85,24 +106,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
                 </ContainerSection>
 
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo KTP</Text>
-                <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
-
-                        <View>
-                            <Image
-                                source={require('../assets/images/Upload-Photo.png')}
-                                style={{ width: '100%', height: 300 }}
-                                resizeMode='cover'
-                            />
-
-                        </View>
-
-                    </View>
-                </ContainerSection>
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Photo Rekening Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }]}>Photo Rekening Anda</Text>
                 <ContainerSection>
                     <View style={{ flex: 1, width: '100%' }}>
 
@@ -126,7 +130,7 @@ export class PengaturanBankPage extends React.Component {
                 </ContainerSection>
 
                 <TouchableOpacity style={styles.button}>
-                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Kirim Kode Verifikasi</Text>
+                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Kirim Kode Verifikasi</Text>
                 </TouchableOpacity>
 
                 <ContainerSection>
@@ -141,7 +145,7 @@ export class PengaturanBankPage extends React.Component {
 
                         <CheckBox
                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                            title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                            title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                             </Text>}
                         // checked={true}
                         // onChange={(checked) => console.log('I am checked', checked)}
@@ -154,7 +158,7 @@ export class PengaturanBankPage extends React.Component {
                 </View>
 
 
-
+            </View>
             </ScrollView>
         )
     }
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
     textAgree: {
         paddingTop: 10,
         height: 120
-    },
+    }
 
 
 })
