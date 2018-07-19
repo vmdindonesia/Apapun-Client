@@ -17,9 +17,7 @@ export class DesignSayaPage extends React.Component {
             </TouchableOpacity>,
         headerTitle: 'Design Saya',
         headerStyle: {
-            elevation:0,
-            // borderBottomColor : 'white',
-            // borderBottomWidth : 0
+            elevation:0
         }
     });
 
@@ -192,7 +190,8 @@ const styles = StyleSheet.create({
     },
     jing: {
         flex: 1,
-        paddingTop: 50
+        paddingTop: 50,
+        width: '100%'
     }
 
 

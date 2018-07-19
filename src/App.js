@@ -76,6 +76,8 @@ import { CaptureandgetPage } from './pages/CaptureNGet';
 import { IdeaFurniturePage } from './pages/IdeaFurniture';
 import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
+import { EditProductPage } from './pages/EditProduct';
+import { ProductDetailNyaPage } from './pages/ProductDetailNya';
 
 
 console.disableYellowBox = true;
@@ -89,6 +91,10 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  
+  // EditProduct:{
+  //   screen: EditProductPage
+  // },
   StartScreen: {
     screen: StartScreen
   },
@@ -103,6 +109,9 @@ const Routes = createStackNavigator({
   },
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
+  },
+  ProductDetailNya: {
+    screen: ProductDetailNyaPage
   },
   InformasiBank: {
     screen: InformasiBankPage

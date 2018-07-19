@@ -30,7 +30,7 @@ export class PageDesignPage extends React.Component {
                         position: 'relative', bottom: 470, left: 350, justifyContent: 'center'
                     }}>
                         <Image
-                            style={{ width: 20, height: 20, alignSelf: 'center', }}
+                            style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/pen_mainprof.png')}
                         />
                     </TouchableOpacity>
@@ -39,7 +39,7 @@ export class PageDesignPage extends React.Component {
                         position: 'relative', bottom: 510, left: 20, justifyContent: 'center'
                     }}>
                         <Image
-                            style={{ width: 20, height: 20, alignSelf: 'center', }}
+                            style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/arrow.png')}
                         />
                     </TouchableOpacity>
