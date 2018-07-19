@@ -76,6 +76,8 @@ import { CaptureandgetPage } from './pages/CaptureNGet';
 import { IdeaFurniturePage } from './pages/IdeaFurniture';
 import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
+import { EditProductPage } from './pages/EditProduct';
+import { ProductDetailNyaPage } from './pages/ProductDetailNya';
 
 
 console.disableYellowBox = true;
@@ -89,12 +91,38 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  
+  // EditProduct:{
+  //   screen: EditProductPage
+  // },
   StartScreen: {
     screen: StartScreen
   },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
+  },
+
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+
   ProfilePage: {
     screen: ProfileBuyerPage
   },
+  Order: {
+    screen: OrderPage
+  },
+
+
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
@@ -103,6 +131,9 @@ const Routes = createStackNavigator({
   },
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
+  },
+  ProductDetailNya: {
+    screen: ProductDetailNyaPage
   },
   InformasiBank: {
     screen: InformasiBankPage
@@ -113,13 +144,8 @@ const Routes = createStackNavigator({
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
 
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
+
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
@@ -130,21 +156,15 @@ const Routes = createStackNavigator({
     screen: CrafterListPage
   },
 
-  Order: {
-    screen: OrderPage
-  },
+
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
+
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
+
 
   IdeaBeauty: {
     screen: IdeaBeautyPage
@@ -279,9 +299,7 @@ const Routes = createStackNavigator({
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
-  pengaturanBank: {
-    screen: PengaturanBankPage
-  },
+
   DetailOrder: {
     screen: DetailOrderPage
   },
@@ -340,6 +358,10 @@ const Routes = createStackNavigator({
       },
       headerStyle: {
         backgroundColor: COLOR.headerBar,
+        shadowOpacity: 0,
+        elevation: 0,
+        borderBottomColor: 'white',
+        borderBottomWidth: 1.5
       },
       headerTintColor: '#000',
     }

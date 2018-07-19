@@ -7,7 +7,7 @@ import { FashionCrafterPage } from './FashionCrafter';
 import { FurnitureCrafterPage } from './FurnitureCrafter';
 import { BeautyCrafterPage } from './BeautyCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 
 
 export class CrafterListPage extends React.Component {
@@ -15,22 +15,13 @@ export class CrafterListPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+                onPress={() => { navigation.goBack(); console.log(navigation, 'Props Order') }}
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
         headerTitle: 'Crafter List'
     });
 
-    static navigationOptions = {
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => { console.log(this.props, 'Props Order') }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-            </TouchableOpacity>,
-        headerTitle: 'Crafter List'
-    }
 
     constructor(props) {
         super(props)
@@ -72,7 +63,7 @@ export class CrafterListPage extends React.Component {
         } = this.state;
 
         const {
-            tabContainerActive, tabContainer
+            tabContainerActive, tabContainer, fontActive, fontNotActive
         } = styles;
 
 
@@ -101,7 +92,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BerandaCrafterPage' })}>
                                 <View style={screen === 'BerandaCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Beranda</Text>
+                                    <Text style={screen === 'BerandaCrafterPage' ? fontActive : fontNotActive}>Beranda</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -117,7 +108,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FashionCrafterPage' })}>
                                 <View style={screen === 'FashionCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Fashion</Text>
+                                    <Text style={screen === 'FashionCrafterPage' ? fontActive : fontNotActive}>Fashion</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -133,7 +124,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FurnitureCrafterPage' })}>
                                 <View style={screen === 'FurnitureCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Furniture & Appliance</Text>
+                                    <Text style={screen === 'FurnitureCrafterPage' ? fontActive : fontNotActive}>Furniture & Appliance</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -149,7 +140,7 @@ export class CrafterListPage extends React.Component {
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BeautyCrafterPage' })}>
                                 <View style={screen === 'BeautyCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Beauty</Text>
+                                    <Text style={screen === 'BeautyCrafterPage' ? fontActive : fontNotActive}>Beauty</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -180,6 +171,15 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
     },
+    fontActive: {
+        fontFamily: 'Quicksand-Bold',
+        fontSize: 15
+    },
+    fontNotActive: {
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color: '#c6c6c6'
+    }
 });
 
 export default CrafterListPage

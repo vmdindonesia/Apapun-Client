@@ -60,7 +60,7 @@ export class CrafterMyOrderPage extends React.Component {
         } = this.state;
 
         const {
-            tabContainerActive, tabContainer
+            tabContainerActive, tabContainer, fontActive, fontNotActive
         } = styles;
 
         return (
@@ -74,7 +74,8 @@ export class CrafterMyOrderPage extends React.Component {
                     flexDirection: 'row',
                     borderBottomWidth: 2,
                     marginBottom: 3,
-                    borderColor: '#e5e5e5'
+                    borderColor: '#e5e5e5',
+                    backgroundColor: 'white'
                 }}>
 
                     <View
@@ -89,7 +90,7 @@ export class CrafterMyOrderPage extends React.Component {
                             onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
                         >
                             <View style={screen === 'OrderOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>Pesanan Saya</Text>
+                                <Text style={screen === 'OrderOnMyOrderPage' ? fontActive : fontNotActive}>Pesanan Saya</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -107,7 +108,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'WishlistOnMyOrderPage' })}>
                             <View style={screen === 'WishlistOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>Wishlist</Text>
+                                <Text style={screen === 'WishlistOnMyOrderPage' ? fontActive : fontNotActive}>Wishlist</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -125,7 +126,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'HistoryOnMyOrderPage' })}>
                             <View style={screen === 'HistoryOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular ', fontSize: 15 }}>History</Text>
+                                <Text style={screen === 'HistoryOnMyOrderPage' ? fontActive : fontNotActive}>History</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -153,6 +154,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // borderBottomWidth: 1,
     },
+    fontActive: {
+        fontFamily: 'Quicksand-Bold',
+        fontSize: 15
+    },
+    fontNotActive: {
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color: '#c6c6c6'
+    }
 
 
 });
