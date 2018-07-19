@@ -48,8 +48,26 @@ export class OrderPage extends React.Component {
             dataCategory: '',
             dataSubCategory: '',
             dataAddress: '',
+            firstmaterial: false,
+            buttonfirstmaterial: false,
+            subCategory : []
         }
     }
+
+
+
+
+    checkedSubMaterial() {
+        this.setState({ buttonfirstmaterial: !this.state.buttonfirstmaterial }, () => {
+            const newSubCategory = this.state.subCategory;
+            newSubCategory[this.state.subCategory.length] = 1;
+            this.setState({ subCategory: newSubCategory }, () => {
+                console.log(this.state.subCategory, 'Sub Category')
+            });
+
+        })
+    }
+
 
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible })
@@ -435,7 +453,9 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            unitQuantity
+            unitQuantity,
+            firstmaterial,
+            buttonfirstmaterial
         } = this.state;
 
         return (
@@ -515,11 +535,11 @@ export class OrderPage extends React.Component {
                                         <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
-                                    <Image
-                                        style={{ width: 20, height: 20 }}
-                                        source={require('./../assets/images/Trash.png')}
-                                        resizeMode='contain'
-                                    />
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Trash.png')}
+                                            resizeMode='contain'
+                                        />
                                     </TouchableOpacity>
                                 </View>
                                 <Carousel
@@ -722,7 +742,7 @@ export class OrderPage extends React.Component {
                             }}>
 
                                 <View style={{
-                                    width: '90%', height: 60, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
+                                    width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
                                 }}>
                                     < InputSearch style={{ flex: 1 }}
                                         // onFocus={() => navigate('FilterBefore')}
@@ -732,92 +752,70 @@ export class OrderPage extends React.Component {
                                 </View>
 
 
-                                <View style={{ flex: 2, flexDirection: 'row', }}>
+                                <View style={{ flex: 2, flexDirection: 'row', borderBottomColor: 'black', }}>
 
-                                    <View style={{ width: 150, flexDirection: 'column', }}>
+                                    <View style={{ height: 115, width: 125, flexDirection: 'column', marginTop: 5 }}>
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
+
+                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                            <TouchableOpacity
+                                                onPress={() => this.setState({ firstmaterial: !this.firstmaterial })}
+                                            >
+                                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
+                                            </TouchableOpacity>
+
                                         </View>
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                        {/* <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 2>"}</Text>
                                         </View>
 
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 3>"}</Text>
-                                        </View>
+                                        </View> */}
 
                                     </View>
 
                                     <ScrollView style={{ flex: 1 }}>
 
-                                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                                        {
+                                            firstmaterial === true ?
 
+                                                <View style={{ flex: 1, height: 40, flexDirection: 'row', borderBottomColor: '#e5e5e5', marginTop: 5 }}>
+                                                    <Text style={{ textAlign: 'center', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
+                                                    <View style={{ flexDirection: 'row', height: '100%', width: 35, marginLeft: 27, }}>
 
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
+                                                        <CheckBox
+                                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
+                                                            // onPress={() => this.checkBoxFashion()}       
+                                                            checked={buttonfirstmaterial}
+                                                            onPress={() => this.checkedSubMaterial()}
+                                                        />
 
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
-                                                    />
-
+                                                    </View>
                                                 </View>
-                                            </View>
-
-
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 2>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
-
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
-                                                    />
-
+                                                :
+                                                <View />
+                                        }
+                                        {
+                                            buttonfirstmaterial === true ?
+                                                <View style={{ flexDirection: 'row', }}>
+                                                    <TouchableOpacity >
+                                                        <View style={{
+                                                            width: '90%', height: 40, marginTop: -5, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', borderBottomColor: '#e5e5e5', flex: 1,
+                                                        }}>
+                                                            <Image style={{ width: 17, height: 17, marginRight: 5 }} source={require('../assets/images/ic_search_material.png')} />
+                                                            <Text style={{ fontSize: 12, color: 'red' }}>Cari tahu material ini</Text>
+                                                        </View>
+                                                    </TouchableOpacity>
                                                 </View>
-                                            </View>
+                                                :
+                                                <View />
+                                        }
 
 
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-
-
-
-
-
-
-
-                                        </View>
                                     </ScrollView>
-
 
                                 </View>
 
