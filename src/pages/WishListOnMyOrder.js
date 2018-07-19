@@ -21,7 +21,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                     paddingTop: 10,
                     paddingBottom: 10,
                     // flex : 1, 
-                    // backgroundColor: 'yellow',
+                    backgroundColor: 'white',
                     flexDirection: 'row'
                 }}>
 

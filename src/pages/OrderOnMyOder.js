@@ -33,7 +33,8 @@ export class OrderOnMyOrderPage extends React.Component {
                     paddingTop: 10,
                     paddingBottom: 10,
                     // flex : 1,
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    backgroundColor:'white'
                 }}>
 
                     <View style={{
@@ -55,7 +56,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -79,7 +80,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -217,7 +218,7 @@ export class OrderOnMyOrderPage extends React.Component {
 
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('OrderWithTrack')}
+                        onPress={() => this.props.navi.navigate('OrderWithTrack')}
                     >
                         <View style={{
                             height: 165,
