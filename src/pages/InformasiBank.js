@@ -17,12 +17,12 @@ export class InformasiBankPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <View style={{ backgroundColor: 'white' }}>
-                <View style={{ flexDirection: 'row', height: 70, width: '100%', alignItems: 'center' }}>
+                <View style={{ backgroundColor: 'white', alignItems: 'center', justifyContent:'center', textAlign: 'center' }}>
+                <View style={{ flexDirection: 'row', height: 50, width: '100%', alignItems: 'center' }}>
 
 
                     <Image style={{ marginLeft: 50, height: 18, width: 18}}
-                        source={require('./../assets/images/envelope.png')}
+                        source={require('./../assets/images/ic_wallet.png')}
                     />
 
                     <Text style={{ marginLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
@@ -30,7 +30,7 @@ export class InformasiBankPage extends React.Component {
                         </Text>
                 </View>
 
-                <Text style={{ fontSize: 25, margintop: 10, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                <Text style={{ fontSize: 25, margintop: 20, marginBottom: 25, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
                     Rp. 120.000
                     </Text>
                 </View>

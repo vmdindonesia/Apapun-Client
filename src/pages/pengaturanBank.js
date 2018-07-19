@@ -28,14 +28,20 @@ export class PengaturanBankPage extends React.Component {
                 ref={ref => this.scrollView = ref}
             >
                 <View style={{ backgroundColor: '', justifyContent: 'center', textAlign: 'center', alignContent: 'center', height: 100, fontSize: 15 }}>
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold'}}>
-                    Total apresiasi anda akan di transfer ke akun bank yang telah anda daftarkan dan akan di transferkan setiap blannya.
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Reguler'}}>
+                    Total apresiasi anda akan di transfer
+                </Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Reguler'}}>
+                    ke akun bank yang telah anda daftarkan dan
+                </Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Reguler'}}>
+                    akan di transferkan setiap bulannya.
                 </Text>
                 </View>
 
 
                 <View style={{ backgroundColor: 'white' }}>
-                <Text style={{ marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Nama Akun Apapun Anda</Text>
+                <Text style={{ marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Reguler' }}>Nama Akun Apapun Anda</Text>
 
 
                 <ContainerSection>
@@ -130,7 +136,7 @@ export class PengaturanBankPage extends React.Component {
                 </ContainerSection>
 
                 <TouchableOpacity style={styles.buttons}>
-                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Kirim Kode Verifikasi</Text>
+                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Kirim Kode Verifikasi</Text>
                 </TouchableOpacity>
 
                 <ContainerSection>
@@ -144,8 +150,8 @@ export class PengaturanBankPage extends React.Component {
                     <View>
 
                         <CheckBox
-                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                            title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontFamily: 'Quicksand-Reguler' }}
+                            title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>Syarat & Ketentuan</Text>
                             </Text>}
                         // checked={true}
                         // onChange={(checked) => console.log('I am checked', checked)}

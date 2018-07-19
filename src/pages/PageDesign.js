@@ -15,13 +15,12 @@ export class PageDesignPage extends React.Component {
 
 
             <ScrollView
-                style={styles.containerStyle}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
 
-                <View style={{ zIndex: 0 }}>
-                    <View style={{ flex: 1 }}>
+                <View>
+                    <View style={styles.containerImage}>
                         <Image style={styles.containerPhoto}
                             source={require('./../assets/images/lala.jpg')}
                         />
@@ -41,16 +40,14 @@ export class PageDesignPage extends React.Component {
                     }}>
                         <Image
                             style={{ width: 20, height: 20, alignSelf: 'center', }}
-                            source={require('./../assets/images/icon_back.png')}
+                            source={require('./../assets/images/arrow.png')}
                         />
                     </TouchableOpacity>
                 </View>
 
 
                 <View style={styles.containerSecondForm}>
-
-
-                    <View style={{ flexDirection: 'row', height: '100%', width: '100%', }}>
+                    <View style={{ flex: 1, flexDirection: 'row', height: '100%', width: '100%', }}>
 
                         <View style={{
                             flexDirection: 'column',
@@ -99,11 +96,12 @@ export class PageDesignPage extends React.Component {
                 </View>
 
 
-
+                
                 <View style={{
                     width: '100%',
                     height: '5%',
                     backgroundColor: 'white',
+                    marginTop: 20,
                     flexDirection: 'row'
                 }}>
 
@@ -203,28 +201,34 @@ export class PageDesignPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    containerImage: {
+        // flex: 1,
+        // justifyContent: 'center',
+        alignItems: 'center',
+        // zIndex: 0,
+        // backgroundColor: 'yellow'
+
+    },
     containerPhoto: {
         height: 500,
         width: 450,
     },
     containerSecondForm: {
-        flex: 1,
+        // flex: 1,
         borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
-        paddingTop: -30,
         shadowOffset: { width: 10, heigth: 10 },
         shadowRadius: 5,
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'row',
+        marginTop: -120,
         height: 140,
         width: '90%',
-        // alignItems: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignSelf: 'center',
-        zIndex: 1,
-        marginBottom: 30,
+        zIndex: 3,
         borderWidth: 0.5,
         borderColor: '#d6d7da'
     },
@@ -258,9 +262,6 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         // justifyContent: 'center',
         alignSelf: 'center'
-    },
-    containerStyle: {
-        zIndex: 0
     }
     
 

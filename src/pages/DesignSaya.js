@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export class DesignSayaPage extends React.Component {
 
+
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
@@ -14,7 +15,12 @@ export class DesignSayaPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Design Saya'
+        headerTitle: 'Design Saya',
+        headerStyle: {
+            elevation:0,
+            // borderBottomColor : 'white',
+            // borderBottomWidth : 0
+        }
     });
 
     render() {

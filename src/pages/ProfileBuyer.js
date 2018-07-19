@@ -5,16 +5,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class ProfileBuyerPage extends React.Component {
-
-    static navigationOptions = ({ navigation }) => ({
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-            </TouchableOpacity>,
-        headerTitle: 'Profil Buyer'
-    });
+    static navigationOptions = {
+        header: null
+    }
 
     render() {
         return (
@@ -249,10 +242,10 @@ export class ProfileBuyerPage extends React.Component {
                                     justifyContent: 'center',
                                     marginBottom: 30
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', fontWeight: 'bold' }}>
                                         Total Design Anda
                                     </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold',textAlign: 'left' }}>
                                         3 Design
                                     </Text>
                                 </View>
@@ -270,8 +263,11 @@ export class ProfileBuyerPage extends React.Component {
                                     <Text style={{ fontSize: 15, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
                                         Hargai Designmu
                                     </Text>
-                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
-                                        Share dan opresiasikan designmu di seluruh indonesia
+                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center', fontFamily: 'Quicksand-reguler' }}>
+                                        Share dan opresiasikan designmu 
+                                    </Text>
+                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center', fontFamily: 'Quicksand-reguler' }}>
+                                        ke seluruh indonesia
                                     </Text>
                                 </View>
 
@@ -313,7 +309,9 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         alignItems: 'center',
         marginTop: 50,
+        paddingTop: 30,
         zIndex: 0,
+        marginBottom: 78
         // backgroundColor: 'yellow'
 
     },
@@ -362,7 +360,7 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
+        zIndex: 2,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
@@ -377,13 +375,13 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'row',
         marginTop: 5,
+        // zIndex: 3,
         marginBottom: 30,
         height: 70,
         width: '90%',
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
@@ -401,10 +399,10 @@ const styles = StyleSheet.create({
         height: 100,
         width: '90%',
         // alignItems: 'center',
+        // zIndex: 4,
         justifyContent: 'center',
         alignSelf: 'center',
         borderWidth: 0.5,
-        zIndex:0,
         borderColor: '#d6d7da'
     },
     icons: {
@@ -423,10 +421,10 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         height: 40,
         width: 165,
+        marginTop: -50,
         justifyContent: 'center',
         alignSelf: 'center',
-        zIndex: 4,
-        marginBottom: 50
+        zIndex: 3
     }
 });
 
