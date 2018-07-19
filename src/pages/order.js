@@ -49,10 +49,12 @@ export class OrderPage extends React.Component {
             dataCategory: '',
             dataSubCategory: '',
             dataAddress: '',
+            dataMaterial: '',
+            dataSubMaterial: '',
             propertyPhoto: [],
             firstmaterial: false,
             buttonfirstmaterial: false,
-            subCategory : []
+            subCategory: []
         }
     }
 
@@ -89,6 +91,14 @@ export class OrderPage extends React.Component {
                     axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
                         console.log(response, 'Response Address')
                         this.setState({ dataAddress: response.data });
+
+                        axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+                            console.log(response, 'Response Address')
+                            this.setState({ dataMaterial: response.data });
+                        }).catch(error => {
+                            console.log(error, 'Error Address');
+                        })
+
                     }).catch(error => {
                         console.log(error, 'Error Address');
                     })
@@ -182,7 +192,8 @@ export class OrderPage extends React.Component {
                                                             case '':
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
-                                                                return this.prosesOrder();
+                                                                // return this.prosesOrder();
+                                                                return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
                                                         }
                                                 }
                                         }
@@ -194,7 +205,7 @@ export class OrderPage extends React.Component {
 
 
     prosesOrder() {
-        // this.setState({ loading: true });
+        this.setState({ loading: true });
         const {
             nameProduct,
             userId,
@@ -375,6 +386,56 @@ export class OrderPage extends React.Component {
         });
     }
 
+    requestSubMaterial(idMaterial) {
+        console.log(idMaterial, 'Id Material');
+        const materialId = idMaterial;
+        axios.get(`${IPSERVER}/ApapunSubmaterials`, {
+            params: {
+                'materialId': materialId
+            }
+        }).then(response => {
+            console.log(response, 'Data Material');
+            this.setState({ dataSubMaterial: response.data })
+        }).catch(error => {
+            console.log(error, 'Error Data Sub Material');
+        })
+    }
+
+    renderMaterial = (itemMaterial, index) => {
+        // console.log(itemMaterial, 'Item Material');
+        const { firstmaterial } = this.state;
+        return (
+            <View>
+                <TouchableOpacity
+                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId) })}
+                >   
+                {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
+                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }}>{itemMaterial.materialName}</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    renderSubMaterial = (itemSubMaterial, index) => {
+        console.log(itemSubMaterial, 'Item Sub Material');
+        const { buttonfirstmaterial } = this.state;
+        return (
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 4 }}>
+                    <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.materialName.length >= 20 ? `${itemSubMaterial.materialName.substring(0, 20)}...` : `${itemSubMaterial.materialName}`}</Text>
+                </View>
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                    <CheckBox
+                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
+                        checked={buttonfirstmaterial}
+                        onPress={() => this.checkedSubMaterial()}
+                    />
+                </View>
+            </View>
+        );
+    }
+
+
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
@@ -495,7 +556,9 @@ export class OrderPage extends React.Component {
             numberPcs,
             unitQuantity,
             firstmaterial,
-            buttonfirstmaterial
+            buttonfirstmaterial,
+            dataMaterial,
+            dataSubMaterial
         } = this.state;
 
         return (
@@ -794,71 +857,32 @@ export class OrderPage extends React.Component {
                                 </View>
 
 
-                                <View style={{ flex: 2, flexDirection: 'row', borderBottomColor: 'black', }}>
-
-                                    <View style={{ height: 115, width: 125, flexDirection: 'column', marginTop: 5 }}>
-
-
-                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <TouchableOpacity
-                                                onPress={() => this.setState({ firstmaterial: !this.firstmaterial })}
-                                            >
-                                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
-                                            </TouchableOpacity>
-
-                                        </View>
-
-                                        {/* <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 2>"}</Text>
-                                        </View>
-
-
-                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 3>"}</Text>
-                                        </View> */}
-
+                                <View style={{ flex: 1, flexDirection: 'row', borderBottomColor: 'black', }}>
+                                    <View style={{ flex: 1, marginTop: 5, marginLeft: 20 }}>
+                                        <FlatList
+                                            data={dataMaterial}
+                                            extraData={this.state}
+                                            renderItem={({ item, index }) => this.renderMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                        />
                                     </View>
 
-                                    <ScrollView style={{ flex: 1 }}>
-
+                                    <View style={{ flex: 3 }}>
                                         {
                                             firstmaterial === true ?
-
-                                                <View style={{ flex: 1, height: 40, flexDirection: 'row', borderBottomColor: '#e5e5e5', marginTop: 5 }}>
-                                                    <Text style={{ textAlign: 'center', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
-                                                    <View style={{ flexDirection: 'row', height: '100%', width: 35, marginLeft: 27, }}>
-
-                                                        <CheckBox
-                                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
-                                                            // onPress={() => this.checkBoxFashion()}       
-                                                            checked={buttonfirstmaterial}
-                                                            onPress={() => this.checkedSubMaterial()}
-                                                        />
-
-                                                    </View>
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', marginTop: 5 }}>
+                                                    <FlatList
+                                                        data={dataSubMaterial}
+                                                        extraData={this.state}
+                                                        renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
+                                                    />
                                                 </View>
                                                 :
-                                                <View />
-                                        }
-                                        {
-                                            buttonfirstmaterial === true ?
-                                                <View style={{ flexDirection: 'row', }}>
-                                                    <TouchableOpacity >
-                                                        <View style={{
-                                                            width: '90%', height: 40, marginTop: -5, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', borderBottomColor: '#e5e5e5', flex: 1,
-                                                        }}>
-                                                            <Image style={{ width: 17, height: 17, marginRight: 5 }} source={require('../assets/images/ic_search_material.png')} />
-                                                            <Text style={{ fontSize: 12, color: 'red' }}>Cari tahu material ini</Text>
-                                                        </View>
-                                                    </TouchableOpacity>
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', paddingTop: '20%' }}>
+                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Silahkan pilih material</Text>
                                                 </View>
-                                                :
-                                                <View />
                                         }
-
-
-                                    </ScrollView>
-
+                                    </View>
                                 </View>
 
                                 <TouchableOpacity
