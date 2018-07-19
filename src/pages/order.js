@@ -9,7 +9,8 @@ import axios from 'axios';
 import { IPSERVER } from './../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { CheckBox } from 'react-native-elements'
+import { CheckBox } from 'react-native-elements';
+import eachSeries from 'async/eachSeries';
 
 export class OrderPage extends React.Component {
 
@@ -48,6 +49,7 @@ export class OrderPage extends React.Component {
             dataCategory: '',
             dataSubCategory: '',
             dataAddress: '',
+            propertyPhoto: []
         }
     }
 
@@ -68,7 +70,7 @@ export class OrderPage extends React.Component {
                     this.setState({ userId: idUser });
                     axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
                         console.log(response, 'Response Address')
-                        this.setState({ dataAddress: response.data })
+                        this.setState({ dataAddress: response.data });
                     }).catch(error => {
                         console.log(error, 'Error Address');
                     })
@@ -122,14 +124,14 @@ export class OrderPage extends React.Component {
         const {
             nameProduct,
             categoryProduct,
-            uploadDesign,
+            photoTemp,
             uploadMaterial,
             serveDelivery,
             addressDelivery,
             numberPcs,
             unitQuantity
         } = this.state;
-
+        console.log(this.state, 'Data Order');
         switch (nameProduct) {
             case '':
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -140,7 +142,7 @@ export class OrderPage extends React.Component {
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
-                        const designPhoto = uploadDesign.length;
+                        const designPhoto = photoTemp.length;
                         switch (designPhoto) {
                             case 0:
                                 return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -155,15 +157,11 @@ export class OrderPage extends React.Component {
                                                 return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
                                             default:
                                                 switch (addressDelivery) {
-                                                    case '':
-                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     case 0:
                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
                                                         switch (unitQuantity) {
                                                             case '':
-                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                            case 0:
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
                                                                 return this.prosesOrder();
@@ -176,8 +174,9 @@ export class OrderPage extends React.Component {
         }
     }
 
+
     prosesOrder() {
-        this.setState({ loading: true });
+        // this.setState({ loading: true });
         const {
             nameProduct,
             userId,
@@ -187,30 +186,70 @@ export class OrderPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto
         } = this.state;
 
         console.log(this.state);
+
+        var body = new FormData();
+        var request = new XMLHttpRequest();
+
+        this.state.photoTemp.map((item, index) => {
+            const nameFile = 'IMG_' + uuid.v1();
+            if (item.data === 1) {
+                var photo = {
+                    uri: item.uri,
+                    type: 'image/jpeg',
+                    name: nameFile.toUpperCase() + '.jpg'
+                };
+                body.append('photo', photo);
+            }
+        });
+        console.log(body, 'Body');
+
+        body._parts.map((item, index) => {
+            const itemNew = item.slice(1);
+            const newpropertyPhoto = this.state.propertyPhoto;
+            newpropertyPhoto[this.state.propertyPhoto.length] = itemNew;
+            this.setState({ propertyPhoto: newpropertyPhoto });
+        })
+
+        console.log(this.state.propertyPhoto, 'ITIL');
+
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                console.log('success', request.responseText);
+            } else {
+                console.warn('error', request);
+            }
+        };
+
         axios.post(`${IPSERVER}/ApapunOrders/CreateOrder`, {
             userId,
             nameProduct,
+            categoryProduct,
+            numberPcs,
+            serveDelivery,
             addressDelivery,
             catatanTambahan,
-            numberPcs,
             unitQuantity,
-            serveDelivery,
-            categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
-                this.setState({ loading: true });
+                request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                request.send(body);
+                this.setState({ loading: false, propertyPhoto: [] });
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
-                this.setState({ loading: true });
-            })
-        this.setState({ loading: false });
-        return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
+                this.setState({ loading: false, propertyPhoto: [] });
+            });
     }
 
     designPhotoUpload(name) {
@@ -236,10 +275,12 @@ export class OrderPage extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
-
+                let source = { uri: response.uri, data: 1 };
                 if (this.state.photoTemp.length === 0) {
-                    let pushFirst = { uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`, data: 1 };
+                    let pushFirst = {
+                        uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`,
+                        data: 2
+                    };
 
                     const newUriPhoto = this.state.photoTemp;
                     newUriPhoto[this.state.photoTemp.length] = source;
@@ -255,26 +296,26 @@ export class OrderPage extends React.Component {
                 } else {
                     console.log(this.state.photoTemp, 'Foto-Foto');
                     const identify = this.state.photoTemp;
-                    if (identify[1].data === 1) {
+                    if (identify[1].data === 2) {
                         console.log('Foto Sama');
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[1] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[2].data === 1) {
+                    } else if (identify[2].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[2] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[3].data === 1) {
+                    } else if (identify[3].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[3] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[4].data === 1) {
+                    } else if (identify[4].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[4] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
@@ -352,13 +393,12 @@ export class OrderPage extends React.Component {
                     renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
-            </View>
+            </View >
         )
     }
 
     _renderItem = (item, index) => {
         const number = parseInt(item.index) + 1;
-        console.log(number, 'LPLPLPLPLP');
         return (
             <View>
                 <Image
@@ -568,6 +608,7 @@ export class OrderPage extends React.Component {
                                 selectedValue={unitQuantity}
                                 onValueChange={v => this.onChange('unitQuantity', v)}
                             >
+                                <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Pcs' />
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
@@ -623,11 +664,12 @@ export class OrderPage extends React.Component {
                                 onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
-                                <Picker.Item label='JNE Reguler' value='JNEREG' />
-                                <Picker.Item label='JNE Oke' value='JNEOK' />
-                                <Picker.Item label='TIKI Reguler' value='TIKIREG' />
-                                <Picker.Item label='POS Kilat Indonesia' value='POSKILAT' />
-                                <Picker.Item label='GOJEK' value='Gojek' />
+                                <Picker.Item label='JNE Reguler' value='JNE REG' />
+                                <Picker.Item label='JNE Oke' value='JNE OK' />
+                                <Picker.Item label='TIKI Reguler' value='TIKI REG' />
+                                <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
+                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
                     </View>
@@ -794,20 +836,9 @@ export class OrderPage extends React.Component {
                                                     icon="ic_search"
                                                 />
                                             </View>
-
-
-
-
-
-
-
-
                                         </View>
                                     </ScrollView>
-
-
                                 </View>
-
 
                                 <TouchableOpacity
                                     onPress={() => {
