@@ -48,8 +48,26 @@ export class OrderPage extends React.Component {
             dataCategory: '',
             dataSubCategory: '',
             dataAddress: '',
+            firstmaterial: false,
+            buttonfirstmaterial: false,
+            subCategory : []
         }
     }
+
+
+
+
+    checkedSubMaterial() {
+        this.setState({ buttonfirstmaterial: !this.state.buttonfirstmaterial }, () => {
+            const newSubCategory = this.state.subCategory;
+            newSubCategory[this.state.subCategory.length] = 1;
+            this.setState({ subCategory: newSubCategory }, () => {
+                console.log(this.state.subCategory, 'Sub Category')
+            });
+
+        })
+    }
+
 
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible })
@@ -319,7 +337,7 @@ export class OrderPage extends React.Component {
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ paddingRight: 5 }}>
+            <View key={index} style={{ marginRight: -10 }}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -435,7 +453,9 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            unitQuantity
+            unitQuantity,
+            firstmaterial,
+            buttonfirstmaterial
         } = this.state;
 
         return (
@@ -503,6 +523,25 @@ export class OrderPage extends React.Component {
                             </View>
                             :
                             <View>
+                                <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
+                                    <TouchableOpacity style={{ justifyContent: 'center' }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Image.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }}>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Trash.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                </View>
                                 <Carousel
                                     ref={(c) => { this._carousel = c; }}
                                     data={this.state.photoTemp}
@@ -518,51 +557,46 @@ export class OrderPage extends React.Component {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
                             {this.returnDesignPhoto()}
+                            <Text style={{ flex: 1, textAlign: 'right', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 5 }}>Maksimal upload 5 gambar</Text>
                         </View>
+
                         :
                         <View style={{ marginBottom: 20 }} />
                 }
 
                 <ContainerSection>
-                    <View style={{ height: '100%', width: '100%', flexDirection: 'row', marginLeft: 10, marginRight: 10 }}>
-
-                        <View style={{ alignItems: 'center', height: '100%', flexDirection: 'row', width: 105, }}>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah Order :</Text>
+                    <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
+                        <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah yang dipesan :</Text>
+                            <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+                                <TouchableOpacity
+                                    onPress={() => this.minusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/minus.png')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={{ width: 60, height: 40 }}>
+                                    <InputNumber
+                                        style={{ alignSelf: 'center', textAlign: 'center' }}
+                                        value={numberPcs.toString()}
+                                        onChangeText={val => this.onChange('numberPcs', val)}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                                <TouchableOpacity
+                                    onPress={() => this.plusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/plus.png')}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.minusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/minus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={{ flexDirection: 'row', height: '100%', width: 100, marginLeft: 3, marginRight: 3, backgroundColor: 'green', borderRadius: 5 }}>
-                            <InputNumber
-                                style={{ alignSelf: 'center' }}
-                                value={numberPcs.toString()}
-                                onChangeText={val => this.onChange('numberPcs', val)}
-                                keyboardType='numeric'
-                            />
-                        </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.plusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/plus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
                         <View style={styles.pickerUnitStyle}>
                             <Picker
                                 selectedValue={unitQuantity}
@@ -572,7 +606,6 @@ export class OrderPage extends React.Component {
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
                         </View>
-
                     </View>
                 </ContainerSection>
 
@@ -709,7 +742,7 @@ export class OrderPage extends React.Component {
                             }}>
 
                                 <View style={{
-                                    width: '90%', height: 60, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
+                                    width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
                                 }}>
                                     < InputSearch style={{ flex: 1 }}
                                         // onFocus={() => navigate('FilterBefore')}
@@ -719,92 +752,70 @@ export class OrderPage extends React.Component {
                                 </View>
 
 
-                                <View style={{ flex: 2, flexDirection: 'row', }}>
+                                <View style={{ flex: 2, flexDirection: 'row', borderBottomColor: 'black', }}>
 
-                                    <View style={{ width: 150, flexDirection: 'column', }}>
+                                    <View style={{ height: 115, width: 125, flexDirection: 'column', marginTop: 5 }}>
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
+
+                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                            <TouchableOpacity
+                                                onPress={() => this.setState({ firstmaterial: !this.firstmaterial })}
+                                            >
+                                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
+                                            </TouchableOpacity>
+
                                         </View>
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                        {/* <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 2>"}</Text>
                                         </View>
 
 
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
+                                        <View style={{ flex: 1, height: '15%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
                                             <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 3>"}</Text>
-                                        </View>
+                                        </View> */}
 
                                     </View>
 
                                     <ScrollView style={{ flex: 1 }}>
 
-                                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                                        {
+                                            firstmaterial === true ?
 
+                                                <View style={{ flex: 1, height: 40, flexDirection: 'row', borderBottomColor: '#e5e5e5', marginTop: 5 }}>
+                                                    <Text style={{ textAlign: 'center', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
+                                                    <View style={{ flexDirection: 'row', height: '100%', width: 35, marginLeft: 27, }}>
 
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
+                                                        <CheckBox
+                                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
+                                                            // onPress={() => this.checkBoxFashion()}       
+                                                            checked={buttonfirstmaterial}
+                                                            onPress={() => this.checkedSubMaterial()}
+                                                        />
 
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
-                                                    />
-
+                                                    </View>
                                                 </View>
-                                            </View>
-
-
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 2>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
-
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
-                                                    />
-
+                                                :
+                                                <View />
+                                        }
+                                        {
+                                            buttonfirstmaterial === true ?
+                                                <View style={{ flexDirection: 'row', }}>
+                                                    <TouchableOpacity >
+                                                        <View style={{
+                                                            width: '90%', height: 40, marginTop: -5, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', borderBottomColor: '#e5e5e5', flex: 1,
+                                                        }}>
+                                                            <Image style={{ width: 17, height: 17, marginRight: 5 }} source={require('../assets/images/ic_search_material.png')} />
+                                                            <Text style={{ fontSize: 12, color: 'red' }}>Cari tahu material ini</Text>
+                                                        </View>
+                                                    </TouchableOpacity>
                                                 </View>
-                                            </View>
+                                                :
+                                                <View />
+                                        }
 
 
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-
-
-
-
-
-
-
-                                        </View>
                                     </ScrollView>
-
 
                                 </View>
 
@@ -837,16 +848,14 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerFlatList: {
-        paddingBottom: 20,
+        paddingBottom: 5,
         paddingRight: 5,
         paddingLeft: 5,
-        paddingTop: 5
+        paddingTop: 5,
     },
     pickerContainer: {
         flex: 1,
-        marginBottom: 5,
-        // marginLeft: 10,
-        // marginRight: 10
+        marginBottom: 5
     },
     pickerStyle: {
         borderColor: '#a9a9a9',
@@ -864,18 +873,15 @@ const styles = StyleSheet.create({
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
-        // flexDirection: 'row',
-        height: '100%',
-        width: 80,
+        width: 120,
         marginLeft: 3,
-        marginRight: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,
-        // paddingLeft: 4,
         borderWidth: 1,
         height: 45,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignSelf: 'flex-end'
     },
     button: {
         backgroundColor: 'rgb(0, 0, 0)',

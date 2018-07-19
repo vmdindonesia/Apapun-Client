@@ -1,5 +1,5 @@
 
-export const IPSERVER = 'http://103.82.242.217:3005/api';
+export const IPSERVER = 'http://192.168.1.15:3005/api';
 
 // COLOR
 export const COLOR = {
