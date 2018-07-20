@@ -9,7 +9,8 @@ import axios from 'axios';
 import { IPSERVER } from './../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { CheckBox } from 'react-native-elements'
+import { CheckBox } from 'react-native-elements';
+import eachSeries from 'async/eachSeries';
 
 export class OrderPage extends React.Component {
 
@@ -48,8 +49,29 @@ export class OrderPage extends React.Component {
             dataCategory: '',
             dataSubCategory: '',
             dataAddress: '',
+            dataMaterial: '',
+            dataSubMaterial: '',
+            propertyPhoto: [],
+            firstmaterial: false,
+            buttonfirstmaterial: false,
+            subCategory: []
         }
     }
+
+
+
+
+    checkedSubMaterial() {
+        this.setState({ buttonfirstmaterial: !this.state.buttonfirstmaterial }, () => {
+            const newSubCategory = this.state.subCategory;
+            newSubCategory[this.state.subCategory.length] = 1;
+            this.setState({ subCategory: newSubCategory }, () => {
+                console.log(this.state.subCategory, 'Sub Category')
+            });
+
+        })
+    }
+
 
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible })
@@ -68,7 +90,15 @@ export class OrderPage extends React.Component {
                     this.setState({ userId: idUser });
                     axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
                         console.log(response, 'Response Address')
-                        this.setState({ dataAddress: response.data })
+                        this.setState({ dataAddress: response.data });
+
+                        axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+                            console.log(response, 'Response Address')
+                            this.setState({ dataMaterial: response.data });
+                        }).catch(error => {
+                            console.log(error, 'Error Address');
+                        })
+
                     }).catch(error => {
                         console.log(error, 'Error Address');
                     })
@@ -122,14 +152,14 @@ export class OrderPage extends React.Component {
         const {
             nameProduct,
             categoryProduct,
-            uploadDesign,
+            photoTemp,
             uploadMaterial,
             serveDelivery,
             addressDelivery,
             numberPcs,
             unitQuantity
         } = this.state;
-
+        console.log(this.state, 'Data Order');
         switch (nameProduct) {
             case '':
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -140,7 +170,7 @@ export class OrderPage extends React.Component {
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
-                        const designPhoto = uploadDesign.length;
+                        const designPhoto = photoTemp.length;
                         switch (designPhoto) {
                             case 0:
                                 return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -155,18 +185,15 @@ export class OrderPage extends React.Component {
                                                 return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
                                             default:
                                                 switch (addressDelivery) {
-                                                    case '':
-                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     case 0:
                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
                                                         switch (unitQuantity) {
                                                             case '':
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                            case 0:
-                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
-                                                                return this.prosesOrder();
+                                                                // return this.prosesOrder();
+                                                                return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
                                                         }
                                                 }
                                         }
@@ -175,6 +202,7 @@ export class OrderPage extends React.Component {
                 }
         }
     }
+
 
     prosesOrder() {
         this.setState({ loading: true });
@@ -187,30 +215,70 @@ export class OrderPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto
         } = this.state;
 
         console.log(this.state);
+
+        var body = new FormData();
+        var request = new XMLHttpRequest();
+
+        this.state.photoTemp.map((item, index) => {
+            const nameFile = 'IMG_' + uuid.v1();
+            if (item.data === 1) {
+                var photo = {
+                    uri: item.uri,
+                    type: 'image/jpeg',
+                    name: nameFile.toUpperCase() + '.jpg'
+                };
+                body.append('photo', photo);
+            }
+        });
+        console.log(body, 'Body');
+
+        body._parts.map((item, index) => {
+            const itemNew = item.slice(1);
+            const newpropertyPhoto = this.state.propertyPhoto;
+            newpropertyPhoto[this.state.propertyPhoto.length] = itemNew;
+            this.setState({ propertyPhoto: newpropertyPhoto });
+        })
+
+        console.log(this.state.propertyPhoto, 'ITIL');
+
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                console.log('success', request.responseText);
+            } else {
+                console.warn('error', request);
+            }
+        };
+
         axios.post(`${IPSERVER}/ApapunOrders/CreateOrder`, {
             userId,
             nameProduct,
+            categoryProduct,
+            numberPcs,
+            serveDelivery,
             addressDelivery,
             catatanTambahan,
-            numberPcs,
             unitQuantity,
-            serveDelivery,
-            categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
-                this.setState({ loading: true });
+                request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                request.send(body);
+                this.setState({ loading: false, propertyPhoto: [] });
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
-                this.setState({ loading: true });
-            })
-        this.setState({ loading: false });
-        return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
+                this.setState({ loading: false, propertyPhoto: [] });
+            });
     }
 
     designPhotoUpload(name) {
@@ -236,10 +304,12 @@ export class OrderPage extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
-
+                let source = { uri: response.uri, data: 1 };
                 if (this.state.photoTemp.length === 0) {
-                    let pushFirst = { uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`, data: 1 };
+                    let pushFirst = {
+                        uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`,
+                        data: 2
+                    };
 
                     const newUriPhoto = this.state.photoTemp;
                     newUriPhoto[this.state.photoTemp.length] = source;
@@ -255,26 +325,26 @@ export class OrderPage extends React.Component {
                 } else {
                     console.log(this.state.photoTemp, 'Foto-Foto');
                     const identify = this.state.photoTemp;
-                    if (identify[1].data === 1) {
+                    if (identify[1].data === 2) {
                         console.log('Foto Sama');
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[1] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[2].data === 1) {
+                    } else if (identify[2].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[2] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[3].data === 1) {
+                    } else if (identify[3].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[3] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[4].data === 1) {
+                    } else if (identify[4].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[4] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
@@ -316,6 +386,56 @@ export class OrderPage extends React.Component {
         });
     }
 
+    requestSubMaterial(idMaterial) {
+        console.log(idMaterial, 'Id Material');
+        const materialId = idMaterial;
+        axios.get(`${IPSERVER}/ApapunSubmaterials`, {
+            params: {
+                'materialId': materialId
+            }
+        }).then(response => {
+            console.log(response, 'Data Material');
+            this.setState({ dataSubMaterial: response.data })
+        }).catch(error => {
+            console.log(error, 'Error Data Sub Material');
+        })
+    }
+
+    renderMaterial = (itemMaterial, index) => {
+        // console.log(itemMaterial, 'Item Material');
+        const { firstmaterial } = this.state;
+        return (
+            <View>
+                <TouchableOpacity
+                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId) })}
+                >   
+                {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
+                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }}>{itemMaterial.materialName}</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    renderSubMaterial = (itemSubMaterial, index) => {
+        console.log(itemSubMaterial, 'Item Sub Material');
+        const { buttonfirstmaterial } = this.state;
+        return (
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 4 }}>
+                    <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.materialName.length >= 20 ? `${itemSubMaterial.materialName.substring(0, 20)}...` : `${itemSubMaterial.materialName}`}</Text>
+                </View>
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                    <CheckBox
+                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
+                        checked={buttonfirstmaterial}
+                        onPress={() => this.checkedSubMaterial()}
+                    />
+                </View>
+            </View>
+        );
+    }
+
+
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
@@ -352,13 +472,12 @@ export class OrderPage extends React.Component {
                     renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
-            </View>
+            </View >
         )
     }
 
     _renderItem = (item, index) => {
         const number = parseInt(item.index) + 1;
-        console.log(number, 'LPLPLPLPLP');
         return (
             <View>
                 <Image
@@ -435,7 +554,11 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            unitQuantity
+            unitQuantity,
+            firstmaterial,
+            buttonfirstmaterial,
+            dataMaterial,
+            dataSubMaterial
         } = this.state;
 
         return (
@@ -515,11 +638,11 @@ export class OrderPage extends React.Component {
                                         <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
-                                    <Image
-                                        style={{ width: 20, height: 20 }}
-                                        source={require('./../assets/images/Trash.png')}
-                                        resizeMode='contain'
-                                    />
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Trash.png')}
+                                            resizeMode='contain'
+                                        />
                                     </TouchableOpacity>
                                 </View>
                                 <Carousel
@@ -582,6 +705,7 @@ export class OrderPage extends React.Component {
                                 selectedValue={unitQuantity}
                                 onValueChange={v => this.onChange('unitQuantity', v)}
                             >
+                                <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Pcs' />
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
@@ -636,11 +760,12 @@ export class OrderPage extends React.Component {
                                 onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
-                                <Picker.Item label='JNE Reguler' value='JNEREG' />
-                                <Picker.Item label='JNE Oke' value='JNEOK' />
-                                <Picker.Item label='TIKI Reguler' value='TIKIREG' />
-                                <Picker.Item label='POS Kilat Indonesia' value='POSKILAT' />
-                                <Picker.Item label='GOJEK' value='Gojek' />
+                                <Picker.Item label='JNE Reguler' value='JNE REG' />
+                                <Picker.Item label='JNE Oke' value='JNE OK' />
+                                <Picker.Item label='TIKI Reguler' value='TIKI REG' />
+                                <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
+                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
                     </View>
@@ -722,7 +847,7 @@ export class OrderPage extends React.Component {
                             }}>
 
                                 <View style={{
-                                    width: '90%', height: 60, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
+                                    width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
                                 }}>
                                     < InputSearch style={{ flex: 1 }}
                                         // onFocus={() => navigate('FilterBefore')}
@@ -732,95 +857,33 @@ export class OrderPage extends React.Component {
                                 </View>
 
 
-                                <View style={{ flex: 2, flexDirection: 'row', }}>
-
-                                    <View style={{ width: 150, flexDirection: 'column', }}>
-
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 1>"}</Text>
-                                        </View>
-
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 2>"}</Text>
-                                        </View>
-
-
-                                        <View style={{ flex: 1, height: '27.5%', width: '100%', justifyContent: 'center', alignItems: 'center', }}>
-                                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular' }}>{"<Material 3>"}</Text>
-                                        </View>
-
+                                <View style={{ flex: 1, flexDirection: 'row', borderBottomColor: 'black', }}>
+                                    <View style={{ flex: 1, marginTop: 5, marginLeft: 20 }}>
+                                        <FlatList
+                                            data={dataMaterial}
+                                            extraData={this.state}
+                                            renderItem={({ item, index }) => this.renderMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                        />
                                     </View>
 
-                                    <ScrollView style={{ flex: 1 }}>
-
-                                        <View style={{ flex: 1, flexDirection: 'column' }}>
-
-
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 1>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
-
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
+                                    <View style={{ flex: 3 }}>
+                                        {
+                                            firstmaterial === true ?
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', marginTop: 5 }}>
+                                                    <FlatList
+                                                        data={dataSubMaterial}
+                                                        extraData={this.state}
+                                                        renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
                                                     />
-
                                                 </View>
-                                            </View>
-
-
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-                                            <View style={{ flex: 1, height: 52.5, width: '100%', flexDirection: 'row', }}>
-                                                <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', alignSelf: 'center', width: 167.5 }}>{"<sub-material 2>"}</Text>
-                                                <View style={{ flexDirection: 'row', height: '100%', width: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 5 }}>
-
-                                                    <CheckBox
-                                                        containerStyle={{ backgroundColor: 'purple', borderColor: 'transparent', }}
-                                                    // title='<sub - material 1>'
-                                                    // checked={fashion}
-                                                    // onPress={() => this.checkBoxFashion()}
-                                                    // rightText={true}
-                                                    />
-
+                                                :
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', paddingTop: '20%' }}>
+                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Silahkan pilih material</Text>
                                                 </View>
-                                            </View>
-
-
-                                            <View style={{
-                                                width: '92.5%', height: 50, justifyContent: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1, flex: 1,
-                                            }}>
-                                                < InputSearchMaterial
-                                                    // onFocus={() => navigate('FilterBefore')}
-                                                    placeholder="Cari Material"
-                                                    icon="ic_search"
-                                                />
-                                            </View>
-
-
-
-
-
-
-
-
-                                        </View>
-                                    </ScrollView>
-
-
+                                        }
+                                    </View>
                                 </View>
-
 
                                 <TouchableOpacity
                                     onPress={() => {

@@ -60,8 +60,12 @@ export class MenuCrafterPage extends React.Component {
         const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
 
         return (
+<<<<<<< HEAD
             <ScrollView  >
             <View style={{ flex: 1, flexDirection: 'column' }}>
+=======
+            <ScrollView style={{ flex: 1, flexDirection: 'column' }}>
+>>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
                 <View style={{ flex: 1 }}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
@@ -116,117 +120,118 @@ export class MenuCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1 }}>
+<<<<<<< HEAD
                             <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
                                 <View style={styles.card}>
                                     <ContainerSection>
                                         <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
+=======
+
+                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                            <View style={styles.card}>
+                                <ContainerSection>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
+>>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
-                                                <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                                </View>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
+                                            <View style={{ flex: 1 }}>
+                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                             </View>
-                                        </TouchableWithoutFeedback>
-                                    </ContainerSection>
-                                    {
-                                        imageExpanded ?
-                                            <View>
-                                                <FlatList
-                                                    data={this.state.photo}
-                                                    contentContainerStyle={styles.list}
-                                                    renderItem={this.renderProductItem.bind(this)}
-                                                    showsHorizontalScrollIndicator={false}
-                                                />
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </ContainerSection>
+                                {
+                                    imageExpanded ?
+                                        <View>
+                                            <FlatList
+                                                data={this.state.photo}
+                                                contentContainerStyle={styles.list}
+                                                renderItem={this.renderProductItem.bind(this)}
+                                                showsHorizontalScrollIndicator={false}
+                                            />
+                                        </View>
+                                        :
+                                        <View />
+                                }
+                            </View>
+                        </Card>
+                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                            <View style={styles.card}>
+                                <ContainerSection>
+                                    <TouchableWithoutFeedback onPress={() => { this.setState({ noteExpanded: !noteExpanded }); console.log(this.state.noteExpanded, 'Request Klik') }}>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Catatan</Text>
+                                            <View style={{ flex: 1 }}>
+                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name={noteExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                             </View>
-                                            :
-                                            <View />
-                                    }
-                                </View>
-                            </Card>
-                            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                <View style={styles.card}>
-                                    <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => { this.setState({ noteExpanded: !noteExpanded }); console.log(this.state.noteExpanded, 'Request Klik') }}>
-                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Catatan</Text>
-                                                <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={noteExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                </View>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </ContainerSection>
+                                {
+                                    noteExpanded ?
+                                        <View>
+                                            <Text>Aku Cinta Kamu</Text>
+                                        </View>
+                                        :
+                                        <View />
+                                }
+                            </View>
+                        </Card>
+                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                            <View style={styles.card}>
+                                <ContainerSection>
+                                    <TouchableWithoutFeedback onPress={() => { this.setState({ reviewExpanded: !reviewExpanded }); console.log(this.state.reviewExpanded, 'Request Klik') }}>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Ulasan</Text>
+                                            <View style={{ flex: 1 }}>
+                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name={reviewExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                             </View>
-                                        </TouchableWithoutFeedback>
-                                    </ContainerSection>
-                                    {
-                                        noteExpanded ?
-                                            <View>
-                                                <Text>Aku Cinta Kamu</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </ContainerSection>
+                                {
+                                    reviewExpanded ?
+                                        <View>
+                                            <Text>Aku Cinta Kamu</Text>
+                                        </View>
+                                        :
+                                        <View />
+                                }
+                            </View>
+                        </Card>
+                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                            <View style={styles.card}>
+                                <ContainerSection>
+                                    <TouchableWithoutFeedback onPress={() => { this.setState({ accBankExpanded: !accBankExpanded }); console.log(this.state.accBankExpanded, 'Request Klik') }}>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Akun Bank</Text>
+                                            <View style={{ flex: 1 }}>
+                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name={accBankExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                             </View>
-                                            :
-                                            <View />
-                                    }
-                                </View>
-                            </Card>
-                            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                <View style={styles.card}>
-                                    <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => { this.setState({ reviewExpanded: !reviewExpanded }); console.log(this.state.reviewExpanded, 'Request Klik') }}>
-                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Ulasan</Text>
-                                                <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={reviewExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                </View>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </ContainerSection>
+                                {
+                                    accBankExpanded ?
+                                        <View>
+                                            <Text>Aku Cinta Kamu</Text>
+                                        </View>
+                                        :
+                                        <View />
+                                }
+                            </View>
+                        </Card>
+                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                            <View style={styles.card}>
+                                <ContainerSection>
+                                    <TouchableWithoutFeedback onPress={() => { this.setState({ myOrderExpanded: !myOrderExpanded }); console.log(this.state.myOrderExpanded, 'Request Klik') }}>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
+                                            <View style={{ flex: 1 }}>
+                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name={myOrderExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                             </View>
-                                        </TouchableWithoutFeedback>
-                                    </ContainerSection>
-                                    {
-                                        reviewExpanded ?
-                                            <View>
-                                                <Text>Aku Cinta Kamu</Text>
-                                            </View>
-                                            :
-                                            <View />
-                                    }
-                                </View>
-                            </Card>
-                            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                <View style={styles.card}>
-                                    <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => { this.setState({ accBankExpanded: !accBankExpanded }); console.log(this.state.accBankExpanded, 'Request Klik') }}>
-                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Akun Bank</Text>
-                                                <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={accBankExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                </View>
-                                            </View>
-                                        </TouchableWithoutFeedback>
-                                    </ContainerSection>
-                                    {
-                                        accBankExpanded ?
-                                            <View>
-                                                <Text>Aku Cinta Kamu</Text>
-                                            </View>
-                                            :
-                                            <View />
-                                    }
-                                </View>
-                            </Card>
-                            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                <View style={styles.card}>
-                                    <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => { this.setState({ myOrderExpanded: !myOrderExpanded }); console.log(this.state.myOrderExpanded, 'Request Klik') }}>
-                                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
-                                                <View style={{ flex: 1 }}>
-                                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={myOrderExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                </View>
-                                            </View>
-                                        </TouchableWithoutFeedback>
-                                    </ContainerSection>
-                                    {
-                                        myOrderExpanded ?
-                                            <View>
-                                                <Text>Aku Cinta Kamu</Text>
-                                            </View>
+<<<<<<< HEAD
                                             :
                                             <View />
                                     }
@@ -235,6 +240,24 @@ export class MenuCrafterPage extends React.Component {
                     </View>
                 </View>
             </View>
+=======
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </ContainerSection>
+                                {
+                                    myOrderExpanded ?
+                                        <View>
+                                            <Text>Aku Cinta Kamu</Text>
+                                        </View>
+                                        :
+                                        <View />
+                                }
+                            </View>
+                        </Card>
+
+                    </View>
+                </View>
+>>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
             </ScrollView>
         );
     }

@@ -5,6 +5,7 @@ import { Container, ContainerSection, Button, Input, InputDate } from '../compon
 import { COLOR } from './../shared/config';
 import { CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ImagePicker from 'react-native-image-picker';
 
 
 export class PengaturanBankPage extends React.Component {
@@ -19,181 +20,361 @@ export class PengaturanBankPage extends React.Component {
         headerTitle: 'Pengaturan Akun Bank'
     });
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            agree: false,
+            pathPhotoProfil: null,
+            pathPhotoKTP: null,
+            pathPhotoBankBook: null
+
+        };
+    }
+
+    getPhotoProfile() {
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    pathPhotoProfile: source
+                });
+            }
+        });
+    }
+
+    getPhotoKTP() {
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    pathPhotoKTP: source
+                });
+            }
+        });
+    }
+
+
+    getBankBook() {
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    pathPhotoBankBook: source
+                });
+            }
+        });
+    }
+
+
+
+    checkedAgree = () => {
+        this.setState({ agree: !this.state.agree })
+    }
+
 
     render() {
+
+        const {
+            agree,
+            getPhotoProfile
+        } = this.state
+
         return (
             <ScrollView
-                style={styles.containerStyle}
+                style={{ flex: 1, backgroundColor: 'white' }}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <View style={{ backgroundColor: '', justifyContent: 'center', textAlign: 'center', alignContent: 'center', height: 100, fontSize: 15 }}>
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold'}}>
-                    Total apresiasi anda akan di transfer ke akun bank yang telah anda daftarkan dan akan di transferkan setiap blannya.
-                </Text>
+
+                <View style={{ flex: 1, height: 400, marginRight: 10, marginLeft: 10, }}>
+
+
+                    <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'gray', }}>Nama akun APAPUN anda  : <Text style={{ color: 'gray', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Gal Gadot </Text> </Text>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Depan</Text>
+
+                            <ContainerSection>
+                                <Input
+                                    placeholder='silakan isi nama depan anda'
+
+                                />
+                            </ContainerSection>
+
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Belakang</Text>
+
+                            <ContainerSection>
+                                <Input
+                                    placeholder='silakan isi nama belakang anda'
+
+                                />
+                            </ContainerSection>
+
+                        </View>
+
+                    </View>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nomor Rekening</Text>
+
+                        <ContainerSection>
+                            <Input
+                                placeholder='silakan isi no rekening anda'
+
+                            />
+                        </ContainerSection>
+
+                    </View>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Bank</Text>
+
+                        <ContainerSection>
+                            <Input
+                                placeholder='silakan isi nama bank anda'
+
+                            />
+                        </ContainerSection>
+
+                    </View>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Cabang</Text>
+
+                        <ContainerSection>
+                            <Input
+                                placeholder='silakan isi cabang bank'
+
+                            />
+                        </ContainerSection>
+
+                    </View>
+                </View>
+
+                <View style={{ flex: 1, height: 600, marginRight: 10, marginLeft: 10, }}>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Foto Profil Asli</Text>
+                        <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
+                            <TouchableWithoutFeedback
+                                onPress={this.getPhotoProfile.bind(this)}>
+                                <View>
+                                    {
+                                        this.state.pathPhotoProfile == null ?
+
+                                            <Image
+                                                style={{ height: 165, width: 165, alignSelf: 'center' }}
+                                                source={require('./../assets/images/Upload-Photo.png')}
+                                            />
+                                            :
+                                            <Image
+                                                style={{ height: 165, width: 165, alignSelf: 'center' }}
+                                                resizeMode='cover'
+                                                source={this.state.pathPhotoProfile}
+                                            />
+                                    }
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </View>
+
+                    </View>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>KTP</Text>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
+                            <TouchableWithoutFeedback
+                                onPress={this.getPhotoKTP.bind(this)}>
+                                {
+                                    this.state.pathPhotoKTP == null ?
+
+                                        <Image
+                                            style={{ height: 160, width: '100%', alignSelf: 'center' }}
+                                            source={require('./../assets/images/Upload-Photo.png')}
+                                            resizeMode='stretch'
+                                        />
+                                        :
+                                        <Image
+                                            style={{ height: 160, width: '100%', alignSelf: 'center' }}
+                                            resizeMode='cover'
+                                            source={this.state.pathPhotoKTP}
+                                        />
+                                }
+                            </TouchableWithoutFeedback>
+                        </View>
+
+                    </View>
+
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Foto Buku Rekening</Text>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center', }}>
+                            <TouchableWithoutFeedback
+                                onPress={this.getBankBook.bind(this)}
+                            >
+                                {
+                                    this.state.pathPhotoBankBook == null ?
+
+                                        <Image
+                                            style={{ height: 160, width: '100%', alignSelf: 'center' }}
+                                            source={require('./../assets/images/Upload-Photo.png')}
+                                            resizeMode='stretch'
+                                        />
+                                        :
+                                        <Image
+                                            style={{ height: 160, width: '100%', alignSelf: 'center' }}
+                                            resizeMode='cover'
+                                            source={this.state.pathPhotoBankBook}
+                                        />
+                                }
+
+                            </TouchableWithoutFeedback>
+                        </View>
+
+                    </View>
+                </View>
+
+                <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Kode Verifikasi</Text>
+                        <ContainerSection>
+                            <Input
+                                placeholder='silakan masukan kode verifikasi'
+
+                            />
+                        </ContainerSection>
+                    </View>
+                </View>
+
+                <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10, }}>
+                    <TouchableOpacity style={{ flex: 1 }}>
+                        <View style={{ flex: 1, height: 10, backgroundColor: 'black', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
+                            <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>Kirim Kode Verifikasi</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
+                    <View style={{ flex: 1, }}>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Password</Text>
+
+                        <ContainerSection>
+                            <Input
+                                placeholder='silakan isi password anda'
+
+                            />
+                        </ContainerSection>
+
+
+                    </View>
                 </View>
 
 
-                <View style={{ backgroundColor: 'white' }}>
-                <Text style={{ marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Nama Akun Apapun Anda</Text>
+                <View style={{ flex: 1, height: 50, marginRight: 10, marginLeft: 15, justifyContent: 'center' }}>
 
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Depan'
+                    <CheckBox
+                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
+                        </Text>}
+                        onPress={() => this.checkedAgree()}
+                        checked={agree}
                     />
-                </ContainerSection>
+                </View>
 
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Belakang'
-                    />
-                </ContainerSection>
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='No Rekening'
-                    />
-                </ContainerSection>
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Nama Bank'
-                    />
-                </ContainerSection>
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Cabang'
-                    />
-                </ContainerSection>
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>Foto Profil Asli</Text>
-                <ContainerSection>
-                    <View style={{ flex: 1 }}>
-
-                        <View>
-                            <Image
-                                source={require('../assets/images/Upload-Photo.png')}
-                                style={{ width: '50%', height: 200, backgroundColor: 'red', justifyContent:'center', alignItems:'center' }}
-                                resizeMode='cover'
-                            />
-
+                <View style={{ flex: 1, height: 80, marginRight: 5, marginLeft: 10, }}>
+                    <TouchableOpacity style={{ flex: 1 }}
+                        onPress={() => this.props.navigation.navigate('CrafterMenu')}
+                    >
+                        <View style={{ flex: 1, height: 10, backgroundColor: 'red', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
+                            <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>OK</Text>
                         </View>
-
-                    </View>
-                </ContainerSection>
-
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>KTP</Text>
-                <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
-
-                        <View>
-                            <Image
-                                source={require('../assets/images/Upload-Photo.png')}
-                                style={{ width: '100%', height: 300 }}
-                                resizeMode='cover'
-                            />
-
-                        </View>
-
-                    </View>
-                </ContainerSection>
-
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10, fontSize: 15, fontFamily: 'Quicksand-Bold' }]}>Foto Buku Rekening</Text>
-                <ContainerSection>
-                    <View style={{ flex: 1, width: '100%' }}>
-
-                        <View>
-                            <Image
-                                source={require('../assets/images/Upload-Photo.png')}
-                                style={{ width: '100%', height: 300 }}
-                                resizeMode='cover'
-                            />
-
-                        </View>
-
-                    </View>
-                </ContainerSection>
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Kode Verifikasi'
-                    />
-                </ContainerSection>
-
-                <TouchableOpacity style={styles.buttons}>
-                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Normal' }}>Kirim Kode Verifikasi</Text>
-                </TouchableOpacity>
-
-                <ContainerSection>
-                    <Input
-                        Text=''
-                        label='Password'
-                    />
-                </ContainerSection>
-
-                <View style={styles.textAgree}>
-                    <View>
-
-                        <CheckBox
-                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                            title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
-                            </Text>}
-                        // checked={true}
-                        // onChange={(checked) => console.log('I am checked', checked)}
-                        />
-                    </View>
-                    <TouchableOpacity style={styles.button}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); this.props.navigation.navigate('CrafterMenu') }}>
-                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>OK</Text>
                     </TouchableOpacity>
                 </View>
 
 
-            </View>
-            </ScrollView>
+            </ScrollView >
         )
     }
 }
 
 const styles = StyleSheet.create({
-    pickerTextStyle: {
-        fontFamily: 'Quicksand-Bold',
-        color: '#5e5e5e',
-        fontSize: 14,
-        flex: 1,
-        marginTop: 10
-    },
-    button: {
-        backgroundColor: 'red',
-        borderRadius: 20,
-        height: 35,
-        width: 300,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        marginTop: 20
-    },
-    buttons: {
-        backgroundColor: 'black',
-        borderRadius: 20,
-        height: 35,
-        width: 300,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        marginTop: 20
-    },
-    textAgree: {
-        paddingTop: 10,
-        height: 120
-    }
 
 
 })

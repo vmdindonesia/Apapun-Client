@@ -92,8 +92,6 @@ export class RegistrationCrafterPage extends React.Component {
     }
 
 
-
-
     setModalVisible(visible) {
         this.setState({ isModalVisible: visible });
     }
@@ -202,7 +200,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Fashion'
                                             checked={fashion}
                                             onPress={() => this.checkBoxFashion()}
@@ -212,7 +210,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Furniture & Appliances'
                                             checked={furniture}
                                             onPress={() => this.checkBoxFurniture()}
@@ -222,7 +220,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Beauty'
                                             checked={beauty}
                                             onPress={() => this.checkBoxBeauty()}
@@ -233,7 +231,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='DIY, Hobbies & Toys'
                                             checked={DIY}
                                             onPress={() => this.checkBoxDIY()}
@@ -252,7 +250,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <View style={styles.iHave}>
 
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
                                             title='Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -265,7 +263,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                                     <View style={styles.iDontHave}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
                                             title='Tidak Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -354,7 +352,7 @@ export class RegistrationCrafterPage extends React.Component {
 
 
                     <TouchableOpacity style={styles.buttonSignUp}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                        onPress={() => this.props.navigation.navigate('pengaturanBank')}
                     >
                         <Text style={styles.signupButtonText}>Sign Up</Text>
                     </TouchableOpacity>
@@ -370,77 +368,79 @@ export class RegistrationCrafterPage extends React.Component {
                                 alert('Modal has been closed.');
                             }}>
 
+                            < View style={{ flex: 1, marginTop: 50 }}>
+                                <View style={styles.modalAddress}>
+                                    <ScrollView>
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Province</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>District</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>Address Detail</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input style={{ height: 30 }}
+                                                        multiline={true}
+                                                        numberOfLines={150}
+
+                                                        placeholder='please input your detail address'
+
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.buttonOnModalAddress}>
+
+                                            <View>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                                </TouchableHighlight>
+                                            </View>
+
+                                            <View style={{ paddingLeft: 20 }}>
+                                                <TouchableHighlight
+                                                    onPress={() => {
+                                                        this.setModalVisible(!this.state.isModalVisible);
+                                                    }}>
+                                                    <Text style={styles.AddressTextSave}>Save</Text>
+                                                </TouchableHighlight>
+                                            </View>
+                                        </View>
+                                    </ScrollView>
+                                </View>
+                            </View>
+
                         </Modal>
                     </View>
-                    <View style={{ flex: 1, marginTop: 50 }}>
-                        <View style={styles.modalAddress}>
-                            <ScrollView>
-                                <View style={styles.textaddressModal}>
-                                    <View >
-                                        <Text style={styles.textStyle}>Province</Text>
-                                    </View>
-                                    <View>
-                                        <ContainerSection>
-                                            <Input
-                                                placeholder='please input your province'
-                                            />
-                                        </ContainerSection>
-                                    </View>
-                                </View>
 
-                                <View style={styles.textaddressModal}>
-                                    <View >
-                                        <Text style={styles.textStyle}>District</Text>
-                                    </View>
-                                    <View>
-                                        <ContainerSection>
-                                            <Input
-                                                placeholder='please input your district'
-                                            />
-                                        </ContainerSection>
-                                    </View>
-                                </View>
-
-                                <View style={styles.textaddressModal}>
-                                    <View >
-                                        <Text style={styles.textStyle}>Address Detail</Text>
-                                    </View>
-                                    <View>
-                                        <ContainerSection>
-                                            <Input style={{ height: 30 }}
-                                                multiline={true}
-                                                numberOfLines={150}
-
-                                                placeholder='please input your detail address'
-
-                                            />
-                                        </ContainerSection>
-                                    </View>
-                                </View>
-
-                                <View style={styles.buttonOnModalAddress}>
-
-                                    <View>
-                                        <TouchableHighlight
-                                            onPress={() => {
-                                                this.setModalVisible(!this.state.isModalVisible);
-                                            }}>
-                                            <Text style={styles.AddressTextCancel}>Cancel</Text>
-                                        </TouchableHighlight>
-                                    </View>
-
-                                    <View style={{ paddingLeft: 20 }}>
-                                        <TouchableHighlight
-                                            onPress={() => {
-                                                this.setModalVisible(!this.state.isModalVisible);
-                                            }}>
-                                            <Text style={styles.AddressTextSave}>Save</Text>
-                                        </TouchableHighlight>
-                                    </View>
-                                </View>
-                            </ScrollView>
-                        </View>
-                    </View>
 
                 </ScrollView>
             </ImageBackground >
@@ -520,7 +520,7 @@ const styles = StyleSheet.create({
     textStyle: {
         color: 'black',
         marginLeft: 5,
-        fontSize: 12,
+        fontSize: 13,
         fontWeight: 'bold',
         fontFamily: 'Quicksand-Regular'
     },

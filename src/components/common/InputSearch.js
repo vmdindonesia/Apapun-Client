@@ -71,7 +71,7 @@ class InputSearch extends Component {
 							<TouchableOpacity
 								// onPress={() => this.isCancel(value)}
 							>
-								<Image source={require('./../../assets/images/ic_search.png')} style={{ width: 22, height: 22, marginRight: 10, borderRadius: 50000000 }} />
+								<Image source={require('./../../assets/images/ic_search.png')} style={{ width: 33, height: 33, marginRight: 5, borderRadius: 50000000 }} />
 							</TouchableOpacity>
 							: <View />
 					}
@@ -106,7 +106,7 @@ const styles = {
 	// 	color: '#5e5e5e',
 	// 	fontSize: 14,
 	// 	flex: 1,
-	// 	fontFamily: 'Muli-Regular',
+		// fontFamily: 'Quicksand-Regular',
 	// 	marginBottom: 10,
 	// 	marginTop: 10,
 	// },
