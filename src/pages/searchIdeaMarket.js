@@ -68,7 +68,7 @@ export class searchIdeaMarketPage extends React.Component {
 
             <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
 
-                <View style={{ flex: 1, height: 125, backgroundColor: 'skyblue', justifyContent: 'space-between', flexDirection: 'row' }}>
+                <View style={{ flex: 1, height: 125, justifyContent: 'space-between', flexDirection: 'row' }}>
 
                     <View style={{ flex: 1, margin: 5, }}>
                         <TouchableOpacity >
