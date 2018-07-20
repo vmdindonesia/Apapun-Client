@@ -200,7 +200,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Fashion'
                                             checked={fashion}
                                             onPress={() => this.checkBoxFashion()}
@@ -210,7 +210,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Furniture & Appliances'
                                             checked={furniture}
                                             onPress={() => this.checkBoxFurniture()}
@@ -220,7 +220,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Beauty'
                                             checked={beauty}
                                             onPress={() => this.checkBoxBeauty()}
@@ -231,7 +231,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='DIY, Hobbies & Toys'
                                             checked={DIY}
                                             onPress={() => this.checkBoxDIY()}
@@ -250,7 +250,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <View style={styles.iHave}>
 
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
                                             title='Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -263,7 +263,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                                     <View style={styles.iDontHave}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
                                             title='Tidak Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -520,7 +520,7 @@ const styles = StyleSheet.create({
     textStyle: {
         color: 'black',
         marginLeft: 5,
-        fontSize: 12,
+        fontSize: 13,
         fontWeight: 'bold',
         fontFamily: 'Quicksand-Regular'
     },

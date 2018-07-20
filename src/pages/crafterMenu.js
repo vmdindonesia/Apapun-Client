@@ -4,18 +4,18 @@ import { OrderForCrafterPage } from './orderForCrafter';
 import { CrafterPage } from './crafter';
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { CrafterOrderMenuPage } from './CrafterOrderMenu';
 export class CrafterMenuPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerLeft:
-        <TouchableOpacity
-            onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
-        >
-            <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-        </TouchableOpacity>,
+      <TouchableOpacity
+        onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+      >
+        <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+      </TouchableOpacity>,
     headerTitle: 'Crafter Menu'
-});
+  });
 
   constructor(props) {
     super(props)
@@ -25,8 +25,8 @@ export class CrafterMenuPage extends React.Component {
   }
 
   renderScreen = () => {
-    if (this.state.screen === 'orderForCrafter') {
-      return <OrderForCrafterPage navi={this.props.navigation} />
+    if (this.state.screen === 'CrafterOrderMenu') {
+      return <CrafterOrderMenuPage navi={this.props.navigation} />
     } else if (this.state.screen === 'menuCrafter') {
       return <MenuCrafterPage navi={this.props.navigation} />
     }
@@ -40,12 +40,14 @@ export class CrafterMenuPage extends React.Component {
     } = styles;
 
     return (
+
+  
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'orderForCrafter' })}>
-              <View style={screen === 'orderForCrafter' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'orderForCrafter' ? tabTextActive : tabText}>Pesanan</Text>
+            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
+              <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
+                <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
