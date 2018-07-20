@@ -60,6 +60,7 @@ export class MenuCrafterPage extends React.Component {
         const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
 
         return (
+            <ScrollView  >
             <View style={{ flex: 1, flexDirection: 'column' }}>
                 <View style={{ flex: 1 }}>
                     <ImageBackground
@@ -115,7 +116,6 @@ export class MenuCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <ScrollView>
                             <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
                                 <View style={styles.card}>
                                     <ContainerSection>
@@ -232,10 +232,10 @@ export class MenuCrafterPage extends React.Component {
                                     }
                                 </View>
                             </Card>
-                        </ScrollView>
                     </View>
                 </View>
             </View>
+            </ScrollView>
         );
     }
 }
