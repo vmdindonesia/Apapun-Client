@@ -91,6 +91,12 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  // Order: {
+  //   screen: OrderPage
+  // },
+  EditProduct:{
+    screen: EditProductPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -105,9 +111,6 @@ const Routes = createStackNavigator({
   },
   pengaturanBank: {
     screen: PengaturanBankPage
-  },
-  EditProduct:{
-    screen: EditProductPage
   },
   ProfileCrafter: {
     screen: ProfileCrafterPage
@@ -136,9 +139,6 @@ const Routes = createStackNavigator({
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
-  },
-  Order: {
-    screen: OrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
