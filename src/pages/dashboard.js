@@ -203,7 +203,7 @@ export class DashboardPage extends React.Component {
 														/>
 													</View>
 													<View style={{ flex: 1 }}>
-														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 13 }}>Total Apresiasi Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
 														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. 250.000</Text>
 													</View>
 												</View>
@@ -219,7 +219,7 @@ export class DashboardPage extends React.Component {
 														/>
 													</View>
 													<View style={{ flex: 1 }}>
-														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Total Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Design Anda</Text>
 														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>3 Design</Text>
 													</View>
 												</View>
@@ -260,7 +260,7 @@ export class DashboardPage extends React.Component {
 														/>
 													</View>
 													<View style={{ flex: 1 }}>
-														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 13 }}>Total Apresiasi Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12 }}>Total Apresiasi Design Anda</Text>
 														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. 250.000</Text>
 													</View>
 												</View>
@@ -276,7 +276,7 @@ export class DashboardPage extends React.Component {
 														/>
 													</View>
 													<View style={{ flex: 1 }}>
-														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Total Design Anda</Text>
+														<Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Total Design Anda</Text>
 														<Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>3 Design</Text>
 													</View>
 												</View>
@@ -300,7 +300,7 @@ export class DashboardPage extends React.Component {
 										>
 											<Text
 												style={{
-													color: 'red', flex: 1, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingTop: 10, paddingRight: 20
+													color: 'red', flex: 1, fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 10, paddingRight: 17
 												}}
 											>See all</Text>
 										</TouchableOpacity>

@@ -323,7 +323,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1, height: 80, marginRight: 5, marginLeft: 10, }}>
+                <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10, }}>
                     <TouchableOpacity style={{ flex: 1 }}>
                         <View style={{ flex: 1, height: 10, backgroundColor: 'black', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
                             <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>Kirim Kode Verifikasi</Text>
@@ -351,7 +351,7 @@ export class PengaturanBankPage extends React.Component {
 
                     <CheckBox
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                        title={<Text style={{ color: 'black', fontSize: 15, paddingLeft: 5 }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 15 }}>Syarat & Ketentuan</Text>
+                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
                         </Text>}
                         onPress={() => this.checkedAgree()}
                         checked={agree}

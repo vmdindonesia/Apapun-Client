@@ -307,8 +307,8 @@ export class RegistrationBuyerPage extends React.Component {
 
                     </View>
                     <TouchableOpacity style={styles.buttonSignUp}
-                        // onPress={() => this.props.navigation.navigate('Login')}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                        onPress={() => this.props.navigation.navigate('Login')}
+                        // onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                     >
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
