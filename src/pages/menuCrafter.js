@@ -60,12 +60,7 @@ export class MenuCrafterPage extends React.Component {
         const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
 
         return (
-<<<<<<< HEAD
-            <ScrollView  >
-            <View style={{ flex: 1, flexDirection: 'column' }}>
-=======
             <ScrollView style={{ flex: 1, flexDirection: 'column' }}>
->>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
                 <View style={{ flex: 1 }}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
@@ -120,18 +115,11 @@ export class MenuCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1 }}>
-<<<<<<< HEAD
-                            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                <View style={styles.card}>
-                                    <ContainerSection>
-                                        <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
-=======
 
                         <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
                             <View style={styles.card}>
                                 <ContainerSection>
                                     <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
->>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
@@ -231,16 +219,6 @@ export class MenuCrafterPage extends React.Component {
                                             <View style={{ flex: 1 }}>
                                                 <Icon size={30} style={{ alignSelf: 'flex-end' }} name={myOrderExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                             </View>
-<<<<<<< HEAD
-                                            :
-                                            <View />
-                                    }
-                                </View>
-                            </Card>
-                    </View>
-                </View>
-            </View>
-=======
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
@@ -257,7 +235,6 @@ export class MenuCrafterPage extends React.Component {
 
                     </View>
                 </View>
->>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
             </ScrollView>
         );
     }
