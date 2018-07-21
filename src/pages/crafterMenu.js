@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
-import { OrderForCrafterPage } from './orderForCrafter';
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CrafterOrderMenuPage } from './CrafterOrderMenu';
@@ -43,19 +42,22 @@ export class CrafterMenuPage extends React.Component {
   
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
+              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
+              source={require('./../assets/images/ic_list.png')}
+              />
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          {/* <View style={{ borderRightWidth: 0.7 }} /> */}
-          <View style={{ flex: 1, borderColor: 'grey' }}>
+          <View style={{ borderRightWidth: 0.7, height: 30, borderRightColor: '#ddd', alignSelf: 'center' }} />
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
-              <Image style={{ width: 25, height: 25, alignSelf: 'center'}}
-              source={require('./../assets/images/menu.png')}
+              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
+              source={require('./../assets/images/ic_menu.png')}
               />
                 <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
               </View>
