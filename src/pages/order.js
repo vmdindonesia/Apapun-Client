@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
@@ -290,19 +290,20 @@ export class OrderPage extends React.Component {
                 request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
                 request.send(body);
                 this.setState({ loading: false, propertyPhoto: [] }, () => {
-                    const resetAction = NavigationActions.reset({
+                    const resetAction = StackActions.reset({
                         index: 1,
                         actions: [
                             NavigationActions.navigate({ routeName: 'Dashboard' }),
-                            NavigationActions.navigate({ routeName: 'Transaction' })
-                        ]
-                    })
-                    this.props.navigation.dispatch(resetAction)
+                            NavigationActions.navigate({ routeName: 'FindingCrafter' }),
+                        ],
+                    });
+                    this.props.navigation.dispatch(resetAction);
                 });
                 return ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
                 this.setState({ loading: false, propertyPhoto: [] });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             });
     }
 
