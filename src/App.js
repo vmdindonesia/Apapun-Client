@@ -78,6 +78,7 @@ import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
 import { EditProductPage } from './pages/EditProduct';
 import { ProductDetailNyaPage } from './pages/ProductDetailNya';
+import { CrafterOrderMenu, CrafterOrderMenuPage } from './pages/CrafterOrderMenu'
 
 
 console.disableYellowBox = true;
@@ -94,11 +95,20 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
+  MenuCrafter: {
+    screen: MenuCrafterPage
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
+  },
+  CrafterOrderMenu: {
+    screen: CrafterOrderMenuPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
@@ -106,13 +116,12 @@ const Routes = createStackNavigator({
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-  EditProduct:{
+  EditProduct: {
     screen: EditProductPage
   },
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
@@ -201,9 +210,6 @@ const Routes = createStackNavigator({
   },
   Ulasan: {
     screen: UlasanPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
