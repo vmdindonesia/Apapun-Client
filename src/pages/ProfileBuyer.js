@@ -5,9 +5,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class ProfileBuyerPage extends React.Component {
-    static navigationOptions = {
-        header: null
-    }
+
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.goBack(); console.log(navigation.goBack(), 'Props Order')
+                }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, }} name='ios-arrow-back' />
+            </TouchableOpacity >
+    });
 
     render() {
         return (
@@ -29,21 +38,21 @@ export class ProfileBuyerPage extends React.Component {
 
                         <View style={styles.containerMainForm}>
 
-                            <View style={{ flex: 1, flexDirection: 'row', height: 60, width: '85%' }}>
+                            <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
 
-                                <View style={{ flex: 1, alignSelf: 'center' }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 20, fontFamily: 'Quicksand-Regular', }}>Gal Gadot</Text>
+                                <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 25, fontFamily: 'Quicksand-Regular', color: 'black' }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                                    <View style={{ height: 35, width: 35, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
-                                        <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                            <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                    <TouchableOpacity
+                                        onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                        <View style={{ height: 45, width: 45, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Image style={{ height: 15, width: 15, borderRadius: 0, }}
                                                 source={require('./../assets/images/pen_white.png')}
                                             />
-                                        </TouchableOpacity>
-                                    </View>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
 
@@ -70,7 +79,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         galgadot@gmail.com
                             </Text>
                                 </View>
@@ -98,7 +107,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         081284485300
                             </Text>
                                 </View>
@@ -125,7 +134,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         30 Januari 1995
                                     </Text>
                                 </View>
@@ -153,10 +162,10 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', fontWeight: 'bold' }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         Jalan Komodo
                                     </Text>
                                 </View>
@@ -166,7 +175,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        <View style={styles.containerSecondForm}>
+                        {/* <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -205,11 +214,11 @@ export class ProfileBuyerPage extends React.Component {
 
                             </View>
 
-                        </View>
+                        </View> */}
 
 
 
-                        <View style={styles.containerThirdForm}>
+                        {/* <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -245,44 +254,44 @@ export class ProfileBuyerPage extends React.Component {
                                     <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Total Design Anda
                                     </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold',textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
                                         3 Design
                                     </Text>
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
 
 
                         <View style={styles.containerTh}>
-                                <View style={{
-                                    flexDirection: 'column',
-                                    height: '100%', width: '100%',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
-                                        Hargai Designmu
+                            <View style={{
+                                flexDirection: 'column',
+                                height: '100%', width: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <Text style={{ fontSize: 19, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                                    Hargai Desainmu
                                     </Text>
-                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center', fontFamily: 'Quicksand-reguler' }}>
-                                        Share dan opresiasikan designmu 
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    Share dan opresiasikan desainmu
                                     </Text>
-                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center', fontFamily: 'Quicksand-reguler' }}>
-                                        ke seluruh indonesia
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    ke seluruh indonesia
                                     </Text>
-                                </View>
+                            </View>
 
-                              
+
                         </View>
 
 
                     </View>
 
-                                <View style={styles.butin}>
-                                <TouchableOpacity style={styles.buttonSignUp}
-                                        onPress={() => this.props.navigation.navigate('pengaturanBank')}>
-                                        <Text style={styles.signupButton}>Pengaturan</Text>
-                                </TouchableOpacity>
-                                </View>
+                    <View style={styles.butin}>
+                        <TouchableOpacity style={styles.buttonSignUp}
+                            onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                            <Text style={styles.signupButton}>Pengaturan</Text>
+                        </TouchableOpacity>
+                    </View>
 
 
 
@@ -309,23 +318,23 @@ const styles = StyleSheet.create({
         // flex: 1,
         // justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 30,
         paddingTop: 30,
         zIndex: 2,
-        marginBottom: 78
+        marginBottom: 10
         // backgroundColor: 'yellow'
 
     },
     containerPhoto: {
-        height: 155,
-        width: 155,
+        height: 200,
+        width: 200,
         borderRadius: 100,
         // zIndex: 5
         borderColor: 'white',
         borderWidth: 3
     },
     containerMainForm: {
-        // flex: 1,
+        flex: 1,
         borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
@@ -335,13 +344,13 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'column',
         marginTop: 15,
-        height: 230,
+        height: 260,
         width: '90%',
         alignItems: 'center',
         // justifyContent: 'center',
         alignSelf: 'center',
         // zIndex: 1,
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderColor: '#d6d7da',
         // backgroundColor: 'red'
     },
@@ -377,7 +386,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 5,
         // zIndex: 3,
-        marginBottom: 30,
+        marginBottom: 5,
         height: 70,
         width: '90%',
         // alignItems: 'center',
@@ -425,6 +434,7 @@ const styles = StyleSheet.create({
         marginTop: -50,
         justifyContent: 'center',
         alignSelf: 'center',
+        fontFamily: 'Quicksand-Regular'
         // zIndex: 2
     },
     butin: {
