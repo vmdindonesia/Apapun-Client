@@ -112,7 +112,6 @@ const Routes = createStackNavigator({
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
@@ -149,17 +148,12 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-
-
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
-
-
   IdeaBeauty: {
     screen: IdeaBeautyPage
   },
@@ -172,7 +166,6 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
-
   Chat: {
     screen: ChatPage
   },
@@ -185,11 +178,9 @@ const Routes = createStackNavigator({
   OrderReceived: {
     screen: OrderReceivedPage
   },
-
   Dashboard: {
     screen: DashboardPage
   },
-
   DetailDelivery: {
     screen: DetailDeliveryPage
   },
@@ -214,7 +205,6 @@ const Routes = createStackNavigator({
   EditProfileCrafter: {
     screen: EditProfileCrafterPage
   },
-
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
@@ -230,8 +220,6 @@ const Routes = createStackNavigator({
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-
-
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -265,7 +253,6 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-
   IdeaMarket: {
     screen: IdeaMarketPage
   },
@@ -275,8 +262,6 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-
-
   PageDesign: {
     screen: PageDesignPage
   },
@@ -286,14 +271,12 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
-
   DetailOrder: {
     screen: DetailOrderPage
   },
@@ -306,15 +289,12 @@ const Routes = createStackNavigator({
   MyOrder: {
     screen: MyOrderPage
   },
-
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
   },
-
-
   Order: {
     screen: OrderPage
   },
@@ -333,7 +313,6 @@ const Routes = createStackNavigator({
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
-
   Crafter: {
     screen: CrafterPage
   }

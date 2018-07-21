@@ -289,7 +289,16 @@ export class OrderPage extends React.Component {
                 console.log(response, 'Response Order Proses');
                 request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
                 request.send(body);
-                this.setState({ loading: false, propertyPhoto: [] });
+                this.setState({ loading: false, propertyPhoto: [] }, () => {
+                    const resetAction = NavigationActions.reset({
+                        index: 1,
+                        actions: [
+                            NavigationActions.navigate({ routeName: 'Dashboard' }),
+                            NavigationActions.navigate({ routeName: 'Transaction' })
+                        ]
+                    })
+                    this.props.navigation.dispatch(resetAction)
+                });
                 return ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
