@@ -42,22 +42,11 @@ export class CrafterMenuPage extends React.Component {
 
   
       <View style={menuContainerStyle}>
-<<<<<<< HEAD
-        <View style={{ flexDirection: 'row', paddingBottom: 15, paddingTop: 20 }}>
-          <View style={{ flex: 1, borderRightWidth: 0.7 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'orderForCrafter' })}>
-              <View style={screen === 'orderForCrafter' ? tabContainerActive : tabContainer}>
-              <Image style={{ width: 25, height: 25, alignSelf: 'center'}}
-              source={require('./../assets/images/List.png')}
-              />
-                <Text style={screen === 'orderForCrafter' ? tabTextActive : tabText}>Pesanan</Text>
-=======
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
->>>>>>> e61090c8ddcaf8bdea6a59cb92525fc21c6b7349
               </View>
             </TouchableNativeFeedback>
           </View>
