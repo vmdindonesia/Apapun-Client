@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
 import { MyOrderPage } from './myOrder';
 import { CrafterPage } from './crafter';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -44,6 +44,9 @@ export class FindingCrafterPage extends React.Component {
           <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'myOrder' })}>
               <View style={screen === 'myOrder' ? tabContainerActive : tabContainer}>
+                <Image style={{ width: 25, height: 25, alignSelf: 'center' }}
+                  source={require('./../assets/images/ic_list.png')}
+                />
                 <Text style={screen === 'myOrder' ? tabTextActive : tabText}>Pesanan Saya</Text>
               </View>
             </TouchableNativeFeedback>
@@ -51,6 +54,9 @@ export class FindingCrafterPage extends React.Component {
           <View style={{ flex: 1, borderColor: '#3484d7', borderRightWidth: 0.3 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafter' })}>
               <View style={screen === 'crafter' ? tabContainerActive : tabContainer}>
+                <Image style={{ width: 25, height: 25, alignSelf: 'center' }}
+                  source={require('./../assets/images/search.png')}
+                />
                 <Text style={screen === 'crafter' ? tabTextActive : tabText}>Crafter</Text>
               </View>
             </TouchableNativeFeedback>
@@ -66,26 +72,24 @@ export class FindingCrafterPage extends React.Component {
 
 const styles = StyleSheet.create({
   menuContainerStyle: {
-    flex: 4
+    flex: 1
   },
   tabContainer: {
-    height: 50,
-    justifyContent: 'center'
+    height: 55,
+    justifyContent: 'center',
   },
   tabContainerActive: {
-    height: 50,
+    height: 55,
     justifyContent: 'center'
   },
   tabText: {
-    color: '#67a6e3',
     textAlign: 'center',
-    fontSize: 14
+    fontSize: 15
   },
   tabTextActive: {
-    color: '#fff',
     textAlign: 'center',
-    fontSize: 14,
-    fontFamily: 'Quicksand-Regular'
-  }
+    fontSize: 15,
+    fontFamily: 'Quicksand-Bold'
+  },
 })
 export default FindingCrafterPage;
