@@ -90,14 +90,15 @@ export class DashboardPage extends React.Component {
 		})
 	}
 
-	renderIdeaPhoto = (itemProduct) => {
+	renderIdeaPhoto = (itemProduct, index) => {
+		console.log(itemProduct, 'Item Dashboard');
 		return (
-			<View>
+			<View key={index}>
 				<TouchableWithoutFeedback onPress={() => { }}>
 					<View style={{ borderRadius: 4, elevation: 2, marginRight: 2, height: 110, flex: 1, marginTop: 10 }}>
 						<Image
 							style={styles.item}
-							source={{ uri: `${itemProduct.item}` }}
+							source={{ uri: `${itemProduct}` }}
 							resizeMode='contain'
 						/>
 					</View>
@@ -309,8 +310,7 @@ export class DashboardPage extends React.Component {
 									<FlatList
 										data={this.state.images}
 										horizontal
-										keyExtractor={this.keyExtractor}
-										renderItem={this.renderIdeaPhoto.bind(this)}
+										renderItem={({ item, index }) => this.renderIdeaPhoto(item, index)}
 										showsHorizontalScrollIndicator={false}
 										extraData={this.state}
 									/>

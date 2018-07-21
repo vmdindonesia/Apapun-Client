@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from 'react-native';
-import { OrderForCrafterPage } from './orderForCrafter';
-import { CrafterPage } from './crafter';
+import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CrafterOrderMenuPage } from './CrafterOrderMenu';
@@ -44,16 +42,23 @@ export class CrafterMenuPage extends React.Component {
   
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
+              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
+              source={require('./../assets/images/ic_list.png')}
+              />
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
+          <View style={{ borderRightWidth: 0.7, height: 30, borderRightColor: '#ddd', alignSelf: 'center' }} />
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
+              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
+              source={require('./../assets/images/ic_menu.png')}
+              />
                 <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
               </View>
             </TouchableNativeFeedback>
@@ -69,7 +74,7 @@ export class CrafterMenuPage extends React.Component {
 
 const styles = StyleSheet.create({
   menuContainerStyle: {
-    flex: 4
+    flex: 1
   },
   tabContainer: {
     height: 55,
@@ -77,9 +82,7 @@ const styles = StyleSheet.create({
   },
   tabContainerActive: {
     height: 55,
-    justifyContent: 'center',
-    borderBottomColor: 'red',
-    borderBottomWidth: 1
+    justifyContent: 'center'
   },
   tabText: {
     textAlign: 'center',

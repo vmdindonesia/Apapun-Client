@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
@@ -53,7 +53,7 @@ export class OrderPage extends React.Component {
             dataSubMaterial: '',
             propertyPhoto: [],
             firstmaterial: false,
-            buttonfirstmaterial: false,
+            dataCheckBoxSubMaterial: [],
             subCategory: []
         }
     }
@@ -61,15 +61,20 @@ export class OrderPage extends React.Component {
 
 
 
-    checkedSubMaterial() {
-        this.setState({ buttonfirstmaterial: !this.state.buttonfirstmaterial }, () => {
-            const newSubCategory = this.state.subCategory;
-            newSubCategory[this.state.subCategory.length] = 1;
-            this.setState({ subCategory: newSubCategory }, () => {
-                console.log(this.state.subCategory, 'Sub Category')
+    checkedSubMaterial(data) {
+        console.log(data, 'Data Checked');
+        const { dataCheckBoxSubMaterial } = this.state;
+        if (!dataCheckBoxSubMaterial.includes(data)) {
+            this.setState({
+                dataCheckBoxSubMaterial: [...dataCheckBoxSubMaterial, data]
             });
-
-        })
+            console.log('CHECKLIST');
+        } else {
+            this.setState({
+                dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
+            });
+            console.log('UNCHECKLIST');
+        }
     }
 
 
@@ -146,6 +151,14 @@ export class OrderPage extends React.Component {
         });
     }
 
+    deleteMaterial(data) {
+        const { dataCheckBoxSubMaterial } = this.state;
+        this.setState({
+            dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
+        });
+        console.log('UNCHECKLIST');
+    }
+
     onValidation() {
         Keyboard.dismiss();
 
@@ -192,8 +205,8 @@ export class OrderPage extends React.Component {
                                                             case '':
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
-                                                                // return this.prosesOrder();
-                                                                return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
+                                                                return this.prosesOrder();
+                                                            // return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
                                                         }
                                                 }
                                         }
@@ -216,7 +229,8 @@ export class OrderPage extends React.Component {
             serveDelivery,
             categoryProduct,
             photoTemp,
-            propertyPhoto
+            propertyPhoto,
+            dataCheckBoxSubMaterial
         } = this.state;
 
         console.log(this.state);
@@ -268,16 +282,28 @@ export class OrderPage extends React.Component {
             catatanTambahan,
             unitQuantity,
             photoTemp,
-            propertyPhoto
+            propertyPhoto,
+            dataCheckBoxSubMaterial
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
                 request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
                 request.send(body);
-                this.setState({ loading: false, propertyPhoto: [] });
+                this.setState({ loading: false, propertyPhoto: [] }, () => {
+                    const resetAction = StackActions.reset({
+                        index: 1,
+                        actions: [
+                            NavigationActions.navigate({ routeName: 'Dashboard' }),
+                            NavigationActions.navigate({ routeName: 'FindingCrafter' }),
+                        ],
+                    });
+                    this.props.navigation.dispatch(resetAction);
+                });
+                return ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
                 this.setState({ loading: false, propertyPhoto: [] });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             });
     }
 
@@ -386,7 +412,7 @@ export class OrderPage extends React.Component {
         });
     }
 
-    requestSubMaterial(idMaterial) {
+    requestSubMaterial(idMaterial, nameMaterial) {
         console.log(idMaterial, 'Id Material');
         const materialId = idMaterial;
         axios.get(`${IPSERVER}/ApapunSubmaterials`, {
@@ -407,9 +433,9 @@ export class OrderPage extends React.Component {
         return (
             <View>
                 <TouchableOpacity
-                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId) })}
-                >   
-                {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
+                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId, itemMaterial.materialName) })}
+                >
+                    {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
                     <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }}>{itemMaterial.materialName}</Text>
                 </TouchableOpacity>
             </View>
@@ -417,8 +443,7 @@ export class OrderPage extends React.Component {
     }
 
     renderSubMaterial = (itemSubMaterial, index) => {
-        console.log(itemSubMaterial, 'Item Sub Material');
-        const { buttonfirstmaterial } = this.state;
+        const { dataCheckBoxSubMaterial } = this.state;
         return (
             <View style={{ flex: 1, flexDirection: 'row' }}>
                 <View style={{ flex: 4 }}>
@@ -427,8 +452,8 @@ export class OrderPage extends React.Component {
                 <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                     <CheckBox
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
-                        checked={buttonfirstmaterial}
-                        onPress={() => this.checkedSubMaterial()}
+                        checked={dataCheckBoxSubMaterial.includes(itemSubMaterial)}
+                        onPress={() => this.checkedSubMaterial(itemSubMaterial)}
                     />
                 </View>
             </View>
@@ -556,7 +581,7 @@ export class OrderPage extends React.Component {
             numberPcs,
             unitQuantity,
             firstmaterial,
-            buttonfirstmaterial,
+            dataCheckBoxSubMaterial,
             dataMaterial,
             dataSubMaterial
         } = this.state;
@@ -634,7 +659,7 @@ export class OrderPage extends React.Component {
                                             resizeMode='contain'
                                         />
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }}>
+                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }} onPress={() => this.designPhotoUpload('tempUploadDesign')}>
                                         <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
@@ -719,7 +744,7 @@ export class OrderPage extends React.Component {
                 </View>
                 <ContainerSection>
                     {
-                        uploadMaterial === null ?
+                        dataCheckBoxSubMaterial.length === 0 ?
                             <View style={{ flex: 1, height: 170, backgroundColor: 'grey', marginLeft: 5, marginRight: 5 }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
@@ -747,7 +772,41 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                             :
-                            <Image source={uploadMaterial} />
+                            <View style={{ flex: 1, flexDirection: 'column', height: 170 }}>
+                                <View>
+                                    <ContainerSection>
+                                        <TouchableOpacity
+                                            onPress={() => this.setModalVisible()}
+                                            style={styles.buttonsMaterial}
+                                        >
+                                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'red', marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Material</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </ContainerSection>
+                                </View>
+                                <View>
+                                    {
+                                        dataCheckBoxSubMaterial && dataCheckBoxSubMaterial.map(item =>
+                                            <ContainerSection>
+                                                <View style={styles.buttonMaterial}>
+                                                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                                                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                                                        <TouchableOpacity
+                                                            onPress={() => this.deleteMaterial(item)}
+                                                        >
+                                                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            </ContainerSection>
+                                        )
+                                    }
+
+                                </View>
+                            </View>
                     }
                 </ContainerSection>
 
@@ -811,6 +870,7 @@ export class OrderPage extends React.Component {
                         <Input
                             placeholder='Catatan Tambahan'
                             value={catatanTambahan}
+                            multiline
                             onChangeText={v => this.onChange('catatanTambahan', v)}
                         />
                     </View>
@@ -830,21 +890,7 @@ export class OrderPage extends React.Component {
                         }}>
 
                         <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', justifyContent: 'center', alignContent: 'center' }}>
-
-
-                            <View style={{
-                                // flex:1,
-                                width: '90%',
-                                height: 260,
-                                backgroundColor: '#ffffff',
-                                alignSelf: 'center',
-                                flexDirection: 'column',
-                                // borderWidth: 0.9,
-                                // shadowColor: '#000',
-                                // shadowOpacity: 1.0,
-                                borderRadius: 25,
-                                // justifyContent: 'flex-end',
-                            }}>
+                            <View style={{ width: '90%', height: 260, backgroundColor: '#ffffff', alignSelf: 'center', flexDirection: 'column', borderRadius: 25 }}>
 
                                 <View style={{
                                     width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
@@ -855,7 +901,6 @@ export class OrderPage extends React.Component {
                                         icon="ic_search"
                                     />
                                 </View>
-
 
                                 <View style={{ flex: 1, flexDirection: 'row', borderBottomColor: 'black', }}>
                                     <View style={{ flex: 1, marginTop: 5, marginLeft: 20 }}>
@@ -948,6 +993,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'flex-end'
     },
+    buttonMaterial: {
+        borderWidth: 1,
+        borderRadius: 30,
+        height: 38,
+        alignItems: 'center',
+        paddingTop: 2
+    },
+    buttonsMaterial: {
+        width: '93%',
+        height: 38,
+        paddingTop: 2
+    },
     button: {
         backgroundColor: 'rgb(0, 0, 0)',
         borderWidth: 1,
@@ -955,7 +1012,6 @@ const styles = StyleSheet.create({
         width: '93%',
         height: 38,
         alignItems: 'center',
-        // textAlign: 'center',
         paddingTop: 2
     },
     buttons: {
