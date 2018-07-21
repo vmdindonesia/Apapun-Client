@@ -1,4 +1,3 @@
-
 export const IPSERVER = 'http://103.82.242.217:3005/api';
 
 // COLOR
