@@ -78,7 +78,6 @@ import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
 import { EditProductPage } from './pages/EditProduct';
 import { ProductDetailNyaPage } from './pages/ProductDetailNya';
-import { CrafterOrderMenu, CrafterOrderMenuPage } from './pages/CrafterOrderMenu'
 
 
 console.disableYellowBox = true;
@@ -92,23 +91,20 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  // Order: {
+  //   screen: OrderPage
+  // },
+  EditProduct:{
+    screen: EditProductPage
+  },
   StartScreen: {
     screen: StartScreen
   },
-  MenuCrafter: {
-    screen: MenuCrafterPage
+  CrafterMenu: {
+    screen: CrafterMenuPage
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
-  },
-  CrafterOrderMenu: {
-    screen: CrafterOrderMenuPage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  CrafterMenu: {
-    screen: CrafterMenuPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
@@ -116,12 +112,10 @@ const Routes = createStackNavigator({
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-  EditProduct: {
-    screen: EditProductPage
-  },
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
+
   ProfilePage: {
     screen: ProfileBuyerPage
   },
@@ -145,9 +139,6 @@ const Routes = createStackNavigator({
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
-  },
-  Order: {
-    screen: OrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
@@ -210,6 +201,9 @@ const Routes = createStackNavigator({
   },
   Ulasan: {
     screen: UlasanPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage

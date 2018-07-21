@@ -364,6 +364,7 @@ export class EditProductPage extends React.Component {
                         width: '150%',
                         height: 70,
                         backgroundColor: '',
+                        paddingTop: 30,
                         flexDirection: 'row',
                         marginTop: 5
                     }}>
