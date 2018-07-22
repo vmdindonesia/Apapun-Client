@@ -78,7 +78,7 @@ import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
 import { EditProductPage } from './pages/EditProduct';
 import { ProductDetailNyaPage } from './pages/ProductDetailNya';
-
+import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 
 console.disableYellowBox = true;
 
@@ -91,12 +91,20 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
+  ProductDetailOnProfilePage: {
+    screen: ProductDetailOnProfilePage
+  },
+
+  ProfilePage: {
+    screen: ProfileBuyerPage
   },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
+  StartScreen: {
+    screen: StartScreen
+  },
+
   Crafter: {
     screen: CrafterPage
   },
@@ -109,9 +117,7 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
