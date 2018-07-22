@@ -24,11 +24,11 @@ export class CrafterPage extends React.Component {
         console.log(data, '098');
         return (
             <View style={styles.containerBoxProfile}>
-                <View style={styles.containerImage}>
+                <TouchableOpacity style={styles.containerImage} onPress={() => this.props.navi.navigate('ProfileCrafter')}>
                     <Image
                         style={styles.imageCrafter}
                         source={{ uri: data.item }}
-                        resizeMode='cover'
+                        resizeMode='contain'
                     />
                     <View style={styles.boxName}>
                         <View>
@@ -47,14 +47,14 @@ export class CrafterPage extends React.Component {
                             </View>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }
 
     render() {
         return (
-            <View style={{ flex: 1 }} >
+            <View style={{ flex: 1, marginRight: 10, marginLeft: 5 }} >
                 <View style={{ flex: 1 }}>
                     <View>
                         <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
@@ -98,25 +98,23 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     containerBoxProfile: {
-        marginLeft: 35,
-        marginRight: 10,
-        width: 150,
-        height: 200,
+        width: 130,
+        height: 220,
         flex: 1,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     containerImage: {
         flex: 1,
-        marginLeft: 3
+        marginLeft: 10
     },
     imageCrafter: {
-        height: 130,
-        width: 130,
+        height: 90,
+        width: 150,
     },
     boxName: {
         borderWidth: 0,
         borderRadius: 1,
-        width: '88%',
+        width: '100%',
         height: '32%',
         elevation: 1,
         paddingLeft: 3,

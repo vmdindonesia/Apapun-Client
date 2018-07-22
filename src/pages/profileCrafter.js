@@ -221,54 +221,52 @@ export class ProfileCrafterPage extends React.Component {
                                 </View>
                         }
                     </View>
-                    <View style={{ flex: 2, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
-                        <View style={{ width: '10%', height: '100%' }}>
+                    <View style={{ flex: 1.5, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                        <View style={{ width: '5%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3 }}>
                             <TouchableOpacity>
-                                <Image style={{ width: 15, height: 15, marginLeft: 10, marginTop: 30 }}
+                                <Image style={{ width: 15, height: 15 }}
                                     source={require('../assets/images/Information.png')} />
                             </TouchableOpacity>
                             {/* popup informasi ketika ditouch */}
                         </View>
-                        <View style={{ width: '30%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
-                            <View>
-                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 13 }}>Harga Pesanan</Text>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <Text
-                                    style={{
-                                        color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
-                                        fontSize: 18
-                                    }}
-                                >Rp 860.000
+                        <View style={{ width: '25%', height: '100%', justifyContent: 'center' }}>
+                            <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Harga Pesanan</Text>
+                            <Text
+                                style={{
+                                    color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
+                                    fontSize: 15
+                                }}
+                            >Rp 860.000
                                 </Text>
-                            </View>
                         </View>
-                        <View style={{ width: '25%', height: '100%', flexDirection: 'column', marginTop: 20 }}>
-                            <View>
-                                <Text style={{ color: 'white', fontSize: 12, textAlign: 'center' }}>Estimasi Selesai</Text>
-                            </View>
-                            <View style={{ flex: 1 }}>
-                                <Text style={{ color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center', fontSize: 18 }}
-                                >27 Feb 18
-                            </Text>
-                            </View>
+                        <View style={{ width: '28%', height: '100%', justifyContent: 'center' }}>
+                            <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Estimasi Selesai</Text>
+                            <Text
+                                style={{
+                                    color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
+                                    fontSize: 15
+                                }}
+                            >27 Feb 18
+                                </Text>
                         </View>
-                        <TouchableOpacity style={{ width: '15%', height: '100%' }}>
-                            <Image style={{ width: 40, height: 40, marginLeft: 10, marginTop: 20 }}
+                        <View style={{ width: '10%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity>
+                            <Image style={{ width: 30, height: 30 }}
                                 source={require('../assets/images/Chat.png')} />
                         </TouchableOpacity>
-                        <View style={{ width: '30%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
+                        </View>
+                        <View style={{ width: '32%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
                             <TouchableOpacity
                                 style={{
-                                    borderWidth: 0, borderRadius: 100, backgroundColor: 'red',
-                                    height: 50, width: 50, justifyContent: 'center'
+                                    borderWidth: 0, borderRadius: 25, backgroundColor: 'red',
+                                    height: 40, width: 100, justifyContent: 'center'
                                 }}
                                 onPress={() => Alert.alert(
                                     'PILIH CRAFTER INI',
                                     'Pesanan anda akan terkunci, apakah anda yakin?',
                                     [
                                         { text: 'Tidak', onPress: () => console.log('Cancel Pressed!') },
-                                        { text: 'Ya', onPress: this.onDeleteBTN },
+                                        { text: 'Ya', onPress: () => this.props.navigation.navigate('DetailInformationOrder') },
                                     ],
                                 )}>
                                 <Text style={{

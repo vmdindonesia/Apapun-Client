@@ -91,11 +91,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  // Order: {
-  //   screen: OrderPage
-  // },
   StartScreen: {
     screen: StartScreen
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  Order: {
+    screen: OrderPage
   },
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
@@ -103,40 +109,30 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-
-
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-
-
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
-
   EditProduct: {
     screen: EditProductPage
   },
-
   CrafterMenu: {
     screen: CrafterMenuPage
   },
-
   pengaturanBank: {
     screen: PengaturanBankPage
   },
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
-
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
-
   ProductDetailNya: {
     screen: ProductDetailNyaPage
   },
@@ -158,11 +154,9 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
@@ -208,29 +202,17 @@ const Routes = createStackNavigator({
   MenuCrafter: {
     screen: MenuCrafterPage
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
   Catatan: {
     screen: CatatanPage
   },
   EditProfileCrafter: {
     screen: EditProfileCrafterPage
   },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
-  },
   CrafterSent: {
     screen: CrafterSentPage
   },
   CrafterInputResi: {
     screen: CrafterInputResiPage
-  },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
   },
   SettingProduct: {
     screen: SettingProductPage
@@ -262,10 +244,6 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
-
   IdeaMarket: {
     screen: IdeaMarketPage
   },
@@ -275,48 +253,29 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-
-
-  PageDesign: {
-    screen: PageDesignPage
-  },
   DesignSaya: {
     screen: DesignSayaPage
   },
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
-
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
-  Crafter: {
-    screen: CrafterPage
   },
   MyOrder: {
     screen: MyOrderPage
   },
-
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
-  },
-
-
-  Order: {
-    screen: OrderPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
@@ -330,13 +289,6 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
-
-  Crafter: {
-    screen: CrafterPage
-  }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
