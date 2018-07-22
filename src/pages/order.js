@@ -106,10 +106,12 @@ export class OrderPage extends React.Component {
 
                     }).catch(error => {
                         console.log(error, 'Error Address');
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
                     })
                 });
             }).catch(error => {
                 console.log(error, 'Error Kategori');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             })
     }
 
