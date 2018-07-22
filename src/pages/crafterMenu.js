@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Imag
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CrafterOrderMenuPage } from './CrafterOrderMenu';
+
 export class CrafterMenuPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({

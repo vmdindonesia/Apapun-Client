@@ -289,11 +289,10 @@ export class RegistrationBuyerPage extends React.Component {
                             </View>
 
                             <View style={styles.textAgree}>
-                                <View>
-
+                                <View style={{ flexDirection: 'row' }}>
                                     <CheckBox
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
                                         onPress={() => this.checkedAgree()}
                                         checked={agree}
@@ -308,7 +307,7 @@ export class RegistrationBuyerPage extends React.Component {
                     </View>
                     <TouchableOpacity style={styles.buttonSignUp}
                         onPress={() => this.props.navigation.navigate('Login')}
-                        // onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                    // onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                     >
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
@@ -333,6 +332,19 @@ export class RegistrationBuyerPage extends React.Component {
                                                 <ContainerSection>
                                                     <Input
                                                         placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>City</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
                                                     />
                                                 </ContainerSection>
                                             </View>
@@ -455,7 +467,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
-        width: 165,
+        width: 110,
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,

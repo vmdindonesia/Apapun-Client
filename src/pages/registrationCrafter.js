@@ -250,7 +250,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <View style={styles.iHave}>
 
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -263,7 +263,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                                     <View style={styles.iDontHave}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily:'Quicksand-Regular' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
                                             title='Tidak Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -336,7 +336,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                                     <CheckBox
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
                                         checked={agree}
                                         onPress={() => this.checkedAgreement()}
@@ -379,6 +379,19 @@ export class RegistrationCrafterPage extends React.Component {
                                                 <ContainerSection>
                                                     <Input
                                                         placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>District</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
                                                     />
                                                 </ContainerSection>
                                             </View>
@@ -495,7 +508,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
-        width: 165,
+        width: 110,
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,

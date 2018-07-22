@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, TouchableNativeFeedback, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, Image, TouchableNativeFeedback, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight } from 'react-native'
 import { InformasiBankPage } from './InformasiBank';
 import { DetailTransaksiPage } from './DetailTransaksi';
 import Icon from 'react-native-vector-icons/Ionicons';

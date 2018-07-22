@@ -91,23 +91,38 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  // Order: {
-  //   screen: OrderPage
-  // },
-  EditProduct:{
-    screen: EditProductPage
-  },
   StartScreen: {
     screen: StartScreen
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  SettingAddressDetailBuyer: {
+    screen: SettingAddressDetailBuyerPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
+  EditProduct: {
+    screen: EditProductPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
   },
   pengaturanBank: {
     screen: PengaturanBankPage
@@ -115,18 +130,8 @@ const Routes = createStackNavigator({
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
-
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
-  },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
-  SettingAddressDetailBuyer: {
-    screen: SettingAddressDetailBuyerPage
   },
   ProductDetailNya: {
     screen: ProductDetailNyaPage
@@ -149,17 +154,12 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-
-
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
-
-
   IdeaBeauty: {
     screen: IdeaBeautyPage
   },
@@ -172,7 +172,6 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
-
   Chat: {
     screen: ChatPage
   },
@@ -185,11 +184,9 @@ const Routes = createStackNavigator({
   OrderReceived: {
     screen: OrderReceivedPage
   },
-
   Dashboard: {
     screen: DashboardPage
   },
-
   DetailDelivery: {
     screen: DetailDeliveryPage
   },
@@ -205,21 +202,11 @@ const Routes = createStackNavigator({
   MenuCrafter: {
     screen: MenuCrafterPage
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
   Catatan: {
     screen: CatatanPage
   },
   EditProfileCrafter: {
     screen: EditProfileCrafterPage
-  },
-
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
   },
   CrafterSent: {
     screen: CrafterSentPage
@@ -227,11 +214,6 @@ const Routes = createStackNavigator({
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
-
-
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -262,10 +244,6 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
-
   IdeaMarket: {
     screen: IdeaMarketPage
   },
@@ -275,48 +253,29 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-
-
-  PageDesign: {
-    screen: PageDesignPage
-  },
   DesignSaya: {
     screen: DesignSayaPage
   },
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
   DetailTransaksi: {
     screen: DetailTransaksiPage
   },
-
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
-  Crafter: {
-    screen: CrafterPage
   },
   MyOrder: {
     screen: MyOrderPage
   },
-
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
-  },
-
-
-  Order: {
-    screen: OrderPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
@@ -330,13 +289,6 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
-
-  Crafter: {
-    screen: CrafterPage
-  }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
@@ -353,7 +305,7 @@ const Routes = createStackNavigator({
       headerStyle: {
         backgroundColor: COLOR.headerBar,
         shadowOpacity: 0,
-        elevation: 0,
+        elevation: 1,
         borderBottomColor: 'white',
         borderBottomWidth: 1.5
       },

@@ -11,29 +11,34 @@ export class SettingAddressBuyerPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
-                onPress={() => { console.log(this.props, 'Props Order') }}
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Edit Address',
+        headerTitle: 'Pengaturan Alamat',
         headerRight:
-            <View>
+            <View style={{
+                flexDirection: 'column', width: 50, height: '100%', marginRight: 15, justifyContent: 'center'
+            }}>
                 <TouchableOpacity
                     onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                 >
                     <Image
-                        style={{ height: 20, width: 20, margin: 20 }}
+                        style={{ height: 20, width: 20, alignSelf: 'center' }}
                         source={require('./../assets/images/icon_plus.jpg')}
                     />
+                    <Text style={{ fontSize: 10, color: 'black', textAlign: 'center' }}>Alamat Baru</Text>
                 </TouchableOpacity>
-            </View>
+        </View>
+
+
     });
 
 
     render() {
         return (
 
-            <View >
+            <View style={{ color: '#e5dede' }}>
 
 
                 <View style={styles.containerMainAddress}>
@@ -57,10 +62,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15 }}> Home 1</Text>
+                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Home 1</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 13, paddingTop: 3 }}> Penerima : Judy </Text>
+                                <Text style={{ fontSize: 15, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 
@@ -106,19 +111,19 @@ export class SettingAddressBuyerPage extends React.Component {
 
                     <View style={{
                         width: '78%',
-                        height: 50,
+                        height: 60,
                         // backgroundColor: 'red',
                         alignSelf: 'center',
-                        marginTop: 5
+                        marginTop: 25
                     }}>
 
                         <View>
-                            <Text style={{ fontSize: 12 }}>(+62)<Text> 84485300 </Text></Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>(+62)<Text> 84485300 </Text></Text>
 
 
-                            <Text style={{ fontSize: 12 }}>Jl. Duri Kepa 4 No 5 </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Jl. Duri Kepa 4 No 5 </Text>
 
-                            <Text style={{ fontSize: 12 }} >Kebon Jeruk, Jakarta Barat </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }} >Kebon Jeruk, Jakarta Barat </Text>
                         </View>
 
 
@@ -134,7 +139,7 @@ export class SettingAddressBuyerPage extends React.Component {
 
                     }}>
                         <View>
-                            <Text style={{ fontSize: 12, color: 'red' }}>Alamat Utama </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'red' }}>Alamat Utama </Text>
                         </View>
 
                     </View>
@@ -169,10 +174,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15 }}> Office Tangerang</Text>
+                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Office Tangerang</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 13.5, paddingTop: 3 }}> Penerima : Judy </Text>
+                                <Text style={{ fontSize: 13.5, paddingTop: 3, fontSize: 15, fontFamily: 'Quicksand-Regular', }}> Penerima :<Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 
@@ -220,16 +225,16 @@ export class SettingAddressBuyerPage extends React.Component {
                         height: 50,
                         // backgroundColor: 'red',
                         alignSelf: 'center',
-                        marginTop: 5
+                        marginTop: 25
                     }}>
 
                         <View>
-                            <Text style={{ fontSize: 12 }}>(+62)<Text> 84485300 </Text></Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>(+62)<Text> 84485300 </Text></Text>
 
 
-                            <Text style={{ fontSize: 12 }}>Jl. Ruko Golden No.08 </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Jl. Ruko Golden No.08 </Text>
 
-                            <Text style={{ fontSize: 12 }} >Kebon Jeruk, Jakarta Barat </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }} >Kebon Jeruk, Jakarta Barat </Text>
                         </View>
 
 
@@ -293,8 +298,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'column',
-        marginTop: 5,
-        height: 150,
+        marginTop: 20,
+        height: 180,
         width: '90%',
         // alignItems: 'center',
         // justifyContent: 'center',
@@ -315,7 +320,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'row',
-        marginTop: 5,
+        marginTop: 3,
         height: 70,
         width: '90%',
         // alignItems: 'center',
