@@ -192,6 +192,61 @@ export class PageDesignPage extends React.Component {
 
                 </View>
 
+                <View style={styles.containerTi}>
+                    <View style={{
+                        width: '100%',
+                        height: 200,
+                        backgroundColor: '',
+                        flexDirection: 'row'
+                    }}>
+
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            marginTop: 10,
+                            backgroundColor: '',
+                            height: 50
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Deskripsi Produk</Text>
+                            <View style={{ marginTop: 10, marginLeft: 5, width: 339, borderWidth: 0, height: 230, paddingLeft: 2, backgroundColor: 'white' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', paddingTop: 10, fontSize: 13
+                                }}
+                                >Ukuran</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >Bahu : 15</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >Panjang Lengan : 22cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >Lingkar Dada : 106cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >Panjang Bahu : 70cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 30, fontFamily: 'Quiksand-Bold'
+                                }}
+                                >Deskripsi</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >Kaos pria yang simpel tapi fashionable, Bahan menyarap</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                }}
+                                >keringat dan nyaman dipakai</Text>
+                            </View>
+
+                        </View>
+                    </View>
+                </View>
+
 
 
 
@@ -252,6 +307,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
         width: '100%'
+    },
+    containerTi: {
+        flex: 1,
+        flexDirection: 'column',
+        height: 300,
+        width: '90%',
+        marginBottom: 15,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        alignSelf: 'center'
     },
     containerMain: {
         // flex: 1,

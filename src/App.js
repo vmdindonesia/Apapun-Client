@@ -100,6 +100,15 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  ProductDetailNya: {
+    screen: ProductDetailNyaPage
+  },
+  EditProduct: {
+    screen: EditProductPage
+  },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
@@ -167,9 +176,6 @@ const Routes = createStackNavigator({
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
-  EditProduct: {
-    screen: EditProductPage
-  },
 
   pengaturanBank: {
     screen: PengaturanBankPage
@@ -179,9 +185,6 @@ const Routes = createStackNavigator({
   },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
-  },
-  ProductDetailNya: {
-    screen: ProductDetailNyaPage
   },
   InformasiBank: {
     screen: InformasiBankPage
@@ -287,9 +290,6 @@ const Routes = createStackNavigator({
   },
   IdeaFashion: {
     screen: IdeaFashionPage
-  },
-  PageDesign: {
-    screen: PageDesignPage
   },
   DesignSaya: {
     screen: DesignSayaPage
