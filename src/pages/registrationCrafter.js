@@ -187,7 +187,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='please input your name as a crafter'
+                                            placeholder='silakan input nama anda sebagai crafter'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -282,7 +282,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <ContainerSection>
                                         <Input
                                             secureTextEntry={true}
-                                            placeholder='please input your password'
+                                            placeholder='silakan isi password anda'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -295,7 +295,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='please input your e-mail'
+                                            placeholder='silakan isi email anda'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -308,7 +308,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='please input your phone number'
+                                            placeholder='silakan isi nomor telepon anda'
                                             keyboardType='numeric'
                                         />
                                     </ContainerSection>
@@ -378,7 +378,20 @@ export class RegistrationCrafterPage extends React.Component {
                                             <View>
                                                 <ContainerSection>
                                                     <Input
-                                                        placeholder='please input your province'
+                                                        placeholder='silakan input provinsi tempat anda tinggal'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>City</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='silakan input kota tempat anda tinggal'
                                                     />
                                                 </ContainerSection>
                                             </View>
@@ -391,20 +404,7 @@ export class RegistrationCrafterPage extends React.Component {
                                             <View>
                                                 <ContainerSection>
                                                     <Input
-                                                        placeholder='please input your district'
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>District</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        placeholder='please input your district'
+                                                        placeholder='silakan input wilayah tempat anda tinggal'
                                                     />
                                                 </ContainerSection>
                                             </View>
@@ -420,7 +420,7 @@ export class RegistrationCrafterPage extends React.Component {
                                                         multiline={true}
                                                         numberOfLines={150}
 
-                                                        placeholder='please input your detail address'
+                                                        placeholder='silakan isi alamat lengkap anda'
 
                                                     />
                                                 </ContainerSection>

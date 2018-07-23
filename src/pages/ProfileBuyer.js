@@ -279,11 +279,7 @@ export class ProfileBuyerPage extends React.Component {
                                     ke seluruh indonesia
                                     </Text>
                             </View>
-
-
                         </View>
-
-
                     </View>
 
                     <View style={styles.butin}>
@@ -292,10 +288,6 @@ export class ProfileBuyerPage extends React.Component {
                             <Text style={styles.signupButton}>Pengaturan</Text>
                         </TouchableOpacity>
                     </View>
-
-
-
-
 
                 </ImageBackground >
             </ScrollView >

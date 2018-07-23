@@ -25,7 +25,7 @@ export class ProductDetailOnProfilePage extends React.Component {
 
             // <View style={{ flex: 1 }}>
 
-            <ScrollView style={{ flex: 1, marginLeft: 10, marginRight: 10,  }}>
+            <ScrollView style={{ flex: 1, marginLeft: 10, marginRight: 10, }}>
 
                 <View style={{ flex: 1, height: 80, flexDirection: 'row', marginTop: 10, }}>
                     <View style={{ flex: 1, paddingRight: 20 }}>
@@ -69,12 +69,12 @@ export class ProductDetailOnProfilePage extends React.Component {
                     </View>
                     <View style={{ flex: 1, backgroundColor: 'white', marginTop: 20, marginLeft: 10 }}>
                         <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>Ukuran</Text>
-                        <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Bahu : 15 Cm</Text>
+                        <Text style={{ paddingTop: 5, paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Bahu : 15 Cm</Text>
                         <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Panjang Lengan : 22 Cm</Text>
                         <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Lingkar Dada : 106 Cm</Text>
                         <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Panjang Bahu : 70 Cm</Text>
 
-                        <Text style={{ paddingLeft: 5, paddingTop: 10, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>Deskripsi</Text>
+                        <Text style={{ paddingTop: 5, paddingLeft: 5, paddingTop: 10, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>Deskripsi</Text>
                         <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Kaos pria yang simpel tapi fasionabel. Bahan menyerap keringan dan nyaman dipakai</Text>
 
                     </View>

@@ -17,7 +17,7 @@ export class DesignSayaPage extends React.Component {
             </TouchableOpacity>,
         headerTitle: 'Design Saya',
         headerStyle: {
-            elevation:0
+            elevation: 0
         }
     });
 
@@ -93,71 +93,71 @@ export class DesignSayaPage extends React.Component {
 
                 <ScrollView>
                     <View style={styles.jing}>
-                    <View style={{
-                        width: '100%',
-                        height: '25%',
-                        paddingTop: 50,
-                        flexDirection: 'row'
-                    }}>
-
                         <View style={{
-                            width: '50%',
-                            height: '120%',
-                            paddingTop: 60,
-                            justifyContent: 'center',
-                            alignContent: 'center',
-                            flexDirection: 'column'
+                            width: '100%',
+                            height: '25%',
+                            paddingTop: 50,
+                            flexDirection: 'row'
                         }}>
 
-                            <TouchableOpacity style={{ alignSelf: 'center' }}
-                                onPress={() => this.props.navigation.navigate('PageDesign')}>
-                                <Image
-                                    style={{
-                                        width: 150,
-                                        height: 250,
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/kaos.jpg')}
-                                />
-                            </TouchableOpacity>
-                            <View style={styles.containerSecondForm}>
-                                <Text style={{ fontWeight: 'bold', marginRight: 30 }}>My Own Table</Text>
-                            </View>
-                        </View>
+                            <View style={{
+                                width: '50%',
+                                height: '120%',
+                                paddingTop: 60,
+                                justifyContent: 'center',
+                                alignContent: 'center',
+                                flexDirection: 'column'
+                            }}>
 
-
-                        <View style={{
-                            width: '50%',
-                            height: '120%',
-                            paddingTop: 60,
-                            justifyContent: 'center',
-                            paddingLeft: 15,
-                            alignContent: 'center',
-                            flexDirection: 'column'
-                        }}>
-                            <TouchableOpacity style={{ alignSelf: 'center' }}
-                                onPress={() => this.props.navigation.navigate('PageDesign')}>
-                                <Image
-                                    style={{
-                                        width: 150,
-                                        height: 250,
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/table1_example.jpg')}
-                                />
-                            </TouchableOpacity>
-                            <View style={styles.containerSecondForm}>
-                                <Text style={{ fontWeight: 'bold', marginRight: 25 }}>legant Plain T-shirt</Text>
+                                <TouchableOpacity style={{ alignSelf: 'center' }}
+                                    onPress={() => this.props.navigation.navigate('PageDesign')}>
+                                    <Image
+                                        style={{
+                                            width: 150,
+                                            height: 250,
+                                            borderRadius: 0,
+                                            alignSelf: 'center'
+                                        }}
+                                        source={require('./../assets/images/kaos.jpg')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={styles.containerSecondForm}>
+                                    <Text style={{ fontWeight: 'bold', marginRight: 30 }}>My Own Table</Text>
+                                </View>
                             </View>
 
 
+                            <View style={{
+                                width: '50%',
+                                height: '120%',
+                                paddingTop: 60,
+                                justifyContent: 'center',
+                                paddingLeft: 15,
+                                alignContent: 'center',
+                                flexDirection: 'column'
+                            }}>
+                                <TouchableOpacity style={{ alignSelf: 'center' }}
+                                    onPress={() => this.props.navigation.navigate('PageDesign')}>
+                                    <Image
+                                        style={{
+                                            width: 150,
+                                            height: 250,
+                                            borderRadius: 0,
+                                            alignSelf: 'center'
+                                        }}
+                                        source={require('./../assets/images/table1_example.jpg')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={styles.containerSecondForm}>
+                                    <Text style={{ fontWeight: 'bold', marginRight: 25 }}>legant Plain T-shirt</Text>
+                                </View>
+
+
+                            </View>
+
+
+
                         </View>
-
-
-
-                    </View>
                     </View>
 
 
