@@ -6,9 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class PageDesignPage extends React.Component {
-        static navigationOptions = {
-            header: null
-        }
+    static navigationOptions = {
+        header: null
+    }
 
     render() {
         return (
@@ -77,13 +77,13 @@ export class PageDesignPage extends React.Component {
                             height: '100%', width: '50%',
                             justifyContent: 'center'
                         }}>
-                            <Text style={{ fontSize: 13,  textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
                                 Total Apresisasi
                             </Text>
-                            <Text style={{ fontSize: 13,  textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
                                 Design
                             </Text>
-                            <Text style={{ fontSize: 13,  textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
                                 10.000
                             </Text>
                             <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
@@ -96,7 +96,7 @@ export class PageDesignPage extends React.Component {
                 </View>
 
 
-                
+
                 <View style={{
                     width: '100%',
                     height: '5%',
@@ -113,7 +113,8 @@ export class PageDesignPage extends React.Component {
                         flexDirection: 'column'
                     }}>
 
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ alignSelf: 'center' }}
+                            onPress={() => this.props.navigation.navigate('ProductDetailProf')}>
 
                             <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Reguler' }}>Detail</Text>
                         </TouchableOpacity>
@@ -144,7 +145,7 @@ export class PageDesignPage extends React.Component {
                     </View>
                 </View>
 
-   <View style={ styles.containerMain }>
+                <View style={styles.containerMain}>
                     <View style={{
                         width: '100%',
                         height: 50,
@@ -156,7 +157,7 @@ export class PageDesignPage extends React.Component {
                             width: '50%',
                             flexDirection: 'column',
                             marginTop: 10,
-                            backgroundColor:'',
+                            backgroundColor: '',
                             height: 50
                         }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Kategori</Text>
@@ -169,7 +170,7 @@ export class PageDesignPage extends React.Component {
 
                         </View>
 
-                          <View style={{
+                        <View style={{
                             width: '50%',
                             marginTop: 10,
                             justifyContent: 'center',
@@ -189,7 +190,7 @@ export class PageDesignPage extends React.Component {
 
                     </View>
 
-                        </View>
+                </View>
 
 
 
@@ -263,7 +264,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         alignSelf: 'center'
     }
-    
+
 
 
 })

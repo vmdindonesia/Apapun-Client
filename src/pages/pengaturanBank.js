@@ -168,7 +168,7 @@ export class PengaturanBankPage extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Depan</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold',color:'black' }}>Nama Depan</Text>
 
                             <ContainerSection>
                                 <Input
@@ -180,7 +180,7 @@ export class PengaturanBankPage extends React.Component {
                         </View>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Belakang</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Belakang</Text>
 
                             <ContainerSection>
                                 <Input
@@ -194,7 +194,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nomor Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nomor Rekening</Text>
 
                         <ContainerSection>
                             <Input
@@ -206,7 +206,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Nama Bank</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Bank</Text>
 
                         <ContainerSection>
                             <Input
@@ -218,7 +218,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Cabang</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Cabang</Text>
 
                         <ContainerSection>
                             <Input
@@ -233,7 +233,7 @@ export class PengaturanBankPage extends React.Component {
                 <View style={{ flex: 1, height: 600, marginRight: 10, marginLeft: 10, }}>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Foto Profil Asli</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Profil Asli</Text>
                         <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
                             <TouchableWithoutFeedback
                                 onPress={this.getPhotoProfile.bind(this)}>
@@ -259,7 +259,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>KTP</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>KTP</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
                             <TouchableWithoutFeedback
                                 onPress={this.getPhotoKTP.bind(this)}>
@@ -284,7 +284,7 @@ export class PengaturanBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Foto Buku Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Buku Rekening</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center', }}>
                             <TouchableWithoutFeedback
                                 onPress={this.getBankBook.bind(this)}
@@ -313,7 +313,7 @@ export class PengaturanBankPage extends React.Component {
 
                 <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Kode Verifikasi</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Kode Verifikasi</Text>
                         <ContainerSection>
                             <Input
                                 placeholder='silakan masukan kode verifikasi'
@@ -333,7 +333,7 @@ export class PengaturanBankPage extends React.Component {
 
                 <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Password</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Password</Text>
 
                         <ContainerSection>
                             <Input
@@ -351,7 +351,7 @@ export class PengaturanBankPage extends React.Component {
 
                     <CheckBox
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5 }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
+                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
                         </Text>}
                         onPress={() => this.checkedAgree()}
                         checked={agree}

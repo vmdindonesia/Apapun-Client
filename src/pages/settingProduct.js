@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View, FlatList, ScrollView, Picker, TextInput } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { Input } from '../components/common';
+import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class SettingProductPage extends React.Component {
@@ -72,12 +72,12 @@ export class SettingProductPage extends React.Component {
 
     render() {
         return (
-            <ScrollView>
-                <View style={{ flex: 1, marginLeft: 5, marginRight: 5, marginTop: 5 }}>
-                    <View style={{ marginLeft: 5 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold' }}>Upload Gambar</Text>
+            <ScrollView style={{ flex: 1 }}>
+                <View style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop: 10 }}>
+                    <View style={{ paddingLeft: 5 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Upload Gambar</Text>
                         <View style={{
-                            flexDirection: 'row', marginTop: 5, height: 30,
+                            flexDirection: 'row', marginTop: 10, height: 30,
                             paddingTop: 5, paddingBottom: 5, alignContent: 'center'
                         }}>
                             <TouchableOpacity>
@@ -134,27 +134,30 @@ export class SettingProductPage extends React.Component {
                             />
                         </View>
                     </View>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 12 }}>Maksimal upload 5 gambar</Text>
+                    </View>
                     <View style={{ marginLeft: 5, marginTop: 10 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold' }}>Nama Produk</Text>
-                        <View style={{ width: '100%', marginTop: 3 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Nama Produk</Text>
+                        <View style={{ width: '100%', marginTop: 5 }}>
                             <Text
                                 style={{
-                                    fontFamily: 'Quicksand-Regular', color: 'red', backgroundColor: '#eee', paddingLeft: 5
+                                    fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'grey', backgroundColor: '#eee',
                                 }}>My Own Table</Text>
                         </View>
                     </View>
                     <View style={{ marginLeft: 5, marginTop: 10, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold' }}>Kategori</Text>
-                            <View style={{ width: '100%', marginTop: 3 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Kategori</Text>
+                            <View style={{ width: '100%', marginTop: 5 }}>
                                 <Text
                                     style={{
-                                        fontFamily: 'Quicksand-Regular', color: 'red', backgroundColor: '#eee', paddingLeft: 5
+                                        fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'grey', backgroundColor: '#eee',
                                     }}>Furniture</Text>
                             </View>
                         </View>
                         <View style={{ flex: 1, marginLeft: 15, height: '10%' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold' }}>Sub-Kategori</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Sub-Kategori</Text>
                             <View style={styles.subCategoryPicker}>
                                 <Picker style={{ flex: 1 }}>
                                     <Picker.Item label='Meja' value='Meja' />
@@ -163,8 +166,9 @@ export class SettingProductPage extends React.Component {
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold' }}>Deskripsi Produk</Text>
-                        <View style={{ width: '100%', height: '10%' }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>
+                            Deskripsi Produk</Text>
+                        <View style={{ width: '100%', height: '10%', marginTop: 5 }}>
                             <TextInput
                                 style={{ height: 100, textAlignVertical: 'top', borderWidth: 1 }}
                                 multiline={true}
@@ -172,27 +176,31 @@ export class SettingProductPage extends React.Component {
                                 maxLength={5000}
                             />
                             <Text
-                                style={{ fontFamily: 'Quicksand-Regular', fontSize: 11, textAlign: 'right' }}
+                                style={{ fontFamily: 'Quicksand-Regular', fontSize: 11, textAlign: 'right', marginTop: 5 }}
                             >Batas karakter 5000</Text>
                         </View>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold' }}>Apresiasi Anda</Text>
-                        <View
-                            style={{
-                                borderRadius: 100, backgroundColor: 'black', width: 30, height: 30,
-                                justifyContent: 'center', flexDirection: 'row', marginTop: 3
-                            }}
-                        >
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 20, color: 'white', textAlign: 'center' }}>Rp</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Apresiasi Anda</Text>
+                        <View style={{ flexDirection: 'row', }}>
+                            <View
+                                style={{
+                                    borderRadius: 100, backgroundColor: 'black', width: 35, height: 35,
+                                    justifyContent: 'center', flexDirection: 'row', marginTop: 12
+                                }}
+                            >
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 18, color: 'white', textAlign: 'center', paddingTop: 5 }}>Rp</Text>
+                            </View>
+                            <View style={{ flex: 1, marginLeft: 10 }}>
+                                <ContainerSection>
+                                    <Input
+
+                                        placeholder='silakan isi harga apresiasi'
+                                    />
+                                </ContainerSection>
+                            </View>
                         </View>
-                        <TextInput
-                            style={{
-                                fontFamily: 'Quicksand-Bold', fontSize: 30, textAlign: 'center'
-                            }}
-                            underlineColorAndroid='transparent'
-                            placeholder='Isi Harga Apresiasi'
-                        />
+
                         <TouchableOpacity
                             style={{
                                 borderRadius: 25, height: 40, width: '85%', backgroundColor: 'red', justifyContent: 'center',
@@ -222,7 +230,8 @@ const styles = StyleSheet.create({
     },
     containerSwiper: {
         width: '100%',
-        height: 250
+        height: 250,
+        marginTop: 5
     },
     slide1: {
         flex: 1,
@@ -238,7 +247,8 @@ const styles = StyleSheet.create({
     },
     subCategoryPicker: {
         borderWidth: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 5
     },
 });
 
