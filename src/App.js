@@ -82,9 +82,7 @@ import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
 import { ProductDetailProfPage } from './pages/ProductDetail';
 import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
-import { searchCustomOrderPage } from './pages/seachCustomOrder';
-import { searchCustomCaptureAndGetPage } from './pages/searchCaptureAndGet';
-import { searchIdeaMarketPage } from './pages/searchIdeaMarket';
+import { searchOrderPage } from './pages/seachOrder';
 
 console.disableYellowBox = true;
 
@@ -103,6 +101,9 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
+  searchOrder: {
+    screen: searchOrderPage
+  },
   ProductDetailNya: {
     screen: ProductDetailNyaPage
   },
@@ -120,15 +121,6 @@ const Routes = createStackNavigator({
   },
   CrafterMenu: {
     screen: CrafterMenuPage
-  },
-  searchCustomOrder: {
-    screen: searchCustomOrderPage
-  },
-  searchCaptureAndGet: {
-    screen: searchCustomCaptureAndGetPage
-  },
-  searchIdeaMarket: {
-    screen: searchIdeaMarketPage
   },
   ProfilePage: {
     screen: ProfileBuyerPage

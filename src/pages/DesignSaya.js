@@ -92,11 +92,11 @@ export class DesignSayaPage extends React.Component {
                 </View>
 
                 <ScrollView>
-                    <View style={styles.jing}>
                         <View style={{
                             width: '100%',
                             height: '25%',
                             paddingTop: 50,
+                            marginBottom: 230,
                             flexDirection: 'row'
                         }}>
 
@@ -129,8 +129,8 @@ export class DesignSayaPage extends React.Component {
                                     }}>
                                         <View style={{ paddingLeft: 180 }}>
                                             <Image
-                                                style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                style={{ width: 20, height: 20, paddingTop: 20 }}
+                                                source={require('./../assets/images/Cukup.png')}
                                             />
                                             <Text>(1)</Text>
                                         </View>
@@ -183,8 +183,8 @@ export class DesignSayaPage extends React.Component {
                                     }}>
                                         <View style={{ paddingLeft: 160 }}>
                                             <Image
-                                                style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                style={{ width: 20, height: 20, paddingTop: 20 }}
+                                                source={require('./../assets/images/Cukup.png')}
                                             />
                                             <Text> (1)</Text>
                                         </View>
@@ -214,13 +214,12 @@ export class DesignSayaPage extends React.Component {
 
 
                         </View>
-                    </View>
 
                     <View style={styles.anj}>
                         <View style={{
                             width: '100%',
-                            height: '25%',
-                            paddingTop: 5,
+                            height: '50%',
+                            backgroundColor: '',
                             flexDirection: 'row'
                         }}>
 
@@ -245,7 +244,7 @@ export class DesignSayaPage extends React.Component {
                                         source={require('./../assets/images/lala.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <View style={styles.containerSecondForm}>
+                                <View style={styles.containerSec}>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', paddingTop: 10, paddingLeft: 20 }}>Desain belum terdaftar</Text>
 
 
@@ -311,17 +310,36 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: '#d6d7da'
     },
+    containerSec: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'row',
+        height: 30,
+        width: '100%',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // alignSelf: 'center',
+        // zIndex: 1,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da'
+    },
     anj: {
         flex: 1,
         width: '100%',
-        marginTop: -30
+        marginTop: -85,
+        zIndex:0,
     },
     butin: {
         zIndex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         height: 90,
-        marginTop: -150,
+        marginTop: -245,
         width: 200
     },
     signupButton: {
@@ -340,11 +358,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'Quicksand-Regular'
         // zIndex: 2
-    },
-    jing: {
-        flex: 1,
-        paddingTop: 50,
-        width: '100%'
     }
 
 
