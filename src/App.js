@@ -98,6 +98,36 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Gambar: {
+    screen: GambarPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+  crafterMenuNote: {
+    screen: crafterMenuNotePage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  addNoteOnCrafterMenu: {
+    screen: addNoteOnCrafterMenuPage
+  },
+  editNoteOnCrafterMenu: {
+    screen: editNoteOnCrafterMenuPage
+  },
   PageDesign: {
     screen: PageDesignPage
   },
