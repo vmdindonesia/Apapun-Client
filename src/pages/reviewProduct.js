@@ -102,10 +102,10 @@ export class ReviewProductPage extends React.Component {
                             >
                                 <Image
                                     style={{ width: 80, height: 65, alignSelf: 'center', marginTop: 10 }}
-                                    source={require('./../assets/images/sempurna.png')}
+                                    source={require('./../assets/images/Cukup.png')}
                                     resizeMode='contain'
                                 />
-                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Sempurna</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Cukup</Text>
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalReview')}

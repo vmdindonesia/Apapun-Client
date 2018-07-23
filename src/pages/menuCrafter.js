@@ -55,23 +55,14 @@ export class MenuCrafterPage extends React.Component {
                             <View style={{ width: '100%' }} >
                                 <Text style={styles.textStyle}>Gal Gadot</Text>
                             </View>
-                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                <Image
-                                    style={styles.locationIcon}
-                                    source={require('./../assets/images/location_icon.png')}
-                                />
-                                <View style={{ flex: 1 }}>
-                                    <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Indonesia, Kalimantan Selatan</Text>
-                                </View>
-                            </View>
-                            <View style={{ flex: 1, flexDirection: 'row' }}>
-                                <Image
-                                    style={styles.emojiIcon}
-                                    source={require('./../assets/images/sempurna.png')}
-                                />
-                                <View style={{ flex: 1 }}>
-                                    <Text style={styles.textStyle2}>Rating: Sempurna (35)</Text>
-                                </View>
+                        </View>
+                        <View style={{ width: '100%', flexDirection: 'row' }}>
+                            <Image
+                                style={styles.emojiIcon}
+                                source={require('./../assets/images/Cukup.png')}
+                            />
+                            <View style={{ flex: 1 }}>
+                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Cukup (35)</Text>
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 10 }}>
