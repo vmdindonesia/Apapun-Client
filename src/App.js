@@ -91,20 +91,25 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  ProductDetailOnProfilePage: {
-    screen: ProductDetailOnProfilePage
+  PaymentMethod: {
+    screen: PaymentMethodPage
   },
-
+  
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
+  Dashboard: {
+    screen: DashboardPage
   },
   StartScreen: {
     screen: StartScreen
   },
-
+  ProductDetailOnProfilePage: {
+    screen: ProductDetailOnProfilePage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
   Crafter: {
     screen: CrafterPage
   },
@@ -117,7 +122,6 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -160,9 +164,7 @@ const Routes = createStackNavigator({
   CrafterList: {
     screen: CrafterListPage
   },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
+
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
@@ -189,9 +191,6 @@ const Routes = createStackNavigator({
   },
   OrderReceived: {
     screen: OrderReceivedPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   DetailDelivery: {
     screen: DetailDeliveryPage
@@ -301,7 +300,7 @@ const Routes = createStackNavigator({
       headerRight: <View />,
       headerTitleStyle: {
         color: '#000',
-        fontFamily: 'Quicksand-Bold',
+        fontFamily: 'Quicksand-Regular',
         fontWeight: '300',
         justifyContent: 'space-between',
         textAlign: 'center',
