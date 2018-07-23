@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, TouchableNativeFeedback, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight } from 'react-native'
 import { ProductDetailOnProfilePage } from './ProductDetailOnProfile';
 import { ReviewPageOnProfilePage } from './reviewOnProfile';

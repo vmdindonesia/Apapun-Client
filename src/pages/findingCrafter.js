@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Imag
 import { MyOrderPage } from './myOrder';
 import { CrafterPage } from './crafter';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Axios from '../../node_modules/axios';
+import Axios from 'axios';
 
 export class FindingCrafterPage extends React.Component {
 

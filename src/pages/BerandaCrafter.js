@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, TouchableWithoutFeedback, FlatList, TouchableOpacity } from 'react-native'
 import { InputSearch } from '../components/common';
 // import axios from 'axios';

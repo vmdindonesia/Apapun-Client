@@ -8,7 +8,7 @@ import {
 	ScrollView
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { COLOR, IPSERVER } from './../shared/config';
+import { COLOR, IPSERVER } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
 import ActionButton from 'react-native-circular-action-menu';
 

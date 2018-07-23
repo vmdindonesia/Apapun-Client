@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native'
-import { COLOR } from './../../shared/config';
+import { COLOR } from '../../shared/config';
 
 class InputSearchMaterial extends Component {
 	constructor(props) {

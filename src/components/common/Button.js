@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Text, View, TouchableNativeFeedback } from 'react-native'
 import { COLOR } from '../../shared/config';
 

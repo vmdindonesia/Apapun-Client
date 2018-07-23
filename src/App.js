@@ -82,9 +82,7 @@ import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
 import { ProductDetailProfPage } from './pages/ProductDetail';
 import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
-import { searchCustomOrderPage } from './pages/seachCustomOrder';
-import { searchCustomCaptureAndGetPage } from './pages/searchCaptureAndGet';
-import { searchIdeaMarketPage } from './pages/searchIdeaMarket';
+import { searchOrderPage } from './pages/seachOrder';
 import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
 import { crafterMenuNotePage } from './pages/crafterMenuNote';
 import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
@@ -101,6 +99,24 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
+  },
+  StartScreen: {
+    screen: StartScreen
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Gambar: {
+    screen: GambarPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
   MenuCrafter: {
     screen: MenuCrafterPage
   },
@@ -119,9 +135,6 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
@@ -136,18 +149,6 @@ const Routes = createStackNavigator({
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
-  },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
-  searchCustomOrder: {
-    screen: searchCustomOrderPage
-  },
-  searchCaptureAndGet: {
-    screen: searchCustomCaptureAndGetPage
-  },
-  searchIdeaMarket: {
-    screen: searchIdeaMarketPage
   },
   SettingProduct: {
     screen: SettingProductPage
@@ -179,12 +180,7 @@ const Routes = createStackNavigator({
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
-  Order: {
-    screen: OrderPage
-  },
+
   Crafter: {
     screen: CrafterPage
   },
@@ -253,9 +249,6 @@ const Routes = createStackNavigator({
   },
   DetailDelivery: {
     screen: DetailDeliveryPage
-  },
-  Gambar: {
-    screen: GambarPage
   },
   EditCatatan: {
     screen: EditCatatanPage

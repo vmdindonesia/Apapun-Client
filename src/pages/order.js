@@ -4,9 +4,9 @@ import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndr
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
-import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import axios from 'axios';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CheckBox } from 'react-native-elements';
@@ -462,25 +462,22 @@ export class OrderPage extends React.Component {
         );
     }
 
-    renderSelectedMaterial() {
-        const { dataCheckBoxSubMaterial } = this.state;
+    renderSelectedMaterial(item, index) {
         return (
-                <ContainerSection>
-                    <View style={styles.buttonMaterial}>
-                        <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{dataCheckBoxSubMaterial.materialName}</Text>
-                            <TouchableOpacity
-                                onPress={() => this.deleteMaterial(item)}
-                            >
-                                <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
-
-                            </TouchableOpacity>
-                        </View>
+            <ContainerSection>
+                <View style={styles.buttonMaterial}>
+                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                        <TouchableOpacity
+                            onPress={() => this.deleteMaterial(item)}
+                        >
+                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+                        </TouchableOpacity>
                     </View>
-                </ContainerSection>
+                </View>
+            </ContainerSection>
         )
     }
-
 
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
@@ -584,7 +581,7 @@ export class OrderPage extends React.Component {
                     marginBottom: 20
                 }}
                 onPress={() => this.onValidation()}
-                // onPress={() => this.props.navigation.navigate('FindingCrafter')}
+            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -811,14 +808,32 @@ export class OrderPage extends React.Component {
                                 <View style={{ flexDirection: 'row' }} >
                                     {
 
-                                        //     <FlatList
-                                        //     data={this.state.photoTemp}
-                                        //     extraData={this.state}
-                                        //     horizontal
-                                        //     renderItem={({ item, index }) => this.renderProductItem(item, index)}
-                                        //     showsHorizontalScrollIndicator={false}
-                                        // />
+                                        <FlatList
+                                            data={dataCheckBoxSubMaterial}
+                                            extraData={this.state}
+                                            horizontal={false}
+                                            renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                            numColumns={3}
+                                        />
                                     }
+                                    {/* {
+                                        dataCheckBoxSubMaterial && dataCheckBoxSubMaterial.map(item =>
+                                            <ContainerSection>
+                                                <View style={styles.buttonMaterial}>
+                                                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                                                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                                                        <TouchableOpacity
+                                                            onPress={() => this.deleteMaterial(item)}
+                                                        >
+                                                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            </ContainerSection>
+                                        )
+                                    } */}
 
                                 </View>
                             </View>

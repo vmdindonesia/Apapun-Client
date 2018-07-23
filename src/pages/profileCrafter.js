@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
 } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { ContainerSection, Card } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 

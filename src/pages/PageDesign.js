@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 

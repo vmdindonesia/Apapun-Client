@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, AsyncStorage, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Spinner } from '../components/common';

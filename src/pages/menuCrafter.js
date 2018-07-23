@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
-    View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
-    TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
+    View, Text, ImageBackground, Image, Alert,
+    TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
 } from 'react-native'
 import { ContainerSection, Card } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,34 +14,10 @@ export class MenuCrafterPage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            statusMenu: 'gambar',
-            photo: [
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
-            ],
-            imageExpanded: false,
-            noteExpanded: false,
-            reviewExpanded: false,
-            accBankExpanded: false,
-            myOrderExpanded: false
-
-        };
     }
 
     alert = (msg) => {
         console.log(msg)
-    }
-
-    statusMenus = (value) => {
-        console.log(value, 'Value')
-        this.setState({
-            statusMenu: value
-        })
     }
 
     renderProductItem = (data) => {
@@ -57,8 +33,7 @@ export class MenuCrafterPage extends React.Component {
     }
 
     render() {
-        const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
-
+        // const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
@@ -117,7 +92,7 @@ export class MenuCrafterPage extends React.Component {
                         <View style={{ width: '100%', marginTop: 10, height: '100%' }}>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
@@ -127,19 +102,6 @@ export class MenuCrafterPage extends React.Component {
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
-                                {
-                                    imageExpanded ?
-                                        <View>
-                                            <FlatList
-                                                data={this.state.photo}
-                                                contentContainerStyle={styles.list}
-                                                renderItem={this.renderProductItem.bind(this)}
-                                                showsHorizontalScrollIndicator={false}
-                                            />
-                                        </View>
-                                        :
-                                        <View />
-                                }
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
@@ -153,19 +115,6 @@ export class MenuCrafterPage extends React.Component {
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
-                                {
-                                    imageExpanded ?
-                                        <View>
-                                            <FlatList
-                                                data={this.state.photo}
-                                                contentContainerStyle={styles.list}
-                                                renderItem={this.renderProductItem.bind(this)}
-                                                showsHorizontalScrollIndicator={false}
-                                            />
-                                        </View>
-                                        :
-                                        <View />
-                                }
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
@@ -179,19 +128,6 @@ export class MenuCrafterPage extends React.Component {
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
-                                {
-                                    imageExpanded ?
-                                        <View>
-                                            <FlatList
-                                                data={this.state.photo}
-                                                contentContainerStyle={styles.list}
-                                                renderItem={this.renderProductItem.bind(this)}
-                                                showsHorizontalScrollIndicator={false}
-                                            />
-                                        </View>
-                                        :
-                                        <View />
-                                }
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
@@ -205,23 +141,10 @@ export class MenuCrafterPage extends React.Component {
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
-                                {
-                                    imageExpanded ?
-                                        <View>
-                                            <FlatList
-                                                data={this.state.photo}
-                                                contentContainerStyle={styles.list}
-                                                renderItem={this.renderProductItem.bind(this)}
-                                                showsHorizontalScrollIndicator={false}
-                                            />
-                                        </View>
-                                        :
-                                        <View />
-                                }
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.setState({ screen: 'searchCustomOrder' })}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
@@ -231,19 +154,6 @@ export class MenuCrafterPage extends React.Component {
                                         </View>
                                     </TouchableWithoutFeedback>
                                 </ContainerSection>
-                                {
-                                    imageExpanded ?
-                                        <View>
-                                            <FlatList
-                                                data={this.state.photo}
-                                                contentContainerStyle={styles.list}
-                                                renderItem={this.renderProductItem.bind(this)}
-                                                showsHorizontalScrollIndicator={false}
-                                            />
-                                        </View>
-                                        :
-                                        <View />
-                                }
                             </View>
                         </View>
                     </View>
@@ -266,9 +176,6 @@ const styles = StyleSheet.create({
     backgroundStyle: {
         width: '100%',
         height: '30%',
-        // flex: 1,
-        // position: 'absolute',
-        // backgroundColor: 'pink'
     },
     containerImage: {
         justifyContent: 'flex-end',

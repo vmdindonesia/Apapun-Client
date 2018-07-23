@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
 import { InputSearch } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';

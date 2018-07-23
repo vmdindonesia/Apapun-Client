@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
 import { Container, Button, ContainerSection, Input } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';

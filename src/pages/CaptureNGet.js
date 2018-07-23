@@ -4,9 +4,9 @@ import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndr
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
-import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import axios from 'axios';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
 
