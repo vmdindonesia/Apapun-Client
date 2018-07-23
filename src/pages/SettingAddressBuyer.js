@@ -21,7 +21,7 @@ export class SettingAddressBuyerPage extends React.Component {
                 flexDirection: 'column', width: 50, height: '100%', marginRight: 15, justifyContent: 'center'
             }}>
                 <TouchableOpacity
-                    onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                    onPress={() => navigation.navigate('NewAddressOnProfile')}
                 >
                     <Image
                         style={{ height: 20, width: 20, alignSelf: 'center' }}
@@ -29,7 +29,7 @@ export class SettingAddressBuyerPage extends React.Component {
                     />
                     <Text style={{ fontSize: 10, color: 'black', textAlign: 'center' }}>Alamat Baru</Text>
                 </TouchableOpacity>
-        </View>
+            </View>
 
 
     });

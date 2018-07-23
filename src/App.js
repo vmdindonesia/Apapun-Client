@@ -78,7 +78,17 @@ import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
 import { EditProductPage } from './pages/EditProduct';
 import { ProductDetailNyaPage } from './pages/ProductDetailNya';
-
+import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
+import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
+import { ProductDetailProfPage } from './pages/ProductDetail';
+import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
+import { searchCustomOrderPage } from './pages/seachCustomOrder';
+import { searchCustomCaptureAndGetPage } from './pages/searchCaptureAndGet';
+import { searchIdeaMarketPage } from './pages/searchIdeaMarket';
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
+import { crafterMenuNotePage } from './pages/crafterMenuNote';
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
 
 console.disableYellowBox = true;
 
@@ -93,6 +103,72 @@ setCustomText(customTextProps)
 const Routes = createStackNavigator({
   MenuCrafter: {
     screen: MenuCrafterPage
+  },
+  crafterMenuNote: {
+    screen: crafterMenuNotePage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  addNoteOnCrafterMenu: {
+    screen: addNoteOnCrafterMenuPage
+  },
+  editNoteOnCrafterMenu: {
+    screen: editNoteOnCrafterMenuPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  searchCustomOrder: {
+    screen: searchCustomOrderPage
+  },
+  searchCaptureAndGet: {
+    screen: searchCustomCaptureAndGetPage
+  },
+  searchIdeaMarket: {
+    screen: searchIdeaMarketPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
+  ProductDetailProf: {
+    screen: ProductDetailProfPage
+  },
+  ReviewPageOnProfile: {
+    screen: ReviewPageOnProfilePage
+  },
+  AkunBank: {
+    screen: AkunBankPage
+  },
+  DetailTransaksi: {
+    screen: DetailTransaksiPage
+  },
+  NewAddressOnProfile: {
+    screen: NewAddressOnProfilePage
+  },
+  ProductDetailOnProfile: {
+    screen: ProductDetailOnProfilePage
   },
   FindingCrafter: {
     screen: FindingCrafterPage
@@ -118,9 +194,6 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -133,9 +206,6 @@ const Routes = createStackNavigator({
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
@@ -145,17 +215,11 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-  AkunBank: {
-    screen: AkunBankPage
-  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
   },
   CrafterList: {
     screen: CrafterListPage
@@ -187,9 +251,6 @@ const Routes = createStackNavigator({
   OrderReceived: {
     screen: OrderReceivedPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   DetailDelivery: {
     screen: DetailDeliveryPage
   },
@@ -213,9 +274,6 @@ const Routes = createStackNavigator({
   },
   CrafterInputResi: {
     screen: CrafterInputResiPage
-  },
-  SettingProduct: {
-    screen: SettingProductPage
   },
   ForgotPassword: {
     screen: ForgotPasswordPage
@@ -261,9 +319,6 @@ const Routes = createStackNavigator({
   },
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
-  },
-  DetailTransaksi: {
-    screen: DetailTransaksiPage
   },
   DetailOrder: {
     screen: DetailOrderPage

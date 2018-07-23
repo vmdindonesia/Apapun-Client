@@ -175,7 +175,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        {/* <View style={styles.containerSecondForm}>
+                        <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -214,11 +214,11 @@ export class ProfileBuyerPage extends React.Component {
 
                             </View>
 
-                        </View> */}
+                        </View>
 
 
 
-                        {/* <View style={styles.containerThirdForm}>
+                        <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -259,7 +259,7 @@ export class ProfileBuyerPage extends React.Component {
                                     </Text>
                                 </View>
                             </View>
-                        </View> */}
+                        </View>
 
 
                         <View style={styles.containerTh}>
@@ -279,11 +279,7 @@ export class ProfileBuyerPage extends React.Component {
                                     ke seluruh indonesia
                                     </Text>
                             </View>
-
-
                         </View>
-
-
                     </View>
 
                     <View style={styles.butin}>
@@ -292,10 +288,6 @@ export class ProfileBuyerPage extends React.Component {
                             <Text style={styles.signupButton}>Pengaturan</Text>
                         </TouchableOpacity>
                     </View>
-
-
-
-
 
                 </ImageBackground >
             </ScrollView >

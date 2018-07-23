@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SwitchToggle from 'react-native-switch-toggle';
 
 
-export class SettingAddressDetailBuyerPage extends React.Component {
+export class NewAddressOnProfilePage extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
@@ -193,4 +193,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SettingAddressDetailBuyerPage
+export default NewAddressOnProfilePage

@@ -106,10 +106,12 @@ export class OrderPage extends React.Component {
 
                     }).catch(error => {
                         console.log(error, 'Error Address');
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
                     })
                 });
             }).catch(error => {
                 console.log(error, 'Error Kategori');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             })
     }
 
@@ -581,8 +583,8 @@ export class OrderPage extends React.Component {
                     marginRight: '5%',
                     marginBottom: 20
                 }}
-                // onPress={() => this.onValidation()}
-                onPress={() => this.props.navigation.navigate('FindingCrafter')}
+                onPress={() => this.onValidation()}
+                // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>

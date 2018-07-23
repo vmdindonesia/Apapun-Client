@@ -14,7 +14,10 @@ export class AkunBankPage extends React.Component {
       >
         <Icon size={30} style={{ marginLeft: 25 }} name='ios-arrow-back' />
       </TouchableOpacity>,
-    headerTitle: 'Akun Bank'
+    headerTitle: 'Akun Bank',
+    headerStyle: {
+      elevation: 0
+    }
   });
 
   constructor(props) {
@@ -43,56 +46,55 @@ export class AkunBankPage extends React.Component {
     return (
       <View style={{
         flex: 1
-    }}>
-
-      <View style={{
-        width: '100%',
-        flexDirection: 'row',
-        borderBottomWidth: 2,
-        marginBottom: 3,
-        // flex: 1,
-        borderColor: '#e5e5e5'
       }}>
 
-        <View
-          style={{
-            flex: 1,
-            height: 50,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
-            <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
-              <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
-            </View>
-          </TouchableNativeFeedback>
+        <View style={{
+          width: '100%',
+          flexDirection: 'row',
+          borderBottomWidth: 2,
+          marginBottom: 3,
+          // flex: 1,
+          borderColor: '#e5e5e5'
+        }}>
+
+          <View
+            style={{
+              flex: 1,
+              height: 50,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'InformasiBank' })}>
+              <View style={screen === 'InformasiBank' ? tabContainerActive : tabContainer}>
+                <Text style={screen === 'InformasiBank' ? tabTextActive : tabText}>Informasi Bank</Text>
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+
+
+          <View
+            style={{
+              flex: 1,
+              height: 50,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
+              <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
+                <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
+              </View>
+            </TouchableNativeFeedback>
+          </View>
         </View>
 
 
-        <View
-          style={{
-            flex: 1,
-            height: 50,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-          <TouchableNativeFeedback onPress={() => this.setState({ screen: 'DetailTransaksi' })}>
-            <View style={screen === 'DetailTransaksi' ? tabContainerActive : tabContainer}>
-              <Text style={screen === 'DetailTransaksi' ? tabTextActive : tabText}>Detail Transaksi</Text>
-            </View>
-          </TouchableNativeFeedback>
-        </View>
+        {this.renderScreen()}
       </View>
 
-      
-            { this.renderScreen() }
-            </View>
 
-         
-      
-        )
+    )
   }
 }
 
@@ -108,14 +110,18 @@ const styles = StyleSheet.create({
     borderColor: 'red'
   },
   tabText: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 15
-  },
-  tabTextActive: {
+    color: '#c6c6c6',
     textAlign: 'center',
     fontSize: 15,
-    fontFamily: 'Quicksand-Regular'
+    fontFamily: 'Quicksand-Regular',
+
+  },
+  tabTextActive: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 15,
+    fontFamily: 'Quicksand-Regular',
+    // fontWeight: 'bold'
   }
 })
 
