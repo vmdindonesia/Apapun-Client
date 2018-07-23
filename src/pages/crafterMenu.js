@@ -53,7 +53,7 @@ export class CrafterMenuPage extends React.Component {
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ borderRightWidth: 0.7, height: 30, borderRightColor: '#ddd', alignSelf: 'center' }} />
+          <View style={{ borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>

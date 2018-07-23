@@ -91,17 +91,26 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
+  MenuCrafter: {
+    screen: MenuCrafterPage
   },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
-  Crafter: {
-    screen: CrafterPage
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  OrderForCrafter: {
+    screen: OrderForCrafterPage
+  },
+  StartScreen: {
+    screen: StartScreen
   },
   Order: {
     screen: OrderPage
+  },
+  Crafter: {
+    screen: CrafterPage
   },
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
@@ -120,9 +129,6 @@ const Routes = createStackNavigator({
   },
   EditProduct: {
     screen: EditProductPage
-  },
-  CrafterMenu: {
-    screen: CrafterMenuPage
   },
   pengaturanBank: {
     screen: PengaturanBankPage
@@ -156,9 +162,6 @@ const Routes = createStackNavigator({
   },
   PaymentMethod: {
     screen: PaymentMethodPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
   },
   IdeaBeauty: {
     screen: IdeaBeautyPage
@@ -198,9 +201,6 @@ const Routes = createStackNavigator({
   },
   Ulasan: {
     screen: UlasanPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
   },
   Catatan: {
     screen: CatatanPage
@@ -295,7 +295,7 @@ const Routes = createStackNavigator({
       headerRight: <View />,
       headerTitleStyle: {
         color: '#000',
-        fontFamily: 'Quicksand-Bold',
+        fontFamily: 'Quicksand-Regular',
         fontWeight: '300',
         justifyContent: 'space-between',
         textAlign: 'center',

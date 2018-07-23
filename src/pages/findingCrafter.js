@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image, AsyncStorage } from 'react-native';
 import { MyOrderPage } from './myOrder';
 import { CrafterPage } from './crafter';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Axios from '../../node_modules/axios';
 
 export class FindingCrafterPage extends React.Component {
 
@@ -24,6 +25,9 @@ constructor(props) {
   super(props)
   this.state = {
     screen: 'crafter'
+  }
+  this.state={
+    dataCrafter: ''
   }
 }
 

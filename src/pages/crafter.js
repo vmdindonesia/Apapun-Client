@@ -63,9 +63,10 @@ export class CrafterPage extends React.Component {
                     <View style={styles.containerCrafter}>
                         <FlatList
                             data={this.state.photo}
-                            contentContainerStyle={styles.list}
+                            horizontal={false}
                             renderItem={this.renderProductItem.bind(this)}
                             showsHorizontalScrollIndicator={false}
+                            numColumns={4}
                         />
                     </View>
                 </View>
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        // flexWrap: 'wrap'
     }
 });
 
