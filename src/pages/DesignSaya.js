@@ -113,7 +113,7 @@ export class DesignSayaPage extends React.Component {
                                     onPress={() => this.props.navigation.navigate('PageDesign')}>
                                     <Image
                                         style={{
-                                            width: 150,
+                                            width: 195,
                                             height: 250,
                                             borderRadius: 0,
                                             alignSelf: 'center'
@@ -122,8 +122,34 @@ export class DesignSayaPage extends React.Component {
                                     />
                                 </TouchableOpacity>
                                 <View style={styles.containerSecondForm}>
-                                    <Text style={{ fontWeight: 'bold', marginRight: 30 }}>My Own Table</Text>
+                                    <View style={{
+                                        height: 100,
+                                        width: 200,
+                                        backgroundColor: ''
+                                    }}>
+                                        <View style={{ paddingLeft: 180 }}>
+                                            <Image
+                                                style={{ width: 20, height: 20, paddingTop: 10 }}
+                                                source={require('./../assets/images/smiley.png')}
+                                            />
+                                            <Text>(1)</Text>
+                                        </View>
+                                        <View style={{ paddingLeft: 5, top: -35 }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', marginRight: 25, paddingTop: 10, paddingLeft: 10 }}>My Own Table</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', marginRight: 25, paddingTop: 20, paddingLeft: 10, fontSize: 13 }}>Total apresiasi</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', paddingLeft: 20, color: 'red' }}>Rp. 20.000</Text>
+
+                                            <View style={{ paddingLeft: 130, top: -30 }}>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Terjual</Text>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'red', paddingLeft: 15 }}>10</Text>
+                                            </View>
+
+                                        </View>
+                                    </View>
+
+
                                 </View>
+
                             </View>
 
 
@@ -140,7 +166,7 @@ export class DesignSayaPage extends React.Component {
                                     onPress={() => this.props.navigation.navigate('PageDesign')}>
                                     <Image
                                         style={{
-                                            width: 150,
+                                            width: 195,
                                             height: 250,
                                             borderRadius: 0,
                                             alignSelf: 'center'
@@ -148,8 +174,38 @@ export class DesignSayaPage extends React.Component {
                                         source={require('./../assets/images/table1_example.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <View style={styles.containerSecondForm}>
-                                    <Text style={{ fontWeight: 'bold', marginRight: 25 }}>legant Plain T-shirt</Text>
+
+                                <View style={styles.containerSecond}>
+                                    <View style={{
+                                        height: 100,
+                                        width: 200,
+                                        backgroundColor: ''
+                                    }}>
+                                        <View style={{ paddingLeft: 160 }}>
+                                            <Image
+                                                style={{ width: 20, height: 20, paddingTop: 10 }}
+                                                source={require('./../assets/images/smiley.png')}
+                                            />
+                                            <Text> (1)</Text>
+                                        </View>
+                                        <View style={{ paddingLeft: 5, top: -35 }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', marginRight: 25, paddingTop: 10, paddingLeft: 10 }}>legant Plain T-shirt</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', marginRight: 25, paddingTop: 20, paddingLeft: 10, fontSize: 13 }}>Total apresiasi</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', paddingLeft: 20, color: 'red' }}>Rp. 20.000</Text>
+
+                                            <View style={{ paddingLeft: 130, top: -30 }}>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Terjual</Text>
+                                                <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'red', paddingLeft: 15 }}>10</Text>
+                                            </View>
+
+                                        </View>
+
+                                    </View>
+
+
+
+
+
                                 </View>
 
 
@@ -159,6 +215,54 @@ export class DesignSayaPage extends React.Component {
 
                         </View>
                     </View>
+
+                    <View style={styles.anj}>
+                        <View style={{
+                            width: '100%',
+                            height: '25%',
+                            paddingTop: 5,
+                            flexDirection: 'row'
+                        }}>
+
+                            <View style={{
+                                width: '50%',
+                                height: '120%',
+                                paddingTop: 10,
+                                justifyContent: 'center',
+                                alignContent: 'center',
+                                flexDirection: 'column'
+                            }}>
+
+                                <TouchableOpacity style={{ alignSelf: 'center' }}
+                                    onPress={() => this.props.navigation.navigate('PageDesign')}>
+                                    <Image
+                                        style={{
+                                            width: 200,
+                                            height: 250,
+                                            borderRadius: 0,
+                                            alignSelf: 'center'
+                                        }}
+                                        source={require('./../assets/images/lala.jpg')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={styles.containerSecondForm}>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', paddingTop: 10, paddingLeft: 20 }}>Desain belum terdaftar</Text>
+
+
+                                </View>
+
+                               
+
+                            </View>
+
+
+                        </View>
+                    </View>
+                    <View style={styles.butin}>
+                                    <TouchableOpacity style={styles.buttonSignUp}>
+                                        <Text style={styles.signupButton}>Daftar</Text>
+                                    </TouchableOpacity>
+                                </View>
 
 
                 </ScrollView>
@@ -171,7 +275,7 @@ export class DesignSayaPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerSecondForm: {
-        // flex: 1,
+        flex: 1,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
         shadowOffset: { width: 10, heigth: 10 },
@@ -179,14 +283,63 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'row',
-        height: 70,
-        width: '110%',
+        height: 100,
+        width: '100%',
         // alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center',
+        // justifyContent: 'center',
+        // alignSelf: 'center',
         // zIndex: 1,
         borderWidth: 0.5,
-        borderColor: '#d6d7da',
+        borderColor: '#d6d7da'
+    },
+    containerSecond: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'row',
+        height: 100,
+        marginRight: 20,
+        width: '100%',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // alignSelf: 'center',
+        // zIndex: 1,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da'
+    },
+    anj: {
+        flex: 1,
+        width: '100%',
+        marginTop: -30
+    },
+    butin: {
+        zIndex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 90,
+        marginTop: -150,
+        width: 200
+    },
+    signupButton: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 15,
+        fontFamily: 'Quicksand-Reguler'
+    },
+    buttonSignUp: {
+        backgroundColor: 'red',
+        borderRadius: 20,
+        height: 40,
+        width: 100,
+        marginTop: -50,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        fontFamily: 'Quicksand-Regular'
+        // zIndex: 2
     },
     jing: {
         flex: 1,
