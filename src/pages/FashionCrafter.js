@@ -47,7 +47,7 @@ export class FashionCrafterPage extends React.Component {
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
-                        source={require('./../assets/images/kiss_icon.jpg')}
+                        source={require('./../assets/images/Cukup.png')}
                     />
                 </View>
             </TouchableOpacity>

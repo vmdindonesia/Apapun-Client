@@ -10,7 +10,6 @@ import { IPSERVER } from './../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CheckBox } from 'react-native-elements';
-import eachSeries from 'async/eachSeries';
 
 export class OrderPage extends React.Component {
 
@@ -54,7 +53,8 @@ export class OrderPage extends React.Component {
             propertyPhoto: [],
             firstmaterial: false,
             dataCheckBoxSubMaterial: [],
-            subCategory: []
+            subCategory: [],
+            dataOrderResponse: ''
         }
     }
 
@@ -291,17 +291,19 @@ export class OrderPage extends React.Component {
                 console.log(response, 'Response Order Proses');
                 request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
                 request.send(body);
-                this.setState({ loading: false, propertyPhoto: [] }, () => {
+                console.log(response.data[0].idOrder, 'ID ORDER')
+                this.setState({ loading: false, propertyPhoto: [], dataOrderResponse: response.data[0].idOrder }, () => {
+                    console.log(this.state.dataOrderResponse, 'Response Order');
                     const resetAction = StackActions.reset({
                         index: 1,
                         actions: [
                             NavigationActions.navigate({ routeName: 'Dashboard' }),
-                            NavigationActions.navigate({ routeName: 'FindingCrafter' }),
+                            NavigationActions.navigate({ routeName: 'FindingCrafter', params: this.state.dataOrderResponse }),
                         ],
                     });
                     this.props.navigation.dispatch(resetAction);
                 });
-                return ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
+                ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
                 this.setState({ loading: false, propertyPhoto: [] });
@@ -565,7 +567,7 @@ export class OrderPage extends React.Component {
                     marginBottom: 20
                 }}
                 onPress={() => this.onValidation()}
-                // onPress={() => this.props.navigation.navigate('FindingCrafter')}
+            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>

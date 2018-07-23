@@ -47,7 +47,7 @@ export class CrafterMenuPage extends React.Component {
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
               <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
-              source={require('./../assets/images/ic_list.png')}
+              source={require('./../assets/images/List.png')}
               />
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>

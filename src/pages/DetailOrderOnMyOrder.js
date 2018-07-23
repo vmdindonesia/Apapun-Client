@@ -261,7 +261,7 @@ export class DetailOrderPage extends React.Component {
                                                 height: 15,
                                                 width: 15,
                                             }}
-                                            source={require('./../assets/images/loveeye_icon.png')}
+                                            source={require('./../assets/images/Cukup.png')}
                                         />
                                     </View>
                                     <View style={{ paddingLeft: 10 }}>

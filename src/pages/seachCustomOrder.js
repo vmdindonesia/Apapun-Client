@@ -41,7 +41,7 @@ export class searchCustomOrderPage extends React.Component {
                                     alignSelf: 'center'
                                 }}
                                 resizeMode='stretch'
-                                source={require('./../assets/images/ic_list.png')}
+                                source={require('./../assets/images/List.png')}
                             />
                             <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Pesanan</Text>
                         </TouchableOpacity>

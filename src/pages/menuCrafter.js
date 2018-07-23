@@ -92,10 +92,10 @@ export class MenuCrafterPage extends React.Component {
                         <View style={{ width: '100%', flexDirection: 'row' }}>
                             <Image
                                 style={styles.emojiIcon}
-                                source={require('./../assets/images/sempurna.png')}
+                                source={require('./../assets/images/Cukup.png')}
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Sempurna (35)</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Cukup (35)</Text>
                             </View>
                         </View>
                     </View>
