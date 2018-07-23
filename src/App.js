@@ -85,6 +85,10 @@ import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
 import { searchCustomOrderPage } from './pages/seachCustomOrder';
 import { searchCustomCaptureAndGetPage } from './pages/searchCaptureAndGet';
 import { searchIdeaMarketPage } from './pages/searchIdeaMarket';
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
+import { crafterMenuNotePage } from './pages/crafterMenuNote';
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
 
 console.disableYellowBox = true;
 
@@ -100,14 +104,38 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  crafterMenuNote: {
+    screen: crafterMenuNotePage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  addNoteOnCrafterMenu: {
+    screen: addNoteOnCrafterMenuPage
+  },
+  editNoteOnCrafterMenu: {
+    screen: editNoteOnCrafterMenuPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
   },
   Dashboard: {
     screen: DashboardPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
@@ -120,9 +148,6 @@ const Routes = createStackNavigator({
   },
   searchIdeaMarket: {
     screen: searchIdeaMarketPage
-  },
-  ProfilePage: {
-    screen: ProfileBuyerPage
   },
   SettingProduct: {
     screen: SettingProductPage
@@ -160,7 +185,6 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -170,12 +194,8 @@ const Routes = createStackNavigator({
   EditProduct: {
     screen: EditProductPage
   },
-
   pengaturanBank: {
     screen: PengaturanBankPage
-  },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
   },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
@@ -186,20 +206,15 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
   CrafterList: {
     screen: CrafterListPage
   },
-
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
@@ -254,7 +269,6 @@ const Routes = createStackNavigator({
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-
   ForgotPassword: {
     screen: ForgotPasswordPage
   },
@@ -300,7 +314,6 @@ const Routes = createStackNavigator({
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
-
   DetailOrder: {
     screen: DetailOrderPage
   },
