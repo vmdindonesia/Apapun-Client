@@ -99,15 +99,16 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   CrafterMenu: {
     screen: CrafterMenuPage
   },
   searchOrder: {
     screen: searchOrderPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
+ 
   Order: {
     screen: OrderPage
   },
