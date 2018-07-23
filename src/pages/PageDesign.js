@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -63,7 +63,7 @@ export class PageDesignPage extends React.Component {
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                                 <Image
                                     style={{ width: 30, height: 30, marginTop: 10 }}
-                                    source={require('./../assets/images/smiley.png')}
+                                    source={require('./../assets/images/Cukup.png')}
                                 />
                                 <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
                                     (9) review

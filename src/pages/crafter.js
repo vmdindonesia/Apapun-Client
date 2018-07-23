@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Image, Alert, FlatList } from 'react-native';
+import { StyleSheet, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View, Image, Alert, FlatList } from 'react-native';
 
 export class CrafterPage extends React.Component {
 
@@ -10,8 +10,7 @@ export class CrafterPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
             ],
         }
     }
@@ -23,52 +22,66 @@ export class CrafterPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <View style={styles.containerBoxProfile}>
-                <TouchableOpacity style={styles.containerImage} onPress={() => this.props.navi.navigate('ProfileCrafter')}>
-                    <Image
-                        style={styles.imageCrafter}
-                        source={{ uri: data.item }}
-                        resizeMode='contain'
-                    />
-                    <View style={styles.boxName}>
-                        <View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'flex-end', width: '100%', paddingTop: 5 }}>
-                                <Text style={{ textAlign: 'right', fontFamily: 'Quicksand-Regular', fontSize: 13, marginRight: 5 }}>Sempurna</Text>
-                                <Image style={{ width: 15, height: 15 }}
-                                    source={require('./../assets/images/kiss_icon.jpg')} />
-                            </View>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Roy Kiyoshi</Text>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Image
-                                    style={{ width: 10, height: 10 }}
-                                    source={require('./../assets/images/black_loc_mainprof.png')}
-                                />
-                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Indonesia, Jakarta</Text>
-                            </View>
+            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
+                <View style={styles.card}>
+                    <View style={styles.thumbnailContainerStyle}>
+                        <Image
+                            style={styles.thumbnailStyle}
+                            source={{ uri: data.item }}
+                        />
+                    </View>
+                    <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>
+                                Rendy Sutandy
+                            </Text>
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
+                            <Image
+                                style={{ width: 18, height: 18 }}
+                                source={require('./../assets/images/Cukup.png')}
+                                resizeMode='stretch'
+                            />
+                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
+                                Buruk
+                            </Text>
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginTop: 7, marginBottom: 10 }}>
+                            <Image
+                                style={{ width: 18, height: 18 }}
+                                source={require('./../assets/images/loc_mainprof.png')}
+                                resizeMode='stretch'
+                            />
+                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
+                                Jakarta, Jakarta Barat
+                            </Text>
                         </View>
                     </View>
-                </TouchableOpacity>
-            </View>
+                </View>
+            </TouchableWithoutFeedback>
         )
     }
 
     render() {
         return (
-            <View style={{ flex: 1, marginRight: 10, marginLeft: 5 }} >
-                <View style={{ flex: 1 }}>
-                    <View>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
-                        <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15 }}>Sedang dalam proses mencari crafter untuk produkmu</Text>
+            <View style={{ flex: 1, marginRight: 10, marginLeft: 10 }} >
+                <ScrollView>
+                    <View style={{ flex: 1 }}>
+                        <View>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginTop: 8, marginRight: 15 }}>Sedang dalam proses mencari crafter untuk produkmu</Text>
+                        </View>
+                        <View style={styles.containerCrafter}>
+                            <FlatList
+                                data={this.state.photo}
+                                renderItem={this.renderProductItem.bind(this)}
+                                showsHorizontalScrollIndicator={false}
+                                numColumns={2}
+                                horizontal={false}
+                            />
+                        </View>
                     </View>
-                    <View style={styles.containerCrafter}>
-                        <FlatList
-                            data={this.state.photo}
-                            contentContainerStyle={styles.list}
-                            renderItem={this.renderProductItem.bind(this)}
-                            showsHorizontalScrollIndicator={false}
-                        />
-                    </View>
-                </View>
+                </ScrollView>
                 <View style={styles.containerButton}>
                     <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'orange' }]}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
@@ -87,6 +100,7 @@ export class CrafterPage extends React.Component {
                     </TouchableOpacity>
                 </View>
             </View>
+
         );
     }
 }
@@ -98,10 +112,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     containerBoxProfile: {
-        width: 130,
-        height: 220,
+        marginLeft: 3,
+        marginRight: 3,
+        marginTop: 25,
+        height: 200,
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: 'red'
     },
     containerImage: {
         flex: 1,
@@ -125,7 +142,10 @@ const styles = StyleSheet.create({
         height: 70,
         flexDirection: 'row',
         backgroundColor: 'white',
-        alignItems: 'center'
+        alignItems: 'center',
+        // marginTop: '20%',
+        // bottom: 0
+        // bottom: 0
     },
     buttonStop: {
         flex: 1,
@@ -137,10 +157,29 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 25
     },
-    list: {
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    }
+    card: {
+        borderRadius: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+        marginLeft: 5,
+        marginBottom: '2%',
+        backgroundColor: '#FFF'
+    },
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+    },
+    thumbnailStyle: {
+        alignSelf: 'stretch',
+        height: 160,
+        width: 170,
+        resizeMode: 'cover',
+        borderRadius: 4
+    },
 });
 
 export default CrafterPage;

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
 } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { ContainerSection, Card } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -109,10 +109,10 @@ export class ProfileCrafterPage extends React.Component {
                         <View style={{ width: '100%', flexDirection: 'row' }}>
                             <Image
                                 style={styles.emojiIcon}
-                                source={require('./../assets/images/smiley.png')}
+                                source={require('./../assets/images/Cukup.png')}
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Sempurna (35)</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Cukup (35)</Text>
                             </View>
                         </View>
                     </View>

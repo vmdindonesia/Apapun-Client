@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
 import { Container, Button } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -32,11 +32,15 @@ export class GambarPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity style={{ marginBottom: 7, paddingLeft: 7 }}>
-                <Image
-                    style={styles.item}
-                    source={{ uri: data.item }}
-                />
+            <TouchableOpacity>
+                <View style={styles.card}>
+                    <View style={styles.thumbnailContainerStyle}>
+                        <Image
+                            style={styles.thumbnailStyle}
+                            source={{ uri: data.item }}
+                        />
+                    </View>
+                </View>
             </TouchableOpacity>
         )
     }
@@ -65,15 +69,15 @@ export class GambarPage extends React.Component {
                 <View style={{ width: '85%', height: 40, alignSelf: 'center', marginTop: 20 }}>
                     {this.renderButton()}
                 </View>
-                <View style={{ flex: 1, marginTop: 10, backgroundColor: '#fff' }}>
-                    <View>
-                        <FlatList
-                            data={this.state.photo}
-                            contentContainerStyle={styles.list}
-                            renderItem={this.renderProductItem.bind(this)}
-                            showsHorizontalScrollIndicator={false}
-                        />
-                    </View>
+                <View style={{ flex: 1, marginTop: 15, marginBottom: 15 }}>
+                    <FlatList
+                        data={this.state.photo}
+                        // contentContainerStyle={styles.list}
+                        renderItem={this.renderProductItem.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={false}
+                        numColumns={2}
+                    />
                 </View>
             </View>
         );
@@ -81,17 +85,28 @@ export class GambarPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    item: {
-        height: 100,
-        width: 110,
-        borderRadius: 4,
-        alignSelf: 'stretch',
-        resizeMode: 'cover',
-
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
     },
-    list: {
-        flexDirection: 'row',
-        flexWrap: 'wrap'
+    thumbnailStyle: {
+        alignSelf: 'stretch',
+        height: 160,
+        width: 170,
+        resizeMode: 'cover',
+        borderRadius: 4
+    },
+    card: {
+        borderRadius: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+        marginLeft: 5,
+        marginBottom: '2%',
+        backgroundColor: '#FFF'
     }
 })
 

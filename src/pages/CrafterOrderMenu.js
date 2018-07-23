@@ -33,7 +33,7 @@ export class CrafterOrderMenuPage extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchCustomOrder')}
+                            onPress={() => this.props.navi.navigate('searchOrder')}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
@@ -53,7 +53,7 @@ export class CrafterOrderMenuPage extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchCaptureAndGet')}
+                            onPress={() => this.props.navi.navigate('searchOrder')}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
@@ -71,7 +71,7 @@ export class CrafterOrderMenuPage extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchIdeaMarket')}
+                            onPress={() => this.props.navi.navigate('searchOrder')}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}

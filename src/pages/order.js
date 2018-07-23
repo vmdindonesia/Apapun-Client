@@ -4,13 +4,12 @@ import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndr
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
-import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import axios from 'axios';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CheckBox } from 'react-native-elements';
-import eachSeries from 'async/eachSeries';
 
 export class OrderPage extends React.Component {
 
@@ -54,7 +53,8 @@ export class OrderPage extends React.Component {
             propertyPhoto: [],
             firstmaterial: false,
             dataCheckBoxSubMaterial: [],
-            subCategory: []
+            subCategory: [],
+            dataOrderResponse: ''
         }
     }
 
@@ -291,17 +291,19 @@ export class OrderPage extends React.Component {
                 console.log(response, 'Response Order Proses');
                 request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
                 request.send(body);
-                this.setState({ loading: false, propertyPhoto: [] }, () => {
+                console.log(response.data[0].idOrder, 'ID ORDER')
+                this.setState({ loading: false, propertyPhoto: [], dataOrderResponse: response.data[0].idOrder }, () => {
+                    console.log(this.state.dataOrderResponse, 'Response Order');
                     const resetAction = StackActions.reset({
                         index: 1,
                         actions: [
                             NavigationActions.navigate({ routeName: 'Dashboard' }),
-                            NavigationActions.navigate({ routeName: 'FindingCrafter' }),
+                            NavigationActions.navigate({ routeName: 'FindingCrafter', params: this.state.dataOrderResponse }),
                         ],
                     });
                     this.props.navigation.dispatch(resetAction);
                 });
-                return ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
+                ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
                 this.setState({ loading: false, propertyPhoto: [] });
@@ -462,11 +464,27 @@ export class OrderPage extends React.Component {
         );
     }
 
+    renderSelectedMaterial(item, index) {
+        return (
+            <ContainerSection>
+                <View style={styles.buttonMaterial}>
+                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                        <TouchableOpacity
+                            onPress={() => this.deleteMaterial(item)}
+                        >
+                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ContainerSection>
+        )
+    }
 
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ marginRight: -10 }}>
+            <View key={index} style={{ marginRight: 5 }}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -565,7 +583,7 @@ export class OrderPage extends React.Component {
                     marginBottom: 20
                 }}
                 onPress={() => this.onValidation()}
-                // onPress={() => this.props.navigation.navigate('FindingCrafter')}
+            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -775,7 +793,7 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                             :
-                            <View style={{ flex: 1, flexDirection: 'column', height: 170 }}>
+                            <View style={{ flex: 1, height: 170 }}>
                                 <View>
                                     <ContainerSection>
                                         <TouchableOpacity
@@ -789,8 +807,19 @@ export class OrderPage extends React.Component {
                                         </TouchableOpacity>
                                     </ContainerSection>
                                 </View>
-                                <View>
+                                <View style={{ flexDirection: 'row' }} >
                                     {
+
+                                        <FlatList
+                                            data={dataCheckBoxSubMaterial}
+                                            extraData={this.state}
+                                            horizontal={false}
+                                            renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                            numColumns={3}
+                                        />
+                                    }
+                                    {/* {
                                         dataCheckBoxSubMaterial && dataCheckBoxSubMaterial.map(item =>
                                             <ContainerSection>
                                                 <View style={styles.buttonMaterial}>
@@ -806,7 +835,7 @@ export class OrderPage extends React.Component {
                                                 </View>
                                             </ContainerSection>
                                         )
-                                    }
+                                    } */}
 
                                 </View>
                             </View>

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, KeyboardAvoidingView, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard, ScrollView } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner } from '../components/common';
 import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 
 export class LoginPage extends React.Component {
 	static navigationOptions = {

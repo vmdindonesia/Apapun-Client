@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, TouchableWithoutFeedback, FlatList, TouchableOpacity } from 'react-native'
 import { InputSearch } from '../components/common';
 // import axios from 'axios';
@@ -50,7 +50,7 @@ export class BerandaCrafterPage extends React.Component {
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
-                        source={require('./../assets/images/kiss_icon.jpg')}
+                        source={require('./../assets/images/Cukup.png')}
                     />
                 </View>
             </TouchableOpacity>
@@ -82,7 +82,7 @@ export class BerandaCrafterPage extends React.Component {
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
-                        source={require('./../assets/images/kiss_icon.jpg')}
+                        source={require('./../assets/images/Cukup.png')}
                     />
                 </View>
             </TouchableOpacity>

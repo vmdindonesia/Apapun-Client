@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
 import { InputSearch } from '../components/common';
 // import axios from 'axios';
@@ -46,7 +46,7 @@ export class FurnitureCrafterPage extends React.Component {
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
-                        source={require('./../assets/images/kiss_icon.jpg')}
+                        source={require('./../assets/images/Cukup.png')}
                     />
                 </View>
             </TouchableOpacity>

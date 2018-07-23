@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
 import { OrderForCrafterPage } from './orderForCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export class searchCustomOrderPage extends React.Component {
+export class searchOrderPage extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
@@ -19,7 +19,31 @@ export class searchCustomOrderPage extends React.Component {
         super(props)
         this.state = {
             // screen: 'Custom'
+            photo: [
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+            ]
         }
+
+    }
+
+    renderOrderList = (data) => {
+        console.log(data, '098');
+        return (
+            <TouchableOpacity>
+                <View style={styles.card}>
+                    <View style={styles.thumbnailContainerStyle}>
+                        <Image
+                            style={styles.thumbnailStyle}
+                            source={{ uri: data.item }}
+                        />
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
     }
 
 
@@ -41,7 +65,7 @@ export class searchCustomOrderPage extends React.Component {
                                     alignSelf: 'center'
                                 }}
                                 resizeMode='stretch'
-                                source={require('./../assets/images/ic_list.png')}
+                                source={require('./../assets/images/List.png')}
                             />
                             <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Pesanan</Text>
                         </TouchableOpacity>
@@ -67,67 +91,44 @@ export class searchCustomOrderPage extends React.Component {
 
                     </View>
                 </View>
-
-                <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
-
-                    <View style={{ flex: 1, height: 125, justifyContent: 'space-between', flexDirection: 'row' }}>
-
-                        <View style={{ flex: 1, margin: 5, }}>
-                            <TouchableOpacity >
-                                <Image
-                                    style={{
-                                        height: '100%',
-                                        alignSelf: 'center'
-                                    }}
-                                    resizeMode='contain'
-                                    source={require('./../assets/images/pot_bunga.jpg')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={{ flex: 1, backgroundColor: 'white', margin: 5 }}>
-                            <TouchableOpacity >
-                                <Image
-                                    style={{
-                                        height: '100%',
-                                        alignSelf: 'center'
-                                    }}
-                                    resizeMode='contain'
-                                    source={require('./../assets/images/chair_example.jpg')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={{ flex: 1, backgroundColor: 'black', margin: 5 }}>
-                            <TouchableOpacity >
-                                <Image
-                                    style={{
-                                        height: '100%',
-                                        alignSelf: 'center'
-                                    }}
-                                    resizeMode='contain'
-                                    source={require('./../assets/images/air_jordan.jpg')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-
-
-
-
-                </ScrollView>
-
+                <View style={{ flex: 1, }}>
+                    <FlatList
+                        data={this.state.photo}
+                        // contentContainerStyle={styles.list}
+                        renderItem={this.renderOrderList.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={false}
+                        numColumns={3}
+                    />
+                </View>
             </View>
-
-
-
-
         );
     }
 }
 
 const styles = StyleSheet.create({
-
+    card: {
+        borderRadius: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+        marginLeft: 5,
+        marginBottom: '2%',
+        backgroundColor: '#FFF'
+    },
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+    },
+    thumbnailStyle: {
+        alignSelf: 'stretch',
+        height: 160,
+        width: 170,
+        resizeMode: 'cover',
+        borderRadius: 4
+    }
 })
-export default searchCustomOrderPage;
+export default searchOrderPage;

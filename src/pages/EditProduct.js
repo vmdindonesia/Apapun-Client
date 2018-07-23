@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, FlatList, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 import Carousel from 'react-native-snap-carousel';
-import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 
 export class EditProductPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({

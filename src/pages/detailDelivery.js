@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, Dimensions, Picker } from 'react-native'
 import { Container, Button, ContainerSection, Input, InputNumber } from '../components/common';
 const { width, height } = Dimensions.get('window');

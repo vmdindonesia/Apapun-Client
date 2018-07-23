@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -52,10 +52,10 @@ export class UlasanPage extends React.Component {
                     <View>
                         <Image
                             style={{ width: 60, height: 60, backgroundColor: 'red' }}
-                            source={require('./../assets/images/sempurna.png')}
+                            source={require('./../assets/images/Cukup.png')}
                             resizeMode='contain'
                         />
-                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center' }}>Sempurna</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center' }}>Cukup</Text>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, textAlign: 'center' }}>(0)</Text>
                     </View>
                 </View>
@@ -75,7 +75,7 @@ export class UlasanPage extends React.Component {
                             <View style={{ flex: 1 }}>
                                 <Image
                                     style={{ width: 50, height: 50, backgroundColor: 'green', marginLeft: 20 }}
-                                    source={require('./../assets/images/sempurna.png')}
+                                    source={require('./../assets/images/Cukup.png')}
                                 />
                             </View>
                         </View>
@@ -102,7 +102,7 @@ export class UlasanPage extends React.Component {
                             <View style={{ flex: 1 }}>
                                 <Image
                                     style={{ width: 50, height: 50, backgroundColor: 'green', marginLeft: 20 }}
-                                    source={require('./../assets/images/sempurna.png')}
+                                    source={require('./../assets/images/Cukup.png')}
                                 />
                             </View>
                         </View>
