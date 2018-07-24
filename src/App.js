@@ -101,17 +101,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  clickProductOnCrafterMenu: {
-    screen: clickProductOnCrafterMenuPage
-  },
+  // clickProductOnCrafterMenu: {
+  //   screen: clickProductOnCrafterMenuPage
+  // },
 
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
+  // CrafterMenu: {
+  //   screen: CrafterMenuPage
+  // },
 
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+  // crafterMenuListOrder: {
+  //   screen: crafterMenuListOrderPage
+  // },
   StartScreen: {
     screen: StartScreen
   },
