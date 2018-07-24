@@ -130,7 +130,7 @@ export class DesignSayaPage extends React.Component {
                                         <View style={{ paddingLeft: 180 }}>
                                             <Image
                                                 style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                source={require('./../assets/images/Cukup.png')}
                                             />
                                             <Text>(1)</Text>
                                         </View>
@@ -184,7 +184,7 @@ export class DesignSayaPage extends React.Component {
                                         <View style={{ paddingLeft: 160 }}>
                                             <Image
                                                 style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                source={require('./../assets/images/Cukup.png')}
                                             />
                                             <Text> (1)</Text>
                                         </View>
