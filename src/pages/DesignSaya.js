@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, Animated, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from '../shared/config';
@@ -258,7 +258,8 @@ export class DesignSayaPage extends React.Component {
                         </View>
                     </View>
                     <View style={styles.butin}>
-                                    <TouchableOpacity style={styles.buttonSignUp}>
+                                    <TouchableOpacity style={styles.buttonSignUp}
+                                   onPress={() => this.props.navigation.navigate('SettingProduct')} >
                                         <Text style={styles.signupButton}>Daftar</Text>
                                     </TouchableOpacity>
                                 </View>

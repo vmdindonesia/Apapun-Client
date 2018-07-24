@@ -28,7 +28,8 @@ export class PageDesignPage extends React.Component {
                     <TouchableOpacity style={{
                         borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
                         position: 'relative', bottom: 470, left: 350, justifyContent: 'center'
-                    }}>
+                    }}
+                    onPress={() => this.props.navigation.navigate('SettingProduct')}>
                         <Image
                             style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/pen_mainprof.png')}
@@ -37,7 +38,8 @@ export class PageDesignPage extends React.Component {
                     <TouchableOpacity style={{
                         borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
                         position: 'relative', bottom: 510, left: 20, justifyContent: 'center'
-                    }}>
+                    }}
+                    onPress={() => this.props.navigation.navigate('DesignSaya')}>
                         <Image
                             style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/arrow.png')}

@@ -164,7 +164,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginRight: 10
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}
-                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                onPress={() => this.props.navi.navigate('Captureandget')}
                             >
                                 <Image
                                     style={{
@@ -287,7 +287,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginRight: 10
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2, }}
-                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                onPress={() => this.props.navi.navigate('')}
                             >
                                 <Image
                                     style={{
@@ -297,7 +297,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         // alignSelf: 'center'
 
                                     }}
-                                    source={require('./../assets/images/pen_white.png')}
+                                    source={require('./../assets/images/keranjang.png')}
                                 />
                             </TouchableOpacity>
 

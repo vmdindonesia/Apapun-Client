@@ -67,7 +67,6 @@ import { MenuCrafterPage } from './pages/menuCrafter';
 import { EditProfileCrafterPage } from './pages/editProfileCrafter';
 import { CatatanPage } from './pages/catatan';
 import { GambarPage } from './pages/gambar';
-import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
 import { ChatPage } from './pages/Chat';
@@ -88,6 +87,9 @@ import { crafterMenuNotePage } from './pages/crafterMenuNote';
 import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
 import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
 import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
+import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
+import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
+import { UlasanOnCrafterProfilePage } from './pages/UlasanOnCrafterProfile';
 
 
 console.disableYellowBox = true;
@@ -101,21 +103,27 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  // clickProductOnCrafterMenu: {
-  //   screen: clickProductOnCrafterMenuPage
-  // },
-
-  // CrafterMenu: {
-  //   screen: CrafterMenuPage
-  // },
-
-  // crafterMenuListOrder: {
-  //   screen: crafterMenuListOrderPage
-  // },
   StartScreen: {
     screen: StartScreen
   },
-
+  UlasanOnCrafterProfile: {
+    screen: UlasanOnCrafterProfilePage
+  },
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
+  },
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
+  },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
   searchOrder: {
     screen: searchOrderPage
   },
@@ -274,9 +282,7 @@ const Routes = createStackNavigator({
   EditCatatan: {
     screen: EditCatatanPage
   },
-  Ulasan: {
-    screen: UlasanPage
-  },
+
   MenuCrafter: {
     screen: MenuCrafterPage
   },
