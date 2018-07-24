@@ -82,7 +82,13 @@ import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
 import { ProductDetailProfPage } from './pages/ProductDetail';
 import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
-import { searchOrderPage } from './pages/seachOrder';
+import { searchOrderPage } from './pages/searchOrder';
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
+import { crafterMenuNotePage } from './pages/crafterMenuNote';
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
+import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
+
 
 console.disableYellowBox = true;
 
@@ -95,12 +101,21 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
   },
+
   CrafterMenu: {
     screen: CrafterMenuPage
   },
+
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  StartScreen: {
+    screen: StartScreen
+  },
+
   searchOrder: {
     screen: searchOrderPage
   },
@@ -110,9 +125,7 @@ const Routes = createStackNavigator({
   Gambar: {
     screen: GambarPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   MenuCrafter: {
     screen: MenuCrafterPage
   },
