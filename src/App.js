@@ -67,7 +67,6 @@ import { MenuCrafterPage } from './pages/menuCrafter';
 import { EditProfileCrafterPage } from './pages/editProfileCrafter';
 import { CatatanPage } from './pages/catatan';
 import { GambarPage } from './pages/gambar';
-import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
 import { ChatPage } from './pages/Chat';
@@ -88,7 +87,12 @@ import { crafterMenuNotePage } from './pages/crafterMenuNote';
 import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
 import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
 import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
-
+import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
+import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
+import { UlasanOnCrafterProfilePage } from './pages/UlasanOnCrafterProfile';
+import { ListTshirtPage } from './pages/ListTshirt';
+import { ListKemejaPage } from './pages/ListKemeja';
+import { ListHoodiePage } from './pages/ListHoodie';
 
 console.disableYellowBox = true;
 
@@ -116,6 +120,49 @@ const Routes = createStackNavigator({
     screen: StartScreen
   },
 
+  IdeaFashion: {
+    screen: IdeaFashionPage
+  },
+  ListKemeja: {
+    screen: ListKemejaPage
+  },
+  ListHoodie: {
+    screen: ListKemejaPage
+  },
+
+  ListTshirt: {
+    screen: ListTshirtPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+
+  UlasanOnCrafterProfile: {
+    screen: UlasanOnCrafterProfilePage
+  },
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
+  },
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
+  },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+
   searchOrder: {
     screen: searchOrderPage
   },
@@ -126,9 +173,7 @@ const Routes = createStackNavigator({
     screen: GambarPage
   },
 
-  MenuCrafter: {
-    screen: MenuCrafterPage
-  },
+
   crafterMenuNote: {
     screen: crafterMenuNotePage
   },
@@ -274,12 +319,8 @@ const Routes = createStackNavigator({
   EditCatatan: {
     screen: EditCatatanPage
   },
-  Ulasan: {
-    screen: UlasanPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
-  },
+
+
   Catatan: {
     screen: CatatanPage
   },
@@ -320,12 +361,8 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-  IdeaMarket: {
-    screen: IdeaMarketPage
-  },
-  IdeaFashion: {
-    screen: IdeaFashionPage
-  },
+
+
   DesignSaya: {
     screen: DesignSayaPage
   },

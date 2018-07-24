@@ -11,7 +11,6 @@ import Swiper from 'react-native-swiper';
 import { COLOR, IPSERVER } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
 import ActionButton from 'react-native-circular-action-menu';
-import FabTransition from './../components/Fab';
 
 export class DashboardPage extends React.Component {
 	static navigationOptions = {
@@ -711,7 +710,6 @@ export class DashboardPage extends React.Component {
 							<View />
 					}
 
-					<FabTransition />
 
 					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
