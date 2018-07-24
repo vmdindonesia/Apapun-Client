@@ -56,7 +56,7 @@ export class PaymentMethodPage extends React.Component {
         } = this.state
 
         return (
-            <View style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
+            <View style={{ flex: 1, backgroundColor: '#eaeaea' }}>
 
                 <ScrollView>
 
