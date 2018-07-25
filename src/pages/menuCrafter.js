@@ -96,7 +96,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('addNoteOnCrafterMenu')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Catatan</Text>
@@ -109,7 +109,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('UlasanOnCrafterProfile')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Ulasan</Text>
@@ -122,7 +122,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('AkunBank')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Akun Bank</Text>
@@ -135,7 +135,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.setState({ screen: 'searchCustomOrder' })}>
+                                <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProductDetail')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>

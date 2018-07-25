@@ -200,18 +200,18 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <TouchableOpacity>
+                                
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Kebijakan Privasi</Text>
-                                </TouchableOpacity>
+                               
                             </View>
 
                             <View style={{
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <TouchableOpacity>
+                                
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Review</Text>
-                                </TouchableOpacity>
+                               
                             </View>
 
                             <View style={{

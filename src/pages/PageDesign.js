@@ -28,7 +28,8 @@ export class PageDesignPage extends React.Component {
                     <TouchableOpacity style={{
                         borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
                         position: 'relative', bottom: 470, left: 350, justifyContent: 'center'
-                    }}>
+                    }}
+                    onPress={() => this.props.navigation.navigate('SettingProduct')}>
                         <Image
                             style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/pen_mainprof.png')}
@@ -37,7 +38,8 @@ export class PageDesignPage extends React.Component {
                     <TouchableOpacity style={{
                         borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
                         position: 'relative', bottom: 510, left: 20, justifyContent: 'center'
-                    }}>
+                    }}
+                    onPress={() => this.props.navigation.navigate('DesignSaya')}>
                         <Image
                             style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/arrow.png')}
@@ -54,10 +56,10 @@ export class PageDesignPage extends React.Component {
                             height: '100%', width: '50%',
                             justifyContent: 'center'
                         }}>
-                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                 Elegant Plain
                             </Text>
-                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                 T-Shirt
                             </Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -65,7 +67,7 @@ export class PageDesignPage extends React.Component {
                                     style={{ width: 30, height: 30, marginTop: 10 }}
                                     source={require('./../assets/images/Cukup.png')}
                                 />
-                                <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                                <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                     (9) review
                             </Text>
                             </View>
@@ -77,17 +79,19 @@ export class PageDesignPage extends React.Component {
                             height: '100%', width: '50%',
                             justifyContent: 'center'
                         }}>
-                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Total Apresisasi
                             </Text>
-                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Design
                             </Text>
-                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'red' }}>
                                 10.000
                             </Text>
-                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Reguler' }}>
+                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Terjual
+                            </Text>
+                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 3, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'red' }}>
                                 10
                             </Text>
                         </View>
@@ -116,7 +120,7 @@ export class PageDesignPage extends React.Component {
                         <TouchableOpacity style={{ alignSelf: 'center' }}
                             onPress={() => this.props.navigation.navigate('ProductDetailProf')}>
 
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Reguler' }}>Detail</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Detail</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -139,7 +143,7 @@ export class PageDesignPage extends React.Component {
                         flexDirection: 'column'
                     }}>
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Reguler' }}>Review</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Review</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -160,10 +164,10 @@ export class PageDesignPage extends React.Component {
                             backgroundColor: '',
                             height: 50
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Kategori</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, backgroundColor: 'white' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', fontWeight: 'bold' }}>Kategori</Text>
+                            <View style={{ width: '80%', borderWidth: 0, height: 30, paddingLeft: 2, backgroundColor: 'white' }}>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', paddingTop: 10, fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', paddingTop: 10, fontSize: 13
                                 }}
                                 >Fashion</Text>
                             </View>
@@ -178,10 +182,10 @@ export class PageDesignPage extends React.Component {
                             flexDirection: 'column',
                             height: 50
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, }}>Sub-Kategori</Text>
-                            <View style={{ width: '50%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', fontWeight: 'bold' }}>Sub-Kategori</Text>
+                            <View style={{ width: '80%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', alignSelf: 'auto', paddingTop: 10, fontSize: 13
                                 }}
                                 >Kaos (Pria)</Text>
                             </View>
@@ -192,7 +196,9 @@ export class PageDesignPage extends React.Component {
 
                 </View>
 
-                <View style={styles.containerTi}>
+                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, top: -35, paddingLeft: 21, fontWeight: 'bold', color: 'black' }}>Deskripsi Produk</Text>
+
+                <View style={styles.containerM}>
                     <View style={{
                         width: '100%',
                         height: 200,
@@ -207,38 +213,37 @@ export class PageDesignPage extends React.Component {
                             backgroundColor: '',
                             height: 50
                         }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Deskripsi Produk</Text>
                             <View style={{ marginTop: 10, marginLeft: 5, width: 339, borderWidth: 0, height: 230, paddingLeft: 2, backgroundColor: 'white' }}>
                                 <Text style={{
                                     fontFamily: 'Quicksand-Bold', paddingTop: 10, fontSize: 13
                                 }}
                                 >Ukuran</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >Bahu : 15</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >Panjang Lengan : 22cm</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >Lingkar Dada : 106cm</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >Panjang Bahu : 70cm</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 30, fontFamily: 'Quiksand-Bold'
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 30, fontFamily: 'Quiksand-Bold'
                                 }}
                                 >Deskripsi</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >Kaos pria yang simpel tapi fashionable, Bahan menyarap</Text>
                                 <Text style={{
-                                    fontFamily: 'Quicksand-Regular', fontSize: 13
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
                                 }}
                                 >keringat dan nyaman dipakai</Text>
                             </View>
@@ -258,8 +263,6 @@ export class PageDesignPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerImage: {
-        // flex: 1,
-        // justifyContent: 'center',
         alignItems: 'center',
         // zIndex: 0,
         // backgroundColor: 'yellow'
@@ -324,11 +327,33 @@ const styles = StyleSheet.create({
         marginTop: 5,
         height: 70,
         width: '90%',
-        marginBottom: 15,
+        marginBottom: 30,
         // alignItems: 'center',
         // justifyContent: 'center',
         alignSelf: 'center'
-    }
+    },
+    containerM: {
+        // flex: 1,
+        borderRadius: 20,
+        backgroundColor: '#ffffff',
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'column',
+        top: -30,
+        bottom: 90,
+        height: 300,
+        width: '90%',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        alignSelf: 'center',
+        // zIndex: 1,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+        marginBottom: 7.5
+    },
 
 
 

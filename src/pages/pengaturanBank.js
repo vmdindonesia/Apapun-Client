@@ -101,6 +101,10 @@ export class PengaturanBankPage extends React.Component {
         });
     }
 
+    checkedAgreement = () => {
+        this.setState({ agree: !this.state.agree });
+    }
+
 
     getBankBook() {
         const options = {
@@ -353,8 +357,8 @@ export class PengaturanBankPage extends React.Component {
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                         title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
                         </Text>}
-                        onPress={() => this.checkedAgree()}
-                        checked={agree}
+                         checked={agree}
+                         onPress={() => this.checkedAgreement()}
                     />
                 </View>
 

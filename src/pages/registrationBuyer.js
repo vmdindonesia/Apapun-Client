@@ -18,7 +18,7 @@ export class RegistrationBuyerPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-    headerTitle: 'Register'
+        headerTitle: 'Register'
     });
 
     constructor(props) {

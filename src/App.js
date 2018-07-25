@@ -67,7 +67,6 @@ import { MenuCrafterPage } from './pages/menuCrafter';
 import { EditProfileCrafterPage } from './pages/editProfileCrafter';
 import { CatatanPage } from './pages/catatan';
 import { GambarPage } from './pages/gambar';
-import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
 import { ChatPage } from './pages/Chat';
@@ -87,6 +86,16 @@ import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder'
 import { crafterMenuNotePage } from './pages/crafterMenuNote'
 import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu'
 import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu'
+import { searchOrderPage } from './pages/searchOrder';
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
+import { crafterMenuNotePage } from './pages/crafterMenuNote';
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
+import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
+import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
+import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
+import { UlasanOnCrafterProfilePage } from './pages/UlasanOnCrafterProfile';
+
 
 console.disableYellowBox = true;
 
@@ -99,17 +108,32 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
   StartScreen: {
     screen: StartScreen
   },
-  searchOrder: {
-    screen: searchOrderPage
+  CrafterMenu: {
+    screen: CrafterMenuPage
   },
   FindingCrafter: {
     screen: FindingCrafterPage
+  },
+  UlasanOnCrafterProfile: {
+    screen: UlasanOnCrafterProfilePage
+  },
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
+  },
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
+  },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
   },
   Order: {
     screen: OrderPage
@@ -117,9 +141,7 @@ const Routes = createStackNavigator({
   Gambar: {
     screen: GambarPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   MenuCrafter: {
     screen: MenuCrafterPage
   },
@@ -137,6 +159,9 @@ const Routes = createStackNavigator({
   },
   PageDesign: {
     screen: PageDesignPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
   },
   ProductDetailNya: {
     screen: ProductDetailNyaPage
@@ -179,9 +204,6 @@ const Routes = createStackNavigator({
   },
   ProductDetailOnProfile: {
     screen: ProductDetailOnProfilePage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
   },
   Crafter: {
     screen: CrafterPage
@@ -265,9 +287,7 @@ const Routes = createStackNavigator({
   EditCatatan: {
     screen: EditCatatanPage
   },
-  Ulasan: {
-    screen: UlasanPage
-  },
+
   MenuCrafter: {
     screen: MenuCrafterPage
   },

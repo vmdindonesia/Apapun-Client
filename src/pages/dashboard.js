@@ -233,7 +233,7 @@ export class DashboardPage extends React.Component {
 											<View style={styles.containerPhoto}>
 												<View>
 													<TouchableOpacity style={styles.button}
-														onPress={() => this.props.navigation.navigate('')}>
+														onPress={() => this.props.navigation.navigate('ProfileCrafter')}>
 														<Image
 															style={styles.profileImage}
 															source={require('./../assets/images/yukikato.jpg')}
@@ -598,7 +598,7 @@ export class DashboardPage extends React.Component {
 																		{
 																			statusMenu === 'profile' ?
 																				<View style={styles.containerProfileHomeScreen}>
-																					<View style={[styles.profileHomeScreen, { marginTop: 20}]}>
+																					<View style={[styles.profileHomeScreen, { marginTop: 20 }]}>
 																						<View>
 																							<Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text>
 																							<View style={{ flex: 1 }}>
@@ -709,6 +709,7 @@ export class DashboardPage extends React.Component {
 							:
 							<View />
 					}
+
 
 					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
 						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>

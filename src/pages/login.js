@@ -98,7 +98,7 @@ export class LoginPage extends React.Component {
 		return (
 			<View style={styles.container}>
 				<ImageBackground
-					style={{ width: '100%', height: '100%' }}
+					style={{ flex:1 }}
 					source={require('./../assets/images/bg-login.png')}
 					resizeMode='cover'
 					keyboardShouldPersistTaps="always"

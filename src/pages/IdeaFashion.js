@@ -4,6 +4,7 @@ import { Container, ContainerSection, Button, Input, InputSearch, InputDate } fr
 import { Card, CheckBox } from 'react-native-elements'
 // import axios from 'axios';
 import { COLOR } from '../shared/config';
+// import { Icon } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -23,29 +24,23 @@ export class IdeaFashionPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            requestManExpanded: false,
-            requestWomanExpanded: false,
-            requestAccessoriesExpanded: false,
-            requestContainer: null
+            ManUp: false
         }
     }
 
     render() {
 
         const {
-            requestManExpanded,
-            requestWomanExpanded,
-            requestAccessoriesExpanded,
-            requestContainer
+            ManUp
         } = this.state
 
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: '#eaeaea' }}>
 
                 <ScrollView>
-                    <View style={{ flex: 1, flexDirection: 'column', height: '100%' }}>
+                    <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white' }}>
 
-                        <View style={{ flex: 1, height: 200, width: '100%', backgroundColor: 'skyblue' }}>
+                        <View style={{ flex: 1, height: 250, width: '100%', backgroundColor: 'skyblue' }}>
                             <Image
                                 style={{
                                     flex: 1,
@@ -58,108 +53,113 @@ export class IdeaFashionPage extends React.Component {
                             />
                         </View>
 
-                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                            <View style={{
-                                // borderTopWidth: 1,
-                                borderColor: '#eaeaea',
-                                // padding: 5
-                            }}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback
-                                        // onPress={() => { this.setState({ requestManExpanded: !requestManExpanded }); }}
-                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
-                                    >
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15 }}>Atasan Pria</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={20} style={{ alignSelf: 'flex-end' }} name={requestManExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                            </View>
-                                        </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
-                                {/* {
-                                    requestManExpanded ?
-                                        <ContainerSection>
-                                            {
-                                                requestContainer ?
-                                                    <View style={{ flexDirection: 'column' }}>
-                                                        <View>
-                                                            <Text style={{ textAlign: 'center' }}>Apakah anda ingin melakukan permintaan sample atau survei nelayan?</Text>
-                                                        </View>
-                                                        <View style={{ paddingTop: 10 }}>
-                                                            <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                                                                <CheckBox
-                                                                    style={{ flex: 1, padding: 10 }}
-                                                                    rightText={surpei}
-                                                                    // onClick={() => this.checkBoxSurvey()}
-                                                                    // isChecked={survey}
-                                                                />
+                        <TouchableOpacity
+                            onPress={() => this.setState({ ManUp: !this.state.ManUp })}
+                        >
+                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
-                                                                <CheckBox
-                                                                    style={{ flex: 1, padding: 10 }}
-                                                                    rightText={sampel}
-                                                                    // onClick={() => this.checkBoxSample()}
-                                                                    // isChecked={sample}
-                                                                />
-                                                            </View>
-                                                        </View>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Atasan Pria</Text>
+                                </View>
 
-                                                    </View>
-                                                    :
-                                                    <View />
-                                            }
-
-                                        </ContainerSection>
-                                        :
-                                        <View />
-                                } */}
+                                <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                    {
+                                        ManUp === true ?
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropup'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                            :
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropdown'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                    }
+                                </View>
                             </View>
-                        </Card>
+                        </TouchableOpacity>
 
-                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea', }}>
-                            <View style={{
-                                // borderTopWidth: 1,
-                                borderColor: '#eaeaea',
-                                // padding: 5
-                            }}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback
-                                        // onPress={() => { this.setState({ requestWomanExpanded: !requestWomanExpanded }); }}
-                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
-                                    >
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15 }}>Atasan Wanita</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={20} style={{ alignSelf: 'flex-end' }} name={requestWomanExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                            </View>
+                        {
+                            ManUp === true ?
+
+                                <View style={{ flex: 1, height: 170, flexDirection: 'row', backgroundColor: '#eaeaea' }}>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableOpacity
+                                                onPress={() => this.props.navigation.navigate('ListTshirt')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/kaos.jpg')}
+                                                    resizeMode='stretch'
+                                                />
+                                            </TouchableOpacity>
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
-                            </View>
-                        </Card>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kaos</Text>
+                                    </View>
 
-
-                        <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea', }}>
-                            <View style={{
-                                // borderTopWidth: 1,
-                                borderColor: '#eaeaea',
-                                // padding: 5
-                            }}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback
-                                        // onPress={() => { this.setState({ requestAccessoriesExpanded: !requestAccessoriesExpanded }); }}
-                                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
-                                    >
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15 }}>Accessories</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={20} style={{ alignSelf: 'flex-end' }} name={requestAccessoriesExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                            </View>
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableOpacity
+                                                onPress={() => this.props.navigation.navigate('ListKemeja')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/kemeja.jpg')}
+                                                // resizeMode='contain'
+                                                />
+                                            </TouchableOpacity>
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
-                            </View>
-                        </Card>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kemeja</Text>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableOpacity
+                                                onPress={() => this.props.navigation.navigate('ListHoodie')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/hoodie.jpg')}
+                                                // resizeMode='contain'
+                                                />
+                                            </TouchableOpacity>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Hoodie</Text>
+                                    </View>
+
+                                </View>
+                                :
+                                <View />
+
+                        }
+
+
+
+
 
 
 
@@ -173,6 +173,9 @@ export class IdeaFashionPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
+
+
 
 
 });
