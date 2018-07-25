@@ -103,6 +103,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  // FindingCrafter: {
+  //   screen: FindingCrafterPage
+  // },
   StartScreen: {
     screen: StartScreen
   },
@@ -196,9 +199,6 @@ const Routes = createStackNavigator({
   },
   ProductDetailOnProfile: {
     screen: ProductDetailOnProfilePage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
   },
   Crafter: {
     screen: CrafterPage
