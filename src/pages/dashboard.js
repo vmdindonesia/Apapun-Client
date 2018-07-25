@@ -233,7 +233,7 @@ export class DashboardPage extends React.Component {
 											<View style={styles.containerPhoto}>
 												<View>
 													<TouchableOpacity style={styles.button}
-														onPress={() => this.props.navigation.navigate('')}>
+														onPress={() => this.props.navigation.navigate('ProfileCrafter')}>
 														<Image
 															style={styles.profileImage}
 															source={require('./../assets/images/yukikato.jpg')}
