@@ -88,20 +88,20 @@ export class DesignSayaPage extends React.Component {
         console.log(data, '098');
         return (
             <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
-                <View style={styles.card}>
+                <View style={styles.cardi}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
                             style={styles.thumbnailStyle}
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
+                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 50 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>
-                                Rendy Sutandy
+                            <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>
+                            Desain anda belum terdaftar
                             </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
+                        {/* <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
                             <Image
                                 style={{ width: 18, height: 18 }}
                                 source={require('./../assets/images/Cukup.png')}
@@ -120,7 +120,7 @@ export class DesignSayaPage extends React.Component {
                             <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
                                 Jakarta, Jakarta Barat
                             </Text>
-                        </View>
+                        </View> */}
                     </View>
                 </View>
             </TouchableWithoutFeedback>
@@ -131,7 +131,7 @@ export class DesignSayaPage extends React.Component {
         return (
             // <View style={{ flex: 1 }}>
 
-            <View style={{ flex: 1, backgroundColor: 'yellow' }}>
+            <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ flex: 1, height: 75 }}>
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -186,6 +186,12 @@ export class DesignSayaPage extends React.Component {
                             horizontal={false}
                         />
                     </View>
+                    <View style={styles.butin}>
+                        <TouchableOpacity style={styles.buttonSignUp}
+                            onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                            <Text style={styles.signupButton}>Daftar</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ScrollView>
             </View>
         )
@@ -199,7 +205,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 90,
-        marginTop: -245,
+        marginTop: -230,
         width: 200
     },
     signupButton: {
@@ -217,6 +223,17 @@ const styles = StyleSheet.create({
         elevation: 2,
         marginLeft: 5,
         marginBottom: '2%',
+        backgroundColor: '#FFF'
+    },
+    cardi: {
+        borderRadius: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+        marginLeft: 5,
+        marginBottom: '50%',
         backgroundColor: '#FFF'
     },
     thumbnailContainerStyle: {
