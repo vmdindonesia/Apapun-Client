@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, FlatList, ToastAndroid } from 'react-native';
 import { OrderForCrafterPage } from './orderForCrafter';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class searchOrderPage extends React.Component {
@@ -18,7 +21,7 @@ export class searchOrderPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // screen: 'Custom'
+            dataOrder: '',
             photo: [
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
@@ -30,10 +33,30 @@ export class searchOrderPage extends React.Component {
 
     }
 
+    componentDidMount() {
+        console.log(this.props.navigation.state.params, 'mantap');
+        const categoryId = this.props.navigation.state.params.categoryId;
+        const typeOrder = this.props.navigation.state.params.type_order
+        axios.post(`${IPSERVER}/ApapunOrders/getOrderActiveByCategory`, {
+            params: {
+                'categoryId': categoryId,
+                'type_order': typeOrder
+            }
+        }).then(response => {
+            console.log(response.data, 'Get Order');
+            this.setState({ dataOrder: response.data })
+        }).catch(error => {
+            console.log(error, 'Err Get Order');
+            ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
+    }
+
     renderOrderList = (data) => {
-        console.log(data, '098');
+        // console.log(data, '098');
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate('OrderForCrafter')}
+            >
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
@@ -41,19 +64,27 @@ export class searchOrderPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
+                    <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
+                        <Image
+                            style={{ width: 20, height: 20 }}
+                            source={require('./../assets/images/location_icon.png')}
+                            resizeMode='contain'
+                        />
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
+                        </View>
+                    </View>
                 </View>
-            </TouchableOpacity>
+            </TouchableOpacity >
         )
     }
 
 
     render() {
-
+            const { dataOrder } = this.state;
         return (
-
-
             <View style={{ flex: 1, }}>
-
                 <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -98,7 +129,7 @@ export class searchOrderPage extends React.Component {
                         renderItem={this.renderOrderList.bind(this)}
                         showsHorizontalScrollIndicator={false}
                         horizontal={false}
-                        numColumns={3}
+                        numColumns={2}
                     />
                 </View>
             </View>
@@ -121,11 +152,14 @@ const styles = StyleSheet.create({
     thumbnailContainerStyle: {
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        marginLeft: 15,
+        marginBottom: 15,
+        flex: 1
     },
     thumbnailStyle: {
-        alignSelf: 'stretch',
-        height: 160,
+        // alignSelf: 'stretch',
+        alignSelf: 'center',
+        height: 170,
         width: 170,
         resizeMode: 'cover',
         borderRadius: 4

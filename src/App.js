@@ -82,9 +82,11 @@ import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
 import { ProductDetailProfPage } from './pages/ProductDetail';
 import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
-import { searchCustomOrderPage } from './pages/seachCustomOrder';
-import { searchCustomCaptureAndGetPage } from './pages/searchCaptureAndGet';
-import { searchIdeaMarketPage } from './pages/searchIdeaMarket';
+import { searchOrderPage } from './pages/seachOrder'
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder'
+import { crafterMenuNotePage } from './pages/crafterMenuNote'
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu'
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu'
 
 console.disableYellowBox = true;
 
@@ -97,14 +99,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
-  },
   CrafterMenu: {
     screen: CrafterMenuPage
   },
+  StartScreen: {
+    screen: StartScreen
+  },
   searchOrder: {
     screen: searchOrderPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
   },
   Order: {
     screen: OrderPage
@@ -150,15 +155,6 @@ const Routes = createStackNavigator({
   },
   CrafterMenu: {
     screen: CrafterMenuPage
-  },
-  searchCustomOrder: {
-    screen: searchCustomOrderPage
-  },
-  searchCaptureAndGet: {
-    screen: searchCustomCaptureAndGetPage
-  },
-  searchIdeaMarket: {
-    screen: searchIdeaMarketPage
   },
   ProfilePage: {
     screen: ProfileBuyerPage

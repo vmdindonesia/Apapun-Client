@@ -3,9 +3,20 @@ import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity }
 import { Input, InputNumber, ContainerSection, InputDate, Button } from '../components/common';
 import Swiper from 'react-native-swiper';
 import DatePicker from 'react-native-datepicker'
-// import moment from 'moment';
+import { NavigationActions, StackActions } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class OrderForCrafterPage extends React.Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Rancangan Pesanan'
+    });
 
     constructor(props) {
         super(props)

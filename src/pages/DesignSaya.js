@@ -130,7 +130,7 @@ export class DesignSayaPage extends React.Component {
                                         <View style={{ paddingLeft: 180 }}>
                                             <Image
                                                 style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                source={require('./../assets/images/sempurna.png')}
                                             />
                                             <Text>(1)</Text>
                                         </View>
@@ -184,7 +184,7 @@ export class DesignSayaPage extends React.Component {
                                         <View style={{ paddingLeft: 160 }}>
                                             <Image
                                                 style={{ width: 20, height: 20, paddingTop: 10 }}
-                                                source={require('./../assets/images/smiley.png')}
+                                                source={require('./../assets/images/sempurna.png')}
                                             />
                                             <Text> (1)</Text>
                                         </View>
@@ -201,11 +201,6 @@ export class DesignSayaPage extends React.Component {
                                         </View>
 
                                     </View>
-
-
-
-
-
                                 </View>
 
 
@@ -251,7 +246,7 @@ export class DesignSayaPage extends React.Component {
 
                                 </View>
 
-                               
+
 
                             </View>
 
@@ -259,10 +254,10 @@ export class DesignSayaPage extends React.Component {
                         </View>
                     </View>
                     <View style={styles.butin}>
-                                    <TouchableOpacity style={styles.buttonSignUp}>
-                                        <Text style={styles.signupButton}>Daftar</Text>
-                                    </TouchableOpacity>
-                                </View>
+                        <TouchableOpacity style={styles.buttonSignUp}>
+                            <Text style={styles.signupButton}>Daftar</Text>
+                        </TouchableOpacity>
+                    </View>
 
 
                 </ScrollView>

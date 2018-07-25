@@ -3,6 +3,8 @@ import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Imag
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CrafterOrderMenuPage } from './CrafterOrderMenu';
+import { searchOrderPage } from './seachOrder';
+import { OrderForCrafterPage } from './orderForCrafter';
 
 export class CrafterMenuPage extends React.Component {
 
@@ -33,22 +35,20 @@ export class CrafterMenuPage extends React.Component {
 
   render() {
     const { screen } = this.state;
-
+    console.log(this.props.onScreen, 'PROPS SCREEN')
     const {
       menuContainerStyle, tabContainer, tabContainerActive, tabText, tabTextActive
     } = styles;
 
     return (
-
-  
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
-              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
-              source={require('./../assets/images/List.png')}
-              />
+                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                  source={require('./../assets/images/List.png')}
+                />
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
             </TouchableNativeFeedback>
@@ -57,9 +57,9 @@ export class CrafterMenuPage extends React.Component {
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
-              <Image style={{ width: 20, height: 20, alignSelf: 'center'}}
-              source={require('./../assets/images/ic_menu.png')}
-              />
+                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                  source={require('./../assets/images/ic_menu.png')}
+                />
                 <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
               </View>
             </TouchableNativeFeedback>
