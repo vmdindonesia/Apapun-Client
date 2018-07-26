@@ -35,7 +35,9 @@ export class ListTshirtPage extends React.Component {
     renderProductImage = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('ListTshirt')}
+            >
 
                 <View style={{ flex: 1, flexDirection: 'column', marginTop: 5, marginRight: 10, marginBottom: 5, }}>
                     <Image

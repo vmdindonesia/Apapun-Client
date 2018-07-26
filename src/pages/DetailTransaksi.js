@@ -13,7 +13,7 @@ export class DetailTransaksiPage extends React.Component {
     render() {
         return (
             <ScrollView
-                style={styles.containerStyle}
+                style={{ flex: 1, backgroundColor: '#eaeaea' }}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >

@@ -157,7 +157,7 @@ export class PengaturanBankPage extends React.Component {
 
         return (
             <ScrollView
-                style={{ flex: 1, backgroundColor: 'white' }}
+                style={{ flex: 1, backgroundColor: '#eaeaea' }}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
@@ -172,7 +172,7 @@ export class PengaturanBankPage extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold',color:'black' }}>Nama Depan</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Depan</Text>
 
                             <ContainerSection>
                                 <Input
@@ -355,10 +355,10 @@ export class PengaturanBankPage extends React.Component {
 
                     <CheckBox
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
+                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
                         </Text>}
-                         checked={agree}
-                         onPress={() => this.checkedAgreement()}
+                        checked={agree}
+                        onPress={() => this.checkedAgreement()}
                     />
                 </View>
 

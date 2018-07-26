@@ -26,7 +26,7 @@
     "react-native-uuid": "^1.4.9",
     "react-native-vector-icons": "^4.6.0",
     "react-native-view-editor": "^1.1.0",
-    "react-navigation": "^2.0.4"
+    "react-navigation": "^2.9.2"
   },
   "devDependencies": {
     "babel-jest": "23.0.1",

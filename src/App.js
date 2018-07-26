@@ -9,27 +9,27 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import { setCustomText } from 'react-native-global-props';
+import { setCustomText } from 'react-native-global-props/src';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
 import { StartScreen } from './pages/StartScreen';
-import { DashboardPage } from './pages/dashboard.js';
-import { LoginPage } from './pages/login.js';
-import { OrderPage } from './pages/order.js';
-import { DesignSayaPage } from './pages/DesignSaya.js';
-import { PengaturanBankPage } from './pages/pengaturanBank.js'
-import { InformasiBankPage } from './pages/InformasiBank.js';
-import { DetailTransaksiPage } from './pages/DetailTransaksi.js';
+import { DashboardPage } from './pages/dashboard';
+import { LoginPage } from './pages/login';
+import { OrderPage } from './pages/order';
+import { DesignSayaPage } from './pages/DesignSaya';
+import { PengaturanBankPage } from './pages/pengaturanBank'
+import { InformasiBankPage } from './pages/InformasiBank';
+import { DetailTransaksiPage } from './pages/DetailTransaksi';
 import { FindingCrafterPage } from './pages/findingCrafter';
-import { RegistrationBuyerPage } from './pages/registrationBuyer.js'
-import { RegistrationCrafterPage } from './pages/registrationCrafter.js'
-import { ProfileBuyerPage } from './pages/ProfileBuyer.js'
+import { RegistrationBuyerPage } from './pages/registrationBuyer'
+import { RegistrationCrafterPage } from './pages/registrationCrafter'
+import { ProfileBuyerPage } from './pages/ProfileBuyer'
 import { AkunBankPage } from './pages/AkunBank'
-import { EditProfileBuyerPage } from './pages/EditProfileBuyer.js'
-import { SettingAddressBuyerPage } from './pages/SettingAddressBuyer.js'
+import { EditProfileBuyerPage } from './pages/EditProfileBuyer'
+import { SettingAddressBuyerPage } from './pages/SettingAddressBuyer'
 import { SettingAddressDetailBuyerPage } from './pages/SettingAddressDetailBuyer'
-import { MyOrderPage } from './pages/myOrder.js';
-import { CrafterPage } from './pages/crafter.js';
+import { MyOrderPage } from './pages/myOrder';
+import { CrafterPage } from './pages/crafter';
 import { CrafterListPage } from './pages/CrafterList';
 import { BerandaCrafterPage } from './pages/BerandaCrafter';
 import { FashionCrafterPage } from './pages/FashionCrafter';
@@ -41,13 +41,13 @@ import { OrderOnMyOrderPage } from './pages/OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './pages/WishListOnMyOrder';
 import { HistoryOnMyOrderPage } from './pages/HistoryOnMyOrder';
 import { PageDesignPage } from './pages/PageDesign';
-import { SettingProductPage } from './pages/settingProduct.js';
+import { SettingProductPage } from './pages/settingProduct';
 import { DetailInformationOrderPage } from './pages/detailInformationOrder';
 import { FinalProcessOrderPage } from './pages/finalProcessOrder'
 import { ReviewProductPage } from './pages/reviewProduct'
 import { ProfileCrafterPage } from './pages/profileCrafter';
 import { ForgotPasswordPage } from './pages/forgotPassword';
-import { OrderWithTrackPage } from './pages/orderWithTrack.js';
+import { OrderWithTrackPage } from './pages/orderWithTrack';
 import { OrderTrackConfirmPage } from './pages/orderTrackConfirm';
 import { OrderReceivedPage } from './pages/orderReceived';
 import { CrafterMenuPage } from './pages/crafterMenu';
@@ -90,7 +90,10 @@ import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu
 import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
 import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
 import { UlasanOnCrafterProfilePage } from './pages/UlasanOnCrafterProfile';
-
+import { ListKemejaPage } from './pages/ListKemeja';
+import { ListTshirtPage } from './pages/ListTshirt';
+import { ListHoodiePage } from './pages/ListHoodie';
+import { onClickProductOnIdeaFashionPage } from './pages/onClickProductOnIdeaFashion';
 
 console.disableYellowBox = true;
 
@@ -105,6 +108,36 @@ setCustomText(customTextProps)
 const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  onClickProductOnIdeaFashion: {
+    screen: onClickProductOnIdeaFashionPage
+  },
+  IdeaFashion: {
+    screen: IdeaFashionPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  ListTshirt: {
+    screen: ListTshirtPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  ListKemeja: {
+    screen: ListKemejaPage
+  },
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  ProductDetailNya: {
+    screen: ProductDetailNyaPage
+  },
+  ListHoodie: {
+    screen: ListHoodiePage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
@@ -130,13 +163,9 @@ const Routes = createStackNavigator({
   searchOrder: {
     screen: searchOrderPage
   },
-  Order: {
-    screen: OrderPage
-  },
   Gambar: {
     screen: GambarPage
   },
-
   MenuCrafter: {
     screen: MenuCrafterPage
   },
@@ -167,14 +196,8 @@ const Routes = createStackNavigator({
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   CrafterMenu: {
     screen: CrafterMenuPage
-  },
-  ProfilePage: {
-    screen: ProfileBuyerPage
   },
   SettingProduct: {
     screen: SettingProductPage
@@ -326,9 +349,7 @@ const Routes = createStackNavigator({
   IdeaMarket: {
     screen: IdeaMarketPage
   },
-  IdeaFashion: {
-    screen: IdeaFashionPage
-  },
+
   DesignSaya: {
     screen: DesignSayaPage
   },
