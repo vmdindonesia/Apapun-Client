@@ -37,7 +37,7 @@ export class DesignSayaPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('PageDesign')}>
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
@@ -87,7 +87,7 @@ export class DesignSayaPage extends React.Component {
     renderProdu = (data) => {
         console.log(data, '098');
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('PageDesign')}>
                 <View style={styles.cardi}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
@@ -95,21 +95,21 @@ export class DesignSayaPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 50 }}>
+                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 30 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
                             <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>
                                 Desain anda belum terdaftar
                             </Text>
                         </View>
-                        <View style={styles.butin}>
+                    </View>
+                    <View style={styles.butin}>
                             <TouchableOpacity
                                 style={styles.buttonSignUp}
-                                onPress={() => this.props.navigation.navigate('pengaturanBank')}
+                                onPress={() => this.props.navigation.navigate('SettingProduct')}
                             >
                                 <Text style={styles.signupButton}>Daftar</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
                 </View>
             </TouchableWithoutFeedback>
         )
@@ -119,7 +119,7 @@ export class DesignSayaPage extends React.Component {
         return (
             // <View style={{ flex: 1 }}>
 
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, zIndex: 0 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ flex: 1, height: 75 }}>
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -183,12 +183,13 @@ export class DesignSayaPage extends React.Component {
 
 const styles = StyleSheet.create({
     butin: {
-        zIndex: 1,
+        zIndex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 90,
-        marginTop: -230,
-        width: 200
+        height: 50,
+        paddingTop: 260,
+        width: 200,
+        position: 'absolute'
     },
     signupButton: {
         textAlign: 'center',
@@ -216,7 +217,8 @@ const styles = StyleSheet.create({
         elevation: 2,
         marginLeft: 5,
         marginBottom: '50%',
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
+        zIndex: 1
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
@@ -233,7 +235,7 @@ const styles = StyleSheet.create({
     containerCrafter: {
         flexDirection: 'row',
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     buttonSignUp: {
         backgroundColor: 'red',

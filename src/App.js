@@ -81,16 +81,11 @@ import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
 import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
 import { ProductDetailProfPage } from './pages/ProductDetail';
 import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
-import { searchOrderPage } from './pages/seachOrder'
+import { searchOrderPage } from './pages/searchOrder'
 import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder'
 import { crafterMenuNotePage } from './pages/crafterMenuNote'
 import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu'
 import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu'
-import { searchOrderPage } from './pages/searchOrder';
-import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder';
-import { crafterMenuNotePage } from './pages/crafterMenuNote';
-import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu';
-import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu';
 import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
 import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
 import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
@@ -159,9 +154,6 @@ const Routes = createStackNavigator({
   },
   PageDesign: {
     screen: PageDesignPage
-  },
-  searchOrder: {
-    screen: searchOrderPage
   },
   ProductDetailNya: {
     screen: ProductDetailNyaPage
