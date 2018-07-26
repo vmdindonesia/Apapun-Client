@@ -91,7 +91,7 @@ export class IdeaFashionPage extends React.Component {
                                     <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
                                         <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
                                             <TouchableOpacity
-                                                onPress={() => this.props.navigation.navigate('ListTshirt')}
+                                                onPress={() => this.props.navigation.navigate('onClickProductOnIdeaFashion')}
                                             >
                                                 <Image
                                                     style={{
@@ -157,6 +157,65 @@ export class IdeaFashionPage extends React.Component {
 
                         }
 
+                        <TouchableOpacity
+                        // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
+                        >
+                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
+
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Atasan Wanita</Text>
+                                </View>
+
+                                <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                    {
+                                        ManUp === true ?
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropup'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                            :
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropdown'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                    }
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                        // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
+                        >
+                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
+
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Aksesoris</Text>
+                                </View>
+
+                                <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                    {
+                                        ManUp === true ?
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropup'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                            :
+                                            <Icon
+                                                size={30}
+                                                name='md-arrow-dropdown'
+                                                // type='entypo'
+                                                color='black'
+                                            />
+                                    }
+                                </View>
+                            </View>
+                        </TouchableOpacity>
 
 
 

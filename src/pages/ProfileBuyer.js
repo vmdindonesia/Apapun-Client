@@ -8,14 +8,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
     static navigationOptions = ({ navigation }) => ({
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => {
-                    navigation.goBack(); console.log(navigation.goBack(), 'Props Order')
-                }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, }} name='ios-arrow-back' />
-            </TouchableOpacity >
+        header: null
     });
 
     render() {
@@ -23,6 +16,15 @@ export class ProfileBuyerPage extends React.Component {
 
             <ScrollView
             >
+
+                <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
+                    onPress={() => this.props.navigation.goBack()}
+                >
+                    <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
+                        <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
+                    </View>
+                </TouchableOpacity>
+
                 <ImageBackground
                     source={require('./../assets/images/background_profile.jpeg')}
                     style={styles.backgroundStyle}
@@ -305,6 +307,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '53%',
         // backgroundColor: 'grey'
+        // zIndex: 0,
+        marginTop: -70
     },
     containerImage: {
         // flex: 1,
