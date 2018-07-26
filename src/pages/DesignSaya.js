@@ -95,7 +95,7 @@ export class DesignSayaPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 30 }}>
+                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 50 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
                             <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>
                                 Desain anda belum terdaftar
@@ -186,9 +186,10 @@ const styles = StyleSheet.create({
         zIndex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 50,
+        height: 44,
         paddingTop: 260,
         width: 200,
+        marginBottom: 30,
         position: 'absolute'
     },
     signupButton: {
