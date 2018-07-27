@@ -1,19 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class ProfileBuyerPage extends React.Component {
 
+
     static navigationOptions = ({ navigation }) => ({
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-            </TouchableOpacity>,
-        headerTitle: 'Profil Buyer'
+        header: null
     });
 
     render() {
@@ -21,12 +16,21 @@ export class ProfileBuyerPage extends React.Component {
 
             <ScrollView
             >
+
+                <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
+                    onPress={() => this.props.navigation.goBack()}
+                >
+                    <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
+                        <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
+                    </View>
+                </TouchableOpacity>
+
                 <ImageBackground
                     source={require('./../assets/images/background_profile.jpeg')}
                     style={styles.backgroundStyle}
                 >
 
-                    <View>
+                    <View style={{ zIndex: 0 }}>
 
                         <View style={styles.containerImage}>
                             <Image style={styles.containerPhoto}
@@ -36,21 +40,21 @@ export class ProfileBuyerPage extends React.Component {
 
                         <View style={styles.containerMainForm}>
 
-                            <View style={{ flex: 1, flexDirection: 'row', height: 60, width: '85%' }}>
+                            <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
 
-                                <View style={{ flex: 1, alignSelf: 'center' }}>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold', fontFamily: 'Quicksand-Bold' }}>Gal Gadot</Text>
+                                <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 25, fontFamily: 'Quicksand-Regular', color: 'black' }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                                    <View style={{ height: 35, width: 35, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
-                                        <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                            <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                    <TouchableOpacity
+                                        onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                        <View style={{ height: 45, width: 45, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Image style={{ height: 15, width: 15, borderRadius: 0, }}
                                                 source={require('./../assets/images/pen_white.png')}
                                             />
-                                        </TouchableOpacity>
-                                    </View>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
 
@@ -77,7 +81,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         galgadot@gmail.com
                             </Text>
                                 </View>
@@ -105,7 +109,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         081284485300
                             </Text>
                                 </View>
@@ -132,7 +136,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         30 Januari 1995
                                     </Text>
                                 </View>
@@ -160,10 +164,10 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', fontWeight: 'bold' }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
                                         Jalan Komodo
                                     </Text>
                                 </View>
@@ -202,10 +206,10 @@ export class ProfileBuyerPage extends React.Component {
                                     // alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Total Apresiasi Design Anda
                                      </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
                                         Rp.120.000
                                      </Text>
                                 </View>
@@ -249,10 +253,10 @@ export class ProfileBuyerPage extends React.Component {
                                     justifyContent: 'center',
                                     marginBottom: 30
                                 }}>
-                                    <Text style={{ fontSize: 13, paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
                                         Total Design Anda
                                     </Text>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold', paddingLeft: 10, textAlign: 'left', fontFamily: 'Quicksand-Bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
                                         3 Design
                                     </Text>
                                 </View>
@@ -260,41 +264,32 @@ export class ProfileBuyerPage extends React.Component {
                         </View>
 
 
-                        {/* <View style={styles.containerTh}>
-
+                        <View style={styles.containerTh}>
                             <View style={{
-                                flexDirection: 'row',
-                                height: '100%', width: '100%'
+                                flexDirection: 'column',
+                                height: '100%', width: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'center'
                             }}>
-                                <View style={{
-                                    flexDirection: 'column',
-                                    height: '50%', width: '100%',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Text style={{ fontSize: 20, paddingTop: 20, paddingLeft: 20, fontWeight: 'bold', textAlign: 'center' }}>
-                                        Hargai Designmu
-                                 </Text>
-                                    <Text style={{ fontSize: 13, paddingLeft: 20, textAlign: 'center' }}>
-                                        Share dan opresiasikan designmu di seluruh indonesia
-                                </Text>
-                                </View>
-
-                              
+                                <Text style={{ fontSize: 19, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                                    Hargai Desainmu
+                                    </Text>
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    Share dan opresiasikan desainmu
+                                    </Text>
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    ke seluruh indonesia
+                                    </Text>
                             </View>
-                        </View> */}
-
-
-
+                        </View>
                     </View>
-                    {/* <TouchableOpacity style={styles.buttonSignUp}
-                                        onPress={() => this.props.navigation.navigate('pengaturanBank')}>
-                                        <Text style={styles.signupButton}>Pengaturan</Text>
-                    </TouchableOpacity> */}
 
-
-
-
+                    <View style={styles.butin}>
+                        <TouchableOpacity style={styles.buttonSignUp}
+                            onPress={() => this.props.navigation.navigate('pengaturanBank')}>
+                            <Text style={styles.signupButton}>Pengaturan</Text>
+                        </TouchableOpacity>
+                    </View>
 
                 </ImageBackground >
             </ScrollView >
@@ -312,26 +307,30 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '53%',
         // backgroundColor: 'grey'
+        // zIndex: 0,
+        marginTop: -70
     },
     containerImage: {
         // flex: 1,
         // justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
-        // zIndex: 2,
+        marginTop: 30,
+        paddingTop: 30,
+        zIndex: 2,
+        marginBottom: 10
         // backgroundColor: 'yellow'
 
     },
     containerPhoto: {
-        height: 155,
-        width: 155,
+        height: 200,
+        width: 200,
         borderRadius: 100,
         // zIndex: 5
         borderColor: 'white',
         borderWidth: 3
     },
     containerMainForm: {
-        // flex: 1,
+        flex: 1,
         borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
@@ -341,13 +340,13 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'column',
         marginTop: 15,
-        height: 230,
+        height: 260,
         width: '90%',
         alignItems: 'center',
         // justifyContent: 'center',
         alignSelf: 'center',
         // zIndex: 1,
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderColor: '#d6d7da',
         // backgroundColor: 'red'
     },
@@ -367,7 +366,7 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
+        // zIndex: 2,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
@@ -382,28 +381,34 @@ const styles = StyleSheet.create({
         elevation: 3,
         flexDirection: 'row',
         marginTop: 5,
-        marginBottom: 30,
+        // zIndex: 3,
+        marginBottom: 5,
         height: 70,
         width: '90%',
         // alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
     },
     containerTh: {
+        borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'row',
+        marginBottom: 30,
         marginTop: 5,
-        height: 70,
+        height: 150,
         width: '90%',
-        alignItems: 'center',
+        // alignItems: 'center',
+        // zIndex: 2,
         justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
+        borderWidth: 0.5,
         borderColor: '#d6d7da'
     },
     icons: {
@@ -414,21 +419,27 @@ const styles = StyleSheet.create({
     signupButton: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 17,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        fontSize: 15,
+        fontFamily: 'Quicksand-Reguler'
     },
     buttonSignUp: {
-        // marginTop: 60,
         backgroundColor: 'red',
         borderRadius: 20,
-        height: 10,
-        width: 150,
+        height: 40,
+        width: 135,
+        marginTop: -50,
         justifyContent: 'center',
         alignSelf: 'center',
+        fontFamily: 'Quicksand-Regular'
+        // zIndex: 2
+    },
+    butin: {
         zIndex: 1,
-        marginBottom: -50,
-        marginTop: 40
+        marginTop: -50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 90,
+        width: 410
     }
 });
 

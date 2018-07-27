@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { OrderOnMyOrderPage } from './OrderOnMyOder';
 import { WishlistOnMyOrderPage } from './WishListOnMyOrder';
@@ -60,7 +60,7 @@ export class CrafterMyOrderPage extends React.Component {
         } = this.state;
 
         const {
-            tabContainerActive, tabContainer
+            tabContainerActive, tabContainer, fontActive, fontNotActive
         } = styles;
 
         return (
@@ -69,32 +69,28 @@ export class CrafterMyOrderPage extends React.Component {
             }}>
 
                 <View style={{
-                    // backgroundColor: 'red',
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
-                    // flex:4,
                     borderBottomWidth: 2,
                     marginBottom: 3,
-                    borderColor: '#e5e5e5'
+                    borderColor: '#e5e5e5',
+                    backgroundColor: 'white'
                 }}>
 
                     <View
                         style={{
-                            // backgroundColor: 'skyblue',
                             width: '33.3%',
                             height: 50,
                             flexDirection: 'row',
-                            // flex:4,
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
                         <TouchableOpacity
-                            // onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
-                            onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                            onPress={() => this.setState({ screen: 'OrderOnMyOrderPage' })}
                         >
                             <View style={screen === 'OrderOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>Pesanan Saya</Text>
+                                <Text style={screen === 'OrderOnMyOrderPage' ? fontActive : fontNotActive}>Pesanan Saya</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -112,7 +108,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'WishlistOnMyOrderPage' })}>
                             <View style={screen === 'WishlistOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>Wishlist</Text>
+                                <Text style={screen === 'WishlistOnMyOrderPage' ? fontActive : fontNotActive}>Wishlist</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -130,7 +126,7 @@ export class CrafterMyOrderPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'HistoryOnMyOrderPage' })}>
                             <View style={screen === 'HistoryOnMyOrderPage' ? tabContainerActive : tabContainer}>
-                                <Text>History</Text>
+                                <Text style={screen === 'HistoryOnMyOrderPage' ? fontActive : fontNotActive}>History</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -147,7 +143,6 @@ export class CrafterMyOrderPage extends React.Component {
 
 const styles = StyleSheet.create({
     tabContainerActive: {
-        // backgroundColor: COLOR.element_a4,
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
@@ -159,6 +154,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // borderBottomWidth: 1,
     },
+    fontActive: {
+        fontFamily: 'Quicksand-Bold',
+        fontSize: 15
+    },
+    fontNotActive: {
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color: '#c6c6c6'
+    }
 
 
 });

@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate, InputSearch } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
 import { BerandaCrafterPage } from './BerandaCrafter';
 import { FashionCrafterPage } from './FashionCrafter';
 import { FurnitureCrafterPage } from './FurnitureCrafter';
 import { BeautyCrafterPage } from './BeautyCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 
 
 export class CrafterListPage extends React.Component {
@@ -16,22 +15,13 @@ export class CrafterListPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+                onPress={() => { navigation.goBack(); console.log(navigation, 'Props Order') }}
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
         headerTitle: 'Crafter List'
     });
 
-    static navigationOptions = {
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => { console.log(this.props, 'Props Order') }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-            </TouchableOpacity>,
-        headerTitle: 'Crafter List'
-    }
 
     constructor(props) {
         super(props)
@@ -73,7 +63,7 @@ export class CrafterListPage extends React.Component {
         } = this.state;
 
         const {
-            tabContainerActive, tabContainer
+            tabContainerActive, tabContainer, fontActive, fontNotActive
         } = styles;
 
 
@@ -82,32 +72,27 @@ export class CrafterListPage extends React.Component {
             <View style={{
                 flex: 1,
             }}>
-
-
-
                 <View style={{
-                    // backgroundColor: 'red',
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
-                    // flex:4,
                 }}>
                     <ScrollView
+                        showsHorizontalScrollIndicator={false}
                         horizontal={true}
+                        showsHorizontalScrollIndicator={false}
                     >
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BerandaCrafterPage' })}>
                                 <View style={screen === 'BerandaCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Beranda</Text>
+                                    <Text style={screen === 'BerandaCrafterPage' ? fontActive : fontNotActive}>Beranda</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -115,17 +100,15 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FashionCrafterPage' })}>
                                 <View style={screen === 'FashionCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Fashion</Text>
+                                    <Text style={screen === 'FashionCrafterPage' ? fontActive : fontNotActive}>Fashion</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -133,17 +116,15 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 170,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'FurnitureCrafterPage' })}>
                                 <View style={screen === 'FurnitureCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Furniture & Appliance</Text>
+                                    <Text style={screen === 'FurnitureCrafterPage' ? fontActive : fontNotActive}>Furniture & Appliance</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -151,17 +132,15 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                // backgroundColor: 'skyblue',
                                 width: 90,
                                 height: 50,
                                 flexDirection: 'row',
-                                // flex:4,
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BeautyCrafterPage' })}>
                                 <View style={screen === 'BeautyCrafterPage' ? tabContainerActive : tabContainer}>
-                                    <Text style={{ fontSize: 15 }}>Beauty</Text>
+                                    <Text style={screen === 'BeautyCrafterPage' ? fontActive : fontNotActive}>Beauty</Text>
                                 </View>
                             </TouchableOpacity>
 
@@ -183,18 +162,24 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     tabContainerActive: {
-        // backgroundColor: COLOR.element_a4,
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
         borderColor: 'red'
     },
     tabContainer: {
-        // backgroundColor: COLOR.element_a3,
         height: 50,
         justifyContent: 'center',
-        // borderBottomWidth: 1,
     },
+    fontActive: {
+        fontFamily: 'Quicksand-Bold',
+        fontSize: 15
+    },
+    fontNotActive: {
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color: '#c6c6c6'
+    }
 });
 
 export default CrafterListPage

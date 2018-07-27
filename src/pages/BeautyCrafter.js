@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
-// import axios from 'axios';
-import { COLOR } from './../shared/config';
+import React, { Component } from 'react';
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
+import { InputSearch } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 
 
 export class BeautyCrafterPage extends React.Component {
@@ -19,213 +16,121 @@ export class BeautyCrafterPage extends React.Component {
         headerTitle: 'Crafter List'
     });
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            photo: [
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
+            ]
+        }
+    }
+
+    renderCrafterBeauty = (data) => {
+        console.log(data, '098');
+        return (
+            <TouchableOpacity
+                style={{
+                    borderRadius: 4,
+                    marginRight: 15,
+                    flex: 1,
+                    padding: 5,
+                    marginBottom: 5
+                }}
+            >
+                <Image
+                    style={styles.item}
+                    source={{ uri: data.item }}
+                />
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Gal Gadot</Text>
+                <View style={{ paddingTop: 5 }}>
+                    <Image
+                        style={{
+                            height: 20,
+                            width: 20,
+                            borderRadius: 0,
+                            alignSelf: 'center'
+                        }}
+                        source={require('./../assets/images/Cukup.png')}
+                    />
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
     render() {
         return (
             <View style={{
                 flex: 1,
             }}>
-
                 <View style={{
                     backgroundColor: '#e5e5e5',
                     width: '100%',
                     height: 70,
                     flexDirection: 'row',
-                    // flex:4,
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
                     <View style={{
                         width: '90%',
                         height: 50,
-                        //   backgroundColor:'red',
                         justifyContent: 'center'
                     }}>
                         <InputSearch
-                            // onFocus={() => navigate('FilterBefore')}
                             placeholder="Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>
                 </View>
-
                 <View style={{
                     backgroundColor: '#e5e5e5',
                     width: '100%',
                     height: '100%',
                     flexDirection: 'row',
-                    // flex:4,
-                    // alignItems: 'center',
-                    justifyContent: 'center',
-                    // backgroundColor: 'red'
+                    justifyContent: 'center'
                 }}>
-
-
-                    <View style={{
-                        // backgroundColor: 'yellow',
-                        height: '35%',
-                        width: '100%',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        // borderBottomWidth: 1
-                    }}>
-
                         <View style={{
-                            // backgroundColor: 'skyblue',
-                            width: '33%',
+                            backgroundColor: '#e5e5e5',
+                            width: '100%',
                             height: '100%',
-
+                            flexDirection: 'row',
+                            justifyContent: 'center',
                         }}>
                             <View style={{
-                                // backgroundColor: 'black',
-                                width: '100%',
-                                height: '70%',
-                                justifyContent: 'center',
-                                alignSelf: 'center'
-
+                                height: 150, width: '100%', marginTop: 15,
+                                flexDirection: 'row', justifyContent: 'center', borderColor: 'gray',
+                                flex: 1, paddingLeft: 10, paddingRight: 10
                             }}>
-                                <Image
-                                    style={{
-                                        height: 100,
-                                        width: 100,
-                                        borderRadius: 100,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/icon_profile.png')}
-                                />
+                                <View style={{ flex: 1 }}>
+                                    <FlatList
+                                        data={this.state.photo}
+                                        horizontal
+                                        renderItem={this.renderCrafterBeauty.bind(this)}
+                                        showsHorizontalScrollIndicator={false}
+                                    />
+                                </View>
                             </View>
-
-                            <View>
-                                <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Ariel Tatum</Text>
-                            </View>
-
-                            <View style={{ paddingTop: 5 }}>
-                                <Image
-                                    style={{
-                                        height: 20,
-                                        width: 20,
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/kiss_icon.jpg')}
-                                />
-
-                            </View>
-
                         </View>
-
-
-                        <View style={{
-                            // backgroundColor: 'skyblue',
-                            width: '33%',
-                            height: '100%',
-                        }}>
-                            <View style={{
-                                // backgroundColor: 'black',
-                                width: '100%',
-                                height: '70%',
-                                justifyContent: 'center',
-                                alignSelf: 'center'
-
-                            }}>
-                                <Image
-                                    style={{
-                                        height: 100,
-                                        width: 100,
-                                        borderRadius: 100,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/icon_profile.png')}
-                                />
-                            </View>
-
-                            <View>
-                                <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Yuki Kato</Text>
-                            </View>
-
-                            <View style={{ paddingTop: 5 }}>
-                                <Image
-                                    style={{
-                                        height: 20,
-                                        width: 20,
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/loveeye_icon.png')}
-                                />
-
-                            </View>
-
-                        </View>
-
-
-
-                        <View style={{
-                            // backgroundColor: 'skyblue',
-                            width: '33%',
-                            height: '100%',
-                        }}>
-                            <View style={{
-                                // backgroundColor: 'black',
-                                width: '100%',
-                                height: '70%',
-                                justifyContent: 'center',
-                                alignSelf: 'center'
-
-                            }}>
-                                <Image
-                                    style={{
-                                        height: 100,
-                                        width: 100,
-                                        borderRadius: 100,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/icon_profile.png')}
-                                />
-                            </View>
-
-                            <View>
-                                <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Nia Ramadhani</Text>
-                            </View>
-
-                            <View style={{ paddingTop: 5 }}>
-                                <Image
-                                    style={{
-                                        height: 20,
-                                        width: 20,
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/smile_icon.jpg')}
-                                />
-
-                            </View>
-
-                        </View>
-
-
                     </View>
-
-
-
-
-
-
-
-
                 </View>
-
-
-
-            </View>
         )
     }
 
 }
 
 const styles = StyleSheet.create({
+    item: {
+        height: 90,
+        width: 90,
+        borderRadius: 100,
+        alignSelf: 'center',
+    },
+})
 
 
-});
-
-export default BeautyCrafterPage
+export default BeautyCrafterPage;
 

@@ -67,7 +67,6 @@ import { MenuCrafterPage } from './pages/menuCrafter';
 import { EditProfileCrafterPage } from './pages/editProfileCrafter';
 import { CatatanPage } from './pages/catatan';
 import { GambarPage } from './pages/gambar';
-import { UlasanPage } from './pages/ulasan';
 import { EditCatatanPage } from './pages/editCatatan';
 import { DetailDeliveryPage } from './pages/detailDelivery';
 import { ChatPage } from './pages/Chat';
@@ -76,6 +75,21 @@ import { CaptureandgetPage } from './pages/CaptureNGet';
 import { IdeaFurniturePage } from './pages/IdeaFurniture';
 import { IdeadhtPage } from './pages/IdeaDHT';
 import { IdeaBeautyPage } from './pages/IdeaBeauty';
+import { EditProductPage } from './pages/EditProduct';
+import { ProductDetailNyaPage } from './pages/ProductDetailNya';
+import { ProductDetailOnProfilePage } from './pages/ProductDetailOnProfile';
+import { NewAddressOnProfilePage } from './pages/NewAddressOnProfile';
+import { ProductDetailProfPage } from './pages/ProductDetail';
+import { ReviewPageOnProfilePage } from './pages/reviewOnProfile';
+import { searchOrderPage } from './pages/searchOrder'
+import { crafterMenuListOrderPage } from './pages/crafterMenuListOrder'
+import { crafterMenuNotePage } from './pages/crafterMenuNote'
+import { addNoteOnCrafterMenuPage } from './pages/addNoteOnCrafterMenu'
+import { editNoteOnCrafterMenuPage } from './pages/editNoteOnCrafterMenu'
+import { clickProductOnCrafterMenuPage } from './pages/clickProductOnCrafterMenu';
+import { ProductReadyToSendPage } from './pages/ProductReadyToSend';
+import { ThanksToOrderAfterSendPage } from './pages/ThanksToOrder';
+import { UlasanOnCrafterProfilePage } from './pages/UlasanOnCrafterProfile';
 
 
 console.disableYellowBox = true;
@@ -92,33 +106,132 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
+  CrafterMenu: {
+    screen: CrafterMenuPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
+  FindingCrafter: {
+    screen: FindingCrafterPage
   },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
+  UlasanOnCrafterProfile: {
+    screen: UlasanOnCrafterProfilePage
   },
-  SettingAddressDetailBuyer: {
-    screen: SettingAddressDetailBuyerPage
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
   },
-  InformasiBank: {
-    screen: InformasiBankPage
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
   },
-  AkunBank: {
-    screen: AkunBankPage
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
   },
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Gambar: {
+    screen: GambarPage
+  },
+
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+  crafterMenuNote: {
+    screen: crafterMenuNotePage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  addNoteOnCrafterMenu: {
+    screen: addNoteOnCrafterMenuPage
+  },
+  editNoteOnCrafterMenu: {
+    screen: editNoteOnCrafterMenuPage
+  },
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  ProductDetailNya: {
+    screen: ProductDetailNyaPage
+  },
+  EditProduct: {
+    screen: EditProductPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  SettingProduct: {
+    screen: SettingProductPage
+  },
+  ProductDetailProf: {
+    screen: ProductDetailProfPage
+  },
+  ReviewPageOnProfile: {
+    screen: ReviewPageOnProfilePage
+  },
+  AkunBank: {
+    screen: AkunBankPage
+  },
+  DetailTransaksi: {
+    screen: DetailTransaksiPage
+  },
+  NewAddressOnProfile: {
+    screen: NewAddressOnProfilePage
+  },
+  ProductDetailOnProfile: {
+    screen: ProductDetailOnProfilePage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  SettingAddressDetailBuyer: {
+    screen: SettingAddressDetailBuyerPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
 
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
+  },
+
+  pengaturanBank: {
+    screen: PengaturanBankPage
+  },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  EditProfileBuyer: {
+    screen: EditProfileBuyerPage
+  },
+  InformasiBank: {
+    screen: InformasiBankPage
+  },
+
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
@@ -130,22 +243,9 @@ const Routes = createStackNavigator({
     screen: CrafterListPage
   },
 
-  Order: {
-    screen: OrderPage
-  },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
-
   IdeaBeauty: {
     screen: IdeaBeautyPage
   },
@@ -158,7 +258,6 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
-
   Chat: {
     screen: ChatPage
   },
@@ -171,11 +270,6 @@ const Routes = createStackNavigator({
   OrderReceived: {
     screen: OrderReceivedPage
   },
-
-  Dashboard: {
-    screen: DashboardPage
-  },
-
   DetailDelivery: {
     screen: DetailDeliveryPage
   },
@@ -185,14 +279,9 @@ const Routes = createStackNavigator({
   EditCatatan: {
     screen: EditCatatanPage
   },
-  Ulasan: {
-    screen: UlasanPage
-  },
+
   MenuCrafter: {
     screen: MenuCrafterPage
-  },
-  CrafterMenu: {
-    screen: CrafterMenuPage
   },
   Catatan: {
     screen: CatatanPage
@@ -200,27 +289,13 @@ const Routes = createStackNavigator({
   EditProfileCrafter: {
     screen: EditProfileCrafterPage
   },
-
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
-  },
   CrafterSent: {
     screen: CrafterSentPage
   },
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
 
-
-  SettingProduct: {
-    screen: SettingProductPage
-  },
   ForgotPassword: {
     screen: ForgotPasswordPage
   },
@@ -248,23 +323,11 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
-
   IdeaMarket: {
     screen: IdeaMarketPage
   },
   IdeaFashion: {
     screen: IdeaFashionPage
-  },
-  PageDesign: {
-    screen: PageDesignPage
-  },
-
-
-  PageDesign: {
-    screen: PageDesignPage
   },
   DesignSaya: {
     screen: DesignSayaPage
@@ -272,39 +335,21 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
-  DetailTransaksi: {
-    screen: DetailTransaksiPage
-  },
-  pengaturanBank: {
-    screen: PengaturanBankPage
-  },
+
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
-  Crafter: {
-    screen: CrafterPage
   },
   MyOrder: {
     screen: MyOrderPage
   },
-
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
-  },
-
-
-  Order: {
-    screen: OrderPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
@@ -318,20 +363,13 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-  EditProfileBuyer: {
-    screen: EditProfileBuyerPage
-  },
-
-  Crafter: {
-    screen: CrafterPage
-  }
 }, {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerRight: <View />,
       headerTitleStyle: {
         color: '#000',
-        fontFamily: 'Quicksand-Bold',
+        fontFamily: 'Quicksand-Regular',
         fontWeight: '300',
         justifyContent: 'space-between',
         textAlign: 'center',
@@ -340,6 +378,10 @@ const Routes = createStackNavigator({
       },
       headerStyle: {
         backgroundColor: COLOR.headerBar,
+        shadowOpacity: 0,
+        elevation: 1,
+        borderBottomColor: 'white',
+        borderBottomWidth: 1.5
       },
       headerTintColor: '#000',
     }

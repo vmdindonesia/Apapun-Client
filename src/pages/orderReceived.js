@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -98,10 +98,10 @@ export class OrderReceivedPage extends React.Component {
                                 <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>
                                     <Image
                                         style={{ height: 15, width: 15, }}
-                                        source={require('./../assets/images/smiley.png')}
+                                        source={require('./../assets/images/Cukup.png')}
                                     />
                                     < View style={{ flex: 1 }}>
-                                        <Text style={{ marginLeft: 7, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Rating: Sempurna (35)</Text>
+                                        <Text style={{ marginLeft: 7, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Rating: Cukup (35)</Text>
                                     </View>
                                 </View>
                             </View>

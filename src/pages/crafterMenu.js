@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from 'react-native';
-import { OrderForCrafterPage } from './orderForCrafter';
-import { CrafterPage } from './crafter';
+import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
 import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { CrafterOrderMenuPage } from './CrafterOrderMenu';
+import { searchOrderPage } from './searchOrder';
+import { OrderForCrafterPage } from './orderForCrafter';
 
 export class CrafterMenuPage extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerLeft:
-        <TouchableOpacity
-            onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
-        >
-            <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-        </TouchableOpacity>,
+      <TouchableOpacity
+        onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+      >
+        <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+      </TouchableOpacity>,
     headerTitle: 'Crafter Menu'
-});
+  });
 
   constructor(props) {
     super(props)
@@ -25,8 +26,8 @@ export class CrafterMenuPage extends React.Component {
   }
 
   renderScreen = () => {
-    if (this.state.screen === 'orderForCrafter') {
-      return <OrderForCrafterPage navi={this.props.navigation} />
+    if (this.state.screen === 'CrafterOrderMenu') {
+      return <CrafterOrderMenuPage navi={this.props.navigation} />
     } else if (this.state.screen === 'menuCrafter') {
       return <MenuCrafterPage navi={this.props.navigation} />
     }
@@ -34,7 +35,7 @@ export class CrafterMenuPage extends React.Component {
 
   render() {
     const { screen } = this.state;
-
+    console.log(this.props.onScreen, 'PROPS SCREEN')
     const {
       menuContainerStyle, tabContainer, tabContainerActive, tabText, tabTextActive
     } = styles;
@@ -42,16 +43,23 @@ export class CrafterMenuPage extends React.Component {
     return (
       <View style={menuContainerStyle}>
         <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
-            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'orderForCrafter' })}>
-              <View style={screen === 'orderForCrafter' ? tabContainerActive : tabContainer}>
-                <Text style={screen === 'orderForCrafter' ? tabTextActive : tabText}>Pesanan</Text>
+          <View style={{ flex: 1 }}>
+            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
+              <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
+                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                  source={require('./../assets/images/List.png')}
+                />
+                <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ flex: 1, borderColor: 'grey', borderRightWidth: 0.3 }}>
+          <View style={{ borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
+          <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
+                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                  source={require('./../assets/images/ic_menu.png')}
+                />
                 <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
               </View>
             </TouchableNativeFeedback>
@@ -67,17 +75,15 @@ export class CrafterMenuPage extends React.Component {
 
 const styles = StyleSheet.create({
   menuContainerStyle: {
-    flex: 4
+    flex: 1
   },
   tabContainer: {
-    height: 50,
+    height: 55,
     justifyContent: 'center',
   },
   tabContainerActive: {
-    height: 50,
-    justifyContent: 'center',
-    borderBottomColor: 'red',
-    borderBottomWidth: 1
+    height: 55,
+    justifyContent: 'center'
   },
   tabText: {
     textAlign: 'center',

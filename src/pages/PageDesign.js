@@ -1,72 +1,73 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export class PageDesignPage extends React.Component {
-
-    static navigationOptions = ({ navigation }) => ({
-        headerLeft:
-            <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
-            >
-                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
-            </TouchableOpacity>,
-        headerTitle: 'Page Design'
-    });
+    static navigationOptions = {
+        header: null
+    }
 
     render() {
         return (
 
 
             <ScrollView
-                style={styles.containerStyle}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
 
                 <View>
-                    <View style={{ flex: 1 }}>
+                    <View style={styles.containerImage}>
                         <Image style={styles.containerPhoto}
-                            source={require('./../assets/images/kaos.jpg')}
+                            source={require('./../assets/images/lala.jpg')}
                         />
                     </View>
                     <TouchableOpacity style={{
-                        borderRadius: 100, backgroundColor: 'rgba {0, 0, 0, 0.5}', width: 40, height: 40,
-                        position: 'relative', bottom: 300, left: 300, justifyContent: 'center'
-                    }}>
+                        borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
+                        position: 'relative', bottom: 470, left: 350, justifyContent: 'center'
+                    }}
+                    onPress={() => this.props.navigation.navigate('SettingProduct')}>
                         <Image
-                            style={{ width: 20, height: 20, alignSelf: 'center', }}
+                            style={{ width: 20, height: 20, alignSelf: 'center' }}
                             source={require('./../assets/images/pen_mainprof.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{
+                        borderRadius: 300, backgroundColor: 'rgb(0, 0, 0)', width: 40, height: 40,
+                        position: 'relative', bottom: 510, left: 20, justifyContent: 'center'
+                    }}
+                    onPress={() => this.props.navigation.navigate('DesignSaya')}>
+                        <Image
+                            style={{ width: 10, height: 20, alignSelf: 'center' }}
+                            source={require('./../assets/images/arow.png')}
                         />
                     </TouchableOpacity>
                 </View>
 
 
                 <View style={styles.containerSecondForm}>
-
-
-                    <View style={{ flexDirection: 'row', height: '100%', width: '100%', }}>
+                    <View style={{ flex: 1, flexDirection: 'row', height: '100%', width: '100%', }}>
 
                         <View style={{
                             flexDirection: 'column',
                             height: '100%', width: '50%',
                             justifyContent: 'center'
                         }}>
-                            <Text style={{ fontSize: 15, paddingLeft: 2, textAlign: 'left', fontWeight: 'bold' }}>
+                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                 Elegant Plain
                             </Text>
-                            <Text style={{ fontSize: 15, paddingLeft: 2, textAlign: 'left', fontWeight: 'bold' }}>
+                            <Text style={{ fontSize: 15, paddingLeft: 20, textAlign: 'left', fontWeight: 'bold', fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                 T-Shirt
                             </Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                                 <Image
                                     style={{ width: 30, height: 30, marginTop: 10 }}
-                                    source={require('./../assets/images/smiley.png')}
+                                    source={require('./../assets/images/Cukup.png')}
                                 />
-                                <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center' }}>
+                                <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                     (9) review
                             </Text>
                             </View>
@@ -78,17 +79,19 @@ export class PageDesignPage extends React.Component {
                             height: '100%', width: '50%',
                             justifyContent: 'center'
                         }}>
-                            <Text style={{ fontSize: 13, textAlign: 'right', paddingRight: 5 }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Total Apresisasi
                             </Text>
-                            <Text style={{ fontSize: 13, paddingRight: 30, textAlign: 'right' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Design
                             </Text>
-                            <Text style={{ fontSize: 13, paddingRight: 30, textAlign: 'right' }}>
+                            <Text style={{ fontSize: 13, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'red' }}>
                                 10.000
                             </Text>
-                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center' }}>
+                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 20, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>
                                 Terjual
+                            </Text>
+                            <Text style={{ fontSize: 13, paddingLeft: 2, paddingTop: 3, textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'red' }}>
                                 10
                             </Text>
                         </View>
@@ -100,7 +103,9 @@ export class PageDesignPage extends React.Component {
 
                 <View style={{
                     width: '100%',
-                    height: '12.5%',
+                    height: '5%',
+                    backgroundColor: 'white',
+                    marginTop: 20,
                     flexDirection: 'row'
                 }}>
 
@@ -112,13 +117,14 @@ export class PageDesignPage extends React.Component {
                         flexDirection: 'column'
                     }}>
 
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
+                        <TouchableOpacity style={{ alignSelf: 'center' }}
+                            onPress={() => this.props.navigation.navigate('ProductDetailProf')}>
 
-                            <Text style={{ paddingTop: 5 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Detail</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <Image
+                    {/* <Image
                         style={{
                             width: 18,
                             height: 35,
@@ -126,7 +132,7 @@ export class PageDesignPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/line_vertical.png')}
-                    />
+                    /> */}
 
                     <View style={{
                         width: '50%',
@@ -137,54 +143,113 @@ export class PageDesignPage extends React.Component {
                         flexDirection: 'column'
                     }}>
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
-                            <Text style={{ paddingTop: 5 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Review</Text>
                         </TouchableOpacity>
 
                     </View>
                 </View>
 
-
-                <ContainerSection>
-                    <Input
-                        placeholder='fashion'
-                        label='Kategori'
-                    />
-                </ContainerSection>
-
-                <ContainerSection>
-                    <Input
-                        placeholder='Kaos(pria)'
-                        label='Sub-Kategori'
-                    />
-                </ContainerSection>
-
-                <View style={styles.containerMainAddress}>
-
-
+                <View style={styles.containerMain}>
                     <View style={{
-                        paddingTop: 10
+                        width: '100%',
+                        height: 50,
+                        backgroundColor: '',
+                        flexDirection: 'row'
                     }}>
 
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            marginTop: 10,
+                            backgroundColor: '',
+                            height: 50
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', fontWeight: 'bold' }}>Kategori</Text>
+                            <View style={{ width: '80%', borderWidth: 0, height: 30, paddingLeft: 2, backgroundColor: 'white' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', paddingTop: 10, fontSize: 13
+                                }}
+                                >Fashion</Text>
+                            </View>
+
+                        </View>
+
+                        <View style={{
+                            width: '50%',
+                            marginTop: 10,
+                            justifyContent: 'center',
+                            backgroundColor: '',
+                            flexDirection: 'column',
+                            height: 50
+                        }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', fontWeight: 'bold' }}>Sub-Kategori</Text>
+                            <View style={{ width: '80%', borderWidth: 0, height: 30, paddingLeft: 2, paddingTop: 2, backgroundColor: 'white' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', alignSelf: 'auto', paddingTop: 10, fontSize: 13
+                                }}
+                                >Kaos (Pria)</Text>
+                            </View>
+                        </View>
+
+
                     </View>
 
-                    <View>
-                        <Text style={{ fontWeight: 'bold', fontSize: 15, paddingTop: 10, fontFamily: 'Quicksand-Bold' }}> Ukuran</Text>
+                </View>
 
-                        <Text style={{ fontSize: 12, paddingTop: 3, fontFamily: 'Quicksand-Bold' }}> Bahu Jalan : 12cm </Text>
+                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, top: -35, paddingLeft: 21, fontWeight: 'bold', color: 'black' }}>Deskripsi Produk</Text>
 
-                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Panjang Lengan : 11cm </Text>
+                <View style={styles.containerM}>
+                    <View style={{
+                        width: '100%',
+                        height: 200,
+                        backgroundColor: '',
+                        flexDirection: 'row'
+                    }}>
 
-                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Lingkar Dada : 99cm</Text>
+                        <View style={{
+                            width: '50%',
+                            flexDirection: 'column',
+                            marginTop: 10,
+                            backgroundColor: '',
+                            height: 50
+                        }}>
+                            <View style={{ marginTop: 10, marginLeft: 5, width: 339, borderWidth: 0, height: 230, paddingLeft: 2, backgroundColor: 'white' }}>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', paddingTop: 10, fontSize: 13
+                                }}
+                                >Ukuran</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >Bahu : 15</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >Panjang Lengan : 22cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >Lingkar Dada : 106cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >Panjang Bahu : 70cm</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 30, fontFamily: 'Quiksand-Bold'
+                                }}
+                                >Deskripsi</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >Kaos pria yang simpel tapi fashionable, Bahan menyarap</Text>
+                                <Text style={{
+                                    fontFamily: 'Quicksand-Bold', fontSize: 13
+                                }}
+                                >keringat dan nyaman dipakai</Text>
+                            </View>
 
-                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }} >Panjang Bahu : 35cm </Text>
-
-                        <Text style={{ fontWeight: 'bold', fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 10 }}> Deskripsi</Text>
-
-                        <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold' }}> kaos pria yang simple tapi fashionable, Bahan menyerap keringat dan nyaman dipakai </Text>
-
+                        </View>
                     </View>
-
-
                 </View>
 
 
@@ -197,11 +262,18 @@ export class PageDesignPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    containerImage: {
+        alignItems: 'center',
+        // zIndex: 0,
+        // backgroundColor: 'yellow'
+
+    },
     containerPhoto: {
-        height: 320,
-        width: 370
+        height: 500,
+        width: 450,
     },
     containerSecondForm: {
+        // flex: 1,
         borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
@@ -210,13 +282,12 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'row',
-        marginTop: -30,
-        height: 170,
+        marginTop: -120,
+        height: 140,
         width: '90%',
-        // alignItems: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignSelf: 'center',
-        // zIndex: 1,
+        zIndex: 3,
         borderWidth: 0.5,
         borderColor: '#d6d7da'
     },
@@ -239,7 +310,51 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 50,
         width: '100%'
-    }
+    },
+    containerTi: {
+        flex: 1,
+        flexDirection: 'column',
+        height: 300,
+        width: '90%',
+        marginBottom: 15,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        alignSelf: 'center'
+    },
+    containerMain: {
+        // flex: 1,
+        flexDirection: 'column',
+        marginTop: 5,
+        height: 70,
+        width: '90%',
+        marginBottom: 30,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        alignSelf: 'center'
+    },
+    containerM: {
+        // flex: 1,
+        borderRadius: 20,
+        backgroundColor: '#ffffff',
+        shadowColor: 'black',
+        shadowOffset: { width: 10, heigth: 10 },
+        shadowRadius: 5,
+        shadowOpacity: 1.0,
+        elevation: 3,
+        flexDirection: 'column',
+        top: -30,
+        bottom: 90,
+        height: 300,
+        width: '90%',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        alignSelf: 'center',
+        // zIndex: 1,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+        marginBottom: 7.5
+    },
+
 
 
 })

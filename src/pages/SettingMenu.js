@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import SwitchToggle from 'react-native-switch-toggle';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -200,18 +200,18 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <TouchableOpacity>
+                                
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Kebijakan Privasi</Text>
-                                </TouchableOpacity>
+                               
                             </View>
 
                             <View style={{
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <TouchableOpacity>
+                                
                                     <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Review</Text>
-                                </TouchableOpacity>
+                               
                             </View>
 
                             <View style={{

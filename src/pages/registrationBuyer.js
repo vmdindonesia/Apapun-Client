@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
-import { COLOR } from './../shared/config';
+import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
+import { COLOR } from '../shared/config';
 import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -180,7 +180,7 @@ export class RegistrationBuyerPage extends React.Component {
                                     <View style={styles.checkBoxMale}>
 
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', }}
                                             title='Male'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -223,6 +223,7 @@ export class RegistrationBuyerPage extends React.Component {
                                     />
                                 </ContainerSection>
                                 <DateTimePicker
+                                    datePickerModeAndroid='spinner'
                                     isVisible={this.state.BirthdayDate}
                                     onConfirm={this.handleDatePickedBirthday}
                                     onCancel={this.hideDateBirthday}
@@ -263,8 +264,9 @@ export class RegistrationBuyerPage extends React.Component {
                                 </View>
                                 <View>
                                     <ContainerSection>
-                                        <Input
+                                        <InputNumber
                                             placeholder='please input your phone number'
+                                            keyboardType='numeric'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -288,11 +290,10 @@ export class RegistrationBuyerPage extends React.Component {
                             </View>
 
                             <View style={styles.textAgree}>
-                                <View>
-
+                                <View style={{ flexDirection: 'row' }}>
                                     <CheckBox
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
                                         onPress={() => this.checkedAgree()}
                                         checked={agree}
@@ -306,8 +307,8 @@ export class RegistrationBuyerPage extends React.Component {
 
                     </View>
                     <TouchableOpacity style={styles.buttonSignUp}
-                        // onPress={() => this.props.navigation.navigate('Login')}
-                        onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                        onPress={() => this.props.navigation.navigate('Login')}
+                    // onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                     >
                         <Text style={styles.signupButton}>Sign Up</Text>
                     </TouchableOpacity>
@@ -320,31 +321,9 @@ export class RegistrationBuyerPage extends React.Component {
                             onRequestClose={() => {
                                 alert('Modal has been closed.');
                             }}>
-                            <View style={{ marginTop: 65 }}>
+                            <View style={{ marginTop: 50 }}>
                                 <View style={styles.modalAddress}>
                                     <ScrollView>
-                                        <View style={{ paddingTop: 20, height: 80, marginBottom: 10 }}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Location</Text>
-                                            </View>
-                                            <View style={{ flexDirection: 'row', width: '100%' }}>
-                                                <View style={{ width: '90%' }}>
-                                                    <ContainerSection>
-                                                        <Input
-                                                            placeholder='please input your location'
-                                                        />
-                                                    </ContainerSection>
-                                                </View>
-                                                <View style={{ width: '7%', justifyContent: 'center', alignItems: 'center' }}>
-                                                    <TouchableOpacity>
-                                                        <Image
-                                                            style={{ height: 40, width: 25 }}
-                                                            source={require('./../assets/images/location_icon.png')}
-                                                        />
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
 
                                         <View style={styles.textaddressModal}>
                                             <View >
@@ -354,6 +333,19 @@ export class RegistrationBuyerPage extends React.Component {
                                                 <ContainerSection>
                                                     <Input
                                                         placeholder='please input your province'
+                                                    />
+                                                </ContainerSection>
+                                            </View>
+                                        </View>
+
+                                        <View style={styles.textaddressModal}>
+                                            <View >
+                                                <Text style={styles.textStyle}>City</Text>
+                                            </View>
+                                            <View>
+                                                <ContainerSection>
+                                                    <Input
+                                                        placeholder='please input your district'
                                                     />
                                                 </ContainerSection>
                                             </View>
@@ -476,7 +468,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
-        width: 165,
+        width: 110,
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,
@@ -506,19 +498,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // backgroundColor: 'blue',
         // justifyContent: 'center',
-        // alignItems: 'center'
+        // alignContent: 'center'
+        alignItems: 'center'
     },
     checkBoxMale: {
         marginLeft: 35,
         height: 60,
-        width: 100,
-        // backgroundColor: 'yellow'
+        width: 110,
+        // backgroundColor: 'yellow',
+        justifyContent: 'center',
+        alignItems: 'center'
         // backgroundColor: 'transparent',
         // borderColor: 'transparent'
     },
     checkBoxFemale: {
         height: 60,
         width: 110,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textBox: {
         paddingTop: 10,
@@ -527,10 +524,11 @@ const styles = StyleSheet.create({
     },
     textAgree: {
 
-        height: 120,
+        height: 50,
         // backgroundColor:'red',
         alignItems: 'center',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Regular',
+        justifyContent: 'center'
     },
     signupButton: {
         textAlign: 'center',
@@ -540,25 +538,26 @@ const styles = StyleSheet.create({
         fontFamily: 'Quicksand-Regular'
     },
     modalAddress: {
-        width: '95%',
-        height: '99%',
+        width: '100%',
+        height: '100%',
         backgroundColor: '#ffffff',
         alignSelf: 'center',
-        borderRadius: 10,
         borderWidth: 0.9,
         shadowColor: '#000',
         shadowOpacity: 1.0,
     },
     textaddressModal: {
-        paddingTop: 5,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
         height: 80
     },
     buttonOnModalAddress: {
-        paddingTop: 10,
+        marginTop: 10,
         flex: 2,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        width: '95%',
+        width: '96%',
         height: 70,
         // backgroundColor: 'red'
     },

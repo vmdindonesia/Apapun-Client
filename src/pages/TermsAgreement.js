@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import SwitchToggle from 'react-native-switch-toggle';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,7 +16,7 @@ export class TermsAndAgreementPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'TOC'
+        headerTitle: 'Terms And Condition'
     });
 
 

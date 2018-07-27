@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Text, View, TextInput, Image } from 'react-native'
-import { COLOR } from './../../shared/config';
+import { COLOR } from '../../shared/config';
 
 class InputLogin extends Component {
 	constructor(props) {

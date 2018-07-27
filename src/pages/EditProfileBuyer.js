@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -29,49 +29,51 @@ export class EditProfileBuyerPage extends React.Component {
                 <View style={{ flex: 1, height: 500, backgroundColor: 'white', paddingTop: 25 }}>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>ID Akun</Text>
+                        <Text style={{
+                            color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular',
+                        }}>ID Akun</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, }}>Gal Gadot</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Gal Gadot</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Ganti Kata Sandi</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Ganti Kata Sandi</Text>
                         {/* <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                             <Text style={{ color: '#e5e5e5', fontSize: 15, }}>Gal Gadot</Text>
                         </View> */}
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Jenis Kelamin</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Jenis Kelamin</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, }}>Female</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Female</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Tanggal Lahir</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Tanggal Lahir</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, }}>14 Februari 1998</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>14 Februari 1998</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Email</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Email</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
                             <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>galgadot@gmail.com</Text>
-                                <Text style={{ color: 'red', fontSize: 15, }}> {"<Verification>"}</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>galgadot@gmail.com</Text>
+                                <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', }}> {"<Verification>"}</Text>
                             </View>
                         </View>
                     </View>
 
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Nomor Telepon</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Nomor Telepon</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, }}>+62 8567847493</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>+62 8567847493</Text>
                             </View>
                         </View>
                     </View>
@@ -81,7 +83,7 @@ export class EditProfileBuyerPage extends React.Component {
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}
                             >
-                                <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Alamat</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Alamat</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -90,33 +92,25 @@ export class EditProfileBuyerPage extends React.Component {
 
                 <View style={{ flex: 1, height: 125, backgroundColor: 'white', paddingTop: 20 }}>
                     <View style={{ flex: 1, flexDirection: 'column', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold' }}>Hubungkan Dengan Facebook</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Hubungkan Dengan Facebook</Text>
                         <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', paddingLeft: 25 }}>
                             <Image
                                 style={{ height: 42.5, width: 42.5, }}
                                 source={require('./../assets/images/ic_fb.jpg')}
                             />
                             <View style={{ flex: 1, flexDirection: 'row', }}>
-                                <Text style={{ color: 'black', fontSize: 15, paddingLeft: 30, }}>Not Connected</Text>
+                                <Text style={{ color: 'black', fontSize: 15, paddingLeft: 30, fontFamily: 'Quicksand-Regular', }}>Not Connected</Text>
                             </View>
                         </View>
                     </View>
                 </View>
 
-                <View style={{ flex: 1, height: 75, backgroundColor: 'white', marginTop: 22, flexDirection: "row" }}>
-                    <View style={{ flex: 1, flexDirection: 'row', marginRight: 30, marginLeft: 30, alignItems: 'center' }}>
-                        <Image
-                            style={{ height: 42.5, width: 42.5, }}
-                            source={require('./../assets/images/profile_out.png')}
-                        />
-                        <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 15, paddingLeft: 15, fontWeight: 'bold' }}>KELUAR</Text>
-                        </View>
-                    </View>
-                </View>
-
                 <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
-                    <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontWeight: 'bold' }}>Simpan</Text>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('ProfilePage')}
+                    >
+                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Simpan</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{ marginTop: 25 }} />

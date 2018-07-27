@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { NotificationSystemPage } from './NotificationSystem';
 import { NotificationTransactionPage } from './NotificationTransaction';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -54,7 +54,7 @@ export class NotificationMenuPage extends React.Component {
         } = this.state;
 
         const {
-            tabContainerActive, tabContainer
+            tabContainerActive, tabContainer, fontActive, fontNotActive
         } = styles;
 
         return (
@@ -86,7 +86,7 @@ export class NotificationMenuPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'NotificationTransactionPage' })}>
                             <View style={screen === 'NotificationTransactionPage' ? tabContainerActive : tabContainer}>
-                                <Text>Transaksi</Text>
+                                <Text style={screen === 'NotificationTransactionPage' ? fontActive : fontNotActive}>Transaksi</Text>
                             </View>
                         </TouchableOpacity>
 
@@ -106,7 +106,7 @@ export class NotificationMenuPage extends React.Component {
                         }}>
                         <TouchableOpacity onPress={() => this.setState({ screen: 'NotificationSystemPage' })}>
                             <View style={screen === 'NotificationSystemPage' ? tabContainerActive : tabContainer}>
-                                <Text>Sistem</Text>
+                                <Text style={screen === 'NotificationSystemPage' ? fontActive : fontNotActive}>Sistem</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -137,6 +137,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // borderBottomWidth: 1,
     },
+    fontActive: {
+        fontFamily: 'Quicksand-Bold',
+        fontSize: 15
+    },
+    fontNotActive: {
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color: '#c6c6c6'
+    }
 
 
 });

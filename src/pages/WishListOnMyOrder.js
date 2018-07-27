@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 
 
 
@@ -21,7 +21,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                     paddingTop: 10,
                     paddingBottom: 10,
                     // flex : 1, 
-                    // backgroundColor: 'yellow',
+                    backgroundColor: 'white',
                     flexDirection: 'row'
                 }}>
 
@@ -32,7 +32,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                         justifyContent: 'center',
                         alignContent: 'center',
                         flexDirection: 'column',
-                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
+                        // borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -48,6 +48,10 @@ export class WishlistOnMyOrderPage extends React.Component {
                             <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
+
+
+                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
+
                     <View style={{
                         width: '50%',
                         height: '100%',
@@ -160,7 +164,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginRight: 10
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}
-                              onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                onPress={() => this.props.navi.navigate('Captureandget')}
                             >
                                 <Image
                                     style={{
@@ -170,7 +174,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         // alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/pen_white.png')}
-                                  
+
                                 />
                             </TouchableOpacity>
 
@@ -186,7 +190,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             />
 
                             <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}
-                             onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                             >
                                 <Image
                                     style={{
@@ -196,7 +200,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/trash_white.png')}
-                                   
+
                                 />
                             </TouchableOpacity>
 
@@ -283,7 +287,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginRight: 10
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2, }}
-                                onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
+                                onPress={() => this.props.navi.navigate('')}
                             >
                                 <Image
                                     style={{
@@ -293,7 +297,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         // alignSelf: 'center'
 
                                     }}
-                                    source={require('./../assets/images/pen_white.png')}
+                                    source={require('./../assets/images/keranjang.png')}
                                 />
                             </TouchableOpacity>
 

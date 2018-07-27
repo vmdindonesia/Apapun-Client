@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, ToastAndroid, } from 'react-native'
 import { Container, ContainerSection, Spinner, Input, Button } from '../components/common';
 import { NavigationActions, StackActions } from 'react-navigation';

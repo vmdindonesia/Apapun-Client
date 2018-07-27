@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { InputSearch } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -43,8 +43,8 @@ export class HelpMenuPage extends React.Component {
                                 justifyContent: 'flex-end'
                             }}>
                                 <View style={{ marginBottom: 5, width: '95%', height: 40, justifyContent: 'center', alignSelf: 'center' }}>
-                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontWeight: 'bold' }}>Gal Gadot</Text></Text>
-                                    <Text style={{ color: 'white', paddingTop: 2.5 }}> Apa yang bisa kami bantu ? </Text>
+                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text></Text>
+                                    <Text style={{ color: 'white', paddingTop: 2.5, fontSize: 15, fontFamily: 'Quicksand-Regular' }}> Apa yang bisa kami bantu ? </Text>
                                 </View>
                                 <View style={{ width: '95%', height: 50, alignSelf: 'center' }}>
                                     <InputSearch
@@ -65,27 +65,27 @@ export class HelpMenuPage extends React.Component {
                         backgroundColor: '#e5e5e5'
                     }}>
                         <View style={{ height: 20, marginLeft: 10, marginRight: 10, marginBottom: 10, marginTop: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>FAQ</Text>
+                            <Text style={{ fontWeight: 'bold', paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>FAQ</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 10, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, paddingLeft: 30 }}>Apa Itu Crafter ? </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Apa Itu Crafter ? </Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, paddingLeft: 30 }}>Tidak Ada Yang Mau Mengambil Pesanan Saya</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Tidak Ada Yang Mau Mengambil Pesanan Saya</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, paddingLeft: 30 }}>Cara Menarik Hasil Jual Ide</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Cara Menarik Hasil Jual Ide</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, paddingLeft: 30 }}>Bagaimana Cara Menjual Desain Saya</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Bagaimana Cara Menjual Desain Saya</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, paddingLeft: 30 }}>Bagaimana Jika ID Saya Di Curi</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Bagaimana Jika ID Saya Di Curi</Text>
                         </View>
                     </View>
 
@@ -98,7 +98,7 @@ export class HelpMenuPage extends React.Component {
                     }}>
 
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 20, color: 'black' }}>Topik</Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 20, color: 'black' }}>Topik</Text>
                         </View>
                         <View style={{
                             flex: 2,
@@ -116,7 +116,7 @@ export class HelpMenuPage extends React.Component {
                                         source={require('./../assets/images/ic_help_one.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <Text style={{ marginTop: 5, fontSize: 15, }}>Umum</Text>
+                                <Text style={{ marginTop: 5, fontSize: 15, fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Umum</Text>
                             </View>
 
                             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -126,7 +126,7 @@ export class HelpMenuPage extends React.Component {
                                         source={require('./../assets/images/ic_help_two.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <Text style={{ marginTop: 5, fontSize: 15, }}>Fitur</Text>
+                                <Text style={{ marginTop: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Fitur</Text>
                             </View>
                         </View>
 
@@ -145,7 +145,7 @@ export class HelpMenuPage extends React.Component {
                                         source={require('./../assets/images/ic_help_three.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <Text style={{ marginTop: 5, fontSize: 15, }}>Crafter</Text>
+                                <Text style={{ marginTop: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Crafter</Text>
 
                             </View>
 
@@ -156,7 +156,7 @@ export class HelpMenuPage extends React.Component {
                                         source={require('./../assets/images/ic_help_four.jpg')}
                                     />
                                 </TouchableOpacity>
-                                <Text style={{ marginTop: 5, fontSize: 15, }}> Transaksi</Text>
+                                <Text style={{ marginTop: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', }}> Transaksi</Text>
                             </View>
 
                         </View>
@@ -180,7 +180,7 @@ export class HelpMenuPage extends React.Component {
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderTopWidth: 1.5, borderColor: '#e1e3e8', borderBottomWidth: 1.5, flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Bold' }}>Pengguna</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Pengguna</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image
@@ -198,7 +198,7 @@ export class HelpMenuPage extends React.Component {
                         </View>
 
                         <View style={{ width: '80%', height: 60, borderBottomWidth: 1.5, borderColor: '#e1e3e8', flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ color: 'black', fontWeight: 'normal', fontFamily: 'Quicksand-Bold' }}>Crafter</Text>
+                            <Text style={{ color: 'black', fontWeight: 'normal', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Crafter</Text>
                             <View style={{ flex: 1, borderRadius: 100, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity>
                                     <Image
@@ -230,9 +230,9 @@ export class HelpMenuPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View style={{ height: 70, width: '90%', justifyContent: 'center', marginTop: 10 }}>
-                            <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Masih Perlu Bantuan ?</Text>
-                            <Text style={{ fontSize: 13, color: 'black', textAlign: 'justify' }}>silakan hubungi customer care kami yang dengan senang hari melayani dan membantu Anda
-                            <Text style={{ fontSize: 13, color: 'red' }}> 24 Jam </Text>per harinya</Text>
+                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Masih Perlu Bantuan ?</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', textAlign: 'justify', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>silakan hubungi customer care kami yang dengan senang hari melayani dan membantu Anda
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'red' }}> 24 Jam </Text>per harinya</Text>
 
                         </View>
 
@@ -248,7 +248,7 @@ export class HelpMenuPage extends React.Component {
                                 </View>
                                 <TouchableOpacity>
                                     <View style={{ height: 35, backgroundColor: '#ffc044', borderRadius: 100, marginLeft: 5, marginRight: 5, justifyContent: 'center' }}>
-                                        <Text style={{ textAlign: 'center', color: 'white' }}>Chat</Text>
+                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Chat</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -263,7 +263,7 @@ export class HelpMenuPage extends React.Component {
                                 </View>
                                 <TouchableOpacity>
                                     <View style={{ height: 35, backgroundColor: '#ffc044', borderRadius: 100, marginLeft: 5, marginRight: 5, justifyContent: 'center' }}>
-                                        <Text style={{ textAlign: 'center', color: 'white' }}>Mail</Text>
+                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Mail</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -278,7 +278,7 @@ export class HelpMenuPage extends React.Component {
                                 </View>
                                 <TouchableOpacity>
                                     <View style={{ height: 35, backgroundColor: '#ffc044', borderRadius: 100, marginLeft: 5, marginRight: 5, justifyContent: 'center' }}>
-                                        <Text style={{ textAlign: 'center', color: 'white' }}>Call</Text>
+                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Call</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>

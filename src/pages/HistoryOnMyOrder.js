@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 
 
 
@@ -21,7 +21,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                     paddingTop: 10,
                     paddingBottom: 10,
                     // flex : 1, 
-                    // backgroundColor: 'yellow',
+                    backgroundColor: 'white',
                     flexDirection: 'row'
                 }}>
 
@@ -32,7 +32,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                         justifyContent: 'center',
                         alignContent: 'center',
                         flexDirection: 'column',
-                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
+                        // borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -45,9 +45,11 @@ export class HistoryOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
+
+                      <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
 
                     <View style={{
                         width: '50%',
@@ -68,7 +70,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>

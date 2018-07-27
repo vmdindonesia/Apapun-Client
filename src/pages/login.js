@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, KeyboardAvoidingView, ImageBackground, Image, AsyncStorage, TouchableOpacity, ToastAndroid, StatusBar, Keyboard, ScrollView } from 'react-native'
 import { Container, ContainerSection, Button, InputLogin, Spinner } from '../components/common';
 import axios from 'axios';
-import { COLOR } from './../shared/config';
+import { COLOR } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 
 export class LoginPage extends React.Component {
 	static navigationOptions = {
@@ -96,79 +96,74 @@ export class LoginPage extends React.Component {
 	render() {
 		const { email, password } = this.state;
 		return (
-			// <ScrollView style={{ position: 'relative' }} keyboardShouldPersistTaps="always">
-				<View style={styles.container}>
-					<View style={{ width: '100%', height: '100%', flex: 1, backgroundColor: 'grey', justifyContent: 'flex-start', flexDirection: 'row', position: 'relative' }} >
-						<Image
-							style={{ width: '100%', height: '100%', }}
-							source={require('./../assets/images/bg-login.png')}
-							resizeMode='stretch'
-						/>
-					</View>
-
-
-					<View style={{ flex: 1, alignSelf: 'center', position: 'absolute', marginTop: 70, marginBottom: 60 }}>
+			<View style={styles.container}>
+				<ImageBackground
+					style={{ flex:1 }}
+					source={require('./../assets/images/bg-login.png')}
+					resizeMode='cover'
+					keyboardShouldPersistTaps="always"
+					ref={ref => this.scrollView = ref}
+				>
+					<View style={{ alignSelf: 'center', marginTop: 70, height: '30%' }}>
 						<Image
 							style={styles.image}
 							source={require('./../assets/images/apapun_logo_white.png')}
 							resizeMode='contain'
 						/>
 					</View>
+					<View style={{ flex: 1, alignSelf: 'center', width: '100%', marginTop: 30 }}>
+						<Container>
+							<ContainerSection>
+								<InputLogin
+									placeholder="Email or username"
+									icon="ic_username"
+									onChangeText={val => this.onChange('email', val)}
+									value={email}
+								/>
+							</ContainerSection>
 
-					<View style={{ flex: 1, position: 'absolute', alignSelf: 'center', width: '100%', marginTop: '75%' }}>
-						<KeyboardAvoidingView>
-							<Container>
-								<ContainerSection>
-									<InputLogin
-										placeholder="Email or username"
-										icon="ic_username"
-										onChangeText={val => this.onChange('email', val)}
-										value={email}
-									/>
-								</ContainerSection>
+							<ContainerSection>
+								<InputLogin
+									secureTextEntry
+									placeholder="Password"
+									icon="ic_password"
+									onChangeText={val => this.onChange('password', val)}
+									value={password}
+								/>
+							</ContainerSection>
 
-								<ContainerSection>
-									<InputLogin
-										secureTextEntry
-										placeholder="Password"
-										icon="ic_password"
-										onChangeText={val => this.onChange('password', val)}
-										value={password}
-									/>
-								</ContainerSection>
-
-								<View style={{ flex: 1, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
-									<TouchableOpacity
-										onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-										<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
-											FORGET YOUR PASSWORD?
-										</Text>
-									</TouchableOpacity>
-								</View>
-
-								<View style={{ marginTop: 50 }}>
-									<ContainerSection>
-										{this.renderButton()}
-									</ContainerSection>
-								</View>
-							</Container>
-
-							<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
-								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
-									Don't have an account? {`\n`}
-								</Text>
+							<View style={{ height: 20, marginLeft: 3, marginRight: 3, alignItems: 'flex-end' }}>
 								<TouchableOpacity
-									onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
-								>
-									<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-										Sign Up
-									</Text>
+									onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+									<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>
+										FORGET YOUR PASSWORD?
+										</Text>
 								</TouchableOpacity>
 							</View>
-						</KeyboardAvoidingView>
+
+							<View style={{ marginTop: 40 }}>
+								<ContainerSection>
+									{this.renderButton()}
+								</ContainerSection>
+							</View>
+						</Container>
+
+						<View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center', marginTop: 50 }}>
+							<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Regular' }}>
+								Don't have an account? {`\n`}
+							</Text>
+							<TouchableOpacity
+								onPress={() => this.props.navigation.navigate('RegistrationBuyer')}
+							>
+								<Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+									Sign Up
+									</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
-				</View>
-			// </ScrollView>
+
+				</ImageBackground>
+			</View>
 		)
 	}
 }

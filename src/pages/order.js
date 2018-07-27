@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
-import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearch } from '../components/common';
+import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
-import { sliderWidth, itemWidth } from './../shared/slider.styles';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import axios from 'axios';
-import { IPSERVER } from './../shared/config';
+import { IPSERVER } from '../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { CheckBox } from 'react-native-elements';
 
 export class OrderPage extends React.Component {
 
@@ -27,7 +28,7 @@ export class OrderPage extends React.Component {
 
         this.state = {
             loading: false,
-            modalVisible: false,
+            isModalVisible: false,
             userId: '',
             nameProduct: '',
             categoryProduct: '',
@@ -46,8 +47,39 @@ export class OrderPage extends React.Component {
             unitQuantity: '',
             dataCategory: '',
             dataSubCategory: '',
-            dataAddress: ''
+            dataAddress: '',
+            dataMaterial: '',
+            dataSubMaterial: '',
+            propertyPhoto: [],
+            firstmaterial: false,
+            dataCheckBoxSubMaterial: [],
+            subCategory: [],
+            dataOrderResponse: ''
         }
+    }
+
+
+
+
+    checkedSubMaterial(data) {
+        console.log(data, 'Data Checked');
+        const { dataCheckBoxSubMaterial } = this.state;
+        if (!dataCheckBoxSubMaterial.includes(data)) {
+            this.setState({
+                dataCheckBoxSubMaterial: [...dataCheckBoxSubMaterial, data]
+            });
+            console.log('CHECKLIST');
+        } else {
+            this.setState({
+                dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
+            });
+            console.log('UNCHECKLIST');
+        }
+    }
+
+
+    setModalVisible(visible) {
+        this.setState({ isModalVisible: visible })
     }
 
     componentDidMount() {
@@ -63,19 +95,26 @@ export class OrderPage extends React.Component {
                     this.setState({ userId: idUser });
                     axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
                         console.log(response, 'Response Address')
-                        this.setState({ dataAddress: response.data })
+                        this.setState({ dataAddress: response.data });
+
+                        axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+                            console.log(response, 'Response Address')
+                            this.setState({ dataMaterial: response.data });
+                        }).catch(error => {
+                            console.log(error, 'Error Address');
+                        })
+
                     }).catch(error => {
                         console.log(error, 'Error Address');
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
                     })
                 });
             }).catch(error => {
                 console.log(error, 'Error Kategori');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             })
     }
 
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
-    }
 
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
@@ -114,20 +153,28 @@ export class OrderPage extends React.Component {
         });
     }
 
+    deleteMaterial(data) {
+        const { dataCheckBoxSubMaterial } = this.state;
+        this.setState({
+            dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
+        });
+        console.log('UNCHECKLIST');
+    }
+
     onValidation() {
         Keyboard.dismiss();
 
         const {
             nameProduct,
             categoryProduct,
-            uploadDesign,
+            photoTemp,
             uploadMaterial,
             serveDelivery,
             addressDelivery,
             numberPcs,
             unitQuantity
         } = this.state;
-
+        console.log(this.state, 'Data Order');
         switch (nameProduct) {
             case '':
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -138,7 +185,7 @@ export class OrderPage extends React.Component {
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
-                        const designPhoto = uploadDesign.length;
+                        const designPhoto = photoTemp.length;
                         switch (designPhoto) {
                             case 0:
                                 return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -153,18 +200,15 @@ export class OrderPage extends React.Component {
                                                 return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
                                             default:
                                                 switch (addressDelivery) {
-                                                    case '':
-                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     case 0:
                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
                                                         switch (unitQuantity) {
                                                             case '':
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                            case 0:
-                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
                                                                 return this.prosesOrder();
+                                                            // return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
                                                         }
                                                 }
                                         }
@@ -173,6 +217,7 @@ export class OrderPage extends React.Component {
                 }
         }
     }
+
 
     prosesOrder() {
         this.setState({ loading: true });
@@ -185,30 +230,85 @@ export class OrderPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto,
+            dataCheckBoxSubMaterial
         } = this.state;
 
         console.log(this.state);
+
+        var body = new FormData();
+        var request = new XMLHttpRequest();
+
+        this.state.photoTemp.map((item, index) => {
+            const nameFile = 'IMG_' + uuid.v1();
+            if (item.data === 1) {
+                var photo = {
+                    uri: item.uri,
+                    type: 'image/jpeg',
+                    name: nameFile.toUpperCase() + '.jpg'
+                };
+                body.append('photo', photo);
+            }
+        });
+        console.log(body, 'Body');
+
+        body._parts.map((item, index) => {
+            const itemNew = item.slice(1);
+            const newpropertyPhoto = this.state.propertyPhoto;
+            newpropertyPhoto[this.state.propertyPhoto.length] = itemNew;
+            this.setState({ propertyPhoto: newpropertyPhoto });
+        })
+
+        console.log(this.state.propertyPhoto, 'ITIL');
+
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                console.log('success', request.responseText);
+            } else {
+                console.warn('error', request);
+            }
+        };
+
         axios.post(`${IPSERVER}/ApapunOrders/CreateOrder`, {
             userId,
             nameProduct,
+            categoryProduct,
+            numberPcs,
+            serveDelivery,
             addressDelivery,
             catatanTambahan,
-            numberPcs,
             unitQuantity,
-            serveDelivery,
-            categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto,
+            dataCheckBoxSubMaterial
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
-                this.setState({ loading: true });
+                request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                request.send(body);
+                console.log(response.data[0].idOrder, 'ID ORDER')
+                this.setState({ loading: false, propertyPhoto: [], dataOrderResponse: response.data[0].idOrder }, () => {
+                    console.log(this.state.dataOrderResponse, 'Response Order');
+                    const resetAction = StackActions.reset({
+                        index: 1,
+                        actions: [
+                            NavigationActions.navigate({ routeName: 'Dashboard' }),
+                            NavigationActions.navigate({ routeName: 'FindingCrafter', params: this.state.dataOrderResponse }),
+                        ],
+                    });
+                    this.props.navigation.dispatch(resetAction);
+                });
+                ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
-                this.setState({ loading: true });
-            })
-        this.setState({ loading: false });
-        return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
+                this.setState({ loading: false, propertyPhoto: [] });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
     designPhotoUpload(name) {
@@ -234,10 +334,12 @@ export class OrderPage extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
-
+                let source = { uri: response.uri, data: 1 };
                 if (this.state.photoTemp.length === 0) {
-                    let pushFirst = { uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`, data: 1 };
+                    let pushFirst = {
+                        uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`,
+                        data: 2
+                    };
 
                     const newUriPhoto = this.state.photoTemp;
                     newUriPhoto[this.state.photoTemp.length] = source;
@@ -253,26 +355,26 @@ export class OrderPage extends React.Component {
                 } else {
                     console.log(this.state.photoTemp, 'Foto-Foto');
                     const identify = this.state.photoTemp;
-                    if (identify[1].data === 1) {
+                    if (identify[1].data === 2) {
                         console.log('Foto Sama');
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[1] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[2].data === 1) {
+                    } else if (identify[2].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[2] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[3].data === 1) {
+                    } else if (identify[3].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[3] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
                             console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else if (identify[4].data === 1) {
+                    } else if (identify[4].data === 2) {
                         const newSplicePhoto = this.state.photoTemp;
                         newSplicePhoto[4] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
@@ -314,10 +416,75 @@ export class OrderPage extends React.Component {
         });
     }
 
+    requestSubMaterial(idMaterial, nameMaterial) {
+        console.log(idMaterial, 'Id Material');
+        const materialId = idMaterial;
+        axios.get(`${IPSERVER}/ApapunSubmaterials`, {
+            params: {
+                'materialId': materialId
+            }
+        }).then(response => {
+            console.log(response, 'Data Material');
+            this.setState({ dataSubMaterial: response.data })
+        }).catch(error => {
+            console.log(error, 'Error Data Sub Material');
+        })
+    }
+
+    renderMaterial = (itemMaterial, index) => {
+        // console.log(itemMaterial, 'Item Material');
+        const { firstmaterial } = this.state;
+        return (
+            <View>
+                <TouchableOpacity
+                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId, itemMaterial.materialName) })}
+                >
+                    {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
+                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }}>{itemMaterial.materialName}</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    renderSubMaterial = (itemSubMaterial, index) => {
+        const { dataCheckBoxSubMaterial } = this.state;
+        return (
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 4 }}>
+                    <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.materialName.length >= 20 ? `${itemSubMaterial.materialName.substring(0, 20)}...` : `${itemSubMaterial.materialName}`}</Text>
+                </View>
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                    <CheckBox
+                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
+                        checked={dataCheckBoxSubMaterial.includes(itemSubMaterial)}
+                        onPress={() => this.checkedSubMaterial(itemSubMaterial)}
+                    />
+                </View>
+            </View>
+        );
+    }
+
+    renderSelectedMaterial(item, index) {
+        return (
+            <ContainerSection>
+                <View style={styles.buttonMaterial}>
+                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                        <TouchableOpacity
+                            onPress={() => this.deleteMaterial(item)}
+                        >
+                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ContainerSection>
+        )
+    }
+
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ paddingRight: 5 }}>
+            <View key={index} style={{ marginRight: 5 }}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -350,13 +517,12 @@ export class OrderPage extends React.Component {
                     renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
-            </View>
+            </View >
         )
     }
 
     _renderItem = (item, index) => {
         const number = parseInt(item.index) + 1;
-        console.log(number, 'LPLPLPLPLP');
         return (
             <View>
                 <Image
@@ -417,6 +583,7 @@ export class OrderPage extends React.Component {
                     marginBottom: 20
                 }}
                 onPress={() => this.onValidation()}
+            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -433,7 +600,11 @@ export class OrderPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            unitQuantity
+            unitQuantity,
+            firstmaterial,
+            dataCheckBoxSubMaterial,
+            dataMaterial,
+            dataSubMaterial
         } = this.state;
 
         return (
@@ -442,28 +613,33 @@ export class OrderPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <ContainerSection>
-                    <Input
-                        placeholder='Nama Produk'
-                        label='Nama Produk'
-                        value={nameProduct}
-                        onChangeText={v => this.onChange('nameProduct', v)}
-                    />
-                </ContainerSection>
-                <ContainerSection>
-                    <View style={styles.pickerContainer}>
-                        <Text style={styles.pickerTextStyle}>Kategori Produk</Text>
-                        <View style={styles.pickerStyle}>
-                            <Picker
-                                selectedValue={categoryProduct}
-                                onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
-                            >
-                                <Picker.Item label='Pilih Kategori Produk' value='0' />
-                                {this.renderKategori()}
-                            </Picker>
+                <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+                    <ContainerSection>
+                        <Input
+                            placeholder='Nama Produk'
+                            label='Nama Produk'
+                            value={nameProduct}
+                            onChangeText={v => this.onChange('nameProduct', v)}
+                        />
+                    </ContainerSection>
+                </View>
+
+                <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+                    <ContainerSection>
+                        <View style={styles.pickerContainer}>
+                            <Text style={styles.pickerTextStyle}>Kategori Produk</Text>
+                            <View style={styles.pickerStyle}>
+                                <Picker
+                                    selectedValue={categoryProduct}
+                                    onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
+                                >
+                                    <Picker.Item label='Pilih Kategori Produk' value='0' />
+                                    {this.renderKategori()}
+                                </Picker>
+                            </View>
                         </View>
-                    </View>
-                </ContainerSection>
+                    </ContainerSection>
+                </View>
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
                 <ContainerSection>
@@ -496,6 +672,25 @@ export class OrderPage extends React.Component {
                             </View>
                             :
                             <View>
+                                <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
+                                    <TouchableOpacity style={{ justifyContent: 'center' }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Image.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }} onPress={() => this.designPhotoUpload('tempUploadDesign')}>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Trash.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                </View>
                                 <Carousel
                                     ref={(c) => { this._carousel = c; }}
                                     data={this.state.photoTemp}
@@ -511,63 +706,70 @@ export class OrderPage extends React.Component {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
                             {this.returnDesignPhoto()}
+                            <Text style={{ flex: 1, textAlign: 'right', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 5 }}>Maksimal upload 5 gambar</Text>
                         </View>
+
                         :
                         <View style={{ marginBottom: 20 }} />
                 }
+
                 <ContainerSection>
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View>
-                            <Text style={styles.pickerTextStyle}>Jumlah Order :</Text>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row', width: '30%' }}>
-                            <TouchableOpacity
-                                onPress={() => this.minusNumber()}
-                                style={{ marginTop: -3, marginLeft: 15, marginRight: 3 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, marginTop: 8 }}
-                                    source={require('../assets/images/minus.png')}
-                                />
-                            </TouchableOpacity>
-
-                            <InputNumber
-                                value={numberPcs.toString()}
-                                onChangeText={val => this.onChange('numberPcs', val)}
-                                keyboardType='numeric'
-                            />
-
-                            <TouchableOpacity
-                                onPress={() => this.plusNumber()}
-                                style={{ marginTop: -3, marginLeft: 3, marginRight: 15 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, marginTop: 8 }}
-                                    source={require('../assets/images/plus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ width: 90 }}>
-                            <View style={styles.pickerUnitStyle}>
-                                <Picker
-                                    selectedValue={unitQuantity}
-                                    onValueChange={v => this.onChange('unitQuantity', v)}
+                    <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
+                        <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah yang dipesan :</Text>
+                            <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+                                <TouchableOpacity
+                                    onPress={() => this.minusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
                                 >
-                                    <Picker.Item label='Pcs' value='Pcs' />
-                                    <Picker.Item label='Lusin' value='Lusin' />
-                                </Picker>
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/minus.png')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={{ width: 60, height: 40 }}>
+                                    <InputNumber
+                                        style={{ alignSelf: 'center', textAlign: 'center' }}
+                                        value={numberPcs.toString()}
+                                        onChangeText={val => this.onChange('numberPcs', val)}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                                <TouchableOpacity
+                                    onPress={() => this.plusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/plus.png')}
+                                    />
+                                </TouchableOpacity>
                             </View>
+                        </View>
+                        <View style={styles.pickerUnitStyle}>
+                            <Picker
+                                selectedValue={unitQuantity}
+                                onValueChange={v => this.onChange('unitQuantity', v)}
+                            >
+                                <Picker.Item label='Pilih' value='' />
+                                <Picker.Item label='Pcs' value='Pcs' />
+                                <Picker.Item label='Lusin' value='Lusin' />
+                            </Picker>
                         </View>
                     </View>
                 </ContainerSection>
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
+
+
+                <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+                    <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
+                </View>
                 <ContainerSection>
                     {
-                        uploadMaterial === null ?
-                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', }}>
+                        dataCheckBoxSubMaterial.length === 0 ?
+                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', marginLeft: 5, marginRight: 5 }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
-                                    style={{ width: '100%', height: 170 }}
+                                    style={{ width: '100%', height: 170, }}
                                     resizeMode='cover'
                                 />
                                 <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center', top: 25 }}>
@@ -578,7 +780,8 @@ export class OrderPage extends React.Component {
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}
+                                            onPress={() => this.setModalVisible()}
+                                            // onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -590,11 +793,57 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                             :
-                            <Image source={uploadMaterial} />
+                            <View style={{ flex: 1, height: 170 }}>
+                                <View>
+                                    <ContainerSection>
+                                        <TouchableOpacity
+                                            onPress={() => this.setModalVisible()}
+                                            style={styles.buttonsMaterial}
+                                        >
+                                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'red', marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Material</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </ContainerSection>
+                                </View>
+                                <View style={{ flexDirection: 'row' }} >
+                                    {
+
+                                        <FlatList
+                                            data={dataCheckBoxSubMaterial}
+                                            extraData={this.state}
+                                            horizontal={false}
+                                            renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                            numColumns={3}
+                                        />
+                                    }
+                                    {/* {
+                                        dataCheckBoxSubMaterial && dataCheckBoxSubMaterial.map(item =>
+                                            <ContainerSection>
+                                                <View style={styles.buttonMaterial}>
+                                                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
+                                                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
+                                                        <TouchableOpacity
+                                                            onPress={() => this.deleteMaterial(item)}
+                                                        >
+                                                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            </ContainerSection>
+                                        )
+                                    } */}
+
+                                </View>
+                            </View>
                     }
                 </ContainerSection>
+
                 <ContainerSection>
-                    <View style={styles.pickerContainer}>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
                         <Text style={styles.pickerTextStyle}>Jasa Pengiriman</Text>
                         <View style={styles.pickerStyle}>
                             <Picker
@@ -602,17 +851,18 @@ export class OrderPage extends React.Component {
                                 onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
-                                <Picker.Item label='JNE Reguler' value='JNEREG' />
-                                <Picker.Item label='JNE Oke' value='JNEOK' />
-                                <Picker.Item label='TIKI Reguler' value='TIKIREG' />
-                                <Picker.Item label='POS Kilat Indonesia' value='POSKILAT' />
-                                <Picker.Item label='GOJEK' value='Gojek' />
+                                <Picker.Item label='JNE Reguler' value='JNE REG' />
+                                <Picker.Item label='JNE Oke' value='JNE OK' />
+                                <Picker.Item label='TIKI Reguler' value='TIKI REG' />
+                                <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
+                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
                     </View>
                 </ContainerSection>
                 <ContainerSection>
-                    <View style={styles.pickerContainer}>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
                         <Text style={styles.pickerTextStyle}>Alamat Pengiriman</Text>
                         <View style={styles.pickerStyle}>
                             <Picker
@@ -625,14 +875,15 @@ export class OrderPage extends React.Component {
                         </View>
                     </View>
                 </ContainerSection>
+
                 <ContainerSection>
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View>
-                            <Text style={{ padding: 5, fontFamily: 'Quicksand-Bold' }}> Catatan Tambahan </Text>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', paddingTop: 5 }}>
+                        <View style={{}}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold' }}>Catatan Tambahan </Text>
                         </View>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ alignSelf: 'center' }}>
                             <TouchableOpacity onPress={() => this.setState({ notice: !this.state.notice })}>
-                                <Image style={{ width: 13, height: 13, marginTop: 7 }} source={require('../assets/images/Information.png')} />
+                                <Image style={{ width: 15, height: 15, }} source={require('../assets/images/Information.png')} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -647,15 +898,88 @@ export class OrderPage extends React.Component {
                             </Text>
                 }
                 <ContainerSection>
-                    <Input
-                        placeholder='Catatan Tambahan'
-                        value={catatanTambahan}
-                        onChangeText={v => this.onChange('catatanTambahan', v)}
-                    />
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', paddingTop: 5 }}>
+                        <Input
+                            placeholder='Catatan Tambahan'
+                            value={catatanTambahan}
+                            multiline
+                            onChangeText={v => this.onChange('catatanTambahan', v)}
+                        />
+                    </View>
                 </ContainerSection>
                 <ContainerSection>
                     {this.renderButton()}
                 </ContainerSection>
+
+
+                <View style={{ marginTop: 70 }}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={this.state.isModalVisible}
+                        onRequestClose={() => {
+                            alert('Modal has been closed.');
+                        }}>
+
+                        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', justifyContent: 'center', alignContent: 'center' }}>
+                            <View style={{ width: '90%', height: 260, backgroundColor: '#ffffff', alignSelf: 'center', flexDirection: 'column', borderRadius: 25 }}>
+
+                                <View style={{
+                                    width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
+                                }}>
+                                    < InputSearch style={{ flex: 1 }}
+                                        // onFocus={() => navigate('FilterBefore')}
+                                        placeholder="Cari Material"
+                                        icon="ic_search"
+                                    />
+                                </View>
+
+                                <View style={{ flex: 1, flexDirection: 'row', borderBottomColor: 'black', }}>
+                                    <View style={{ flex: 1, marginTop: 5, marginLeft: 20 }}>
+                                        <FlatList
+                                            data={dataMaterial}
+                                            extraData={this.state}
+                                            renderItem={({ item, index }) => this.renderMaterial(item, index)}
+                                            showsHorizontalScrollIndicator={false}
+                                        />
+                                    </View>
+
+                                    <View style={{ flex: 3 }}>
+                                        {
+                                            firstmaterial === true ?
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', marginTop: 5 }}>
+                                                    <FlatList
+                                                        data={dataSubMaterial}
+                                                        extraData={this.state}
+                                                        renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
+                                                    />
+                                                </View>
+                                                :
+                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', paddingTop: '20%' }}>
+                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Silahkan pilih material</Text>
+                                                </View>
+                                        }
+                                    </View>
+                                </View>
+
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setModalVisible(!this.state.isModalVisible);
+                                    }}>
+                                    <View style={{ alignSelf: 'center', height: 40, width: '100%', justifyContent: 'center', borderTopWidth: 1.5, borderTopColor: '#e5e5e5' }}>
+
+                                        <Text style={{
+                                            fontWeight: 'bold',
+                                            color: 'red',
+                                            fontFamily: 'Quicksand-Regular',
+                                            textAlign: 'center'
+                                        }}>OK</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+                </View>
             </ScrollView >
         );
     }
@@ -666,10 +990,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerFlatList: {
-        paddingBottom: 20,
+        paddingBottom: 5,
         paddingRight: 5,
         paddingLeft: 5,
-        paddingTop: 5
+        paddingTop: 5,
     },
     pickerContainer: {
         flex: 1,
@@ -684,19 +1008,34 @@ const styles = StyleSheet.create({
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',
         color: '#5e5e5e',
-        fontSize: 14,
+        fontSize: 15,
         flex: 1,
         marginTop: 10,
         marginBottom: 10
+        // alignSelf: 'center'
     },
     pickerUnitStyle: {
+        width: 120,
+        marginLeft: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,
-        paddingLeft: 4,
         borderWidth: 1,
-        height: 47,
+        height: 45,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignSelf: 'flex-end'
+    },
+    buttonMaterial: {
+        borderWidth: 1,
+        borderRadius: 30,
+        height: 38,
+        alignItems: 'center',
+        paddingTop: 2
+    },
+    buttonsMaterial: {
+        width: '93%',
+        height: 38,
+        paddingTop: 2
     },
     button: {
         backgroundColor: 'rgb(0, 0, 0)',
@@ -705,7 +1044,6 @@ const styles = StyleSheet.create({
         width: '93%',
         height: 38,
         alignItems: 'center',
-        // textAlign: 'center',
         paddingTop: 2
     },
     buttons: {

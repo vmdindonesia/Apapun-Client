@@ -3,9 +3,20 @@ import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity }
 import { Input, InputNumber, ContainerSection, InputDate, Button } from '../components/common';
 import Swiper from 'react-native-swiper';
 import DatePicker from 'react-native-datepicker'
-// import moment from 'moment';
+import { NavigationActions, StackActions } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class OrderForCrafterPage extends React.Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
+        headerTitle: 'Rancangan Pesanan'
+    });
 
     constructor(props) {
         super(props)
@@ -18,31 +29,11 @@ export class OrderForCrafterPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
 
-
-
             ],
             // estimationTime: '',
             date: ""
         }
     }
-
-    // showEstimateTimeFocus = () => this.setState({ BirthdayDate: true });
-
-    // hideEstimateTime = () => this.setState({ BirthdayDate: false });
-
-    // handleDatePickedBirthday = (date) => {
-    //     console.log(date, 'Date Nya DP')
-    //     const dateTemp = moment(date).format('YYYY-MM-DD h:mm:ss');
-    //     const dateNow = moment(date).format('DD/MM/YYYY');
-    //     this.setState({ estimationTime: dateNow, datePickBirthday: dateTemp })
-    //     this.hideEstimateTime();
-    // };
-
-    // onChangeInput = (name, v) => {
-    //     this.setState({ [name]: v }, () => {
-    //         console.log(this.state[name], 'Birth');
-    //     });
-    // }
 
     renderButton = () => {
         if (this.state.loading) {
@@ -259,34 +250,16 @@ export class OrderForCrafterPage extends React.Component {
                     </View>
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginTop: 5 }}>Selesai Pembuatan</Text>
                     <ContainerSection>
-                        {/* <InputDate
-                            placeholder=''
-                            value={estimationTime}
-                            onChangeText={v => this.onChangeInput('estimationTime', v)}
-                            onFocus={() => {
-                                this.showEstimateTimeFocus()
-                            }}
-                        /> */}
                         <DatePicker
-                        style={{ flex: 1 }}
+                            style={{ flex: 1, fontSize: 15, fontFamily: 'Quicksand-Bold'}}
                             date={this.state.date}
+                            showIcon={false}
                             androidMode='spinner'
                             placeholder="select date"
                             format="DD-MM-YYYY"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
-                            customStyles={{
-                                dateIcon: {
-                                  position: 'absolute',
-                                  left: 0,
-                                  top: 4,
-                                  marginLeft: 0
-                                },
-                                dateInput: {
-                                  marginLeft: 36
-                                }
-                            }}
-                            onDateChange={(date) => {this.setState({date: date})}}
+                            onDateChange={(date) => { this.setState({ date: date }) }}
                         />
                     </ContainerSection>
 

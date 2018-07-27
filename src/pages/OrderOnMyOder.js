@@ -1,14 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 // import axios from 'axios';
 
 export class OrderOnMyOrderPage extends React.Component {
 
-    // pressBUtton() {
-    //     console.log('Press!');
-    //     console.log(this.props, 'Props')
-    //     this.props.navi.navigate('DetailOrder')
-    // }
+    pressBUtton() {
+        console.log('Press!');
+        console.log(this.props, 'Props')
+        this.props.navi.navigate('DetailOrder')
+    }
+
+    static navigationOptions = {
+        headerTitle: 'Pesanan Saya',
+        headerStyle: {
+            // shadowOpacity: 0,
+            elevation: 0,
+            borderBottomColor: 'white',
+            borderBottomWidth: 0
+        },
+    }
 
     render() {
         return (
@@ -23,17 +33,16 @@ export class OrderOnMyOrderPage extends React.Component {
                     paddingTop: 10,
                     paddingBottom: 10,
                     // flex : 1,
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    backgroundColor:'white'
                 }}>
 
                     <View style={{
                         width: '50%',
                         height: '100%',
-                        // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
                         flexDirection: 'column',
-                        borderRightWidth: 1, borderRightColor: '#e5e5e5',
                     }}>
 
                         <TouchableOpacity style={{ alignSelf: 'center' }}>
@@ -47,9 +56,11 @@ export class OrderOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_sort.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Urutkan</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
                         </TouchableOpacity>
                     </View>
+
+                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
 
                     <View style={{
                         width: '50%',
@@ -69,7 +80,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                 }}
                                 source={require('./../assets/images/ic_filter.png')}
                             />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Filter</Text>
+                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Filter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -82,7 +93,7 @@ export class OrderOnMyOrderPage extends React.Component {
                 }}>
                     <TouchableOpacity
                         // onPress={() => this.pressBUtton()}
-                        onPress={() => this.props.navigation.navigate('OrderWithTrack')}
+                        onPress={() => this.props.navi.navigate('OrderWithTrack')}
                     >
                         <View style={{
                             height: 165,
@@ -207,7 +218,7 @@ export class OrderOnMyOrderPage extends React.Component {
 
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('OrderWithTrack')}
+                        onPress={() => this.props.navi.navigate('OrderWithTrack')}
                     >
                         <View style={{
                             height: 165,
