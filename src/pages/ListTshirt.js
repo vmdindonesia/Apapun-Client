@@ -61,7 +61,7 @@ export class ListTshirtPage extends React.Component {
                                         marginRight: 10
                                     }}
                                     resizeMode='stretch'
-                                    source={require('./../assets/images/sempurna.png')}
+                                    source={require('./../assets/images/Sempurna.png')}
                                 />
                                 <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingRight: 10 }}>(2)</Text>
                             </View>
