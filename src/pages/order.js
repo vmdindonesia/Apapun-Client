@@ -583,7 +583,7 @@ export class OrderPage extends React.Component {
                     marginBottom: 20
                 }}
                 // onPress={() => this.onValidation()}
-            onPress={() => this.props.navigation.navigate('FindingCrafter')}
+                onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -921,8 +921,8 @@ export class OrderPage extends React.Component {
                             alert('Modal has been closed.');
                         }}>
 
-                        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', justifyContent: 'center', alignContent: 'center' }}>
-                            <View style={{ width: '90%', height: 260, backgroundColor: '#ffffff', alignSelf: 'center', flexDirection: 'column', borderRadius: 25 }}>
+                        <View style={{ marginTop: 50 }}>
+                            <View style={{ width: '100%', height: '100%', backgroundColor: '#ffffff', alignSelf: 'center' }}>
 
                                 <View style={{
                                     width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
