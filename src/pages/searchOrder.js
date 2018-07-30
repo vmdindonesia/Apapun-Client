@@ -39,10 +39,6 @@ export class searchOrderPage extends React.Component {
         const typeOrder = this.props.navigation.state.params.type_order
         axios.post(`${IPSERVER}/ApapunOrders/getOrderActiveByCategory`, {
             categoryId, typeOrder
-            // params: {
-            //     'categoryId': categoryId,
-            //     'type_order': typeOrder
-            // }
         }).then(response => {
             console.log(response.data, 'Get Order');
             this.setState({ dataOrder: response.data })
@@ -64,6 +60,7 @@ export class searchOrderPage extends React.Component {
                         <Image
                             style={styles.thumbnailStyle}
                             source={{ uri: 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg' }}
+                           // source={{ uri: `${IPSERVER}/ApapunStorages/images/download/` + data.item.ApapunImages[0].name }}
                         />
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
@@ -74,7 +71,9 @@ export class searchOrderPage extends React.Component {
                         />
                         <View style={{ flex: 1 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.name}</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
+                            {/* <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunProvinces.name},</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunRegencies.name}</Text> */}
                         </View>
                     </View>
                 </View>
@@ -126,8 +125,9 @@ export class searchOrderPage extends React.Component {
                 </View>
                 <View style={{ flex: 1, }}>
                     <FlatList
-                        data={dataOrder}
+                        // data={dataOrder}
                         // contentContainerStyle={styles.list}
+                        data={this.state.photo}
                         renderItem={this.renderOrderList.bind(this)}
                         showsHorizontalScrollIndicator={false}
                         horizontal={false}

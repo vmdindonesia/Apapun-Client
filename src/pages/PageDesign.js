@@ -41,8 +41,8 @@ export class PageDesignPage extends React.Component {
                     }}
                     onPress={() => this.props.navigation.navigate('DesignSaya')}>
                         <Image
-                            style={{ width: 20, height: 20, alignSelf: 'center' }}
-                            source={require('./../assets/images/arrow.png')}
+                            style={{ width: 10, height: 20, alignSelf: 'center' }}
+                            source={require('./../assets/images/arow.png')}
                         />
                     </TouchableOpacity>
                 </View>

@@ -716,7 +716,7 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
                         <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah yang dipesan :</Text>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Jumlah yang dipesan :</Text>
                             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
                                 <TouchableOpacity
                                     onPress={() => this.minusNumber()}

@@ -3,11 +3,18 @@ import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, Touchab
 // import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class ListTshirtPage extends React.Component {
 
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Kaos',
         headerStyle: {
             // shadowOpacity: 0,
@@ -15,7 +22,7 @@ export class ListTshirtPage extends React.Component {
             borderBottomColor: 'white',
             borderBottomWidth: 0
         },
-    }
+    });
 
 
     constructor(props) {
@@ -35,7 +42,9 @@ export class ListTshirtPage extends React.Component {
     renderProductImage = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('onClickProductOnIdeaFashion')}
+            >
 
                 <View style={{ flex: 1, flexDirection: 'column', marginTop: 5, marginRight: 10, marginBottom: 5, }}>
                     <Image
@@ -67,7 +76,7 @@ export class ListTshirtPage extends React.Component {
 
                         </View>
 
-                        <View style={{ flex: 1,  flexDirection: 'row' }}>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
 
                             <View style={{ width: '30%', flexDirection: 'column', justifyContent: 'center', }}>
                                 <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'black', marginLeft: 10 }}>
@@ -107,7 +116,8 @@ export class ListTshirtPage extends React.Component {
     render() {
         return (
             <View style={{
-                flex: 1
+                flex: 1,
+                backgroundColor: 'white'
             }}>
 
                 <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
@@ -153,7 +163,7 @@ export class ListTshirtPage extends React.Component {
 
 
 
-                <View style={{ flex: 1, marginTop: 10, marginLeft: 10, marginRight: 10, flexDirection: 'column' }}>
+                <View style={{ flex: 1, marginTop: 10, marginLeft: 10, marginRight: 10, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
                     <FlatList
                         data={this.state.photo}
                         // contentContainerStyle={{ flex: 1 }}

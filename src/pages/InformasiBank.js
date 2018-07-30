@@ -144,11 +144,11 @@ export class InformasiBankPage extends React.Component {
 
         return (
             <ScrollView
-                style={{ flex: 1, backgroundColor: 'white' }}
+                style={{ flex: 1, backgroundColor: '#eaeaea' }}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <View style={{ flex: 1, height: 110, backgroundColor: 'white' }}>
+                <View style={{ flex: 1, height: 110, backgroundColor: 'white', }}>
                     <View style={{ flexDirection: 'row', height: 50, width: '100%', alignItems: 'center', flex: 1, paddingLeft: 40 }}>
                         <Image style={{ height: 35, width: 35, borderRadius: 0, }}
                             source={require('./../assets/images/ic_wallet.png')}
@@ -163,7 +163,7 @@ export class InformasiBankPage extends React.Component {
                     </Text>
                 </View>
 
-                <View style={{ flex: 1, height: 400, marginRight: 10, marginLeft: 10, }}>
+                <View style={{ flex: 1, height: 400, marginRight: 10, marginLeft: 10, marginTop: 10 }}>
 
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
