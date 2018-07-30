@@ -50,10 +50,10 @@ export class CrafterPage extends React.Component {
                             <Image
                                 style={{ width: 18, height: 18 }}
                                 source={require('./../assets/images/loc_mainprof.png')}
-                                resizeMode='stretch'
+                                resizeMode='contain'
                             />
                             <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
-                                DKI
+                                Jakarta Barat
                             </Text>
                         </View>
                     </View>
