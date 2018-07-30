@@ -109,9 +109,6 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  Order: {
-    screen: OrderPage
-  },
   StartScreen: {
     screen: StartScreen
   },
@@ -120,6 +117,9 @@ const Routes = createStackNavigator({
   },
   myOrderIdea: {
     screen: myOrderIdeaPage
+  },
+  Order: {
+    screen: OrderPage
   },
   IdeaFashion: {
     screen: IdeaFashionPage
@@ -142,18 +142,12 @@ const Routes = createStackNavigator({
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
-  },
-<<<<<<< HEAD
-=======
   Order: {
     screen: OrderPage
   },
   PaymentMethod: {
     screen: PaymentMethodPage
   },
->>>>>>> e752c8365a7791e89d4a9d6d224279711735219f
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
   },
@@ -405,7 +399,8 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-}, {
+},
+ {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerRight: <View />,
