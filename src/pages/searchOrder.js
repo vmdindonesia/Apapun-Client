@@ -28,7 +28,7 @@ export class searchOrderPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-            ]
+            ],
         }
 
     }
@@ -38,10 +38,11 @@ export class searchOrderPage extends React.Component {
         const categoryId = this.props.navigation.state.params.categoryId;
         const typeOrder = this.props.navigation.state.params.type_order
         axios.post(`${IPSERVER}/ApapunOrders/getOrderActiveByCategory`, {
-            params: {
-                'categoryId': categoryId,
-                'type_order': typeOrder
-            }
+            categoryId, typeOrder
+            // params: {
+            //     'categoryId': categoryId,
+            //     'type_order': typeOrder
+            // }
         }).then(response => {
             console.log(response.data, 'Get Order');
             this.setState({ dataOrder: response.data })
@@ -52,16 +53,17 @@ export class searchOrderPage extends React.Component {
     }
 
     renderOrderList = (data) => {
-        // console.log(data, '098');
+        console.log(data, '098');
         return (
             <TouchableOpacity
-                onPress = {() => this.props.navigation.navigate('OrderForCrafter')}
+                 onPress={() => this.props.navigation.navigate('OrderForCrafter')}
+                //onPress={() => this.props.navigation.navigate('OrderForCrafter', { datas: data})}
             >
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
                             style={styles.thumbnailStyle}
-                            source={{ uri: data.item }}
+                            source={{ uri: 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg' }}
                         />
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
@@ -72,7 +74,7 @@ export class searchOrderPage extends React.Component {
                         />
                         <View style={{ flex: 1 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.name}</Text>
                         </View>
                     </View>
                 </View>
@@ -82,7 +84,7 @@ export class searchOrderPage extends React.Component {
 
 
     render() {
-            const { dataOrder } = this.state;
+        const { dataOrder } = this.state;
         return (
             <View style={{ flex: 1, }}>
                 <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
@@ -124,7 +126,7 @@ export class searchOrderPage extends React.Component {
                 </View>
                 <View style={{ flex: 1, }}>
                     <FlatList
-                        data={this.state.photo}
+                        data={dataOrder}
                         // contentContainerStyle={styles.list}
                         renderItem={this.renderOrderList.bind(this)}
                         showsHorizontalScrollIndicator={false}

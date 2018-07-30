@@ -31,8 +31,16 @@ export class OrderForCrafterPage extends React.Component {
 
             ],
             // estimationTime: '',
-            date: ""
+            date: '',
+            detailOrderData: ''
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navigation.state.params.datas.item, 'Get params district');
+        const dataDetail = this.props.navigation.state.params.datas.item;
+        this.setState({ detailOrderData: dataDetail });
+        // console.log(detailOrderData, 'Get Detail Order');
     }
 
     renderButton = () => {
@@ -78,11 +86,8 @@ export class OrderForCrafterPage extends React.Component {
     }
 
     render() {
-
-        // const {
-        //     estimationTime
-        // } = this.state
-
+        const { detailOrderData } = this.state;
+        console.log(detailOrderData, 'Detail');
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -124,12 +129,11 @@ export class OrderForCrafterPage extends React.Component {
                         <Text style={{
                             fontFamily: 'Quicksand-Bold',
                             marginTop: 15
-                        }}>
-                            Nama Produk </Text>
+                        }}>Nama Produk</Text>
                         <View style={{ flex: 1, marginTop: 3 }}>
                             <Input
                                 editable={false}
-                                value='ciputat'
+                                value={detailOrderData.name_product}
                             // onChangeText={v => this.onChangeInput('nameProduct', v)}
                             />
                         </View>
@@ -142,7 +146,6 @@ export class OrderForCrafterPage extends React.Component {
                             Kategori </Text>
                         <View style={{ flex: 1, marginTop: 3, marginRight: 10 }}>
                             <Input
-                                editable={false}
                                 value='ciledug'
                             // onChangeText={v => this.onChangeInput('nameProduct', v)}
                             />
@@ -251,7 +254,7 @@ export class OrderForCrafterPage extends React.Component {
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginTop: 5 }}>Selesai Pembuatan</Text>
                     <ContainerSection>
                         <DatePicker
-                            style={{ flex: 1, fontSize: 15, fontFamily: 'Quicksand-Bold'}}
+                            style={{ flex: 1, fontSize: 15, fontFamily: 'Quicksand-Bold' }}
                             date={this.state.date}
                             showIcon={false}
                             androidMode='spinner'
