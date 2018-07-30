@@ -30,9 +30,12 @@ export class OrderForCrafterPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
 
             ],
-            // estimationTime: '',
-            date: ""
+            date: ''
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navigation.state.params, 'Detail Order');
     }
 
     renderButton = () => {

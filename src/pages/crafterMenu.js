@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity, Image } from 'react-native';
-import { MenuCrafterPage } from './menuCrafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { CrafterOrderMenuPage } from './CrafterOrderMenu';
-import { searchOrderPage } from './searchOrder';
-import { OrderForCrafterPage } from './orderForCrafter';
+import { MenuCrafterPage } from './menuCrafter';
 
 export class CrafterMenuPage extends React.Component {
 
@@ -21,7 +19,7 @@ export class CrafterMenuPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      screen: 'menuCrafter'
+      screen: 'CrafterOrderMenu'
     }
   }
 
@@ -46,8 +44,10 @@ export class CrafterMenuPage extends React.Component {
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
-                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                <Image
+                  style={{ width: 30, height: 30, alignSelf: 'center' }}
                   source={require('./../assets/images/List.png')}
+                  resizeMode='stretch'
                 />
                 <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
               </View>
@@ -57,8 +57,10 @@ export class CrafterMenuPage extends React.Component {
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
-                <Image style={{ width: 20, height: 20, alignSelf: 'center' }}
+                <Image
+                  style={{ width: 30, height: 30, alignSelf: 'center' }}
                   source={require('./../assets/images/ic_menu.png')}
+                  resizeMode='stretch'
                 />
                 <Text style={screen === 'menuCrafter' ? tabTextActive : tabText}>Menu</Text>
               </View>
@@ -78,11 +80,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tabContainer: {
-    height: 55,
+    height: 60,
     justifyContent: 'center',
   },
   tabContainerActive: {
-    height: 55,
+    height: 60,
     justifyContent: 'center'
   },
   tabText: {
