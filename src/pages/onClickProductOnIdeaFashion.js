@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export class onClickProductOnIdeaFashionPage extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
-        headerLeft: null,
+        header: null,
         // <TouchableOpacity
         //     onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
         // >
@@ -111,7 +111,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                                         height: 65,
                                     }}
                                     resizeMode='stretch'
-                                    source={require('./../assets/images/Sempurna.png')}
+                                    source={require('./../assets/images/sempurna.png')}
                                 />
                                 <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', textAlign: 'center', paddingLeft: 10 }}>(10) Review</Text>
                             </View>
@@ -136,7 +136,9 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
 
                 </ScrollView>
 
-                <TouchableOpacity style={{ zIndex: 4, marginBottom: -20, alignSelf: 'center' }}>
+                <TouchableOpacity style={{ zIndex: 4, marginBottom: -20, alignSelf: 'center' }}
+                        onPress={() => this.props.navigation.navigate('detailsendingIdeaPage')}
+                >
                     <View style={{ height: 40, width: 150, backgroundColor: 'red', borderRadius: 30, justifyContent: 'center', alignItems: 'center', }}>
                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', textAlign: 'center' }}>PROSES</Text>
                     </View>
