@@ -3,7 +3,6 @@ export const IPSERVER = 'http://103.82.242.217:3005/api';
 // COLOR
 export const COLOR = {
   primary: '#006aaf',
-
   secondary_a: '#009ad3',
   secondary_b: '#555656',
   element_b1: '#f8bb7c',
