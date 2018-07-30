@@ -71,7 +71,7 @@ export class FindingCrafterPage extends React.Component {
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ borderColor: '#3484d7', borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
+          <View style={{ borderColor: '#ddd', borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
           <View style={{ flex: 1, backgroundColor: 'white' }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafter' })}>
               <View style={screen === 'crafter' ? tabContainerActive : tabContainer}>

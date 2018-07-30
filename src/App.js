@@ -145,6 +145,9 @@ const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
   },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
   },

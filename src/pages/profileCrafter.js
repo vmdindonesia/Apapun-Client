@@ -77,7 +77,7 @@ export class ProfileCrafterPage extends React.Component {
         const { statusMenu, requestExpanded, generalExpanded } = this.state;
 
         return (
-            <View style={{ flex: 1, flexDirection: 'column' }}>
+            // <ScrollView>
                 <View style={{ flex: 1 }}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
@@ -103,7 +103,7 @@ export class ProfileCrafterPage extends React.Component {
                                 source={require('./../assets/images/location_icon.png')}
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Indonesia, Kalimantan Selatan</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Kalimantan Selatan</Text>
                             </View>
                         </View>
                         <View style={{ width: '100%', flexDirection: 'row' }}>
@@ -158,54 +158,56 @@ export class ProfileCrafterPage extends React.Component {
                                 <View>
                                     {
                                         statusMenu === 'catatan' ?
-                                            <ScrollView>
-                                                <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                                    <View style={styles.card}>
-                                                        <ContainerSection>
-                                                            <TouchableWithoutFeedback onPress={() => { this.setState({ requestExpanded: !requestExpanded }); console.log(this.state.requestExpanded, 'Request Klik') }}>
-                                                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                                    <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>Alamat Workshop</Text>
-                                                                    <View style={{ flex: 1 }}>
-                                                                        <Icon size={30} style={{ alignSelf: 'flex-end' }} name={requestExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                                    </View>
-                                                                </View>
-                                                            </TouchableWithoutFeedback>
-                                                        </ContainerSection>
-                                                        {
-                                                            requestExpanded ?
-                                                                <View>
-                                                                    <Text>TANGERANG, Gading Serpong, Perumahan Cluster DALTON - Jl. Dalton Timur 2 no.19
-                                                                        Kota Tangerang Selatan - Serpong - Banten 081296128433
-                                                            </Text>
-                                                                </View>
-                                                                :
-                                                                <View />
-                                                        }
-                                                    </View>
-                                                </Card>
-                                                <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                                                    <View style={styles.card}>
-                                                        <ContainerSection>
-                                                            <TouchableWithoutFeedback onPress={() => { this.setState({ generalExpanded: !generalExpanded }); console.log(this.state.generalExpanded, 'Request Klik') }}>
-                                                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                                    <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>General</Text>
-                                                                    <View style={{ flex: 1 }}>
-                                                                        <Icon size={30} style={{ alignSelf: 'flex-end' }} name={generalExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                                                    </View>
-                                                                </View>
-                                                            </TouchableWithoutFeedback>
-                                                        </ContainerSection>
-                                                        {
-                                                            generalExpanded ?
-                                                                <View>
-                                                                    <Text>Aku Cinta Kamu</Text>
-                                                                </View>
-                                                                :
-                                                                <View />
-                                                        }
-                                                    </View>
-                                                </Card>
-                                            </ScrollView>
+                                         
+                                                // <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                                                //     <View style={styles.card}>
+                                                //         <ContainerSection>
+                                                //             <TouchableWithoutFeedback onPress={() => { this.setState({ requestExpanded: !requestExpanded }); console.log(this.state.requestExpanded, 'Request Klik') }}>
+                                                //                 <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                //                     <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>Alamat Workshop</Text>
+                                                //                     <View style={{ flex: 1 }}>
+                                                //                         <Icon size={30} style={{ alignSelf: 'flex-end' }} name={requestExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
+                                                //                     </View>
+                                                //                 </View>
+                                                //             </TouchableWithoutFeedback>
+                                                //         </ContainerSection>
+                                                //         {
+                                                //             requestExpanded ?
+                                                //                 <View>
+                                                //                     <Text>TANGERANG, Gading Serpong, Perumahan Cluster DALTON - Jl. Dalton Timur 2 no.19
+                                                //                         Kota Tangerang Selatan - Serpong - Banten 081296128433
+                                                //             </Text>
+                                                //                 </View>
+                                                //                 :
+                                                //                 <View />
+                                                //         }
+                                                //     </View>
+                                                // </Card>
+                                                // <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                                                //     <View style={styles.card}>
+                                                //         <ContainerSection>
+                                                //             <TouchableWithoutFeedback onPress={() => { this.setState({ generalExpanded: !generalExpanded }); console.log(this.state.generalExpanded, 'Request Klik') }}>
+                                                //                 <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                //                     <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>General</Text>
+                                                //                     <View style={{ flex: 1 }}>
+                                                //                         <Icon size={30} style={{ alignSelf: 'flex-end' }} name={generalExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
+                                                //                     </View>
+                                                //                 </View>
+                                                //             </TouchableWithoutFeedback>
+                                                //         </ContainerSection>
+                                                //         {
+                                                //             generalExpanded ?
+                                                //                 <View>
+                                                //                     <Text>Aku Cinta Kamu</Text>
+                                                //                 </View>
+                                                //                 :
+                                                //                 <View />
+                                                //         }
+                                                //     </View>
+                                                // </Card>
+                                                <View style={{ flex: 1, backgroundColor: 'pink' }}>
+
+                                                </View>
                                             :
                                             <View>
                                                 {
@@ -250,10 +252,10 @@ export class ProfileCrafterPage extends React.Component {
                                 </Text>
                         </View>
                         <View style={{ width: '10%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-                        <TouchableOpacity>
-                            <Image style={{ width: 30, height: 30 }}
-                                source={require('../assets/images/Chat.png')} />
-                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')} >
+                                <Image style={{ width: 30, height: 30 }}
+                                    source={require('../assets/images/Chat.png')} />
+                            </TouchableOpacity>
                         </View>
                         <View style={{ width: '32%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
                             <TouchableOpacity
@@ -266,7 +268,7 @@ export class ProfileCrafterPage extends React.Component {
                                     'Pesanan anda akan terkunci, apakah anda yakin?',
                                     [
                                         { text: 'Tidak', onPress: () => console.log('Cancel Pressed!') },
-                                        { text: 'Ya', onPress: () => this.props.navigation.navigate('DetailInformationOrder') },
+                                        { text: 'Ya', onPress: () => this.props.navigation.navigate('PaymentMethod') },
                                     ],
                                 )}>
                                 <Text style={{
@@ -277,7 +279,7 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                     </View>
                 </View>
-            </View>
+            // </ScrollView>
         );
     }
 }
@@ -346,11 +348,11 @@ const styles = StyleSheet.create({
     },
     tabText: {
         textAlign: 'center',
-        fontSize: 14
+        fontSize: 13
     },
     tabTextActive: {
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: 13,
         fontFamily: 'Quicksand-Bold'
     },
     item: {
