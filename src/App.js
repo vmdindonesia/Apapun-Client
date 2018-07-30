@@ -109,6 +109,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  Order: {
+    screen: OrderPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -141,9 +144,6 @@ const Routes = createStackNavigator({
   },
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
-  },
-  Order: {
-    screen: OrderPage
   },
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage

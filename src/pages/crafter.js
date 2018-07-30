@@ -53,7 +53,7 @@ export class CrafterPage extends React.Component {
                                 resizeMode='stretch'
                             />
                             <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
-                                Jakarta, Jakarta Barat
+                                DKI
                             </Text>
                         </View>
                     </View>

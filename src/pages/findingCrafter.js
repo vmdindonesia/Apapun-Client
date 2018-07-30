@@ -65,7 +65,7 @@ export class FindingCrafterPage extends React.Component {
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'myOrder' })}>
               <View style={screen === 'myOrder' ? tabContainerActive : tabContainer}>
                 <Image style={imageActive}
-                  source={screen === 'myOrder' ? require('./../assets/images/List_Red.png') : require('./../assets/images/List.png')}
+                  source={screen === 'myOrder' ? require('./../assets/images/line_vertical.png') : require('./../assets/images/List.png')}
                 />
                 <Text style={screen === 'myOrder' ? tabTextActive : tabText}>Pesanan Saya</Text>
               </View>

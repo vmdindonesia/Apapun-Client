@@ -582,8 +582,8 @@ export class OrderPage extends React.Component {
                     marginRight: '5%',
                     marginBottom: 20
                 }}
-                onPress={() => this.onValidation()}
-            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
+                // onPress={() => this.onValidation()}
+            onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -672,7 +672,7 @@ export class OrderPage extends React.Component {
                             </View>
                             :
                             <View>
-                                <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
+                                {/* <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
                                     <TouchableOpacity style={{ justifyContent: 'center' }}>
                                         <Image
                                             style={{ width: 20, height: 20 }}
@@ -690,7 +690,7 @@ export class OrderPage extends React.Component {
                                             resizeMode='contain'
                                         />
                                     </TouchableOpacity>
-                                </View>
+                                </View> */}
                                 <Carousel
                                     ref={(c) => { this._carousel = c; }}
                                     data={this.state.photoTemp}
@@ -724,7 +724,7 @@ export class OrderPage extends React.Component {
                                 >
                                     <Image
                                         style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/minus.png')}
+                                        source={require('../assets/images/Minuss.png')}
                                     />
                                 </TouchableOpacity>
                                 <View style={{ width: 60, height: 40 }}>
@@ -741,7 +741,7 @@ export class OrderPage extends React.Component {
                                 >
                                     <Image
                                         style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/plus.png')}
+                                        source={require('../assets/images/Pluss.png')}
                                     />
                                 </TouchableOpacity>
                             </View>
