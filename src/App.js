@@ -118,6 +118,9 @@ const Routes = createStackNavigator({
   myOrderIdea: {
     screen: myOrderIdeaPage
   },
+  Order: {
+    screen: OrderPage
+  },
   IdeaFashion: {
     screen: IdeaFashionPage
   },
@@ -138,9 +141,6 @@ const Routes = createStackNavigator({
   },
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
-  },
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
   },
   Order: {
     screen: OrderPage
@@ -399,7 +399,8 @@ const Routes = createStackNavigator({
   BeautyCrafter: {
     screen: BeautyCrafterPage
   },
-}, {
+},
+ {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerRight: <View />,
