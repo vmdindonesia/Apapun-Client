@@ -803,7 +803,7 @@ export class OrderPage extends React.Component {
                                             style={styles.buttonsMaterial}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/Material.png')} />
                                                 <Text style={{ paddingLeft: 20, fontSize: 13, color: 'red', marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Material</Text>
                                             </View>
                                         </TouchableOpacity>
