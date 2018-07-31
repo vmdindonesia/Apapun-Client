@@ -96,7 +96,7 @@ import { ListHoodiePage } from './pages/ListHoodie';
 import { onClickProductOnIdeaFashionPage } from './pages/onClickProductOnIdeaFashion';
 import { detailsendingIdeaPage } from './pages/detailSendingProductIdeaFashion';
 import { searchCrafterIdeaMarketPage } from './pages/searchCrafterIdeaMarket';
-import { myOrderIdeaPage } from './pages/myOrderIdea';
+import { MyOrderIdeaPage } from './pages/myOrderIdea';
 
 console.disableYellowBox = true;
 
@@ -109,20 +109,30 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+
   StartScreen: {
     screen: StartScreen
+  },
+  IdeaFashion: {
+    screen: IdeaFashionPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
   },
   searchCrafterIdeaMarket: {
     screen: searchCrafterIdeaMarketPage
   },
-  myOrderIdea: {
-    screen: myOrderIdeaPage
+  MyOrderIdea: {
+    screen: MyOrderIdeaPage
+  },
+  detailsendingIdeaPage: {
+    screen: detailsendingIdeaPage
+  },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
   },
   Order: {
     screen: OrderPage
-  },
-  IdeaFashion: {
-    screen: IdeaFashionPage
   },
   ListKemeja: {
     screen: ListKemejaPage
@@ -136,12 +146,7 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
-  },
-  clickProductOnCrafterMenu: {
-    screen: clickProductOnCrafterMenuPage
-  },
+
   Order: {
     screen: OrderPage
   },
@@ -400,7 +405,7 @@ const Routes = createStackNavigator({
     screen: BeautyCrafterPage
   },
 },
- {
+  {
     cardStyle: { backgroundColor: '#fafafa' },
     navigationOptions: {
       headerRight: <View />,

@@ -198,7 +198,9 @@ export class detailsendingIdeaPage extends React.Component {
 
                 </ScrollView>
 
-                <TouchableOpacity style={{ backgroundColor: 'red', height: 40, margin: 15, borderRadius: 20, justifyContent: 'center' }}>
+                <TouchableOpacity style={{ backgroundColor: 'red', height: 40, margin: 15, borderRadius: 20, justifyContent: 'center' }}
+                 onPress={() => this.props.navigation.navigate('searchCrafterIdeaMarket')} 
+                >
                     <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>MENCARI CRAFTER</Text>
                 </TouchableOpacity>
 

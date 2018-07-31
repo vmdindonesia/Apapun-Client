@@ -3,8 +3,8 @@ import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Scr
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from '../shared/config';
-import { myOrderIdeaPage } from './myOrderIdea';
-import { NotificationTransactionPage } from './NotificationTransaction';
+import { MyOrderIdeaPage } from './myOrderIdea';
+import { CrafterPage } from './crafter';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -30,7 +30,7 @@ export class searchCrafterIdeaMarketPage extends React.Component {
     componentWillMount() {
         if (!this.props.navigation.state.params) {
             console.log('Params tidak ada')
-            this.setState({ screen: 'myOrderIdeaPage' })
+            this.setState({ screen: 'MyOrderIdeaPage' })
         } else {
             console.log('Params Ada')
             this.setState({ screen: this.props.navigation.state.params.screenDefault })
@@ -38,15 +38,14 @@ export class searchCrafterIdeaMarketPage extends React.Component {
     }
 
     renderScreen = () => {
-
-        if (this.state.screen === 'myOrderIdeaPage'  ) {
-            return <myOrderIdeaPage navi={this.props.navigation} />
+        if (this.state.screen === 'MyOrderIdeaPage') {
+            return <MyOrderIdeaPage navi={this.props.navigation} />
         }
 
-        return <myOrderIdeaPage navi={this.props.navigation} />
+        return <CrafterPage navi={this.props.navigation} />
     }
 
-  
+
 
 
     render() {
@@ -68,18 +67,33 @@ export class searchCrafterIdeaMarketPage extends React.Component {
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
                         <TouchableOpacity
-                            onPress={() => this.setState({ screen: 'myOrderIdeaPage' })}
+                            onPress={() => this.setState({ screen: 'MyOrderIdeaPage' })}
                         >
-                            <Image
-                                style={{
-                                    width: 23,
-                                    height: 23,
-                                    alignSelf: 'center'
-                                }}
-                                resizeMode='stretch'
-                                source={require('./../assets/images/List.png')}
-                            />
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Pesanan</Text>
+                            {
+
+                                screen === 'MyOrderIdeaPage' ?
+
+                                    <Image
+                                        style={{
+                                            width: 23,
+                                            height: 23,
+                                            alignSelf: 'center'
+                                        }}
+                                        resizeMode='stretch'
+                                        source={require('./../assets/images/List_Red.png')}
+                                    />
+                                    :
+                                    <Image
+                                        style={{
+                                            width: 23,
+                                            height: 23,
+                                            alignSelf: 'center'
+                                        }}
+                                        resizeMode='stretch'
+                                        source={require('./../assets/images/List.png')}
+                                    />
+                            }
+                            <Text style={screen === 'MyOrderIdeaPage' ? fontActive : fontNotActive}>Pesanan Saya</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -89,19 +103,31 @@ export class searchCrafterIdeaMarketPage extends React.Component {
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
                         <TouchableOpacity
-                            onPress={() => this.setState({ screen: 'myOrderIdeaPage' })}
+                            onPress={() => this.setState({ screen: 'CrafterPage' })}
                         >
-                            
-                            <Image
-                                style={{
-                                    width: 22.5,
-                                    height: 22.5,
-                                    alignSelf: 'center'
-                                }}
-                                resizeMode='stretch'
-                                source={require('./../assets/images/ic_menu.png')}
-                            />
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Menu</Text>
+                            {
+                                screen === 'CrafterPage' ?
+                                    <Image
+                                        style={{
+                                            width: 22.5,
+                                            height: 22.5,
+                                            alignSelf: 'center'
+                                        }}
+                                        resizeMode='stretch'
+                                        source={require('./../assets/images/Search_Person_Red.png')}
+                                    />
+                                    :
+                                    <Image
+                                        style={{
+                                            width: 22.5,
+                                            height: 22.5,
+                                            alignSelf: 'center'
+                                        }}
+                                        resizeMode='stretch'
+                                        source={require('./../assets/images/Search_Person.png')}
+                                    />
+                            }
+                            <Text style={screen === 'CrafterPage' ? fontActive : fontNotActive}>Mencari Crafter</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -132,13 +158,18 @@ const styles = StyleSheet.create({
         // borderBottomWidth: 1,
     },
     fontActive: {
-        fontFamily: 'Quicksand-Bold',
-        fontSize: 15
+        fontFamily: 'Quicksand-Regular',
+        // fontWeight: 'bold', 
+        fontSize: 13,
+        color: 'red',
+        paddingTop: 3
     },
     fontNotActive: {
         fontFamily: 'Quicksand-Regular',
-        fontSize: 15,
-        color: '#c6c6c6'
+        // fontWeight: 'bold', 
+        fontSize: 13,
+        color: 'black',
+        paddingTop: 3
     }
 
 
