@@ -109,10 +109,69 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-
   StartScreen: {
     screen: StartScreen
   },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  FinalProcessOrder: {
+    screen: FinalProcessOrderPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
+  },
+
+  DetailInformationOrder: {
+    screen: DetailInformationOrderPage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
+  Captureandget: {
+    screen: CaptureandgetPage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+
+  HelpMenu: {
+    screen: HelpMenuPage
+  },
+
+  Dashboard: {
+    screen: DashboardPage
+  },
+
+
+  OrderTrackConfirm: {
+    screen: OrderTrackConfirmPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+
+ 
   IdeaFashion: {
     screen: IdeaFashionPage
   },
@@ -131,9 +190,6 @@ const Routes = createStackNavigator({
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-  Order: {
-    screen: OrderPage
-  },
   ListKemeja: {
     screen: ListKemejaPage
   },
@@ -143,16 +199,7 @@ const Routes = createStackNavigator({
   ListTshirt: {
     screen: ListTshirtPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
 
-  Order: {
-    screen: OrderPage
-  },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
   },
@@ -174,9 +221,7 @@ const Routes = createStackNavigator({
   ProductReadyToSend: {
     screen: ProductReadyToSendPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   searchOrder: {
     screen: searchOrderPage
   },
@@ -189,9 +234,7 @@ const Routes = createStackNavigator({
   crafterMenuNote: {
     screen: crafterMenuNotePage
   },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
+
   addNoteOnCrafterMenu: {
     screen: addNoteOnCrafterMenuPage
   },
@@ -207,18 +250,14 @@ const Routes = createStackNavigator({
   EditProduct: {
     screen: EditProductPage
   },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
+
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -240,9 +279,7 @@ const Routes = createStackNavigator({
   ProductDetailOnProfile: {
     screen: ProductDetailOnProfilePage
   },
-  Crafter: {
-    screen: CrafterPage
-  },
+
   Order: {
     screen: OrderPage
   },
@@ -273,15 +310,9 @@ const Routes = createStackNavigator({
     screen: InformasiBankPage
   },
 
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
-  },
-  OrderWithTrack: {
-    screen: OrderWithTrackPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
+
+
+
   CrafterList: {
     screen: CrafterListPage
   },
@@ -298,18 +329,12 @@ const Routes = createStackNavigator({
   IdeaFurniture: {
     screen: IdeaFurniturePage
   },
-  Captureandget: {
-    screen: CaptureandgetPage
-  },
+
   Chat: {
     screen: ChatPage
   },
-  OrderTrackConfirm: {
-    screen: OrderTrackConfirmPage
-  },
-  FinalProcessOrder: {
-    screen: FinalProcessOrderPage
-  },
+
+
   OrderReceived: {
     screen: OrderReceivedPage
   },
@@ -363,9 +388,7 @@ const Routes = createStackNavigator({
   SettingMenu: {
     screen: SettingManuPage
   },
-  HelpMenu: {
-    screen: HelpMenuPage
-  },
+
   IdeaMarket: {
     screen: IdeaMarketPage
   },
@@ -376,16 +399,12 @@ const Routes = createStackNavigator({
   ReviewProduct: {
     screen: ReviewProductPage
   },
-  DetailInformationOrder: {
-    screen: DetailInformationOrderPage
-  },
+
 
   DetailOrder: {
     screen: DetailOrderPage
   },
-  MyOrder: {
-    screen: MyOrderPage
-  },
+
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },

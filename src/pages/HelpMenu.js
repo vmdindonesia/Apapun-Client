@@ -50,7 +50,7 @@ export class HelpMenuPage extends React.Component {
                                     <InputSearch
                                         // onFocus={() => navigate('FilterBefore')}
                                         placeholder="Cari Pertanyaan atau Kata Kunci"
-                                        // icon="ic_search"
+                                        icon="ic_search"
                                     />
                                 </View>
                             </View>

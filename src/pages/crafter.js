@@ -32,7 +32,7 @@ export class CrafterPage extends React.Component {
                     </View>
                     <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>
+                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                 Rendy Sutandy
                             </Text>
                         </View>
@@ -42,7 +42,7 @@ export class CrafterPage extends React.Component {
                                 source={require('./../assets/images/Cukup.png')}
                                 resizeMode='stretch'
                             />
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Buruk
                             </Text>
                         </View>
@@ -52,7 +52,7 @@ export class CrafterPage extends React.Component {
                                 source={require('./../assets/images/loc_mainprof.png')}
                                 resizeMode='contain'
                             />
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Jakarta Barat
                             </Text>
                         </View>
@@ -64,10 +64,10 @@ export class CrafterPage extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, marginRight: 10, marginLeft: 10 }} >
+            <View style={{ flex: 1, backgroundColor: '#eaeaea' }} >
                 <ScrollView>
                     <View style={{ flex: 1 }}>
-                        <View>
+                        <View style={{ marginTop: 10 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
                             <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginTop: 8, marginRight: 15 }}>Sedang dalam proses mencari crafter untuk produkmu</Text>
                         </View>
@@ -82,6 +82,8 @@ export class CrafterPage extends React.Component {
                         </View>
                     </View>
                 </ScrollView>
+
+
                 <View style={styles.containerButton}>
                     <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'orange' }]}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
@@ -107,9 +109,12 @@ export class CrafterPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerCrafter: {
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center'
+        // backgroundColor:
+        flexDirection: 'column',
+        // width: '100%',
+        alignItems: 'center',
+        marginTop: 10
+
     },
     containerBoxProfile: {
         marginLeft: 3,
@@ -155,7 +160,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'red',
-        borderRadius: 25
+        borderRadius: 25,
+        margin: 5
     },
     card: {
         borderRadius: 4,
@@ -164,9 +170,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 2,
         elevation: 2,
-        marginLeft: 5,
+        margin: 5,
         marginBottom: '2%',
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
+        justifyContent: 'center',
+        width: '47%'
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
@@ -174,10 +182,10 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     thumbnailStyle: {
-        alignSelf: 'stretch',
-        height: 160,
-        width: 170,
-        resizeMode: 'cover',
+        alignSelf: 'center',
+        height: 120,
+        width: 150,
+        resizeMode: 'stretch',
         borderRadius: 4
     },
 });

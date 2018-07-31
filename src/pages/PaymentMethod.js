@@ -300,12 +300,13 @@ export class PaymentMethodPage extends React.Component {
                                     </View>
                                 </View>
 
-                                <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailInformationOrder')}>
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
+                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
+
+                                    </View>
+                                </TouchableOpacity>
 
                             </View>
                             :
@@ -446,12 +447,13 @@ export class PaymentMethodPage extends React.Component {
 
                                 </View>
 
-                                <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailInformationOrder')}>
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailInformationOrder')}>
+                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
+
+                                    </View>
+                                </TouchableOpacity>
 
 
 

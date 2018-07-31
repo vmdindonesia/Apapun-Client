@@ -20,7 +20,7 @@ export class DetailInformationOrderPage extends React.Component {
 
     render() {
         return (
-            <View style={{ width: '100%', height: '100%' }}>
+            <View style={{ flex: 1 }}>
                 <ScrollView>
                     <View style={styles.container}>
                         <Text style={{ fontFamily: 'Quicksand-Bold' }}>Pesanan: 171227155OPQ</Text>

@@ -26,7 +26,7 @@ export class ProfileBuyerPage extends React.Component {
                 </TouchableOpacity>
 
                 <ImageBackground
-                    source={require('./../assets/images/background_profile.jpeg')}
+                    source={require('./../assets/images/background_profile_compressed.jpeg')}
                     style={styles.backgroundStyle}
                 >
 
@@ -177,7 +177,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        <View style={styles.containerSecondForm}>
+                        {/* <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -216,11 +216,11 @@ export class ProfileBuyerPage extends React.Component {
 
                             </View>
 
-                        </View>
+                        </View> */}
 
 
 
-                        <View style={styles.containerThirdForm}>
+                        {/* <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -261,7 +261,7 @@ export class ProfileBuyerPage extends React.Component {
                                     </Text>
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
 
 
                         <View style={styles.containerTh}>
@@ -434,12 +434,12 @@ const styles = StyleSheet.create({
         // zIndex: 2
     },
     butin: {
-        zIndex: 1,
-        marginTop: -50,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // zIndex: 1,
+        // marginTop: -50,
+        // justifyContent: 'center',
+        // alignItems: 'center',
         height: 90,
-        width: 410
+        // width: 410
     }
 });
 

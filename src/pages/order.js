@@ -613,11 +613,13 @@ export class OrderPage extends React.Component {
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >
-                <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+                <View style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop: 10 }}>
+                    <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15, flex: 1, marginTop: 10, paddingLeft: 5 }}>Nama Produk</Text>
                     <ContainerSection>
                         <Input
                             placeholder='Nama Produk'
-                            label='Nama Produk'
+                            // label='Nama Produk'
+                            color='black'
                             value={nameProduct}
                             onChangeText={v => this.onChange('nameProduct', v)}
                         />
@@ -641,7 +643,7 @@ export class OrderPage extends React.Component {
                     </ContainerSection>
                 </View>
 
-                <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
+                <Text style={[styles.pickerTextStyle, { marginLeft: 15, marginTop: 7 }]}>Upload Design Anda</Text>
                 <ContainerSection>
                     {
                         this.state.photoTemp.length === 0 ?
@@ -663,7 +665,7 @@ export class OrderPage extends React.Component {
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/Material.png')} />
                                                 <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                             </View>
                                         </TouchableOpacity>
@@ -716,7 +718,7 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
                         <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Jumlah yang dipesan :</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Jumlah yang dipesan :</Text>
                             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
                                 <TouchableOpacity
                                     onPress={() => this.minusNumber()}
@@ -879,7 +881,7 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', paddingTop: 5 }}>
                         <View style={{}}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold' }}>Catatan Tambahan </Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Catatan Tambahan </Text>
                         </View>
                         <View style={{ alignSelf: 'center' }}>
                             <TouchableOpacity onPress={() => this.setState({ notice: !this.state.notice })}>
@@ -1007,11 +1009,11 @@ const styles = StyleSheet.create({
     },
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',
-        color: '#5e5e5e',
+        color: 'black',
         fontSize: 15,
         flex: 1,
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: 7,
+        marginBottom: 7
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
