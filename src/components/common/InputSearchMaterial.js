@@ -46,7 +46,7 @@ class InputSearchMaterial extends Component {
 				}
 
 				<View style={{ ...styles.formWrapper, ...((editable === false) ? styles.lockedForm : {}), ...((this.state.isFocus === true) ? styles.onFocus : {}) }}>
-					<Image source={require('./../../assets/images/ic_search.png')} style={{ width: 22, height: 22, marginLeft: 5, borderRadius: 50000000 }} />
+					<Image source={require('./../../assets/images/ic_search.jpg')} style={{ width: 22, height: 22, marginLeft: 5, borderRadius: 50000000 }} />
 					<TextInput
 						secureTextEntry={secureTextEntry}
 						placeholder={placeholder}
