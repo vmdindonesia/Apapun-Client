@@ -782,7 +782,10 @@ export class OrderPage extends React.Component {
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => this.setModalVisible()}
+                                            onPress={() => 
+                                                // this.setModalVisible()
+                                                this.props.navigation.navigate('Material')
+                                            }
                                             // onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}
                                             style={styles.button}
                                         >
@@ -912,76 +915,6 @@ export class OrderPage extends React.Component {
                 <ContainerSection>
                     {this.renderButton()}
                 </ContainerSection>
-
-
-                <View style={{ marginTop: 70 }}>
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={this.state.isModalVisible}
-                        onRequestClose={() => {
-                            alert('Modal has been closed.');
-                        }}>
-
-                        <View style={{ marginTop: 50 }}>
-                            <View style={{ width: '100%', height: '100%', backgroundColor: '#ffffff', alignSelf: 'center' }}>
-
-                                <View style={{
-                                    width: '90%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
-                                }}>
-                                    < InputSearch style={{ flex: 1 }}
-                                        // onFocus={() => navigate('FilterBefore')}
-                                        placeholder="Cari Material"
-                                        icon="ic_search"
-                                    />
-                                </View>
-
-                                <View style={{ flex: 1, flexDirection: 'row', borderBottomColor: 'black', }}>
-                                    <View style={{ flex: 1, marginTop: 5, marginLeft: 20 }}>
-                                        <FlatList
-                                            data={dataMaterial}
-                                            extraData={this.state}
-                                            renderItem={({ item, index }) => this.renderMaterial(item, index)}
-                                            showsHorizontalScrollIndicator={false}
-                                        />
-                                    </View>
-
-                                    <View style={{ flex: 3 }}>
-                                        {
-                                            firstmaterial === true ?
-                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', marginTop: 5 }}>
-                                                    <FlatList
-                                                        data={dataSubMaterial}
-                                                        extraData={this.state}
-                                                        renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
-                                                    />
-                                                </View>
-                                                :
-                                                <View style={{ flex: 1, borderBottomColor: '#e5e5e5', paddingTop: '20%' }}>
-                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Silahkan pilih material</Text>
-                                                </View>
-                                        }
-                                    </View>
-                                </View>
-
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.setModalVisible(!this.state.isModalVisible);
-                                    }}>
-                                    <View style={{ alignSelf: 'center', height: 40, width: '100%', justifyContent: 'center', borderTopWidth: 1.5, borderTopColor: '#e5e5e5' }}>
-
-                                        <Text style={{
-                                            fontWeight: 'bold',
-                                            color: 'red',
-                                            fontFamily: 'Quicksand-Regular',
-                                            textAlign: 'center'
-                                        }}>OK</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                    </Modal>
-                </View>
             </ScrollView >
         );
     }
