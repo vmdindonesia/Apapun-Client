@@ -27,7 +27,8 @@ export class MaterialPage extends React.Component {
             searchMaterial: '',
             dataMaterial: '',
             dataSelectMaterial: '',
-            dataCheckBoxSubMaterial: []
+            dataCheckBoxSubMaterial: [],
+            dataSubMaterial: ''
         }
     }
 
@@ -37,17 +38,21 @@ export class MaterialPage extends React.Component {
 
     onChangeMaterial = (name, value) => {
         console.log(value, 'AWODOAWKDO');
-        this.setState({ [name]: value.materialName }, () => {
-            axios.get(`${IPSERVER}/ApapunSubmaterials`, {
-                params: {
-                    'materialId': value.materialId
-                }
-            }).then(response => {
-                console.log(response, 'Data Material');
-                this.setState({ dataSubMaterial: response.data })
-            }).catch(error => {
-                console.log(error, 'Error Data Sub Material');
-            })
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name], 'SET STATE');
+            this.getSubMaterial(value);
+        })
+    }
+
+    getSubMaterial(value) {
+        console.log(value, 'Material Id');
+        this.setState({ dataSubMaterial: '' })
+        const materialId = value;
+        axios.post(`${IPSERVER}/ApapunSubmaterials/GetSubMaterialByMaterialId/`, materialId).then(response => {
+            console.log(response, 'Data Sub Material');
+            this.setState({ dataSubMaterial: response.data })
+        }).catch(error => {
+            console.log(error, 'Error Data Sub Material');
         })
     }
 
@@ -160,13 +165,22 @@ export class MaterialPage extends React.Component {
                     borderRadius: 30,
                     marginTop: 10
                 }}
-                // onPress={() => this.onValidation()}
                 onPress={() => this.props.navigation.goBack()}
 
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>OK</Text>
             </Button>
         )
+    }
+
+    renderMaterial = () => {
+        const material = this.state.dataMaterial;
+        if (material) {
+            return material.map((data, index) => {
+                return <Picker.Item label={data.materialName} value={data.materialId} key={index} />
+            })
+        }
+        return <Picker.Item label='Tidak ada Material' value='0' />
     }
 
     render() {
@@ -221,32 +235,32 @@ export class MaterialPage extends React.Component {
                                         selectedValue={dataSelectMaterial}
                                         onValueChange={v => this.onChangeMaterial('dataSelectMaterial', v)}
                                     >
-                                        {
-                                            dataMaterial ?
-                                                dataMaterial.map((data, index) => {
-                                                    console.log(data, 'DATAXXXX')
-                                                    return <Picker.Item label={data.materialName} value={data} key={index} />
-                                                })
-                                                :
-                                                <Picker.Item label='Tidak ada Kategori' value='0' />
-                                        }
+                                        <Picker.Item label='Pilih Alamat Pengiriman' value='0' />
+                                        {this.renderMaterial()}
                                     </Picker>
                                 </View>
                             </View>
                         </ContainerSection>
-                        <ContainerSection>
-                            <View style={{ width: '100%', marginTop: 10 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Sub - Material</Text>
-                                <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderWidth: 1, marginTop: 10 }}>
-                                    <FlatList
-                                        data={dataSubMaterial}
-                                        extraData={this.state}
-                                        renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
-                                        showsHorizontalScrollIndicator={false}
-                                    />
-                                </View>
-                            </View>
-                        </ContainerSection>
+
+                        {
+                            dataSubMaterial ?
+                                <ContainerSection>
+                                    <View style={{ width: '100%', marginTop: 10 }}>
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Sub - Material</Text>
+                                        <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderWidth: 1, marginTop: 10 }}>
+                                            <FlatList
+                                                data={dataSubMaterial}
+                                                extraData={this.state}
+                                                renderItem={({ item, index }) => this.renderSubMaterial(item, index)}
+                                                showsHorizontalScrollIndicator={false}
+                                            />
+                                        </View>
+                                    </View>
+                                </ContainerSection>
+                                :
+                                <View />
+                        }
+
                         <ContainerSection>
                             {this.renderButton()}
                         </ContainerSection>

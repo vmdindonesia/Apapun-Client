@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavigationActions, StackActions } from 'react-navigation';
-import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
+import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
@@ -28,7 +28,6 @@ export class OrderPage extends React.Component {
 
         this.state = {
             loading: false,
-            isModalVisible: false,
             userId: '',
             nameProduct: '',
             categoryProduct: '',
@@ -58,31 +57,8 @@ export class OrderPage extends React.Component {
         }
     }
 
-
-
-
-    checkedSubMaterial(data) {
-        console.log(data, 'Data Checked');
-        const { dataCheckBoxSubMaterial } = this.state;
-        if (!dataCheckBoxSubMaterial.includes(data)) {
-            this.setState({
-                dataCheckBoxSubMaterial: [...dataCheckBoxSubMaterial, data]
-            });
-            console.log('CHECKLIST');
-        } else {
-            this.setState({
-                dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
-            });
-            console.log('UNCHECKLIST');
-        }
-    }
-
-
-    setModalVisible(visible) {
-        this.setState({ isModalVisible: visible })
-    }
-
     componentDidMount() {
+        console.log(this.props.navigation.state.params, 'Params Page Order');
         axios.get(`${IPSERVER}/ApapunKategoris`)
             .then(response => {
                 console.log(response.data, 'Response Kategori');
@@ -96,14 +72,6 @@ export class OrderPage extends React.Component {
                     axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
                         console.log(response, 'Response Address')
                         this.setState({ dataAddress: response.data });
-
-                        axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
-                            console.log(response, 'Response Address')
-                            this.setState({ dataMaterial: response.data });
-                        }).catch(error => {
-                            console.log(error, 'Error Address');
-                        })
-
                     }).catch(error => {
                         console.log(error, 'Error Address');
                         return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
@@ -151,14 +119,6 @@ export class OrderPage extends React.Component {
         this.setState({
             numberPcs: parseInt(this.state.numberPcs) + 1
         });
-    }
-
-    deleteMaterial(data) {
-        const { dataCheckBoxSubMaterial } = this.state;
-        this.setState({
-            dataCheckBoxSubMaterial: dataCheckBoxSubMaterial.filter(a => a !== data)
-        });
-        console.log('UNCHECKLIST');
     }
 
     onValidation() {
@@ -414,54 +374,6 @@ export class OrderPage extends React.Component {
                 console.log(error, 'Error Upload Poto');
             })
         });
-    }
-
-    requestSubMaterial(idMaterial, nameMaterial) {
-        console.log(idMaterial, 'Id Material');
-        const materialId = idMaterial;
-        axios.get(`${IPSERVER}/ApapunSubmaterials`, {
-            params: {
-                'materialId': materialId
-            }
-        }).then(response => {
-            console.log(response, 'Data Material');
-            this.setState({ dataSubMaterial: response.data })
-        }).catch(error => {
-            console.log(error, 'Error Data Sub Material');
-        })
-    }
-
-    renderMaterial = (itemMaterial, index) => {
-        // console.log(itemMaterial, 'Item Material');
-        const { firstmaterial } = this.state;
-        return (
-            <View>
-                <TouchableOpacity
-                    onPress={() => this.setState({ firstmaterial: !firstmaterial }, () => { this.requestSubMaterial(itemMaterial.materialId, itemMaterial.materialName) })}
-                >
-                    {/* style={itemMaterial.materialId === itemMaterial.materialId ? { backgroundColor: 'red', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' } : { backgroundColor: 'transparent', fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }} */}
-                    <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold' }}>{itemMaterial.materialName}</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-
-    renderSubMaterial = (itemSubMaterial, index) => {
-        const { dataCheckBoxSubMaterial } = this.state;
-        return (
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 4 }}>
-                    <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.materialName.length >= 20 ? `${itemSubMaterial.materialName.substring(0, 20)}...` : `${itemSubMaterial.materialName}`}</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-                    <CheckBox
-                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'green', }}
-                        checked={dataCheckBoxSubMaterial.includes(itemSubMaterial)}
-                        onPress={() => this.checkedSubMaterial(itemSubMaterial)}
-                    />
-                </View>
-            </View>
-        );
     }
 
     renderSelectedMaterial(item, index) {
@@ -782,11 +694,9 @@ export class OrderPage extends React.Component {
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => 
-                                                // this.setModalVisible()
+                                            onPress={() =>
                                                 this.props.navigation.navigate('Material')
                                             }
-                                            // onPress={() => { return ToastAndroid.show('Material Under Development', ToastAndroid.SHORT) }}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -802,7 +712,7 @@ export class OrderPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => this.setModalVisible()}
+                                            onPress={() => this.props.navigation.navigate('Material')}
                                             style={styles.buttonsMaterial}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -824,24 +734,6 @@ export class OrderPage extends React.Component {
                                             numColumns={3}
                                         />
                                     }
-                                    {/* {
-                                        dataCheckBoxSubMaterial && dataCheckBoxSubMaterial.map(item =>
-                                            <ContainerSection>
-                                                <View style={styles.buttonMaterial}>
-                                                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
-                                                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
-                                                        <TouchableOpacity
-                                                            onPress={() => this.deleteMaterial(item)}
-                                                        >
-                                                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
-
-                                                        </TouchableOpacity>
-                                                    </View>
-                                                </View>
-                                            </ContainerSection>
-                                        )
-                                    } */}
-
                                 </View>
                             </View>
                     }

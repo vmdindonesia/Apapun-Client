@@ -97,6 +97,7 @@ import { onClickProductOnIdeaFashionPage } from './pages/onClickProductOnIdeaFas
 import { detailsendingIdeaPage } from './pages/detailSendingProductIdeaFashion';
 import { searchCrafterIdeaMarketPage } from './pages/searchCrafterIdeaMarket';
 import { MyOrderIdeaPage } from './pages/myOrderIdea';
+import { MaterialPage } from './pages/material';
 
 console.disableYellowBox = true;
 
@@ -121,10 +122,12 @@ const Routes = createStackNavigator({
   Order: {
     screen: OrderPage
   },
+  Material: {
+    screen: MaterialPage
+  },
   MyOrder: {
     screen: MyOrderPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
@@ -143,20 +146,15 @@ const Routes = createStackNavigator({
   Crafter: {
     screen: CrafterPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-
   HelpMenu: {
     screen: HelpMenuPage
   },
-
   Dashboard: {
     screen: DashboardPage
   },
-
-
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
   },
@@ -171,7 +169,7 @@ const Routes = createStackNavigator({
     screen: OrderOnMyOrderPage
   },
 
- 
+
   IdeaFashion: {
     screen: IdeaFashionPage
   },
