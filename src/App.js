@@ -110,6 +110,37 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  Dashboard: {
+    screen: DashboardPage
+  },
+  DesignSaya: {
+    screen: DesignSayaPage
+  },
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+
+
+  detailsendingIdeaPage: {
+    screen: detailsendingIdeaPage
+  },
+
   StartScreen: {
     screen: StartScreen
   },
@@ -158,16 +189,6 @@ const Routes = createStackNavigator({
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
-
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
-  },
 
 
   IdeaFashion: {
@@ -182,9 +203,7 @@ const Routes = createStackNavigator({
   MyOrderIdea: {
     screen: MyOrderIdeaPage
   },
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
-  },
+
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
@@ -239,9 +258,7 @@ const Routes = createStackNavigator({
   editNoteOnCrafterMenu: {
     screen: editNoteOnCrafterMenuPage
   },
-  PageDesign: {
-    screen: PageDesignPage
-  },
+
   ProductDetailNya: {
     screen: ProductDetailNyaPage
   },
@@ -307,10 +324,6 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-
-
-
-
   CrafterList: {
     screen: CrafterListPage
   },
@@ -387,13 +400,8 @@ const Routes = createStackNavigator({
     screen: SettingManuPage
   },
 
-  IdeaMarket: {
-    screen: IdeaMarketPage
-  },
 
-  DesignSaya: {
-    screen: DesignSayaPage
-  },
+
   ReviewProduct: {
     screen: ReviewProductPage
   },
