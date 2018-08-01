@@ -34,6 +34,7 @@ export class MenuCrafterPage extends React.Component {
 
     render() {
         // const { imageExpanded, noteExpanded, reviewExpanded, accBankExpanded, myOrderExpanded } = this.state;
+
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
@@ -135,7 +136,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProductDetail')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('crafterMenuListOrder')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
