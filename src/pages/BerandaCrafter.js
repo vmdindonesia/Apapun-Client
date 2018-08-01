@@ -166,7 +166,8 @@ export class BerandaCrafterPage extends React.Component {
                                 height: '10%',
                                 width: '20%'
                             }}>
-                                <TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                onPress={() => this.props.navi.navigate('')}>
                                     <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15, }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
@@ -254,4 +255,3 @@ const styles = StyleSheet.create({
 });
 
 export default BerandaCrafterPage;
-
