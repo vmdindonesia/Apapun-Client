@@ -115,20 +115,31 @@ const Routes = createStackNavigator({
   IntroApp: {
     screen: IntroAppPage
   },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
+
   ForgotPassword: {
     screen: ForgotPasswordPage
   },
   Login: {
     screen: LoginPage
   },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
+
   MenuLogin: {
     screen: MenuLoginPage
   },
   Dashboard: {
     screen: DashboardPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
   },
   DesignSaya: {
     screen: DesignSayaPage
@@ -142,6 +153,7 @@ const Routes = createStackNavigator({
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
   },
+
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -157,9 +169,7 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
+
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
   },
@@ -181,9 +191,7 @@ const Routes = createStackNavigator({
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
+
   Captureandget: {
     screen: CaptureandgetPage
   },
