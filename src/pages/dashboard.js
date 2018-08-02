@@ -541,7 +541,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/fashion_crafter.png')}
+																					source={require('./../assets/images/sidemenu/fashion_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -555,7 +555,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/diy_crafter.png')}
+																					source={require('./../assets/images/sidemenu/diy_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -572,7 +572,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/furniture_crafter.png')}
+																					source={require('./../assets/images/sidemenu/furniture_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -587,7 +587,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/beauty_crafter.png')}
+																					source={require('./../assets/images/sidemenu/beauty_Crafter.png')}
 																				/>
 																			</View >
 																			<View style={{ flex: 1 }}>
@@ -867,7 +867,7 @@ export class DashboardPage extends React.Component {
 																								>
 																									<Image
 																										style={[styles.iconProfile, { marginBottom: 15 }]}
-																										source={require('./../assets/images/edit_profil.png')}
+																										source={require('./../assets/images/sidemenu/edit_profile.png')}
 																									/>
 																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
 																								</TouchableOpacity>
@@ -885,7 +885,7 @@ export class DashboardPage extends React.Component {
 																									}>
 																									<Image
 																										style={[styles.iconProfile, { marginBottom: 15 }]}
-																										source={require('./../assets/images/logout.png')}
+																										source={require('./../assets/images/sidemenu/logout.png')}
 																										resizeMode='contain'
 																									/>
 																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
