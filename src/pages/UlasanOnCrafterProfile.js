@@ -120,7 +120,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                                 alignSelf: 'center'
                             }}
                             resizeMode='stretch'
-                            source={require('./../assets/images/Sempurna.png')}
+                            source={require('./../assets/images/sempurna.png')}
                         />
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 11 }}>Sempurna</Text>
 
@@ -198,7 +198,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                                         marginLeft : 15
                                     }}
                                     resizeMode='stretch'
-                                    source={require('./../assets/images/Sempurna.png')}
+                                    source={require('./../assets/images/sempurna.png')}
                                 />
                             </View>
                         </View>
