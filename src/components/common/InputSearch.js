@@ -71,7 +71,7 @@ class InputSearch extends Component {
 							<TouchableOpacity
 								// onPress={() => this.isCancel(value)}
 							>
-								<Image source={require('./../../assets/images/ic_search.png')} style={{ width: 33, height: 33, marginRight: 5, borderRadius: 50000000 }} />
+								<Image source={require('./../../assets/images/ic_search.jpg')} style={{ width: 33, height: 33, marginRight: 5, borderRadius: 50000000 }} />
 							</TouchableOpacity>
 							: <View />
 					}

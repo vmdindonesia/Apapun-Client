@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
+import { Container, ContainerSection, Button, Input, InputDate, InputSearch } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from '../shared/config';
 import SwitchToggle from 'react-native-switch-toggle';
 import { Card, CheckBox } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 
 export class PaymentMethodPage extends React.Component {
@@ -25,13 +26,50 @@ export class PaymentMethodPage extends React.Component {
         this.state = {
             CreditCardPayment: false,
             BankTransferPayment: false,
-            toggleSecureSave: false
+            toggleSecureSave: false,
+            checkedBCA: true,
+            checkedBNI: false,
+            checkedMandiri: false,
+            outdateCreditCard: false,
+            viewOutDate: '',
+            pickOutDate: ''
         };
+    }
+
+    checkBCA = () => {
+        this.setState({ checkedBCA: true, checkedBNI: false, checkedMandiri: false })
+    }
+
+    checkedBNI = () => {
+        this.setState({ checkedBNI: !this.state.checkedBNI, checkedBCA: false, checkedMandiri: false })
+    }
+
+    checkMandiri = () => {
+        this.setState({ checkedMandiri: !this.state.checkedMandiri, checkedBCA: false, checkedBNI: false })
     }
 
     onPressSecureSave = () => {
         this.setState({ toggleSecureSave: !this.state.toggleSecureSave });
     }
+
+    showOutDateFocus = () => this.setState({ outdateCreditCard: true });
+
+    hideOutDateCreditCard = () => this.setState({ outdateCreditCard: false });
+
+    handleOutDateCreditCard = (date) => {
+        console.log(date, 'Date Nya DP')
+        const dateTemp = moment(date).format('YYYY-MM-DD h:mm:ss');
+        const dateNow = moment(date).format('DD/MM/YYYY');
+        this.setState({ viewOutDate: dateNow, pickOutDate: dateTemp })
+        this.hideOutDateCreditCard();
+    };
+
+    onChangeInput = (name, v) => {
+        this.setState({ [name]: v }, () => {
+            console.log(this.state[name], 'Out Date');
+        });
+    }
+
 
     StatusPayment = (value) => {
         console.log(value, 'Value')
@@ -52,7 +90,11 @@ export class PaymentMethodPage extends React.Component {
 
         const {
             CreditCardPayment,
-            BankTransferPayment
+            BankTransferPayment,
+            checkedBCA,
+            checkedBNI,
+            checkedMandiri,
+            viewOutDate,
         } = this.state
 
         return (
@@ -202,10 +244,22 @@ export class PaymentMethodPage extends React.Component {
                                         <View style={{ flex: 1 }}>
                                             <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, }}>Tanggal Kadaluarsa</Text>
                                             <ContainerSection>
-                                                <Input
+                                                <InputDate
                                                     placeholder=''
+                                                    value={viewOutDate}
+                                                    onChangeText={v => this.onChangeInput('viewOutDate', v)}
+                                                    onFocus={() => {
+                                                        this.showOutDateFocus()
+                                                    }}
                                                 />
                                             </ContainerSection>
+                                            <DateTimePicker
+                                                datePickerModeAndroid='spinner'
+                                                isVisible={this.state.outdateCreditCard}
+                                                onConfirm={this.handleOutDateCreditCard}
+                                                onCancel={this.hideOutDateCreditCard}
+                                                // maximumDate="2020"
+                                            />
                                         </View>
                                         <View style={{ flex: 1 }}>
                                             <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, }}>CCV/CCV</Text>
@@ -300,12 +354,13 @@ export class PaymentMethodPage extends React.Component {
                                     </View>
                                 </View>
 
-                                <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
+                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
+
+                                    </View>
+                                </TouchableOpacity>
 
                             </View>
                             :
@@ -346,11 +401,11 @@ export class PaymentMethodPage extends React.Component {
 
                                     <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center' }}>
 
-                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', }}>
+                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 20 }}>
                                             <CheckBox
                                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-
-                                                checked={false}
+                                                onPress={() => this.checkBCA()}
+                                                checked={checkedBCA}
                                             />
                                         </View>
 
@@ -362,11 +417,11 @@ export class PaymentMethodPage extends React.Component {
                                             />
                                         </View>
 
-                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', }}>
+                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 20 }}>
                                             <CheckBox
                                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-
-                                                checked={false}
+                                                onPress={() => this.checkedBNI()}
+                                                checked={checkedBNI}
                                             />
                                         </View>
 
@@ -381,19 +436,19 @@ export class PaymentMethodPage extends React.Component {
 
                                     </View>
 
-                                    <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center' }}>
+                                    <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center', paddingLeft: 20 }}>
 
                                         <View style={{ width: '14%', height: '100%', flexDirection: 'row', }}>
                                             <CheckBox
                                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-
-                                                checked={true}
+                                                onPress={() => this.checkMandiri()}
+                                                checked={checkedMandiri}
                                             />
                                         </View>
 
-                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center', paddingRight: 20 }}>
                                             <Image
-                                                style={{ width: 110, height: 65, alignSelf: 'center' }}
+                                                style={{ width: 110, height: 65, alignSelf: 'center', }}
                                                 source={require('./../assets/images/ic_Mandiri.jpg')}
                                                 resizeMode='contain'
                                             />
@@ -411,11 +466,39 @@ export class PaymentMethodPage extends React.Component {
                                         <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>APAPUN Indoensia</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
-                                        <Image
-                                            style={{ width: 90, height: 55, alignSelf: 'center' }}
-                                            source={require('./../assets/images/ic_Mandiri.jpg')}
-                                            resizeMode='contain'
-                                        />
+
+                                        {
+                                            checkedBCA === true ?
+                                                <Image
+                                                    style={{ width: 90, height: 55, alignSelf: 'center' }}
+                                                    source={require('./../assets/images/ic_BCA.jpg')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                <Image />
+                                        }
+                                        {
+                                            checkedBNI === true ?
+                                                <Image
+                                                    style={{ width: 90, height: 50, alignSelf: 'center' }}
+                                                    source={require('./../assets/images/ic_BNI.jpg')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                <Image />
+                                        }
+
+                                        {
+                                            checkedMandiri === true ?
+                                                <Image
+                                                    style={{ width: 90, height: 55, alignSelf: 'center' }}
+                                                    source={require('./../assets/images/ic_Mandiri.jpg')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                <Image />
+                                        }
+
                                     </View>
                                 </View>
 
@@ -425,7 +508,9 @@ export class PaymentMethodPage extends React.Component {
                                         <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>123  456 7899</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
-                                        <Text style={{ color: 'red', fontSize: 15 }}>COPY</Text>
+                                        <TouchableOpacity>
+                                            <Text style={{ color: 'red', fontSize: 15 }}>COPY</Text>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
 
@@ -435,7 +520,9 @@ export class PaymentMethodPage extends React.Component {
                                         <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Rp. 860.000</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row', }}>
-                                        <Text style={{ color: 'red', fontSize: 15 }}>COPY</Text>
+                                        <TouchableOpacity>
+                                            <Text style={{ color: 'red', fontSize: 15 }}>COPY</Text>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
 
@@ -446,12 +533,13 @@ export class PaymentMethodPage extends React.Component {
 
                                 </View>
 
-                                <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
-                                    <TouchableOpacity>
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailInformationOrder')}>
+                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', }}>BAYAR</Text>
+
+                                    </View>
+                                </TouchableOpacity>
 
 
 

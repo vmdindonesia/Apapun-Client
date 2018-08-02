@@ -53,7 +53,7 @@ export class IdeaFashionPage extends React.Component {
                             />
                         </View>
 
-                        <TouchableOpacity
+                        <TouchableWithoutFeedback
                             onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
                             <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
@@ -81,7 +81,7 @@ export class IdeaFashionPage extends React.Component {
                                     }
                                 </View>
                             </View>
-                        </TouchableOpacity>
+                        </TouchableWithoutFeedback>
 
                         {
                             ManUp === true ?
@@ -90,8 +90,8 @@ export class IdeaFashionPage extends React.Component {
 
                                     <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
                                         <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
-                                            <TouchableOpacity
-                                                onPress={() => this.props.navigation.navigate('onClickProductOnIdeaFashion')}
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListTshirt')}
                                             >
                                                 <Image
                                                     style={{
@@ -104,14 +104,14 @@ export class IdeaFashionPage extends React.Component {
                                                     source={require('./../assets/images/kaos.jpg')}
                                                     resizeMode='stretch'
                                                 />
-                                            </TouchableOpacity>
+                                            </TouchableWithoutFeedback>
                                         </View>
                                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kaos</Text>
                                     </View>
 
                                     <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
                                         <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
-                                            <TouchableOpacity
+                                            <TouchableWithoutFeedback
                                                 onPress={() => this.props.navigation.navigate('ListKemeja')}
                                             >
                                                 <Image
@@ -125,14 +125,14 @@ export class IdeaFashionPage extends React.Component {
                                                     source={require('./../assets/images/kemeja.jpg')}
                                                 // resizeMode='contain'
                                                 />
-                                            </TouchableOpacity>
+                                            </TouchableWithoutFeedback>
                                         </View>
                                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kemeja</Text>
                                     </View>
 
                                     <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
                                         <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
-                                            <TouchableOpacity
+                                            <TouchableWithoutFeedback
                                                 onPress={() => this.props.navigation.navigate('ListHoodie')}
                                             >
                                                 <Image
@@ -146,7 +146,7 @@ export class IdeaFashionPage extends React.Component {
                                                     source={require('./../assets/images/hoodie.jpg')}
                                                 // resizeMode='contain'
                                                 />
-                                            </TouchableOpacity>
+                                            </TouchableWithoutFeedback>
                                         </View>
                                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Hoodie</Text>
                                     </View>
@@ -157,7 +157,7 @@ export class IdeaFashionPage extends React.Component {
 
                         }
 
-                        <TouchableOpacity
+                        <TouchableWithoutFeedback
                         // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
                             <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
@@ -185,9 +185,9 @@ export class IdeaFashionPage extends React.Component {
                                     }
                                 </View>
                             </View>
-                        </TouchableOpacity>
+                        </TouchableWithoutFeedback>
 
-                        <TouchableOpacity
+                        <TouchableWithoutFeedback
                         // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
                             <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
@@ -215,7 +215,7 @@ export class IdeaFashionPage extends React.Component {
                                     }
                                 </View>
                             </View>
-                        </TouchableOpacity>
+                        </TouchableWithoutFeedback>
 
 
 

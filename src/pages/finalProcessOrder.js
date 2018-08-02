@@ -38,7 +38,7 @@ export class FinalProcessOrderPage extends React.Component {
                         <Text style={[styles.bodyText, { color: 'red' }]}> daftar pesanan</Text>
                         </Text>
                     </View>
-                    <View style={{ width: '100%', height: '20%'}}>
+                    <View style={{ width: '100%', height: '20%' }}>
                         <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 20 }}>Follow Kami</Text>
                         <View style={{ flexDirection: 'row', marginTop: 25, justifyContent: 'center' }}>
                             <View style={{ borderWidth: 1, borderRadius: 100, borderColor: 'white', backgroundColor: 'white', marginRight: 15 }}>
@@ -65,18 +65,19 @@ export class FinalProcessOrderPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerBtnHome: {
-        paddingTop: 30,
-        paddingLeft: 280,
-        alignItems: 'center',
-        height: '20%',
-        width: '100%'
+        justifyContent: 'center',
+        height: 10,
+        flex: 1,
+        // backgroundColor: 'red'
     },
     buttonHome: {
         backgroundColor: 'rgba(0,0,0,0.6)',
         borderRadius: 100,
         width: 50,
         height: 50,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignSelf: 'flex-end',
+        marginRight: 15
     },
     textMid: {
         fontFamily: 'Quicksand-Bold',

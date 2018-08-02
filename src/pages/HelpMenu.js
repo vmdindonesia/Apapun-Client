@@ -28,7 +28,7 @@ export class HelpMenuPage extends React.Component {
                         width: '100%',
                     }}>
                         <ImageBackground
-                            style={{ width: '100%', height: '100%' }}
+                            style={{ flex: 1 }}
                             source={require('./../assets/images/help_top_background.jpg')}
                             resizeMode='cover'
                         >

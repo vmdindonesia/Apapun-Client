@@ -20,7 +20,7 @@ export class DetailInformationOrderPage extends React.Component {
 
     render() {
         return (
-            <View style={{ width: '100%', height: '100%' }}>
+            <View style={{ flex: 1 }}>
                 <ScrollView>
                     <View style={styles.container}>
                         <Text style={{ fontFamily: 'Quicksand-Bold' }}>Pesanan: 171227155OPQ</Text>
@@ -92,7 +92,7 @@ export class DetailInformationOrderPage extends React.Component {
                                         source={require('./../assets/images/location_icon.png')}
                                     />
                                     <View style={{ flex: 1 }}>
-                                        <Text style={{ marginLeft: 10, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Indonesia, Kalimantan Selatan</Text>
+                                        <Text style={{ marginLeft: 10, fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Kalimantan Selatan</Text>
                                     </View>
                                 </View>
                                 <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>

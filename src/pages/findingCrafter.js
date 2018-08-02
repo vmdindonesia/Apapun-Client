@@ -64,14 +64,21 @@ export class FindingCrafterPage extends React.Component {
           <View style={{ flex: 1, backgroundColor: 'white' }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'myOrder' })}>
               <View style={screen === 'myOrder' ? tabContainerActive : tabContainer}>
-                <Image style={imageActive}
-                  source={screen === 'myOrder' ? require('./../assets/images/List_Red.png') : require('./../assets/images/List.png')}
-                />
+                {
+                  screen === 'myOrder' ?
+                    <Image style={imageActive}
+                      source={require('./../assets/images/List_Red.png')}
+                    />
+                    :
+                    <Image style={imageActive}
+                      source={require('./../assets/images/List.png')}
+                    />
+                }
                 <Text style={screen === 'myOrder' ? tabTextActive : tabText}>Pesanan Saya</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ borderColor: '#3484d7', borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
+          <View style={{ borderColor: '#ddd', borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
           <View style={{ flex: 1, backgroundColor: 'white' }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'crafter' })}>
               <View style={screen === 'crafter' ? tabContainerActive : tabContainer}>
@@ -105,17 +112,19 @@ const styles = StyleSheet.create({
   },
   tabText: {
     textAlign: 'center',
-    fontSize: 15
+    fontSize: 15,
+    paddingTop: 3
   },
   tabTextActive: {
     textAlign: 'center',
     fontSize: 15,
     fontFamily: 'Quicksand-Regular',
+    paddingTop: 3,
     color: 'red'
   },
   imageActive: {
     width: 25,
-    height: 25,
+    height: 26.5,
     alignSelf: 'center'
   }
 })

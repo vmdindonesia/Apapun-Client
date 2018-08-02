@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
-import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearch } from '../components/common';
+import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import axios from 'axios';
 import { IPSERVER } from '../shared/config';
-import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { CheckBox } from 'react-native-elements';
 
 export class CaptureandgetPage extends React.Component {
 
@@ -27,7 +28,7 @@ export class CaptureandgetPage extends React.Component {
 
         this.state = {
             loading: false,
-            modalVisible: false,
+            isModalVisible: false,
             userId: '',
             nameProduct: '',
             categoryProduct: '',
@@ -35,8 +36,8 @@ export class CaptureandgetPage extends React.Component {
             uploadDesign: [],
             nameFileImages: [],
             photoTemp: [],
+            photoTempCarousel: [],
             tempPhoto: false,
-
             notice: false,
             serveDelivery: '',
             addressDelivery: '',
@@ -45,36 +46,56 @@ export class CaptureandgetPage extends React.Component {
             unitQuantity: '',
             dataCategory: '',
             dataSubCategory: '',
-            dataAddress: ''
+            dataAddress: '',
+            propertyPhoto: [],
+            subCategory: [],
+            dataOrderResponse: ''
         }
     }
 
-    componentDidMount() {
-        axios.get(`${IPSERVER}/ApapunKategoris`)
-            .then(response => {
-                console.log(response.data, 'Response Kategori');
-                this.setState({ dataCategory: response.data });
-                AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
-                    console.log(JSON.parse(result), 'Data Login');
-                    const dataLog = JSON.parse(result);
-                    console.log(dataLog.userId, 'userID');
-                    const idUser = dataLog.userId;
-                    this.setState({ userId: idUser });
-                    axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
-                        console.log(response, 'Response Address')
-                        this.setState({ dataAddress: response.data })
-                    }).catch(error => {
-                        console.log(error, 'Error Address');
-                    })
-                });
-            }).catch(error => {
-                console.log(error, 'Error Kategori');
-            })
-    }
+
+
+
+
+
 
     setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
+        this.setState({ isModalVisible: visible })
     }
+
+    // componentDidMount() {
+    //     axios.get(`${IPSERVER}/ApapunKategoris`)
+    //         .then(response => {
+    //             console.log(response.data, 'Response Kategori');
+    //             this.setState({ dataCategory: response.data });
+    //             AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
+    //                 console.log(JSON.parse(result), 'Data Login');
+    //                 const dataLog = JSON.parse(result);
+    //                 console.log(dataLog.userId, 'userID');
+    //                 const idUser = dataLog.userId;
+    //                 this.setState({ userId: idUser });
+    //                 axios.post(`${IPSERVER}/ApapunUsersAddresses/getUserAddress`, { idUser }).then(response => {
+    //                     console.log(response, 'Response Address')
+    //                     this.setState({ dataAddress: response.data });
+
+    //                     axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+    //                         console.log(response, 'Response Address')
+    //                         this.setState({ dataMaterial: response.data });
+    //                     }).catch(error => {
+    //                         console.log(error, 'Error Address');
+    //                     })
+
+    //                 }).catch(error => {
+    //                     console.log(error, 'Error Address');
+    //                     return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+    //                 })
+    //             });
+    //         }).catch(error => {
+    //             console.log(error, 'Error Kategori');
+    //             return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+    //         })
+    // }
+
 
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
@@ -89,8 +110,13 @@ export class CaptureandgetPage extends React.Component {
     }
 
     minusNumber() {
-        console.log('Minus');
-        if (this.state.numberPcs === 0) {
+        console.log(this.state.numberPcs, 'Angka Minus');
+        if (this.state.numberPcs === '') {
+            this.setState({
+                numberPcs: 0
+            });
+        }
+        else if (this.state.numberPcs === 0) {
             this.setState({
                 numberPcs: this.state.numberPcs
             });
@@ -108,19 +134,21 @@ export class CaptureandgetPage extends React.Component {
         });
     }
 
+
+
     onValidation() {
         Keyboard.dismiss();
 
         const {
             nameProduct,
             categoryProduct,
-            uploadDesign,
+            photoTemp,
             serveDelivery,
             addressDelivery,
             numberPcs,
             unitQuantity
         } = this.state;
-
+        console.log(this.state, 'Data Order');
         switch (nameProduct) {
             case '':
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -131,7 +159,7 @@ export class CaptureandgetPage extends React.Component {
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
-                        const designPhoto = uploadDesign.length;
+                        const designPhoto = photoTemp.length;
                         switch (designPhoto) {
                             case 0:
                                 return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -146,18 +174,15 @@ export class CaptureandgetPage extends React.Component {
                                                 return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
                                             default:
                                                 switch (addressDelivery) {
-                                                    case '':
-                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     case 0:
                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
                                                         switch (unitQuantity) {
                                                             case '':
                                                                 return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
-                                                            case 0:
-                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
                                                                 return this.prosesOrder();
+                                                            // return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
                                                         }
                                                 }
                                         }
@@ -166,6 +191,7 @@ export class CaptureandgetPage extends React.Component {
                 }
         }
     }
+
 
     prosesOrder() {
         this.setState({ loading: true });
@@ -178,30 +204,83 @@ export class CaptureandgetPage extends React.Component {
             unitQuantity,
             serveDelivery,
             categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto,
         } = this.state;
 
         console.log(this.state);
+
+        var body = new FormData();
+        var request = new XMLHttpRequest();
+
+        this.state.photoTemp.map((item, index) => {
+            const nameFile = 'IMG_' + uuid.v1();
+            if (item.data === 1) {
+                var photo = {
+                    uri: item.uri,
+                    type: 'image/jpeg',
+                    name: nameFile.toUpperCase() + '.jpg'
+                };
+                body.append('photo', photo);
+            }
+        });
+        console.log(body, 'Body');
+
+        body._parts.map((item, index) => {
+            const itemNew = item.slice(1);
+            const newpropertyPhoto = this.state.propertyPhoto;
+            newpropertyPhoto[this.state.propertyPhoto.length] = itemNew;
+            this.setState({ propertyPhoto: newpropertyPhoto });
+        })
+
+        console.log(this.state.propertyPhoto, 'ITIL');
+
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                console.log('success', request.responseText);
+            } else {
+                console.warn('error', request);
+            }
+        };
+
         axios.post(`${IPSERVER}/ApapunOrders/CreateOrder`, {
             userId,
             nameProduct,
+            categoryProduct,
+            numberPcs,
+            serveDelivery,
             addressDelivery,
             catatanTambahan,
-            numberPcs,
             unitQuantity,
-            serveDelivery,
-            categoryProduct,
-            nameFileImages
+            photoTemp,
+            propertyPhoto,
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
-                this.setState({ loading: true });
+                request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                request.send(body);
+                console.log(response.data[0].idOrder, 'ID ORDER')
+                this.setState({ loading: false, propertyPhoto: [], dataOrderResponse: response.data[0].idOrder }, () => {
+                    console.log(this.state.dataOrderResponse, 'Response Order');
+                    const resetAction = StackActions.reset({
+                        index: 1,
+                        actions: [
+                            NavigationActions.navigate({ routeName: 'Dashboard' }),
+                            NavigationActions.navigate({ routeName: 'FindingCrafter', params: this.state.dataOrderResponse }),
+                        ],
+                    });
+                    this.props.navigation.dispatch(resetAction);
+                });
+                ToastAndroid.show('Sukses Membuat Pesanan', ToastAndroid.SHORT);
             }).catch(error => {
                 console.log(error, 'Error Order Proses');
-                this.setState({ loading: true });
-            })
-        this.setState({ loading: false });
-        return ToastAndroid.show('Sukses Order', ToastAndroid.SHORT);
+                this.setState({ loading: false, propertyPhoto: [] });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
     designPhotoUpload(name) {
@@ -227,47 +306,52 @@ export class CaptureandgetPage extends React.Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
-
+                let source = { uri: response.uri, data: 1 };
                 if (this.state.photoTemp.length === 0) {
-                    let pushFirst = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
+                    let pushFirst = {
+                        uri: `${IPSERVER}/ApapunStorages/assets/download/upload-image.png`,
+                        data: 2
+                    };
 
                     const newUriPhoto = this.state.photoTemp;
                     newUriPhoto[this.state.photoTemp.length] = source;
                     this.setState({ photoTemp: newUriPhoto }, () => {
-                        console.log(this.state.photoTemp, 'First Foto');
                         const newUriPhoto = this.state.photoTemp;
-                        newUriPhoto[this.state.photoTemp.length] = pushFirst;
+                        for (let i = 0; i < 4; i++) {
+                            newUriPhoto[this.state.photoTemp.length] = pushFirst;
+                        }
                         this.setState({ photoTemp: newUriPhoto }, () => {
-                            console.log(this.state.photoTemp, 'Second Foto');
                             return this.returnDesignPhoto();
                         });
                     });
                 } else {
-                    if (this.state.photoTemp.length < 5) {
-                        console.log(this.state.photoTemp.length, 'HOY');
-                        let pushSecond = { uri: 'http://www.jmkxyy.com/photography-icon-png/photography-icon-png-7.jpg' };
-
+                    console.log(this.state.photoTemp, 'Foto-Foto');
+                    const identify = this.state.photoTemp;
+                    if (identify[1].data === 2) {
+                        console.log('Foto Sama');
                         const newSplicePhoto = this.state.photoTemp;
-                        newSplicePhoto.splice(parseInt(this.state.photoTemp.length) - 1, parseInt(this.state.photoTemp.length) - 1);
-                        newSplicePhoto[this.state.photoTemp.length] = source;
+                        newSplicePhoto[1] = source;
                         this.setState({ photoTemp: newSplicePhoto }, () => {
-                            const newUriPhoto = this.state.photoTemp;
-                            newUriPhoto[this.state.photoTemp.length] = pushSecond;
-                            this.setState({ photoTemp: newUriPhoto }, () => {
-                                console.log(this.state.photoTemp, 'Splice & Re-Push Foto');
-                                return this.returnDesignPhoto();
-                            });
+                            console.log(this.state.photoTemp, 'Data Foto');
                         });
-                    } else {
-                        console.log(this.state.photoTemp.length, 'HYE');
-                        const newFiveSlice = this.state.photoTemp;
-                        newFiveSlice.splice(4, 4)
-                        newFiveSlice[this.state.photoTemp.length] = source;
-                        this.setState({ photoTemp: newFiveSlice }, () => {
-                            console.log(this.state.photoTemp, 'Splice & Re-Push & Last Foto');
+                    } else if (identify[2].data === 2) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[2] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
+                        });
+                    } else if (identify[3].data === 2) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[3] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
+                        });
+                    } else if (identify[4].data === 2) {
+                        const newSplicePhoto = this.state.photoTemp;
+                        newSplicePhoto[4] = source;
+                        this.setState({ photoTemp: newSplicePhoto }, () => {
+                            console.log(this.state.photoTemp, 'Data Foto');
                             this.setState({ tempPhoto: true })
-                            return this.returnDesignPhoto();
                         });
                     }
                 }
@@ -304,17 +388,18 @@ export class CaptureandgetPage extends React.Component {
         });
     }
 
+
+
     renderProductItem = (itemPhoto, index) => {
-        console.log(index, 'Index Poto');
         const { tempPhoto } = this.state
         return (
-            <View style={{ paddingRight: 5 }}>
+            <View key={index} style={{ marginRight: 5 }}>
                 {
                     tempPhoto === true ?
                         <Image
                             source={itemPhoto}
                             style={{ width: 85, height: 70 }}
-                            resizeMode='cover'
+                            resizeMode='contain'
                         />
                         :
                         <TouchableOpacity
@@ -323,7 +408,7 @@ export class CaptureandgetPage extends React.Component {
                             <Image
                                 source={itemPhoto}
                                 style={{ width: 85, height: 70 }}
-                                resizeMode='cover'
+                                resizeMode='contain'
                             />
                         </TouchableOpacity>
                 }
@@ -332,30 +417,27 @@ export class CaptureandgetPage extends React.Component {
     }
 
     returnDesignPhoto() {
-        console.log(this.state.photoTemp, 'XAXAXA');
         return (
             <View>
                 <FlatList
                     data={this.state.photoTemp}
                     extraData={this.state}
                     horizontal
-                    keyExtractor={(index) => index.uri}
                     renderItem={({ item, index }) => this.renderProductItem(item, index)}
                     showsHorizontalScrollIndicator={false}
                 />
-            </View>
+            </View >
         )
     }
 
     _renderItem = (item, index) => {
         const number = parseInt(item.index) + 1;
-        console.log(number, 'LPLPLPLPLP');
         return (
             <View>
                 <Image
                     source={item.item}
-                    style={{ width: sliderWidth, height: 200 }}
-                    resizeMode='stretch'
+                    style={{ width: '100%', height: 200 }}
+                    resizeMode='contain'
                 />
                 <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
                     <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
@@ -376,7 +458,6 @@ export class CaptureandgetPage extends React.Component {
 
     renderAddress = () => {
         const resultAddress = this.state.dataAddress;
-        console.log(resultAddress, 'Data Address');
         if (resultAddress) {
             return resultAddress.map((data, index) => {
                 return <Picker.Item label={data.type} value={data.addressId} key={index} />
@@ -410,7 +491,8 @@ export class CaptureandgetPage extends React.Component {
                     marginRight: '5%',
                     marginBottom: 20
                 }}
-                onPress={() => this.onValidation()}
+                // onPress={() => this.onValidation()}
+                onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>
@@ -426,10 +508,9 @@ export class CaptureandgetPage extends React.Component {
             addressDelivery,
             catatanTambahan,
             numberPcs,
-            unitQuantity
+            unitQuantity,
         } = this.state;
 
-        console.log(this.state.categoryProduct, 'OKOKOKOK');
         return (
             <ScrollView
                 style={styles.containerStyle}
@@ -437,10 +518,12 @@ export class CaptureandgetPage extends React.Component {
                 ref={ref => this.scrollView = ref}
             >
                 <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
+                    <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15, flex: 1, marginTop: 10, paddingLeft: 5 }}>Nama Produk</Text>
                     <ContainerSection>
                         <Input
                             placeholder='Nama Produk'
-                            label='Nama Produk'
+                            // label='Nama Produk'
+                            color='black'
                             value={nameProduct}
                             onChangeText={v => this.onChange('nameProduct', v)}
                         />
@@ -464,111 +547,121 @@ export class CaptureandgetPage extends React.Component {
                     </ContainerSection>
                 </View>
 
-                <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
-                    <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
-                </View>
-                <View style={{ flex: 1, marginLeft: 5, marginRight: 5 }}>
-                    <ContainerSection>
-                        {
-                            this.state.photoTemp.length === 0 ?
-                                <View style={{ flex: 1, height: 430, backgroundColor: 'grey', }}>
-                                    <Image
-                                        source={require('../assets/images/create-design.jpg')}
-                                        style={{ height: 600, width: '100%' }}
-                                        resizeMode='stretch'
-                                    />
-                                    <View style={{ flex: 1, flexDirection: 'row', position: 'absolute' }}>
-                                        <Text style={{ fontSize: 15, color: 'white', paddingTop: '45%', textAlign: 'center', justifyContent: 'center', fontFamily: 'Quicksand-Regular' }}>
-                                            Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
+                <Text style={[styles.pickerTextStyle, { marginLeft: 20, marginTop: 7 }]}>Upload Design Anda</Text>
+                <ContainerSection>
+                    {
+                        this.state.photoTemp.length === 0 ?
+                            <View style={{ flex: 1, height: 374, backgroundColor: 'grey', }}>
+                                <Image
+                                    source={require('../assets/images/create-design.jpg')}
+                                    style={{ height: '100%', width: '100%' }}
+                                    resizeMode='cover'
+                                />
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150 }}>
+                                    <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular', justifyContent: 'center' }}>
+                                        Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
                                     </Text>
-                                    </View>
-                                    <View style={{ flex: 1, position: 'absolute', marginTop: '90%', alignItems: 'center', alignSelf: 'center' }}>
-                                        <ContainerSection>
-                                            <TouchableOpacity
-                                                onPress={() => this.designPhotoUpload('tempUploadDesign')}
-                                                style={styles.button}
-                                            >
-                                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                    <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
-                                                    <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </ContainerSection>
-                                    </View>
                                 </View>
-                                :
-                                <View>
-                                    <Carousel
-                                        ref={(c) => { this._carousel = c; }}
-                                        data={this.state.photoTemp}
-                                        extraData={this.state}
-                                        renderItem={this._renderItem}
-                                        sliderWidth={sliderWidth}
-                                        itemWidth={itemWidth}
-                                    />
+                                <View style={{ flex: 1, position: 'absolute', top: 300, alignItems: 'center', alignSelf: 'center' }}>
+                                    <ContainerSection>
+                                        <TouchableOpacity
+                                            onPress={() => this.designPhotoUpload('tempUploadDesign')}
+                                            style={styles.button}
+                                        >
+                                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </ContainerSection>
                                 </View>
-                        }
-                    </ContainerSection>
-                </View>
+                            </View>
+                            :
+                            <View>
+                                {/* <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
+                                    <TouchableOpacity style={{ justifyContent: 'center' }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Image.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }} onPress={() => this.designPhotoUpload('tempUploadDesign')}>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
+                                        <Image
+                                            style={{ width: 20, height: 20 }}
+                                            source={require('./../assets/images/Trash.png')}
+                                            resizeMode='contain'
+                                        />
+                                    </TouchableOpacity>
+                                </View> */}
+                                <Carousel
+                                    ref={(c) => { this._carousel = c; }}
+                                    data={this.state.photoTemp}
+                                    extraData={this.state}
+                                    renderItem={this._renderItem}
+                                    sliderWidth={sliderWidth}
+                                    itemWidth={itemWidth}
+                                />
+                            </View>
+                    }
+                </ContainerSection>
                 {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
                             {this.returnDesignPhoto()}
+                            <Text style={{ flex: 1, textAlign: 'right', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingTop: 5 }}>Maksimal upload 5 gambar</Text>
                         </View>
+
                         :
                         <View style={{ marginBottom: 20 }} />
                 }
 
                 <ContainerSection>
-                    <View style={{ height: '100%', width: '100%', flexDirection: 'row', marginLeft: 10, marginRight: 10 }}>
-
-                        <View style={{ alignItems: 'center', height: '100%', flexDirection: 'row', width: 105, }}>
-                            <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular' }}>Jumlah Order :</Text>
+                    <View style={{ flex: 1, height: 100, marginLeft: 10, marginRight: 10 }}>
+                        <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Jumlah yang dipesan :</Text>
+                            <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+                                <TouchableOpacity
+                                    onPress={() => this.minusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/Minuss.png')}
+                                    />
+                                </TouchableOpacity>
+                                <View style={{ width: 60, height: 40 }}>
+                                    <InputNumber
+                                        style={{ alignSelf: 'center', textAlign: 'center' }}
+                                        value={numberPcs.toString()}
+                                        onChangeText={val => this.onChange('numberPcs', val)}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                                <TouchableOpacity
+                                    onPress={() => this.plusNumber()}
+                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                >
+                                    <Image
+                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
+                                        source={require('../assets/images/Pluss.png')}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.minusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/minus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={{ flexDirection: 'row', height: '100%', width: 100, marginLeft: 3, marginRight: 3, backgroundColor: 'green', borderRadius: 5 }}>
-                            <InputNumber
-                                style={{ alignSelf: 'center' }}
-                                value={numberPcs.toString()}
-                                onChangeText={val => this.onChange('numberPcs', val)}
-                                keyboardType='numeric'
-                            />
-                        </View>
-
-                        <View style={{ flexDirection: 'row', }}>
-                            <TouchableOpacity
-                                onPress={() => this.plusNumber()}
-                                style={{ margin: 5 }}
-                            >
-                                <Image
-                                    style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                    source={require('../assets/images/plus.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-
                         <View style={styles.pickerUnitStyle}>
                             <Picker
                                 selectedValue={unitQuantity}
                                 onValueChange={v => this.onChange('unitQuantity', v)}
                             >
+                                <Picker.Item label='Pilih' value='' />
                                 <Picker.Item label='Pcs' value='Pcs' />
                                 <Picker.Item label='Lusin' value='Lusin' />
                             </Picker>
                         </View>
-
                     </View>
                 </ContainerSection>
 
@@ -581,11 +674,12 @@ export class CaptureandgetPage extends React.Component {
                                 onValueChange={v => this.onChange('serveDelivery', v)}
                             >
                                 <Picker.Item label='Pilih Jasa Pengiriman' value='0' />
-                                <Picker.Item label='JNE Reguler' value='JNEREG' />
-                                <Picker.Item label='JNE Oke' value='JNEOK' />
-                                <Picker.Item label='TIKI Reguler' value='TIKIREG' />
-                                <Picker.Item label='POS Kilat Indonesia' value='POSKILAT' />
-                                <Picker.Item label='GOJEK' value='Gojek' />
+                                <Picker.Item label='JNE Reguler' value='JNE REG' />
+                                <Picker.Item label='JNE Oke' value='JNE OK' />
+                                <Picker.Item label='TIKI Reguler' value='TIKI REG' />
+                                <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
+                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
                     </View>
@@ -605,11 +699,13 @@ export class CaptureandgetPage extends React.Component {
                     </View>
                 </ContainerSection>
 
+
+
                 <ContainerSection>
-                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', paddingTop: 5 }}>
-                        <View style={{}}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold' }}>Catatan Tambahan </Text>
-                        </View>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', marginTop: 9 }}>
+
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Catatan Tambahan </Text>
+
                         <View style={{ alignSelf: 'center' }}>
                             <TouchableOpacity onPress={() => this.setState({ notice: !this.state.notice })}>
                                 <Image style={{ width: 15, height: 15, }} source={require('../assets/images/Information.png')} />
@@ -627,10 +723,11 @@ export class CaptureandgetPage extends React.Component {
                             </Text>
                 }
                 <ContainerSection>
-                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', paddingTop: 5 }}>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, flexDirection: 'row', }}>
                         <Input
                             placeholder='Catatan Tambahan'
                             value={catatanTambahan}
+                            multiline
                             onChangeText={v => this.onChange('catatanTambahan', v)}
                         />
                     </View>
@@ -638,6 +735,9 @@ export class CaptureandgetPage extends React.Component {
                 <ContainerSection>
                     {this.renderButton()}
                 </ContainerSection>
+
+
+
             </ScrollView >
         );
     }
@@ -648,16 +748,14 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerFlatList: {
-        paddingBottom: 20,
+        paddingBottom: 5,
         paddingRight: 5,
         paddingLeft: 5,
-        paddingTop: 5
+        paddingTop: 5,
     },
     pickerContainer: {
         flex: 1,
-        marginBottom: 5,
-        // marginLeft: 10,
-        // marginRight: 10
+        marginBottom: 5
     },
     pickerStyle: {
         borderColor: '#a9a9a9',
@@ -667,26 +765,35 @@ const styles = StyleSheet.create({
     },
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',
-        color: '#5e5e5e',
+        color: 'black',
         fontSize: 15,
         flex: 1,
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: 7,
+        marginBottom: 7
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
-        // flexDirection: 'row',
-        height: '100%',
-        width: 80,
+        width: 120,
         marginLeft: 3,
-        marginRight: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,
-        // paddingLeft: 4,
         borderWidth: 1,
         height: 45,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignSelf: 'flex-end'
+    },
+    buttonMaterial: {
+        borderWidth: 1,
+        borderRadius: 30,
+        height: 38,
+        alignItems: 'center',
+        paddingTop: 2
+    },
+    buttonsMaterial: {
+        width: '93%',
+        height: 38,
+        paddingTop: 2
     },
     button: {
         backgroundColor: 'rgb(0, 0, 0)',
@@ -695,7 +802,6 @@ const styles = StyleSheet.create({
         width: '93%',
         height: 38,
         alignItems: 'center',
-        // textAlign: 'center',
         paddingTop: 2
     },
     buttons: {

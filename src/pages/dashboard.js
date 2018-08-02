@@ -10,7 +10,8 @@ import {
 import Swiper from 'react-native-swiper';
 import { COLOR, IPSERVER } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
-import ActionButton from 'react-native-circular-action-menu';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import BubbleMenu from 'react-native-bubble-menu';
 
 export class DashboardPage extends React.Component {
 	static navigationOptions = {
@@ -20,6 +21,7 @@ export class DashboardPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			show: false,
 			sideMenu: false,
 			statusMenu: 'profile',
 			orderStatus: '',
@@ -74,14 +76,16 @@ export class DashboardPage extends React.Component {
 
 	statusMenus = (value) => {
 		console.log(value, 'Value')
-		this.setState({
-			statusMenu: value
-		})
+		if (value === 'close') {
+			this._toggleMenuVisibility();
+		} else {
+			this.setState({
+				statusMenu: value
+			})
+		}
 	}
 
 	keyExtractor = (item) => item.id;
-
-
 
 	OrderStatus = (value) => {
 		console.log(value, 'Value')
@@ -107,11 +111,145 @@ export class DashboardPage extends React.Component {
 		)
 	}
 
+	_toggleMenuVisibility = () => {
+		this.setState(({ show }) => ({
+			show: !show,
+		}));
+	}
+
+	_renderOpenBtn = () => (
+		<TouchableOpacity
+			onPress={this._toggleMenuVisibility}
+			style={styles.menuOpenBtn}
+		>
+			{
+				this.state.show === true ?
+					<View />
+					:
+					<Image
+						style={{ width: 60, height: 60, marginTop: -7, marginLeft: -5 }}
+						source={require('./../assets/images/sidemenu/menu.png')}
+						resizeMode='contain'
+					/>
+			}
+		</TouchableOpacity>
+	)
+
+	_renderItems = () => {
+		const { statusMenu } = this.state;
+		const icons = [
+			{
+				name1: require('./../assets/images/sidemenu/profil-disable.png'),
+				name2: require('./../assets/images/sidemenu/profil-enable.png'),
+				action: 'profile'
+			},
+			{
+				name3: require('./../assets/images/sidemenu/order-disable.png'),
+				name4: require('./../assets/images/sidemenu/order-enable.png'),
+				action: 'order'
+			},
+			{
+				name5: require('./../assets/images/sidemenu/menu.png'),
+				name6: require('./../assets/images/sidemenu/menu.png'),
+				action: 'close',
+			},
+			{
+				name7: require('./../assets/images/sidemenu/crafter-list-disable.png'),
+				name8: require('./../assets/images/sidemenu/crafter-list-enable.png'),
+				action: 'crafterList',
+			},
+			{
+				name9: require('./../assets/images/sidemenu/crafter-menu-disable.png'),
+				name10: require('./../assets/images/sidemenu/crafter-menu-enable.png'),
+				action: 'crafterMenu',
+			}
+		];
+
+		const items = icons.map(({ name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, action }, key) => (
+			<TouchableOpacity
+				onPress={() => this.statusMenus(action)}
+				key={key}
+				style={styles.menuGeneralIcons}
+			>
+				{
+					statusMenu === 'profile' ?
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name2}
+							resizeMode='contain'
+						/>
+						:
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name1}
+							resizeMode='contain'
+						/>
+				}
+				{
+					statusMenu === 'order' ?
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name4}
+							resizeMode='contain'
+						/>
+						:
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name3}
+							resizeMode='contain'
+						/>
+				}
+				{
+					statusMenu ?
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name6}
+							resizeMode='contain'
+						/>
+						:
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name5}
+							resizeMode='contain'
+						/>
+				}
+				{
+					statusMenu === 'crafterList' ?
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name8}
+							resizeMode='contain'
+						/>
+						:
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name7}
+							resizeMode='contain'
+						/>
+				}
+				{
+					statusMenu === 'crafterMenu' ?
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name10}
+							resizeMode='contain'
+						/>
+						:
+						<Image
+							style={{ width: 35, height: 35 }}
+							source={name9}
+							resizeMode='contain'
+						/>
+				}
+			</TouchableOpacity>
+		));
+		return items;
+	}
 
 	render() {
-		const { sideMenu, statusMenu, orderStatus } = this.state;
+		const { sideMenu, statusMenu, orderStatus, show } = this.state;
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 1, backgroundColor: '#384058', alignItems: 'center' }}>
 				<ImageBackground
 					source={require('./../assets/images/back_home.png')}
 					style={styles.backgroundStyle}
@@ -319,62 +457,55 @@ export class DashboardPage extends React.Component {
 						</View>
 					</ScrollView>
 					{
-						sideMenu === true ?
+						this.state.show === true ?
 							<View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.98)', width: '100%', height: '100%', position: 'absolute' }}>
 
 								<View style={{ height: '70%' }}>
 									{
 										statusMenu === 'home' ?
-											<View style={styles.containerHome}>
-												<View style={styles.containerHomeLogo}>
-													<TouchableOpacity
-														onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
-														<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-															source={require('./../assets/images/daftar_pesanan.png')}
-														/>
-													</TouchableOpacity>
-													<Text style={{ color: 'white', marginTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, textAlign: 'center' }}>Daftar</Text>
-													<Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15, textAlign: 'center' }}>Pesanan</Text>
-												</View>
-												<View style={styles.containerHomeLogo}>
-													<TouchableOpacity
-														onPress={() => this.props.navigation.navigate('NotificationMenu')}
-													>
-														<Image
-															style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50, marginBottom: 15 }}
-															source={require('./../assets/images/notifikasi.png')}
-														/>
-														<Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15, textAlign: 'center' }}> Notifikasi </Text>
-													</TouchableOpacity>
-												</View>
-												<View style={styles.containerHomeLogo}>
-													<TouchableOpacity
-														onPress={() => this.props.navigation.navigate('SettingMenu')}
-													>
-														<Image
-															style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50, marginBottom: 15 }}
-															source={require('./../assets/images/setting.png')}
-														/>
-														<Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15, textAlign: 'center' }}> Setting </Text>
-													</TouchableOpacity>
-												</View>
-												<View style={styles.containerHomeLogo}>
-													<TouchableOpacity
-														onPress={() => this.props.navigation.navigate('HelpMenu')}
-													>
-														<Image
-															style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50, marginBottom: 15 }}
-															source={require('./../assets/images/bantuan.png')}
-														/>
-														<Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15, textAlign: 'center' }}> Help </Text>
-													</TouchableOpacity>
-												</View>
-											</View>
+											<View />
 											:
 											<View style={{ height: '100%' }}>
 												{
 													statusMenu === 'crafterList' ?
 														<View style={styles.containerHomeScreen}>
+															<View style={styles.containerHome}>
+																<View style={styles.containerHomeLogo}>
+																	<TouchableOpacity
+																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																			source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
+																		/>
+																	</TouchableOpacity>
+																</View>
+
+																<View style={styles.containerHomeLogo}>
+																	<TouchableOpacity
+																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																			source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
+																		/>
+																	</TouchableOpacity>
+																</View>
+
+																<View style={styles.containerHomeLogo}>
+																	<TouchableOpacity
+																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																			source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
+																		/>
+																	</TouchableOpacity>
+																</View>
+
+																<View style={styles.containerHomeLogo}>
+																	<TouchableOpacity
+																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																			source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
+																		/>
+																	</TouchableOpacity>
+																</View>
+															</View>
 															<View style={styles.containerSomeHomeScreen}>
 																<View style={styles.photoHomeScreen}>
 																	<Image
@@ -389,7 +520,15 @@ export class DashboardPage extends React.Component {
 																	<Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CRAFTER LIST</Text>
 																	<Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
 
-																	<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('CrafterList')}>
+																	<TouchableOpacity
+																		style={styles.buttonCustom}
+																		onPress={() => {
+																			this.props.navigation.navigate('CrafterList');
+																			this.setState(({ show }) => ({
+																				show: !show,
+																			}));
+																		}}
+																	>
 																		<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																	</TouchableOpacity>
 																</View>
@@ -465,6 +604,43 @@ export class DashboardPage extends React.Component {
 															{
 																statusMenu === 'order' ?
 																	<View style={styles.containerHomeScreen}>
+																		<View style={styles.containerHome}>
+																			<View style={styles.containerHomeLogo}>
+																				<TouchableOpacity
+																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																						source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
+																					/>
+																				</TouchableOpacity>
+																			</View>
+
+																			<View style={styles.containerHomeLogo}>
+																				<TouchableOpacity
+																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																						source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
+																					/>
+																				</TouchableOpacity>
+																			</View>
+
+																			<View style={styles.containerHomeLogo}>
+																				<TouchableOpacity
+																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																						source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
+																					/>
+																				</TouchableOpacity>
+																			</View>
+
+																			<View style={styles.containerHomeLogo}>
+																				<TouchableOpacity
+																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																						source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
+																					/>
+																				</TouchableOpacity>
+																			</View>
+																		</View>
 																		{
 																			orderStatus === '' ?
 
@@ -506,7 +682,14 @@ export class DashboardPage extends React.Component {
 																									<Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CUSTOM</Text>
 																									<Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular', }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																									<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Order')}>
+																									<TouchableOpacity
+																										style={styles.buttonCustom}
+																										onPress={() => {
+																											this.props.navigation.navigate('Order');
+																											this.setState(({ show }) => ({
+																												show: !show,
+																											}));
+																										}}>
 																										<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																									</TouchableOpacity>
 																								</View>
@@ -529,7 +712,14 @@ export class DashboardPage extends React.Component {
 																												<Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CAPTURE N' Get</Text>
 																												<Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
 
-																												<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('Captureandget')}>
+																												<TouchableOpacity
+																													style={styles.buttonCustom}
+																													onPress={() => {
+																														this.props.navigation.navigate('Captureandget');
+																														this.setState(({ show }) => ({
+																															show: !show,
+																														}));
+																													}}>
 																													<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																												</TouchableOpacity>
 																											</View>
@@ -552,7 +742,14 @@ export class DashboardPage extends React.Component {
 																															<Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET</Text>
 																															<Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'justify', flex: 1, fontFamily: 'Quicksand-Regular' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
 
-																															<TouchableOpacity style={styles.buttonCustom} onPress={() => this.props.navigation.navigate('IdeaMarket')}>
+																															<TouchableOpacity
+																																style={styles.buttonCustom}
+																																onPress={() => {
+																																	this.props.navigation.navigate('IdeaMarket');
+																																	this.setState(({ show }) => ({
+																																		show: !show,
+																																	}));
+																																}}>
 																																<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
 																															</TouchableOpacity>
 																														</View>
@@ -597,66 +794,103 @@ export class DashboardPage extends React.Component {
 																	<View style={{ height: '100%' }}>
 																		{
 																			statusMenu === 'profile' ?
-																				<View style={styles.containerProfileHomeScreen}>
-																					<View style={[styles.profileHomeScreen, { marginTop: 20 }]}>
-																						<View>
+																				<View style={{ flex: 1, flexDirection: 'column' }}>
+																					<View style={styles.containerHome}>
+																						<View style={styles.containerHomeLogo}>
+																							<TouchableOpacity
+																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																									source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
+																								/>
+																							</TouchableOpacity>
+																						</View>
+
+																						<View style={styles.containerHomeLogo}>
+																							<TouchableOpacity
+																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																									source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
+																								/>
+																							</TouchableOpacity>
+																						</View>
+
+																						<View style={styles.containerHomeLogo}>
+																							<TouchableOpacity
+																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																									source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
+																								/>
+																							</TouchableOpacity>
+																						</View>
+
+																						<View style={styles.containerHomeLogo}>
+																							<TouchableOpacity
+																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																									source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
+																								/>
+																							</TouchableOpacity>
+																						</View>
+																					</View>
+																					<View style={[styles.profileHomeScreen]}>
+																						<View style={{ flex: 1 }}>
 																							<Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text>
-																							<View style={{ flex: 1 }}>
+																							<View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
 																								<Image
 																									style={styles.locationIcon}
 																									source={require('./../assets/images/location_icon.png')}
 																								/>
+																								<Text style={{ color: 'white', marginLeft: 10, marginTop: 5, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Bali</Text>
 																							</View>
-																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Bali</Text>
+																							<View style={{ alignItems: 'center' }}>
+																								<TouchableOpacity style={styles.button}
+																									onPress={() => this.props.navigation.navigate('')}>
+																									<Image
+																										style={styles.photoProfileHomeScreen}
+																										source={require('./../assets/images/profile.png')}
+																									/>
+																								</TouchableOpacity>
+																							</View>
+																							<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
+																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Lihat dan atur segala informasi</Text>
+																							<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>profil anda disini </Text>
 																						</View>
+																						<View style={{ height: 70, marginTop: 50, flexDirection: 'row', paddingLeft: 20, paddingRight: 20 }}>
+																							<View style={{ flex: 1 }}>
+																								<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
+																									onPress={() => {
+																										this.props.navigation.navigate('ProfilePage');
+																										this.setState(({ show }) => ({
+																											show: !show,
+																										}));
+																									}}
+																								>
+																									<Image
+																										style={[styles.iconProfile, { marginBottom: 15 }]}
+																										source={require('./../assets/images/edit_profil.png')}
+																									/>
+																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+																								</TouchableOpacity>
+																							</View>
 
-
-																						<View style={{ alignSelf: 'center' }}>
-																							<TouchableOpacity style={styles.button}
-																								onPress={() => this.props.navigation.navigate('')}>
-																								<Image
-																									style={styles.photoProfileHomeScreen}
-																									source={require('./../assets/images/profile.png')}
-																								/>
-																							</TouchableOpacity>
-																						</View>
-
-																						<Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
-																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Lihat dan atur segala informasi</Text>
-																						<Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>profil anda disini </Text>
-																					</View>
-
-
-																					<View style={{ paddingTop: 50, flex: 1, flexDirection: 'row', paddingLeft: 30, paddingRight: 30 }}>
-																						<View style={{ flex: 1 }}>
-																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-																								onPress={() => this.props.navigation.navigate('ProfilePage')}
-																							>
-																								<Image
-																									style={[styles.iconProfile, { marginBottom: 15 }]}
-																									source={require('./../assets/images/edit_profil.png')}
-																								/>
-																								<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
-																							</TouchableOpacity>
-																						</View>
-
-																						<View style={{ flex: 1 }}>
-																							<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-																								onPress={() => {
-																									const resetAction = StackActions.reset({
-																										index: 0,
-																										actions: [NavigationActions.navigate({ routeName: 'Login' })],
-																									});
-																									this.props.navigation.dispatch(resetAction);
-																								}
-																								}>
-																								<Image
-																									style={[styles.iconProfile, { marginBottom: 15 }]}
-																									source={require('./../assets/images/logout.png')}
-																									resizeMode='contain'
-																								/>
-																								<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
-																							</TouchableOpacity>
+																							<View style={{ flex: 1 }}>
+																								<TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
+																									onPress={() => {
+																										const resetAction = StackActions.reset({
+																											index: 0,
+																											actions: [NavigationActions.navigate({ routeName: 'Login' })],
+																										});
+																										this.props.navigation.dispatch(resetAction);
+																									}
+																									}>
+																									<Image
+																										style={[styles.iconProfile, { marginBottom: 15 }]}
+																										source={require('./../assets/images/logout.png')}
+																										resizeMode='contain'
+																									/>
+																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
+																								</TouchableOpacity>
+																							</View>
 																						</View>
 																					</View>
 																				</View>
@@ -665,32 +899,78 @@ export class DashboardPage extends React.Component {
 																					{
 																						statusMenu === 'crafterMenu' ?
 																							<View style={styles.containerBodyJoinCrafter}>
+																								<View style={styles.containerHome}>
+																									<View style={styles.containerHomeLogo}>
+																										<TouchableOpacity
+																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																												source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
+																											/>
+																										</TouchableOpacity>
+																									</View>
 
-																								<View style={styles.photoJoinCrafter}>
-																									<Image
-																										style={styles.joinImage}
-																										source={require('./../assets/images/crafter_menu.png')}
-																									/>
+																									<View style={styles.containerHomeLogo}>
+																										<TouchableOpacity
+																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																												source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
+																											/>
+																										</TouchableOpacity>
+																									</View>
+
+																									<View style={styles.containerHomeLogo}>
+																										<TouchableOpacity
+																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																												source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
+																											/>
+																										</TouchableOpacity>
+																									</View>
+
+																									<View style={styles.containerHomeLogo}>
+																										<TouchableOpacity
+																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+																												source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
+																											/>
+																										</TouchableOpacity>
+																									</View>
 																								</View>
+																								<View style={{ flex: 1, flexDirection: 'column', marginTop: -250 }}>
+																									<View style={{ flex: 1, marginTop: -29 }}>
+																										<View style={styles.photoJoinCrafter}>
+																											<Image
+																												style={styles.joinImage}
+																												source={require('./../assets/images/crafter_menu.png')}
+																											/>
+																										</View>
 
-																								<View styles={{ flex: 1 }}>
+																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+																										<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
+																									</View>
 
-																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
-																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
-																									<Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
-
+																									<View style={{ flex: 1 }}>
+																										<View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 80 }}>
+																											<Image
+																												style={styles.iconQuestion}
+																												source={require('./../assets/images/question.png')}
+																											/>
+																											<Text style={{ marginLeft: 10, color: 'white', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text></Text>
+																										</View>
+																										<View style={{ flex: 1, marginTop: -100 }}>
+																											<TouchableOpacity style={styles.buttonJoin}
+																												onPress={() => {
+																													this.props.navigation.navigate('CrafterMenu')
+																													this.setState(({ show }) => ({
+																														show: !show,
+																													}));
+																												}}>
+																												<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
+																											</TouchableOpacity>
+																										</View>
+																									</View>
 																								</View>
-																								<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-																									<Image
-																										style={styles.iconQuestion}
-																										source={require('./../assets/images/question.png')}
-																									/>
-																									<Text style={{ marginLeft: 5, color: 'white', fontSize: 13, marginTop: 50, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text></Text>
-																								</View>
-																								<TouchableOpacity style={styles.buttonJoin}
-																									onPress={() => this.props.navigation.navigate('CrafterMenu')}>
-																									<Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
-																								</TouchableOpacity>
 																							</View>
 																							:
 																							<View />
@@ -698,7 +978,6 @@ export class DashboardPage extends React.Component {
 																				</View>
 																		}
 																	</View>
-
 															}
 														</View>
 												}
@@ -710,101 +989,22 @@ export class DashboardPage extends React.Component {
 							<View />
 					}
 
+					<View style={{
+						alignItems: 'center', marginBottom: 20, shadowColor: '#000',
+						shadowOffset: { width: 0, height: 2 },
+						shadowOpacity: 0.1,
+						shadowRadius: 2,
+						elevation: 2,
+						// backgroundColor: 'pink'
+					}}>
 
-					<ActionButton buttonColor="#C1C1C1" onPress={() => this.sideMenus('Open')}>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="New Task" onPress={() => this.statusMenus('home')}>
-							{
-								statusMenu === 'home' ?
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/umum-enabled.png')}
-											resizeMode='contain'
-										/>
-									</View>
-									:
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/umum-disabled.png')}
-											resizeMode='contain'
-										/>
-									</View>
-							}
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="Notifications" onPress={() => this.statusMenus('profile')}>
-							{
-								statusMenu === 'profile' ?
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/profil-enable.png')}
-										/>
-									</View>
-									:
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/profil-disable.png')}
-										/>
-									</View>
-							}
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('order')}>
-							{
-								statusMenu === 'order' ?
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/order-enable.png')}
-										/>
-									</View>
-									:
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/order-disable.png')}
-										/>
-									</View>
-							}
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterList')}>
-							{
-								statusMenu === 'crafterList' ?
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/crafter-list-enable.png')}
-										/>
-									</View>
-									:
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/crafter-list-disable.png')}
-										/>
-									</View>
-							}
-						</ActionButton.Item>
-						<ActionButton.Item buttonColor='rgba(70,70,71,0.5)' title="All Tasks" onPress={() => this.statusMenus('crafterMenu')}>
-							{
-								statusMenu === 'crafterMenu' ?
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/crafter-menu-enable.png')}
-										/>
-									</View>
-									:
-									<View>
-										<Image
-											style={{ width: 20, height: 20, }}
-											source={require('./../assets/images/crafter-menu-disable.png')}
-										/>
-									</View>
-							}
-						</ActionButton.Item>
-					</ActionButton>
+						<BubbleMenu
+							items={this._renderItems()}
+							openBtn={this._renderOpenBtn()}
+							show={this.state.show}
+							style={styles.menu}
+						/>
+					</View>
 				</ImageBackground>
 			</View>
 		)
@@ -813,6 +1013,23 @@ export class DashboardPage extends React.Component {
 };
 
 const styles = StyleSheet.create({
+	menu: {
+		padding: 15,
+		borderRadius: 50,
+		justifyContent: 'space-between',
+	},
+	menuGeneralIcons: {
+		width: 50,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginHorizontal: 10,
+	},
+	menuOpenBtn: {
+		width: '100%',
+		height: 50,
+		marginTop: -3,
+		// backgroundColor: 'black'
+	},
 	backgroundStyle: {
 		width: '100%',
 		height: '100%',
@@ -1005,9 +1222,7 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 0, heigth: 2 },
 		shadowRadius: 2,
 		flexDirection: 'row',
-		height: '100%',
-		width: '100%',
-		// backgroundColor: 'yellow'
+		height: 50
 	},
 	containerHomeLogo: {
 		flex: 1,
@@ -1015,7 +1230,7 @@ const styles = StyleSheet.create({
 		width: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
-		marginTop: 285
+		top: -33
 	},
 	containerImageHome: {
 		height: 50,
@@ -1040,7 +1255,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		height: 170,
 		width: '100%',
-		marginTop: 65,
+		marginTop: -75,
 		alignSelf: 'center',
 		paddingLeft: 4,
 		paddingRight: 4,
@@ -1161,23 +1376,23 @@ const styles = StyleSheet.create({
 	profileHomeScreen: {
 		borderRadius: 20,
 		flexDirection: 'column',
-		height: 250,
-		width: 300,
+		flex: 1,
+		marginTop: -250,
+		// height: 800,
 		alignSelf: 'center',
 		// backgroundColor: 'blue'
 	},
 	photoProfileHomeScreen: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: 110,
-		width: 110,
+		height: 130,
+		width: 130,
 		borderRadius: 100,
 		marginTop: 15,
 	},
 	containerProfileHomeScreen: {
 		flex: 1,
 		borderRadius: 20,
-		backgroundColor: 0,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, heigth: 2 },
 		shadowRadius: 2,
@@ -1185,13 +1400,12 @@ const styles = StyleSheet.create({
 		marginTop: 15,
 		marginLeft: 10,
 		marginRight: 10,
-		height: 500,
-		// backgroundColor: 'red'f
+		height: '800%',
+		backgroundColor: 'red'
 	},
 	locationIcon: {
 		height: 15,
 		width: 10,
-		marginLeft: 125,
 		marginTop: 8
 	},
 	containerBodyProfile: {
@@ -1276,12 +1490,12 @@ const styles = StyleSheet.create({
 		width: 220,
 		alignSelf: 'center',
 		justifyContent: 'center',
-		marginTop: 50
+		marginTop: 70
 	},
 	iconQuestion: {
 		height: 20,
 		width: 20,
-		marginTop: 48
+		alignSelf: 'center'
 	}
 });
 

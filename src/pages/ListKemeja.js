@@ -3,11 +3,18 @@ import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, Touchab
 // import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class ListKemejaPage extends React.Component {
 
 
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft:
+            <TouchableOpacity
+                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+            >
+                <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
+            </TouchableOpacity>,
         headerTitle: 'Kemeja',
         headerStyle: {
             // shadowOpacity: 0,
@@ -15,7 +22,7 @@ export class ListKemejaPage extends React.Component {
             borderBottomColor: 'white',
             borderBottomWidth: 0
         },
-    }
+    });
 
 
     constructor(props) {
@@ -35,7 +42,9 @@ export class ListKemejaPage extends React.Component {
     renderProductImage = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+
+            >
 
                 <View style={{ flex: 1, flexDirection: 'column', marginTop: 5, marginRight: 10, marginBottom: 5, }}>
                     <Image
@@ -59,7 +68,7 @@ export class ListKemejaPage extends React.Component {
                                         marginRight: 10
                                     }}
                                     resizeMode='stretch'
-                                    source={require('./../assets/images/Sempurna.png')}
+                                    source={require('./../assets/images/sempurna.png')}
                                 />
                                 <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingRight: 10 }}>(2)</Text>
                             </View>
@@ -67,7 +76,7 @@ export class ListKemejaPage extends React.Component {
 
                         </View>
 
-                        <View style={{ flex: 1,  flexDirection: 'row' }}>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
 
                             <View style={{ width: '30%', flexDirection: 'column', justifyContent: 'center', }}>
                                 <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'black', marginLeft: 10 }}>
@@ -107,9 +116,9 @@ export class ListKemejaPage extends React.Component {
     render() {
         return (
             <View style={{
-                flex: 1
+                flex: 1,
+                backgroundColor: 'white'
             }}>
-
                 <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -150,10 +159,7 @@ export class ListKemejaPage extends React.Component {
 
 
 
-
-
-
-                <View style={{ flex: 1, marginTop: 10, marginLeft: 10, marginRight: 10, flexDirection: 'column' }}>
+                <View style={{ flex: 1, marginTop: 10, marginLeft: 10, marginRight: 10, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
                     <FlatList
                         data={this.state.photo}
                         // contentContainerStyle={{ flex: 1 }}
@@ -163,13 +169,6 @@ export class ListKemejaPage extends React.Component {
                         numColumns={2}
                     />
                 </View>
-
-
-
-
-
-
-
 
 
 
