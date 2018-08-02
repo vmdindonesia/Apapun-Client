@@ -97,6 +97,8 @@ import { onClickProductOnIdeaFashionPage } from './pages/onClickProductOnIdeaFas
 import { detailsendingIdeaPage } from './pages/detailSendingProductIdeaFashion';
 import { searchCrafterIdeaMarketPage } from './pages/searchCrafterIdeaMarket';
 import { MyOrderIdeaPage } from './pages/myOrderIdea';
+import { IntroAppPage } from './pages/introApp';
+import { MenuLoginPage } from './pages/menuLogin';
 
 console.disableYellowBox = true;
 
@@ -109,6 +111,21 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  IntroApp: {
+    screen: IntroAppPage
+  },
+  ForgotPassword: {
+    screen: ForgotPasswordPage
+  },
+  Login: {
+    screen: LoginPage
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+  MenuLogin: {
+    screen: MenuLoginPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -124,7 +141,6 @@ const Routes = createStackNavigator({
   MyOrder: {
     screen: MyOrderPage
   },
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
@@ -143,20 +159,15 @@ const Routes = createStackNavigator({
   Crafter: {
     screen: CrafterPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-
   HelpMenu: {
     screen: HelpMenuPage
   },
-
   Dashboard: {
     screen: DashboardPage
   },
-
-
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
   },
@@ -166,12 +177,9 @@ const Routes = createStackNavigator({
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
-
- 
   IdeaFashion: {
     screen: IdeaFashionPage
   },
@@ -199,7 +207,6 @@ const Routes = createStackNavigator({
   ListTshirt: {
     screen: ListTshirtPage
   },
-
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
   },
@@ -221,7 +228,6 @@ const Routes = createStackNavigator({
   ProductReadyToSend: {
     screen: ProductReadyToSendPage
   },
-
   searchOrder: {
     screen: searchOrderPage
   },
@@ -249,10 +255,6 @@ const Routes = createStackNavigator({
   },
   EditProduct: {
     screen: EditProductPage
-  },
-
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
@@ -309,10 +311,6 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-
-
-
-
   CrafterList: {
     screen: CrafterListPage
   },
@@ -329,12 +327,9 @@ const Routes = createStackNavigator({
   IdeaFurniture: {
     screen: IdeaFurniturePage
   },
-
   Chat: {
     screen: ChatPage
   },
-
-
   OrderReceived: {
     screen: OrderReceivedPage
   },
@@ -362,13 +357,6 @@ const Routes = createStackNavigator({
   },
   CrafterInputResi: {
     screen: CrafterInputResiPage
-  },
-
-  ForgotPassword: {
-    screen: ForgotPasswordPage
-  },
-  Login: {
-    screen: LoginPage
   },
   NotificationMenu: {
     screen: NotificationMenuPage
