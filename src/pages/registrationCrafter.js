@@ -29,11 +29,11 @@ export class RegistrationCrafterPage extends React.Component {
             error: null,
             isModalVisible: false,
             pathPhotoRegistCrafter: null,
-            fashion: false,
+            fashion: true,
             furniture: false,
             DIY: false,
             beauty: false,
-            sendserviceone: false,
+            sendserviceone: true,
             sendservicetwo: false,
             agree: false,
         };
@@ -82,7 +82,7 @@ export class RegistrationCrafterPage extends React.Component {
     }
 
     checkedNoIdontHave = () => {
-        this.setState({ sendservicetwo: !this.state.sendservicetwo, sendserviceone: false }, () => {
+        this.setState({ sendservicetwo: true, sendserviceone: false }, () => {
             if (this.state.sendservicetwo === true) { this.setState({ sendservicetwo: "Perempuan", sendserviceone: '' }) }
         });
     }

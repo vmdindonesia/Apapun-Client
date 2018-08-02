@@ -45,7 +45,7 @@ export class RegistrationBuyerPage extends React.Component {
     }
 
     checkedFemale = () => {
-        this.setState({ female: !this.state.female, male: false }, () => {
+        this.setState({ female: true, male: false }, () => {
             if (this.state.female === true) { this.setState({ genderfelame: "Perempuan", gendermale: '' }) }
         });
     }

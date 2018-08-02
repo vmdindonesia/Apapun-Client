@@ -111,7 +111,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                                         height: 65,
                                     }}
                                     resizeMode='stretch'
-                                    source={require('./../assets/images/Sempurna.png')}
+                                    source={require('./../assets/images/sempurna.png')}
                                 />
                                 <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', textAlign: 'center', paddingLeft: 10 }}>(10) Review</Text>
                             </View>
