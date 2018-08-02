@@ -112,6 +112,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  ForgotPassword: {
+    screen: ForgotPasswordPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -127,14 +130,9 @@ const Routes = createStackNavigator({
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-
-  ForgotPassword: {
-    screen: ForgotPasswordPage
-  },
   Login: {
     screen: LoginPage
   },
-
   MenuLogin: {
     screen: MenuLoginPage
   },

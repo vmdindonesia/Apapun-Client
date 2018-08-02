@@ -23,7 +23,9 @@ export class ForgotPasswordPage extends React.Component {
             email: '',
             newPassword: '',
             confirmPassword: '',
-            loading: false
+            loading: false,
+            verificationCode: '',
+            validationCode: false
         }
     }
 
@@ -32,6 +34,22 @@ export class ForgotPasswordPage extends React.Component {
             console.log(this.state[name]);
         })
     }
+
+    onChangeEmail = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+            const validate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const verify = validate.test(this.state[name]);
+            console.log(verify, 'BISA');
+            if (verify === true) {
+                this.setState({ validationCode: true })
+            }
+            else {
+                this.setState({ validationCode: false })
+            }
+        })
+    }
+
 
     renderButton = () => {
         if (this.state.loading) {
@@ -50,12 +68,19 @@ export class ForgotPasswordPage extends React.Component {
     }
 
     onForget() {
-        ToastAndroid.show('Under Development', ToastAndroid.SHORT);
-        const resetAction = StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'Login' })],
-        });
-        this.props.navigation.dispatch(resetAction);
+        // ToastAndroid.show('Under Development', ToastAndroid.SHORT);
+        const { verificationCode } = this.state;
+        if (verificationCode === '') {
+            ToastAndroid.show('Form Kode Verifikasi Harus Terisi', ToastAndroid.SHORT);
+        }
+        else {
+            //push api
+        }
+        // const resetAction = StackActions.reset({
+        //     index: 0,
+        //     actions: [NavigationActions.navigate({ routeName: 'Login' })],
+        // });
+        // this.props.navigation.dispatch(resetAction);
     }
 
 
@@ -63,101 +88,74 @@ export class ForgotPasswordPage extends React.Component {
         const { email, newPassword, confirmPassword } = this.state;
 
         return (
-            // <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#422508' }}>
-            //     <Container>
-            //         <ScrollView
-            //             keyboardShouldPersistTaps="always"
-            //             ref={ref => this.scrollView = ref}
-            //         >
-
-            //             <ContainerSection>
-            //                 <Image
-            //                     style={styles.image}
-            //                     source={require('./../assets/images/text_logo.png')}
-            //                     resizeMode='contain'
-            //                 />
-            //             </ContainerSection>
-            //             <ContainerSection>
-            //                 <Text style={{ color: '#fff' }}>Please fill the form to recover your account .</Text>
-            //             </ContainerSection>
-            //             <ContainerSection>
-            //                 <Input
-            //                     placeholder='Your Email Address'
-            //                     label='Your Email Address'
-            //                     value={email}
-            //                     onChangeText={v => this.onChange('email', v)}
-            //                 />
-            //             </ContainerSection>
-            //             <ContainerSection>
-            //                 <Input
-            //                     label='Enter New Password'
-            //                     placeholder='Enter new password'
-            //                     onChangeText={val => this.onChange('newPassword', val)}
-            //                     value={newPassword}
-            //                 />
-            //             </ContainerSection>
-
-            //             <ContainerSection>
-            //                 <Input
-            //                     label={'Confirmation New password'}
-            //                     placeholder='Confirmation new password'
-            //                     onChangeText={val => this.onChange('confirmPassword', val)}
-            //                     value={confirmPassword}
-            //                 />
-            //             </ContainerSection>
-
-            //             <View style={{ marginTop: 15 }}>
-            //                 <ContainerSection>
-            //                     {this.renderButton()}
-            //                 </ContainerSection>
-            //             </View>
-            //         </ScrollView>
-            //     </Container>
-            // </View>
             <View style={styles.container}>
-                <Image
-                    style={{ width: 220, height: 100, }}
-                    source={require('./../assets/images/logotext.png')}
-                    resizeMode='contain'
-                />
-                <View style={{ width: '100%', height: 75 }}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 10 }}>OOPS, LUPA PASSWORD?</Text>
-                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingTop: 10 }}>Silahkan isi form dibawah ini untuk melakukan reset password</Text>
-                </View>
-                <View style={styles.containerForm}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 10 }}>Email</Text>
-                    <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
-                        <Input
-                            placeholder='Your Email Address'
-                            label='Your Email Address'
-                            value={email}
-                            onChangeText={v => this.onChange('email', v)}
-                        />
+                <ScrollView keyboardShouldPersistTaps='always'>
+                    <Image
+                        style={{ width: 220, height: 100, }}
+                        source={require('./../assets/images/logotext.png')}
+                        resizeMode='contain'
+                    />
+                    <View style={{ width: '100%', height: 75 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 10 }}>OOPS, LUPA PASSWORD?</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingTop: 10 }}>Silahkan isi form dibawah ini untuk melakukan reset password</Text>
                     </View>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 25 }}>Masukan Password Baru</Text>
-                    <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
-                        <Input
-                            label='Enter New Password'
-                            placeholder='Enter new password'
-                            onChangeText={val => this.onChange('newPassword', val)}
-                            value={newPassword}
-                        />
+                    <View style={styles.containerForm}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 10 }}>Email</Text>
+                        <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
+                            <Input
+                                placeholder='Your Email Address'
+                                label='Your Email Address'
+                                value={email}
+                                onChangeText={v => this.onChangeEmail('email', v)}
+                            />
+                        </View>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 25 }}>Masukan Password Baru</Text>
+                        <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
+                            <Input
+                                label='Enter New Password'
+                                placeholder='Enter new password'
+                                onChangeText={val => this.onChange('newPassword', val)}
+                                value={newPassword}
+                            />
+                        </View>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 25 }}>Konfirmasi Password Baru</Text>
+                        <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
+                            <Input
+                                label={'Confirmation New password'}
+                                placeholder='Confirmation new password'
+                                onChangeText={val => this.onChange('confirmPassword', val)}
+                                value={confirmPassword}
+                            />
+                        </View>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 25 }}>Kode Verifikasi</Text>
+                        <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
+                            <Input
+                                editable={this.state.validationCode}
+                                label={'Verification code'}
+                                placeholder='Verification Code'
+                                onChangeText={val => this.onChange('verificationCode', val)}
+                                value={confirmPassword}
+                            />
+                        </View>
+                        <TouchableOpacity style={{ width: '100%', alignItems: 'flex-end', paddingRight: 18, marginTop: 17 }}
+                            onPress={() => {
+                                if (this.state.validationCode === true) {
+                                    // push api
+                                }
+                                else {
+                                    ToastAndroid.show('Format Email Harus Benar', ToastAndroid.SHORT);
+                                }
+                            }}
+                        >
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'red' }}>Minta Kode Verifikasi</Text>
+                        </TouchableOpacity>
                     </View>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', marginLeft: 20, marginTop: 25 }}>Konfirmasi Password Baru</Text>
-                    <View style={{ width: '90%', height: 50, marginLeft: 18, marginRight: 10, marginTop: -15 }}>
-                        <Input
-                            label={'Confirmation New password'}
-                            placeholder='Confirmation new password'
-                            onChangeText={val => this.onChange('confirmPassword', val)}
-                            value={confirmPassword}
-                        />
-                    </View>
-                </View>
-                <TouchableOpacity style={styles.buttonSignUp}
-                    onPress={() => this.onForget()}
-                >
-                    <Text style={styles.signupButton}>Kirim</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonSignUp}
+                        onPress={() => this.onForget()}
+                    >
+                        <Text style={styles.signupButton}>Kirim</Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
         );
     }
@@ -174,10 +172,8 @@ const styles = {
         borderRadius: 20,
         backgroundColor: 'white',
         flexDirection: 'column',
-        height: 265,
+        height: 350,
         width: '100%',
-        // justifyContent: 'center',
-        // alignItems: 'center',
         zIndex: 1,
         borderWidth: 0,
         borderColor: '#fff',
@@ -191,7 +187,6 @@ const styles = {
         alignSelf: 'center',
         zIndex: 4,
         marginTop: -12,
-        // marginBottom: -100
     },
     signupButton: {
         textAlign: 'center',
