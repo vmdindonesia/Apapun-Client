@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, ImageBackground, Image, Picker, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
 import { COLOR } from '../shared/config';
@@ -8,75 +8,209 @@ import { COLOR } from '../shared/config';
 
 export class HistoryOnMyOrderPage extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            sort: false,
+            filter: false,
+            StatusSearching: 'Pilih Jenis Pemesanan'
+        }
+    }
+
+    onChange = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+        })
+    }
+
+
     render() {
+
+        const {
+            sort,
+            filter,
+            StatusSearching
+        } = this.state
+
         return (
             <View style={{
                 flex: 1
             }}>
-
                 <View style={{
                     // marginTop: 5,
                     width: '100%',
                     height: '12.5%',
                     paddingTop: 10,
                     paddingBottom: 10,
-                    // flex : 1, 
-                    backgroundColor: 'white',
-                    flexDirection: 'row'
+                    // flex : 1,
+                    flexDirection: 'row',
+                    backgroundColor: 'white'
                 }}>
+                    <TouchableOpacity style={{
+                        alignSelf: 'center', width: '50%',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        flexDirection: 'column',
+                    }}
+                        onPress={() => this.setState({ sort: !this.state.sort, filter: false })}
+                    >
 
-                    <View style={{
-                        width: '50%',
+                        <Image
+                            style={{
+                                width: 18,
+                                height: 18,
+                                borderRadius: 0,
+                                alignSelf: 'center',
+
+                            }}
+                            source={require('./../assets/images/ic_sort.png')}
+                        />
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+
+
+                    </TouchableOpacity>
+
+                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
+
+
+                    <TouchableOpacity style={{
+                        alignSelf: 'center', width: '50%',
                         height: '100%',
                         // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
-                        flexDirection: 'column',
-                        // borderRightWidth: 1, borderRightColor: '#e5e5e5',
-                    }}>
+                        flexDirection: 'column'
+                    }}
+                        onPress={() => this.setState({ filter: !this.state.filter, sort: false })}
+                    >
 
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
-                            <Image
-                                style={{
-                                    width: 18,
-                                    height: 18,
-                                    borderRadius: 0,
-                                    alignSelf: 'center'
-                                }}
-                                source={require('./../assets/images/ic_sort.png')}
-                            />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Urutkan</Text>
-                        </TouchableOpacity>
-                    </View>
+                        <Image
+                            style={{
+                                width: 18,
+                                height: 18,
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/ic_filter.png')}
+                        />
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
-                      <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
-
-                    <View style={{
-                        width: '50%',
-                        height: '100%',
-                        // backgroundColor: 'blue',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        flexDirection: 'column',
-                        // marginTop: 20
-                    }}>
-                        <TouchableOpacity style={{ alignSelf: 'center' }}>
-                            <Image
-                                style={{
-                                    width: 18,
-                                    height: 18,
-                                    borderRadius: 0,
-                                    alignSelf: 'center'
-                                }}
-                                source={require('./../assets/images/ic_filter.png')}
-                            />
-                            <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13 }}>Filter</Text>
-                        </TouchableOpacity>
-
-                    </View>
-
-
+                    </TouchableOpacity>
                 </View>
+
+                {
+
+                    sort === true ?
+
+                        <TouchableWithoutFeedback
+                            onPress={() => this.setState({ sort: false })}
+                        >
+                            <View style={{ height: 200, backgroundColor: 'white', alignItems: 'center', zIndex: 1, marginTop: -70 }}>
+
+                                <View style={{ height: 55, justifyContent: 'center', alignItems: 'center', }}>
+                                    <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Urutkan Berdasarkan</Text>
+                                </View>
+
+                                <TouchableOpacity style={{ height: 30, width: '100%', marginTop: 5 }}>
+                                    <View style={{ height: 30, width: '100%', }}>
+                                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingLeft: 20, color: 'black' }}>Tanggal Pesanan : Terbaru</Text>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={{ height: 30, width: '100%', }}>
+                                    <View style={{ height: 30, width: '100%', }}>
+                                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingLeft: 20, color: 'black' }}>Tanggal Pesanan : Terlama</Text>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={{ height: 30, width: '100%', }}>
+                                    <View style={{ height: 30, width: '100%', }}>
+                                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingLeft: 20, color: 'black' }}>Nama Crafter : A - Z</Text>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={{ height: 30, width: '100%', }}>
+                                    <View style={{ height: 30, width: '100%', }}>
+                                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, paddingLeft: 20, color: 'black' }}>Nama Crafter : Z - A</Text>
+                                    </View>
+                                </TouchableOpacity>
+
+                            </View>
+                        </TouchableWithoutFeedback>
+                        :
+                        <View />
+                }
+
+
+                {
+
+                    filter === true ?
+
+                        <TouchableWithoutFeedback
+                            onPress={() => this.setState({ filter: false })}
+                        >
+                            <View style={{ height: 200, backgroundColor: 'white', alignItems: 'center', zIndex: 1, marginTop: -70 }}>
+
+                                <View style={{ height: 40, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Filter</Text>
+                                </View>
+
+                                <View style={{ height: 70, justifyContent: 'center', marginTop: 5 }}>
+
+                                    <View style={{ backgroundColor: 'white', flexDirection: 'row' }}>
+
+                                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', alignSelf: 'center' }}>Status</Text>
+
+                                    </View>
+
+                                    <View style={{ flex: 1, width: '90%', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 5 }}>
+                                        <View style={{
+                                            flex: 1, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, justifyContent: 'center',
+                                            backgroundColor: '#fff',
+                                        }}>
+                                            <Picker
+                                                selectedValue={StatusSearching}
+                                                onValueChange={v => this.onChange('StatusSearching', v)}
+                                            >
+                                                <Picker.Item label='Pilih Jenis Pemesanan' />
+                                                <Picker.Item label='Custom Order' value='Custom' />
+                                                <Picker.Item label='Capture And Get' value='Capture' />
+                                                <Picker.Item label='Idea Market' value='Idea' />
+                                            </Picker>
+                                        </View>
+                                    </View>
+
+                                </View>
+
+                                <View style={{ height: 60, width: '95%', flexDirection: 'row', marginTop: 12.5 }}>
+
+                                    <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
+                                        <TouchableOpacity>
+                                            <Text style={{ margin: 7, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>Hapus Filter</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
+                                        <TouchableOpacity>
+                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>Pasang Filter</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                </View>
+
+                            </View>
+                        </TouchableWithoutFeedback>
+                        :
+                        <View />
+                }
+
+
+
+
+
+
+
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
@@ -165,7 +299,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                                                 <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
                                                 <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>My Own Table</Text>
                                                 <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
-                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular'}}>Workshop</Text>
+                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text>
                                                 </Text>
 
 
