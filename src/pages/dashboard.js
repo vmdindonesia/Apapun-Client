@@ -645,7 +645,7 @@ export class DashboardPage extends React.Component {
 																								onPress={() => {
 																									const resetAction = StackActions.reset({
 																										index: 0,
-																										actions: [NavigationActions.navigate({ routeName: 'Login' })],
+																										actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
 																									});
 																									this.props.navigation.dispatch(resetAction);
 																								}

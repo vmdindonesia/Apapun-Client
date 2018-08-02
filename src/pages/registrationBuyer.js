@@ -293,7 +293,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 <View style={{ flexDirection: 'row' }}>
                                     <CheckBox
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                        title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
+                                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, fontFamily: 'Quicksand-Regular' }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
                                         </Text>}
                                         onPress={() => this.checkedAgree()}
                                         checked={agree}
@@ -525,9 +525,7 @@ const styles = StyleSheet.create({
     textAgree: {
 
         height: 50,
-        // backgroundColor:'red',
         alignItems: 'center',
-        fontFamily: 'Quicksand-Regular',
         justifyContent: 'center'
     },
     signupButton: {
