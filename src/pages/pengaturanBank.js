@@ -364,7 +364,7 @@ export class PengaturanBankPage extends React.Component {
 
                 <View style={{ flex: 1, height: 80, marginRight: 5, marginLeft: 10, }}>
                     <TouchableOpacity style={{ flex: 1 }}
-                        onPress={() => this.props.navigation.navigate('CrafterMenu')}
+                        onPress={() => this.props.navigation.navigate('')}
                     >
                         <View style={{ flex: 1, height: 10, backgroundColor: 'red', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
                             <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>OK</Text>

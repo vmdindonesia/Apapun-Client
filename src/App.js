@@ -99,6 +99,7 @@ import { searchCrafterIdeaMarketPage } from './pages/searchCrafterIdeaMarket';
 import { MyOrderIdeaPage } from './pages/myOrderIdea';
 import { IntroAppPage } from './pages/introApp';
 import { MenuLoginPage } from './pages/menuLogin';
+import { MaterialPage } from './pages/material';
 
 console.disableYellowBox = true;
 
@@ -126,6 +127,33 @@ const Routes = createStackNavigator({
   MenuLogin: {
     screen: MenuLoginPage
   },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  DesignSaya: {
+    screen: DesignSayaPage
+  },
+  PageDesign: {
+    screen: PageDesignPage
+  },
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+  detailsendingIdeaPage: {
+    screen: detailsendingIdeaPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -137,6 +165,9 @@ const Routes = createStackNavigator({
   },
   Order: {
     screen: OrderPage
+  },
+  Material: {
+    screen: MaterialPage
   },
   MyOrder: {
     screen: MyOrderPage
@@ -192,9 +223,7 @@ const Routes = createStackNavigator({
   MyOrderIdea: {
     screen: MyOrderIdeaPage
   },
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
-  },
+
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
@@ -247,9 +276,7 @@ const Routes = createStackNavigator({
   editNoteOnCrafterMenu: {
     screen: editNoteOnCrafterMenuPage
   },
-  PageDesign: {
-    screen: PageDesignPage
-  },
+
   ProductDetailNya: {
     screen: ProductDetailNyaPage
   },
@@ -377,13 +404,8 @@ const Routes = createStackNavigator({
     screen: SettingManuPage
   },
 
-  IdeaMarket: {
-    screen: IdeaMarketPage
-  },
 
-  DesignSaya: {
-    screen: DesignSayaPage
-  },
+
   ReviewProduct: {
     screen: ReviewProductPage
   },
