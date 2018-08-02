@@ -202,13 +202,13 @@ export class DashboardPage extends React.Component {
 				{
 					statusMenu ?
 						<Image
-							style={{ width: 35, height: 35 }}
+							style={{ width: 60, height: 60 }}
 							source={name6}
 							resizeMode='contain'
 						/>
 						:
 						<Image
-							style={{ width: 35, height: 35 }}
+							style={{ width: 53.5, height: 53.5 }}
 							source={name5}
 							resizeMode='contain'
 						/>
@@ -481,7 +481,7 @@ export class DashboardPage extends React.Component {
 
 																<View style={styles.containerHomeLogo}>
 																	<TouchableOpacity
-																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		onPress={() => this.props.navigation.navigate('NotificationMenu')}>
 																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																			source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
 																		/>
@@ -490,7 +490,7 @@ export class DashboardPage extends React.Component {
 
 																<View style={styles.containerHomeLogo}>
 																	<TouchableOpacity
-																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		onPress={() => this.props.navigation.navigate('SettingMenu')}>
 																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																			source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
 																		/>
@@ -499,7 +499,7 @@ export class DashboardPage extends React.Component {
 
 																<View style={styles.containerHomeLogo}>
 																	<TouchableOpacity
-																		onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																		onPress={() => this.props.navigation.navigate('HelpMenu')}>
 																		<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																			source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
 																		/>
@@ -541,7 +541,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/fashion_crafter.png')}
+																					source={require('./../assets/images/sidemenu/fashion_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -555,7 +555,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/diy_crafter.png')}
+																					source={require('./../assets/images/sidemenu/diy_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -572,7 +572,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/furniture_crafter.png')}
+																					source={require('./../assets/images/sidemenu/furniture_crafter.png')}
 																				/>
 																			</View>
 																			<View style={{ flex: 1 }}>
@@ -587,7 +587,7 @@ export class DashboardPage extends React.Component {
 																			<View style={{ flex: 1 }}>
 																				<Image
 																					style={styles.iconsCrafterMenu}
-																					source={require('./../assets/images/beauty_crafter.png')}
+																					source={require('./../assets/images/sidemenu/beauty_Crafter.png')}
 																				/>
 																			</View >
 																			<View style={{ flex: 1 }}>
@@ -616,7 +616,7 @@ export class DashboardPage extends React.Component {
 
 																			<View style={styles.containerHomeLogo}>
 																				<TouchableOpacity
-																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					onPress={() => this.props.navigation.navigate('NotificationMenu')}>
 																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																						source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
 																					/>
@@ -625,7 +625,7 @@ export class DashboardPage extends React.Component {
 
 																			<View style={styles.containerHomeLogo}>
 																				<TouchableOpacity
-																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					onPress={() => this.props.navigation.navigate('SettingMenu')}>
 																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																						source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
 																					/>
@@ -634,7 +634,7 @@ export class DashboardPage extends React.Component {
 
 																			<View style={styles.containerHomeLogo}>
 																				<TouchableOpacity
-																					onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																					onPress={() => this.props.navigation.navigate('HelpMenu')}>
 																					<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																						source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
 																					/>
@@ -695,7 +695,7 @@ export class DashboardPage extends React.Component {
 																								</View>
 																							</View>
 																							:
-																							<View style={{ width: '100%', height: 235 }}>
+																							<View style={{ width: '100%' }}>
 																								{
 																									orderStatus === 'captureAndGet' ?
 																										<View style={styles.containerSomeHomeScreen}>
@@ -725,7 +725,7 @@ export class DashboardPage extends React.Component {
 																											</View>
 																										</View>
 																										:
-																										<View style={{ width: '100%', height: 235 }}>
+																										<View style={{ width: '100%', }}>
 																											{
 																												orderStatus === 'ideaMarket' ?
 																													<View style={styles.containerSomeHomeScreen}>
@@ -807,7 +807,7 @@ export class DashboardPage extends React.Component {
 
 																						<View style={styles.containerHomeLogo}>
 																							<TouchableOpacity
-																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								onPress={() => this.props.navigation.navigate('NotificationMenu')}>
 																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																									source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
 																								/>
@@ -816,7 +816,7 @@ export class DashboardPage extends React.Component {
 
 																						<View style={styles.containerHomeLogo}>
 																							<TouchableOpacity
-																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								onPress={() => this.props.navigation.navigate('SettingMenu')}>
 																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																									source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
 																								/>
@@ -825,7 +825,7 @@ export class DashboardPage extends React.Component {
 
 																						<View style={styles.containerHomeLogo}>
 																							<TouchableOpacity
-																								onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																								onPress={() => this.props.navigation.navigate('HelpMenu')}>
 																								<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																									source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
 																								/>
@@ -867,7 +867,7 @@ export class DashboardPage extends React.Component {
 																								>
 																									<Image
 																										style={[styles.iconProfile, { marginBottom: 15 }]}
-																										source={require('./../assets/images/edit_profil.png')}
+																										source={require('./../assets/images/sidemenu/edit_profile.png')}
 																									/>
 																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
 																								</TouchableOpacity>
@@ -878,14 +878,14 @@ export class DashboardPage extends React.Component {
 																									onPress={() => {
 																										const resetAction = StackActions.reset({
 																											index: 0,
-																											actions: [NavigationActions.navigate({ routeName: 'Login' })],
+																											actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
 																										});
 																										this.props.navigation.dispatch(resetAction);
 																									}
 																									}>
 																									<Image
 																										style={[styles.iconProfile, { marginBottom: 15 }]}
-																										source={require('./../assets/images/logout.png')}
+																										source={require('./../assets/images/sidemenu/logout.png')}
 																										resizeMode='contain'
 																									/>
 																									<Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
@@ -911,7 +911,7 @@ export class DashboardPage extends React.Component {
 
 																									<View style={styles.containerHomeLogo}>
 																										<TouchableOpacity
-																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											onPress={() => this.props.navigation.navigate('NotificationMenu')}>
 																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																												source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
 																											/>
@@ -920,7 +920,7 @@ export class DashboardPage extends React.Component {
 
 																									<View style={styles.containerHomeLogo}>
 																										<TouchableOpacity
-																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											onPress={() => this.props.navigation.navigate('SettingMenu')}>
 																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																												source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
 																											/>
@@ -929,7 +929,7 @@ export class DashboardPage extends React.Component {
 
 																									<View style={styles.containerHomeLogo}>
 																										<TouchableOpacity
-																											onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+																											onPress={() => this.props.navigation.navigate('HelpMenu')}>
 																											<Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
 																												source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
 																											/>
@@ -1017,6 +1017,7 @@ const styles = StyleSheet.create({
 		padding: 15,
 		borderRadius: 50,
 		justifyContent: 'space-between',
+		// backgroundColor: 'red'
 	},
 	menuGeneralIcons: {
 		width: 50,
@@ -1027,7 +1028,7 @@ const styles = StyleSheet.create({
 	menuOpenBtn: {
 		width: '100%',
 		height: 50,
-		marginTop: -3,
+		marginTop: 16,
 		// backgroundColor: 'black'
 	},
 	backgroundStyle: {
@@ -1053,7 +1054,8 @@ const styles = StyleSheet.create({
 	},
 	containerSlide: {
 		width: '100%',
-		height: 160
+		height: 160,
+		// backgroundColor: 'red'
 	},
 	slide1: {
 		flex: 1,
@@ -1226,11 +1228,12 @@ const styles = StyleSheet.create({
 	},
 	containerHomeLogo: {
 		flex: 1,
-		height: 150,
+		height: 80,
 		width: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: -33
+		top: -7.5,
+		backgroundColor: 'transparent'
 	},
 	containerImageHome: {
 		height: 50,
@@ -1377,10 +1380,13 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		flexDirection: 'column',
 		flex: 1,
-		marginTop: -250,
+		marginTop: -300,
 		// height: 800,
 		alignSelf: 'center',
-		// backgroundColor: 'blue'
+		width: 300,
+		height: 400,
+		// flex:1,
+		// backgroundColor: 'skyblue'
 	},
 	photoProfileHomeScreen: {
 		justifyContent: 'center',
@@ -1486,11 +1492,12 @@ const styles = StyleSheet.create({
 	buttonJoin: {
 		backgroundColor: 'red',
 		borderRadius: 20,
-		height: 35,
+		height: 40,
 		width: 220,
 		alignSelf: 'center',
 		justifyContent: 'center',
-		marginTop: 70
+		marginTop: 70,
+		// zIndex: 1
 	},
 	iconQuestion: {
 		height: 20,

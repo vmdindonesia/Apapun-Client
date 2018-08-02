@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ImageBackground, Image, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, ImageBackground, Image, Text, TouchableHighlight, AsyncStorage } from 'react-native';
 import Swiper from 'react-native-swiper';
+
+import { NavigationActions, StackActions } from 'react-navigation';
 
 export class IntroAppPage extends React.Component {
 
@@ -94,7 +96,7 @@ export class IntroAppPage extends React.Component {
                 resizeMode='cover'
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}>
-                <View style={ styles.containerDashboard }>
+                <View style={styles.containerDashboard}>
                     <Swiper
                         loop={false}
                         dot={<View style={styles.formatSwiper} />}
@@ -160,7 +162,16 @@ export class IntroAppPage extends React.Component {
                             </View>
                             <View style={{ flex: 1, width: '100%', justifyContent: 'flex-end', position: 'relative', marginBottom: 23, paddingRight: 45 }}>
                                 <TouchableHighlight
-                                    onPress={() => this.props.navigation.navigate('MenuLogin')}
+                                    onPress={() => {
+                                        const intro = true;
+                                        AsyncStorage.setItem('INTRODUCTION', JSON.stringify(intro), () => {
+                                            const resetAction = StackActions.reset({
+                                                index: 0,
+                                                actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                                            });
+                                            this.props.navigation.dispatch(resetAction);
+                                        });
+                                    }}
                                 >
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'red', textAlign: 'right' }}>NEXT</Text>
                                 </TouchableHighlight>
@@ -185,11 +196,11 @@ const styles = StyleSheet.create({
         marginBottom: 3
     },
     containerDashboard: {
-		borderRadius: 20,
-		backgroundColor: 'rgba(0,0,0,0.8)',
-		height: '100%',
-		width: '100%',
-	},
+        borderRadius: 20,
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        height: '100%',
+        width: '100%',
+    },
 
 });
 

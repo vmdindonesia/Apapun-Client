@@ -115,6 +115,9 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  ForgotPassword: {
+    screen: ForgotPasswordPage
+  },
   IntroApp: {
     screen: IntroAppPage
   },
@@ -127,14 +130,9 @@ const Routes = createStackNavigator({
   PaymentMethod: {
     screen: PaymentMethodPage
   },
-
-  ForgotPassword: {
-    screen: ForgotPasswordPage
-  },
   Login: {
     screen: LoginPage
   },
-
   MenuLogin: {
     screen: MenuLoginPage
   },
@@ -168,6 +166,9 @@ const Routes = createStackNavigator({
   },
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
+  },
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
   },
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
@@ -325,14 +326,9 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
-
   pengaturanBank: {
     screen: PengaturanBankPage
   },
