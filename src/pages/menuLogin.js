@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ImageBackground, Image, Text, TouchableHighlight } from 'react-native';
+import { AsyncStorage, View, ImageBackground, Image, Text, TouchableHighlight } from 'react-native';
 
 
 export class MenuLoginPage extends React.Component {
@@ -7,6 +7,10 @@ export class MenuLoginPage extends React.Component {
     static navigationOptions = {
         header: null
     }
+
+    componentDidMount() {
+		AsyncStorage.removeItem('VMDDEVELOPER');
+	}
 
     render() {
         return (

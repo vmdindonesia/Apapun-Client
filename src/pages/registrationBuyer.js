@@ -34,8 +34,7 @@ export class RegistrationBuyerPage extends React.Component {
             email: '',
             birthDate: '',
             birthPlace: '',
-            gender: '',
-            profileUrl: '',
+            gender: 'Pria',
             imageUri: '',
             emailverified: 0,
             suggestionsProvince: [],
@@ -115,7 +114,7 @@ export class RegistrationBuyerPage extends React.Component {
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                 this.setState({
-                    profileUrl: source
+                    imageUri: source
                 });
             }
         });
@@ -152,11 +151,12 @@ export class RegistrationBuyerPage extends React.Component {
             birthDate,
             birthPlace,
             gender,
-            profileUrl,
+            imageUri,
             province,
             city,
             district,
-            addressTxt
+            addressTxt,
+            agree
         } = this.state;
 
         const validate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -194,7 +194,7 @@ export class RegistrationBuyerPage extends React.Component {
                                                                     case '':
                                                                         return ToastAndroid.show('Jenis Kelamin Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                     default:
-                                                                        switch (profileUrl) {
+                                                                        switch (imageUri) {
                                                                             case '':
                                                                                 return ToastAndroid.show('Foto Profile Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                             default:
@@ -214,8 +214,13 @@ export class RegistrationBuyerPage extends React.Component {
                                                                                                             case '':
                                                                                                                 return ToastAndroid.show('Alamat Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                                                             default:
-                                                                                                                this.setState({ loading: true });
-                                                                                                                this.prosesRegistration();
+                                                                                                                switch (agree) {
+                                                                                                                    case false:
+                                                                                                                        return ToastAndroid.show('Anda belum menyetujui Terms & Condition', ToastAndroid.SHORT);
+                                                                                                                    default:
+                                                                                                                        this.setState({ loading: true });
+                                                                                                                        this.prosesRegistration();
+                                                                                                                }
                                                                                                         }
                                                                                                 }
                                                                                         }
@@ -241,11 +246,11 @@ export class RegistrationBuyerPage extends React.Component {
             birthDate,
             birthPlace,
             gender,
-            profileUrl,
+            imageUri,
             emailverified,
-            province,
-            city,
-            district,
+            idProvince,
+            idCity,
+            idDistrict,
             location,
             addressTxt
         } = this.state;
@@ -253,13 +258,11 @@ export class RegistrationBuyerPage extends React.Component {
         const nameFile = 'IMG_' + uuid.v1();
         var body = new FormData();
         var photo = {
-            uri: this.state.profileUrl,
+            uri: imageUri.uri,
             type: 'image/jpeg',
             name: nameFile.toUpperCase() + '.jpg'
         };
         body.append('photo', photo);
-        this.setState({ imageUri: nameFile });
-
         var request = new XMLHttpRequest();
         request.onreadystatechange = (e) => {
             if (request.readyState !== 4) {
@@ -273,7 +276,11 @@ export class RegistrationBuyerPage extends React.Component {
             }
         };
 
-        axios.post(`${IPSERVER}/ApapunUsers`, {
+        const profileUrlFirst = 'IMG_' + uuid.v1();
+        const profileUrl = profileUrlFirst.toUpperCase() + '.jpg';
+        console.log(profileUrl, 'xxx');
+        this.setState({ loading: false });
+        axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
             realm,
             username,
             password,
@@ -284,9 +291,9 @@ export class RegistrationBuyerPage extends React.Component {
             gender,
             profileUrl,
             emailverified,
-            province,
-            city,
-            district,
+            idProvince,
+            idCity,
+            idDistrict,
             location,
             addressTxt
         }).then(response => {
@@ -350,8 +357,10 @@ export class RegistrationBuyerPage extends React.Component {
         console.log(value, 'Keyword nya');
         if (value !== '') {
             const keyword = value;
+            const province_id = this.state.idProvince;
             axios.post(`${IPSERVER}/ApapunRegencies/getRegenciesAuto`, {
-                keyword
+                keyword,
+                province_id
             })
                 .then(response => {
                     console.log(response, 'Auto City');
@@ -384,8 +393,10 @@ export class RegistrationBuyerPage extends React.Component {
         console.log(value, 'Keyword nya');
         if (value !== '') {
             const keyword = value;
+            const regency_id = this.state.idCity;
             axios.post(`${IPSERVER}/ApapunDistricts/getDistrictAuto`, {
-                keyword
+                keyword,
+                regency_id
             })
                 .then(response => {
                     console.log(response, 'Auto District');
@@ -432,6 +443,7 @@ export class RegistrationBuyerPage extends React.Component {
             noPhone,
             email,
             birthPlace,
+            imageUri,
             suggestionsProvince,
             suggestionsRegencies,
             suggestionsDistrict,
@@ -447,14 +459,14 @@ export class RegistrationBuyerPage extends React.Component {
             agree
         } = this.state
 
-        console.log(this.state.profileUrl, 'Image');
+        // console.log(this.state.imageUri, 'Image');
         return (
             <View style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}>
                 <ScrollView keyboardShouldPersistTaps="always">
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegisterBuyer.bind(this)}>
                             <View>
-                                {this.state.profileUrl === '' ?
+                                {imageUri === '' ?
                                     <Image
                                         style={styles.containerUpload}
                                         source={require('./../assets/images/icon_profile.png')}
@@ -463,7 +475,7 @@ export class RegistrationBuyerPage extends React.Component {
                                     <Image
                                         style={styles.containerUpload}
                                         resizeMode='cover'
-                                        source={this.state.profileUrl} />
+                                        source={imageUri} />
                                 }
                                 <Image
                                     style={styles.iconCamera}
