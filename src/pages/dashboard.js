@@ -543,7 +543,7 @@ export class DashboardPage extends React.Component {
                                                                             <View style={{ flex: 1 }}>
                                                                                 <Image
                                                                                     style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/fashion_crafter.png')}
+                                                                                    source={require('./../assets/images/sidemenu/fashion.png')}
                                                                                 />
                                                                             </View>
                                                                             <View style={{ flex: 1 }}>
@@ -557,7 +557,7 @@ export class DashboardPage extends React.Component {
                                                                             <View style={{ flex: 1 }}>
                                                                                 <Image
                                                                                     style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/diy_crafter.png')}
+                                                                                    source={require('./../assets/images/sidemenu/hobbies.png')}
                                                                                 />
                                                                             </View>
                                                                             <View style={{ flex: 1 }}>
@@ -574,7 +574,7 @@ export class DashboardPage extends React.Component {
                                                                             <View style={{ flex: 1 }}>
                                                                                 <Image
                                                                                     style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/furniture_crafter.png')}
+                                                                                    source={require('./../assets/images/sidemenu/furniture.png')}
                                                                                 />
                                                                             </View>
                                                                             <View style={{ flex: 1 }}>
