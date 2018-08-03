@@ -112,6 +112,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -123,9 +126,6 @@ const Routes = createStackNavigator({
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
-  },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
   },
   PaymentMethod: {
     screen: PaymentMethodPage
