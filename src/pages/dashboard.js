@@ -953,7 +953,7 @@ export class DashboardPage extends React.Component {
                                                                                                     </View>
 
                                                                                                     <View style={{ flex: 1 }}>
-                                                                                                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 80 }}>
+                                                                                                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 70 }}>
                                                                                                             <Image
                                                                                                                 style={styles.iconQuestion}
                                                                                                                 source={require('./../assets/images/question.png')}
