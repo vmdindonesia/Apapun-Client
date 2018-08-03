@@ -101,7 +101,7 @@ export class LoginPage extends React.Component {
 	}
 
 	render() {
-		const { email, password } = this.state;
+		const { email, password, loading } = this.state;
 		return (
 			<View style={styles.container}>
 				<Image
@@ -133,11 +133,16 @@ export class LoginPage extends React.Component {
 						/>
 					</View>
 				</View>
-				<TouchableOpacity style={styles.buttonSignUp}
-					onPress={() => this.onLogin()}
-				>
-					<Text style={styles.signupButton}>Login</Text>
-				</TouchableOpacity>
+				{
+					loading ?
+						<Spinner size="small" />
+						:
+						<TouchableOpacity style={styles.buttonSignUp}
+							onPress={() => this.onLogin()}
+						>
+							<Text style={styles.signupButton}>Login</Text>
+						</TouchableOpacity>
+				}
 			</View>
 		)
 	}
