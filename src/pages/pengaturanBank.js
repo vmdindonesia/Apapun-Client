@@ -23,12 +23,24 @@ export class PengaturanBankPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            idUser: '',
             agree: false,
             pathPhotoProfil: null,
             pathPhotoKTP: null,
             pathPhotoBankBook: null
-
         };
+    }
+
+    componentDidMount() {
+        AsyncStorage.getItem("VMDDEVELOPER").then((value) => {
+            console.log(JSON.parse(value), 'Json Parse');
+            if (value) {
+                const dataLogin = JSON.parse(value);
+                this.setState({ idUser: dataLogin.dataLogin }, () => {
+                    console.log(this.state.idUser, 'ID USER');
+                })
+            }
+        }).done();
     }
 
     getPhotoProfile() {

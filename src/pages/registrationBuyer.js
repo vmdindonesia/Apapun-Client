@@ -279,7 +279,6 @@ export class RegistrationBuyerPage extends React.Component {
         const profileUrlFirst = 'IMG_' + uuid.v1();
         const profileUrl = profileUrlFirst.toUpperCase() + '.jpg';
         console.log(profileUrl, 'xxx');
-        this.setState({ loading: false });
         axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
             realm,
             username,

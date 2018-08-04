@@ -10,7 +10,7 @@ import {
 import Swiper from 'react-native-swiper';
 import { COLOR, IPSERVER } from '../shared/config';
 import { NavigationActions, StackActions } from 'react-navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import BubbleMenu from 'react-native-bubble-menu';
 
 export class DashboardPage extends React.Component {
@@ -166,11 +166,10 @@ export class DashboardPage extends React.Component {
             }
         ];
 
-        const items = icons.map(({ name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, action }, key) => (
-            <View style={styles.menuGeneralIcons}>
+        const items = icons.map(({ name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, action }, index) => (
+            <View style={styles.menuGeneralIcons} key={action}>
                 <TouchableOpacity
                     onPress={() => this.statusMenus(action)}
-                    key={key}
                 >
                     {
                         statusMenu === 'profile' ?
@@ -458,534 +457,264 @@ export class DashboardPage extends React.Component {
                             </View>
                         </View>
                     </ScrollView>
-                    {
-                        this.state.show === true ?
-                            <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.98)', width: '100%', height: '100%', position: 'absolute' }}>
 
-                                <View style={{ height: '70%' }}>
-                                    {
-                                        statusMenu === 'home' ?
-                                            <View />
-                                            :
-                                            <View style={{ height: '100%' }}>
-                                                {
-                                                    statusMenu === 'crafterList' ?
-                                                        <View style={styles.containerHomeScreen}>
-                                                            <View style={styles.containerHome}>
-                                                                <View style={styles.containerHomeLogo}>
-                                                                    <TouchableOpacity
+                    {
+                        show === true ?
+                            <View style={{ width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.98)', position: 'absolute' }}>
+                                {
+                                    statusMenu === 'profile' ?
+                                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                                            <View style={{ padding: 15, height: 100 }}>
+                                                <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableWithoutFeedback
+                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            <Image style={{ width: 50, height: 50 }}
+                                                                source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
+                                                            />
+                                                        </TouchableWithoutFeedback>
+                                                    </View>
+                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableWithoutFeedback
+                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            <Image style={{ width: 50, height: 50 }}
+                                                                source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
+                                                            />
+                                                        </TouchableWithoutFeedback>
+                                                    </View>
+                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableWithoutFeedback
+                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            <Image style={{ width: 50, height: 50 }}
+                                                                source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
+                                                            />
+                                                        </TouchableWithoutFeedback>
+                                                    </View>
+                                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                        <TouchableWithoutFeedback
+                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            <Image style={{ width: 50, height: 50 }}
+                                                                source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
+                                                            />
+                                                        </TouchableWithoutFeedback>
+                                                    </View>
+                                                </View>
+                                            </View>
+                                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                <View style={{ height: 50, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 20, color: 'white', textAlign: 'center' }}>GAL GADOT </Text>
+                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <Image
+                                                            style={{ width: 10, height: 10 }}
+                                                            source={require('./../assets/images/location_icon.png')}
+                                                            resizeMode='contain'
+                                                        />
+                                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'white', textAlign: 'center', marginLeft: 3 }}>DKI Jakarta</Text>
+                                                    </View>
+                                                </View>
+                                                <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableWithoutFeedback
+                                                        onPress={() => this.props.navigation.navigate('')}
+                                                    >
+                                                        <Image
+                                                            style={{ width: 170, height: 170, borderRadius: 100 }}
+                                                            source={require('./../assets/images/profile.png')}
+                                                        />
+                                                    </TouchableWithoutFeedback>
+                                                </View>
+                                                <View style={{ height: 107, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <Text style={{ fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }} >PROFIL</Text>
+                                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white', paddingTop: 10 }} >Lihat dan atur segala informasi</Text>
+                                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', color: 'white' }} >profil anda disini</Text>
+                                                </View>
+                                                <View style={{ height: 203 }}>
+                                                    <View style={{ height: 142, flexDirection: 'row' }}>
+                                                        <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                            <TouchableOpacity
+                                                                onPress={() => {
+                                                                    this.props.navigation.navigate('ProfilePage');
+                                                                    this.setState(({ show }) => ({
+                                                                        show: !show,
+                                                                    }));
+                                                                }}
+                                                            >
+                                                                <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <Image
+                                                                        style={{ width: 40, height: 40 }}
+                                                                        source={require('./../assets/images/sidemenu/edit_profile.png')}
+                                                                    />
+                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View><View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                            <TouchableOpacity
+                                                                onPress={() => {
+                                                                    this.setState(({ show }) => ({
+                                                                        show: !show,
+                                                                    }), () => {
+                                                                        const resetAction = StackActions.reset({
+                                                                            index: 0,
+                                                                            actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                                                                        });
+                                                                        this.props.navigation.dispatch(resetAction);
+                                                                    });
+                                                                }}
+                                                            >
+                                                                <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <Image
+                                                                        style={{ width: 40, height: 40 }}
+                                                                        source={require('./../assets/images/sidemenu/logout.png')}
+                                                                        resizeMode='contain'
+                                                                    />
+                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </View>
+                                                    </View>
+                                                </View>
+                                            </View>
+                                        </View>
+                                        :
+                                        <View style={{ flex: 1 }}>
+                                            {
+                                                statusMenu === 'order' ?
+                                                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                        <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
+                                                            <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
+                                                                <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <TouchableWithoutFeedback
                                                                         onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
-                                                                        <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                        <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                         />
-                                                                    </TouchableOpacity>
+                                                                    </TouchableWithoutFeedback>
                                                                 </View>
-
-                                                                <View style={styles.containerHomeLogo}>
-                                                                    <TouchableOpacity
-                                                                        onPress={() => this.props.navigation.navigate('NotificationMenu')}>
-                                                                        <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <TouchableWithoutFeedback
+                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                         />
-                                                                    </TouchableOpacity>
+                                                                    </TouchableWithoutFeedback>
                                                                 </View>
-
-                                                                <View style={styles.containerHomeLogo}>
-                                                                    <TouchableOpacity
-                                                                        onPress={() => this.props.navigation.navigate('SettingMenu')}>
-                                                                        <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <TouchableWithoutFeedback
+                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                         />
-                                                                    </TouchableOpacity>
+                                                                    </TouchableWithoutFeedback>
                                                                 </View>
-
-                                                                <View style={styles.containerHomeLogo}>
-                                                                    <TouchableOpacity
-                                                                        onPress={() => this.props.navigation.navigate('HelpMenu')}>
-                                                                        <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <TouchableWithoutFeedback
+                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                         />
-                                                                    </TouchableOpacity>
-                                                                </View>
-                                                            </View>
-                                                            <View style={styles.containerSomeHomeScreen}>
-                                                                <View style={styles.photoHomeScreen}>
-                                                                    <Image
-                                                                        style={styles.cngImage}
-                                                                        source={require('./../assets/images/crafter_list.png')}
-                                                                    />
-                                                                </View>
-                                                                <View style={{
-                                                                    flex: 1, flexDirection: 'column',
-                                                                    borderRadius: 25,
-                                                                }} >
-                                                                    <Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CRAFTER LIST</Text>
-                                                                    <Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
-
-                                                                    <TouchableOpacity
-                                                                        style={styles.buttonCustom}
-                                                                        onPress={() => {
-                                                                            this.props.navigation.navigate('CrafterList');
-                                                                            this.setState(({ show }) => ({
-                                                                                show: !show,
-                                                                            }));
-                                                                        }}
-                                                                    >
-                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
-                                                                    </TouchableOpacity>
-                                                                </View>
-                                                            </View>
-
-                                                            <View style={styles.containerBodyCrafter}>
-                                                                <View style={styles.bodyCrafterList}>
-                                                                    <View style={styles.CrafterListLeft}>
-                                                                        <View style={{ marginLeft: 10, marginTop: 6 }}>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Image
-                                                                                    style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/fashion.png')}
-                                                                                />
-                                                                            </View>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 13 }}>Fashion</Text>
-                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 13 }}>1254 Crafter</Text>
-                                                                            </View>
-                                                                        </View>
-                                                                    </View>
-                                                                    <View style={styles.CrafterListRight}>
-                                                                        <View style={{ marginTop: 6 }}>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Image
-                                                                                    style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/hobbies.png')}
-                                                                                />
-                                                                            </View>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 13 }}>DIY, Hobbies, Toys</Text>
-                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 13 }}>199 Crafter</Text>
-                                                                            </View>
-                                                                        </View>
-                                                                    </View>
-                                                                </View>
-
-                                                                <View style={styles.bodyCrafterList}>
-                                                                    <View style={styles.CrafterListLeft}>
-                                                                        <View style={{ marginLeft: 10, marginTop: 10 }}>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Image
-                                                                                    style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/furniture.png')}
-                                                                                />
-                                                                            </View>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 13 }}>Furniture</Text>
-                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 13 }}>723 Crafter</Text>
-                                                                            </View>
-                                                                        </View>
-
-                                                                    </View>
-                                                                    <View style={styles.CrafterListRight}>
-                                                                        <View style={{ marginTop: 10 }}>
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Image
-                                                                                    style={styles.iconsCrafterMenu}
-                                                                                    source={require('./../assets/images/sidemenu/beauty_Crafter.png')}
-                                                                                />
-                                                                            </View >
-                                                                            <View style={{ flex: 1 }}>
-                                                                                <Text style={{ color: 'white', marginTop: 15, paddingLeft: 70, fontSize: 13 }}>Beauty</Text>
-                                                                                <Text style={{ color: '#d87115', marginTop: 1, paddingLeft: 70, fontSize: 13 }}>269 Crafter</Text>
-                                                                            </View>
-                                                                        </View>
-                                                                    </View>
+                                                                    </TouchableWithoutFeedback>
                                                                 </View>
                                                             </View>
                                                         </View>
-                                                        :
-                                                        <View style={{ height: '100%' }}>
-                                                            {
-                                                                statusMenu === 'order' ?
-                                                                    <View style={styles.containerHomeScreen}>
-                                                                        <View style={styles.containerHome}>
-                                                                            <View style={styles.containerHomeLogo}>
-                                                                                <TouchableOpacity
+                                                        <View style={{ flex: 1, backgroundColor: 'pink' }} />
+                                                        <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                    </View>
+                                                    :
+                                                    <View style={{ flex: 1 }}>
+                                                        {
+                                                            statusMenu === 'crafterList' ?
+                                                                <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                                    <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
+                                                                        <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
+                                                                            <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <TouchableWithoutFeedback
                                                                                     onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
-                                                                                    <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                                    <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                                     />
-                                                                                </TouchableOpacity>
+                                                                                </TouchableWithoutFeedback>
                                                                             </View>
-
-                                                                            <View style={styles.containerHomeLogo}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.props.navigation.navigate('NotificationMenu')}>
-                                                                                    <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                            <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <TouchableWithoutFeedback
+                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                     />
-                                                                                </TouchableOpacity>
+                                                                                </TouchableWithoutFeedback>
                                                                             </View>
-
-                                                                            <View style={styles.containerHomeLogo}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.props.navigation.navigate('SettingMenu')}>
-                                                                                    <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                            <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <TouchableWithoutFeedback
+                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                     />
-                                                                                </TouchableOpacity>
+                                                                                </TouchableWithoutFeedback>
                                                                             </View>
-
-                                                                            <View style={styles.containerHomeLogo}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.props.navigation.navigate('HelpMenu')}>
-                                                                                    <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                            <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <TouchableWithoutFeedback
+                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                     />
-                                                                                </TouchableOpacity>
-                                                                            </View>
-                                                                        </View>
-                                                                        {
-                                                                            orderStatus === '' ?
-
-                                                                                <View style={styles.containerSomeHomeScreen}>
-                                                                                    <View style={styles.photoHomeScreen}>
-                                                                                        <Image
-                                                                                            style={styles.cngImage}
-                                                                                            source={require('./../assets/images/order_default.png')}
-                                                                                        />
-                                                                                    </View>
-                                                                                    <View style={{
-                                                                                        flex: 1, flexDirection: 'column',
-                                                                                        borderRadius: 25,
-                                                                                    }} >
-                                                                                        <Text
-                                                                                            style={{
-                                                                                                paddingLeft: 7.5, marginTop: 30, color: 'white',
-                                                                                                fontSize: 15, fontFamily: 'Quicksand-Bold'
-                                                                                            }}>ORDER </Text>
-                                                                                        <Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 15, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Penuhi keinginanmu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata.</Text>
-                                                                                        {/* <View style={{ flex: 1 }} /> */}
-                                                                                    </View>
-                                                                                </View>
-                                                                                :
-                                                                                <View>
-                                                                                    {
-                                                                                        orderStatus === 'custom' ?
-                                                                                            <View style={styles.containerSomeHomeScreen}>
-                                                                                                <View style={styles.photoHomeScreen}>
-                                                                                                    <Image
-                                                                                                        style={styles.cngImage}
-                                                                                                        source={require('./../assets/images/Custom.png')}
-                                                                                                    />
-                                                                                                </View>
-                                                                                                <View style={{
-                                                                                                    flex: 1, flexDirection: 'column',
-                                                                                                    borderRadius: 25,
-                                                                                                }} >
-                                                                                                    <Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CUSTOM</Text>
-                                                                                                    <Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular', }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
-
-                                                                                                    <TouchableOpacity
-                                                                                                        style={styles.buttonCustom}
-                                                                                                        onPress={() => {
-                                                                                                            this.props.navigation.navigate('Order');
-                                                                                                            this.setState(({ show }) => ({
-                                                                                                                show: !show,
-                                                                                                            }));
-                                                                                                        }}>
-                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
-                                                                                                    </TouchableOpacity>
-                                                                                                </View>
-                                                                                            </View>
-                                                                                            :
-                                                                                            <View style={{ width: '100%' }}>
-                                                                                                {
-                                                                                                    orderStatus === 'captureAndGet' ?
-                                                                                                        <View style={styles.containerSomeHomeScreen}>
-                                                                                                            <View style={styles.photoHomeScreen}>
-                                                                                                                <Image
-                                                                                                                    style={styles.cngImage}
-                                                                                                                    source={require('./../assets/images/CapturenGet.png')}
-                                                                                                                />
-                                                                                                            </View>
-                                                                                                            <View style={{
-                                                                                                                flex: 1, flexDirection: 'column',
-                                                                                                                borderRadius: 25
-                                                                                                            }} >
-                                                                                                                <Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>CAPTURE N' Get</Text>
-                                                                                                                <Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'left', flex: 1, fontFamily: 'Quicksand-Regular' }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
-
-                                                                                                                <TouchableOpacity
-                                                                                                                    style={styles.buttonCustom}
-                                                                                                                    onPress={() => {
-                                                                                                                        this.props.navigation.navigate('Captureandget');
-                                                                                                                        this.setState(({ show }) => ({
-                                                                                                                            show: !show,
-                                                                                                                        }));
-                                                                                                                    }}>
-                                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
-                                                                                                                </TouchableOpacity>
-                                                                                                            </View>
-                                                                                                        </View>
-                                                                                                        :
-                                                                                                        <View style={{ width: '100%', }}>
-                                                                                                            {
-                                                                                                                orderStatus === 'ideaMarket' ?
-                                                                                                                    <View style={styles.containerSomeHomeScreen}>
-                                                                                                                        <View style={styles.photoHomeScreen}>
-                                                                                                                            <Image
-                                                                                                                                style={styles.cngImage}
-                                                                                                                                source={require('./../assets/images/idea_market.png')}
-                                                                                                                            />
-                                                                                                                        </View>
-                                                                                                                        <View style={{
-                                                                                                                            flex: 1, flexDirection: 'column',
-                                                                                                                            borderRadius: 25,
-                                                                                                                        }} >
-                                                                                                                            <Text style={{ paddingLeft: 7.5, marginTop: 5, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>IDEA MARKET</Text>
-                                                                                                                            <Text style={{ paddingLeft: 7.5, color: 'white', fontSize: 13.5, textAlign: 'justify', flex: 1, fontFamily: 'Quicksand-Regular' }}>Dengan imajinasimu dan fitur ini, kamu bisa dapatkan hasil desainmu sendiri.</Text>
-
-                                                                                                                            <TouchableOpacity
-                                                                                                                                style={styles.buttonCustom}
-                                                                                                                                onPress={() => {
-                                                                                                                                    this.props.navigation.navigate('IdeaMarket');
-                                                                                                                                    this.setState(({ show }) => ({
-                                                                                                                                        show: !show,
-                                                                                                                                    }));
-                                                                                                                                }}>
-                                                                                                                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
-                                                                                                                            </TouchableOpacity>
-                                                                                                                        </View>
-                                                                                                                    </View>
-                                                                                                                    :
-                                                                                                                    <View />
-
-                                                                                                            }
-                                                                                                        </View>
-                                                                                                }
-                                                                                            </View>
-
-                                                                                    }
-                                                                                </View>
-                                                                        }
-
-                                                                        <View style={styles.containerBodyHome}>
-                                                                            <View style={{ borderTopWidth: 2, borderTopColor: 'white' }}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.OrderStatus('custom')}
-                                                                                >
-                                                                                    <Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                                </TouchableOpacity>
-                                                                            </View>
-                                                                            <View style={{ borderTopWidth: 2, borderTopColor: 'white', borderBottomColor: 'white', borderBottomWidth: 2 }}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.OrderStatus('captureAndGet')}
-                                                                                >
-                                                                                    <Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n` Get</Text>
-                                                                                </TouchableOpacity>
-                                                                            </View>
-                                                                            <View style={{ borderBottomWidth: 2, borderBottomColor: 'white' }}>
-                                                                                <TouchableOpacity
-                                                                                    onPress={() => this.OrderStatus('ideaMarket')}
-                                                                                >
-                                                                                    <Text style={{ marginTop: 20, marginBottom: 20, color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                                </TouchableOpacity>
+                                                                                </TouchableWithoutFeedback>
                                                                             </View>
                                                                         </View>
                                                                     </View>
-                                                                    :
-                                                                    <View style={{ height: '100%' }}>
-                                                                        {
-                                                                            statusMenu === 'profile' ?
-                                                                                <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                                    <View style={styles.containerHome}>
-                                                                                        <View style={styles.containerHomeLogo}>
-                                                                                            <TouchableOpacity
+                                                                    <View style={{ flex: 1, backgroundColor: 'pink' }} />
+                                                                    <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                                </View>
+                                                                :
+                                                                <View style={{ flex: 1 }}>
+                                                                    {
+                                                                        statusMenu === 'crafterMenu' ?
+                                                                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                                                <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
+                                                                                    <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
+                                                                                        <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                            <TouchableWithoutFeedback
                                                                                                 onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
-                                                                                                <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                                                <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                                                 />
-                                                                                            </TouchableOpacity>
+                                                                                            </TouchableWithoutFeedback>
                                                                                         </View>
-
-                                                                                        <View style={styles.containerHomeLogo}>
-                                                                                            <TouchableOpacity
-                                                                                                onPress={() => this.props.navigation.navigate('NotificationMenu')}>
-                                                                                                <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                                        <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                            <TouchableWithoutFeedback
+                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                                 />
-                                                                                            </TouchableOpacity>
+                                                                                            </TouchableWithoutFeedback>
                                                                                         </View>
-
-                                                                                        <View style={styles.containerHomeLogo}>
-                                                                                            <TouchableOpacity
-                                                                                                onPress={() => this.props.navigation.navigate('SettingMenu')}>
-                                                                                                <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                                        <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                            <TouchableWithoutFeedback
+                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                                 />
-                                                                                            </TouchableOpacity>
+                                                                                            </TouchableWithoutFeedback>
                                                                                         </View>
-
-                                                                                        <View style={styles.containerHomeLogo}>
-                                                                                            <TouchableOpacity
-                                                                                                onPress={() => this.props.navigation.navigate('HelpMenu')}>
-                                                                                                <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
+                                                                                        <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                            <TouchableWithoutFeedback
+                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                                 />
-                                                                                            </TouchableOpacity>
-                                                                                        </View>
-                                                                                    </View>
-                                                                                    <View style={[styles.profileHomeScreen]}>
-                                                                                        <View style={{ flex: 1 }}>
-                                                                                            <Text style={{ color: 'white', marginTop: 12, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text>
-                                                                                            <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
-                                                                                                <Image
-                                                                                                    style={styles.locationIcon}
-                                                                                                    source={require('./../assets/images/location_icon.png')}
-                                                                                                />
-                                                                                                <Text style={{ color: 'white', marginLeft: 10, marginTop: 5, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Bali</Text>
-                                                                                            </View>
-                                                                                            <View style={{ alignItems: 'center' }}>
-                                                                                                <TouchableOpacity style={styles.button}
-                                                                                                    onPress={() => this.props.navigation.navigate('')}>
-                                                                                                    <Image
-                                                                                                        style={styles.photoProfileHomeScreen}
-                                                                                                        source={require('./../assets/images/profile.png')}
-                                                                                                    />
-                                                                                                </TouchableOpacity>
-                                                                                            </View>
-                                                                                            <Text style={{ color: 'white', marginTop: 15, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>PROFILE</Text>
-                                                                                            <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Lihat dan atur segala informasi</Text>
-                                                                                            <Text style={{ color: 'white', marginTop: 5, alignSelf: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>profil anda disini </Text>
-                                                                                        </View>
-                                                                                        <View style={{ height: 70, marginTop: 50, flexDirection: 'row', paddingLeft: 20, paddingRight: 20 }}>
-                                                                                            <View style={{ flex: 1 }}>
-                                                                                                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-                                                                                                    onPress={() => {
-                                                                                                        this.props.navigation.navigate('ProfilePage');
-                                                                                                        this.setState(({ show }) => ({
-                                                                                                            show: !show,
-                                                                                                        }));
-                                                                                                    }}
-                                                                                                >
-                                                                                                    <Image
-                                                                                                        style={[styles.iconProfile, { marginBottom: 15 }]}
-                                                                                                        source={require('./../assets/images/sidemenu/edit_profile.png')}
-                                                                                                    />
-                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
-                                                                                                </TouchableOpacity>
-                                                                                            </View>
-
-                                                                                            <View style={{ flex: 1 }}>
-                                                                                                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center' }}
-                                                                                                    onPress={() => {
-                                                                                                        const resetAction = StackActions.reset({
-                                                                                                            index: 0,
-                                                                                                            actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
-                                                                                                        });
-                                                                                                        this.props.navigation.dispatch(resetAction);
-                                                                                                    }
-                                                                                                    }>
-                                                                                                    <Image
-                                                                                                        style={[styles.iconProfile, { marginBottom: 15 }]}
-                                                                                                        source={require('./../assets/images/sidemenu/logout.png')}
-                                                                                                        resizeMode='contain'
-                                                                                                    />
-                                                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
-                                                                                                </TouchableOpacity>
-                                                                                            </View>
+                                                                                            </TouchableWithoutFeedback>
                                                                                         </View>
                                                                                     </View>
                                                                                 </View>
-                                                                                :
-                                                                                <View style={{ height: '100%' }}>
-                                                                                    {
-                                                                                        statusMenu === 'crafterMenu' ?
-                                                                                            <View style={styles.containerBodyJoinCrafter}>
-                                                                                                <View style={styles.containerHome}>
-                                                                                                    <View style={styles.containerHomeLogo}>
-                                                                                                        <TouchableOpacity
-                                                                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
-                                                                                                            <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-                                                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
-                                                                                                            />
-                                                                                                        </TouchableOpacity>
-                                                                                                    </View>
-
-                                                                                                    <View style={styles.containerHomeLogo}>
-                                                                                                        <TouchableOpacity
-                                                                                                            onPress={() => this.props.navigation.navigate('NotificationMenu')}>
-                                                                                                            <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-                                                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
-                                                                                                            />
-                                                                                                        </TouchableOpacity>
-                                                                                                    </View>
-
-                                                                                                    <View style={styles.containerHomeLogo}>
-                                                                                                        <TouchableOpacity
-                                                                                                            onPress={() => this.props.navigation.navigate('SettingMenu')}>
-                                                                                                            <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-                                                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
-                                                                                                            />
-                                                                                                        </TouchableOpacity>
-                                                                                                    </View>
-
-                                                                                                    <View style={styles.containerHomeLogo}>
-                                                                                                        <TouchableOpacity
-                                                                                                            onPress={() => this.props.navigation.navigate('HelpMenu')}>
-                                                                                                            <Image style={{ marginTop: 15, alignContent: 'center', alignSelf: 'center', width: 50, height: 50 }}
-                                                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
-                                                                                                            />
-                                                                                                        </TouchableOpacity>
-                                                                                                    </View>
-                                                                                                </View>
-                                                                                                <View style={{ flex: 1, flexDirection: 'column', marginTop: -250 }}>
-                                                                                                    <View style={{ flex: 1, marginTop: -29 }}>
-                                                                                                        <View style={styles.photoJoinCrafter}>
-                                                                                                            <Image
-                                                                                                                style={styles.joinImage}
-                                                                                                                source={require('./../assets/images/crafter_menu.png')}
-                                                                                                            />
-                                                                                                        </View>
-
-                                                                                                        <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
-                                                                                                        <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
-                                                                                                        <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
-                                                                                                    </View>
-
-                                                                                                    <View style={{ flex: 1 }}>
-                                                                                                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 70 }}>
-                                                                                                            <Image
-                                                                                                                style={styles.iconQuestion}
-                                                                                                                source={require('./../assets/images/question.png')}
-                                                                                                            />
-                                                                                                            <Text style={{ marginLeft: 10, color: 'white', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>apa itu <Text style={{ color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text></Text>
-                                                                                                        </View>
-                                                                                                        <View style={{ flex: 1, marginTop: -100 }}>
-                                                                                                            <TouchableOpacity style={styles.buttonJoin}
-                                                                                                                onPress={() => {
-                                                                                                                    this.props.navigation.navigate('CrafterMenu')
-                                                                                                                    this.setState(({ show }) => ({
-                                                                                                                        show: !show,
-                                                                                                                    }));
-                                                                                                                }}>
-                                                                                                                <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
-                                                                                                            </TouchableOpacity>
-                                                                                                        </View>
-                                                                                                    </View>
-                                                                                                </View>
-                                                                                            </View>
-                                                                                            :
-                                                                                            <View />
-                                                                                    }
-                                                                                </View>
-                                                                        }
-                                                                    </View>
-                                                            }
-                                                        </View>
-                                                }
-                                            </View>
-                                    }
-                                </View>
+                                                                                <View style={{ flex: 1, backgroundColor: 'pink' }} />
+                                                                                <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                                            </View>
+                                                                            :
+                                                                            <View />
+                                                                    }
+                                                                </View>
+                                                        }
+                                                    </View>
+                                            }
+                                        </View>
+                                }
                             </View>
                             :
                             <View />
@@ -1019,7 +748,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // backgroundColor: 'orange',
-        marginHorizontal: 10
+        marginHorizontal: 7
     },
     menuOpenBtn: {
         width: '100%',

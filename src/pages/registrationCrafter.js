@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, Modal, ToastAndroid } from 'react-native'
-import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
-// import axios from 'axios';
+import { Container, ContainerSection, Spinner, Input } from '../components/common';
+import axios from 'axios';
 import { COLOR } from '../shared/config';
-// import { NavigationActions, StackActions } from 'react-navigation';
-// import { IPSERVER } from './../shared/config';
+import { NavigationActions, StackActions } from 'react-navigation';
+import { IPSERVER } from './../shared/config';
 import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import uuid from 'react-native-uuid';
+import AutoComplete from '../components/AutoComplete';
 
 export class RegistrationCrafterPage extends React.Component {
 
@@ -24,14 +26,32 @@ export class RegistrationCrafterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            latitude: null,
-            longitude: null,
-            error: null,
+            profileImage: '',
+            imageUri: '',
+            craftername: '',
+            phone: '',
+            username: '',
+            password: '',
+            email: '',
+            selfDeliveryService: '',
+            categoryId: [],
+            suggestionsProvince: [],
+            suggestionsRegencies: [],
+            suggestionsDistrict: [],
+            province: '',
+            idProvince: '',
+            city: '',
+            idCity: '',
+            district: '',
+            idDistrict: '',
+            addressTxt: '',
+            loadingAuto: false,
+            loading: false,
+
             isModalVisible: false,
-            pathPhotoRegistCrafter: null,
             fashion: true,
+            lifestyle: false,
             furniture: false,
-            DIY: false,
             beauty: false,
             sendserviceone: true,
             sendservicetwo: false,
@@ -41,49 +61,97 @@ export class RegistrationCrafterPage extends React.Component {
 
     componentDidMount() {
         console.log('Registration Start');
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position, 'Get Position');
-                this.setState({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                    error: null,
-                }, () => {
-                    console.log(this.state.latitude, 'Latitude');
-                    console.log(this.state.longitude, 'Longtitude');
-                    console.log(this.state.error, 'Error');
-                });
-            },
-            (error) => this.setState({ error: error.message }, () => { console.log(this.state.error, 'Error'); }),
-            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-        );
+        const category = this.state.categoryId;
+        category[this.state.categoryId.length] = 'Fashion';
+        this.setState({ categoryId: category }, () => {
+            console.log(this.state.categoryId, 'Data Check Category');
+            this.setState({ selfDeliveryService: 1 }, () => {
+                console.log(this.state.selfDeliveryService, 'Delivery Owner');
+            })
+        });
     }
 
     checkBoxFashion = () => {
-        this.setState({ fashion: !this.state.fashion });
+        this.setState({ fashion: !this.state.fashion }, () => {
+            if (this.state.fashion === true) {
+                const category = this.state.categoryId;
+                category[this.state.categoryId.length] = 'Fashion';
+                this.setState({ categoryId: category }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                });
+            } else {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Fashion') }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                })
+            }
+        });
+    }
+
+    checkBoxLifestyle = () => {
+        this.setState({ lifestyle: !this.state.lifestyle }, () => {
+            if (this.state.lifestyle === true) {
+                const category = this.state.categoryId;
+                category[this.state.categoryId.length] = 'Lifestyle';
+                this.setState({ categoryId: category }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                });
+            } else {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Lifestyle') }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                })
+            }
+        });
     }
 
     checkBoxFurniture = () => {
-        this.setState({ furniture: !this.state.furniture });
-    }
-
-    checkBoxDIY = () => {
-        this.setState({ DIY: !this.state.DIY });
+        this.setState({ furniture: !this.state.furniture }, () => {
+            if (this.state.furniture === true) {
+                const category = this.state.categoryId;
+                category[this.state.categoryId.length] = 'Furniture';
+                this.setState({ categoryId: category }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                });
+            } else {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Furniture') }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                })
+            }
+        });
     }
 
     checkBoxBeauty = () => {
-        this.setState({ beauty: !this.state.beauty });
+        this.setState({ beauty: !this.state.beauty }, () => {
+            if (this.state.beauty === true) {
+                const category = this.state.categoryId;
+                category[this.state.categoryId.length] = 'Beauty';
+                this.setState({ categoryId: category }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                });
+            } else {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Beauty') }, () => {
+                    console.log(this.state.categoryId, 'Data Check Category');
+                })
+            }
+        });
     }
 
     checkedIHave = () => {
         this.setState({ sendserviceone: true, sendservicetwo: false }, () => {
-            if (this.state.sendserviceone === true) { this.setState({ sendserviceone: "Punya", sendservicetwo: '' }) }
+            if (this.state.sendserviceone === true) {
+                this.setState({ selfDeliveryService: 1 }, () => {
+                    console.log(this.state.selfDeliveryService, 'Delivery Owner');
+                })
+            }
         });
     }
 
     checkedNoIdontHave = () => {
         this.setState({ sendservicetwo: true, sendserviceone: false }, () => {
-            if (this.state.sendservicetwo === true) { this.setState({ sendservicetwo: "Perempuan", sendserviceone: '' }) }
+            if (this.state.sendservicetwo === true) {
+                this.setState({ selfDeliveryService: 0 }, () => {
+                    console.log(this.state.selfDeliveryService, 'Delivery Owner');
+                })
+            }
         });
     }
 
@@ -125,21 +193,301 @@ export class RegistrationCrafterPage extends React.Component {
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                 this.setState({
-                    pathPhotoRegistCrafter: source
+                    imageUri: source
                 });
             }
         });
     }
 
+    onChangeInput = (name, v) => {
+        this.setState({ [name]: v }, () => {
+            console.log(this.state[name], 'Birth');
+        });
+    }
 
+    queryProvinceSuggestion = (value) => {
+        this.setState({
+            province: value,
+            loadingAuto: true,
+            idProvince: ''
+        })
+        console.log(value, 'Keyword nya');
+        if (value !== '') {
+            const keyword = value;
+            axios.post(`${IPSERVER}/ApapunProvinces/getProvinceAuto`, {
+                keyword
+            })
+                .then(response => {
+                    console.log(response, 'Auto Province');
+                    const res = response.data;
+                    this.setState({ suggestionsProvince: res, loadingAuto: false })
+                })
+                .catch(error => {
+                    console.log(error, 'Error Auto Province');
+                    this.setState({ loadingAuto: false })
+                })
+        } else {
+            this.setState({ suggestionsProvince: [] })
+        }
+    }
 
+    onProvinceSelected = (item) => {
+        this.setState({
+            suggestionsProvince: [],
+            idProvince: item.id,
+            province: item.name
+        })
+    }
+
+    queryRegenciesSuggestion = (value) => {
+        this.setState({
+            city: value,
+            loadingAuto: true,
+            idCity: ''
+        })
+        console.log(value, 'Keyword nya');
+        if (value !== '') {
+            const keyword = value;
+            const province_id = this.state.idProvince;
+            axios.post(`${IPSERVER}/ApapunRegencies/getRegenciesAuto`, {
+                keyword,
+                province_id
+            })
+                .then(response => {
+                    console.log(response, 'Auto City');
+                    const res = response.data;
+                    this.setState({ suggestionsRegencies: res, loadingAuto: false })
+                })
+                .catch(error => {
+                    console.log(error, 'Error Auto City');
+                    this.setState({ loadingAuto: false })
+                })
+        } else {
+            this.setState({ suggestionsRegencies: [] })
+        }
+    }
+
+    onRegenciesSelected = (item) => {
+        this.setState({
+            suggestionsRegencies: [],
+            idCity: item.id,
+            city: item.name
+        })
+    }
+
+    queryDistrictSuggestion = (value) => {
+        this.setState({
+            district: value,
+            loadingAuto: true,
+            idDistrict: ''
+        })
+        console.log(value, 'Keyword nya');
+        if (value !== '') {
+            const keyword = value;
+            const regency_id = this.state.idCity;
+            axios.post(`${IPSERVER}/ApapunDistricts/getDistrictAuto`, {
+                keyword,
+                regency_id
+            })
+                .then(response => {
+                    console.log(response, 'Auto District');
+                    const res = response.data;
+                    this.setState({ suggestionsDistrict: res, loadingAuto: false })
+                })
+                .catch(error => {
+                    console.log(error, 'Error Auto District');
+                    this.setState({ loadingAuto: false })
+                })
+        } else {
+            this.setState({ suggestionsDistrict: [] })
+        }
+    }
+
+    onDistrictSelected = (item) => {
+        this.setState({
+            suggestionsDistrict: [],
+            idDistrict: item.id,
+            district: item.name
+        })
+    }
+
+    checkValidation() {
+        console.log(this.state, 'State');
+        const {
+            imageUri,
+            craftername,
+            categoryId,
+            selfDeliveryService,
+            password,
+            email,
+            phone,
+            idProvince,
+            idCity,
+            idDistrict,
+            addressTxt,
+            aggree
+        } = this.state;
+
+        switch (imageUri) {
+            case '':
+                return ToastAndroid.show('Foto Tidak Boleh Kosong', ToastAndroid.SHORT);
+            default:
+                switch (craftername) {
+                    case '':
+                        return ToastAndroid.show('Nama Crafter Tidak Boleh Kosong', ToastAndroid.SHORT);
+                    default:
+                        const lengtCategory = categoryId.length;
+                        switch (lengtCategory) {
+                            case 0:
+                                return ToastAndroid.show('Bidang Kemampuan Tidak Boleh Kosong', ToastAndroid.SHORT);
+                            default:
+                                switch (selfDeliveryService) {
+                                    case '':
+                                        return ToastAndroid.show('Jasa Pengirman Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                    default:
+                                        switch (password) {
+                                            case '':
+                                                return ToastAndroid.show('Password Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                            default:
+                                                switch (email) {
+                                                    case '':
+                                                        return ToastAndroid.show('Email Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                    default:
+                                                        switch (phone) {
+                                                            case '':
+                                                                return ToastAndroid.show('Nomor Telepon Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                            default:
+                                                                switch (idProvince) {
+                                                                    case '':
+                                                                        return ToastAndroid.show('Provinse Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                    default:
+                                                                        switch (idCity) {
+                                                                            case '':
+                                                                                return ToastAndroid.show('Kota Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                            default:
+                                                                                switch (idDistrict) {
+                                                                                    case '':
+                                                                                        return ToastAndroid.show('District Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                    default:
+                                                                                        switch (addressTxt) {
+                                                                                            case '':
+                                                                                                return ToastAndroid.show('Alamat Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                            default:
+                                                                                                switch (aggree) {
+                                                                                                    case false:
+                                                                                                        return ToastAndroid.show('Anda harus menyetujui Syarat & Ketentuan Berlaku', ToastAndroid.SHORT);
+                                                                                                    default:
+                                                                                                        this.setState({ loading: true });
+                                                                                                        this.prosesRegisterCrafter();
+                                                                                                }
+                                                                                        }
+                                                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+    }
+
+    prosesRegisterCrafter() {
+        const {
+            imageUri,
+            craftername,
+            categoryId,
+            selfDeliveryService,
+            password,
+            email,
+            phone,
+            idProvince,
+            idCity,
+            idDistrict,
+            addressTxt,
+            aggree
+        } = this.state;
+        console.log(this.state, 'State');
+        this.setState({ loading: false });
+
+        const nameFile = 'IMG_' + uuid.v1();
+        var body = new FormData();
+        var photo = {
+            uri: imageUri.uri,
+            type: 'image/jpeg',
+            name: nameFile.toUpperCase() + '.jpg'
+        };
+        body.append('photo', photo);
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = (e) => {
+            if (request.readyState !== 4) {
+                return;
+            }
+
+            if (request.status === 200) {
+                console.log('success', request.responseText);
+            } else {
+                console.warn('error', request);
+            }
+        };
+
+        const profileUrlFirst = 'IMG_' + uuid.v1();
+        const profileImage = profileUrlFirst.toUpperCase() + '.jpg';
+        console.log(profileImage, 'Format Name Image');
+
+        this.props.navigation.navigate('pengaturanBank');
+        // axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
+        //     profileImage,
+        //     craftername,
+        //     categoryId,
+        //     selfDeliveryService,
+        //     password,
+        //     email,
+        //     phone,
+        //     idProvince,
+        //     idCity,
+        //     idDistrict,
+        //     addressTxt
+        // }).then(response => {
+        //     console.log(response);
+        //     request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+        //     request.send(body);
+        //     this.setState({ loading: false }, () => {
+        //         this.props.navigation.navigate('pengaturanBank');
+        //     });
+        //     ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
+        // }).catch(error => {
+        //     console.log(error, 'Error Upload Foto');
+        //     this.setState({ loading: false });
+        // });
+    }
 
     render() {
 
         const {
+            profileImage,
+            imageUri,
+            craftername,
+            password,
+            email,
+            phone,
+            suggestionsProvince,
+            suggestionsRegencies,
+            suggestionsDistrict,
+            province,
+            idProvince,
+            city,
+            idCity,
+            district,
+            idDistrict,
+            addressTxt,
+            loadingAuto,
+            loading,
+
             fashion,
+            lifestyle,
             furniture,
-            DIY,
             beauty,
             sendserviceone,
             sendservicetwo,
@@ -157,7 +505,7 @@ export class RegistrationCrafterPage extends React.Component {
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegister.bind(this)}>
                             <View>
-                                {this.state.pathPhotoRegistCrafter == null ?
+                                {imageUri === '' ?
                                     <Image
                                         style={styles.containerUpload}
                                         source={require('./../assets/images/icon_profile.png')}
@@ -166,7 +514,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <Image
                                         style={styles.containerUpload}
                                         resizeMode='cover'
-                                        source={this.state.pathPhotoRegistCrafter} />
+                                        source={imageUri} />
                                 }
                                 <Image
                                     style={styles.iconCamera}
@@ -187,6 +535,8 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
+                                            value={craftername}
+                                            onChangeText={v => this.onChangeInput('craftername', v)}
                                             placeholder='silakan input nama anda sebagai crafter'
                                         />
                                     </ContainerSection>
@@ -200,7 +550,7 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Fashion'
                                             checked={fashion}
                                             onPress={() => this.checkBoxFashion()}
@@ -210,20 +560,20 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
-                                            title='Furniture & Appliances'
-                                            checked={furniture}
-                                            onPress={() => this.checkBoxFurniture()}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            title='Lifestyle'
+                                            checked={lifestyle}
+                                            onPress={() => this.checkBoxLifestyle()}
                                         />
                                     </View>
                                 </View>
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
-                                            title='Beauty'
-                                            checked={beauty}
-                                            onPress={() => this.checkBoxBeauty()}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            title='Furniture'
+                                            checked={furniture}
+                                            onPress={() => this.checkBoxFurniture()}
                                         />
 
                                     </View>
@@ -231,10 +581,10 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View style={styles.containerCheckBoxAbility}>
                                     <View style={styles.checkBoxAbility}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
-                                            title='DIY, Hobbies & Toys'
-                                            checked={DIY}
-                                            onPress={() => this.checkBoxDIY()}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                            title='Beauty'
+                                            checked={beauty}
+                                            onPress={() => this.checkBoxBeauty()}
                                         />
                                     </View>
                                 </View>
@@ -250,7 +600,7 @@ export class RegistrationCrafterPage extends React.Component {
                                     <View style={styles.iHave}>
 
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -263,7 +613,7 @@ export class RegistrationCrafterPage extends React.Component {
 
                                     <View style={styles.iDontHave}>
                                         <CheckBox
-                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', fontSize: 13, fontFamily: 'Quicksand-Regular' }}
+                                            containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Tidak Punya'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
@@ -281,6 +631,8 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
+                                            value={password}
+                                            onChangeText={v => this.onChangeInput('password', v)}
                                             secureTextEntry={true}
                                             placeholder='silakan isi password anda'
                                         />
@@ -295,6 +647,8 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
+                                            value={email}
+                                            onChangeText={v => this.onChangeInput('email', v)}
                                             placeholder='silakan isi email anda'
                                         />
                                     </ContainerSection>
@@ -308,6 +662,8 @@ export class RegistrationCrafterPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
+                                            value={phone}
+                                            onChangeText={v => this.onChangeInput('phone', v)}
                                             placeholder='silakan isi nomor telepon anda'
                                             keyboardType='numeric'
                                         />
@@ -333,7 +689,6 @@ export class RegistrationCrafterPage extends React.Component {
 
                             <View style={styles.textAgree}>
                                 <View>
-
                                     <CheckBox
                                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                         title={<Text style={{ color: 'black', fontSize: 12, paddingLeft: 5 }}> Agree with our <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 12 }}>term & condition</Text>
@@ -350,12 +705,16 @@ export class RegistrationCrafterPage extends React.Component {
 
 
 
-
-                    <TouchableOpacity style={styles.buttonSignUp}
-                        onPress={() => this.props.navigation.navigate('pengaturanBank')}
-                    >
-                        <Text style={styles.signupButtonText}>Sign Up</Text>
-                    </TouchableOpacity>
+                    {
+                        loading ?
+                            <Spinner size="small" />
+                            :
+                            <TouchableOpacity style={styles.buttonSignUp}
+                                onPress={() => this.checkValidation()}
+                            >
+                                <Text style={styles.signupButtonText}>Sign Up</Text>
+                            </TouchableOpacity>
+                    }
 
 
 
@@ -377,9 +736,32 @@ export class RegistrationCrafterPage extends React.Component {
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <Input
-                                                        placeholder='silakan input provinsi tempat anda tinggal'
-                                                    />
+                                                    <AutoComplete
+                                                        autoFocus
+                                                        suggestions={suggestionsProvince}
+                                                        placeholder="Your Province"
+                                                        onChangeText={text => this.queryProvinceSuggestion(text)}
+                                                        value={province}
+                                                        ref="input"
+                                                    >
+                                                        {
+                                                            loadingAuto ?
+                                                                <View style={{ flex: 1, height: 50 }}>
+                                                                    <Spinner size='large' />
+                                                                </View>
+                                                                :
+                                                                suggestionsProvince && suggestionsProvince.map(item =>
+                                                                    <TouchableOpacity
+                                                                        key={item.id}
+                                                                        onPress={() => this.onProvinceSelected(item)}
+                                                                    >
+                                                                        <View style={styles.containerItemAutoSelect}>
+                                                                            <Text>{item.name}</Text>
+                                                                        </View>
+                                                                    </TouchableOpacity>
+                                                                )
+                                                        }
+                                                    </AutoComplete>
                                                 </ContainerSection>
                                             </View>
                                         </View>
@@ -390,9 +772,31 @@ export class RegistrationCrafterPage extends React.Component {
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <Input
-                                                        placeholder='silakan input kota tempat anda tinggal'
-                                                    />
+                                                    <AutoComplete
+                                                        placeholder="Your City"
+                                                        suggestions={suggestionsRegencies}
+                                                        onChangeText={text => this.queryRegenciesSuggestion(text)}
+                                                        value={city}
+                                                        ref="input"
+                                                    >
+                                                        {
+                                                            loadingAuto ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <Spinner size='large' />
+                                                                </View>
+                                                                :
+                                                                suggestionsRegencies && suggestionsRegencies.map(item =>
+                                                                    <TouchableOpacity
+                                                                        key={item.id}
+                                                                        onPress={() => this.onRegenciesSelected(item)}
+                                                                    >
+                                                                        <View style={styles.containerItemAutoSelect}>
+                                                                            <Text>{item.name}</Text>
+                                                                        </View>
+                                                                    </TouchableOpacity>
+                                                                )
+                                                        }
+                                                    </AutoComplete>
                                                 </ContainerSection>
                                             </View>
                                         </View>
@@ -403,9 +807,31 @@ export class RegistrationCrafterPage extends React.Component {
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <Input
-                                                        placeholder='silakan input wilayah tempat anda tinggal'
-                                                    />
+                                                    <AutoComplete
+                                                        placeholder="Your Distrcit"
+                                                        suggestions={suggestionsDistrict}
+                                                        onChangeText={text => this.queryDistrictSuggestion(text)}
+                                                        value={district}
+                                                        ref="input"
+                                                    >
+                                                        {
+                                                            loadingAuto ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <Spinner size='large' />
+                                                                </View>
+                                                                :
+                                                                suggestionsDistrict && suggestionsDistrict.map(item =>
+                                                                    <TouchableOpacity
+                                                                        key={item.id}
+                                                                        onPress={() => this.onDistrictSelected(item)}
+                                                                    >
+                                                                        <View style={styles.containerItemAutoSelect}>
+                                                                            <Text>{item.name}</Text>
+                                                                        </View>
+                                                                    </TouchableOpacity>
+                                                                )
+                                                        }
+                                                    </AutoComplete>
                                                 </ContainerSection>
                                             </View>
                                         </View>
@@ -416,11 +842,12 @@ export class RegistrationCrafterPage extends React.Component {
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <Input style={{ height: 30 }}
+                                                    <Input
                                                         multiline={true}
                                                         numberOfLines={150}
-
-                                                        placeholder='silakan isi alamat lengkap anda'
+                                                        placeholder='Your detail address'
+                                                        value={addressTxt}
+                                                        onChangeText={v => this.onChangeInput('addressTxt', v)}
 
                                                     />
                                                 </ContainerSection>
@@ -432,6 +859,12 @@ export class RegistrationCrafterPage extends React.Component {
                                             <View>
                                                 <TouchableHighlight
                                                     onPress={() => {
+                                                        this.setState({
+                                                            province: '',
+                                                            city: '',
+                                                            district: '',
+                                                            addressTxt: ''
+                                                        });
                                                         this.setModalVisible(!this.state.isModalVisible);
                                                     }}>
                                                     <Text style={styles.AddressTextCancel}>Cancel</Text>
@@ -450,11 +883,8 @@ export class RegistrationCrafterPage extends React.Component {
                                     </ScrollView>
                                 </View>
                             </View>
-
                         </Modal>
                     </View>
-
-
                 </ScrollView>
             </ImageBackground >
         );

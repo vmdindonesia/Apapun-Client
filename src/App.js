@@ -112,6 +112,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  Dashboard: {
+    screen: DashboardPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -135,9 +138,6 @@ const Routes = createStackNavigator({
   },
   MenuLogin: {
     screen: MenuLoginPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
