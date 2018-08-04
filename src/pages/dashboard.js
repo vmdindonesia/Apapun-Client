@@ -24,7 +24,7 @@ export class DashboardPage extends React.Component {
             show: false,
             sideMenu: false,
             statusMenu: 'profile',
-            orderStatus: '',
+            orderStatus: 'default',
             images: [
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
@@ -579,9 +579,9 @@ export class DashboardPage extends React.Component {
                                             {
                                                 statusMenu === 'order' ?
                                                     <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                        <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
-                                                            <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
-                                                                <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <View style={{ padding: 15, height: 100 }}>
+                                                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
                                                                         onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                         <Image style={{ width: 50, height: 50 }}
@@ -589,7 +589,7 @@ export class DashboardPage extends React.Component {
                                                                         />
                                                                     </TouchableWithoutFeedback>
                                                                 </View>
-                                                                <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
                                                                         onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                         <Image style={{ width: 50, height: 50 }}
@@ -597,7 +597,7 @@ export class DashboardPage extends React.Component {
                                                                         />
                                                                     </TouchableWithoutFeedback>
                                                                 </View>
-                                                                <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
                                                                         onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                         <Image style={{ width: 50, height: 50 }}
@@ -605,7 +605,7 @@ export class DashboardPage extends React.Component {
                                                                         />
                                                                     </TouchableWithoutFeedback>
                                                                 </View>
-                                                                <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
                                                                         onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                         <Image style={{ width: 50, height: 50 }}
@@ -615,17 +615,187 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                             </View>
                                                         </View>
-                                                        <View style={{ flex: 1, backgroundColor: 'pink' }} />
-                                                        <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                        {
+                                                            orderStatus === 'default' ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <Image
+                                                                                style={{ height: 200, width: 200 }}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_default.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
+                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>ORDER</Text>
+                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Penuhi keinginan mu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata</Text>
+                                                                        </View>
+                                                                    </View>
+                                                                    <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
+                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('custom')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('capture-get')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('idea-market')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                    </View>
+                                                                </View>
+                                                                :
+                                                                <View />
+                                                        }
+                                                        {
+                                                            orderStatus === 'custom' ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <Image
+                                                                                style={{ height: 200, width: 200 }}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_custom.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
+                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
+                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
+                                                                        </View>
+                                                                    </View>
+                                                                    <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
+                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('custom')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('capture-get')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('idea-market')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                    </View>
+                                                                </View>
+                                                                :
+                                                                <View />
+                                                        }
+                                                        {
+                                                            orderStatus === 'capture-get' ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <Image
+                                                                                style={{ height: 200, width: 200 }}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_capture.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
+                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CAPTURE N' GET</Text>
+                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
+                                                                        </View>
+                                                                    </View>
+                                                                    <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
+                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('custom')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('capture-get')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('idea-market')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                    </View>
+                                                                </View>
+                                                                :
+                                                                <View />
+                                                        }
+                                                        {
+                                                            orderStatus === 'idea-market' ?
+                                                                <View style={{ flex: 1 }}>
+                                                                    <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <Image
+                                                                                style={{ height: 200, width: 200 }}
+                                                                                source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_idea.png')}
+                                                                            />
+                                                                        </View>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
+                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>IDEA MARKET</Text>
+                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Disini kamu bisa lihat hasil karya unik dan menarik teman-teman mu dan kamu bisa membelinya loh!</Text>
+                                                                        </View>
+                                                                    </View>
+                                                                    <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
+                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('custom')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('capture-get')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <TouchableOpacity
+                                                                                onPress={() => this.OrderStatus('idea-market')}
+                                                                            >
+                                                                                <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
+                                                                            </TouchableOpacity>
+                                                                        </View>
+                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                    </View>
+                                                                </View>
+                                                                :
+                                                                <View />
+                                                        }
                                                     </View>
                                                     :
                                                     <View style={{ flex: 1 }}>
                                                         {
                                                             statusMenu === 'crafterList' ?
                                                                 <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                    <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
-                                                                        <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
-                                                                            <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <View style={{ padding: 15, height: 100 }}>
+                                                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
                                                                                     onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
@@ -633,7 +803,7 @@ export class DashboardPage extends React.Component {
                                                                                     />
                                                                                 </TouchableWithoutFeedback>
                                                                             </View>
-                                                                            <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
                                                                                     onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
@@ -641,7 +811,7 @@ export class DashboardPage extends React.Component {
                                                                                     />
                                                                                 </TouchableWithoutFeedback>
                                                                             </View>
-                                                                            <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
                                                                                     onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
@@ -649,7 +819,7 @@ export class DashboardPage extends React.Component {
                                                                                     />
                                                                                 </TouchableWithoutFeedback>
                                                                             </View>
-                                                                            <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
                                                                                     onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
