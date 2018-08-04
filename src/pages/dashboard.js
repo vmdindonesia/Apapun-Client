@@ -541,7 +541,7 @@ export class DashboardPage extends React.Component {
                                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                                                                     <Image
                                                                         style={{ width: 40, height: 40 }}
-                                                                        source={require('./../assets/images/sidemenu/edit_profile.png')}
+                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/edit_profile.png')}
                                                                     />
                                                                     <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
                                                                 </View>
@@ -563,7 +563,7 @@ export class DashboardPage extends React.Component {
                                                                 <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                                                                     <Image
                                                                         style={{ width: 40, height: 40 }}
-                                                                        source={require('./../assets/images/sidemenu/logout.png')}
+                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/logout.png')}
                                                                         resizeMode='contain'
                                                                     />
                                                                     <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
@@ -829,7 +829,20 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                         </View>
                                                                     </View>
-                                                                    <View style={{ flex: 1, backgroundColor: 'pink' }} />
+                                                                    <View style={{ flex: 1, backgroundColor: 'pink' }}>
+                                                                        <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                            <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <Image
+                                                                                    style={{ height: 200, width: 200 }}
+                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/crafter_list.png')}
+                                                                                />
+                                                                            </View>
+                                                                            <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
+                                                                                <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CRAFTER LIST</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
                                                                     <View style={{ flex: 1, backgroundColor: 'orange' }} />
                                                                 </View>
                                                                 :
