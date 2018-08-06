@@ -154,10 +154,6 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
-
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -212,9 +208,6 @@ const Routes = createStackNavigator({
   },
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
-  },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage

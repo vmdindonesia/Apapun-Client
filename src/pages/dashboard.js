@@ -21,6 +21,7 @@ export class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            idCrafter: '',
             show: false,
             sideMenu: false,
             statusMenu: 'profile',
@@ -34,6 +35,16 @@ export class DashboardPage extends React.Component {
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
             ]
         };
+    }
+
+    componentDidMount() {
+        AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
+            console.log(JSON.parse(value), 'Json Parse');
+            const dataLogin = JSON.parse(value);
+            if (value) {
+                this.setState({ idCrafter: dataLogin.crafterId });
+            }
+        });
     }
 
     componentWillMount() {
@@ -248,7 +259,7 @@ export class DashboardPage extends React.Component {
     }
 
     render() {
-        const { sideMenu, statusMenu, orderStatus, show } = this.state;
+        const { statusMenu, orderStatus, show, idCrafter } = this.state;
         return (
             <View style={{ flex: 1, backgroundColor: '#384058', alignItems: 'center' }}>
                 <ImageBackground
@@ -546,7 +557,8 @@ export class DashboardPage extends React.Component {
                                                                     <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
                                                                 </View>
                                                             </TouchableOpacity>
-                                                        </View><View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                        </View>
+                                                        <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
                                                             <TouchableOpacity
                                                                 onPress={() => {
                                                                     this.setState(({ show }) => ({
@@ -1014,38 +1026,105 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                     </View>
                                                                                 </View>
-                                                                                <View style={{ height: 300, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                                                                    <Image
-                                                                                        style={{ height: 190, width: 190 }}
-                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/crafter_menu.png')}
-                                                                                    />
+                                                                                {
+                                                                                    idCrafter ?
+                                                                                        <View style={{ height: 200 }}>
+                                                                                            <View style={{ flexDirection: 'row' }}>
+                                                                                                <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                                    <Image
+                                                                                                        style={{ height: 200, width: 200 }}
+                                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/crafter_menu.png')}
+                                                                                                    />
+                                                                                                </View>
+                                                                                                <View style={{ width: '50%', flexDirection: 'column', paddingTop: 50, paddingRight: 10 }}>
+                                                                                                    <View style={{}}>
+                                                                                                        <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CRAFTER MENU</Text>
+                                                                                                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Lihat profil kamu sebagai crafter dan permintaan dari seluruh indonesia</Text>
+                                                                                                    </View>
+                                                                                                </View>
+                                                                                            </View>
+                                                                                            <View style={{ height: 203 }}>
+                                                                                                <View style={{ height: 142, flexDirection: 'column', marginTop: 30 }}>
+                                                                                                    <View style={{ height: 75, marginLeft: '25%' }}>
+                                                                                                        <TouchableOpacity
+                                                                                                            onPress={() => {
+                                                                                                                this.setState(({ show }) => ({
+                                                                                                                    show: !show,
+                                                                                                                }), () => {
+                                                                                                                    this.props.navigation.navigate('MenuCrafter');
+                                                                                                                });
+                                                                                                            }}
+                                                                                                        >
+                                                                                                            <View style={{ flexDirection: 'row' }}>
+                                                                                                                <Image
+                                                                                                                    style={{ width: 40, height: 40 }}
+                                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/edit_profile.png')}
+                                                                                                                />
+                                                                                                                <Text style={{ marginTop: 10, marginLeft: 30, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profil</Text>
+                                                                                                                <Icon size={30} style={{ marginLeft: 70, color: 'white' }} name='ios-arrow-forward' />
+                                                                                                            </View>
+                                                                                                        </TouchableOpacity>
+                                                                                                    </View>
+                                                                                                    <View style={{ height: 75, marginLeft: '25%' }}>
+                                                                                                        <TouchableOpacity
+                                                                                                            onPress={() => {
+                                                                                                                this.setState(({ show }) => ({
+                                                                                                                    show: !show,
+                                                                                                                }), () => {
+                                                                                                                    this.props.navigation.navigate('crafterMenuListOrder');
+                                                                                                                });
+                                                                                                            }}
+                                                                                                        >
+                                                                                                            <View style={{ flexDirection: 'row' }}>
+                                                                                                                <Image
+                                                                                                                    style={{ width: 40, height: 40 }}
+                                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/cari_pesanan.png')}
+                                                                                                                    resizeMode='contain'
+                                                                                                                />
+                                                                                                                <Text style={{ marginTop: 10, marginLeft: 30, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Cari Pesanan</Text>
+                                                                                                                <Icon size={30} style={{ marginLeft: 40, color: 'white' }} name='ios-arrow-forward' />
+                                                                                                            </View>
+                                                                                                        </TouchableOpacity>
+                                                                                                    </View>
+                                                                                                </View>
+                                                                                            </View>
+                                                                                        </View>
+                                                                                        :
+                                                                                        <View>
+                                                                                            <View style={{ height: 300, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                                <Image
+                                                                                                    style={{ height: 190, width: 190 }}
+                                                                                                    source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/crafter_menu.png')}
+                                                                                                />
 
-                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
-                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
-                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
-                                                                                </View>
-                                                                                <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                                                                        <Image
-                                                                                            style={{ height: 20, width: 20 }}
-                                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/question.png')}
-                                                                                        />
-                                                                                        <Text style={{ marginLeft: 10, color: 'white', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>apa itu</Text>
-                                                                                        <Text style={{ marginLeft: 7, color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text>
-                                                                                    </View>
-                                                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                                                                        <TouchableOpacity
-                                                                                            style={styles.buttonJoin}
-                                                                                            onPress={() => {
-                                                                                                this.props.navigation.navigate('RegistrationCrafter')
-                                                                                                this.setState(({ show }) => ({
-                                                                                                    show: !show,
-                                                                                                }));
-                                                                                            }}>
-                                                                                            <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
-                                                                                        </TouchableOpacity>
-                                                                                    </View>
-                                                                                </View>
+                                                                                                <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+                                                                                                <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+                                                                                                <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
+                                                                                            </View>
+                                                                                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                                                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                                    <Image
+                                                                                                        style={{ height: 20, width: 20 }}
+                                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/question.png')}
+                                                                                                    />
+                                                                                                    <Text style={{ marginLeft: 10, color: 'white', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>apa itu</Text>
+                                                                                                    <Text style={{ marginLeft: 7, color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text>
+                                                                                                </View>
+                                                                                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                                    <TouchableOpacity
+                                                                                                        style={styles.buttonJoin}
+                                                                                                        onPress={() => {
+                                                                                                            this.props.navigation.navigate('RegistrationCrafter')
+                                                                                                            this.setState(({ show }) => ({
+                                                                                                                show: !show,
+                                                                                                            }));
+                                                                                                        }}>
+                                                                                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
+                                                                                                    </TouchableOpacity>
+                                                                                                </View>
+                                                                                            </View>
+                                                                                        </View>
+                                                                                }
                                                                             </View>
                                                                             :
                                                                             <View />
