@@ -264,35 +264,35 @@ export class DashboardPage extends React.Component {
                                     autoplay
                                     dot={<View style={styles.formatSwiper} />}
                                 >
-                                    <View style={styles.slide1}>
+                                    <View style={styles.slide}>
                                         <Image
                                             style={styles.imageStyle}
                                             source={require('./../assets/images/swiperFirst.png')}
                                             resizeMode='cover'
                                         />
                                     </View>
-                                    <View style={styles.slide2}>
+                                    <View style={styles.slide}>
                                         <Image
                                             style={styles.imageStyle}
                                             source={require('./../assets/images/swiperSecond.png')}
                                             resizeMode='cover'
                                         />
                                     </View>
-                                    <View style={styles.slide2}>
+                                    <View style={styles.slide}>
                                         <Image
                                             style={styles.imageStyle}
                                             source={require('./../assets/images/swiperThird.png')}
                                             resizeMode='cover'
                                         />
                                     </View>
-                                    <View style={styles.slide2}>
+                                    <View style={styles.slide}>
                                         <Image
                                             style={styles.imageStyle}
                                             source={require('./../assets/images/swiperFour.png')}
                                             resizeMode='cover'
                                         />
                                     </View>
-                                    <View style={styles.slide2}>
+                                    <View style={styles.slide}>
                                         <Image
                                             style={styles.imageStyle}
                                             source={require('./../assets/images/swiperFive.png')}
@@ -1077,21 +1077,19 @@ const styles = StyleSheet.create({
     menu: {
         padding: 15,
         borderRadius: 50,
-        justifyContent: 'space-between',
-        // backgroundColor: 'red'
+        justifyContent: 'space-between'
     },
     menuGeneralIcons: {
         marginTop: 10,
         width: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'orange',
-        marginHorizontal: 7
+        marginHorizontal: 5
     },
     menuOpenBtn: {
         width: '100%',
         height: 50,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     backgroundStyle: {
         width: '100%',
@@ -1108,88 +1106,63 @@ const styles = StyleSheet.create({
         marginTop: 3,
         marginBottom: 3
     },
+    containerSlide: {
+        width: '100%',
+        height: 160
+    },
+    slide: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     container: {
         flex: 1,
         width: '100%',
         height: '100%',
         alignItems: 'center'
     },
-    containerSlide: {
-        width: '100%',
-        height: 160,
-        // backgroundColor: 'red'
-    },
-    slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     containerDashboard: {
-        // flex: 1,
         borderRadius: 20,
         backgroundColor: 'rgba(0,0,0,0.8)',
         shadowColor: '#000',
         shadowOffset: { width: 0, heigth: 2 },
-        // shadowRadius: 20,
-        // shadowOpacity: 100,
-        // borderColor :'black',
         flexDirection: 'row',
         marginTop: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        // alignContent: 'center',
         height: 175,
-        width: '95%',
+        width: '95%'
     },
     containerPhoto: {
         flex: 1,
         width: 125,
         justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'red'
-    },
-    containerInsidePhoto: {
-        justifyContent: 'center',
-        height: 120,
-        width: 120,
-        alignSelf: 'center',
-        margin: 8,
-        borderRadius: 100
+        alignItems: 'center'
     },
     containerInsideProfileOne: {
         width: 130,
         height: 180,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'red',
         marginLeft: 10
     },
     containerInsideProfileTwo: {
         flex: 1,
         height: 160,
         justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'yellow'
+        alignItems: 'center'
     },
     containerUp: {
         width: 230,
-        height: 60,
-        // backgroundColor: 'blue'
+        height: 60
     },
     containerMiddleProfileTwo: {
         width: 230,
-        height: 50,
-        // backgroundColor: 'blue'
+        height: 50
     },
     containerBottomProfileTwo: {
         width: 230,
-        height: 50,
-        // backgroundColor: 'blue'
+        height: 50
     },
     containerUploadIdea: {
         flex: 1,
@@ -1198,20 +1171,10 @@ const styles = StyleSheet.create({
         shadowColor: '#009',
         shadowOffset: { width: 0, heigth: 2 },
         shadowRadius: 2,
-        // flexDirection: 'row',
         marginTop: 10,
         marginBottom: 70,
         height: 160,
-        width: '95%',
-        // backgroundColor: 'yellow'
-    },
-    containerFlexUp: {
-        width: 350,
-        height: 125,
-    },
-    containerCategory: {
-        width: 350,
-        height: 75,
+        width: '95%'
     },
     imageStyle: {
         resizeMode: 'cover'
@@ -1219,131 +1182,17 @@ const styles = StyleSheet.create({
     profileImage: {
         height: 110,
         width: 110,
-        borderRadius: 100,
+        borderRadius: 100
     },
     icons: {
         height: 30,
         width: 30,
         borderRadius: 100,
     },
-    containerImageIdea: {
-        flex: 1,
-        height: 90,
-        width: '96%',
-        flexDirection: 'row',
-        marginBottom: 30,
-        marginTop: 10,
-        backgroundColor: 'red'
-    },
-    containerImageInsideIdea: {
-        height: 150,
-        width: 90,
-        alignSelf: 'stretch',
-        resizeMode: 'cover'
-    },
-    containerFlatList: {
-        flex: 1,
-        marginLeft: -3,
-        paddingRight: 13,
-        marginTop: -20
-    },
-    containerMenu: {
-        position: 'absolute',
-        bottom: 0,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        width: 125,
-        height: 30 * 2,
-        borderRadius: 90,
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0,
-        backgroundColor: '#C1C1C1'
-    },
-    containerButtonLogo: {
-        padding: 10,
-        marginBottom: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 5 },
-        shadowRadius: 10,
-        shadowOpacity: 0.35,
-        marginTop: 15,
-        alignItems: 'center'
-    },
-    Logo: {
-        height: 85,
-        width: 85,
-        marginBottom: 25
-    },
-    Logo2: {
-        height: 60,
-        width: 60,
-    },
-    containerHome: {
-        flex: 1,
-        borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0)',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
-        flexDirection: 'row',
-        height: 50
-    },
-    containerHomeLogo: {
-        flex: 1,
-        height: 80,
-        width: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        top: -7.5,
-        backgroundColor: 'transparent'
-    },
-    containerImageHome: {
-        height: 50,
-        width: 50,
-        marginBottom: 5,
-    },
-    containerHomeScreen: {
-        flex: 1,
-        borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0)',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
-        flexDirection: 'column',
-        height: '100%',
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    containerSomeHomeScreen: {
-        borderRadius: 20,
-        flexDirection: 'row',
-        height: 170,
-        width: '100%',
-        marginTop: -75,
-        alignSelf: 'center',
-        paddingLeft: 4,
-        paddingRight: 4,
-        // backgroundColor: 'skyblue'
-    },
-    photoHomeScreen: {
-        height: 170,
-        borderRadius: 25
-    },
-    textHomeScreen: {
-        height: 165,
-        width: 185,
-    },
-    cngImage: {
-        height: 170,
-        width: 160,
-    },
     buttonCustom: {
         marginTop: 50,
         backgroundColor: 'red',
         borderRadius: 20,
-        // marginLeft: 5,
-        // marginRight: 5,
         height: 45
     },
     item: {
@@ -1353,199 +1202,6 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         resizeMode: 'cover'
     },
-    buttonIdea: {
-        marginTop: 35,
-        marginBottom: 18,
-        backgroundColor: 'red',
-        borderRadius: 20,
-        justifyContent: 'center',
-        marginLeft: 10,
-        flex: 1
-    },
-    buttonCapture: {
-        marginTop: 35,
-        marginBottom: 18,
-        backgroundColor: 'red',
-        borderRadius: 20,
-        justifyContent: 'center',
-        marginLeft: 10,
-        flex: 1
-    },
-    ButtonCrafterList: {
-        backgroundColor: 'red',
-        borderRadius: 20,
-        height: 35,
-        width: 173,
-        justifyContent: 'center',
-        marginTop: 50.5,
-        marginLeft: 12
-    },
-    TextButtonGo: {
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 15,
-        fontFamily: 'Quicksand-Bold'
-    },
-
-    containerBodyHome: {
-        flex: 1,
-        borderRadius: 20,
-        flexDirection: 'column',
-        height: 20,
-        width: '95%',
-        // backgroundColor: 'blue',
-        marginTop: 5,
-        // marginLeft: 10,
-        // marginRight: 10
-    },
-    DefaultBody: {
-        height: 70,
-        width: '100%',
-        alignItems: 'center',
-
-    },
-    containerBodyCrafter: {
-        // flex: 1,
-        borderRadius: 20,
-        flexDirection: 'column',
-        height: '32%',
-        width: '100%',
-        // backgroundColor: 'pink',
-        paddingLeft: 5
-    },
-    bodyCrafterList: {
-        flexDirection: 'row',
-        flex: 1
-    },
-    CrafterListLeft: {
-        height: 70,
-        flex: 1
-    },
-    CrafterListRight: {
-        height: 70,
-        flex: 1
-    },
-    iconsCrafterMenu: {
-        height: 55,
-        width: 55,
-        // borderRadius: 100,
-    },
-    crafterMenu: {
-        height: 70,
-        width: 340,
-        marginLeft: 100
-    },
-    profileHomeScreen: {
-        borderRadius: 20,
-        flexDirection: 'column',
-        flex: 1,
-        marginTop: -300,
-        // height: 800,
-        alignSelf: 'center',
-        width: 300,
-        height: 400,
-        // flex:1,
-        // backgroundColor: 'skyblue'
-    },
-    photoProfileHomeScreen: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 130,
-        width: 130,
-        borderRadius: 100,
-        marginTop: 15,
-    },
-    containerProfileHomeScreen: {
-        flex: 1,
-        borderRadius: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
-        flexDirection: 'column',
-        marginTop: 15,
-        marginLeft: 10,
-        marginRight: 10,
-        height: '800%',
-        backgroundColor: 'red'
-    },
-    locationIcon: {
-        height: 15,
-        width: 10,
-        marginTop: 8
-    },
-    containerBodyProfile: {
-        flex: 2,
-        borderRadius: 20,
-        flexDirection: 'column',
-        height: '100%',
-        width: '100%',
-        // marginTop: 10,
-        // backgroundColor: 'red'
-    },
-    listProfileIcon: {
-        flexDirection: 'row',
-        height: 70,
-        width: '100%',
-        // borderWidth: 0.5,
-        // borderColor: '#d6d7da',
-        // backgroundColor: 'yellow'
-    },
-    profileMenu: {
-        height: 70,
-        width: '100%',
-        // backgroundColor: 'blue'
-    },
-    iconProfile: {
-        // marginTop: 10,
-        height: 40,
-        width: 40,
-    },
-    iconLogOut: {
-        height: 30,
-        width: 27,
-    },
-    arrowIcon: {
-        height: 20,
-        width: 5,
-        paddingLeft: 70
-    },
-    cone: {
-        width: 0,
-        height: 0,
-        borderLeftWidth: 30,
-        borderLeftColor: 'transparent',
-        borderRightWidth: 30,
-        borderRightColor: 'transparent',
-        borderTopWidth: 60,
-        borderTopColor: 'red',
-        borderRadius: 55
-    },
-    containerBodyJoinCrafter: {
-        flex: 2,
-        borderRadius: 20,
-        backgroundColor: 'rgba(0,0,0,0)',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, heigth: 2 },
-        shadowRadius: 2,
-        flexDirection: 'column',
-        height: '100%',
-        width: '100%',
-        // backgroundColor: 'blue',
-        alignContent: 'center'
-    },
-    photoJoinCrafter: {
-        height: 190,
-        width: 190,
-        borderRadius: 25,
-        alignSelf: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-        marginTop: 30,
-        // backgroundColor: 'yellow',
-    },
-    joinImage: {
-
-    },
     buttonJoin: {
         backgroundColor: 'red',
         borderRadius: 20,
@@ -1553,14 +1209,8 @@ const styles = StyleSheet.create({
         width: 220,
         alignSelf: 'center',
         justifyContent: 'center',
-        marginTop: 70,
-        // zIndex: 1
+        marginTop: 70
     },
-    iconQuestion: {
-        height: 20,
-        width: 20,
-        alignSelf: 'center'
-    }
 });
 
 export default DashboardPage;
