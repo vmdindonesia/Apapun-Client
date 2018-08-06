@@ -165,7 +165,8 @@ export class ForgotPasswordPage extends React.Component {
 const styles = {
     container: {
         flex: 1,
-        padding: 15
+        padding: 15,
+        backgroundColor: '#eaeaea'
     },
     containerForm: {
         marginTop: 10,
