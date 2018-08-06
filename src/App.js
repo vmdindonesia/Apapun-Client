@@ -112,11 +112,11 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  pengaturanBank: {
-    screen: PengaturanBankPage
-  },
   StartScreen: {
     screen: StartScreen
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
   },
   Dashboard: {
     screen: DashboardPage
