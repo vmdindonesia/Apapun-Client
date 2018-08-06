@@ -281,7 +281,14 @@ export class RegistrationCrafterPage extends React.Component {
             request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
             request.send(body);
             this.setState({ loading: false }, () => {
-                this.props.navigation.navigate('pengaturanBank');
+                const resetAction = StackActions.reset({
+                    index: 1,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'MenuCrafter' }),
+                        NavigationActions.navigate({ routeName: 'pengaturanBank', params: { Namecrafter: this.state.craftername, idUser: this.state.idUser } }),
+                    ],
+                });
+                this.props.navigation.dispatch(resetAction);
             });
             ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
         }).catch(error => {
