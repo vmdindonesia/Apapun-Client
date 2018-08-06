@@ -33,7 +33,7 @@ export class RegistrationBuyerPage extends React.Component {
             noPhone: '',
             email: '',
             birthDate: '',
-            birthPlace: '',
+            birthPlace: 'VMD Indonesia',
             gender: 'Pria',
             imageUri: '',
             emailverified: 0,
@@ -560,12 +560,6 @@ export class RegistrationBuyerPage extends React.Component {
                                     <Text style={styles.textStyle}>Birthday</Text>
                                 </View>
                                 <ContainerSection>
-                                    <InputDate
-                                        placeholder='Your place of birthday'
-                                        value={birthPlace}
-                                        onChangeText={v => this.onChangeInput('birthPlace', v)}
-                                    />
-
                                     <InputDate
                                         placeholder='Your date of birthday'
                                         value={viewBirthday}
