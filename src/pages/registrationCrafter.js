@@ -9,7 +9,6 @@ import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
-import AutoComplete from '../components/AutoComplete';
 
 export class RegistrationCrafterPage extends React.Component {
 
@@ -26,29 +25,14 @@ export class RegistrationCrafterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            idUser: '',
             profileImage: '',
             imageUri: '',
             craftername: '',
-            phone: '',
-            username: '',
-            password: '',
-            email: '',
             selfDeliveryService: '',
             categoryId: [],
-            suggestionsProvince: [],
-            suggestionsRegencies: [],
-            suggestionsDistrict: [],
-            province: '',
-            idProvince: '',
-            city: '',
-            idCity: '',
-            district: '',
-            idDistrict: '',
-            addressTxt: '',
-            loadingAuto: false,
             loading: false,
 
-            isModalVisible: false,
             fashion: true,
             lifestyle: false,
             furniture: false,
@@ -62,11 +46,20 @@ export class RegistrationCrafterPage extends React.Component {
     componentDidMount() {
         console.log('Registration Start');
         const category = this.state.categoryId;
-        category[this.state.categoryId.length] = 'Fashion';
+        category[this.state.categoryId.length] = '1';
         this.setState({ categoryId: category }, () => {
             console.log(this.state.categoryId, 'Data Check Category');
             this.setState({ selfDeliveryService: 1 }, () => {
                 console.log(this.state.selfDeliveryService, 'Delivery Owner');
+                AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
+                    console.log(JSON.parse(value), 'Json Parse');
+                    const dataLogin = JSON.parse(value);
+                    if (value) {
+                        this.setState({ idUser: dataLogin.userId }, () => {
+                            console.log(this.state.idUser, 'ID USER');
+                        })
+                    }
+                });
             })
         });
     }
@@ -75,12 +68,12 @@ export class RegistrationCrafterPage extends React.Component {
         this.setState({ fashion: !this.state.fashion }, () => {
             if (this.state.fashion === true) {
                 const category = this.state.categoryId;
-                category[this.state.categoryId.length] = 'Fashion';
+                category[this.state.categoryId.length] = '1';
                 this.setState({ categoryId: category }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 });
             } else {
-                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Fashion') }, () => {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== '1') }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 })
             }
@@ -91,12 +84,12 @@ export class RegistrationCrafterPage extends React.Component {
         this.setState({ lifestyle: !this.state.lifestyle }, () => {
             if (this.state.lifestyle === true) {
                 const category = this.state.categoryId;
-                category[this.state.categoryId.length] = 'Lifestyle';
+                category[this.state.categoryId.length] = '2';
                 this.setState({ categoryId: category }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 });
             } else {
-                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Lifestyle') }, () => {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== '2') }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 })
             }
@@ -107,12 +100,12 @@ export class RegistrationCrafterPage extends React.Component {
         this.setState({ furniture: !this.state.furniture }, () => {
             if (this.state.furniture === true) {
                 const category = this.state.categoryId;
-                category[this.state.categoryId.length] = 'Furniture';
+                category[this.state.categoryId.length] = '3';
                 this.setState({ categoryId: category }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 });
             } else {
-                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Furniture') }, () => {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== '3') }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 })
             }
@@ -123,12 +116,12 @@ export class RegistrationCrafterPage extends React.Component {
         this.setState({ beauty: !this.state.beauty }, () => {
             if (this.state.beauty === true) {
                 const category = this.state.categoryId;
-                category[this.state.categoryId.length] = 'Beauty';
+                category[this.state.categoryId.length] = '4';
                 this.setState({ categoryId: category }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 });
             } else {
-                this.setState({ categoryId: this.state.categoryId.filter(a => a !== 'Beauty') }, () => {
+                this.setState({ categoryId: this.state.categoryId.filter(a => a !== '4') }, () => {
                     console.log(this.state.categoryId, 'Data Check Category');
                 })
             }
@@ -157,11 +150,6 @@ export class RegistrationCrafterPage extends React.Component {
 
     checkedAgreement = () => {
         this.setState({ agree: !this.state.agree });
-    }
-
-
-    setModalVisible(visible) {
-        this.setState({ isModalVisible: visible });
     }
 
     selectPhotoRegister() {
@@ -205,112 +193,6 @@ export class RegistrationCrafterPage extends React.Component {
         });
     }
 
-    queryProvinceSuggestion = (value) => {
-        this.setState({
-            province: value,
-            loadingAuto: true,
-            idProvince: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            axios.post(`${IPSERVER}/ApapunProvinces/getProvinceAuto`, {
-                keyword
-            })
-                .then(response => {
-                    console.log(response, 'Auto Province');
-                    const res = response.data;
-                    this.setState({ suggestionsProvince: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto Province');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsProvince: [] })
-        }
-    }
-
-    onProvinceSelected = (item) => {
-        this.setState({
-            suggestionsProvince: [],
-            idProvince: item.id,
-            province: item.name
-        })
-    }
-
-    queryRegenciesSuggestion = (value) => {
-        this.setState({
-            city: value,
-            loadingAuto: true,
-            idCity: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            const province_id = this.state.idProvince;
-            axios.post(`${IPSERVER}/ApapunRegencies/getRegenciesAuto`, {
-                keyword,
-                province_id
-            })
-                .then(response => {
-                    console.log(response, 'Auto City');
-                    const res = response.data;
-                    this.setState({ suggestionsRegencies: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto City');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsRegencies: [] })
-        }
-    }
-
-    onRegenciesSelected = (item) => {
-        this.setState({
-            suggestionsRegencies: [],
-            idCity: item.id,
-            city: item.name
-        })
-    }
-
-    queryDistrictSuggestion = (value) => {
-        this.setState({
-            district: value,
-            loadingAuto: true,
-            idDistrict: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            const regency_id = this.state.idCity;
-            axios.post(`${IPSERVER}/ApapunDistricts/getDistrictAuto`, {
-                keyword,
-                regency_id
-            })
-                .then(response => {
-                    console.log(response, 'Auto District');
-                    const res = response.data;
-                    this.setState({ suggestionsDistrict: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto District');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsDistrict: [] })
-        }
-    }
-
-    onDistrictSelected = (item) => {
-        this.setState({
-            suggestionsDistrict: [],
-            idDistrict: item.id,
-            district: item.name
-        })
-    }
-
     checkValidation() {
         console.log(this.state, 'State');
         const {
@@ -318,13 +200,6 @@ export class RegistrationCrafterPage extends React.Component {
             craftername,
             categoryId,
             selfDeliveryService,
-            password,
-            email,
-            phone,
-            idProvince,
-            idCity,
-            idDistrict,
-            addressTxt,
             aggree
         } = this.state;
 
@@ -345,47 +220,12 @@ export class RegistrationCrafterPage extends React.Component {
                                     case '':
                                         return ToastAndroid.show('Jasa Pengirman Tidak Boleh Kosong', ToastAndroid.SHORT);
                                     default:
-                                        switch (password) {
-                                            case '':
-                                                return ToastAndroid.show('Password Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                        switch (aggree) {
+                                            case false:
+                                                return ToastAndroid.show('Anda harus menyetujui Syarat & Ketentuan Berlaku', ToastAndroid.SHORT);
                                             default:
-                                                switch (email) {
-                                                    case '':
-                                                        return ToastAndroid.show('Email Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                    default:
-                                                        switch (phone) {
-                                                            case '':
-                                                                return ToastAndroid.show('Nomor Telepon Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                            default:
-                                                                switch (idProvince) {
-                                                                    case '':
-                                                                        return ToastAndroid.show('Provinse Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                                    default:
-                                                                        switch (idCity) {
-                                                                            case '':
-                                                                                return ToastAndroid.show('Kota Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                                            default:
-                                                                                switch (idDistrict) {
-                                                                                    case '':
-                                                                                        return ToastAndroid.show('District Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                                                    default:
-                                                                                        switch (addressTxt) {
-                                                                                            case '':
-                                                                                                return ToastAndroid.show('Alamat Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
-                                                                                            default:
-                                                                                                switch (aggree) {
-                                                                                                    case false:
-                                                                                                        return ToastAndroid.show('Anda harus menyetujui Syarat & Ketentuan Berlaku', ToastAndroid.SHORT);
-                                                                                                    default:
-                                                                                                        this.setState({ loading: true });
-                                                                                                        this.prosesRegisterCrafter();
-                                                                                                }
-                                                                                        }
-                                                                                }
-                                                                        }
-                                                                }
-                                                        }
-                                                }
+                                                this.setState({ loading: true });
+                                                this.prosesRegisterCrafter();
                                         }
                                 }
                         }
@@ -395,18 +235,11 @@ export class RegistrationCrafterPage extends React.Component {
 
     prosesRegisterCrafter() {
         const {
+            idUser,
             imageUri,
             craftername,
             categoryId,
-            selfDeliveryService,
-            password,
-            email,
-            phone,
-            idProvince,
-            idCity,
-            idDistrict,
-            addressTxt,
-            aggree
+            selfDeliveryService
         } = this.state;
         console.log(this.state, 'State');
         this.setState({ loading: false });
@@ -436,53 +269,32 @@ export class RegistrationCrafterPage extends React.Component {
         const profileImage = profileUrlFirst.toUpperCase() + '.jpg';
         console.log(profileImage, 'Format Name Image');
 
-        this.props.navigation.navigate('pengaturanBank');
-        // axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
-        //     profileImage,
-        //     craftername,
-        //     categoryId,
-        //     selfDeliveryService,
-        //     password,
-        //     email,
-        //     phone,
-        //     idProvince,
-        //     idCity,
-        //     idDistrict,
-        //     addressTxt
-        // }).then(response => {
-        //     console.log(response);
-        //     request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
-        //     request.send(body);
-        //     this.setState({ loading: false }, () => {
-        //         this.props.navigation.navigate('pengaturanBank');
-        //     });
-        //     ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
-        // }).catch(error => {
-        //     console.log(error, 'Error Upload Foto');
-        //     this.setState({ loading: false });
-        // });
+        console.log(this.state, 'STATE REGISTER CRAFTER', profileImage);
+        axios.post(`${IPSERVER}/ApapunCrafters/CrafterRegister`, {
+            idUser,
+            profileImage,
+            craftername,
+            categoryId,
+            selfDeliveryService,
+        }).then(response => {
+            console.log(response);
+            request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+            request.send(body);
+            this.setState({ loading: false }, () => {
+                this.props.navigation.navigate('pengaturanBank');
+            });
+            ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
+        }).catch(error => {
+            console.log(error, 'Error Upload Foto');
+            this.setState({ loading: false });
+        });
     }
 
     render() {
 
         const {
-            profileImage,
             imageUri,
             craftername,
-            password,
-            email,
-            phone,
-            suggestionsProvince,
-            suggestionsRegencies,
-            suggestionsDistrict,
-            province,
-            idProvince,
-            city,
-            idCity,
-            district,
-            idDistrict,
-            addressTxt,
-            loadingAuto,
             loading,
 
             fashion,
@@ -495,13 +307,10 @@ export class RegistrationCrafterPage extends React.Component {
         } = this.state
 
         return (
-
-
             <ImageBackground
                 style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
             >
                 <ScrollView>
-
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegister.bind(this)}>
                             <View>
@@ -526,8 +335,6 @@ export class RegistrationCrafterPage extends React.Component {
 
                     <View style={styles.containerForm}>
                         <View style={styles.formPosition}>
-
-
                             <View style={{ paddingTop: 30, height: 100 }}>
                                 <View >
                                     <Text style={styles.textStyle}>Nama sebagi Crafter</Text>
@@ -606,7 +413,6 @@ export class RegistrationCrafterPage extends React.Component {
                                             uncheckedIcon='circle-o'
                                             checked={sendserviceone}
                                             onPress={() => this.checkedIHave()}
-                                        // onChange={(checked) => console.log('I am checked', checked)}
                                         />
 
                                     </View>
@@ -624,68 +430,6 @@ export class RegistrationCrafterPage extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.textBox}>
-                                <View >
-                                    <Text style={styles.textStyle}>Kata Sandi</Text>
-                                </View>
-                                <View>
-                                    <ContainerSection>
-                                        <Input
-                                            value={password}
-                                            onChangeText={v => this.onChangeInput('password', v)}
-                                            secureTextEntry={true}
-                                            placeholder='silakan isi password anda'
-                                        />
-                                    </ContainerSection>
-                                </View>
-                            </View>
-
-                            <View style={styles.textBox}>
-                                <View >
-                                    <Text style={styles.textStyle}>E-Mail</Text>
-                                </View>
-                                <View>
-                                    <ContainerSection>
-                                        <Input
-                                            value={email}
-                                            onChangeText={v => this.onChangeInput('email', v)}
-                                            placeholder='silakan isi email anda'
-                                        />
-                                    </ContainerSection>
-                                </View>
-                            </View>
-
-                            <View style={styles.textBox}>
-                                <View >
-                                    <Text style={styles.textStyle}>Nomor Telepon</Text>
-                                </View>
-                                <View>
-                                    <ContainerSection>
-                                        <Input
-                                            value={phone}
-                                            onChangeText={v => this.onChangeInput('phone', v)}
-                                            placeholder='silakan isi nomor telepon anda'
-                                            keyboardType='numeric'
-                                        />
-                                    </ContainerSection>
-                                </View>
-                            </View>
-
-                            <View style={styles.textBox}>
-                                <View >
-                                    <Text style={styles.textStyle}>Alamat</Text>
-                                </View>
-                                <View>
-                                    <ContainerSection>
-                                        <Input
-                                            onFocus={() => {
-                                                this.setModalVisible(true);
-                                            }}
-                                            placeholder='please input your name address'
-                                        />
-                                    </ContainerSection>
-                                </View>
-                            </View>
 
                             <View style={styles.textAgree}>
                                 <View>
@@ -702,9 +446,6 @@ export class RegistrationCrafterPage extends React.Component {
 
                         </View>
                     </View>
-
-
-
                     {
                         loading ?
                             <Spinner size="small" />
@@ -715,176 +456,6 @@ export class RegistrationCrafterPage extends React.Component {
                                 <Text style={styles.signupButtonText}>Sign Up</Text>
                             </TouchableOpacity>
                     }
-
-
-
-                    <View style={{ marginTop: 65 }}>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={this.state.isModalVisible}
-                            onRequestClose={() => {
-                                alert('Modal has been closed.');
-                            }}>
-
-                            < View style={{ flex: 1, marginTop: 50 }}>
-                                <View style={styles.modalAddress}>
-                                    <ScrollView>
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Province</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <AutoComplete
-                                                        autoFocus
-                                                        suggestions={suggestionsProvince}
-                                                        placeholder="Your Province"
-                                                        onChangeText={text => this.queryProvinceSuggestion(text)}
-                                                        value={province}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1, height: 50 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsProvince && suggestionsProvince.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onProvinceSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>City</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <AutoComplete
-                                                        placeholder="Your City"
-                                                        suggestions={suggestionsRegencies}
-                                                        onChangeText={text => this.queryRegenciesSuggestion(text)}
-                                                        value={city}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsRegencies && suggestionsRegencies.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onRegenciesSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>District</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <AutoComplete
-                                                        placeholder="Your Distrcit"
-                                                        suggestions={suggestionsDistrict}
-                                                        onChangeText={text => this.queryDistrictSuggestion(text)}
-                                                        value={district}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsDistrict && suggestionsDistrict.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onDistrictSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.textaddressModal}>
-                                            <View >
-                                                <Text style={styles.textStyle}>Address Detail</Text>
-                                            </View>
-                                            <View>
-                                                <ContainerSection>
-                                                    <Input
-                                                        multiline={true}
-                                                        numberOfLines={150}
-                                                        placeholder='Your detail address'
-                                                        value={addressTxt}
-                                                        onChangeText={v => this.onChangeInput('addressTxt', v)}
-
-                                                    />
-                                                </ContainerSection>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.buttonOnModalAddress}>
-
-                                            <View>
-                                                <TouchableHighlight
-                                                    onPress={() => {
-                                                        this.setState({
-                                                            province: '',
-                                                            city: '',
-                                                            district: '',
-                                                            addressTxt: ''
-                                                        });
-                                                        this.setModalVisible(!this.state.isModalVisible);
-                                                    }}>
-                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
-                                                </TouchableHighlight>
-                                            </View>
-
-                                            <View style={{ paddingLeft: 20 }}>
-                                                <TouchableHighlight
-                                                    onPress={() => {
-                                                        this.setModalVisible(!this.state.isModalVisible);
-                                                    }}>
-                                                    <Text style={styles.AddressTextSave}>Save</Text>
-                                                </TouchableHighlight>
-                                            </View>
-                                        </View>
-                                    </ScrollView>
-                                </View>
-                            </View>
-                        </Modal>
-                    </View>
                 </ScrollView>
             </ImageBackground >
         );
@@ -894,18 +465,14 @@ export class RegistrationCrafterPage extends React.Component {
 const styles = StyleSheet.create({
     containerImage: {
         flex: 1,
-        // justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
-        zIndex: 2,
-
-        // backgroundColor:'yellow'
+        zIndex: 2
     },
     containerUpload: {
         height: 155,
         width: 155,
-        borderRadius: 100,
-        // zIndex: 2
+        borderRadius: 100
     },
     containerForm: {
         flex: 1,
@@ -916,14 +483,14 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         flexDirection: 'column',
         marginTop: -75,
-        height: 855,
+        height: 530,
         width: '90%',
         alignItems: 'center',
         alignSelf: 'center',
         zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
-        // backgroundColor:'skyblue'
+        marginBottom: 50
     },
     iconCamera: {
         height: 40,
@@ -934,7 +501,6 @@ const styles = StyleSheet.create({
         marginLeft: 100
     },
     buttonSignUp: {
-        // marginTop: 60,
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
@@ -942,8 +508,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         zIndex: 4,
-        marginTop: -17,
-        marginBottom: -30
+        marginTop: -70,
+        marginBottom: 30
     },
     signupButtonText: {
         textAlign: 'center',
@@ -956,9 +522,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
         height: 12,
         width: 275,
-        // position: 'absolute',
-        zIndex: 0,
-        // backgroundColor:'yellow'
+        zIndex: 0
     },
     textStyle: {
         color: 'black',
@@ -968,7 +532,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Quicksand-Regular'
     },
     containerCheckBox: {
-        // marginLeft: 5,
         height: 55,
         width: 265,
         flexDirection: 'row',
@@ -977,12 +540,10 @@ const styles = StyleSheet.create({
         // alignItems: 'center'
     },
     BoxAblity: {
-        // flex: 4,
         paddingTop: 10,
         height: 185,
         flexDirection: 'column',
-        width: '100%',
-        // backgroundColor: 'blue'
+        width: '100%'
     },
     textBox: {
         paddingTop: 10,
