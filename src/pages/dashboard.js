@@ -476,7 +476,7 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            onPress={() => this.props.navigation.navigate('NotificationMenu')}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                             />
@@ -484,7 +484,7 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            onPress={() => this.props.navigation.navigate('SettingMenu')}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                             />
@@ -492,7 +492,7 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            onPress={() => this.props.navigation.navigate('HelpMenu')}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                             />
@@ -594,7 +594,7 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        onPress={() => this.props.navigation.navigate('NotificationMenu')}>
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                         />
@@ -602,7 +602,7 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        onPress={() => this.props.navigation.navigate('SettingMenu')}>
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                         />
@@ -610,7 +610,7 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        onPress={() => this.props.navigation.navigate('HelpMenu')}>
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                         />
@@ -865,7 +865,7 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    onPress={() => this.props.navigation.navigate('NotificationMenu')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                     />
@@ -873,7 +873,7 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    onPress={() => this.props.navigation.navigate('SettingMenu')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                     />
@@ -881,7 +881,7 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    onPress={() => this.props.navigation.navigate('HelpMenu')}>
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                     />
@@ -990,7 +990,7 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                onPress={() => this.props.navigation.navigate('NotificationMenu')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                                 />
@@ -998,7 +998,7 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                onPress={() => this.props.navigation.navigate('SettingMenu')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                                 />
@@ -1006,7 +1006,7 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                onPress={() => this.props.navigation.navigate('HelpMenu')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                                 />
