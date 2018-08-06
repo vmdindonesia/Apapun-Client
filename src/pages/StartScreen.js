@@ -20,7 +20,7 @@ export class StartScreen extends React.Component {
     componentDidMount() {
         console.log('Start Screen On Fire!');
         setTimeout(() => {
-            AsyncStorage.getItem("INTRODUCTION").then((valueIntro) => {
+            AsyncStorage.getItem('INTRODUCTION').then((valueIntro) => {
                 console.log(valueIntro, 'INTRO');
                 if (valueIntro === null) {
                     const resetAction = StackActions.reset({
@@ -29,7 +29,7 @@ export class StartScreen extends React.Component {
                     });
                     this.props.navigation.dispatch(resetAction);
                 } else {
-                    AsyncStorage.getItem("VMDDEVELOPER").then((value) => {
+                    AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
                         console.log(JSON.parse(value), 'Json Parse');
                         if (value) {
                             const resetAction = StackActions.reset({
@@ -46,10 +46,10 @@ export class StartScreen extends React.Component {
                             });
                             this.props.navigation.dispatch(resetAction);
                         }
-                    }).done();
+                    });
                 }
             });
-        }, 2000);
+        }, 3000);
 
     }
 

@@ -8,7 +8,7 @@ export class MenuLoginPage extends React.Component {
         header: null
     }
 
-    componentDidMount() {
+    componentWillMount() {
 		AsyncStorage.removeItem('VMDDEVELOPER');
 	}
 

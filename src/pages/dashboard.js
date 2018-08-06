@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ImageBackground, TouchableOpacity, FlatList, TouchableWithoutFeedback, BackHandler, Alert } from 'react-native';
+import { ImageBackground, TouchableOpacity, FlatList, TouchableWithoutFeedback, BackHandler, Alert, AsyncStorage } from 'react-native';
 import {
     View,
     Text,
@@ -543,7 +543,7 @@ export class DashboardPage extends React.Component {
                                                                         style={{ width: 40, height: 40 }}
                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/edit_profile.png')}
                                                                     />
-                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+                                                                    <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
                                                                 </View>
                                                             </TouchableOpacity>
                                                         </View><View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
@@ -552,11 +552,14 @@ export class DashboardPage extends React.Component {
                                                                     this.setState(({ show }) => ({
                                                                         show: !show,
                                                                     }), () => {
-                                                                        const resetAction = StackActions.reset({
-                                                                            index: 0,
-                                                                            actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                                                                        AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
+                                                                            console.log(result, 'Logout');
+                                                                            const resetAction = StackActions.reset({
+                                                                                index: 0,
+                                                                                actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                                                                            });
+                                                                            this.props.navigation.dispatch(resetAction);
                                                                         });
-                                                                        this.props.navigation.dispatch(resetAction);
                                                                     });
                                                                 }}
                                                             >
@@ -566,7 +569,7 @@ export class DashboardPage extends React.Component {
                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/menu-profile/logout.png')}
                                                                         resizeMode='contain'
                                                                     />
-                                                                    <Text style={{ textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Edit Profile</Text>
+                                                                    <Text style={{ marginTop: 8, textAlign: 'center', color: 'white', fontFamily: 'Quicksand-Regular', fontSize: 15 }}>Log Out</Text>
                                                                 </View>
                                                             </TouchableOpacity>
                                                         </View>
