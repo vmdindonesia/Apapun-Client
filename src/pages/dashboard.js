@@ -829,30 +829,98 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                         </View>
                                                                     </View>
-                                                                    <View style={{ flex: 1, backgroundColor: 'pink' }}>
-                                                                        <View style={{ height: 200, flexDirection: 'row' }}>
+                                                                    <View style={{ height: 200 }}>
+                                                                        <View style={{ flexDirection: 'row' }}>
                                                                             <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Image
                                                                                     style={{ height: 200, width: 200 }}
                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/crafter_list.png')}
                                                                                 />
                                                                             </View>
-                                                                            <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
-                                                                                <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CRAFTER LIST</Text>
-                                                                                <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
+                                                                            <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
+                                                                                <View style={{}}>
+                                                                                    <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CRAFTER LIST</Text>
+                                                                                    <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
+                                                                                </View>
+                                                                                <View style={{ height: '50%' }}>
+                                                                                    <TouchableOpacity
+                                                                                        style={styles.buttonCustom}
+                                                                                        onPress={() => {
+                                                                                            this.props.navigation.navigate('CrafterList');
+                                                                                            this.setState(({ show }) => ({
+                                                                                                show: !show,
+                                                                                            }));
+                                                                                        }}
+                                                                                    >
+                                                                                        <Text style={{ marginTop: 13, textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
+                                                                                    </TouchableOpacity>
+                                                                                </View>
                                                                             </View>
                                                                         </View>
                                                                     </View>
-                                                                    <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                                    <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                                        <View style={{ height: '25%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <View style={{ width: '50%', flexDirection: 'row' }}>
+                                                                                <View style={{ marginLeft: 15 }}>
+                                                                                    <Image
+                                                                                        style={{ height: 55, width: 55 }}
+                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/fashion.png')}
+                                                                                    />
+                                                                                </View>
+                                                                                <View style={{ marginLeft: 20 }}>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Fashion</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>1254 Crafter</Text>
+                                                                                </View>
+                                                                            </View>
+                                                                            <View style={{ width: '50%', flexDirection: 'row' }}>
+                                                                                <View style={{}}>
+                                                                                    <Image
+                                                                                        style={{ height: 55, width: 55 }}
+                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/hobbies.png')}
+                                                                                    />
+                                                                                </View>
+                                                                                <View style={{ marginLeft: 20 }}>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>DIY, Hobbies, Toys</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>199 Crafter</Text>
+                                                                                </View>
+                                                                            </View>
+                                                                        </View>
+                                                                        <View style={{ height: '25%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                            <View style={{ width: '50%', flexDirection: 'row' }}>
+                                                                                <View style={{ marginLeft: 15 }}>
+                                                                                    <Image
+                                                                                        style={{ height: 55, width: 55 }}
+                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/furniture.png')}
+                                                                                    />
+                                                                                </View>
+                                                                                <View style={{ marginLeft: 20 }}>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Furniture</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>723 Crafter</Text>
+                                                                                </View>
+                                                                            </View>
+                                                                            <View style={{ width: '50%', flexDirection: 'row' }}>
+                                                                                <View style={{}}>
+                                                                                    <Image
+                                                                                        style={{ height: 55, width: 55 }}
+                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-list/beauty.png')}
+                                                                                    />
+                                                                                </View>
+                                                                                <View style={{ marginLeft: 20 }}>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Beauty</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>269 Crafter</Text>
+                                                                                </View>
+                                                                            </View>
+                                                                        </View>
+                                                                    </View>
                                                                 </View>
                                                                 :
                                                                 <View style={{ flex: 1 }}>
                                                                     {
                                                                         statusMenu === 'crafterMenu' ?
                                                                             <View style={{ flex: 1, flexDirection: 'column' }}>
-                                                                                <View style={{ backgroundColor: 'red', padding: 15, height: 100 }}>
-                                                                                    <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'purple' }}>
-                                                                                        <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                <View style={{ padding: 15, height: 100 }}>
+                                                                                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
                                                                                                 onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
@@ -860,7 +928,7 @@ export class DashboardPage extends React.Component {
                                                                                                 />
                                                                                             </TouchableWithoutFeedback>
                                                                                         </View>
-                                                                                        <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
                                                                                                 onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
@@ -868,7 +936,7 @@ export class DashboardPage extends React.Component {
                                                                                                 />
                                                                                             </TouchableWithoutFeedback>
                                                                                         </View>
-                                                                                        <View style={{ flex: 1, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
                                                                                                 onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
@@ -876,7 +944,7 @@ export class DashboardPage extends React.Component {
                                                                                                 />
                                                                                             </TouchableWithoutFeedback>
                                                                                         </View>
-                                                                                        <View style={{ flex: 1, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
                                                                                                 onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
@@ -886,8 +954,38 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                     </View>
                                                                                 </View>
-                                                                                <View style={{ flex: 1, backgroundColor: 'pink' }} />
-                                                                                <View style={{ flex: 1, backgroundColor: 'orange' }} />
+                                                                                <View style={{ height: 300, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                    <Image
+                                                                                        style={{ height: 190, width: 190 }}
+                                                                                        source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/crafter_menu.png')}
+                                                                                    />
+
+                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Daftarkan diri anda </Text>
+                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>menjadi partner kami</Text>
+                                                                                    <Text style={{ color: 'white', marginTop: 3, alignSelf: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>sebagai CRAFTER </Text>
+                                                                                </View>
+                                                                                <View style={{ flex: 1, flexDirection: 'column' }}>
+                                                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                        <Image
+                                                                                            style={{ height: 20, width: 20 }}
+                                                                                            source={require('./../assets/images/sidemenu/page-sidemenu/menu-crafter-menu/question.png')}
+                                                                                        />
+                                                                                        <Text style={{ marginLeft: 10, color: 'white', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>apa itu</Text>
+                                                                                        <Text style={{ marginLeft: 7, color: '#d87115', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>CRAFTER ?</Text>
+                                                                                    </View>
+                                                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                                                        <TouchableOpacity
+                                                                                            style={styles.buttonJoin}
+                                                                                            onPress={() => {
+                                                                                                this.props.navigation.navigate('RegistrationCrafter')
+                                                                                                this.setState(({ show }) => ({
+                                                                                                    show: !show,
+                                                                                                }));
+                                                                                            }}>
+                                                                                            <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>JOIN</Text>
+                                                                                        </TouchableOpacity>
+                                                                                    </View>
+                                                                                </View>
                                                                             </View>
                                                                             :
                                                                             <View />
@@ -1184,15 +1282,12 @@ const styles = StyleSheet.create({
         width: 160,
     },
     buttonCustom: {
-        marginTop: 35,
-        marginBottom: 18,
+        marginTop: 50,
         backgroundColor: 'red',
         borderRadius: 20,
-        justifyContent: 'center',
-        marginLeft: 5,
-        marginRight: 5,
-        flex: 1,
-        // zIndex: 0
+        // marginLeft: 5,
+        // marginRight: 5,
+        height: 45
     },
     item: {
         height: 85,
@@ -1392,9 +1487,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow',
     },
     joinImage: {
-        height: 190,
-        width: 190,
-        alignSelf: 'center'
+
     },
     buttonJoin: {
         backgroundColor: 'red',
