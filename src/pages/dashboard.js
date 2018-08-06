@@ -668,9 +668,28 @@ export class DashboardPage extends React.Component {
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_custom.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
-                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
-                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
+                                                                            <View>
+                                                                                <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
+                                                                            </View>
+                                                                            <View>
+                                                                                <TouchableOpacity
+                                                                                    style={{
+                                                                                        marginTop: 40,
+                                                                                        backgroundColor: 'red',
+                                                                                        borderRadius: 20,
+                                                                                        height: 45
+                                                                                    }}
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('Order');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}>
+                                                                                    <Text style={{ marginTop: 13, textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
+                                                                                </TouchableOpacity>
+                                                                            </View>
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
@@ -711,9 +730,28 @@ export class DashboardPage extends React.Component {
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_capture.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
-                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CAPTURE N' GET</Text>
-                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
+                                                                            <View>
+                                                                                <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CAPTURE N' GET</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
+                                                                            </View>
+                                                                            <View>
+                                                                                <TouchableOpacity
+                                                                                    style={{
+                                                                                        marginTop: 40,
+                                                                                        backgroundColor: 'red',
+                                                                                        borderRadius: 20,
+                                                                                        height: 45
+                                                                                    }}
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('Captureandget');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}>
+                                                                                    <Text style={{ marginTop: 13, textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
+                                                                                </TouchableOpacity>
+                                                                            </View>
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
@@ -754,9 +792,28 @@ export class DashboardPage extends React.Component {
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_idea.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 40, paddingRight: 10 }}>
-                                                                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>IDEA MARKET</Text>
-                                                                            <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Disini kamu bisa lihat hasil karya unik dan menarik teman-teman mu dan kamu bisa membelinya loh!</Text>
+                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
+                                                                            <View>
+                                                                                <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>IDEA MARKET</Text>
+                                                                                <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Disini kamu bisa lihat hasil karya unik dan menarik teman-teman mu dan kamu bisa membelinya loh!</Text>
+                                                                            </View>
+                                                                            <View>
+                                                                                <TouchableOpacity
+                                                                                    style={{
+                                                                                        marginTop: 22,
+                                                                                        backgroundColor: 'red',
+                                                                                        borderRadius: 20,
+                                                                                        height: 45
+                                                                                    }}
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('IdeaMarket');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}>
+                                                                                    <Text style={{ marginTop: 13, textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>GO</Text>
+                                                                                </TouchableOpacity>
+                                                                            </View>
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
