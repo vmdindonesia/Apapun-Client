@@ -1384,7 +1384,7 @@ const styles = StyleSheet.create({
         width: 220,
         alignSelf: 'center',
         justifyContent: 'center',
-        marginTop: 70
+        marginTop: 100
     },
 });
 
