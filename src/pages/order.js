@@ -637,8 +637,8 @@ export class OrderPage extends React.Component {
                                     style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
                                 >
                                     <Image
-                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/Minuss.png')}
+                                        style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
+                                        source={require('../assets/images/minus.png')}
                                     />
                                 </TouchableOpacity>
                                 <View style={{ width: 60, height: 40 }}>
@@ -654,8 +654,8 @@ export class OrderPage extends React.Component {
                                     style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
                                 >
                                     <Image
-                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/Pluss.png')}
+                                        style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
+                                        source={require('../assets/images/plus.png')}
                                     />
                                 </TouchableOpacity>
                             </View>
