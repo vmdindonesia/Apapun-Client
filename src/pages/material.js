@@ -235,7 +235,7 @@ export class MaterialPage extends React.Component {
                                         selectedValue={dataSelectMaterial}
                                         onValueChange={v => this.onChangeMaterial('dataSelectMaterial', v)}
                                     >
-                                        <Picker.Item label='Pilih Alamat Pengiriman' value='0' />
+                                        <Picker.Item label='Pilih Material' value='0' />
                                         {this.renderMaterial()}
                                     </Picker>
                                 </View>

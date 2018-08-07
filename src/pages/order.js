@@ -42,7 +42,7 @@ export class OrderPage extends React.Component {
             serveDelivery: '',
             addressDelivery: '',
             catatanTambahan: '',
-            numberPcs: 0,
+            numberPcs: '',
             unitQuantity: '',
             dataCategory: '',
             dataSubCategory: '',
@@ -90,6 +90,23 @@ export class OrderPage extends React.Component {
         })
     }
 
+    onChangeQty = (name, value) => {
+        console.log(value, 'Value');
+        if (value.charAt(0) === '0') {
+            this.setState({ [name]: '' }, () => {
+                console.log(this.state[name]);
+            })
+        } else if (isNaN(parseInt(value))) {
+            this.setState({ [name]: '' }, () => {
+                console.log(this.state[name]);
+            })
+        } else {
+            this.setState({ [name]: value }, () => {
+                console.log(this.state[name]);
+            })
+        }
+    }
+
     onChangePicker = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log('Kategori Picker');
@@ -97,28 +114,54 @@ export class OrderPage extends React.Component {
     }
 
     minusNumber() {
-        console.log(this.state.numberPcs, 'Angka Minus');
-        if (this.state.numberPcs === '') {
-            this.setState({
-                numberPcs: 0
-            });
-        }
-        else if (this.state.numberPcs === 0) {
-            this.setState({
-                numberPcs: this.state.numberPcs
-            });
+        const reg = /^\d+$/;
+        const result = reg.test(this.state.numberPcs);
+        if (result) {
+            const negatif = this.state.numberPcs - 1;
+            if (negatif < 0) {
+                this.setState({ numberPcs: '' })
+                console.log('Tes 3');
+            } else {
+                this.setState({
+                    numberPcs: this.state.numberPcs - 1
+                });
+                console.log('Tes 4');
+            }
         } else {
-            this.setState({
-                numberPcs: this.state.numberPcs - 1
-            });
+            this.setState({ numberPcs: '' });
         }
     }
 
     plusNumber() {
-        console.log('Plus');
-        this.setState({
-            numberPcs: parseInt(this.state.numberPcs) + 1
-        });
+        const reg = /^\d+$/;
+        const result = reg.test(this.state.numberPcs);
+        if (result) {
+            console.log('true');
+            if (this.state.numberPcs === '') {
+                this.setState({ numberPcs: 0 }, () => {
+                    this.setState({
+                        numberPcs: parseInt(this.state.numberPcs) + 1
+                    });
+                })
+            } else {
+                this.setState({
+                    numberPcs: parseInt(this.state.numberPcs) + 1
+                });
+            }
+        } else {
+            console.log('false');
+            if (this.state.numberPcs === '') {
+                this.setState({
+                    numberPcs: 0
+                }, () => {
+                    this.setState({
+                        numberPcs: this.state.numberPcs + 1
+                    });
+                });
+            } else {
+                this.setState({ numberPcs: '' });
+            }
+        }
     }
 
     onValidation() {
@@ -645,7 +688,8 @@ export class OrderPage extends React.Component {
                                     <InputNumber
                                         style={{ alignSelf: 'center', textAlign: 'center' }}
                                         value={numberPcs.toString()}
-                                        onChangeText={val => this.onChange('numberPcs', val)}
+                                        placeholder="0"
+                                        onChangeText={val => this.onChangeQty('numberPcs', val)}
                                         keyboardType='numeric'
                                     />
                                 </View>
