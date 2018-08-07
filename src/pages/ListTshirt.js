@@ -57,11 +57,13 @@ export class ListTshirtPage extends React.Component {
                 onPress={() => this.props.navigation.navigate('onClickProductOnIdeaFashion')}
             >
 
-                <View style={{ flex: 1, flexDirection: 'column', marginTop: 5, marginRight: 10, marginBottom: 5, }}>
-                    <Image
-                        style={{ height: 200, width: 190, resizeMode: 'cover' }}
-                        source={{ uri: data.item }}
-                    />
+                <View style={styles.card}>
+                    <View style={styles.thumbnailContainerStyle}>
+                        <Image
+                            style={styles.thumbnailStyle}
+                            source={{ uri: data.item }}
+                        />
+                    </View>
                     <View style={{ width: '100%', height: 100, backgroundColor: 'white' }}>
 
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
@@ -157,8 +159,8 @@ export class ListTshirtPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 18,
-                                height: 18,
+                                width: 25,
+                                height: 26.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
 
@@ -186,8 +188,8 @@ export class ListTshirtPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 18,
-                                height: 18,
+                                width: 25,
+                                height: 26.5,
                                 borderRadius: 0,
                                 alignSelf: 'center'
                             }}
@@ -326,16 +328,43 @@ export class ListTshirtPage extends React.Component {
 
 const styles = StyleSheet.create({
 
-    thumbnailContainerStyle: {
+    // thumbnailContainerStyle: {
 
+    //     margin: 10,
+    // },
+    // thumbnailStyle: {
+    //     height: 90,
+    //     width: 90,
+    //     resizeMode: 'cover',
+    //     // borderRadius: 1
+    // },
+    card: {
+        borderRadius: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+        margin: 5,
+        marginBottom: '2%',
+        backgroundColor: '#FFF',
+        justifyContent: 'center',
+        width: '100%',
+        flex: 1,
+    },
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
         margin: 10,
     },
     thumbnailStyle: {
-        height: 90,
-        width: 90,
-        resizeMode: 'cover',
-        // borderRadius: 1
-    }
+        alignSelf: 'center',
+        height: 120,
+        // flex: 1,
+        width: 160,
+        resizeMode: 'stretch',
+        borderRadius: 4
+    },
 
 
 });

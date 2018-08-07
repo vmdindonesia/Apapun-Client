@@ -98,86 +98,66 @@ export class MyOrderIdeaPage extends React.Component {
 
                     </View>
 
-                    <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 55, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
 
-                        <View style={{ flex: 1, }}>
-                            <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Nama Produk</Text>
-                            </View>
+                        <View style={{ height: 50, flex: 1, marginRight: 10 }}>
                             <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='My Own Table'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Nama Produk</Text>
+                            </View>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>My Own Table</Text>
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, }}>
+                        <View style={{ height: 50, flex: 1 }}>
                             <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Kategori</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Apresiasi Desain</Text>
                             </View>
-                            <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='Furniture'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>Rp. 100.000</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Jumlah yang dipesan</Text>
 
-                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#aaaaaa' }}>
+                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>1</Text>
                         </View>
 
 
-                        <View style={{ marginLeft: 3, width: 50, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#aaaaaa' }}>
+                        <View style={{ marginLeft: 3, width: 50, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>PCS</Text>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 55, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10 }}>
 
-                        <View style={{ flex: 1, }}>
-                            <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Kategori</Text>
-                            </View>
+                        <View style={{ height: 50, flex: 1, marginRight: 10 }}>
                             <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='Fashion'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
+                            </View>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>Kaos</Text>
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, }}>
+                        <View style={{ height: 50, flex: 1 }}>
                             <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Sub Kategori</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Sub Kategori</Text>
                             </View>
-                            <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='Kaos'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>Fashion</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ height: 180, flex: 1, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ height: 180, flex: 1, justifyContent: 'center', marginTop: 5, marginLeft: 10, marginRight: 10, }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Deskripsi Produk</Text>
 
