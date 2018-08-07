@@ -3,6 +3,8 @@ import { View, Text, Image, ScrollView, TouchableOpacity, ToastAndroid } from 'r
 import { Container, ContainerSection, Spinner, Button, Input } from '../components/common';
 import { NavigationActions, StackActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
 
 
 export class ForgotPasswordPage extends React.Component {
@@ -141,6 +143,13 @@ export class ForgotPasswordPage extends React.Component {
                             onPress={() => {
                                 if (this.state.validationCode === true) {
                                     // push api
+                                    const idUser = 24;
+                                    axios.post(`${IPSERVER}/ApapunVerifications/SendForgotVerification`, { email, idUser }).then(response => {
+                                        console.log(response, 'Response Email')
+
+                                    }).catch(error => {
+                                        console.log(error, 'Error Email');
+                                    })
                                 }
                                 else {
                                     ToastAndroid.show('Format Email Harus Benar', ToastAndroid.SHORT);
