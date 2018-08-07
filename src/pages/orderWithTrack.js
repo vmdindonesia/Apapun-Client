@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-elements'
 
 export class OrderWithTrackPage extends React.Component {
 
@@ -16,10 +17,19 @@ export class OrderWithTrackPage extends React.Component {
     });
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            trackingnotification: false,
+            listbox: false
+        }
     }
 
     render() {
+        const {
+            trackingnotification,
+            listbox
+        } = this.state
+
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
                 <View style={{ width: '100%', height: '88%' }}>
@@ -44,14 +54,14 @@ export class OrderWithTrackPage extends React.Component {
                                     }}
                                 >
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 2 }}>Nama Produk</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff', justifyContent: 'center', }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
                                         >My Own Table</Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Dibuat dari</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff', justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -59,7 +69,7 @@ export class OrderWithTrackPage extends React.Component {
                         </Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Kategori</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff', justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -67,7 +77,7 @@ export class OrderWithTrackPage extends React.Component {
                         </Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Estimasi Selesai</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 5, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 5, marginTop: 5, backgroundColor: '#fff', justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -89,22 +99,24 @@ export class OrderWithTrackPage extends React.Component {
                                     />
                                 </View>
 
+
+
                                 <View style={{ width: '60%', flexDirection: 'column', justifyContent: 'center' }}>
                                     <View style={{ width: '100%', }} >
                                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Gal Gadot</Text>
                                     </View>
-                                    <View style={{ flexDirection: 'row', marginTop: 3, alignContent: 'center', }}>
+                                    <View style={{ flexDirection: 'row', marginTop: 5, alignContent: 'center', }}>
                                         <Image
-                                            style={{ height: 24, width: 15, marginLeft: 5 }}
+                                            style={{ height: 24, width: 15, marginLeft: 7 }}
                                             source={require('./../assets/images/location_icon.png')}
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ marginLeft: 10, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Kalimantan Selatan</Text>
+                                            <Text style={{ marginLeft: 12, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
                                         </View>
                                     </View>
-                                    <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>
+                                    <View style={{ width: '100%', flexDirection: 'row', marginTop: 5 }}>
                                         <Image
-                                            style={{ height: 15, width: 22, }}
+                                            style={{ height: 20, width: 28, }}
                                             source={require('./../assets/images/Cukup.png')}
                                         />
                                         < View style={{ flex: 1 }}>
@@ -134,68 +146,139 @@ export class OrderWithTrackPage extends React.Component {
 
 
 
+                            {/* <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: 20 }}>
 
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: 20 }}>
                                 <View
-                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', marginLeft: 3 }}
+                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', }}
                                 />
-                                <View style={{ paddingLeft: 5, paddingRight: 5 }}>
+                                <View style={{ marginLeft: 8.5, marginRight: 8.5 }}>
+                                    <Image
+                                        style={{ height: 40, width: 40, }}
+                                        source={require('./../assets/images/line.png')}
+                                    />
+                                </View>
+
+                                <View
+                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', }}
+                                />
+                                <View style={{ marginLeft: 8.5, marginRight: 8.5 }}>
                                     <Image
                                         style={{ height: 40, width: 40, }}
                                         source={require('./../assets/images/line.png')}
                                     />
                                 </View>
                                 <View
-                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff' }}
+                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', }}
                                 />
-                                <View style={{ paddingLeft: 5, paddingRight: 5 }}>
+                                <View style={{ marginLeft: 8.5, marginRight: 8.5 }}>
                                     <Image
                                         style={{ height: 40, width: 40, }}
                                         source={require('./../assets/images/line.png')}
                                     />
                                 </View>
                                 <View
-                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', marginRight: 5 }}
+                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 50, backgroundColor: '#fff', }}
                                 />
-                                <View style={{ paddingLeft: 5, paddingRight: 5 }}>
-                                    <Image
-                                        style={{ height: 40, width: 40, }}
-                                        source={require('./../assets/images/line.png')}
+                            </View> */}
+
+                            <View style={{ flexDirection: 'row', marginTop: 20, marginRight: 17, marginLeft: 17 }}>
+
+                                <View style={{ flex: 1, }}>
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
                                     />
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Proses Transaksi</Text>
                                 </View>
-                                <View
-                                    style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff' }}
+
+                                <Image
+                                    style={{ height: 25, width: 25, marginTop: 5 }}
+                                    source={require('./../assets/images/line.png')}
                                 />
+
+                                <View style={{ flex: 1, }}>
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
+                                    />
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Memproses Barang</Text>
+                                </View>
+
+                                <Image
+                                    style={{ height: 25, width: 25, marginTop: 5 }}
+                                    source={require('./../assets/images/line.png')}
+                                />
+
+                                <View style={{ flex: 1, }}>
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
+                                    />
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Pengiriman</Text>
+                                </View>
+
+                                <Image
+                                    style={{ height: 25, width: 25, marginTop: 5 }}
+                                    source={require('./../assets/images/line.png')}
+                                />
+
+                                <View style={{ flex: 1, }}>
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
+                                    />
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'b    lack', paddingTop: 7 }}>Barang Diterima</Text>
+                                </View>
                             </View>
 
-                            <View style={{ flexDirection: 'row', marginTop: 5 }}>
-                                <View style={{ flex: 1, }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black' }}>Proses Transaksi</Text>
-                                </View>
-                                <View style={{ flex: 1, }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black' }}>Memproses Barang</Text>
-                                </View>
-                                <View style={{ flex: 1, }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black' }}>Pengiriman</Text>
-                                </View>
-                                <View style={{ flex: 1, }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black' }}>Barang Diterima</Text>
-                                </View>
+
+
+                            <View style={{ flex: 1, backgroundColor: 'white', height: 90, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft: 25, marginRight: 25, marginTop: 15 }}>
+                                <TouchableOpacity
+                                    onPress={() => this.setState({ trackingnotification: !this.state.trackingnotification })}
+                                    style={{ height: 80, flex: 1, padding: 15, }}
+                                >
+                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ width: '35%', height: '100%', }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>28 Feb 2018</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>1.30 pm</Text>
+                                        </View>
+
+                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', marginRight: 15, alignSelf: 'center' }} />
+
+                                        <View style={{ width: '65%', height: '100%' }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left' }}>Barang anda sudah sampai!</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
+                                        </View>
+                                    </View>
+                                    {
+                                        trackingnotification === false ?
+                                            <View style={{ marginBottom: -18, }}>
+                                                <Icon size={17.5} style={{ alignSelf: 'center', color: '#eaeaea' }} name='md-list-box' />
+
+                                            </View>
+                                            :
+                                            <View />
+                                    }
+
+                                </TouchableOpacity>
                             </View>
+                            {
 
-                            <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#fff', padding: 25, justifyContent: 'center', alignContent: 'center', marginTop: 17.5 }}>
-                                <View style={{ width: '35%', height: '100%', justifyContent: 'center' }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'center' }}>28 Feb 2018</Text>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'center' }}>1.30 pm</Text>
-                                </View>
+                                trackingnotification === true ?
+                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, padding: 15, marginLeft: 25, marginRight: 25, flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ width: '35%', height: '100%', }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>28 Feb 2018</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>1.30 pm</Text>
+                                        </View>
 
-                                <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, marginRight: 5 }} />
+                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', marginRight: 15, alignSelf: 'center' }} />
 
-                                <View style={{ width: '65%', height: '100%' }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'center' }}>Barang anda sudah sampai!</Text>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'center' }}>Terima kasih telah menggunakan APAPUN</Text>
-                                </View>
-                            </View>
+                                        <View style={{ width: '65%', height: '100%' }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left' }}>Barang anda sudah sampai!</Text>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
+                                        </View>
+                                    </View>
+                                    :
+                                    <View />
+                            }
+
 
 
 
@@ -271,6 +354,7 @@ export class OrderWithTrackPage extends React.Component {
                                 </View>
                             </View>
                         </View>
+                        <View style={{ flex: 1, height: 50, backgroundColor: 'eaeaea' }} />
                     </ScrollView>
                 </View>
                 <View style={{
@@ -328,7 +412,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // marginLeft: 10,
         // marginRight: 10,
-        marginTop: 10,
+        marginTop: 20,
         // backgroundColor: 'red'
     }
 });

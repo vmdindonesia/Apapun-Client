@@ -23,7 +23,7 @@ class AutoComplete extends Component {
 		}
 
 	render() {
-		const { label, value, onChangeText, placeholder, suggestions, editable } = this.props
+		const { label, value, onChangeText, placeholder, suggestions, editable, autoFocus } = this.props
 		const { labelStyle, inputStyle, containerStyle, containerSuggestion } = styles
 
 		return (
@@ -40,6 +40,7 @@ class AutoComplete extends Component {
 						onChangeText={onChangeText}
 						style={inputStyle}
 						editable={editable}
+						autoFocus={autoFocus}
 					/>
 				</View>
 				{

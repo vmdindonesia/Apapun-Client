@@ -71,8 +71,8 @@ export class OrderOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 18,
-                                height: 18,
+                                width: 25,
+                                height: 26.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
 
@@ -100,8 +100,8 @@ export class OrderOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 18,
-                                height: 18,
+                                width: 25,
+                                height: 26.5,   
                                 borderRadius: 0,
                                 alignSelf: 'center'
                             }}

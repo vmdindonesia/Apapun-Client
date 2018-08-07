@@ -112,11 +112,17 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  ForgotPassword: {
-    screen: ForgotPasswordPage
-  },
   StartScreen: {
     screen: StartScreen
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  ForgotPassword: {
+    screen: ForgotPasswordPage
   },
   IntroApp: {
     screen: IntroAppPage
@@ -136,9 +142,6 @@ const Routes = createStackNavigator({
   MenuLogin: {
     screen: MenuLoginPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
   },
@@ -151,10 +154,6 @@ const Routes = createStackNavigator({
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
-
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -209,9 +208,6 @@ const Routes = createStackNavigator({
   },
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
-  },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
@@ -316,7 +312,6 @@ const Routes = createStackNavigator({
   ProductDetailOnProfile: {
     screen: ProductDetailOnProfilePage
   },
-
   Order: {
     screen: OrderPage
   },
@@ -326,16 +321,8 @@ const Routes = createStackNavigator({
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
-
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
-  },
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
-
-  pengaturanBank: {
-    screen: PengaturanBankPage
   },
   ProfileCrafter: {
     screen: ProfileCrafterPage
