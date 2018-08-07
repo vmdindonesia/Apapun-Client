@@ -90,8 +90,9 @@ export class ForgotPasswordPage extends React.Component {
         const { email, newPassword, confirmPassword } = this.state;
 
         return (
-            <View style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='always'>
+
+            <ScrollView keyboardShouldPersistTaps='always'>
+                <View style={styles.container}>
                     <Image
                         style={{ width: 220, height: 100, }}
                         source={require('./../assets/images/logotext.png')}
@@ -164,8 +165,8 @@ export class ForgotPasswordPage extends React.Component {
                     >
                         <Text style={styles.signupButton}>Kirim</Text>
                     </TouchableOpacity>
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         );
     }
 
