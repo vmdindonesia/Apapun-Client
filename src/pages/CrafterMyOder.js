@@ -159,7 +159,8 @@ const styles = StyleSheet.create({
     },
     fontActive: {
         fontFamily: 'Quicksand-Bold',
-        fontSize: 15
+        fontSize: 15,
+        color:'black'
     },
     fontNotActive: {
         fontFamily: 'Quicksand-Regular',
