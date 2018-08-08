@@ -199,7 +199,7 @@ export class PaymentMethodPage extends React.Component {
                         CreditCardPayment === true ?
                             < View style={{
                                 flex: 1,
-                                height: 680,
+                                // height: 680,
                                 backgroundColor: 'white',
                                 flexDirection: 'column',
                                 // alignItems: 'center'
@@ -228,7 +228,7 @@ export class PaymentMethodPage extends React.Component {
                                 </View> */}
 
 
-                                <View style={{ height: 80, marginLeft: 10, marginRight: 10, marginTop:15 }}>
+                                <View style={{ height: 80, marginLeft: 10, marginRight: 10, marginTop: 15 }}>
                                     <View style={{ height: 20, }}>
                                         <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Nomor Kartu Kredit</Text>
                                     </View>
@@ -355,7 +355,7 @@ export class PaymentMethodPage extends React.Component {
                                 </View>
 
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
-                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
                                         <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>BAYAR</Text>
 
@@ -386,7 +386,7 @@ export class PaymentMethodPage extends React.Component {
                         BankTransferPayment === true ?
                             < View style={{
                                 flex: 1,
-                                height: 550,
+                                // height: 550,
                                 backgroundColor: 'white',
                                 flexDirection: 'column',
                                 // alignItems: 'center'
@@ -530,11 +530,11 @@ export class PaymentMethodPage extends React.Component {
 
                                     <Text style={{ color: 'black', fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', }}>Pembayaran harus dilakukan dalam waktu 24 jam
                                     {'\n'}  atau pesanan akan dibatalkan.{'\n'}Pesanan akan diproses setelah Anda melakukan pembayaran </Text>
-                                    
+
                                 </View>
 
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
-                                    <View style={{ backgroundColor: 'red', height: 50, marginLeft: 10, marginRight: 10, marginTop: 20, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
                                         <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>BAYAR</Text>
 

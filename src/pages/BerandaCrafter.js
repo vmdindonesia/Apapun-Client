@@ -78,7 +78,7 @@ export class BerandaCrafterPage extends React.Component {
                     <Image
                         style={{
                             height: 20,
-                            width: 20,
+                            width: 29,
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
@@ -167,7 +167,7 @@ export class BerandaCrafterPage extends React.Component {
                                 width: '20%'
                             }}>
                                 <TouchableWithoutFeedback
-                                onPress={() => this.props.navi.navigate('')}>
+                                    onPress={() => this.props.navi.navigate('')}>
                                     <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15, }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
