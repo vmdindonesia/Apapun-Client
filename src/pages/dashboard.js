@@ -692,28 +692,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -737,7 +740,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 40,
+                                                                                        marginTop: 30,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -754,28 +757,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -799,7 +805,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 40,
+                                                                                        marginTop: 30,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -816,28 +822,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -861,7 +870,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 22,
+                                                                                        marginTop: 12,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -878,28 +887,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
