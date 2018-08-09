@@ -16,7 +16,10 @@ export class OrderPage extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         headerLeft:
             <TouchableOpacity
-                onPress={() => { navigation.goBack(); console.log(navigation.goBack(), 'Props Order') }}
+                onPress={() => {
+                    navigation.goBack();
+                    console.log(navigation, 'Props Order')
+                }}
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
@@ -58,7 +61,6 @@ export class OrderPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.navigation.state.params, 'Params Page Order');
         axios.get(`${IPSERVER}/ApapunKategoris`)
             .then(response => {
                 console.log(response.data, 'Response Kategori');
@@ -83,6 +85,9 @@ export class OrderPage extends React.Component {
             })
     }
 
+    onSelect = data => {
+        this.setState(data);
+    };
 
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
@@ -420,19 +425,15 @@ export class OrderPage extends React.Component {
     }
 
     renderSelectedMaterial(item, index) {
+        console.log(item, 'ITEM SELECT MATERIAL');
         return (
-            <ContainerSection>
-                <View style={styles.buttonMaterial}>
-                    <View style={{ padding: 7, flex: 1, flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular' }}>{item.materialName}</Text>
-                        <TouchableOpacity
-                            onPress={() => this.deleteMaterial(item)}
-                        >
-                            <Icon size={20} style={{ marginLeft: 25 }} name='md-close' />
-                        </TouchableOpacity>
-                    </View>
+            <View style={{ flexDirection: 'row', marginTop: 10, marginRight: 5 }} key={index}>
+                <View style={{ height: 25, flexDirection: 'row', borderWidth: 1, borderRadius: 30, paddingLeft: 7, paddingRight: 7 }}>
+                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.material_name}</Text>
+                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}> - </Text>
+                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.submaterial_name.length >= 12 ? `${item.submaterial_name.substring(0, 12)}...` : `${item.submaterial_name}`}</Text>
                 </View>
-            </ContainerSection>
+            </View>
         )
     }
 
@@ -738,9 +739,10 @@ export class OrderPage extends React.Component {
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() =>
-                                                this.props.navigation.navigate('Material')
-                                            }
+                                            onPress={() => {
+                                                this.props.navigation.navigate('Material', { onSelect: this.onSelect });
+                                                // this.props.navigation.navigate('Material')
+                                            }}
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -752,11 +754,11 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                             :
-                            <View style={{ flex: 1, height: 170 }}>
+                            <View style={{ flex: 1, paddingLeft: 5, paddingRight: 5, marginBottom: 5 }}>
                                 <View>
                                     <ContainerSection>
                                         <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('Material')}
+                                            onPress={() => this.props.navigation.navigate('Material', { onSelect: this.onSelect, dataSub: this.state.dataCheckBoxSubMaterial })}
                                             style={styles.buttonsMaterial}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -766,7 +768,7 @@ export class OrderPage extends React.Component {
                                         </TouchableOpacity>
                                     </ContainerSection>
                                 </View>
-                                <View style={{ flexDirection: 'row' }} >
+                                <View style={{ flex: 1, flexWrap: 'wrap' }}>
                                     {
 
                                         <FlatList
