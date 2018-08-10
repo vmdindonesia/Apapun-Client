@@ -113,6 +113,9 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   IntroApp: {
     screen: IntroAppPage
   },
@@ -128,8 +131,6 @@ const Routes = createStackNavigator({
   UlasanOnCrafterProfile: {
     screen: UlasanOnCrafterProfilePage
   },
-
-
   searchCrafterOnProfile: {
     screen: searchCrafterOnProfilePage
   },
@@ -142,7 +143,6 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
-
   ListTshirt: {
     screen: ListTshirtPage
   },
@@ -152,15 +152,11 @@ const Routes = createStackNavigator({
   MyOrderIdea: {
     screen: MyOrderIdeaPage
   },
-
   MyOrder: {
     screen: MyOrderPage
   },
   PaymentMethod: {
     screen: PaymentMethodPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   pengaturanBank: {
     screen: PengaturanBankPage
@@ -191,9 +187,6 @@ const Routes = createStackNavigator({
   },
   PageDesign: {
     screen: PageDesignPage
-  },
-  ProfilePage: {
-    screen: ProfileBuyerPage
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
@@ -268,9 +261,6 @@ const Routes = createStackNavigator({
 
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
-  },
-  IdeaFashion: {
-    screen: IdeaFashionPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage

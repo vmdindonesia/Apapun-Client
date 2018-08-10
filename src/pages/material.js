@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, RefreshControl, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
+import { AsyncStorage, RefreshControl, ScrollView, Text, Picker, Keyboard, Linking, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
@@ -168,6 +168,18 @@ export class MaterialPage extends React.Component {
             }}>
                 <View style={{ flex: 4 }}>
                     <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.submaterial_name.length >= 20 ? `${itemSubMaterial.submaterial_name.substring(0, 20)}...` : `${itemSubMaterial.submaterial_name}`}</Text>
+                    <TouchableOpacity
+                        onPress={() => { Linking.openURL(`https://www.google.com/search?q=${itemSubMaterial.submaterial_name}`).catch(err => console.error('An error occurred', err)); }}>
+                        <View style={{ justifyContent: 'flex-end', flexDirection: 'row' }}>
+                            <Image
+                                source={require('./../assets/images/order/form-order/ic_material_search.png')}
+                                style={{ width: 15, height: 15 }}
+                            />
+                            <Text style={{ marginLeft: 7 }}>
+                                Cari tahu material ini
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={{ flex: 1 }}>
                     <CheckBox
@@ -176,7 +188,7 @@ export class MaterialPage extends React.Component {
                         onPress={() => this.checkedSubMaterial(itemSubMaterial)}
                     />
                 </View>
-            </View>
+            </View >
         );
     }
 
