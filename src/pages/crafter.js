@@ -38,7 +38,7 @@ export class CrafterPage extends React.Component {
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
                             <Image
-                                style={{ width: 18, height: 18 }}
+                                style={{ width: 20, height: 18 }}
                                 source={require('./../assets/images/Cukup.png')}
                                 resizeMode='stretch'
                             />
