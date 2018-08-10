@@ -212,9 +212,6 @@ export class MaterialPage extends React.Component {
     }
 
     renderButton = () => {
-        if (this.state.loading) {
-            return <Spinner size="small" />
-        }
         return (
             <Button
                 style={{
@@ -223,7 +220,12 @@ export class MaterialPage extends React.Component {
                     borderRadius: 30,
                     marginTop: 10
                 }}
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => {
+                    const { params = {} } = this.props.navigation.state;
+                    this.props.navigation.goBack();
+                    this.props.navigation.setParams(params.dataMaterial);
+                    this.props.navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                }}
 
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>OK</Text>
