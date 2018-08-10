@@ -482,7 +482,6 @@ export class ProfileCrafterPage extends React.Component {
                             <Image style={{ width: 15, height: 15 }}
                                 source={require('../assets/images/Information.png')} />
                         </TouchableOpacity>
-                        {/* popup informasi ketika ditouch */}
                     </View>
                     <View style={{ width: '25%', height: '100%', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Harga Pesanan</Text>

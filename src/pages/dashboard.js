@@ -1156,7 +1156,7 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('MenuCrafter');
+                                                                                                                    this.props.navigation.navigate('CrafterMenu');
                                                                                                                 });
                                                                                                             }}
                                                                                                         >

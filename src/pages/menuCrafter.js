@@ -3,7 +3,7 @@ import {
     View, Text, ImageBackground, Image, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
 } from 'react-native'
-import { ContainerSection, Card } from '../components/common';
+import { ContainerSection } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class MenuCrafterPage extends React.Component {
@@ -51,7 +51,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                     </ImageBackground >
-                    <View style={{ height: '100%', marginBottom: '60%' }}>
+                    <View style={{ height: '100%', marginBottom: '55%' }}>
                         <View style={{ flex: 1 }}>
                             <View style={{ width: '100%' }} >
                                 <Text style={styles.textStyle}>Gal Gadot</Text>
