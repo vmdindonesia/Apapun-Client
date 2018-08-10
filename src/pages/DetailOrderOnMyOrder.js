@@ -99,7 +99,7 @@ export class DetailOrderPage extends React.Component {
                                             source={require('./../assets/images/location_icon.png')}
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ marginLeft: 10, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Kalimantan Selatan</Text>
+                                            <Text style={{ marginLeft: 10, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
                                         </View>
                                     </View>
                                     <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>
@@ -183,7 +183,7 @@ export class DetailOrderPage extends React.Component {
                 <View style={{
                     flexDirection: 'row',
                     width: '100%',
-                    height: 70,
+                    height: 80,
                     backgroundColor: '#1f2021',
                     justifyContent: 'center'
                 }}>
@@ -240,7 +240,7 @@ export class DetailOrderPage extends React.Component {
                         <TouchableOpacity style={{
                             backgroundColor: 'red',
                             borderRadius: 20,
-                            height: '70%',
+                            height: '60%',
                             width: '80%',
                             justifyContent: 'center',
                             alignSelf: 'center',

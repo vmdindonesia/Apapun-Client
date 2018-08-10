@@ -22,7 +22,7 @@ export class CrafterPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile')}>
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
