@@ -48,7 +48,7 @@ export class ListKemejaPage extends React.Component {
 
                 <View style={{ flex: 1, flexDirection: 'column', marginTop: 5, marginRight: 10, marginBottom: 5, }}>
                     <Image
-                        style={{ height: 200, width: 190, resizeMode: 'cover' }}
+                        style={{ height: 170, width: 170, resizeMode: 'cover' }}
                         source={{ uri: data.item }}
                     />
                     <View style={{ width: '100%', height: 100, backgroundColor: 'white' }}>

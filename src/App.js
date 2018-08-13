@@ -113,18 +113,43 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  ListKemeja: {
+    screen: ListKemejaPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+
   StartScreen: {
     screen: StartScreen
   },
+  NotificationMenu: {
+    screen: NotificationMenuPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  WhislistOnMyOrder: {
+    screen: WishlistOnMyOrderPage
+  },
+
   IntroApp: {
     screen: IntroAppPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
+
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
@@ -140,9 +165,7 @@ const Routes = createStackNavigator({
   DetailOrder: {
     screen: DetailOrderPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
+
   ListTshirt: {
     screen: ListTshirtPage
   },
@@ -179,9 +202,7 @@ const Routes = createStackNavigator({
   MenuLogin: {
     screen: MenuLoginPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   DesignSaya: {
     screen: DesignSayaPage
   },
@@ -190,9 +211,6 @@ const Routes = createStackNavigator({
   },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
   },
 
   detailsendingIdeaPage: {
@@ -223,9 +241,7 @@ const Routes = createStackNavigator({
   Crafter: {
     screen: CrafterPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   HelpMenu: {
     screen: HelpMenuPage
   },
@@ -249,9 +265,7 @@ const Routes = createStackNavigator({
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-  ListKemeja: {
-    screen: ListKemejaPage
-  },
+
   ListHoodie: {
     screen: ListHoodiePage
   },
@@ -384,9 +398,7 @@ const Routes = createStackNavigator({
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-  NotificationMenu: {
-    screen: NotificationMenuPage
-  },
+
   NotificationSystem: {
     screen: NotificationSystemPage
   },
@@ -414,9 +426,7 @@ const Routes = createStackNavigator({
     screen: DetailOrderPage
   },
 
-  WhislistOnMyOrder: {
-    screen: WishlistOnMyOrderPage
-  },
+
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
   },
