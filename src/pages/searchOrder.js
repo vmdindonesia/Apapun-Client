@@ -52,8 +52,8 @@ export class searchOrderPage extends React.Component {
         console.log(data, '098');
         return (
             <TouchableOpacity
-                 onPress={() => this.props.navigation.navigate('OrderForCrafter')}
-                //onPress={() => this.props.navigation.navigate('OrderForCrafter', { datas: data})}
+                //  onPress={() => this.props.navigation.navigate('OrderForCrafter')}
+                onPress={() => this.props.navigation.navigate('OrderForCrafter', { datas: data})}
             >
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
