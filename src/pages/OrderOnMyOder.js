@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Picker, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-// import axios from 'axios';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 
 export class OrderOnMyOrderPage extends React.Component {
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View, Image, Alert, FlatList } from 'react-native';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 
 export class CrafterPage extends React.Component {
 
