@@ -297,7 +297,7 @@ export class OrderPage extends React.Component {
         })
             .then(response => {
                 console.log(response, 'Response Order Proses');
-                request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                request.open('POST', `${IPSERVER}/ApapunStorageImages/imagesUpload`);
                 request.send(body);
                 console.log(response.data[0].idOrder, 'ID ORDER')
                 this.setState({ loading: false, propertyPhoto: [], dataOrderResponse: response.data[0].idOrder }, () => {
@@ -538,8 +538,8 @@ export class OrderPage extends React.Component {
                     marginRight: '5%',
                     marginBottom: 20
                 }}
-                // onPress={() => this.onValidation()}
-                onPress={() => this.props.navigation.navigate('FindingCrafter')}
+                onPress={() => this.onValidation()}
+            // onPress={() => this.props.navigation.navigate('FindingCrafter')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>

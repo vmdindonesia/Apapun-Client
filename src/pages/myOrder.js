@@ -28,8 +28,21 @@ export class MyOrderPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-            ]
+            ],
+            dataDetailOrder: ''
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataDetailOrder: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
     }
 
     renderProductImage = (data) => {

@@ -235,9 +235,6 @@ const Routes = createStackNavigator({
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
   },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -265,10 +262,6 @@ const Routes = createStackNavigator({
   CrafterMenu: {
     screen: CrafterMenuPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-
   ThanksToOrderAfterSend: {
     screen: ThanksToOrderAfterSendPage
   },

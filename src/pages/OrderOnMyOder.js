@@ -29,6 +29,18 @@ export class OrderOnMyOrderPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataCrafterBet: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        });
+    }
+
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log(this.state[name]);
@@ -101,7 +113,7 @@ export class OrderOnMyOrderPage extends React.Component {
                         <Image
                             style={{
                                 width: 25,
-                                height: 26.5,   
+                                height: 26.5,
                                 borderRadius: 0,
                                 alignSelf: 'center'
                             }}

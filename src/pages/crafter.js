@@ -12,11 +12,24 @@ export class CrafterPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
             ],
+            dataCrafterBet: ''
         }
     }
 
     alert = (msg) => {
         console.log(msg)
+    }
+
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataCrafterBet: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
     }
 
     renderProductItem = (data) => {
@@ -109,9 +122,7 @@ export class CrafterPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerCrafter: {
-        // backgroundColor:
         flexDirection: 'column',
-        // width: '100%',
         alignItems: 'center',
         marginTop: 10
 
@@ -146,11 +157,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         flexDirection: 'row',
-        backgroundColor: 'white',
-        alignItems: 'center',
-        // marginTop: '20%',
-        // bottom: 0
-        // bottom: 0
+        backgroundColor: 'transparent',
+        alignItems: 'center'
     },
     buttonStop: {
         flex: 1,
@@ -183,8 +191,8 @@ const styles = StyleSheet.create({
     },
     thumbnailStyle: {
         alignSelf: 'center',
-        height: 120,
-        width: 150,
+        height: 170,
+        width: 170,
         resizeMode: 'stretch',
         borderRadius: 4
     },
