@@ -43,7 +43,7 @@ export class ProfileBuyerPage extends React.Component {
                             <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
 
                                 <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 25, fontFamily: 'Quicksand-Regular', color: 'black' }}>Gal Gadot</Text>
+                                    <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 30,
         marginTop: 5,
-        height: 150,
+        height: 180,
         width: '90%',
         // alignItems: 'center',
         // zIndex: 2,

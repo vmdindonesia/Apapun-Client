@@ -55,7 +55,7 @@ export class SettingManuPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Atur Aplikasi</Text>
+                            <Text style={{fontFamily:'Quicksand-Bold' ,fontSize: 15, paddingLeft: 10, color: 'black' }}>Atur Aplikasi</Text>
                         </View>
 
                         <View style={{
@@ -69,7 +69,7 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20, marginTop: 5,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Ringtone</Text>
+                                <Text style={{fontFamily:'Quicksand-Bold' , fontSize: 15,  color: 'black' }}>Ringtone</Text>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <Text style={{ fontSize: 15, color: '#bcbcbc' }}>Default 1</Text>
                                 </View>
@@ -79,7 +79,7 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20, marginTop: 5,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Background Music</Text>
+                                <Text style={{fontFamily:'Quicksand-Bold' , fontSize: 15,  color: 'black' }}>Background Music</Text>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <SwitchToggle
                                         containerStyle={{
@@ -108,7 +108,7 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20, marginTop: 5,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Notifikasi</Text>
+                                <Text style={{fontFamily:'Quicksand-Bold' , fontSize: 15,  color: 'black' }}>Notifikasi</Text>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <SwitchToggle
                                         containerStyle={{
@@ -137,7 +137,7 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20, marginTop: 5,
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5, marginBottom: 15
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Vibrate</Text>
+                                <Text style={{ fontFamily:'Quicksand-Bold' ,fontSize: 15,  color: 'black' }}>Vibrate</Text>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <SwitchToggle
                                         containerStyle={{
@@ -175,7 +175,7 @@ export class SettingManuPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Tentang Kami</Text>
+                            <Text style={{ fontFamily:'Quicksand-Bold' , fontSize: 15, paddingLeft: 10, color: 'black' }}>Tentang Kami</Text>
                         </View>
 
                         <View style={{
@@ -192,7 +192,7 @@ export class SettingManuPage extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate('TermsAndAgreement')}
                                 >
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Syarat dan Ketentuan</Text>
+                                    <Text style={{fontFamily:'Quicksand-Bold' , fontSize: 15,  color: 'black' }}>Syarat dan Ketentuan</Text>
                                 </TouchableOpacity>
                             </View>
 
@@ -201,7 +201,7 @@ export class SettingManuPage extends React.Component {
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
                                 
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Kebijakan Privasi</Text>
+                                    <Text style={{ fontFamily:'Quicksand-Bold' ,fontSize: 15, color: 'black' }}>Kebijakan Privasi</Text>
                                
                             </View>
 
@@ -210,7 +210,7 @@ export class SettingManuPage extends React.Component {
                                 alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
                                 
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Review</Text>
+                                    <Text style={{ fontSize: 15, fontFamily:'Quicksand-Bold' , color: 'black' }}>Review</Text>
                                
                             </View>
 
@@ -221,7 +221,7 @@ export class SettingManuPage extends React.Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate('ThanksTo')}
                                 >
-                                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Terima Kasih Kepada</Text>
+                                    <Text style={{ fontSize: 15, fontFamily:'Quicksand-Bold' , color: 'black' }}>Terima Kasih Kepada</Text>
                                 </TouchableOpacity>
                             </View>
 
@@ -229,7 +229,7 @@ export class SettingManuPage extends React.Component {
                                 flex: 1, flexDirection: 'row', marginRight: 20, marginLeft: 20, marginTop: 5,
                                 marginBottom: 20, alignItems: 'center', borderBottomColor: '#e5e5e5', borderBottomWidth: 1.5
                             }}>
-                                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Versi</Text>
+                                <Text style={{ fontSize: 15, fontFamily:'Quicksand-Bold' , color: 'black' }}>Versi</Text>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <Text style={{ fontSize: 15, color: '#bcbcbc' }}>v.0.0.0 </Text>
                                 </View>

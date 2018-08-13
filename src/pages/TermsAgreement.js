@@ -16,7 +16,7 @@ export class TermsAndAgreementPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Terms And Condition'
+        headerTitle: 'Pengaturan'
     });
 
 
@@ -29,7 +29,7 @@ export class TermsAndAgreementPage extends React.Component {
 
                     <View style={{
                         flex: 1,
-                        height: 300,
+                        height: 330,
                         // backgroundColor: 'skyblue',
                         marginTop: 15,
                         alignContent: 'center'
@@ -40,14 +40,14 @@ export class TermsAndAgreementPage extends React.Component {
 
                         <View style={{
                             flex: 1,
-                            height: 250,
+                            height: 330,
                             flexDirection: 'column',
                             backgroundColor: 'white',
                             marginTop: 15,
                             marginLeft: 10,
                             marginRight: 10,
                         }}>
-                            <Text style={{ fontSize: 13, textAlign: 'left', padding: 5, fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ flex: 1, fontSize: 13, textAlign: 'left', padding: 5, fontFamily: 'Quicksand-Regular' }}>
                                 Selamat datang di website www.apapun.co.id dan / aplikasi mobile<Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13 }}> apapun </Text>.
                                 Silakan membaca Syarat penggunaan ini dengan seksama. Syarat Penggunaan ini mengatur penggunaan dan akses Platform (di definisikan di bawah)
                             maka Anda jangan/berhenti mengakses dan/atau menggunakan Platform atau Layanan ini. {'\n'}{'\n'}

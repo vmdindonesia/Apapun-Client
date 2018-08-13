@@ -16,7 +16,7 @@ export class ThanksToPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Thanks To'
+        headerTitle: 'Pengaturan'
     });
 
     render() {
@@ -34,7 +34,7 @@ export class ThanksToPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Terima Kasih Kepada</Text>
+                            <Text style={{ fontFamily:'Quicksand-Bold' ,fontSize: 15, paddingLeft: 10, color: 'black' }}>Terima Kasih Kepada</Text>
                         </View>
 
                         <View style={{
@@ -72,7 +72,7 @@ export class ThanksToPage extends React.Component {
                             resizeMode='cover'
                         />
                         <View style={{ height: 20, marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 11.4, color: 'black' }}>Devianart / Bookgeeky</Text>
+                            <Text style={{ fontFamily:'Quicksand-Bold' , fontSize: 11.4, color: 'black' }}>Devianart / Bookgeeky</Text>
                         </View>
 
                     </View>
@@ -91,7 +91,7 @@ export class ThanksToPage extends React.Component {
                             resizeMode='cover'
                         />
                         <View style={{ height: 20, marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 11.4, color: 'black' }}>Pixabay / Republika</Text>
+                            <Text style={{ fontFamily:'Quicksand-Bold' , fontSize: 11.4, color: 'black' }}>Pixabay / Republika</Text>
                         </View>
 
                     </View>
