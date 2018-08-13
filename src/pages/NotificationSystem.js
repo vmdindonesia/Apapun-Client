@@ -40,7 +40,7 @@ export class NotificationSystemPage extends React.Component {
 
                         <View style={{ flex: 1, flexDirection: 'column', padding: 5, justifyContent: 'center' }}>
 
-                            <Text style={{ color: 'black', fontWeight: 'bold' }}>Pesanan 173AS8B6HG sudah bisa di review</Text>
+                            <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Pesanan 173AS8B6HG sudah bisa di review</Text>
                             <Text style={{ color: 'black', }}>26 jan 2018, 18.04</Text>
 
                         </View>
@@ -67,7 +67,7 @@ export class NotificationSystemPage extends React.Component {
 
                         <View style={{ flex: 1, flexDirection: 'column', padding: 5, justifyContent: 'center' }}>
 
-                            <Text style={{ color: 'black', fontWeight: 'bold' }}>Update 5.0.0.0</Text>
+                            <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Update 5.0.0.0</Text>
                             <Text style={{ color: 'black', }}>1 jan 2018, 07.04</Text>
 
                         </View>

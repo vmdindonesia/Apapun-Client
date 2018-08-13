@@ -15,7 +15,7 @@ export class ProfileBuyerPage extends React.Component {
         return (
 
             <ScrollView
-            >
+                style={{ flex: 1 }} >
 
                 <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
                     onPress={() => this.props.navigation.goBack()}
@@ -81,7 +81,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular' }}>
                                         galgadot@gmail.com
                             </Text>
                                 </View>
@@ -109,7 +109,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
                                         081284485300
                             </Text>
                                 </View>
@@ -136,7 +136,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
                                         30 Januari 1995
                                     </Text>
                                 </View>
@@ -164,10 +164,10 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', fontWeight: 'bold' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', }}>
                                         Jalan Komodo
                                     </Text>
                                 </View>
@@ -271,13 +271,13 @@ export class ProfileBuyerPage extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center'
                             }}>
-                                <Text style={{ fontSize: 19, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>
+                                <Text style={{ fontSize: 19, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }}>
                                     Hargai Desainmu
                                     </Text>
-                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                     Share dan opresiasikan desainmu
                                     </Text>
-                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                                <Text style={{ fontSize: 16, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                     ke seluruh indonesia
                                     </Text>
                             </View>
@@ -420,13 +420,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 15,
-        fontFamily: 'Quicksand-Reguler'
+        fontFamily: 'Quicksand-Bold',
+
     },
     buttonSignUp: {
         backgroundColor: 'red',
         borderRadius: 20,
         height: 40,
-        width: 135,
+        width: 140,
         marginTop: -50,
         justifyContent: 'center',
         alignSelf: 'center',
@@ -438,7 +439,7 @@ const styles = StyleSheet.create({
         // marginTop: -50,
         // justifyContent: 'center',
         // alignItems: 'center',
-        height: 90,
+        height: 100,
         // width: 410
     }
 });
