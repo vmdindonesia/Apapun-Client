@@ -1034,7 +1034,7 @@ export class DashboardPage extends React.Component {
                                                                                     />
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
-                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>DIY, Hobbies, Toys</Text>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Hobbies & Toys</Text>
                                                                                     <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>199 Crafter</Text>
                                                                                 </View>
                                                                             </View>

@@ -38,7 +38,7 @@ export class MaterialPage extends React.Component {
             dataSelectMaterialAuto: '',
             dataCheckBoxSubMaterial: [],
             dataSubMaterial: '',
-            dataAutoMaterial: ''
+            dataAutoSubMaterial: ''
         }
     }
 
@@ -49,17 +49,17 @@ export class MaterialPage extends React.Component {
     onChangeAuto = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log(this.state[name], 'Auto');
-            this.autoMaterial(value);
+            this.autoSubMaterial(value);
         });
     }
 
-    autoMaterial(value) {
+    autoSubMaterial(value) {
         const keyword = value;
-        axios.post(`${IPSERVER}/ApapunMaterials/GetMaterialAuto`, {
+        axios.post(`${IPSERVER}/ApapunSubmaterials/GetSubMaterialAuto`, {
             keyword
         }).then(response => {
-            console.log(response, 'Data Auto Material');
-            this.setState({ dataAutoMaterial: response.data })
+            console.log(response, 'Data Auto Sub Material');
+            this.setState({ dataAutoSubMaterial: response.data })
         }).catch(error => {
             console.log(error, 'Error Data Auto Material');
         })
@@ -99,7 +99,7 @@ export class MaterialPage extends React.Component {
         console.log(this.props.navigation, 'Data Params');
         if (this.props.navigation.state.params.dataSub) {
             this.setState({ dataCheckBoxSubMaterial: this.props.navigation.state.params.dataSub }, () => {
-                console.log(dataCheckBoxSubMaterial, 'XXX');
+                console.log(this.state.dataCheckBoxSubMaterial, 'XXX');
             })
         }
         axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
@@ -166,27 +166,25 @@ export class MaterialPage extends React.Component {
                 flex: 1, flexDirection: 'row', alignItems: 'center', paddingTop: 5,
                 paddingBottom: 5, borderBottomWidth: 1, marginLeft: 10, marginRight: 10
             }}>
-                <View style={{ flex: 4 }}>
-                    <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>{itemSubMaterial.submaterial_name.length >= 20 ? `${itemSubMaterial.submaterial_name.substring(0, 20)}...` : `${itemSubMaterial.submaterial_name}`}</Text>
-                    <TouchableOpacity
-                        onPress={() => { Linking.openURL(`https://www.google.com/search?q=${itemSubMaterial.submaterial_name}`).catch(err => console.error('An error occurred', err)); }}>
-                        <View style={{ justifyContent: 'flex-end', flexDirection: 'row' }}>
-                            <Image
-                                source={require('./../assets/images/order/form-order/ic_material_search.png')}
-                                style={{ width: 15, height: 15 }}
-                            />
-                            <Text style={{ marginLeft: 7 }}>
-                                Cari tahu material ini
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 4, alignItems: 'flex-start', flexDirection: 'row' }}>
                     <CheckBox
-                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', height: 0 }}
+                        textStyle={{
+                            fontFamily: 'Quicksand-Bold'
+                        }}
+                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', marginLeft: -10 }}
                         checked={dataCheckBoxSubMaterial.includes(itemSubMaterial)}
                         onPress={() => this.checkedSubMaterial(itemSubMaterial)}
+                        title={itemSubMaterial.submaterial_name}
                     />
+                </View>
+                <View style={{ flex: 1, alignItems: 'flex-end', paddingRight: 10 }}>
+                    <TouchableOpacity
+                        onPress={() => { Linking.openURL(`https://www.google.com/search?q=${itemSubMaterial.submaterial_name}`).catch(err => console.error('An error occurred', err)); }}>
+                        <Image
+                            source={require('./../assets/images/order/form-order/ic_material_search.png')}
+                            style={{ width: 15, height: 15 }}
+                        />
+                    </TouchableOpacity>
                 </View>
             </View >
         );
@@ -244,9 +242,10 @@ export class MaterialPage extends React.Component {
     }
 
     renderMaterialAuto = () => {
-        const materialAuto = this.state.dataAutoMaterial;
-        if (materialAuto) {
-            return materialAuto.map((data, index) => {
+        // dataAutoSubMaterial
+        const subMaterialAuto = this.state.dataAutoSubMaterial;
+        if (subMaterialAuto) {
+            return subMaterialAuto.map((data, index) => {
                 return <Picker.Item label={data.material_name} value={data.material_id} key={index} />
             })
         }
@@ -273,9 +272,7 @@ export class MaterialPage extends React.Component {
 
                 <Container>
                     <ContainerSection>
-                        <View style={{
-                            width: '100%', height: 45, marginTop: 10, justifyContent: 'center', alignSelf: 'center', borderColor: '#e5e5e5', borderWidth: 1.5, borderRadius: 25
-                        }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center', height: 45, backgroundColor: '#fff', borderWidth: 1, borderRadius: 25, marginTop: 10 }}>
                             < InputSearch
                                 style={{ flex: 1 }}
                                 placeholder="Cari Material"
@@ -336,7 +333,7 @@ export class MaterialPage extends React.Component {
                             <ContainerSection>
                                 <View style={{ width: '100%', marginTop: 10 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Sub - Material</Text>
-                                    <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderWidth: 1, marginTop: 10 }}>
+                                    <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderRadius: 5, borderWidth: 1, marginTop: 10 }}>
                                         {
                                             dataSubMaterial.length === 0 ?
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

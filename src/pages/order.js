@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { AsyncStorage, StyleSheet, ScrollView, Text, Picker, Keyboard, ToastAndroid, TouchableOpacity, View, Image, FlatList } from 'react-native';
-import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
+import { ContainerSection, Input, Button, Spinner, InputNumber } from '../components/common';
 import ImagePicker from 'react-native-image-picker';
 import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from '../shared/slider.styles';
@@ -9,7 +9,6 @@ import axios from 'axios';
 import { IPSERVER } from '../shared/config';
 import uuid from 'react-native-uuid';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { CheckBox } from 'react-native-elements';
 
 export class OrderPage extends React.Component {
 
@@ -86,7 +85,9 @@ export class OrderPage extends React.Component {
     }
 
     onSelect = data => {
-        this.setState(data);
+        this.setState(data, () => {
+            console.log(this.state.dataCheckBoxSubMaterial, 'OOO');
+        });
     };
 
     onChange = (name, value) => {
@@ -176,7 +177,7 @@ export class OrderPage extends React.Component {
             nameProduct,
             categoryProduct,
             photoTemp,
-            uploadMaterial,
+            dataCheckBoxSubMaterial,
             serveDelivery,
             addressDelivery,
             numberPcs,
@@ -188,7 +189,7 @@ export class OrderPage extends React.Component {
                 return ToastAndroid.show('Nama Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
             default:
                 switch (categoryProduct) {
-                    case 0:
+                    case "0":
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                     case '':
                         return ToastAndroid.show('Kategori Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
@@ -199,24 +200,32 @@ export class OrderPage extends React.Component {
                                 return ToastAndroid.show('Design Foto Produk Tidak Boleh Kosong', ToastAndroid.SHORT);
                             default:
                                 console.log('Sukses Semua');
-                                switch (serveDelivery) {
+                                switch (numberPcs) {
                                     case '':
-                                        return ToastAndroid.show('Jasa Pengiriman tidak boleh kosong', ToastAndroid.SHORT);
+                                        return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
                                     default:
-                                        switch (numberPcs) {
-                                            case 0:
-                                                return ToastAndroid.show('Jumlah dipesan tidak boleh kosong', ToastAndroid.SHORT);
+                                        switch (unitQuantity) {
+                                            case '':
+                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
                                             default:
-                                                switch (addressDelivery) {
+                                                const lengthMaterial = dataCheckBoxSubMaterial.length;
+                                                switch (lengthMaterial) {
                                                     case 0:
-                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
+                                                        return ToastAndroid.show('Material tidak boleh kosong', ToastAndroid.SHORT);
                                                     default:
-                                                        switch (unitQuantity) {
+                                                        switch (serveDelivery) {
                                                             case '':
-                                                                return ToastAndroid.show('Unit Quantity tidak boleh kosong', ToastAndroid.SHORT);
+                                                                return ToastAndroid.show('Jasa Pengiriman tidak boleh kosong', ToastAndroid.SHORT);
+                                                            case "0":
+                                                                return ToastAndroid.show('Jasa Pengiriman tidak boleh kosong', ToastAndroid.SHORT);
                                                             default:
-                                                                return this.prosesOrder();
-                                                            // return ToastAndroid.show('Under Development', ToastAndroid.SHORT);
+                                                                switch (addressDelivery) {
+                                                                    case "0":
+                                                                        return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
+                                                                    default:
+                                                                        console.log('Sukses Semuanya');
+                                                                    // return this.prosesOrder();
+                                                                }
                                                         }
                                                 }
                                         }
@@ -574,7 +583,6 @@ export class OrderPage extends React.Component {
                     <ContainerSection>
                         <Input
                             placeholder='Nama Produk'
-                            // label='Nama Produk'
                             color='black'
                             value={nameProduct}
                             onChangeText={v => this.onChange('nameProduct', v)}
@@ -630,25 +638,6 @@ export class OrderPage extends React.Component {
                             </View>
                             :
                             <View>
-                                {/* <View style={{ flexDirection: 'row', width: '100%', height: 40, paddingLeft: 10, paddingTop: 5, paddingBottom: 10 }}>
-                                    <TouchableOpacity style={{ justifyContent: 'center' }}>
-                                        <Image
-                                            style={{ width: 20, height: 20 }}
-                                            source={require('./../assets/images/Image.png')}
-                                            resizeMode='contain'
-                                        />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ justifyContent: 'center', borderRightWidth: 0.5, width: '40%', borderRightColor: '#aaa', marginRight: 10 }} onPress={() => this.designPhotoUpload('tempUploadDesign')}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13, marginLeft: 10 }}>Tambah Gambar</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ justifyContent: 'center', flex: 1 }}>
-                                        <Image
-                                            style={{ width: 20, height: 20 }}
-                                            source={require('./../assets/images/Trash.png')}
-                                            resizeMode='contain'
-                                        />
-                                    </TouchableOpacity>
-                                </View> */}
                                 <Carousel
                                     ref={(c) => { this._carousel = c; }}
                                     data={this.state.photoTemp}
@@ -724,7 +713,7 @@ export class OrderPage extends React.Component {
                 </View>
                 <ContainerSection>
                     {
-                        dataCheckBoxSubMaterial.length === 0 ?
+                        dataCheckBoxSubMaterial.length === 0 || dataCheckBoxSubMaterial.length === undefined ?
                             <View style={{ flex: 1, height: 170, backgroundColor: 'grey', marginLeft: 5, marginRight: 5 }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
@@ -770,14 +759,13 @@ export class OrderPage extends React.Component {
                                 </View>
                                 <View style={{ flex: 1, flexWrap: 'wrap' }}>
                                     {
-
                                         <FlatList
                                             data={dataCheckBoxSubMaterial}
                                             extraData={this.state}
                                             horizontal={false}
                                             renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
                                             showsHorizontalScrollIndicator={false}
-                                            numColumns={3}
+                                            numColumns={2}
                                         />
                                     }
                                 </View>
