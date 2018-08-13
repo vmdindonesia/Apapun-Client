@@ -28,8 +28,21 @@ export class MyOrderPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-            ]
+            ],
+            dataDetailOrder: ''
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataDetailOrder: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
     }
 
     renderProductImage = (data) => {
@@ -98,45 +111,41 @@ export class MyOrderPage extends React.Component {
 
                     </View>
 
-                    <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 55, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
 
-                        <View style={{ flex: 1, }}>
-                            <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Nama Produk</Text>
-                            </View>
+                        <View style={{ height: 50, flex: 1, marginRight: 10 }}>
                             <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='My Own Table'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Nama Produk</Text>
+                            </View>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>My Own Table</Text>
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, }}>
+                        <View style={{ height: 50, flex: 1 }}>
                             <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Kategori</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
                             </View>
-                            <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='Furniture'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>Furniture</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Jumlah yang dipesan</Text>
 
-                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#aaaaaa' }}>
+                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>1</Text>
                         </View>
+
+
+                        <View style={{ marginLeft: 3, width: 50, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>PCS</Text>
+                        </View>
+
 
                     </View>
 
@@ -147,15 +156,15 @@ export class MyOrderPage extends React.Component {
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Material</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center' }}>
+                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Kayu - RedWood</Text>
                                 </View>
 
-                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center' }}>
+                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Besi - Beton</Text>
                                 </View>
 
-                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center' }}>
+                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Plastik - Hop</Text>
                                 </View>
 
@@ -164,11 +173,11 @@ export class MyOrderPage extends React.Component {
 
                     </View>
 
-                    <View style={{ flex: 1, height: 90, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ flex: 1, height: 90, justifyContent: 'center', marginLeft: 10, marginRight: 10, }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Catatan Tambahan</Text>
 
-                        <View style={{ flex: 1, alignContent: 'center', marginTop: 5, }}>
+                        <View style={{ height: 50, alignContent: 'center', marginTop: 5, justifyContent: 'center' }}>
                             <Text style={{ flex: 1, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 7, alignSelf: 'center', backgroundColor: 'white' }}>Dibagian atas meja tolong diberikan ukiran "cemara", bentuk
                             tulisan saya percayakan kepada anda. </Text>
                         </View>
@@ -176,7 +185,7 @@ export class MyOrderPage extends React.Component {
                     </View>
 
 
-                    <View style={{ height: 120, flex: 1, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ height: 120, flex: 1, justifyContent: 'center', marginTop: 5, marginLeft: 10, marginRight: 10, }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Jasa Pengiriman</Text>
 
@@ -202,7 +211,7 @@ export class MyOrderPage extends React.Component {
 
                     </View>
 
-                    <View style={{ height: 150, flex: 1, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ height: 150, flex: 1, justifyContent: 'center', marginTop: 13, marginLeft: 10, marginRight: 10, }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Alamat Pengiriman</Text>
 

@@ -14,12 +14,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BubbleMenu from 'react-native-bubble-menu';
 
 export class DashboardPage extends React.Component {
+    _didFocusSubscription;
+    _willBlurSubscription;
+
     static navigationOptions = {
         header: null
     }
 
     constructor(props) {
         super(props);
+        this._didFocusSubscription = props.navigation.addListener('didFocus', payload =>
+            BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
+        );
         this.state = {
             idCrafter: '',
             show: false,
@@ -38,6 +44,9 @@ export class DashboardPage extends React.Component {
     }
 
     componentDidMount() {
+        this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
+            BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
+        );
         AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
             console.log(JSON.parse(value), 'Json Parse');
             const dataLogin = JSON.parse(value);
@@ -47,36 +56,24 @@ export class DashboardPage extends React.Component {
         });
     }
 
-    componentWillMount() {
-        console.log(this.state.sideMenu, 'Side Menu Status')
-        BackHandler.addEventListener('hardwareBackPress', this.backPressed);
-    }
-
     componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.backPressed);
+        this._didFocusSubscription && this._didFocusSubscription.remove();
+        this._willBlurSubscription && this._willBlurSubscription.remove();
     }
 
-    backPressed = () => {
-        console.log(this.state.sideMenu, 'Side Menu Status')
-        if (this.state.sideMenu === true) {
-            return this.sideMenus();
-        } else if (this.state.sideMenu === false) {
-            Alert.alert(
-                'Exit App',
-                'Exiting the application?', [{
-                    text: 'Cancel',
-                    onPress: () => {
-                        console.log(this.state.sideMenu, 'Sidemenu Cancel Button');
-                        console.log('Cancel Pressed')
-                    },
-                    style: 'cancel'
-                }, {
-                    text: 'OK',
-                    onPress: () => BackHandler.exitApp()
-                },]
-            )
+    onBackButtonPressAndroid = () => {
+        if (this.state.show === true) {
+            this.disableSelectionMode();
             return true;
+        } else {
+            return false;
         }
+    };
+
+    disableSelectionMode() {
+        this.setState(({ show }) => ({
+            show: !show,
+        }));
     }
 
     sideMenus = () => {
@@ -479,7 +476,12 @@ export class DashboardPage extends React.Component {
                                                 <View style={{ flex: 1, flexDirection: 'row' }}>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                            onPress={() => {
+                                                                this.props.navigation.navigate('CrafterMyOrder');
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }));
+                                                            }}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                             />
@@ -487,7 +489,12 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('NotificationMenu')}>
+                                                            onPress={() => {
+                                                                this.props.navigation.navigate('NotificationMenu');
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }));
+                                                            }}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                             />
@@ -495,7 +502,12 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('SettingMenu')}>
+                                                            onPress={() => {
+                                                                this.props.navigation.navigate('SettingMenu');
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }));
+                                                            }}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                             />
@@ -503,7 +515,12 @@ export class DashboardPage extends React.Component {
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <TouchableWithoutFeedback
-                                                            onPress={() => this.props.navigation.navigate('HelpMenu')}>
+                                                            onPress={() => {
+                                                                this.props.navigation.navigate('HelpMenu');
+                                                                this.setState(({ show }) => ({
+                                                                    show: !show,
+                                                                }));
+                                                            }}>
                                                             <Image style={{ width: 50, height: 50 }}
                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                             />
@@ -525,7 +542,12 @@ export class DashboardPage extends React.Component {
                                                 </View>
                                                 <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
                                                     <TouchableWithoutFeedback
-                                                        onPress={() => this.props.navigation.navigate('')}
+                                                        onPress={() => {
+                                                            this.props.navigation.navigate('ProfilePage');
+                                                            this.setState(({ show }) => ({
+                                                                show: !show,
+                                                            }));
+                                                        }}
                                                     >
                                                         <Image
                                                             style={{ width: 170, height: 170, borderRadius: 100 }}
@@ -598,7 +620,13 @@ export class DashboardPage extends React.Component {
                                                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('CrafterMyOrder');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}
+                                                                    >
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                         />
@@ -606,7 +634,13 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('NotificationMenu')}>
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('NotificationMenu');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}
+                                                                    >
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                         />
@@ -614,7 +648,13 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('SettingMenu')}>
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('SettingMenu');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}
+                                                                    >
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                         />
@@ -622,7 +662,13 @@ export class DashboardPage extends React.Component {
                                                                 </View>
                                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                     <TouchableWithoutFeedback
-                                                                        onPress={() => this.props.navigation.navigate('HelpMenu')}>
+                                                                        onPress={() => {
+                                                                            this.props.navigation.navigate('HelpMenu');
+                                                                            this.setState(({ show }) => ({
+                                                                                show: !show,
+                                                                            }));
+                                                                        }}
+                                                                    >
                                                                         <Image style={{ width: 50, height: 50 }}
                                                                             source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                         />
@@ -646,28 +692,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -691,7 +740,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 40,
+                                                                                        marginTop: 30,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -708,28 +757,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -753,7 +805,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 40,
+                                                                                        marginTop: 30,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -770,28 +822,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -815,7 +870,7 @@ export class DashboardPage extends React.Component {
                                                                             <View>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: 22,
+                                                                                        marginTop: 12,
                                                                                         backgroundColor: 'red',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -832,28 +887,31 @@ export class DashboardPage extends React.Component {
                                                                         </View>
                                                                     </View>
                                                                     <View style={{ flex: 1, flexDirection: 'column', paddingLeft: 13, paddingRight: 13 }}>
-                                                                        <View style={{ height: 60, marginTop: 10, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('custom')}
-                                                                            >
+                                                                        <View style={{ marginTop: 20, borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('custom')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Custom</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('capture-get')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('capture-get')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Capture n' Get</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ height: 60, borderTopWidth: 2, borderTopColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-                                                                            <TouchableOpacity
-                                                                                onPress={() => this.OrderStatus('idea-market')}
-                                                                            >
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
+                                                                        <TouchableOpacity
+                                                                            onPress={() => this.OrderStatus('idea-market')}
+                                                                        >
+                                                                            <View style={{ height: 60, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Idea Market</Text>
-                                                                            </TouchableOpacity>
-                                                                        </View>
-                                                                        <View style={{ borderTopWidth: 2, borderTopColor: 'white' }} />
+                                                                            </View>
+                                                                        </TouchableOpacity>
+                                                                        <View style={{ borderWidth: 1, borderColor: 'white' }} />
                                                                     </View>
                                                                 </View>
                                                                 :
@@ -869,7 +927,13 @@ export class DashboardPage extends React.Component {
                                                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('CrafterMyOrder');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}
+                                                                                >
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                                     />
@@ -877,7 +941,13 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('NotificationMenu')}>
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('NotificationMenu');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}
+                                                                                >
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                     />
@@ -885,7 +955,13 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('SettingMenu')}>
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('SettingMenu');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}
+                                                                                >
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                     />
@@ -893,7 +969,13 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                 <TouchableWithoutFeedback
-                                                                                    onPress={() => this.props.navigation.navigate('HelpMenu')}>
+                                                                                    onPress={() => {
+                                                                                        this.props.navigation.navigate('HelpMenu');
+                                                                                        this.setState(({ show }) => ({
+                                                                                            show: !show,
+                                                                                        }));
+                                                                                    }}
+                                                                                >
                                                                                     <Image style={{ width: 50, height: 50 }}
                                                                                         source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                     />
@@ -952,7 +1034,7 @@ export class DashboardPage extends React.Component {
                                                                                     />
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
-                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>DIY, Hobbies, Toys</Text>
+                                                                                    <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Hobbies & Toys</Text>
                                                                                     <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>199 Crafter</Text>
                                                                                 </View>
                                                                             </View>
@@ -994,7 +1076,13 @@ export class DashboardPage extends React.Component {
                                                                                     <View style={{ flex: 1, flexDirection: 'row' }}>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('CrafterMyOrder')}>
+                                                                                                onPress={() => {
+                                                                                                    this.props.navigation.navigate('CrafterMyOrder');
+                                                                                                    this.setState(({ show }) => ({
+                                                                                                        show: !show,
+                                                                                                    }));
+                                                                                                }}
+                                                                                            >
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/daftar-pesanan.png')}
                                                                                                 />
@@ -1002,7 +1090,13 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('NotificationMenu')}>
+                                                                                                onPress={() => {
+                                                                                                    this.props.navigation.navigate('NotificationMenu');
+                                                                                                    this.setState(({ show }) => ({
+                                                                                                        show: !show,
+                                                                                                    }));
+                                                                                                }}
+                                                                                            >
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/notifikasi.png')}
                                                                                                 />
@@ -1010,7 +1104,13 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('SettingMenu')}>
+                                                                                                onPress={() => {
+                                                                                                    this.props.navigation.navigate('SettingMenu');
+                                                                                                    this.setState(({ show }) => ({
+                                                                                                        show: !show,
+                                                                                                    }));
+                                                                                                }}
+                                                                                            >
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/setting.png')}
                                                                                                 />
@@ -1018,7 +1118,12 @@ export class DashboardPage extends React.Component {
                                                                                         </View>
                                                                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                                             <TouchableWithoutFeedback
-                                                                                                onPress={() => this.props.navigation.navigate('HelpMenu')}>
+                                                                                                onPress={() => {
+                                                                                                    this.props.navigation.navigate('HelpMenu');
+                                                                                                    this.setState(({ show }) => ({
+                                                                                                        show: !show,
+                                                                                                    }));
+                                                                                                }}>
                                                                                                 <Image style={{ width: 50, height: 50 }}
                                                                                                     source={require('./../assets/images/sidemenu/page-sidemenu/bantuan.png')}
                                                                                                 />
@@ -1051,7 +1156,7 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('MenuCrafter');
+                                                                                                                    this.props.navigation.navigate('CrafterMenu');
                                                                                                                 });
                                                                                                             }}
                                                                                                         >
@@ -1291,7 +1396,7 @@ const styles = StyleSheet.create({
         width: 220,
         alignSelf: 'center',
         justifyContent: 'center',
-        marginTop: 70
+        marginTop: 100
     },
 });
 

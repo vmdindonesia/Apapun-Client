@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View, Image, Alert, FlatList } from 'react-native';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 
 export class CrafterPage extends React.Component {
 
@@ -12,6 +14,7 @@ export class CrafterPage extends React.Component {
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
             ],
+            dataCrafterBet: ''
         }
     }
 
@@ -19,10 +22,22 @@ export class CrafterPage extends React.Component {
         console.log(msg)
     }
 
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataCrafterBet: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
+    }
+
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('ProfileCrafter')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile')}>
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
@@ -38,7 +53,7 @@ export class CrafterPage extends React.Component {
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
                             <Image
-                                style={{ width: 18, height: 18 }}
+                                style={{ width: 20, height: 18 }}
                                 source={require('./../assets/images/Cukup.png')}
                                 resizeMode='stretch'
                             />
@@ -109,9 +124,7 @@ export class CrafterPage extends React.Component {
 
 const styles = StyleSheet.create({
     containerCrafter: {
-        // backgroundColor:
         flexDirection: 'column',
-        // width: '100%',
         alignItems: 'center',
         marginTop: 10
 
@@ -146,11 +159,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         flexDirection: 'row',
-        backgroundColor: 'white',
-        alignItems: 'center',
-        // marginTop: '20%',
-        // bottom: 0
-        // bottom: 0
+        backgroundColor: 'transparent',
+        alignItems: 'center'
     },
     buttonStop: {
         flex: 1,
@@ -183,8 +193,8 @@ const styles = StyleSheet.create({
     },
     thumbnailStyle: {
         alignSelf: 'center',
-        height: 120,
-        width: 150,
+        height: 170,
+        width: 170,
         resizeMode: 'stretch',
         borderRadius: 4
     },

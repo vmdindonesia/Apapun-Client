@@ -297,8 +297,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                                             <View style={{ paddingLeft: 15 }}>
 
                                                 <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
-                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>My Own Table</Text>
-                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' , color: 'black'}}>My Own Table</Text>
+                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari :
                                              <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text>
                                                 </Text>
 
@@ -416,8 +416,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                                             <View style={{ paddingLeft: 15 }}>
 
                                                 <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1974937873B6B</Text>
-                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Elegant Table</Text>
-                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quciksand-Regular' }}>Dipesan Dari :
+                                                <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Elegant Table</Text>
+                                                <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari :
                                              <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Market</Text>
                                                 </Text>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, ToastAndroid, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, Picker, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, ToastAndroid, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, Spinner } from '../components/common';
 // import axios from 'axios';
 import { IPSERVER } from './../shared/config';
@@ -35,6 +35,7 @@ export class PengaturanBankPage extends React.Component {
             firstName: '',
             lastName: '',
             bankName: '',
+            dataBank: '',
             bankBranch: '',
             code: '',
             accountHolderNumber: '',
@@ -60,23 +61,31 @@ export class PengaturanBankPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.navigation.state.params, 'PROPS');
-        if (this.props.navigation.state.params === undefined) {
-            AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
-                console.log(JSON.parse(value), 'Json Parse');
-                const dataLogin = JSON.parse(value);
-                if (value) {
-                    this.setState({ idUser: dataLogin.userId }, () => {
-                        console.log(this.state.idUser, 'ID USER');
-                    })
+        axios.get(`${IPSERVER}/ApapunBanks`)
+            .then(response => {
+                console.log(response.data, 'Response Bank');
+                this.setState({ dataBank: response.data });
+                console.log(this.props.navigation.state.params, 'PROPS');
+                if (this.props.navigation.state.params === undefined) {
+                    AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
+                        console.log(JSON.parse(value), 'Json Parse');
+                        const dataLogin = JSON.parse(value);
+                        if (value) {
+                            this.setState({ idUser: dataLogin.userId }, () => {
+                                console.log(this.state.idUser, 'ID USER');
+                            })
+                        }
+                    });
+                } else {
+                    this.setState({
+                        crafterName: this.props.navigation.state.params.Namecrafter,
+                        idUser: this.props.navigation.state.params.idUser
+                    });
                 }
+            }).catch(error => {
+                console.log(error, 'Error Bank');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
             });
-        } else {
-            this.setState({
-                crafterName: this.props.navigation.state.params.Namecrafter,
-                idUser: this.props.navigation.state.params.idUser
-            });
-        }
     }
 
     getPhotoProfile() {
@@ -242,7 +251,7 @@ export class PengaturanBankPage extends React.Component {
                                 return ToastAndroid.show('Foto Buku Rekening Tidak Boleh Kosong', ToastAndroid.SHORT);
                             default:
                                 switch (bankName) {
-                                    case '':
+                                    case 0:
                                         return ToastAndroid.show('Nama Bank Tidak Boleh Kosong', ToastAndroid.SHORT);
                                     default:
                                         switch (bankBranch) {
@@ -373,6 +382,16 @@ export class PengaturanBankPage extends React.Component {
         });
     }
 
+    renderBank = () => {
+        const resultDataBank = this.state.dataBank;
+        if (resultDataBank) {
+            return resultDataBank.map((data, index) => {
+                return <Picker.Item label={data.bankCode} value={data.bankName} key={index} />
+            })
+        }
+        return <Picker.Item label='Tidak ada Kategori' value='0' />
+    }
+
 
     render() {
 
@@ -423,7 +442,6 @@ export class PengaturanBankPage extends React.Component {
 
                         <View style={{ flex: 1 }}>
                             <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Belakang</Text>
-
                             <ContainerSection>
                                 <Input
                                     value={lastName}
@@ -431,14 +449,11 @@ export class PengaturanBankPage extends React.Component {
                                     placeholder='Last Name'
                                 />
                             </ContainerSection>
-
                         </View>
-
                     </View>
 
                     <View style={{ flex: 1, }}>
                         <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nomor Rekening</Text>
-
                         <ContainerSection>
                             <Input
                                 value={accountHolderNumber}
@@ -447,38 +462,37 @@ export class PengaturanBankPage extends React.Component {
                                 keyboardType='numeric'
                             />
                         </ContainerSection>
-
                     </View>
 
-                    <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Bank</Text>
+                    <ContainerSection>
+                        <View style={styles.pickerContainer}>
+                            <Text style={styles.pickerTextStyle}>Nama Bank</Text>
+                            <View style={styles.pickerStyle}>
+                                <Picker
+                                    selectedValue={bankName}
+                                    onValueChange={(v) => this.onChangeInput('bankName', v)}
+                                >
+                                    <Picker.Item label='Pilih Nama Bank' value='0' />
+                                    {this.renderBank()}
+                                </Picker>
+                            </View>
+                        </View>
+                    </ContainerSection>
 
-                        <ContainerSection>
-                            <Input
-                                value={bankName}
-                                onChangeText={v => this.onChangeInput('bankName', v)}
-                                placeholder='Bank Name'
-                            />
-                        </ContainerSection>
-
-                    </View>
-
-                    <View style={{ flex: 1, }}>
+                    <View style={{ flex: 1, marginBottom: 20 }}>
                         <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Cabang</Text>
-
                         <ContainerSection>
                             <Input
                                 value={bankBranch}
+                                multiline
                                 onChangeText={v => this.onChangeInput('bankBranch', v)}
                                 placeholder='Branch Bank'
                             />
                         </ContainerSection>
-
                     </View>
                 </View>
 
                 <View style={{ flex: 1, height: 600, marginRight: 10, marginLeft: 10, }}>
-
                     <View style={{ flex: 1, }}>
                         <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Profil Asli</Text>
                         <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
@@ -490,7 +504,7 @@ export class PengaturanBankPage extends React.Component {
 
                                             <Image
                                                 style={{ height: 165, width: 165, alignSelf: 'center' }}
-                                                source={require('./../assets/images/Upload-Photo.png')}
+                                                source={require('./../assets/images/pengaturan-bank/foto_asli.png')}
                                             />
                                             :
                                             <Image
@@ -502,7 +516,6 @@ export class PengaturanBankPage extends React.Component {
                                 </View>
                             </TouchableWithoutFeedback>
                         </View>
-
                     </View>
 
                     <View style={{ flex: 1, }}>
@@ -515,7 +528,7 @@ export class PengaturanBankPage extends React.Component {
 
                                         <Image
                                             style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                            source={require('./../assets/images/Upload-Photo.png')}
+                                            source={require('./../assets/images/pengaturan-bank/foto_identity.png')}
                                             resizeMode='stretch'
                                         />
                                         :
@@ -540,7 +553,7 @@ export class PengaturanBankPage extends React.Component {
 
                                         <Image
                                             style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                            source={require('./../assets/images/Upload-Photo.png')}
+                                            source={require('./../assets/images/pengaturan-bank/foto_identity.png')}
                                             resizeMode='stretch'
                                         />
                                         :
@@ -550,7 +563,6 @@ export class PengaturanBankPage extends React.Component {
                                             source={uriRekening}
                                         />
                                 }
-
                             </TouchableWithoutFeedback>
                         </View>
 
@@ -589,7 +601,6 @@ export class PengaturanBankPage extends React.Component {
                 </View>
 
                 <View style={{ flex: 1, height: 50, marginRight: 10, marginLeft: 15, justifyContent: 'center' }}>
-
                     <CheckBox
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                         title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text onPress={() => this.props.navigation.navigate('TermsAndAgreement')} style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
@@ -620,16 +631,29 @@ export class PengaturanBankPage extends React.Component {
                             </TouchableOpacity>
                     }
                 </View>
-
-
             </ScrollView >
         )
     }
 }
 
 const styles = StyleSheet.create({
-
-
+    pickerStyle: {
+        borderColor: '#a9a9a9',
+        borderRadius: 3,
+        paddingLeft: 5,
+        borderWidth: 1
+    },
+    pickerContainer: {
+        flex: 1,
+        marginBottom: 5
+    },
+    pickerTextStyle: {
+        fontFamily: 'Quicksand-Bold',
+        color: 'black',
+        fontSize: 15,
+        marginTop: 7,
+        marginBottom: 7
+    },
 })
 
 export default PengaturanBankPage

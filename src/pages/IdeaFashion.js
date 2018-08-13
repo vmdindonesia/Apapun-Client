@@ -216,12 +216,6 @@ export class IdeaFashionPage extends React.Component {
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
-
-
-
-
-
-
                     </View>
                 </ScrollView>
 

@@ -3,7 +3,7 @@ import {
     View, Text, ImageBackground, Image, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
 } from 'react-native'
-import { ContainerSection, Card } from '../components/common';
+import { ContainerSection } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class MenuCrafterPage extends React.Component {
@@ -51,10 +51,19 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                     </ImageBackground >
-                    <View style={{ height: '100%', marginBottom: '60%' }}>
+                    <View style={{ height: '100%', marginBottom: '55%' }}>
                         <View style={{ flex: 1 }}>
                             <View style={{ width: '100%' }} >
                                 <Text style={styles.textStyle}>Gal Gadot</Text>
+                            </View>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image
+                                style={styles.locationIcon}
+                                source={require('./../assets/images/location_icon.png')}
+                            />
+                            <View style={{ flex: 1 }}>
+                                <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Kalimantan Selatan</Text>
                             </View>
                         </View>
                         <View style={{ width: '100%', flexDirection: 'row' }}>
@@ -63,11 +72,11 @@ export class MenuCrafterPage extends React.Component {
                                 source={require('./../assets/images/Cukup.png')}
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Cukup (35)</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: Cukup (35)</Text>
                             </View>
                         </View>
-                        <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 10 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13 }}>Lulusan S2 Interior Design di Singapura -
+                        <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 25 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
                         Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
                         </View>
                         <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20 }}>
@@ -84,7 +93,7 @@ export class MenuCrafterPage extends React.Component {
                         <View style={{ width: '100%', marginTop: 10, height: '100%' }}>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('Gambar')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
@@ -97,7 +106,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('addNoteOnCrafterMenu')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Catatan</Text>
@@ -110,7 +119,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('UlasanOnCrafterProfile')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('UlasanOnCrafterProfile')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Ulasan</Text>
@@ -123,7 +132,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('AkunBank')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('AkunBank')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Akun Bank</Text>
@@ -136,7 +145,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('crafterMenuListOrder')}>
+                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('crafterMenuListOrder')}>
                                         {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                         <View style={{ flex: 1, flexDirection: 'row' }}>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
@@ -204,8 +213,8 @@ const styles = StyleSheet.create({
     },
     emojiIcon: {
         marginLeft: '48%',
-        height: 30,
-        width: 30,
+        height: 20,
+        width: 20,
         marginTop: 5
     },
     item: {

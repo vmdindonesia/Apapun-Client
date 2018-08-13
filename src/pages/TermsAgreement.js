@@ -35,7 +35,7 @@ export class TermsAndAgreementPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Syarat dan Ketentuan</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Syarat dan Ketentuan</Text>
                         </View>
 
                         <View style={{
@@ -47,8 +47,8 @@ export class TermsAndAgreementPage extends React.Component {
                             marginLeft: 10,
                             marginRight: 10,
                         }}>
-                            <Text style={{ fontSize: 11.4, textAlign: 'left', padding: 5 }}>
-                                Selamat datang di website www.apapun.co.id dan / aplikasi mobile<Text style={{ fontWeight: 'bold' }}> apapun </Text>.
+                            <Text style={{ fontSize: 13, textAlign: 'left', padding: 5, fontFamily: 'Quicksand-Regular' }}>
+                                Selamat datang di website www.apapun.co.id dan / aplikasi mobile<Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13 }}> apapun </Text>.
                                 Silakan membaca Syarat penggunaan ini dengan seksama. Syarat Penggunaan ini mengatur penggunaan dan akses Platform (di definisikan di bawah)
                             maka Anda jangan/berhenti mengakses dan/atau menggunakan Platform atau Layanan ini. {'\n'}{'\n'}
 
@@ -72,7 +72,7 @@ export class TermsAndAgreementPage extends React.Component {
                         alignContent: 'center'
                     }}>
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Konten</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, paddingLeft: 10, color: 'black' }}>Konten</Text>
                         </View>
 
                         <View style={{
@@ -87,15 +87,15 @@ export class TermsAndAgreementPage extends React.Component {
                         }}>
 
                             <View style={{ flex: 1, backgroundColor: 'white', height: 30, marginLeft: 10, marginRight: 10, marginBottom: 7, justifyContent: 'center' }}>
-                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red' }}>General/Umum</Text>
+                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red', fontFamily: 'Quicksand-Regular' }}>General/Umum</Text>
                             </View>
 
                             <View style={{ flex: 1, backgroundColor: 'white', height: 30, marginLeft: 10, marginRight: 10, marginBottom: 7, justifyContent: 'center' }}>
-                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red' }}>Transaksi</Text>
+                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red', fontFamily: 'Quicksand-Regular' }}>Transaksi</Text>
                             </View>
 
                             <View style={{ flex: 1, backgroundColor: 'white', height: 30, marginLeft: 10, marginRight: 10, marginBottom: 7, justifyContent: 'center' }}>
-                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red' }}>Crafter</Text>
+                                <Text style={{ fontSize: 13, paddingLeft: 20, color: 'red', fontFamily: 'Quicksand-Regular' }}>Crafter</Text>
                             </View>
                         </View>
 

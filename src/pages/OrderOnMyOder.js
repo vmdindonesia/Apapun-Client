@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, Picker, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-// import axios from 'axios';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 
 export class OrderOnMyOrderPage extends React.Component {
 
@@ -27,6 +28,18 @@ export class OrderOnMyOrderPage extends React.Component {
             filter: false,
             StatusSearching: 'Pilih Status'
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navi.state.params, 'Props From Order Page');
+        const orderId = this.props.navi.state.params;
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
+            console.log(response.data, 'Response Get Bet')
+            this.setState({ dataCrafterBet: response.data });
+        }).catch(error => {
+            console.log(error, 'Error Get Order Betting');
+            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        });
     }
 
     onChange = (name, value) => {
@@ -101,7 +114,7 @@ export class OrderOnMyOrderPage extends React.Component {
                         <Image
                             style={{
                                 width: 25,
-                                height: 26.5,   
+                                height: 26.5,
                                 borderRadius: 0,
                                 alignSelf: 'center'
                             }}
@@ -292,8 +305,8 @@ export class OrderOnMyOrderPage extends React.Component {
                                         <View style={{ alignSelf: 'center' }}>
 
                                             <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>19749373437D</Text>
-                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>My Own Table</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari : </Text>
+                                            <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>My Own Table</Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text>
 
                                         </View>
@@ -334,7 +347,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Jumlah : (2)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' , color: 'black'}}>Jumlah : (2)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -342,7 +355,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold' }} >Rp. 1.500.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'   }} >Rp. 1.500.000 </Text>
                                     </View>
                                 </View>
 
@@ -415,8 +428,8 @@ export class OrderOnMyOrderPage extends React.Component {
                                         <View style={{ alignSelf: 'center' }}>
                                             {/* <TouchableOpacity> */}
                                             <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1934378UDJA9</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Vans Shoes</Text>
-                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari : </Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Vans Shoes</Text>
+                                            <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
                                             {/* </TouchableOpacity> */}
                                         </View>
@@ -458,7 +471,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>Jumlah : (1)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (1)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -466,7 +479,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold' }} >Rp. 900.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'  }} >Rp. 900.000 </Text>
                                     </View>
                                 </View>
 

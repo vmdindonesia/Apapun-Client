@@ -38,7 +38,7 @@ export class NotificationTransactionPage extends React.Component {
 
                         <View style={{ height: '100%', width: '70%', flexDirection: 'column', padding: 5 }}>
                             <View style={{ height: '70%', justifyContent: 'center' }}>
-                                <Text style={{ color: 'black', fontWeight: 'bold' }}>Gal Gadot</Text>
+                                <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold',  }}>Gal Gadot</Text>
                                 <Text style={{ color: 'black', }}>Anda Mendapat Pesan Baru</Text>
                             </View>
                             <View style={{ height: '30%', }}>

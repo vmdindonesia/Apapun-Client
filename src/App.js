@@ -100,6 +100,7 @@ import { MyOrderIdeaPage } from './pages/myOrderIdea';
 import { IntroAppPage } from './pages/introApp';
 import { MenuLoginPage } from './pages/menuLogin';
 import { MaterialPage } from './pages/material';
+import { searchCrafterOnProfilePage } from './pages/searchCrafterOnProfile';
 
 console.disableYellowBox = true;
 
@@ -115,54 +116,102 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
-  pengaturanBank: {
-    screen: PengaturanBankPage
+  ProfilePage: {
+    screen: ProfileBuyerPage
   },
   Dashboard: {
     screen: DashboardPage
   },
-  ForgotPassword: {
-    screen: ForgotPasswordPage
+  ListKemeja: {
+    screen: ListKemejaPage
   },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  NotificationMenu: {
+    screen: NotificationMenuPage
+  },
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  WhislistOnMyOrder: {
+    screen: WishlistOnMyOrderPage
+  },
+
   IntroApp: {
     screen: IntroAppPage
   },
+  BerandaCrafter: {
+    screen: BerandaCrafterPage
+  },
+
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  UlasanOnCrafterProfile: {
+    screen: UlasanOnCrafterProfilePage
+  },
+  searchCrafterOnProfile: {
+    screen: searchCrafterOnProfilePage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+
+  ListTshirt: {
+    screen: ListTshirtPage
+  },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+  MyOrderIdea: {
+    screen: MyOrderIdeaPage
+  },
+  MyOrder: {
+    screen: MyOrderPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
+  pengaturanBank: {
+    screen: PengaturanBankPage
+  },
+
+  ForgotPassword: {
+    screen: ForgotPasswordPage
+  },
+
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
+
   Login: {
     screen: LoginPage
   },
   MenuLogin: {
     screen: MenuLoginPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   DesignSaya: {
     screen: DesignSayaPage
   },
   PageDesign: {
     screen: PageDesignPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
-  IdeaMarket: {
-    screen: IdeaMarketPage
-  },
+
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
   },
@@ -172,21 +221,15 @@ const Routes = createStackNavigator({
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
   },
-  Order: {
-    screen: OrderPage
-  },
+
   Material: {
     screen: MaterialPage
   },
-  MyOrder: {
-    screen: MyOrderPage
-  },
+
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
+
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
@@ -197,9 +240,7 @@ const Routes = createStackNavigator({
   Crafter: {
     screen: CrafterPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
-  },
+
   HelpMenu: {
     screen: HelpMenuPage
   },
@@ -209,51 +250,30 @@ const Routes = createStackNavigator({
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage
   },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
   IdeaFashion: {
     screen: IdeaFashionPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
+
   searchCrafterIdeaMarket: {
     screen: searchCrafterIdeaMarketPage
-  },
-  MyOrderIdea: {
-    screen: MyOrderIdeaPage
   },
 
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-  ListKemeja: {
-    screen: ListKemejaPage
-  },
+
   ListHoodie: {
     screen: ListHoodiePage
   },
-  ListTshirt: {
-    screen: ListTshirtPage
-  },
+
   onClickProductOnIdeaFashion: {
     screen: onClickProductOnIdeaFashionPage
   },
-  IdeaFashion: {
-    screen: IdeaFashionPage
-  },
   CrafterMenu: {
     screen: CrafterMenuPage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-  UlasanOnCrafterProfile: {
-    screen: UlasanOnCrafterProfilePage
   },
   ThanksToOrderAfterSend: {
     screen: ThanksToOrderAfterSendPage
@@ -324,9 +344,6 @@ const Routes = createStackNavigator({
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
   EditProfileBuyer: {
     screen: EditProfileBuyerPage
   },
@@ -380,9 +397,7 @@ const Routes = createStackNavigator({
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-  NotificationMenu: {
-    screen: NotificationMenuPage
-  },
+
   NotificationSystem: {
     screen: NotificationSystemPage
   },
@@ -410,15 +425,11 @@ const Routes = createStackNavigator({
     screen: DetailOrderPage
   },
 
-  WhislistOnMyOrder: {
-    screen: WishlistOnMyOrderPage
-  },
+
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
   },
-  BerandaCrafter: {
-    screen: BerandaCrafterPage
-  },
+
   FashionCrafter: {
     screen: FashionCrafterPage
   },

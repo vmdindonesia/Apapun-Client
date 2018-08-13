@@ -26,21 +26,8 @@ export class FindingCrafterPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      screen: 'crafter',
-      dataOrder: ''
+      screen: 'crafter'
     }
-  }
-
-  componentDidMount() {
-    console.log(this.props.navigation.state.params, 'Param ID Order');
-    const orderId = this.props.navigation.state.params;
-    axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
-      console.log(response.data, 'Response Get Bet')
-      // this.setState({ dataOrder: response.data });
-    }).catch(error => {
-      console.log(error, 'Error Get Order Betting');
-      return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
-    })
   }
 
   renderScreen = () => {

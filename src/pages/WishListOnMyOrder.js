@@ -39,7 +39,7 @@ export class WishlistOnMyOrderPage extends React.Component {
 
 
                 <View style={{
-                    // marginTop: 5,
+                    // marginT  op: 5,
                     width: '100%',
                     height: '12.5%',
                     paddingTop: 10,
@@ -259,8 +259,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Elegant Pottery</Text>
-                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color:'black' }}>Elegant Pottery</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular',color:'black' }}>Dipesan Dari :
                                           <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text></Text>
 
 
@@ -382,8 +382,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold' }}>Air Jordan</Text>
-                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular' }}>Dipesan Dari :
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold',color:'black' }}>Air Jordan</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color:'black' }}>Dipesan Dari :
                                           <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Market</Text></Text>
 
 
