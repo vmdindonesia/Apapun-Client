@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
 import { Container, Button } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 export class GambarPage extends React.Component {
 
@@ -88,24 +90,18 @@ const styles = StyleSheet.create({
     thumbnailContainerStyle: {
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        margin: 8.5,
     },
     thumbnailStyle: {
         alignSelf: 'stretch',
-        height: 160,
-        width: 170,
+        height: hp ('26.5%'),
+        width: wp ('45%'),
         resizeMode: 'cover',
         borderRadius: 4
     },
     card: {
         borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
         elevation: 2,
-        marginLeft: 5,
-        marginBottom: '2%',
         backgroundColor: '#FFF'
     }
 })
