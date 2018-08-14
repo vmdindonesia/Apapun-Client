@@ -23,7 +23,7 @@ export class DetailTransaksiPage extends React.Component {
                             source={require('./../assets/images/ic_wallet.png')}
                         />
                         <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', paddingLeft: 10, alignItems: 'center' }}>
-                            Total Apresiasi Design Anda
+                            Total Apresiasi Desain Anda
                         </Text>
                     </View>
 

@@ -51,9 +51,9 @@ export class ProfileCrafterPage extends React.Component {
     renderProductImage = (data) => {
         console.log(data, '098');
         return (
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginRight: 5, marginBottom: 5, }}>
+            <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginRight: 10, marginBottom: 10, }}>
                 <Image
-                    style={{ height: 130, width: 130, resizeMode: 'cover', }}
+                    style={{ height: 110, width: 110, resizeMode: 'cover', margin:5 }}
                     source={{ uri: data.item }}
                 />
             </View>
@@ -111,7 +111,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
                                         <Image
-                                            style={{ height: 18, width: 25, }}
+                                            style={{ height: 18, width: 27, }}
                                             source={require('./../assets/images/Cukup.png')}
                                         />
                                         < View style={{ flex: 1 }}>
@@ -304,7 +304,7 @@ export class ProfileCrafterPage extends React.Component {
 
 
 
-                                <View style={{ width: '100%', height: 100, flexDirection: 'row', }}>
+                                <View style={{ width: '100%', height: 120, flexDirection: 'row', }}>
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
                                         <Image
                                             style={{

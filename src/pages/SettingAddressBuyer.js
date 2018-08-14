@@ -62,10 +62,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Home 1</Text>
+                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}> Home 1</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 15, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
+                                <Text style={{ fontSize: 15, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima : <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 
@@ -174,10 +174,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Office Tangerang</Text>
+                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}> Office Tangerang</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 13.5, paddingTop: 3, fontSize: 15, fontFamily: 'Quicksand-Regular', }}> Penerima :<Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
+                                <Text style={{ fontSize: 13.5, paddingTop: 3, fontSize: 15, fontFamily: 'Quicksand-Regular', }}> Penerima :<Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 

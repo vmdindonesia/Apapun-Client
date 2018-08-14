@@ -58,7 +58,7 @@ export class DesignSayaPage extends React.Component {
                     </View>
                     <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>
+                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color:'black' }}>
                                 My Own Table
                             </Text>
                         </View>
@@ -73,10 +73,10 @@ export class DesignSayaPage extends React.Component {
                             </Text>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, top: -10 }}>
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color:'black' }}>
                                 Total Apresiasi
                             </Text>
-                            <Text style={{ fontSize: 13, marginLeft: 10, fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ fontSize: 13, marginLeft: 10, fontFamily: 'Quicksand-Regular', color:'black' }}>
                                 Terjual
                             </Text>
                         </View>
@@ -108,7 +108,7 @@ export class DesignSayaPage extends React.Component {
                     </View>
                     <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 50 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>
+                            <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular', color:'black' }}>
                                 Desain anda belum terdaftar
                             </Text>
                         </View>
