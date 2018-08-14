@@ -438,7 +438,7 @@ export class DashboardPage extends React.Component {
                             <View style={styles.containerUploadIdea}>
                                 <View style={{ flex: 1, flexDirection: 'row', }}>
                                     <View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
-                                        <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>Idea Recently Upload</Text>
+                                        <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Idea Recently Upload</Text>
                                         <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Checkout our friend new brilliant ideas</Text>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>

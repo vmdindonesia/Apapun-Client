@@ -43,13 +43,14 @@ export class HelpMenuPage extends React.Component {
                                 justifyContent: 'flex-end'
                             }}>
                                 <View style={{ marginBottom: 5, width: '95%', height: 40, justifyContent: 'center', alignSelf: 'center' }}>
-                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text></Text>
+                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Gal Gadot</Text></Text>
                                     <Text style={{ color: 'white', paddingTop: 2.5, fontSize: 15, fontFamily: 'Quicksand-Regular' }}> Apa yang bisa kami bantu ? </Text>
                                 </View>
                                 <View style={{ width: '95%', height: 50, alignSelf: 'center' }}>
                                     <InputSearch
                                         // onFocus={() => navigate('FilterBefore')}
                                         placeholder="Cari Pertanyaan atau Kata Kunci"
+                                        style={{fontFamily:'Quicksand-Regular'}}
                                         icon="ic_search"
                                     />
                                 </View>
@@ -65,7 +66,7 @@ export class HelpMenuPage extends React.Component {
                         backgroundColor: '#e5e5e5'
                     }}>
                         <View style={{ height: 20, marginLeft: 10, marginRight: 10, marginBottom: 10, marginTop: 10, justifyContent: 'center' }}>
-                            <Text style={{  paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>FAQ</Text>
+                            <Text style={{ paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>FAQ</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 10, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>

@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     tabContainerActive: {
         height: 50,
         justifyContent: 'center',
-        borderBottomWidth: 2,
+        borderBottomWidth: 3,
         borderColor: 'red'
     },
     tabContainer: {
@@ -175,8 +175,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     fontActive: {
-        fontFamily: 'Quicksand-Bold',
-        fontSize: 15
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color:'black'
     },
     fontNotActive: {
         fontFamily: 'Quicksand-Regular',
