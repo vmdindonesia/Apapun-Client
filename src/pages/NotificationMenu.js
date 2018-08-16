@@ -17,7 +17,11 @@ export class NotificationMenuPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Notifikasi'
+        headerTitle: 'Notifikasi',
+        headerStyle: {
+            shadowOpacity: 0,
+            elevation: 0,
+        }
     });
 
     constructor(props) {
@@ -71,7 +75,8 @@ export class NotificationMenuPage extends React.Component {
                     // flex:4,
                     borderBottomWidth: 2,
                     marginBottom: 3,
-                    borderColor: '#e5e5e5'
+                    borderColor: '#e5e5e5',
+                    backgroundColor:'white'
                 }}>
 
                     <View

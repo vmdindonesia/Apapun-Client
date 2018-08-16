@@ -81,7 +81,7 @@ export class BeautyCrafterPage extends React.Component {
                         justifyContent: 'center'
                     }}>
                         <InputSearch
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>

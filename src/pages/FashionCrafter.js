@@ -75,7 +75,7 @@ export class FashionCrafterPage extends React.Component {
                     }}>
                         <InputSearch
                             // onFocus={() => navigate('FilterBefore')}
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>
