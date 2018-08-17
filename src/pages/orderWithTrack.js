@@ -107,17 +107,19 @@ export class OrderWithTrackPage extends React.Component {
                                     </View>
                                     <View style={{ flexDirection: 'row', marginTop: 5, alignContent: 'center', }}>
                                         <Image
-                                            style={{ height: 24, width: 15, marginLeft: 7 }}
+                                            style={{ height: 22, width: 11, marginLeft: 7 }}
                                             source={require('./../assets/images/location_icon.png')}
+                                            resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ marginLeft: 12, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
+                                            <Text style={{ marginLeft: 15, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', paddingTop: 2.5 }}>Indonesia, Banten</Text>
                                         </View>
                                     </View>
                                     <View style={{ width: '100%', flexDirection: 'row', marginTop: 5 }}>
                                         <Image
-                                            style={{ height: 20, width: 28, }}
+                                            style={{ height: 18, width: 26, }}
                                             source={require('./../assets/images/Cukup.png')}
+                                            resizeMode='contain'
                                         />
                                         < View style={{ flex: 1 }}>
                                             <Text style={{ marginLeft: 7, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Rating:<Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13 }}> Cukup (35)</Text></Text>
@@ -223,7 +225,7 @@ export class OrderWithTrackPage extends React.Component {
                                     <View
                                         style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
                                     />
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'b    lack', paddingTop: 7 }}>Barang Diterima</Text>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Barang Diterima</Text>
                                 </View>
                             </View>
 
@@ -232,24 +234,24 @@ export class OrderWithTrackPage extends React.Component {
                             <View style={{ flex: 1, backgroundColor: 'white', height: 90, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft: 25, marginRight: 25, marginTop: 15 }}>
                                 <TouchableOpacity
                                     onPress={() => this.setState({ trackingnotification: !this.state.trackingnotification })}
-                                    style={{ height: 80, flex: 1, padding: 15, }}
+                                    style={{ height: 80, flex: 1, padding: 5, }}
                                 >
-                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, flexDirection: 'row', alignItems: 'center' }}>
-                                        <View style={{ width: '35%', height: '100%', }}>
+                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, flexDirection: 'row', alignItems: 'center', }}>
+                                        <View style={{ width: '30%', height: '100%', justifyContent: 'center' }}>
                                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>28 Feb 2018</Text>
                                             <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>1.30 pm</Text>
                                         </View>
 
-                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', marginRight: 15, alignSelf: 'center' }} />
+                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', alignSelf: 'center', margin: 10 }} />
 
-                                        <View style={{ width: '65%', height: '100%' }}>
+                                        <View style={{ width: '60%', height: '100%', justifyContent: 'center' }}>
                                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left' }}>Barang anda sudah sampai!</Text>
-                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
+                                            <Text style={{ FontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
                                         </View>
                                     </View>
                                     {
                                         trackingnotification === false ?
-                                            <View style={{ marginBottom: -18, }}>
+                                            <View style={{ marginBottom: -7.5, }}>
                                                 <Icon size={17.5} style={{ alignSelf: 'center', color: '#eaeaea' }} name='md-list-box' />
 
                                             </View>
@@ -262,17 +264,17 @@ export class OrderWithTrackPage extends React.Component {
                             {
 
                                 trackingnotification === true ?
-                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, padding: 15, marginLeft: 25, marginRight: 25, flexDirection: 'row', alignItems: 'center' }}>
-                                        <View style={{ width: '35%', height: '100%', }}>
+                                    <View style={{ flex: 1, backgroundColor: 'white', height: 80, padding: 5, marginLeft: 25, marginRight: 25, flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ width: '30%', height: '100%', justifyContent: 'center' }}>
                                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>28 Feb 2018</Text>
                                             <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left', paddingLeft: 10 }}>1.30 pm</Text>
                                         </View>
 
-                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', marginRight: 15, alignSelf: 'center' }} />
+                                        <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '80%', alignSelf: 'center', margin: 10 }} />
 
-                                        <View style={{ width: '65%', height: '100%' }}>
+                                        <View style={{ width: '60%', height: '100%', justifyContent: 'center' }}>
                                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 13, textAlign: 'left' }}>Barang anda sudah sampai!</Text>
-                                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
+                                            <Text style={{ FontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, textAlign: 'left' }}>Terima kasih telah menggunakan APAPUN</Text>
                                         </View>
                                     </View>
                                     :
@@ -299,8 +301,8 @@ export class OrderWithTrackPage extends React.Component {
 
 
                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 10, marginRight: 20, marginTop: 20, fontSize: 15 }}>Alamat Pengiriman</Text>
-                            <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 10, marginRight: 10, marginTop: 5 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5, fontSize: 13, color: 'black' }}>Home 1 {'\n'}</Text>
+                            <View style={{ flex: 1, height: 130, backgroundColor: '#fff', marginLeft: 10, marginRight: 10, padding: 7.5, marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', marginLeft: 5, fontSize: 13, color: 'black' }}>Home 1 {'\n'}</Text>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, fontSize: 13, color: 'black' }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>Judy {'\n'}{'\n'}</Text>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, fontSize: 13, color: 'black' }}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
                                         DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
@@ -374,7 +376,7 @@ export class OrderWithTrackPage extends React.Component {
                                 </Text>
                         </View>
                     </View>
-                    <View style={{ width: '35%', height: '100%', flexDirection: 'column', borderRightWidth: 1 }}>
+                    <View style={{ width: '35%', height: '100%', flexDirection: 'column', }}>
                         <View>
                             <Text style={{ color: 'white', textAlign: 'center', fontSize: 13 }}>Estimasi Selesai</Text>
                         </View>
@@ -388,10 +390,13 @@ export class OrderWithTrackPage extends React.Component {
                                 </Text>
                         </View>
                     </View>
-                    <View style={{ width: '45%', height: '100%', alignItems: 'center' }}>
+
+                    <View style={{ flexDirection: 'column', height: '85%', borderColor: 'black', borderWidth: 1, marginLeft: 10 }} />
+
+                    <View style={{ width: '45%', height: '100%', alignItems: 'center', alignContent: 'center' }}>
                         <TouchableOpacity
                             style={{
-                                height: 50, width: 50, marginRight: 25
+                                height: 50, width: 50, marginRight: 50
                             }}
                         >
                             <Image

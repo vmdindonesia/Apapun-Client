@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         // borderBottomWidth: 1,
     },
     fontActive: {
-        fontFamily: 'Quicksand-Bold',
+        fontFamily: 'Quicksand-Regular',
         fontSize: 15,
         color: 'black'
     },

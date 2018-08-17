@@ -58,15 +58,16 @@ export class HistoryOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 25,
-                                height: 26.5,
+                                width: 33,
+                                height: 24.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
+                                marginTop: 1.5
 
                             }}
                             source={require('./../assets/images/ic_sort.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{marginTop: 3, paddingTop: 2,  fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -94,7 +95,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_filter.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
                     </TouchableOpacity>
                 </View>

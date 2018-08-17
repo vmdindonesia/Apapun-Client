@@ -489,12 +489,12 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 20, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Full Name</Text>
+                                    <Text style={styles.textStyle}>Nama Lengkap</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='Your Full Name'
+                                            placeholder=''
                                             value={realm}
                                             onChangeText={v => this.onChangeInput('realm', v)}
                                         />
@@ -509,7 +509,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='Your Username'
+                                            placeholder=''
                                             value={username}
                                             onChangeText={v => this.onChangeInput('username', v)}
                                         />
@@ -519,7 +519,7 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 10, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Gender</Text>
+                                    <Text style={styles.textStyle}>Jenis Kelamin</Text>
                                 </View>
 
                                 <View style={styles.containerCheckBox}>
@@ -528,7 +528,8 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', }}
-                                            title='Male'
+                                            title='Laki Laki '
+                                            fontFamily='Quicksand-Regular'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             onPress={() => this.checkedMale()}
@@ -543,7 +544,8 @@ export class RegistrationBuyerPage extends React.Component {
                                     <View style={styles.checkBoxFemale}>
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                            title='Female'
+                                            title='Perempuan'
+                                            fontFamily='Quicksand-Regular'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             onPress={() => this.checkedFemale()}
@@ -557,11 +559,11 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ height: 90, paddingTop: 5, }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Birthday</Text>
+                                    <Text style={styles.textStyle}>Tanggal Lahir</Text>
                                 </View>
                                 <ContainerSection>
                                     <InputDate
-                                        placeholder='Your date of birthday'
+                                        // placeholder='Your date of birthday'
                                         value={viewBirthday}
                                         onChangeText={v => this.onChangeInput('viewBirthday', v)}
                                         onFocus={() => {
@@ -588,7 +590,7 @@ export class RegistrationBuyerPage extends React.Component {
                                             secureTextEntry={true}
                                             value={password}
                                             onChangeText={v => this.onChangeInput('password', v)}
-                                            placeholder='Your Password'
+                                            // placeholder='Your Password'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -603,7 +605,7 @@ export class RegistrationBuyerPage extends React.Component {
                                         <Input
                                             value={email}
                                             onChangeText={v => this.onChangeInput('email', v)}
-                                            placeholder='Your Email'
+                                            placeholder=''
                                         />
                                     </ContainerSection>
                                 </View>
@@ -611,14 +613,14 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Phone Number</Text>
+                                    <Text style={styles.textStyle}>Nomor Telepon</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
                                         <InputNumber
                                             value={noPhone}
                                             onChangeText={v => this.onChangeInput('noPhone', v)}
-                                            placeholder='Your Hhone Number'
+                                            // placeholder='Y'
                                             keyboardType='numeric'
                                         />
                                     </ContainerSection>
@@ -627,7 +629,7 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Address</Text>
+                                    <Text style={styles.textStyle}>Alamat</Text>
                                 </View>
 
                                 <View>
@@ -636,7 +638,7 @@ export class RegistrationBuyerPage extends React.Component {
                                             onFocus={() => {
                                                 this.setModalVisible(true);
                                             }}
-                                            placeholder='please input your address'
+                                            placeholder=''
                                         />
                                     </ContainerSection>
                                 </View>
@@ -676,14 +678,14 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>Province</Text>
+                                                <Text style={styles.textStyle}>Provinsi</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
                                                     <AutoComplete
                                                         autoFocus
                                                         suggestions={suggestionsProvince}
-                                                        placeholder="Your Province"
+                                                        // placeholder="Your Province"
                                                         onChangeText={text => this.queryProvinceSuggestion(text)}
                                                         value={province}
                                                         ref="input"
@@ -712,12 +714,12 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>City</Text>
+                                                <Text style={styles.textStyle}>Kota</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
                                                     <AutoComplete
-                                                        placeholder="Your City"
+                                                        placeholder=""
                                                         suggestions={suggestionsRegencies}
                                                         onChangeText={text => this.queryRegenciesSuggestion(text)}
                                                         value={city}
@@ -747,12 +749,12 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>District</Text>
+                                                <Text style={styles.textStyle}>Kecamatan</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
                                                     <AutoComplete
-                                                        placeholder="Your Distrcit"
+                                                        placeholder=""
                                                         suggestions={suggestionsDistrict}
                                                         onChangeText={text => this.queryDistrictSuggestion(text)}
                                                         value={district}
@@ -782,14 +784,14 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>Address Detail</Text>
+                                                <Text style={styles.textStyle}>Alamat Detil</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
                                                     <Input
                                                         multiline={true}
                                                         numberOfLines={150}
-                                                        placeholder='Your detail address'
+                                                        placeholder=''
                                                         value={addressTxt}
                                                         onChangeText={v => this.onChangeInput('addressTxt', v)}
                                                     />
@@ -812,7 +814,7 @@ export class RegistrationBuyerPage extends React.Component {
                                                         });
                                                         this.setModalVisible(!this.state.isModalVisible);
                                                     }}>
-                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                                    <Text style={styles.AddressTextCancel}>Batalkan</Text>
                                                 </TouchableHighlight>
                                             </View>
 
@@ -821,7 +823,7 @@ export class RegistrationBuyerPage extends React.Component {
                                                     onPress={() => {
                                                         this.setModalVisible(!this.state.isModalVisible);
                                                     }}>
-                                                    <Text style={styles.AddressTextSave}>Save</Text>
+                                                    <Text style={styles.AddressTextSave}>Simpan</Text>
                                                 </TouchableHighlight>
                                             </View>
 
@@ -905,8 +907,8 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 5,
         fontSize: 15,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        // fontWeight: 'bold',
+        fontFamily: 'Quicksand-Bold'
     },
     containerCheckBox: {
         // marginLeft: 5,
@@ -949,8 +951,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 17,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Bold'
     },
     modalAddress: {
         width: '100%',
@@ -977,14 +978,14 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red'
     },
     AddressTextSave: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: 'red',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Bold'
     },
     AddressTextCancel: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: 'black',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Bold'
     }
 });
 

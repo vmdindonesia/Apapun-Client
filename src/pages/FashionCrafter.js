@@ -48,6 +48,7 @@ export class FashionCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>

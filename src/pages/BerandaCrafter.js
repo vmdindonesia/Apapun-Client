@@ -51,6 +51,7 @@ export class BerandaCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -83,6 +84,7 @@ export class BerandaCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>

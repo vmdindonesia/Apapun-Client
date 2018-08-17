@@ -23,8 +23,8 @@ export class DetailOrderPage extends React.Component {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
                 <View style={{ width: '100%', height: '88%' }}>
-                    <ScrollView >
-                        <View style={styles.container}>
+                    <ScrollView>
+                        <View style={{marginTop: 7}}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginLeft: 15, marginRight: 15 }}>Pesanan: <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'red' }}>171227155OPQ</Text></Text>
                             <View style={{ flexDirection: 'row', marginTop: 15, height: 180, marginLeft: 10, marginRight: 10 }}>
                                 <View
@@ -44,14 +44,14 @@ export class DetailOrderPage extends React.Component {
                                     }}
                                 >
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 2 }}>Nama Produk</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff', justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
                                         >My Own Table</Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Dibuat dari</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff',justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -59,7 +59,7 @@ export class DetailOrderPage extends React.Component {
                     </Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Kategori</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 2, marginTop: 5, backgroundColor: '#fff',justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -67,7 +67,7 @@ export class DetailOrderPage extends React.Component {
                     </Text>
                                     </View>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 5 }}>Estimasi Selesai</Text>
-                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 5, marginTop: 5, backgroundColor: '#fff' }}>
+                                    <View style={{ width: '100%', borderWidth: 0, height: 20, paddingLeft: 5, marginTop: 5, backgroundColor: '#fff',justifyContent: 'center' }}>
                                         <Text style={{
                                             fontFamily: 'Quicksand-Regular', alignSelf: 'auto', fontSize: 13, color: 'black'
                                         }}
@@ -95,17 +95,19 @@ export class DetailOrderPage extends React.Component {
                                     </View>
                                     <View style={{ flexDirection: 'row', marginTop: 3, alignContent: 'center', }}>
                                         <Image
-                                            style={{ height: 24, width: 15, marginLeft: 5 }}
+                                            style={{ height: 22, width: 11, marginLeft: 7 }}
                                             source={require('./../assets/images/location_icon.png')}
+                                            resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ marginLeft: 10, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
+                                            <Text style={{ marginLeft: 15, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' , paddingTop: 3}}>Indonesia, Banten</Text>
                                         </View>
                                     </View>
                                     <View style={{ width: '100%', flexDirection: 'row', marginTop: 3 }}>
                                         <Image
-                                            style={{ height: 15, width: 22, }}
+                                            style={{ height: 18, width: 26, }}
                                             source={require('./../assets/images/Cukup.png')}
+                                        resizeMode='contain'
                                         />
                                         < View style={{ flex: 1 }}>
                                             <Text style={{ marginLeft: 7, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Rating:<Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13 }}> Cukup (35)</Text></Text>
@@ -132,9 +134,9 @@ export class DetailOrderPage extends React.Component {
 
 
 
-                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 10, marginRight: 20, marginTop: 20, fontSize: 15 }}>Alamat Pengiriman</Text>
-                            <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 10, marginRight: 10, marginTop: 5 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5, fontSize: 13, color: 'black' }}>Home 1 {'\n'}</Text>
+                           <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 10, marginRight: 20, marginTop: 20, fontSize: 15 }}>Alamat Pengiriman</Text>
+                            <View style={{ flex: 1, height: 130, backgroundColor: '#fff', marginLeft: 10, marginRight: 10, padding: 7.5, marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', marginLeft: 5, fontSize: 13, color: 'black' }}>Home 1 {'\n'}</Text>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, fontSize: 13, color: 'black' }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>Judy {'\n'}{'\n'}</Text>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, fontSize: 13, color: 'black' }}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
                                         DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
@@ -183,7 +185,7 @@ export class DetailOrderPage extends React.Component {
                 <View style={{
                     flexDirection: 'row',
                     width: '100%',
-                    height: 80,
+                    height: 70,
                     backgroundColor: '#1f2021',
                     justifyContent: 'center'
                 }}>

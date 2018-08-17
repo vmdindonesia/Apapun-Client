@@ -51,23 +51,23 @@ export class CrafterPage extends React.Component {
                                 Rendy Sutandy
                             </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, marginTop: 10 }}>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, }}>
                             <Image
-                                style={{ width: 20, height: 18 }}
+                                style={{ width: 20, height: 27 }}
                                 source={require('./../assets/images/Cukup.png')}
-                                resizeMode='stretch'
+                                resizeMode='contain'
                             />
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                            <Text style={{ fontSize: 13, marginLeft:7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
                                 Buruk
                             </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginTop: 7, marginBottom: 10 }}>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginBottom: 10 }}>
                             <Image
-                                style={{ width: 18, height: 18 }}
+                                style={{ width: 18, height: 18, alignSelf: 'center' }}
                                 source={require('./../assets/images/loc_mainprof.png')}
                                 resizeMode='contain'
                             />
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                            <Text style={{ fontSize: 13, marginLeft: 7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
                                 Jakarta Barat
                             </Text>
                         </View>
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         height: 170,
         width: 170,
-        resizeMode: 'stretch',
+        resizeMode: 'cover',
         borderRadius: 4
     },
 });

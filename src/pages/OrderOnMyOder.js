@@ -84,15 +84,16 @@ export class OrderOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 25,
-                                height: 26.5,
+                                width: 33,
+                                height: 24.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
-
+                                marginTop: 1.5
                             }}
                             source={require('./../assets/images/ic_sort.png')}
+                            resizeMode='contain'
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{ marginTop: 3, paddingTop: 2, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -120,7 +121,7 @@ export class OrderOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_filter.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
                     </TouchableOpacity>
                 </View>
@@ -347,7 +348,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' , color: 'black'}}>Jumlah : (2)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (2)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -355,7 +356,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'   }} >Rp. 1.500.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 1.500.000 </Text>
                                     </View>
                                 </View>
 
@@ -479,7 +480,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'  }} >Rp. 900.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 900.000 </Text>
                                     </View>
                                 </View>
 

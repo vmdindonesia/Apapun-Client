@@ -60,15 +60,15 @@ export class WishlistOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 25,
-                                height: 26.5,
+                                width: 33,
+                                height: 24.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
-
+                                marginTop: 1.5
                             }}
                             source={require('./../assets/images/ic_sort.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{ marginTop: 3, paddingTop: 2, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -96,7 +96,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_filter.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
                     </TouchableOpacity>
                 </View>
@@ -259,8 +259,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color:'black' }}>Elegant Pottery</Text>
-                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular',color:'black' }}>Dipesan Dari :
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Elegant Pottery</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari :
                                           <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Workshop</Text></Text>
 
 
@@ -274,6 +274,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             width: 100,
                             flexDirection: 'row',
                             justifyContent: 'center',
+                            alignItems: 'center',
                             borderRadius: 100,
                             zIndex: 2,
                             marginLeft: -110,
@@ -281,44 +282,36 @@ export class WishlistOnMyOrderPage extends React.Component {
                             paddingRight: 10,
                             marginRight: 10
                         }}>
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2 }}
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 15, marginLeft: 7.5 }}
                                 onPress={() => this.props.navi.navigate('Captureandget')}
                             >
                                 <Image
                                     style={{
-                                        width: 20,
-                                        height: 20,
+                                        width: 17,
+                                        height: 17,
                                         borderRadius: 0,
                                         // alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/pen_white.png')}
-
+                                    resizeMode='contain'
                                 />
                             </TouchableOpacity>
 
 
-                            <Image
-                                style={{
-                                    width: 18,
-                                    height: 18,
-                                    borderRadius: 0,
-                                    alignSelf: 'center'
-                                }}
-                                source={require('./../assets/images/line_vertical.png')}
-                            />
+                            <View style={{ flexDirection: 'column', borderColor: 'black', borderWidth: 0.5, height: '50%', }} />
 
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 15 }}
                                 onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                             >
                                 <Image
                                     style={{
-                                        width: 18,
-                                        height: 24,
+                                        width: 14,
+                                        height: 20,
                                         borderRadius: 0,
                                         alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/trash_white.png')}
-
+                                    resizeMode='contain'
                                 />
                             </TouchableOpacity>
 
@@ -382,8 +375,8 @@ export class WishlistOnMyOrderPage extends React.Component {
                             }}>
                                 <View style={{ justifyContent: 'center' }}>
 
-                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold',color:'black' }}>Air Jordan</Text>
-                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color:'black' }}>Dipesan Dari :
+                                    <Text style={{ fontSize: 15, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Air Jordan</Text>
+                                    <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari :
                                           <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Market</Text></Text>
 
 
@@ -397,6 +390,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             width: 100,
                             flexDirection: 'row',
                             justifyContent: 'center',
+                            alignItems: 'center',
                             borderRadius: 100,
                             zIndex: 2,
                             marginLeft: -110,
@@ -404,7 +398,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                             paddingRight: 10,
                             marginRight: 10
                         }}>
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 2, }}
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 15, marginLeft: 7.5 }}
                                 onPress={() => this.props.navi.navigate('')}
                             >
                                 <Image
@@ -415,32 +409,26 @@ export class WishlistOnMyOrderPage extends React.Component {
                                         // alignSelf: 'center'
 
                                     }}
+                                    resizeMode='contain'
                                     source={require('./../assets/images/keranjang.png')}
                                 />
                             </TouchableOpacity>
 
+                            <View style={{ flexDirection: 'column', borderColor: 'black', borderWidth: 0.5, height: '50%', }} />
 
-                            <Image
-                                style={{
-                                    width: 18,
-                                    height: 18,
-                                    borderRadius: 0,
-                                    alignSelf: 'center'
-                                }}
-                                source={require('./../assets/images/line_vertical.png')}
-                            />
 
-                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 5 }}
+                            <TouchableOpacity style={{ alignSelf: 'center', paddingLeft: 15 }}
                                 onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
                             >
                                 <Image
                                     style={{
-                                        width: 18,
-                                        height: 24,
+                                        width: 14,
+                                        height: 20,
                                         borderRadius: 0,
                                         alignSelf: 'center'
                                     }}
                                     source={require('./../assets/images/trash_white.png')}
+                                    resizeMode='contain'
                                 />
                             </TouchableOpacity>
 

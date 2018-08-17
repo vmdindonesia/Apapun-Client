@@ -100,7 +100,7 @@ const styles = {
 		fontSize: 14,
 		flex: 1,
 		padding: 8,
-		fontFamily: 'Muli-Regular'
+		fontFamily: 'Quicksand-Regular'
 	},
 	// labelStyle: {
 	// 	color: '#5e5e5e',
