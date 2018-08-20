@@ -47,6 +47,7 @@ export class FurnitureCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -82,7 +83,7 @@ export class FurnitureCrafterPage extends React.Component {
                         justifyContent: 'center'
                     }}>
                         <InputSearch
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>

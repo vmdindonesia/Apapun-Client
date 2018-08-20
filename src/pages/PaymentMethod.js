@@ -112,35 +112,35 @@ export class PaymentMethodPage extends React.Component {
                     }}>
 
                         <View style={{ alignItems: 'center', flexDirection: 'row', height: 35, width: '92.5%', margin: 5 }}>
-                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Jumlah Biaya </Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Jumlah Biaya </Text>
                         </View>
 
                         <View style={{ flex: 1, flexDirection: 'column', width: '100%', backgroundColor: 'white', alignItems: 'center' }}>
                             <View style={{ width: '90%', height: 30, flexDirection: 'row', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: '#e5e5e5' }}>
                                 <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>Harga Produk</Text>
                                 <View style={{ flex: 1, alignItems: 'flex-end', }}>
-                                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>Rp. 100.000</Text>
+                                    <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Bold', }}>Rp. 100.000</Text>
                                 </View>
                             </View>
 
                             <View style={{ width: '90%', height: 30, flexDirection: 'row', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: '#e5e5e5' }}>
                                 <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>Pengiriman</Text>
                                 <View style={{ flex: 1, alignItems: 'flex-end', }}>
-                                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>Rp. 30.000</Text>
+                                    <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Bold', }}>Rp. 30.000</Text>
                                 </View>
                             </View>
 
                             <View style={{ width: '90%', height: 27, flexDirection: 'row', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: '#e5e5e5' }}>
                                 <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>Jumlah yang Dipesan</Text>
                                 <View style={{ flex: 1, alignItems: 'flex-end', }}>
-                                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>1 Pcs</Text>
+                                    <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Bold', }}>1 Pcs</Text>
                                 </View>
                             </View>
 
                             <View style={{ width: '90%', height: 60, flexDirection: 'row', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: '#e5e5e5' }}>
-                                <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>TOTAL</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>TOTAL</Text>
                                 <View style={{ flex: 1, alignItems: 'flex-end', }}>
-                                    <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 17, fontFamily: 'Quicksand-Regular', }}>Rp. 125.000</Text>
+                                    <Text style={{ color: 'red', fontSize: 17, fontFamily: 'Quicksand-Bold', }}>Rp. 125.000</Text>
                                 </View>
                             </View>
 
@@ -160,7 +160,7 @@ export class PaymentMethodPage extends React.Component {
                     }}>
 
                         {/* <View style={{ alignItems: 'center', flexDirection: 'row', height: 35, width: '92.5%', margin: 5 }}> */}
-                        <Text style={{ paddingLeft: 10, color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Metode Pembayaran</Text>
+                        <Text style={{ paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Metode Pembayaran</Text>
                         {/* </View> */}
                     </View>
 
@@ -170,7 +170,7 @@ export class PaymentMethodPage extends React.Component {
                         >
                             <View style={{ width: '92.5%', flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
                                 <View style={{ flexDirection: 'column', width: '75%' }}>
-                                    <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Kartu Kredit</Text>
+                                    <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Kartu Kredit</Text>
                                     <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', }}>pembayaran kartu kredit berlaku untuk pemegang visa dan mastercard </Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', width: '25%', alignContent: 'center', alignItems: 'center' }}>
@@ -213,7 +213,7 @@ export class PaymentMethodPage extends React.Component {
                                 {/* <View style={{ height: 150, margin: 15 }}>
 
                                     <View style={{ marginTop: 5, height: 20, }}>
-                                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Kartu Yang Disimpan</Text>
+                                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Kartu Yang Disimpan</Text>
                                     </View>
 
                                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5, height: 20, backgroundColor: 'white' }}>
@@ -230,7 +230,7 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ height: 80, marginLeft: 10, marginRight: 10, marginTop: 15 }}>
                                     <View style={{ height: 20, }}>
-                                        <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Nomor Kartu Kredit</Text>
+                                        <Text style={{ paddingLeft: 7.5, color: 'black',fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nomor Kartu Kredit</Text>
                                     </View>
                                     <ContainerSection>
                                         <Input
@@ -242,7 +242,7 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 80, marginLeft: 10, marginRight: 10 }}>
                                     <View style={{ flex: 2, flexDirection: 'row' }}>
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Tanggal Kadaluarsa</Text>
+                                            <Text style={{ paddingLeft: 7.5, color: 'black',  fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Tanggal Kadaluarsa</Text>
                                             <ContainerSection>
                                                 <InputDate
                                                     placeholder=''
@@ -262,7 +262,7 @@ export class PaymentMethodPage extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, }}>CCV/CCV</Text>
+                                            <Text style={{ paddingLeft: 7.5, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>CCV/CCV</Text>
                                             <ContainerSection>
                                                 <Input
                                                     placeholder=''
@@ -275,7 +275,7 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ height: 80, marginLeft: 10, marginRight: 10 }}>
                                     <View style={{ height: 20, }}>
-                                        <Text style={{ paddingLeft: 7.5, color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Nama Pemegang Kartu</Text>
+                                        <Text style={{ paddingLeft: 7.5, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nama Pemegang Kartu</Text>
                                     </View>
                                     <ContainerSection>
                                         <Input
@@ -295,7 +295,7 @@ export class PaymentMethodPage extends React.Component {
                                     </View>
 
                                     <View style={{ width: '20%', height: '100%', justifyContent: 'center', flexDirection: 'column', marginLeft: -15 }}>
-                                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular', }}>Midtrans</Text>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>Midtrans</Text>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>secured payments</Text>
                                     </View>
 
@@ -327,7 +327,7 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ height: 70, marginLeft: 15, marginRight: 15, flexDirection: 'row', }}>
                                     <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
-                                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular', }}>Simpan Kartu</Text>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>Simpan Kartu</Text>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>informasi kartu disimpan dengan aman</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
@@ -357,7 +357,7 @@ export class PaymentMethodPage extends React.Component {
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
                                     <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>BAYAR</Text>
+                                        <Text style={{ color: 'white', fontSize: 15,  fontFamily: 'Quicksand-Bold', }}>BAYAR</Text>
 
                                     </View>
                                 </TouchableOpacity>
@@ -375,7 +375,7 @@ export class PaymentMethodPage extends React.Component {
                             onPress={() => this.setState({ BankTransferPayment: !this.state.BankTransferPayment })}
                         >
                             <View style={{ flexDirection: 'column', width: '70%', margin: 15 }}>
-                                <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Bank Transfer</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Bank Transfer</Text>
                                 <Text style={{ color: 'black', fontSize: 12, fontFamily: 'Quicksand-Regular', }}>pembayaran dapat dilakukan via ATM, Internet Bank atau Mobile Banking. </Text>
                             </View>
 
@@ -463,7 +463,7 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 50, marginLeft: 15, marginRight: 17.5, flexDirection: 'row', }}>
                                     <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>Atas Nama</Text>
-                                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular', }}>APAPUN Indoensia</Text>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>APAPUN Indoensia</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
 
@@ -505,7 +505,7 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 50, marginLeft: 15, marginRight: 17.5, flexDirection: 'row', }}>
                                     <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>Nomor Rekening</Text>
-                                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular', }}>123  456 7899</Text>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>123  456 7899</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
                                         <TouchableOpacity>
@@ -517,7 +517,7 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 50, marginLeft: 15, marginRight: 17.5, flexDirection: 'row', }}>
                                     <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>Total Pembayaran</Text>
-                                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', fontFamily: 'Quicksand-Regular', }}>Rp. 860.000</Text>
+                                        <Text style={{ fontSize: 15,  color: 'black', fontFamily: 'Quicksand-Bold', }}>Rp. 860.000</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row', }}>
                                         <TouchableOpacity>
@@ -536,7 +536,7 @@ export class PaymentMethodPage extends React.Component {
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
                                     <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>BAYAR</Text>
+                                        <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>BAYAR</Text>
 
                                     </View>
                                 </TouchableOpacity>

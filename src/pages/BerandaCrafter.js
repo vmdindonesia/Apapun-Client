@@ -51,6 +51,7 @@ export class BerandaCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -73,7 +74,7 @@ export class BerandaCrafterPage extends React.Component {
                     style={styles.item}
                     source={{ uri: data.item }}
                 />
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color:'black' }}>Raisa</Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color: 'black' }}>Raisa</Text>
                 <View style={{ paddingTop: 5 }}>
                     <Image
                         style={{
@@ -83,6 +84,7 @@ export class BerandaCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -110,7 +112,8 @@ export class BerandaCrafterPage extends React.Component {
                         }}>
                             <InputSearch
                                 // onFocus={() => navigate('FilterBefore')}
-                                placeholder="Cari Crafter..."
+                                placeholder="     Cari Crafter..."
+                                style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}
                                 icon="ic_search"
                             />
                         </View>
@@ -168,7 +171,7 @@ export class BerandaCrafterPage extends React.Component {
                             }}>
                                 <TouchableWithoutFeedback
                                     onPress={() => this.props.navi.navigate('')}>
-                                    <Text style={{ color: 'red', fontSize: 13,  fontFamily: 'Quicksand-Bold' , paddingLeft: 15, }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Bold', paddingLeft: 15, }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>
@@ -202,14 +205,14 @@ export class BerandaCrafterPage extends React.Component {
                                 height: '5%',
                                 width: '75%'
                             }}>
-                                <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily:'Quicksand-Bold', color:'black' }}>Crafter On Debut</Text>
+                                <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Crafter On Debut</Text>
                             </View>
                             <View style={{
                                 height: '10%',
                                 width: '20%',
                             }}>
                                 <TouchableWithoutFeedback>
-                                    <Text style={{ color: 'red', fontSize: 13,  fontFamily: 'Quicksand-Bold', paddingLeft: 15 }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Bold', paddingLeft: 15 }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>

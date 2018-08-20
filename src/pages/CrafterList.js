@@ -79,6 +79,7 @@ export class CrafterListPage extends React.Component {
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
+                    backgroundColor:'white',
                 }}>
                     <ScrollView
                         showsHorizontalScrollIndicator={false}
@@ -87,11 +88,11 @@ export class CrafterListPage extends React.Component {
                     >
                         <View
                             style={{
-                                width: 90,
+                                width: 100,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BerandaCrafterPage' })}>
                                 <View style={screen === 'BerandaCrafterPage' ? tabContainerActive : tabContainer}>
@@ -103,7 +104,7 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                width: 90,
+                                width: 100,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',
@@ -119,7 +120,7 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                width: 170,
+                                width: 190,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',

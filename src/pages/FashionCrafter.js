@@ -48,6 +48,7 @@ export class FashionCrafterPage extends React.Component {
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -75,7 +76,7 @@ export class FashionCrafterPage extends React.Component {
                     }}>
                         <InputSearch
                             // onFocus={() => navigate('FilterBefore')}
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>

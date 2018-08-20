@@ -366,6 +366,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Fashion'
+                                            // fontFamily={'Quicksand-Regular'}
                                             checked={fashion}
                                             onPress={() => this.checkBoxFashion()}
                                         />
@@ -376,6 +377,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Lifestyle'
+                                            style={{ fontFamily: 'Quicksand-Regular', color: 'black' }}
                                             checked={lifestyle}
                                             onPress={() => this.checkBoxLifestyle()}
                                         />
@@ -386,6 +388,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Furniture'
+                                            style={{ fontFamily: 'Quicksand-Regular', color: 'black' }}
                                             checked={furniture}
                                             onPress={() => this.checkBoxFurniture()}
                                         />
@@ -397,6 +400,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Beauty'
+                                            style={{ fontFamily: 'Quicksand-Regular', color: 'black' }}
                                             checked={beauty}
                                             onPress={() => this.checkBoxBeauty()}
                                         />
@@ -416,6 +420,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Punya'
+                                            style={{ fontFamily: 'Quicksand-Regular', color: 'black' }}
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             checked={sendserviceone}
@@ -428,6 +433,7 @@ export class RegistrationCrafterPage extends React.Component {
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                             title='Tidak Punya'
+                                            style={{ fontFamily: 'Quicksand-Regular', color: 'black' }}
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             checked={sendservicetwo}
@@ -522,7 +528,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 17,
-        fontWeight: 'bold'
+        fontFamily: 'Quicksand-Bold'
     },
     formPosition: {
         flex: 7,
@@ -535,8 +541,8 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 5,
         fontSize: 13,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+
+        fontFamily: 'Quicksand-Bold'
     },
     containerCheckBox: {
         height: 55,

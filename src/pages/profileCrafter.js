@@ -101,8 +101,9 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <Image
-                                            style={{ height: 24, width: 15, marginLeft: 5 }}
+                                            style={{ height: 25, width: 15, marginLeft: 7.5 }}
                                             source={require('./../assets/images/black_loc_mainprof.png')}
+                                            resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
                                             <Text style={{ marginLeft: 10, fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
@@ -113,6 +114,7 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{ height: 18, width: 27, }}
                                             source={require('./../assets/images/Cukup.png')}
+                                            resizeMode='contain'
                                         />
                                         < View style={{ flex: 1 }}>
                                             <Text style={{ marginLeft: 7, fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular' }}>Rating:<Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13 }}> Cukup (35)</Text></Text>
