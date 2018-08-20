@@ -17,7 +17,7 @@ export class IdeadhtPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'DIY, Hobbies & Toys'
+        headerTitle: 'Hobbies & Toys'
     });
 
     constructor(props) {

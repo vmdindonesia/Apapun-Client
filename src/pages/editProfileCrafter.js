@@ -98,7 +98,7 @@ export class EditProfileCrafterPage extends React.Component {
                             />
                             <CheckBox
                                 fontFamily='Quicksand-Regular'
-                                title='DIY, Hobbies & Toys'
+                                title='Hobbies & Toys'
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                             />
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Jasa Pengiriman Pribadi</Text>
