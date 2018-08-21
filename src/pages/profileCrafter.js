@@ -101,8 +101,8 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <Image
-                                            style={{ height: 15, width: 10, marginLeft: 7.5 }}
-                                            source={require('./../assets/images/location_icon.png')}
+                                            style={{ height: 40, width: 15, marginLeft: 5 }}
+                                            source={require('./../assets/images/loc_mainprof.png')}
                                             resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
@@ -126,10 +126,10 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, height: 130, alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 115, alignItems: 'center' }}>
                         <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Lulusan S2
-                            Interior Desain di Singapura - mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: '#787878', fontStyle: 'italic', textAlign: 'center' }}>Lulusan S2
+                            Interior Desain di Singapura - Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
                                 Awards 2017- Resmi Anggota Asephi    </Text>
                         </View>
                     </View>

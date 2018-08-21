@@ -103,6 +103,9 @@ import { MaterialPage } from './pages/material';
 import { searchCrafterOnProfilePage } from './pages/searchCrafterOnProfile';
 import { CrafterOrderMenuPage } from './pages/CrafterOrderMenu'
 
+import { FinalReviewPage } from './pages/finalReview';
+import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
+
 console.disableYellowBox = true;
 
 // font
@@ -114,30 +117,92 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  StartScreen: {
-    screen: StartScreen
+  FinalReview: {
+    screen: FinalReviewPage
   },
-  ProfilePage: {
-    screen: ProfileBuyerPage
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
   },
-  CrafterOrderMenu:{
+  searchCrafterOnProfile: {
+    screen: searchCrafterOnProfilePage
+  },
+  Crafter: {
+    screen: CrafterPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Order: {
+    screen: OrderPage
+  },
+  Material: {
+    screen: MaterialPage
+  },
+  Captureandget: {
+    screen: CaptureandgetPage
+  },
+  HelpMenu: {
+    screen: HelpMenuPage
+  },
+  CrafterOrderMenu: {
     screen: CrafterOrderMenuPage
   },
   Dashboard: {
     screen: DashboardPage
   },
-  ListKemeja: {
-    screen: ListKemejaPage
+  ReviewProduct: {
+    screen: ReviewProductPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
+  RegisToIdeaMarket: {
+    screen: RegisToIdeaMarketPage
   },
-  NotificationMenu: {
-    screen: NotificationMenuPage
+
+  RegistrationCrafter: {
+    screen: RegistrationCrafterPage
+  },
+  StartScreen: {
+    screen: StartScreen
+  },
+  RegistrationBuyer: {
+    screen: RegistrationBuyerPage
+  },
+
+  CrafterList: {
+    screen: CrafterListPage
+  },
+  DetailOrder: {
+    screen: DetailOrderPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
+
+
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+
+
+
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
+
+  NotificationMenu: {
+    screen: NotificationMenuPage
+  },
+
+  ProfilePage: {
+    screen: ProfileBuyerPage
+  },
+
+  ListKemeja: {
+    screen: ListKemejaPage
+  },
+
 
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
@@ -153,21 +218,10 @@ const Routes = createStackNavigator({
     screen: BerandaCrafterPage
   },
 
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
-  },
   UlasanOnCrafterProfile: {
     screen: UlasanOnCrafterProfilePage
   },
-  searchCrafterOnProfile: {
-    screen: searchCrafterOnProfilePage
-  },
-  Order: {
-    screen: OrderPage
-  },
-  DetailOrder: {
-    screen: DetailOrderPage
-  },
+
 
   ListTshirt: {
     screen: ListTshirtPage
@@ -181,9 +235,7 @@ const Routes = createStackNavigator({
   MyOrder: {
     screen: MyOrderPage
   },
-  PaymentMethod: {
-    screen: PaymentMethodPage
-  },
+
   pengaturanBank: {
     screen: PengaturanBankPage
   },
@@ -192,12 +244,7 @@ const Routes = createStackNavigator({
     screen: ForgotPasswordPage
   },
 
-  RegistrationCrafter: {
-    screen: RegistrationCrafterPage
-  },
-  RegistrationBuyer: {
-    screen: RegistrationBuyerPage
-  },
+
 
   Login: {
     screen: LoginPage
@@ -226,27 +273,9 @@ const Routes = createStackNavigator({
     screen: FinalProcessOrderPage
   },
 
-  Material: {
-    screen: MaterialPage
-  },
 
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
-  },
-
-  OrderWithTrack: {
-    screen: OrderWithTrackPage
-  },
-
-  Captureandget: {
-    screen: CaptureandgetPage
-  },
-  Crafter: {
-    screen: CrafterPage
-  },
-
-  HelpMenu: {
-    screen: HelpMenuPage
   },
   Dashboard: {
     screen: DashboardPage
@@ -291,9 +320,7 @@ const Routes = createStackNavigator({
   Gambar: {
     screen: GambarPage
   },
-  MenuCrafter: {
-    screen: MenuCrafterPage
-  },
+
   crafterMenuNote: {
     screen: crafterMenuNotePage
   },
@@ -353,9 +380,6 @@ const Routes = createStackNavigator({
   },
   InformasiBank: {
     screen: InformasiBankPage
-  },
-  CrafterList: {
-    screen: CrafterListPage
   },
 
   OrderForCrafter: {

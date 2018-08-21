@@ -548,7 +548,7 @@ export class CaptureandgetPage extends React.Component {
                 </View>
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 20, marginTop: 7 }]}>Upload Design Anda</Text>
-                <ContainerSection>
+                <View>
                     {
                         this.state.photoTemp.length === 0 ?
                             <View style={{ flex: 1, height: 374, backgroundColor: 'grey', }}>
@@ -557,7 +557,7 @@ export class CaptureandgetPage extends React.Component {
                                     style={{ height: '100%', width: '100%' }}
                                     resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150 }}>
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150, marginLeft: 35, marginRight: 35 }}>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular', justifyContent: 'center' }}>
                                         Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
                                     </Text>
@@ -569,7 +569,7 @@ export class CaptureandgetPage extends React.Component {
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Image style={{ width: 25, height: 20, marginTop: 6 }} source={require('../assets/images/add_picture.png')} />
                                                 <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                             </View>
                                         </TouchableOpacity>
@@ -607,7 +607,7 @@ export class CaptureandgetPage extends React.Component {
                                 />
                             </View>
                     }
-                </ContainerSection>
+                </View>
                 {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
@@ -624,14 +624,11 @@ export class CaptureandgetPage extends React.Component {
                         <View style={{ flexDirection: 'row', height: 50, alignItems: 'center' }}>
                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Jumlah yang dipesan :</Text>
                             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
-                                <TouchableOpacity
+                            <TouchableOpacity
                                     onPress={() => this.minusNumber()}
-                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                    style={{ width: 30, height: 30, justifyContent: 'center', marginRight: 5, backgroundColor: 'red', borderRadius: 5 }}
                                 >
-                                    <Image
-                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/Minuss.png')}
-                                    />
+                                    <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-remove' />
                                 </TouchableOpacity>
                                 <View style={{ width: 60, height: 40 }}>
                                     <InputNumber
@@ -643,12 +640,9 @@ export class CaptureandgetPage extends React.Component {
                                 </View>
                                 <TouchableOpacity
                                     onPress={() => this.plusNumber()}
-                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                    style={{ width: 30, height: 30, justifyContent: 'center', marginLeft: 5, backgroundColor: 'red', borderRadius: 5 }}
                                 >
-                                    <Image
-                                        style={{ width: 35, height: 35, borderRadius: 5, alignSelf: 'center' }}
-                                        source={require('../assets/images/Pluss.png')}
-                                    />
+                                    <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-add' />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -773,7 +767,7 @@ const styles = StyleSheet.create({
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
-        width: 120,
+        width: 130,
         marginLeft: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,
