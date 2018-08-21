@@ -53,7 +53,7 @@ export class ProfileCrafterPage extends React.Component {
         return (
             <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginRight: 10, marginBottom: 10, }}>
                 <Image
-                    style={{ height: 110, width: 110, resizeMode: 'cover', margin:5 }}
+                    style={{ height: 110, width: 110, resizeMode: 'cover', margin: 5 }}
                     source={{ uri: data.item }}
                 />
             </View>
@@ -101,7 +101,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <Image
-                                            style={{ height: 40, width: 15, marginLeft: 5 }}
+                                            style={{ height: 40, width: 15, marginLeft: 3 }}
                                             source={require('./../assets/images/loc_mainprof.png')}
                                             resizeMode='contain'
                                         />
@@ -112,7 +112,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
                                         <Image
-                                            style={{ height: 20, width: 20, }}
+                                            style={{ height: 22, width: 20, }}
                                             source={require('./../assets/images/Cukup.png')}
                                             resizeMode='contain'
                                         />
@@ -126,7 +126,7 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, height: 115, alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 110, alignItems: 'center' }}>
                         <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
                             <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: '#787878', fontStyle: 'italic', textAlign: 'center' }}>Lulusan S2
                             Interior Desain di Singapura - Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
@@ -306,12 +306,12 @@ export class ProfileCrafterPage extends React.Component {
 
 
 
-                                <View style={{ width: '100%', height: 120, flexDirection: 'row', }}>
+                                <View style={{ width: '100%', height: 110, flexDirection: 'row', }}>
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center'
                                             }}
                                             resizeMode='stretch'
@@ -322,7 +322,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
+
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -330,7 +330,7 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center',
                                                 marginTop: 5
                                             }}
@@ -342,7 +342,6 @@ export class ProfileCrafterPage extends React.Component {
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -350,9 +349,10 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center',
-                                                marginTop: 5
+                                                marginTop: 5,
+                                                alignItems: 'center'
                                             }}
                                             resizeMode='stretch'
                                             source={require('./../assets/images/Bagus.png')}
@@ -362,7 +362,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
+
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -370,7 +370,7 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center'
                                             }}
                                             resizeMode='stretch'
@@ -382,7 +382,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                 </View>
 
-                                <View style={{ width: '100%', height: 40, flexDirection: 'row', backgroundColor: 'white' }}>
+                                <View style={{ width: '100%', height: 30, flexDirection: 'row', backgroundColor: 'white', marginTop: -17 }}>
                                     <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(0)</Text>
@@ -397,13 +397,13 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(2)</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 3 }}>(2)</Text>
 
                                     </View>
 
                                     <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(4)</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 3 }}>(4)</Text>
 
                                     </View>
 
@@ -457,7 +457,7 @@ export class ProfileCrafterPage extends React.Component {
                                             </View>
                                         </View>
 
-                                        <View style={{ margin: 5, height: '80%', }}>
+                                        <View style={{ marginTop: 5, marginLeft: 10, marginRight: 10, marginBottom: 15, }}>
 
                                             <View style={{}}>
                                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Rekomen Banget</Text>
@@ -478,8 +478,8 @@ export class ProfileCrafterPage extends React.Component {
                     }
                 </ScrollView>
 
-                <View style={{ width: '100%', height: 80, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
-                    <View style={{ width: '5%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3 }}>
+                <View style={{ width: '100%', height: 50, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                    <View style={{ width: '10%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3 }}>
                         <TouchableOpacity>
                             <Image style={{ width: 15, height: 15 }}
                                 source={require('../assets/images/Information.png')} />
@@ -495,7 +495,7 @@ export class ProfileCrafterPage extends React.Component {
                         >Rp 860.000
                                 </Text>
                     </View>
-                    <View style={{ width: '28%', height: '100%', justifyContent: 'center' }}>
+                    <View style={{ width: '30%', height: '100%', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Estimasi Selesai</Text>
                         <Text
                             style={{
@@ -505,17 +505,20 @@ export class ProfileCrafterPage extends React.Component {
                         >27 Feb 18
                                 </Text>
                     </View>
-                    <View style={{ width: '10%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: '35%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')} >
                             <Image style={{ width: 30, height: 30 }}
                                 source={require('../assets/images/Chat.png')} />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ width: '32%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
+                </View>
+
+                <View style={{ width: '100%', height: 50, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                    <View style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
                         <TouchableOpacity
                             style={{
                                 borderWidth: 0, borderRadius: 25, backgroundColor: '#ef1c25',
-                                height: 40, width: 100, justifyContent: 'center'
+                                flex: 1, justifyContent: 'center', marginLeft: 15, marginRight: 10, marginTop: 5, marginBottom: 10
                             }}
                             onPress={() => Alert.alert(
                                 'PILIH CRAFTER INI',
@@ -532,6 +535,7 @@ export class ProfileCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+
 
             </View >
         );
