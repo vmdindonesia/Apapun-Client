@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
         height: 200,
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'red'
+        backgroundColor: '#ef1c25'
     },
     containerImage: {
         flex: 1,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 25,
         margin: 5
     },

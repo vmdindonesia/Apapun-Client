@@ -71,7 +71,7 @@ export class FinalReviewPage extends React.Component {
                         </View>
                         <TouchableOpacity
                             style={{
-                                borderRadius: 25, height: 40, width: '85%', backgroundColor: 'red', justifyContent: 'center',
+                                borderRadius: 25, height: 40, width: '85%', backgroundColor: '#ef1c25', justifyContent: 'center',
                                 margin: 25
                             }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }}>Next</Text>

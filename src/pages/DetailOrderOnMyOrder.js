@@ -240,7 +240,7 @@ export class DetailOrderPage extends React.Component {
                         justifyContent: 'center',
                     }}>
                         <TouchableOpacity style={{
-                            backgroundColor: 'red',
+                            backgroundColor: '#ef1c25',
                             borderRadius: 20,
                             height: '60%',
                             width: '80%',

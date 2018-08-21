@@ -99,7 +99,7 @@ export class SettingManuPage extends React.Component {
                                         switchOn={this.state.backgroundMusicOn}
                                         onPress={this.onPress1}
                                         circleColorOff='white'
-                                        circleColorOn='red'
+                                        circleColorOn='#ef1c25'
                                     />
                                 </View>
                             </View>
@@ -128,7 +128,7 @@ export class SettingManuPage extends React.Component {
                                         switchOn={this.state.notificationOn}
                                         onPress={this.onPress2}
                                         circleColorOff='white'
-                                        circleColorOn='red'
+                                        circleColorOn='#ef1c25'
                                     />
                                 </View>
                             </View>
@@ -157,7 +157,7 @@ export class SettingManuPage extends React.Component {
                                         switchOn={this.state.vibrateOn}
                                         onPress={this.onPress3}
                                         circleColorOff='white'
-                                        circleColorOn='red'
+                                        circleColorOn='#ef1c25'
                                     />
                                 </View>
                             </View>

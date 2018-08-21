@@ -184,7 +184,7 @@ export class DetailInformationOrderPage extends React.Component {
                     <View style={{ width: '35%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalProcessOrder')}
                             style={{
-                                borderWidth: 0, borderRadius: 25, backgroundColor: 'red',
+                                borderWidth: 0, borderRadius: 25, backgroundColor: '#ef1c25',
                                 height: 40, width: 100, justifyContent: 'center'
                             }}
                         >

@@ -3,7 +3,7 @@ import {
     View, Text, ImageBackground, Image, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
 } from 'react-native'
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class MenuCrafterPage extends React.Component {
@@ -42,6 +42,13 @@ export class MenuCrafterPage extends React.Component {
                         source={require('./../assets/images/background_profile.jpeg')}
                         style={styles.backgroundStyle}
                     >
+                        <TouchableOpacity style={{ height: 70, width: 70, position: 'absolute', marginTop: 20 }}
+                            onPress={() => this.props.navigation.goBack()}
+                        >
+                            <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
+                                <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
+                            </View>
+                        </TouchableOpacity>
                         <View>
 
                             <View style={styles.containerImage}>
@@ -51,7 +58,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                     </ImageBackground >
-                    <View style={{ height: '100%', paddingBottom: hp ('35%') }}>
+                    <View style={{ height: '100%', paddingBottom: hp('35%') }}>
                         <View style={{ flex: 1 }}>
                             <View style={{ width: '100%' }} >
                                 <Text style={styles.textStyle}>Gal Gadot</Text>
@@ -181,7 +188,7 @@ const styles = StyleSheet.create({
         width: 155,
         borderRadius: 100,
         borderColor: 'white',
-        borderWidth: 3
+        borderWidth: 5
     },
     textStyle: {
         marginTop: 10,

@@ -317,7 +317,7 @@ export class clickProductOnCrafterMenuPage extends React.Component {
                         <View style={{ flex: 1,marginLeft: 10, marginRight: 10, marginTop: -15 }}>
                             <TouchableOpacity
                                 style={{
-                                    borderRadius: 25, flex: 1, backgroundColor: 'red', justifyContent: 'center',
+                                    borderRadius: 25, flex: 1, backgroundColor: '#ef1c25', justifyContent: 'center',
                                     marginTop: 35, marginBottom: 35,
                                 }}>
                                 <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }}>Simpan</Text>

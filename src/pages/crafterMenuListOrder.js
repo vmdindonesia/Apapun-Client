@@ -199,7 +199,7 @@ export class crafterMenuListOrderPage extends React.Component {
                                         </TouchableOpacity>
                                     </View>
 
-                                    <View style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
+                                    <View style={{ flex: 1, backgroundColor: '#ef1c25', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
                                         <TouchableOpacity>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>Pasang Filter</Text>
                                         </TouchableOpacity>

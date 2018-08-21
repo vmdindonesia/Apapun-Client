@@ -101,6 +101,7 @@ import { IntroAppPage } from './pages/introApp';
 import { MenuLoginPage } from './pages/menuLogin';
 import { MaterialPage } from './pages/material';
 import { searchCrafterOnProfilePage } from './pages/searchCrafterOnProfile';
+import { CrafterOrderMenuPage } from './pages/CrafterOrderMenu'
 
 console.disableYellowBox = true;
 
@@ -118,6 +119,9 @@ const Routes = createStackNavigator({
   },
   ProfilePage: {
     screen: ProfileBuyerPage
+  },
+  CrafterOrderMenu:{
+    screen: CrafterOrderMenuPage
   },
   Dashboard: {
     screen: DashboardPage

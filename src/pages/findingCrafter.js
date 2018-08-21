@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Quicksand-Regular',
     paddingTop: 3,
-    color: 'red'
+    color: '#ef1c25'
   },
   imageActive: {
     width: 25,

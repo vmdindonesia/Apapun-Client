@@ -139,7 +139,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                 <TouchableOpacity style={{ zIndex: 4, marginBottom: -20, alignSelf: 'center' }}
                         onPress={() => this.props.navigation.navigate('detailsendingIdeaPage')}
                 >
-                    <View style={{ height: 40, width: 150, backgroundColor: 'red', borderRadius: 30, justifyContent: 'center', alignItems: 'center', }}>
+                    <View style={{ height: 40, width: 150, backgroundColor: '#ef1c25', borderRadius: 30, justifyContent: 'center', alignItems: 'center', }}>
                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', textAlign: 'center' }}>PROSES</Text>
                     </View>
                 </TouchableOpacity>

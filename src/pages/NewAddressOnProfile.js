@@ -150,12 +150,12 @@ export class NewAddressOnProfilePage extends React.Component {
                             switchOn={this.state.mainAddress}
                             onPress={this.onPressMainAddress}
                             circleColorOff='white'
-                            circleColorOn='red'
+                            circleColorOn='#ef1c25'
                         />
                     </View>
                 </View>
 
-                <View style={{ flex: 1, justifyContent: 'center', height: 45, marginLeft: 20, marginTop: 10, marginRight: 20, borderRadius: 30, backgroundColor: 'red', alignContent: 'center' }}>
+                <View style={{ flex: 1, justifyContent: 'center', height: 45, marginLeft: 20, marginTop: 10, marginRight: 20, borderRadius: 30, backgroundColor: '#ef1c25', alignContent: 'center' }}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}>
                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>SIMPAN</Text>
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Quicksand-Regular'
     },
     buttonJoin: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 35,
         width: 180,

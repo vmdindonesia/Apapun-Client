@@ -58,7 +58,7 @@ export class RegisToIdeaMarketPage extends React.Component {
                         </View>
                         <TouchableOpacity
                             style={{
-                                borderRadius: 25, height: 40, width: '70%', backgroundColor: 'red', justifyContent: 'center',
+                                borderRadius: 25, height: 40, width: '70%', backgroundColor: '#ef1c25', justifyContent: 'center',
                                 marginTop: 25
                             }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }}>Ya</Text>

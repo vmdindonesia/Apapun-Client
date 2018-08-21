@@ -101,8 +101,8 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <Image
-                                            style={{ height: 25, width: 15, marginLeft: 7.5 }}
-                                            source={require('./../assets/images/black_loc_mainprof.png')}
+                                            style={{ height: 15, width: 10, marginLeft: 7.5 }}
+                                            source={require('./../assets/images/location_icon.png')}
                                             resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
@@ -112,7 +112,7 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
                                         <Image
-                                            style={{ height: 18, width: 27, }}
+                                            style={{ height: 20, width: 20, }}
                                             source={require('./../assets/images/Cukup.png')}
                                             resizeMode='contain'
                                         />
@@ -128,7 +128,7 @@ export class ProfileCrafterPage extends React.Component {
 
                     <View style={{ flex: 1, height: 130, alignItems: 'center' }}>
                         <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', fontStyle: 'italic', textAlign: 'center' }}>Lulusan S2
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Lulusan S2
                             Interior Desain di Singapura - mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
                                 Awards 2017- Resmi Anggota Asephi    </Text>
                         </View>
@@ -514,7 +514,7 @@ export class ProfileCrafterPage extends React.Component {
                     <View style={{ width: '32%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
                         <TouchableOpacity
                             style={{
-                                borderWidth: 0, borderRadius: 25, backgroundColor: 'red',
+                                borderWidth: 0, borderRadius: 25, backgroundColor: '#ef1c25',
                                 height: 40, width: 100, justifyContent: 'center'
                             }}
                             onPress={() => Alert.alert(
@@ -544,7 +544,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         borderBottomWidth: 2,
-        borderBottomColor: 'red',
+        borderBottomColor: '#ef1c25',
     },
     tabNotActive: {
         flex: 1,

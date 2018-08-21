@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, FlatList, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-// import axios from 'axios';
+import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
 

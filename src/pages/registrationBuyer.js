@@ -884,7 +884,7 @@ const styles = StyleSheet.create({
     },
     buttonSignUp: {
         // marginTop: 60,
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 110,
@@ -979,7 +979,7 @@ const styles = StyleSheet.create({
     },
     AddressTextSave: {
         // fontWeight: 'bold',
-        color: 'red',
+        color: '#ef1c25',
         fontFamily: 'Quicksand-Bold'
     },
     AddressTextCancel: {

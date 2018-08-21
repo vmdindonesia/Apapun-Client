@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: 10,
         marginRight: 10,
-        backgroundColor: 'red'
+        backgroundColor: '#ef1c25'
     }
 
 

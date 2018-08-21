@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 3,
-        borderColor: 'red'
+        borderColor: '#ef1c25'
     },
     tabContainer: {
         height: 50,

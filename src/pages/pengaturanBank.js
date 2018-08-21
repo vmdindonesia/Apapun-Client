@@ -629,7 +629,7 @@ export class PengaturanBankPage extends React.Component {
                                     }
                                 }}
                             >
-                                <View style={{ flex: 1, height: 10, backgroundColor: 'red', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
+                                <View style={{ flex: 1, height: 10, backgroundColor: '#ef1c25', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
                                     <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white' }}>OK</Text>
                                 </View>
                             </TouchableOpacity>

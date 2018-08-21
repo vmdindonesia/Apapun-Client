@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     tabContainerActive: {
         height: 50,
         justifyContent: 'center',
-        borderBottomColor: 'red',
+        borderBottomColor: '#ef1c25',
         borderBottomWidth: 1
     },
     tabText: {

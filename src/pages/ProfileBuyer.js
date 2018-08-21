@@ -49,7 +49,7 @@ export class ProfileBuyerPage extends React.Component {
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
                                     <TouchableOpacity
                                         onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                        <View style={{ height: 50, width: 50, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 50, width: 50, backgroundColor: '#ef1c25', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
                                             <Image style={{ height: 18, width: 18, borderRadius: 0, }}
                                                 source={require('./../assets/images/pen_white.png')}
                                             />
@@ -425,7 +425,7 @@ const styles = StyleSheet.create({
 
     },
     buttonSignUp: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 140,

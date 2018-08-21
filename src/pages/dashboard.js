@@ -743,7 +743,7 @@ export class DashboardPage extends React.Component {
                                                                                 <TouchableOpacity
                                                                                     style={{
                                                                                         marginTop: hp('7%'),
-                                                                                        backgroundColor: 'red',
+                                                                                        backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45
                                                                                     }}
@@ -808,7 +808,7 @@ export class DashboardPage extends React.Component {
                                                                                 <TouchableOpacity
                                                                                     style={{
                                                                                         marginTop: hp('7%'),
-                                                                                        backgroundColor: 'red',
+                                                                                        backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45
                                                                                     }}
@@ -873,7 +873,7 @@ export class DashboardPage extends React.Component {
                                                                                 <TouchableOpacity
                                                                                     style={{
                                                                                         marginTop: hp('4.65%'),
-                                                                                        backgroundColor: 'red',
+                                                                                        backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45
                                                                                     }}
@@ -1158,7 +1158,7 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('CrafterMenu');
+                                                                                                                    this.props.navigation.navigate('MenuCrafter');
                                                                                                                 });
                                                                                                             }}
                                                                                                         >
@@ -1178,7 +1178,7 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('crafterMenuListOrder');
+                                                                                                                    this.props.navigation.navigate('CrafterOrderMenu');
                                                                                                                 });
                                                                                                             }}
                                                                                                         >
@@ -1380,7 +1380,7 @@ const styles = StyleSheet.create({
     },
     buttonCustom: {
         marginTop: 50,
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 45
     },
@@ -1392,7 +1392,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     buttonJoin: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 220,

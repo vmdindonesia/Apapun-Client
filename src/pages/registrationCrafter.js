@@ -514,7 +514,7 @@ const styles = StyleSheet.create({
         marginLeft: 100
     },
     buttonSignUp: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 110,

@@ -32,7 +32,7 @@ export class MenuLoginPage extends React.Component {
                     />
                     <TouchableHighlight
                         onPress={() => this.props.navigation.navigate('Login')}
-                        style={{ width: '90%', height: 50, borderRadius: 50, backgroundColor: 'red', justifyContent: 'center', marginTop: 90 }}
+                        style={{ width: '90%', height: 50, borderRadius: 50, backgroundColor: '#ef1c25', justifyContent: 'center', marginTop: 90 }}
                     >
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>LOGIN</Text>
                     </TouchableHighlight>

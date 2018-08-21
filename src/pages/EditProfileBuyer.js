@@ -105,7 +105,7 @@ export class EditProfileBuyerPage extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
+                <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: '#ef1c25', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('ProfilePage')}
                     >
