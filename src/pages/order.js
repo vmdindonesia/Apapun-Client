@@ -598,8 +598,10 @@ export class OrderPage extends React.Component {
                                 <Picker
                                     selectedValue={categoryProduct}
                                     onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
+                                    itemStyle={{fontFamily:"Quicksand-Regular", color:'black'}}
                                 >
-                                    <Picker.Item label='Pilih Kategori Produk' value='0' />
+                                    <Picker.Item label='Pilih Kategori Produk' value='0' 
+                                    />
                                     {this.renderKategori()}
                                 </Picker>
                             </View>
@@ -714,9 +716,12 @@ export class OrderPage extends React.Component {
                                     style={{ width: '100%', height: 170, }}
                                     resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center', top: 25, marginLeft: 20, marginRight: 20 }}>
+                                <View style={{ flex: 1, flexDirection: 'column', position: 'absolute', alignSelf: 'center', top: 25, }}>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
-                                        Pilih material yang sesuai untuk desain Anda
+                                        Pilih material yang sesuai untuk 
+                                    </Text>
+                                    <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                     desain Anda
                                     </Text>
                                 </View>
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
@@ -858,7 +863,8 @@ const styles = StyleSheet.create({
         borderColor: '#a9a9a9',
         borderRadius: 3,
         paddingLeft: 5,
-        borderWidth: 1
+        borderWidth: 1,
+        fontFamily:'Quicksand-Regular'
     },
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',

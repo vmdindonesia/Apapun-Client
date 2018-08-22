@@ -140,7 +140,7 @@ export class PaymentMethodPage extends React.Component {
                             <View style={{ width: '90%', height: 60, flexDirection: 'row', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: '#e5e5e5' }}>
                                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>TOTAL</Text>
                                 <View style={{ flex: 1, alignItems: 'flex-end', }}>
-                                    <Text style={{ color: 'red', fontSize: 17, fontFamily: 'Quicksand-Bold', }}>Rp. 125.000</Text>
+                                    <Text style={{ color: '#ef1c25', fontSize: 17, fontFamily: 'Quicksand-Bold', }}>Rp. 125.000</Text>
                                 </View>
                             </View>
 
@@ -230,7 +230,7 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ height: 80, marginLeft: 10, marginRight: 10, marginTop: 15 }}>
                                     <View style={{ height: 20, }}>
-                                        <Text style={{ paddingLeft: 7.5, color: 'black',fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nomor Kartu Kredit</Text>
+                                        <Text style={{ paddingLeft: 7.5, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nomor Kartu Kredit</Text>
                                     </View>
                                     <ContainerSection>
                                         <Input
@@ -242,7 +242,7 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 80, marginLeft: 10, marginRight: 10 }}>
                                     <View style={{ flex: 2, flexDirection: 'row' }}>
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ paddingLeft: 7.5, color: 'black',  fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Tanggal Kadaluarsa</Text>
+                                            <Text style={{ paddingLeft: 7.5, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Tanggal Kadaluarsa</Text>
                                             <ContainerSection>
                                                 <InputDate
                                                     placeholder=''
@@ -294,29 +294,29 @@ export class PaymentMethodPage extends React.Component {
                                         />
                                     </View>
 
-                                    <View style={{ width: '20%', height: '100%', justifyContent: 'center', flexDirection: 'column', marginLeft: -15 }}>
+                                    <View style={{ width: '38%', height: '100%', justifyContent: 'center', flexDirection: 'column', marginLeft: -15 }}>
                                         <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>Midtrans</Text>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>secured payments</Text>
                                     </View>
 
-                                    <View style={{ width: '60%', height: '100%', alignItems: 'center', flexDirection: 'row', }}>
+                                    <View style={{ width: '40%', height: '100%', flexDirection: 'row', marginTop: 5 }}>
                                         <View style={{ flex: 1 }}>
                                             <Image
-                                                style={{ width: 55, height: 90, alignSelf: 'center', marginTop: 17.5 }}
+                                                style={{ width: 40, height: 75, alignSelf: 'center', marginTop: 18.5, }}
                                                 source={require('./../assets/images/ic_visaverify.jpg')}
                                                 resizeMode='contain'
                                             />
                                         </View>
                                         <View style={{ flex: 1, }}>
                                             <Image
-                                                style={{ width: 55, height: 100, alignSelf: 'center', marginTop: 17.5 }}
+                                                style={{ width: 41, height: 80, alignSelf: 'center', marginTop: 17.5 }}
                                                 source={require('./../assets/images/ic_mastercardverify.jpg')}
                                                 resizeMode='contain'
                                             />
                                         </View>
                                         <View style={{ flex: 1 }}>
                                             <Image
-                                                style={{ width: 55, height: 90, alignSelf: 'center', marginTop: 17.5 }}
+                                                style={{ width: 41, height: 80, alignSelf: 'center', marginTop: 17.5 }}
                                                 source={require('./../assets/images/ic_norton.jpg')}
                                                 resizeMode='contain'
                                             />
@@ -349,15 +349,15 @@ export class PaymentMethodPage extends React.Component {
                                             switchOn={this.state.toggleSecureSave}
                                             onPress={this.onPressSecureSave}
                                             circleColorOff='white'
-                                            circleColorOn='red'
+                                            circleColorOn='#ef1c25'
                                         />
                                     </View>
                                 </View>
 
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
-                                    <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ backgroundColor: '#ef1c25', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
-                                        <Text style={{ color: 'white', fontSize: 15,  fontFamily: 'Quicksand-Bold', }}>BAYAR</Text>
+                                        <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>BAYAR</Text>
 
                                     </View>
                                 </TouchableOpacity>
@@ -397,11 +397,11 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ borderWidth: 0.5, borderColor: '#e5e5e5', width: '80%', alignSelf: 'center', flexDirection: 'row' }} />
 
-                                <View style={{ height: 200, }}>
+                                <View style={{ height: 130, backgroundColor: 'white' }}>
 
                                     <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center' }}>
 
-                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 20 }}>
+                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 10 }}>
                                             <CheckBox
                                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                                 onPress={() => this.checkBCA()}
@@ -409,7 +409,7 @@ export class PaymentMethodPage extends React.Component {
                                             />
                                         </View>
 
-                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center', paddingRight: 10 }}>
                                             <Image
                                                 style={{ width: 110, height: 65, alignSelf: 'center' }}
                                                 source={require('./../assets/images/ic_BCA.jpg')}
@@ -417,7 +417,7 @@ export class PaymentMethodPage extends React.Component {
                                             />
                                         </View>
 
-                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 20 }}>
+                                        <View style={{ width: '14%', height: '100%', flexDirection: 'row', paddingLeft: 10 }}>
                                             <CheckBox
                                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                                                 onPress={() => this.checkedBNI()}
@@ -425,7 +425,7 @@ export class PaymentMethodPage extends React.Component {
                                             />
                                         </View>
 
-                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center' }}>
+                                        <View style={{ width: '36%', height: '100%', flexDirection: 'row', justifyContent: 'center', paddingRight: 10 }}>
                                             <Image
                                                 style={{ width: 110, height: 65, alignSelf: 'center' }}
                                                 source={require('./../assets/images/ic_BNI.jpg')}
@@ -436,7 +436,7 @@ export class PaymentMethodPage extends React.Component {
 
                                     </View>
 
-                                    <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center', paddingLeft: 20 }}>
+                                    <View style={{ flex: 1, height: '50%', flexDirection: 'row', margin: 5, justifyContent: 'center', paddingLeft: 10 }}>
 
                                         <View style={{ width: '14%', height: '100%', flexDirection: 'row', }}>
                                             <CheckBox
@@ -509,7 +509,7 @@ export class PaymentMethodPage extends React.Component {
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row' }}>
                                         <TouchableOpacity>
-                                            <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>COPY</Text>
+                                            <Text style={{ color: '#ef1c25', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>COPY</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
@@ -517,24 +517,24 @@ export class PaymentMethodPage extends React.Component {
                                 <View style={{ height: 50, marginLeft: 15, marginRight: 17.5, flexDirection: 'row', }}>
                                     <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>Total Pembayaran</Text>
-                                        <Text style={{ fontSize: 15,  color: 'black', fontFamily: 'Quicksand-Bold', }}>Rp. 860.000</Text>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>Rp. 860.000</Text>
                                     </View>
                                     <View style={{ height: '100%', width: '20%', justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row', }}>
                                         <TouchableOpacity>
-                                            <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>COPY</Text>
+                                            <Text style={{ color: '#ef1c25', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>COPY</Text>
                                         </TouchableOpacity>
                                     </View>
                                 </View>
 
-                                <View style={{ height: 120, width: '80%', marginLeft: 15, marginRight: 15, flexDirection: 'column', alignSelf: 'center', justifyContent: 'center' }}>
+                                <View style={{ backgroundColor: 'white', height: 100, width: '100%', padding: 10, marginLeft: 30, marginRight: 30, flexDirection: 'column', alignSelf: 'center', justifyContent: 'center' }}>
 
                                     <Text style={{ color: 'black', fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', }}>Pembayaran harus dilakukan dalam waktu 24 jam
-                                    {'\n'}  atau pesanan akan dibatalkan.{'\n'}Pesanan akan diproses setelah Anda melakukan pembayaran </Text>
+                                    {'\n'}  atau pesanan akan dibatalkan. Pesanan akan{'\n'}diproses setelah Anda melakukan pembayaran </Text>
 
                                 </View>
 
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailOrder')}>
-                                    <View style={{ backgroundColor: 'red', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View style={{ backgroundColor: '#ef1c25', height: 50, margin: 10, borderRadius: 50, alignItems: 'center', justifyContent: 'center' }}>
 
                                         <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>BAYAR</Text>
 
