@@ -53,7 +53,7 @@ export class ProfileCrafterPage extends React.Component {
         return (
             <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginRight: 10, marginBottom: 10, }}>
                 <Image
-                    style={{ height: 110, width: 110, resizeMode: 'cover', margin:5 }}
+                    style={{ height: 110, width: 110, resizeMode: 'cover', margin: 5 }}
                     source={{ uri: data.item }}
                 />
             </View>
@@ -77,7 +77,7 @@ export class ProfileCrafterPage extends React.Component {
                         resizeMode='cover'
                     />
 
-                    <View style={{ flex: 1, flexDirection: 'row', height: 225, marginTop: -110, }}>
+                    <View style={{ flex: 1, flexDirection: 'row', height: 220, marginTop: -110, }}>
 
                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
                             < View style={{ borderRadius: 100, height: 180, width: 180, justifyContent: 'center' }}>
@@ -101,18 +101,18 @@ export class ProfileCrafterPage extends React.Component {
 
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <Image
-                                            style={{ height: 15, width: 10, marginLeft: 7.5 }}
-                                            source={require('./../assets/images/location_icon.png')}
+                                            style={{ height: 40, width: 15, marginLeft: 3 }}
+                                            source={require('./../assets/images/loc_mainprof.png')}
                                             resizeMode='contain'
                                         />
                                         <View style={{ flex: 1 }}>
-                                            <Text style={{ marginLeft: 10, fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
+                                            <Text style={{ marginLeft: 12, fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular' }}>Indonesia, Banten</Text>
                                         </View>
                                     </View>
 
                                     <View style={{ flex: 1, flexDirection: 'row', }}>
                                         <Image
-                                            style={{ height: 20, width: 20, }}
+                                            style={{ height: 25, width: 25, marginTop: -3, marginLeft: -2 }}
                                             source={require('./../assets/images/Cukup.png')}
                                             resizeMode='contain'
                                         />
@@ -126,10 +126,10 @@ export class ProfileCrafterPage extends React.Component {
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, height: 130, alignItems: 'center' }}>
-                        <View style={{ height: '100%', width: '80%', justifyContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Lulusan S2
-                            Interior Desain di Singapura - mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
+                    <View style={{ flex: 1, height: 80, alignItems: 'center', }}>
+                        <View style={{ height: '100%', width: '80%', }}>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: '#787878', fontStyle: 'italic', textAlign: 'center' }}>Lulusan S2
+                            Interior Desain di Singapura - Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Desain Interior
                                 Awards 2017- Resmi Anggota Asephi    </Text>
                         </View>
                     </View>
@@ -306,23 +306,23 @@ export class ProfileCrafterPage extends React.Component {
 
 
 
-                                <View style={{ width: '100%', height: 120, flexDirection: 'row', }}>
+                                <View style={{ width: '100%', height: 85, flexDirection: 'row', backgroundColor: 'white' }}>
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center'
                                             }}
                                             resizeMode='stretch'
                                             source={require('./../assets/images/Buruk.png')}
                                         />
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Buruk</Text>
+                                        {/* <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Buruk</Text> */}
 
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
+
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -330,19 +330,18 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center',
                                                 marginTop: 5
                                             }}
                                             resizeMode='stretch'
                                             source={require('./../assets/images/Cukup.png')}
                                         />
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 3 }}>Cukup</Text>
+                                        {/* <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 3 }}>Cukup</Text> */}
 
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -350,19 +349,20 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 55,
                                                 alignSelf: 'center',
-                                                marginTop: 5
+                                                marginTop: 5,
+                                                alignItems: 'center'
                                             }}
                                             resizeMode='stretch'
                                             source={require('./../assets/images/Bagus.png')}
                                         />
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Baik</Text>
+                                        {/* <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Baik</Text> */}
 
 
                                     </View>
 
-                                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
+
 
                                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
@@ -370,53 +370,81 @@ export class ProfileCrafterPage extends React.Component {
                                         <Image
                                             style={{
                                                 width: 65,
-                                                height: 65,
+                                                height: 60,
                                                 alignSelf: 'center'
                                             }}
                                             resizeMode='stretch'
                                             source={require('./../assets/images/sempurna.png')}
                                         />
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 11 }}>Sempurna</Text>
+                                        {/* <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 11 }}>Sempurna</Text> */}
 
                                     </View>
 
                                 </View>
 
-                                <View style={{ width: '100%', height: 40, flexDirection: 'row', backgroundColor: 'white' }}>
-                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                                <View style={{ width: '100%', height: 20, flexDirection: 'row', backgroundColor: 'white', marginTop: -10 }}>
+                                <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(0)</Text>
-
-                                    </View>
-
-                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(1)</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black' }}>Buruk</Text>
 
                                     </View>
 
                                     <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(2)</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black' }}>Cukup</Text>
 
                                     </View>
 
                                     <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
-                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(4)</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black' }}>Baik</Text>
+
+                                    </View>
+
+                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black' }}>Sempurna</Text>
 
                                     </View>
 
                                 </View>
 
+                                <View style={{ width: '100%', height: 20, flexDirection: 'row', backgroundColor: 'white', }}>
+                                    <View style={{ width: '25%', flexDirection: 'column',justifyContent: 'center',  alignItems: 'center' }}>
+
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>(0)</Text>
+
+                                    </View>
+
+                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>(1)</Text>
+
+                                    </View>
+
+                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', }}>(2)</Text>
+
+                                    </View>
+
+                                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', }}>(4)</Text>
+
+                                    </View>
+
+                                </View>
+
+                                <View style={{ width: '100%', height: 5, flexDirection: 'row', backgroundColor: 'white', }} />
 
 
                                 <ScrollView style={{
                                     backgroundColor: '#eaeaea',
-                                    flex: 1
+                                    flex: 1,
                                 }}>
 
-                                    <View style={{ flex: 1, backgroundColor: 'white', marginTop: 12.5, marginLeft: 15, marginRight: 15 }}>
+                                    <View style={{ flex: 1, backgroundColor: 'white', margin: 15 }}>
 
                                         <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, marginRight: 20, marginLeft: 20 }}>
 
@@ -447,7 +475,7 @@ export class ProfileCrafterPage extends React.Component {
                                                 <Image
                                                     style={{
                                                         width: 65,
-                                                        height: 65,
+                                                        height: 60,
                                                         alignSelf: 'center',
                                                         marginLeft: 15
                                                     }}
@@ -457,7 +485,7 @@ export class ProfileCrafterPage extends React.Component {
                                             </View>
                                         </View>
 
-                                        <View style={{ margin: 5, height: '80%', }}>
+                                        <View style={{ marginTop: 5, marginLeft: 10, marginRight: 10, marginBottom: 15, }}>
 
                                             <View style={{}}>
                                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Rekomen Banget</Text>
@@ -478,14 +506,14 @@ export class ProfileCrafterPage extends React.Component {
                     }
                 </ScrollView>
 
-                <View style={{ width: '100%', height: 80, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
-                    <View style={{ width: '5%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3 }}>
+                <View style={{ width: '100%', height: 50, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                    <View style={{ width: '10%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3, }}>
                         <TouchableOpacity>
                             <Image style={{ width: 15, height: 15 }}
                                 source={require('../assets/images/Information.png')} />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ width: '25%', height: '100%', justifyContent: 'center' }}>
+                    <View style={{ width: '33%', height: '100%', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Harga Pesanan</Text>
                         <Text
                             style={{
@@ -495,7 +523,7 @@ export class ProfileCrafterPage extends React.Component {
                         >Rp 860.000
                                 </Text>
                     </View>
-                    <View style={{ width: '28%', height: '100%', justifyContent: 'center' }}>
+                    <View style={{ width: '33%', height: '100%', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Estimasi Selesai</Text>
                         <Text
                             style={{
@@ -505,17 +533,20 @@ export class ProfileCrafterPage extends React.Component {
                         >27 Feb 18
                                 </Text>
                     </View>
-                    <View style={{ width: '10%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: '24%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')} >
                             <Image style={{ width: 30, height: 30 }}
                                 source={require('../assets/images/Chat.png')} />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ width: '32%', height: '100%', justifyContent: 'center', marginLeft: 5 }}>
+                </View>
+
+                <View style={{ width: '100%', height: 50, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                    <View style={{ width: '100%', height: '100%', justifyContent: 'center' }}>
                         <TouchableOpacity
                             style={{
                                 borderWidth: 0, borderRadius: 25, backgroundColor: '#ef1c25',
-                                height: 40, width: 100, justifyContent: 'center'
+                                flex: 1, justifyContent: 'center', marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 10
                             }}
                             onPress={() => Alert.alert(
                                 'PILIH CRAFTER INI',
@@ -532,6 +563,7 @@ export class ProfileCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+
 
             </View >
         );

@@ -222,13 +222,14 @@ export class HelpMenuPage extends React.Component {
                     <View style={{
                         marginLeft: 10,
                         marginRight: 10,
-                        marginTop: 25,
+                        marginTop: 20,
                         flex: 2,
                         flexDirection: 'column',
                         backgroundColor: 'white',
                         height: 200,
                         alignItems: 'center',
-                        alignContent: 'center'
+                        alignContent: 'center',
+                        marginBottom: 10
                     }}>
                         <View style={{ height: 70, width: '90%', justifyContent: 'center', marginTop: 10 }}>
                             <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Masih Perlu Bantuan ?</Text>

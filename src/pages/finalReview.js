@@ -16,7 +16,7 @@ export class FinalReviewPage extends React.Component {
         return (
             <ImageBackground
                 style={{ width: '100%', height: '100%' }}
-                source={require('./../assets/images/bg-login.jpg')}
+                source={require('./../assets/images/bg-login.png')}
             >
                 <View style={{ flexDirection: 'column' }}>
                     <View style={styles.containerTextTop}>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     textMid: {
         fontFamily: 'Quicksand-Bold',
-        color: '#FFD700',
+        color: 'red',
         textAlign: 'center',
     },
     bodyText: {
