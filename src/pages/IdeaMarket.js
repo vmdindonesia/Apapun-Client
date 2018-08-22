@@ -24,8 +24,8 @@ export class IdeaMarketPage extends React.Component {
             <View style={{ flex: 1 }}>
 
                 <ScrollView>
-                    <View style={{ flex: 1, flexDirection: 'column', height: '100%', marginTop: 10, alignItems: 'center' }}>
-                        <View style={{ flex: 1, height: 100, margin: 5, width: '100%' }}>
+                    <View style={{ flex: 1, flexDirection: 'column', height: '100%', marginTop: 5, alignItems: 'center', marginLeft: 15, marginRight: 15,  }}>
+                        <View style={{ flex: 1, height: 100, width: '100%', marginTop : 5 }}>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('IdeaFashion')}
 
@@ -43,7 +43,7 @@ export class IdeaMarketPage extends React.Component {
                             </TouchableOpacity>
                         </View>
 
-                        <View style={{ flex: 1, height: 100, margin: 5, width: '100%' }}>
+                        <View style={{ flex: 1, height: 100, width: '100%', marginTop : 5  }}>
                             <TouchableOpacity
                                 // onPress={() => this.props.navigation.navigate('IdeaFurniture')}
                                 onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
@@ -61,7 +61,7 @@ export class IdeaMarketPage extends React.Component {
                             </TouchableOpacity >
                         </View>
 
-                        <View style={{ flex: 1, height: 100, margin: 5, width: '100%' }}>
+                        <View style={{ flex: 1, height: 100, width: '100%', marginTop : 5  }}>
                             <TouchableOpacity
                                 // onPress={() => this.props.navigation.navigate('Ideadht')}
                                 onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
@@ -80,7 +80,7 @@ export class IdeaMarketPage extends React.Component {
                         </View>
 
 
-                        <View style={{ flex: 1, height: 100, margin: 5, width: '100%' }}>
+                        <View style={{ flex: 1, height: 100, width: '100%', marginTop : 5  }}>
                             <TouchableOpacity
                                 // onPress={() => this.props.navigation.navigate('IdeaBeauty')}
                                 onPress={() => { ToastAndroid.show('Under Development', ToastAndroid.SHORT); }}
@@ -100,7 +100,7 @@ export class IdeaMarketPage extends React.Component {
                     </View>
                 </ScrollView>
 
-            </View>
+            </View >
         )
     }
 

@@ -120,6 +120,18 @@ const Routes = createStackNavigator({
   Dashboard: {
     screen: DashboardPage
   },
+  IdeaMarket: {
+    screen: IdeaMarketPage
+  },
+  detailsendingIdeaPage: {
+    screen: detailsendingIdeaPage
+  },
+  onClickProductOnIdeaFashion: {
+    screen: onClickProductOnIdeaFashionPage
+  },
+  ListTshirt: {
+    screen: ListTshirtPage
+  },
   PaymentMethod: {
     screen: PaymentMethodPage
   },
@@ -129,7 +141,6 @@ const Routes = createStackNavigator({
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
-
   searchCrafterOnProfile: {
     screen: searchCrafterOnProfilePage
   },
@@ -154,18 +165,15 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
- 
   CrafterOrderMenu: {
     screen: CrafterOrderMenuPage
   },
- 
   ReviewProduct: {
     screen: ReviewProductPage
   },
   RegisToIdeaMarket: {
     screen: RegisToIdeaMarketPage
   },
-
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
@@ -175,65 +183,44 @@ const Routes = createStackNavigator({
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
-
   CrafterList: {
     screen: CrafterListPage
   },
   DetailOrder: {
     screen: DetailOrderPage
   },
-
-
   MenuCrafter: {
     screen: MenuCrafterPage
   },
-
-
-
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-
   NotificationMenu: {
     screen: NotificationMenuPage
   },
-
   ProfilePage: {
     screen: ProfileBuyerPage
   },
-
   ListKemeja: {
     screen: ListKemejaPage
   },
-
-
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
   },
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
-
   IntroApp: {
     screen: IntroAppPage
   },
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
-
   UlasanOnCrafterProfile: {
     screen: UlasanOnCrafterProfilePage
-  },
-
-
-  ListTshirt: {
-    screen: ListTshirtPage
-  },
-  IdeaMarket: {
-    screen: IdeaMarketPage
   },
   MyOrderIdea: {
     screen: MyOrderIdeaPage
@@ -241,33 +228,23 @@ const Routes = createStackNavigator({
   MyOrder: {
     screen: MyOrderPage
   },
-
   pengaturanBank: {
     screen: PengaturanBankPage
   },
-
   ForgotPassword: {
     screen: ForgotPasswordPage
   },
-
-
-
   Login: {
     screen: LoginPage
   },
   MenuLogin: {
     screen: MenuLoginPage
   },
-
   DesignSaya: {
     screen: DesignSayaPage
   },
   PageDesign: {
     screen: PageDesignPage
-  },
- 
-  detailsendingIdeaPage: {
-    screen: detailsendingIdeaPage
   },
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
@@ -275,8 +252,6 @@ const Routes = createStackNavigator({
   FinalProcessOrder: {
     screen: FinalProcessOrderPage
   },
-
-
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
@@ -292,21 +267,14 @@ const Routes = createStackNavigator({
   IdeaFashion: {
     screen: IdeaFashionPage
   },
-
   searchCrafterIdeaMarket: {
     screen: searchCrafterIdeaMarketPage
   },
-
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-
   ListHoodie: {
     screen: ListHoodiePage
-  },
-
-  onClickProductOnIdeaFashion: {
-    screen: onClickProductOnIdeaFashionPage
   },
   CrafterMenu: {
     screen: CrafterMenuPage
@@ -323,18 +291,15 @@ const Routes = createStackNavigator({
   Gambar: {
     screen: GambarPage
   },
-
   crafterMenuNote: {
     screen: crafterMenuNotePage
   },
-
   addNoteOnCrafterMenu: {
     screen: addNoteOnCrafterMenuPage
   },
   editNoteOnCrafterMenu: {
     screen: editNoteOnCrafterMenuPage
   },
-
   ProductDetailNya: {
     screen: ProductDetailNyaPage
   },
@@ -344,7 +309,6 @@ const Routes = createStackNavigator({
   CrafterMenu: {
     screen: CrafterMenuPage
   },
-
   SettingProduct: {
     screen: SettingProductPage
   },
@@ -384,7 +348,6 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-
   OrderForCrafter: {
     screen: OrderForCrafterPage
   },
@@ -428,7 +391,6 @@ const Routes = createStackNavigator({
   CrafterInputResi: {
     screen: CrafterInputResiPage
   },
-
   NotificationSystem: {
     screen: NotificationSystemPage
   },
@@ -444,23 +406,15 @@ const Routes = createStackNavigator({
   SettingMenu: {
     screen: SettingManuPage
   },
-
-
-
   ReviewProduct: {
     screen: ReviewProductPage
   },
-
-
   DetailOrder: {
     screen: DetailOrderPage
   },
-
-
   HistoryOnMyOrder: {
     screen: HistoryOnMyOrderPage
   },
-
   FashionCrafter: {
     screen: FashionCrafterPage
   },

@@ -86,19 +86,16 @@ export class detailsendingIdeaPage extends React.Component {
 
                             <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                                    <Text style={{ paddingLeft: 5, fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah yang dipesan :</Text>
+                                    <Text style={{ paddingLeft: 3, fontSize: 14, fontFamily: 'Quicksand-Bold', color: 'black' }}>Jumlah yang dipesan :</Text>
                                 </View>
 
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
 
                                     <TouchableOpacity
                                         onPress={() => this.minusNumber()}
-                                        style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                        style={{ width: 30, height: 30, justifyContent: 'center', marginRight: 5, backgroundColor: 'red', borderRadius: 5 }}
                                     >
-                                        <Image
-                                            style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
-                                            source={require('../assets/images/minus.png')}
-                                        />
+                                        <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-remove' />
                                     </TouchableOpacity>
                                     <View style={{ width: 45, height: 40, }}>
                                         <InputNumber
@@ -110,19 +107,16 @@ export class detailsendingIdeaPage extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() => this.plusNumber()}
-                                        style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                        style={{ width: 30, height: 30, justifyContent: 'center', marginLeft: 5, backgroundColor: 'red', borderRadius: 5 }}
                                     >
-                                        <Image
-                                            style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
-                                            source={require('../assets/images/plus.png')}
-                                        />
+                                        <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-add' />
                                     </TouchableOpacity>
                                 </View>
                             </View>
 
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
                                 <View style={{
-                                    width: 105, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, height: 35, justifyContent: 'center',
+                                    width: 116, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, height: 35, justifyContent: 'center',
                                     backgroundColor: '#fff',
                                 }}>
                                     <Picker
@@ -143,7 +137,7 @@ export class detailsendingIdeaPage extends React.Component {
                         <View style={{ flex: 1, backgroundColor: '' }}>
                             <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
 
-                                <Text style={{ paddingLeft: 5, fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', color: 'black', alignSelf: 'center' }}>Jasa Pengiriman</Text>
+                                <Text style={{ paddingLeft: 3, fontSize: 14, fontFamily: 'Quicksand-Bold', color: 'black', alignSelf: 'center' }}>Jasa Pengiriman</Text>
 
                             </View>
 
@@ -158,7 +152,7 @@ export class detailsendingIdeaPage extends React.Component {
                                     >
                                         <Picker.Item label='Pos Indonesia' value='PosIdn' />
                                         <Picker.Item label='Tiki' value='Tiki' />
-                                        <Picker.Item label='JNE Regular' value='Jne' />
+                                        <Picker.Item label='JNE Bold' value='Jne' />
                                     </Picker>
                                 </View>
                             </View>
@@ -170,7 +164,7 @@ export class detailsendingIdeaPage extends React.Component {
                         <View style={{ flex: 1, backgroundColor: 'white' }}>
                             <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
 
-                                <Text style={{ paddingLeft: 5, fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', color: 'black', alignSelf: 'center' }}>Alamat Pengiriman</Text>
+                                <Text style={{ paddingLeft: 3, fontSize: 14, fontFamily: 'Quicksand-Bold', color: 'black', alignSelf: 'center' }}>Alamat Pengiriman</Text>
 
                             </View>
 
@@ -199,9 +193,9 @@ export class detailsendingIdeaPage extends React.Component {
                 </ScrollView>
 
                 <TouchableOpacity style={{ backgroundColor: '#ef1c25', height: 40, margin: 15, borderRadius: 20, justifyContent: 'center' }}
-                 onPress={() => this.props.navigation.navigate('searchCrafterIdeaMarket')} 
+                    onPress={() => this.props.navigation.navigate('searchCrafterIdeaMarket')}
                 >
-                    <Text style={{ fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>MENCARI CRAFTER</Text>
+                    <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', alignSelf: 'center' }}>MENCARI CRAFTER</Text>
                 </TouchableOpacity>
 
             </View>

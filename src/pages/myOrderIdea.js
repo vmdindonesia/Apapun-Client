@@ -162,7 +162,7 @@ export class MyOrderIdeaPage extends React.Component {
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Deskripsi Produk</Text>
 
                         <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center', paddingTop: 10 }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Ukuran</Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black', paddingLeft: 10 }}>Ukuran</Text>
                             <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Bahu : 15 Cm</Text>
                             <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Panjang Lengan : 22 Cm</Text>
                             <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Lingkar Dada : 106 Cm</Text>
@@ -171,7 +171,7 @@ export class MyOrderIdeaPage extends React.Component {
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Deskripsi</Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black', paddingLeft: 10 }}>Deskripsi</Text>
                             <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Kaos Pria yang simple tapi fashionable. Bahan menyerap keringat dan nyaman dipakai</Text>
                         </View>
 
@@ -208,19 +208,19 @@ export class MyOrderIdeaPage extends React.Component {
 
                     </View>
 
-                    <View style={{ height: 150, flex: 1, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ height: 150, flex: 1, justifyContent: 'center', margin: 10 }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Alamat Pengiriman</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5, marginBottom: 5 }}>Alamat Pengiriman</Text>
 
-                        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Home 1</Text>
-                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
+                        <View style={{ flex: 1, backgroundColor: 'white',justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black', paddingLeft: 10 }}> Home 1</Text>
+                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Penerima : <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>(+62)<Text> 84485300 </Text></Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Jl. Duri Kepa 4 No 5 </Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }} >Kebon Jeruk, Jakarta Barat </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 12 }}>(+62)<Text> 84485300 </Text></Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 12 }}>Jl. Duri Kepa 4 No 5 </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 12 }} >Kebon Jeruk, Jakarta Barat </Text>
                         </View>
 
                     </View>

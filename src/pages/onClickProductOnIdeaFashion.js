@@ -50,25 +50,25 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                             </TouchableOpacity>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 6 }}>
-                                <Image style={{ height: 23, width: 23, }}
+                            <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', }}>
+                                <Image style={{ height: 17, width: 17, alignSelf: 'center', marginRight: 2 }}
                                     source={require('./../assets/images/ic_share.png')}
-                                // resizeMode='stretch'
+                                    resizeMode='contain'
                                 />
                             </View>
                             <TouchableWithoutFeedback
                                 onPress={() => this.setState({ imagewhishlist: !this.state.imagewhishlist })}
                             >
-                                <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7, marginLeft: 10, marginRight: 20 }}>
+                                <View style={{ height: 40, width: 40, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', marginLeft: 10, marginRight: 20 }}>
                                     {
                                         imagewhishlist === true ?
 
-                                            <Image style={{ height: 27, width: 27, }}
+                                            <Image style={{ height: 21, width: 21, alignSelf: 'center' }}
                                                 source={require('./../assets/images/ic_after_wishlist.png')}
                                             // resizeMode='stretch'
                                             />
                                             :
-                                            <Image style={{ height: 27, width: 27, }}
+                                            <Image style={{ height: 21, width: 21, alignSelf: 'center' }}
 
                                                 source={require('./../assets/images/ic_wishlist.png')}
                                             // resizeMode='stretch'
@@ -137,7 +137,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                 </ScrollView>
 
                 <TouchableOpacity style={{ zIndex: 4, marginBottom: -20, alignSelf: 'center' }}
-                        onPress={() => this.props.navigation.navigate('detailsendingIdeaPage')}
+                    onPress={() => this.props.navigation.navigate('detailsendingIdeaPage')}
                 >
                     <View style={{ height: 40, width: 150, backgroundColor: '#ef1c25', borderRadius: 30, justifyContent: 'center', alignItems: 'center', }}>
                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', textAlign: 'center' }}>PROSES</Text>
