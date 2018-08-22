@@ -46,110 +46,84 @@ export class UlasanOnCrafterProfilePage extends React.Component {
 
     render() {
         return (
-            <View style={{
-                flex: 1,
-                // backgroundColor: '#eaeaea',
-            }}>
-
+            <View style={{ flex: 1 }}>
                 <View style={{ width: '100%', height: 90, flexDirection: 'row', }}>
                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
                         <Image
                             style={{
-                                width: 65,
-                                height: 65,
+                                width: 50,
+                                height: 50,
                                 alignSelf: 'center'
                             }}
-                            resizeMode='stretch'
+                            resizeMode='contain'
                             source={require('./../assets/images/Buruk.png')}
                         />
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Buruk</Text>
-
-
                     </View>
 
-                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
-
                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-
-
                         <Image
                             style={{
-                                width: 65,
-                                height: 65,
+                                width: 50,
+                                height: 50,
                                 alignSelf: 'center',
                                 marginTop: 5
                             }}
-                            resizeMode='stretch'
+                            resizeMode='contain'
                             source={require('./../assets/images/Cukup.png')}
                         />
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 3 }}>Cukup</Text>
-
-
                     </View>
-
-                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
-
                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-
-
                         <Image
                             style={{
-                                width: 65,
-                                height: 65,
+                                width: 50,
+                                height: 50,
                                 alignSelf: 'center',
                                 marginTop: 5
                             }}
-                            resizeMode='stretch'
+                            resizeMode='contain'
                             source={require('./../assets/images/Bagus.png')}
                         />
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 5 }}>Baik</Text>
-
-
                     </View>
-
-                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center' }} />
-
                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-
-
                         <Image
                             style={{
-                                width: 65,
-                                height: 65,
+                                width: 50,
+                                height: 50,
                                 alignSelf: 'center'
                             }}
-                            resizeMode='stretch'
+                            resizeMode='contain'
                             source={require('./../assets/images/sempurna.png')}
                         />
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 11 }}>Sempurna</Text>
-
                     </View>
-
                 </View>
 
-                <View style={{ width: '100%', height: 40, flexDirection: 'row', backgroundColor: 'white' }}>
-                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ width: '100%', height: 30, flexDirection: 'row', backgroundColor: 'white' }}>
+                    <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(0)</Text>
 
                     </View>
 
-                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
 
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(1)</Text>
 
                     </View>
 
-                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(2)</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(2)</Text>
 
                     </View>
 
-                    <View style={{ width: '25%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center', paddingLeft: 10 }}>(4)</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>(4)</Text>
 
                     </View>
 
@@ -185,19 +159,15 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 10 }}>28 Januari 2018, 18.04</Text>
                                 </View>
                             </View>
-
-                            <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '40%', alignSelf: 'center', marginLeft: 10 }} />
-
-
-                            <View style={{ width: '40%', height: '100%', flexDirection: 'row', }}>
+                            <View style={{ width: '40%', height: '100%', flexDirection: 'row' }}>
                                 <Image
                                     style={{
-                                        width: 65,
-                                        height: 65,
+                                        width: 50,
+                                        height: 50,
                                         alignSelf: 'center',
-                                        marginLeft : 15
+                                        marginLeft: 50
                                     }}
-                                    resizeMode='stretch'
+                                    resizeMode='contain'
                                     source={require('./../assets/images/sempurna.png')}
                                 />
                             </View>

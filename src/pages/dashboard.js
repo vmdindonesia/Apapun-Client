@@ -728,21 +728,20 @@ export class DashboardPage extends React.Component {
                                                             orderStatus === 'custom' ?
                                                                 <View style={{ flex: 1 }}>
                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row' }}>
-                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                                                                             <Image
                                                                                 style={{ height: 200, width: 200 }}
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_custom.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: wp ('50%'), flexDirection: 'column', paddingRight: 5, paddingTop: 7 }}>
-                                                                            <View>
+                                                                        <View style={{ flex: 1, flexDirection: 'column', paddingRight: 5, paddingTop: 7 }}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
                                                                             </View>
-                                                                            <View>
+                                                                            <View style={{ flex: 1, marginTop: hp('11%') }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('7%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -793,21 +792,20 @@ export class DashboardPage extends React.Component {
                                                             orderStatus === 'capture-get' ?
                                                                 <View style={{ flex: 1 }}>
                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row' }}>
-                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                                                                             <Image
                                                                                 style={{ height: 200, width: 200 }}
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_capture.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: wp('50%'), flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
-                                                                            <View>
+                                                                        <View style={{ flex: 1, flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CAPTURE N' GET</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
                                                                             </View>
-                                                                            <View>
+                                                                            <View style={{ flex: 1, marginTop: hp('11%') }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('7%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45
@@ -858,21 +856,20 @@ export class DashboardPage extends React.Component {
                                                             orderStatus === 'idea-market' ?
                                                                 <View style={{ flex: 1 }}>
                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row' }}>
-                                                                        <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center' }}>
+                                                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                                             <Image
                                                                                 style={{ height: 200, width: 200 }}
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_idea.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingRight: 5 }}>
-                                                                            <View>
+                                                                        <View style={{ flex: 1, flexDirection: 'column', paddingTop: 7, paddingRight: 5}}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>IDEA MARKET</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 15, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Disini kamu bisa lihat hasil karya unik dan menarik teman-teman mu dan kamu bisa membelinya loh!</Text>
                                                                             </View>
-                                                                            <View >
+                                                                            <View style={{ flex: 1, marginTop: hp('11%') }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('4.65%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 45

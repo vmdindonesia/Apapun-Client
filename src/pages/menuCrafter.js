@@ -85,15 +85,15 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 20, marginRight: 20, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
                         Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
                         </View>
-                        <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 15 }}>
+                        <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('EditProfileCrafter')}
                                 style={{
                                     backgroundColor: 'black', width: '100%', height: 40,
-                                    borderRadius: 15, justifyContent: 'center'
+                                    borderRadius: 30, justifyContent: 'center'
                                 }}
                             >
                                 <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 13, textAlign: 'center' }}>Edit Profil</Text>
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         height: 155,
         width: 155,
         borderRadius: 100,
-        borderColor: 'white',
+        borderColor: '#fff',
         borderWidth: 5
     },
     textStyle: {

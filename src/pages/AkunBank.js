@@ -54,7 +54,8 @@ export class AkunBankPage extends React.Component {
           borderBottomWidth: 2,
           marginBottom: 3,
           // flex: 1,
-          borderColor: '#e5e5e5'
+          borderColor: '#e5e5e5',
+          backgroundColor: '#fff'
         }}>
 
           <View

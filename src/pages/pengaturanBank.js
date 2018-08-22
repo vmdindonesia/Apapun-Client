@@ -507,8 +507,9 @@ export class PengaturanBankPage extends React.Component {
                                         uriFoto == '' ?
 
                                             <Image
-                                                style={{ height: 165, width: 165, alignSelf: 'center' }}
-                                                source={require('./../assets/images/pengaturan-bank/foto_asli.png')}
+                                                style={{ height: 140, width: 140, alignSelf: 'center' }}
+                                                source={require('./../assets/images/pengaturan-bank/persegi.png')}
+                                                resizeMode='contain'
                                             />
                                             :
                                             <Image
@@ -532,8 +533,8 @@ export class PengaturanBankPage extends React.Component {
 
                                         <Image
                                             style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                            source={require('./../assets/images/pengaturan-bank/foto_identity.png')}
-                                            resizeMode='stretch'
+                                            source={require('./../assets/images/pengaturan-bank/persegi_panjang.png')}
+                                            resizeMode='contain'
                                         />
                                         :
                                         <Image
@@ -557,8 +558,8 @@ export class PengaturanBankPage extends React.Component {
 
                                         <Image
                                             style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                            source={require('./../assets/images/pengaturan-bank/foto_identity.png')}
-                                            resizeMode='stretch'
+                                            source={require('./../assets/images/pengaturan-bank/persegi_panjang.png')}
+                                            resizeMode='contain'
                                         />
                                         :
                                         <Image

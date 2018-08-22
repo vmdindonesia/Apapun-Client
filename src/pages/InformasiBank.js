@@ -153,12 +153,12 @@ export class InformasiBankPage extends React.Component {
                         <Image style={{ height: 35, width: 35, borderRadius: 0, }}
                             source={require('./../assets/images/ic_wallet.png')}
                         />
-                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', paddingLeft: 10, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
                             Total Apresiasi Desain Anda
                         </Text>
                     </View>
 
-                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
                         Rp. 120.000
                     </Text>
                 </View>
@@ -168,7 +168,7 @@ export class InformasiBankPage extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Depan</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Depan</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gal</Text>
@@ -177,7 +177,7 @@ export class InformasiBankPage extends React.Component {
                         </View>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Belakang</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nama Belakang</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gadot</Text>
@@ -188,7 +188,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nomor Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nomor Rekening</Text>
 
                         <View style={{ height: 40, width: '96%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
                             <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>192BKS7SJ</Text>
@@ -199,7 +199,7 @@ export class InformasiBankPage extends React.Component {
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Bank</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Bank</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Mandiri</Text>
@@ -208,7 +208,7 @@ export class InformasiBankPage extends React.Component {
                         </View>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Cabang</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Cabang</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>BSD</Text>
@@ -222,7 +222,7 @@ export class InformasiBankPage extends React.Component {
                 <View style={{ flex: 1, height: 600, marginRight: 10, marginLeft: 10, }}>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Profil Asli</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Foto Profil Asli</Text>
                         <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getPhotoProfile.bind(this)}> */}
@@ -248,7 +248,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>KTP</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>KTP</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getPhotoKTP.bind(this)}> */}
@@ -273,7 +273,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Buku Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Foto Buku Rekening</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center', }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getBankBook.bind(this)}
@@ -322,7 +322,7 @@ export class InformasiBankPage extends React.Component {
 
                 <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Password</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Password</Text>
 
 
                         <View style={{ height: 40, width: '96F%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>

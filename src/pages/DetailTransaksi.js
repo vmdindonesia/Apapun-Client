@@ -22,12 +22,12 @@ export class DetailTransaksiPage extends React.Component {
                         <Image style={{ height: 35, width: 35, borderRadius: 0, }}
                             source={require('./../assets/images/ic_wallet.png')}
                         />
-                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', paddingLeft: 10, alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
                             Total Apresiasi Desain Anda
                         </Text>
                     </View>
 
-                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
                         Rp. 120.000
                     </Text>
                 </View>
@@ -54,7 +54,7 @@ export class DetailTransaksiPage extends React.Component {
                         heigh: '100%',
                         // backgroundColor: 'red'
                     }}>
-                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 20 }}>28 April 2015</Text>
+                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 20 }}>28 April 2015</Text>
                         <Text style={{
                             color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 20
                         }}  >12:30 PM</Text>
@@ -71,7 +71,7 @@ export class DetailTransaksiPage extends React.Component {
                     }}>
                         <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20 }} />
                         <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Bold', textAlign: 'left', paddingLeft: 20 }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
+                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 20 }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
                         </View>
                     </View>
                 </View>
@@ -95,7 +95,7 @@ export class DetailTransaksiPage extends React.Component {
                         heigh: '100%',
                         backgroundColor: 'white'
                     }}>
-                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 15, paddingTop: 5, paddingLeft: 20 }}>15 April 2015</Text>
+                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 20 }}>15 April 2015</Text>
                         <Text style={{
                             color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 20
                         }}  >1:25 PM</Text>
@@ -112,7 +112,7 @@ export class DetailTransaksiPage extends React.Component {
                     }}>
                         <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20 }} />
                         <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Bold', textAlign: 'left', paddingLeft: 20 }}>Anda mendapatkan Rp. 100.000 dari desain anda <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>1ASKJG9KLASB</Text></Text>
+                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 20 }}>Anda mendapatkan Rp. 100.000 dari desain anda <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>1ASKJG9KLASB</Text></Text>
                         </View>
                     </View>
                 </View>
