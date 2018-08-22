@@ -286,7 +286,7 @@ export class PaymentMethodPage extends React.Component {
 
                                 <View style={{ height: 110, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
 
-                                    <View style={{ width: '20%', height: '100%', justifyContent: 'center', flexDirection: 'column', }}>
+                                    <View style={{ width: '23%', height: '100%', justifyContent: 'center', flexDirection: 'column', }}>
                                         <Image
                                             style={{ width: 50, height: 50, }}
                                             source={require('./../assets/images/ic_secure.png')}
@@ -294,33 +294,43 @@ export class PaymentMethodPage extends React.Component {
                                         />
                                     </View>
 
-                                    <View style={{ width: '38%', height: '100%', justifyContent: 'center', flexDirection: 'column', marginLeft: -15 }}>
-                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', }}>Midtrans</Text>
-                                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', }}>secured payments</Text>
+                                    <View style={{ width: '38%', height: '100%', justifyContent: 'center', flexDirection: 'column',  }}>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', marginLeft: -20}}>Midtrans</Text>
+                                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', marginLeft: -20}}>secured payments</Text>
                                     </View>
 
-                                    <View style={{ width: '40%', height: '100%', flexDirection: 'row', marginTop: 5 }}>
-                                        <View style={{ flex: 1 }}>
-                                            <Image
-                                                style={{ width: 40, height: 75, alignSelf: 'center', marginTop: 18.5, }}
-                                                source={require('./../assets/images/ic_visaverify.jpg')}
-                                                resizeMode='contain'
-                                            />
+                                    <View style={{ width: '35%', height: '100%', flexDirection: 'column', marginTop: 5,  }}>
+
+                                        <View style={{ flex: 1, flexDirection: 'row', }}>
+                                            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                                <Image
+                                                    style={{ width: 40, height: 30, marginTop: 27 }}
+                                                    source={require('./../assets/images/ic_visaverify.jpg')}
+                                                    resizeMode='contain'
+                                                />
+                                            </View>
+                                            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                                <Image
+                                                    style={{ width: 45, height: 20, marginTop: 27 }}
+                                                    source={require('./../assets/images/ic_mastercardverify.jpg')}
+                                                    resizeMode='contain'
+                                                />
+                                            </View>
                                         </View>
-                                        <View style={{ flex: 1, }}>
+
+                                        <View style={{ flex: 1,  alignItems: 'center' }}>
+
                                             <Image
-                                                style={{ width: 41, height: 80, alignSelf: 'center', marginTop: 17.5 }}
-                                                source={require('./../assets/images/ic_mastercardverify.jpg')}
-                                                resizeMode='contain'
-                                            />
-                                        </View>
-                                        <View style={{ flex: 1 }}>
-                                            <Image
-                                                style={{ width: 41, height: 80, alignSelf: 'center', marginTop: 17.5 }}
+                                                style={{ width: 45, height: 20, }}
                                                 source={require('./../assets/images/ic_norton.jpg')}
                                                 resizeMode='contain'
                                             />
+
                                         </View>
+
+
+
+
                                     </View>
                                 </View>
 

@@ -117,14 +117,30 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
-  FinalReview: {
-    screen: FinalReviewPage
+  Dashboard: {
+    screen: DashboardPage
+  },
+  PaymentMethod: {
+    screen: PaymentMethodPage
+  },
+  HelpMenu: {
+    screen: HelpMenuPage
+  },
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+
+  searchCrafterOnProfile: {
+    screen: searchCrafterOnProfilePage
+  },
+  Order: {
+    screen: OrderPage
   },
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
-  searchCrafterOnProfile: {
-    screen: searchCrafterOnProfilePage
+  FinalReview: {
+    screen: FinalReviewPage
   },
   Crafter: {
     screen: CrafterPage
@@ -132,24 +148,17 @@ const Routes = createStackNavigator({
   FindingCrafter: {
     screen: FindingCrafterPage
   },
-  Order: {
-    screen: OrderPage
-  },
   Material: {
     screen: MaterialPage
   },
   Captureandget: {
     screen: CaptureandgetPage
   },
-  HelpMenu: {
-    screen: HelpMenuPage
-  },
+ 
   CrafterOrderMenu: {
     screen: CrafterOrderMenuPage
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
+ 
   ReviewProduct: {
     screen: ReviewProductPage
   },
@@ -172,9 +181,6 @@ const Routes = createStackNavigator({
   },
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  PaymentMethod: {
-    screen: PaymentMethodPage
   },
 
 
@@ -259,10 +265,7 @@ const Routes = createStackNavigator({
   PageDesign: {
     screen: PageDesignPage
   },
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
-  },
-
+ 
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
   },
