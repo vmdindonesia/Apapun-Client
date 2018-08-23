@@ -3,6 +3,7 @@ import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, Touchab
 import axios from 'axios';
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
+import { IPSERVER } from './../shared/config'
 
 export class MyOrderPage extends React.Component {
 
@@ -79,7 +80,7 @@ export class MyOrderPage extends React.Component {
                         <Swiper
                             // style={styles.wrapper}
                             showsButtons={false}
-                            dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                            showsPagination={false}
                         >
                             <View style={styles.slide1}>
                                 <Image
@@ -135,7 +136,7 @@ export class MyOrderPage extends React.Component {
 
                     <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Jumlah yang dipesan</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Jumlah yang dipesan</Text>
 
                         <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>1</Text>
@@ -152,10 +153,10 @@ export class MyOrderPage extends React.Component {
                     <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
 
                         <View style={{ flex: 1, }}>
-                            <View>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Material</Text>
+                            <View >
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Material</Text>
                             </View>
-                            <View style={{ flexDirection: 'row' }}>
+                            <View style={{ flexDirection: 'row', }}>
                                 <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Kayu - RedWood</Text>
                                 </View>
@@ -164,21 +165,19 @@ export class MyOrderPage extends React.Component {
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Besi - Beton</Text>
                                 </View>
 
-                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Plastik - Hop</Text>
-                                </View>
+
 
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 90, justifyContent: 'center', marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ flex: 1, justifyContent: 'center', marginLeft: 10, marginRight: 10, }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Catatan Tambahan</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Catatan Tambahan</Text>
 
-                        <View style={{ height: 50, alignContent: 'center', marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ flex: 1, fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 7, alignSelf: 'center', backgroundColor: 'white' }}>Dibagian atas meja tolong diberikan ukiran "cemara", bentuk
+                        <View style={{ flex: 1, alignContent: 'center', justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 10, alignSelf: 'center', backgroundColor: 'white' }}>Dibagian atas meja tolong diberikan ukiran "cemara", bentuk
                             tulisan saya percayakan kepada anda. </Text>
                         </View>
 
@@ -205,30 +204,27 @@ export class MyOrderPage extends React.Component {
                             />
 
                             <View style={{ flex: 1, alignSelf: 'center', justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', paddingLeft: 15 }}>Pos Indonesia</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 15 }}>Pos Indonesia</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ height: 150, flex: 1, justifyContent: 'center', marginTop: 13, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ flex: 1, justifyContent: 'center', marginTop: 13, marginLeft: 10, marginRight: 10, }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Alamat Pengiriman</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Alamat Pengiriman</Text>
 
-                        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Home 1</Text>
-                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
-                        </View>
-
-                        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>(+62)<Text> 84485300 </Text></Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Jl. Duri Kepa 4 No 5 </Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }} >Kebon Jeruk, Jakarta Barat </Text>
+                        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center', padding: 10 }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black', }}>Home 1</Text>
+                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', }}>Penerima : <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingTop: 10 }}>(+62)<Text> 84485300 </Text></Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Jl. Duri Kepa 4 No 5 </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }} >Kebon Jeruk, Jakarta Barat </Text>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 30 }} />
+                    <View style={{ flex: 1, height: 20 }} />
 
 
 

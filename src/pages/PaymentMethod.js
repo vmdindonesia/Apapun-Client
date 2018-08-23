@@ -166,7 +166,7 @@ export class PaymentMethodPage extends React.Component {
 
                     <View style={{ flex: 1, backgroundColor: 'white', marginLeft: 7, marginRight: 7, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <TouchableOpacity style={{ justifyContent: 'center' }}
-                            onPress={() => this.setState({ CreditCardPayment: !this.state.CreditCardPayment })}
+                            onPress={() => this.setState({ CreditCardPayment: !this.state.CreditCardPayment, BankTransferPayment: false })}
                         >
                             <View style={{ width: '92.5%', flexDirection: 'row', justifyContent: 'center', margin: 10 }}>
                                 <View style={{ flexDirection: 'column', width: '75%' }}>
@@ -294,12 +294,12 @@ export class PaymentMethodPage extends React.Component {
                                         />
                                     </View>
 
-                                    <View style={{ width: '38%', height: '100%', justifyContent: 'center', flexDirection: 'column',  }}>
-                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', marginLeft: -20}}>Midtrans</Text>
-                                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', marginLeft: -20}}>secured payments</Text>
+                                    <View style={{ width: '38%', height: '100%', justifyContent: 'center', flexDirection: 'column', }}>
+                                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', marginLeft: -20 }}>Midtrans</Text>
+                                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', marginLeft: -20 }}>secured payments</Text>
                                     </View>
 
-                                    <View style={{ width: '35%', height: '100%', flexDirection: 'column', marginTop: 5,  }}>
+                                    <View style={{ width: '35%', height: '100%', flexDirection: 'column', marginTop: 5, }}>
 
                                         <View style={{ flex: 1, flexDirection: 'row', }}>
                                             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -318,7 +318,7 @@ export class PaymentMethodPage extends React.Component {
                                             </View>
                                         </View>
 
-                                        <View style={{ flex: 1,  alignItems: 'center' }}>
+                                        <View style={{ flex: 1, alignItems: 'center' }}>
 
                                             <Image
                                                 style={{ width: 45, height: 20, }}
@@ -382,7 +382,7 @@ export class PaymentMethodPage extends React.Component {
 
                     <View style={{ flex: 1, backgroundColor: 'white', marginLeft: 7, marginRight: 7, marginTop: 7, flexDirection: 'column', justifyContent: 'center' }}>
                         <TouchableOpacity style={{ justifyContent: 'center' }}
-                            onPress={() => this.setState({ BankTransferPayment: !this.state.BankTransferPayment })}
+                            onPress={() => this.setState({ BankTransferPayment: !this.state.BankTransferPayment, CreditCardPayment: false })}
                         >
                             <View style={{ flexDirection: 'column', width: '70%', margin: 15 }}>
                                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Bank Transfer</Text>

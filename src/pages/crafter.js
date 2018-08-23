@@ -34,53 +34,53 @@ export class CrafterPage extends React.Component {
         })
     }
 
-    renderProductItem = (data) => {
-        console.log(data, '098');
-        return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile')}>
-                <View style={styles.card}>
-                    <View style={styles.thumbnailContainerStyle}>
-                        <Image
-                            style={styles.thumbnailStyle}
-                            source={{ uri: data.item }}
-                        />
-                    </View>
-                    <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>
-                                Rendy Sutandy
-                            </Text>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, }}>
-                            <Image
-                                style={{ width: 20, height: 27 }}
-                                source={require('./../assets/images/Cukup.png')}
-                                resizeMode='contain'
-                            />
-                            <Text style={{ fontSize: 13, marginLeft:7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
-                                Buruk
-                            </Text>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginBottom: 10 }}>
-                            <Image
-                                style={{ width: 18, height: 18, alignSelf: 'center' }}
-                                source={require('./../assets/images/loc_mainprof.png')}
-                                resizeMode='contain'
-                            />
-                            <Text style={{ fontSize: 13, marginLeft: 7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
-                                Jakarta Barat
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
-        )
-    }
+    // renderProductItem = (data) => {
+    //     console.log(data, '098');
+    //     return (
+    //         <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile')}>
+    //             <View style={styles.card}>
+    //                 <View style={styles.thumbnailContainerStyle}>
+    //                     <Image
+    //                         style={styles.thumbnailStyle}
+    //                         source={{ uri: data.item }}
+    //                     />
+    //                 </View>
+    //                 <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
+    //                     <View style={{ flex: 1, flexDirection: 'row' }}>
+    //                         <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>
+    //                             Rendy Sutandy
+    //                         </Text>
+    //                     </View>
+    //                     <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, }}>
+    //                         <Image
+    //                             style={{ width: 20, height: 27 }}
+    //                             source={require('./../assets/images/Cukup.png')}
+    //                             resizeMode='contain'
+    //                         />
+    //                         <Text style={{ fontSize: 13, marginLeft:7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
+    //                             Buruk
+    //                         </Text>
+    //                     </View>
+    //                     <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginBottom: 10 }}>
+    //                         <Image
+    //                             style={{ width: 18, height: 18, alignSelf: 'center' }}
+    //                             source={require('./../assets/images/loc_mainprof.png')}
+    //                             resizeMode='contain'
+    //                         />
+    //                         <Text style={{ fontSize: 13, marginLeft: 7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
+    //                             Jakarta Barat
+    //                         </Text>
+    //                     </View>
+    //                 </View>
+    //             </View>
+    //         </TouchableWithoutFeedback>
+    //     )
+    // }
 
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#eaeaea' }} >
-                <ScrollView>
+                {/* <ScrollView>
                     <View style={{ flex: 1 }}>
                         <View style={{ marginTop: 10 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', marginTop: 10 }}>MOHON TUNGGU</Text>
@@ -97,9 +97,9 @@ export class CrafterPage extends React.Component {
                         </View>
                     </View>
                 </ScrollView>
+ */}
 
-
-                <View style={styles.containerButton}>
+                {/* <View style={styles.containerButton}>
                     <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'orange' }]}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
                     </TouchableOpacity>
@@ -115,7 +115,7 @@ export class CrafterPage extends React.Component {
                         )}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Batalkan Pesanan</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
 
         );
