@@ -681,14 +681,14 @@ export class DashboardPage extends React.Component {
                                                         {
                                                             orderStatus === 'default' ?
                                                                 <View style={{ flex: 1 }}>
-                                                                    <View style={{ height: 200, flexDirection: 'row', marginRight: 10, marginLeft: 10 }}>
+                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row', marginRight: 15, marginLeft: 15 }}>
                                                                         <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center', }}>
                                                                             <Image
                                                                                 style={{ height: 200, width: 200, }}
                                                                                 source={require('./../assets/images/sidemenu/page-sidemenu/menu-order/order_default.png')}
                                                                             />
                                                                         </View>
-                                                                        <View style={{ width: wp('50%'), flexDirection: 'column', paddingLeft: 10, paddingRight: 10, justifyContent: 'center' }}>
+                                                                        <View style={{ width: wp('50%'), flexDirection: 'column', paddingLeft: 15, paddingRight: 10, paddingTop: 7 }}>
                                                                             <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>ORDER</Text>
                                                                             <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Penuhi keinginan mu sekarang juga dengan 3 fitur yang akan membuat kreasimu menjadi nyata</Text>
                                                                         </View>
@@ -735,14 +735,14 @@ export class DashboardPage extends React.Component {
                                                                             />
                                                                         </View>
                                                                         <View style={{ width: wp('50%'), flexDirection: 'column', paddingLeft: 15, paddingRight: 10, paddingTop: 7 }}>
-                                                                            <View>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CUSTOM</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Dengan imajinasimu dan fitur ini kamu bisa dapatkan hasil desainmu sendiri</Text>
                                                                             </View>
-                                                                            <View style={{ flex: 1,}}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('7%') ,
+                                                                                        marginTop: hp('6%') ,
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 40,
@@ -801,14 +801,14 @@ export class DashboardPage extends React.Component {
                                                                             />
                                                                         </View>
                                                                         <View style={{ width: wp('50%'), flexDirection: 'column', paddingTop: 7, paddingLeft: 15, paddingRight: 10, }}>
-                                                                            <View>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CAPTURE N' GET</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Cari produk hanya dengan mengupload foto, kamu bisa dapetin produk itu</Text>
                                                                             </View>
-                                                                            <View style={{ flex: 1,  }}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('7%') ,
+                                                                                        marginTop: hp('6%') ,
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 40,
@@ -867,14 +867,14 @@ export class DashboardPage extends React.Component {
                                                                             />
                                                                         </View>
                                                                         <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingLeft: 12.3, paddingRight: 0.2 }}>
-                                                                            <View>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>IDEA MARKET</Text>
                                                                                 <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Disini kamu bisa lihat hasil karya unik dan menarik teman-teman mu dan kamu bisa membelinya loh!</Text>
                                                                             </View>
-                                                                            <View style={{ flex: 1,  }}>
+                                                                            <View style={{ flex: 1 }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('4.45%'),
+                                                                                        marginTop: hp('6%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 40,
@@ -997,11 +997,11 @@ export class DashboardPage extends React.Component {
                                                                                 />
                                                                             </View>
                                                                             <View style={{ width: '50%', flexDirection: 'column', paddingTop: 7, paddingLeft: 12.25, paddingRight: 0.2 }}>
-                                                                                <View style={{}}>
+                                                                                <View style={{ flex: 1 }}>
                                                                                     <Text style={{ color: 'white', fontSize: 18, fontFamily: 'Quicksand-Bold', textAlign: 'left' }}>CRAFTER LIST</Text>
                                                                                     <Text style={{ color: 'white', fontSize: 14, textAlign: 'left', fontFamily: 'Quicksand-Regular', paddingTop: 5 }}>Kumpulan crafter dengan keunikannya yang beraneka ragam</Text>
                                                                                 </View>
-                                                                                <View style={{ height: '50%' }}>
+                                                                                <View style={{ flex: 1 }}>
                                                                                     <TouchableOpacity
                                                                                         style={styles.buttonCustom}
                                                                                         onPress={() => {
@@ -1382,7 +1382,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     buttonCustom: {
-        marginTop: hp('7%'),
+        marginTop: hp('6%'),
         backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,

@@ -102,9 +102,10 @@ import { MenuLoginPage } from './pages/menuLogin';
 import { MaterialPage } from './pages/material';
 import { searchCrafterOnProfilePage } from './pages/searchCrafterOnProfile';
 import { CrafterOrderMenuPage } from './pages/CrafterOrderMenu'
-
+import { ImagesProfileCrafterPage } from './pages/imagesProfileCrafter';
 import { FinalReviewPage } from './pages/finalReview';
 import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
+import { NoteProfileCrafterPage } from './pages/noteProfileCrafter';
 
 console.disableYellowBox = true;
 
@@ -117,11 +118,29 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
   Dashboard: {
     screen: DashboardPage
   },
+  ProfileCrafter: {
+    screen: ProfileCrafterPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
+  ImagesProfileCrafter: {
+    screen: ImagesProfileCrafterPage
+  },
+  NoteProfileCrafter: {
+    screen: NoteProfileCrafterPage
+  },
   IdeaMarket: {
     screen: IdeaMarketPage
+  },
+  Dashboard: {
+    screen: DashboardPage
   },
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
@@ -146,9 +165,6 @@ const Routes = createStackNavigator({
   },
   Order: {
     screen: OrderPage
-  },
-  ProfileCrafter: {
-    screen: ProfileCrafterPage
   },
   FinalReview: {
     screen: FinalReviewPage
@@ -177,9 +193,6 @@ const Routes = createStackNavigator({
   RegistrationCrafter: {
     screen: RegistrationCrafterPage
   },
-  StartScreen: {
-    screen: StartScreen
-  },
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },
@@ -188,9 +201,6 @@ const Routes = createStackNavigator({
   },
   DetailOrder: {
     screen: DetailOrderPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
@@ -254,9 +264,6 @@ const Routes = createStackNavigator({
   },
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   OrderTrackConfirm: {
     screen: OrderTrackConfirmPage

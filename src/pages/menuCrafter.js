@@ -85,7 +85,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>Lulusan S2 Interior Design di Singapura -
                         Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
                         </View>
                         <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
