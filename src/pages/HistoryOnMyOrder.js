@@ -67,7 +67,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_sort.png')}
                         />
-                        <Text style={{marginTop: 3, paddingTop: 2,  fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{ marginTop: 3, paddingTop: 2, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -217,7 +217,28 @@ export class HistoryOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View>
+
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 50 }}>
+                        <Image
+                            style={{
+                                width: '95%',
+                                height: '95%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/history.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={{ flex: 1, height: 50, justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>HISTORY KOSONG</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Belum ada transaksi sebelumnya.</Text>
+
+                    </View>
+
+
+                    {/* <View>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'flex-end',
@@ -452,7 +473,7 @@ export class HistoryOnMyOrderPage extends React.Component {
 
                             </View>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ScrollView>
 

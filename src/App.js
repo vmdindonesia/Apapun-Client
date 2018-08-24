@@ -106,7 +106,7 @@ import { ImagesProfileCrafterPage } from './pages/imagesProfileCrafter';
 import { FinalReviewPage } from './pages/finalReview';
 import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
 import { NoteProfileCrafterPage } from './pages/noteProfileCrafter';
-
+import { ErrorConnectionPage } from './pages/ErrorConnection';
 console.disableYellowBox = true;
 
 // font
@@ -118,6 +118,26 @@ const customTextProps = {
 setCustomText(customTextProps)
 
 const Routes = createStackNavigator({
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
+  },
+  ErrorConnection:{
+    screen:ErrorConnectionPage
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  SettingAddressBuyer: {
+    screen: SettingAddressBuyerPage
+  },
+
+
+  OrderOnMyOrder: {
+    screen: OrderOnMyOrderPage
+  },
+  BerandaCrafter: {
+    screen: BerandaCrafterPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -157,9 +177,7 @@ const Routes = createStackNavigator({
   HelpMenu: {
     screen: HelpMenuPage
   },
-  OrderOnMyOrder: {
-    screen: OrderOnMyOrderPage
-  },
+
   searchCrafterOnProfile: {
     screen: searchCrafterOnProfilePage
   },
@@ -172,9 +190,7 @@ const Routes = createStackNavigator({
   Crafter: {
     screen: CrafterPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
+
   Material: {
     screen: MaterialPage
   },
@@ -205,9 +221,7 @@ const Routes = createStackNavigator({
   OrderWithTrack: {
     screen: OrderWithTrackPage
   },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
-  },
+
   NotificationMenu: {
     screen: NotificationMenuPage
   },
@@ -226,9 +240,7 @@ const Routes = createStackNavigator({
   IntroApp: {
     screen: IntroAppPage
   },
-  BerandaCrafter: {
-    screen: BerandaCrafterPage
-  },
+
   UlasanOnCrafterProfile: {
     screen: UlasanOnCrafterProfilePage
   },
@@ -343,9 +355,7 @@ const Routes = createStackNavigator({
   SettingAddressDetailBuyer: {
     screen: SettingAddressDetailBuyerPage
   },
-  SettingAddressBuyer: {
-    screen: SettingAddressBuyerPage
-  },
+
   RegistrationBuyer: {
     screen: RegistrationBuyerPage
   },

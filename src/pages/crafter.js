@@ -80,6 +80,91 @@ export class CrafterPage extends React.Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#eaeaea' }} >
+
+                <ScrollView style={{
+                    backgroundColor: '#eaeaea',
+                    flex: 1
+                }}>
+
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 35 }}>
+                        <Image
+                            style={{
+                                width: '95%',
+                                height: '95%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/cari_crafter.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={{ flex: 1, height: 45, justifyContent: 'center', }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>TUNGGU SEBENTAR YAH!</Text>
+                    </View>
+
+                    <View style={{ flex: 1, height: 90, flexDirection: 'column', }}>
+
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+
+                            <View style={{ width: '13%', height: '100%', justifyContent: 'center', }}>
+
+                                <Image
+                                    style={{
+                                        width: '57%',
+                                        height: '57%',
+                                        borderRadius: 0,
+                                        alignSelf: 'center'
+                                    }}
+                                    source={require('./../assets/images/kaca_pembesar.png')}
+                                    resizeMode='contain' />
+
+                            </View>
+
+                            <View style={{ width: '83%', height: '100%', padding: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>Saat ini kami sedang mencarikan CRAFTER untuk Anda. Silakan tunggu ya.</Text>
+
+                            </View>
+
+                        </View>
+
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+
+                            <View style={{ width: '13%', height: '100%', justifyContent: 'center', }}>
+
+                                <Image
+                                    style={{
+                                        width: '57%',
+                                        height: '57%',
+                                        borderRadius: 0,
+                                        alignSelf: 'center'
+                                    }}
+                                    source={require('./../assets/images/24_h.png')}
+                                    resizeMode='contain' />
+
+                            </View>
+
+                            <View style={{ width: '83%', height: '100%', padding: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>Anda bisa membatalkan pesanan ini setelah 24 Jam</Text>
+
+                            </View>
+
+                        </View>
+
+                    </View>
+
+
+
+
+                </ScrollView>
+
+                <TouchableOpacity style={{ width: '95%', height: 40, backgroundColor: 'black', borderRadius: 50, justifyContent: 'center', alignSelf: 'center', marginBottom: 10 }}>
+                    <Text style={{ fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Batalkan Pesanan</Text>
+
+                </TouchableOpacity>
+
+
+
                 {/* <ScrollView>
                     <View style={{ flex: 1 }}>
                         <View style={{ marginTop: 10 }}>
