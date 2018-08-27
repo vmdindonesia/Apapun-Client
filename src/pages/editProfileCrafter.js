@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, TextInput, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { CheckBox } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 
@@ -18,6 +19,15 @@ export class EditProfileCrafterPage extends React.Component {
             </TouchableOpacity>,
         headerTitle: 'Crafter Menu'
     });
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: 'aishiteru@gmail.com',
+            nohp: '+62 812967123388',
+            pswd: ''
+        };
+    }
 
     renderButton = () => {
         // if (this.state.loading) {
@@ -68,19 +78,25 @@ export class EditProfileCrafterPage extends React.Component {
                         />
                     </View>
 
-                    <View style={{ flex: 1, marginTop: '25%' }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Nama sebagai Crafter</Text>
-                        <ContainerSection>
-                            <Input />
-                        </ContainerSection>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Biodata</Text>
-                        <ContainerSection>
-                            <Input
+                    <View style={{ flex: 1, marginTop: '25%', paddingLeft: 20, paddingRight: 20 }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Nama sebagai Crafter</Text>
+                        <View>
+                            <TextInput
+                                style={{ borderWidth: 1, borderColor: '#eaeaea', marginTop: 5, height: hp('6%') }}
+                                underlineColorAndroid='transparent'
+                            />
+                        </View>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginTop: 5 }}>Biodata</Text>
+                        <View>
+                            <TextInput
+                                style={{ borderWidth: 1, borderColor: '#eaeaea', marginTop: 5 }}
+                                numberOfLines={4}
+                                underlineColorAndroid='transparent'
                                 multiline={true}
                             />
-                        </ContainerSection>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Bidang Kemampuan</Text>
-                        <View style={{ flex: 1 }}>
+                        </View>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginTop: 5 }}>Bidang Kemampuan</Text>
+                        <View style={{ flex: 1, marginLeft: 25, marginTop: 5 }}>
                             <CheckBox
                                 fontFamily='Quicksand-Regular'
                                 title='Fashion'
@@ -101,54 +117,64 @@ export class EditProfileCrafterPage extends React.Component {
                                 title='Hobbies & Toys'
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
                             />
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginLeft: 5 }}>Jasa Pengiriman Pribadi</Text>
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-                                <CheckBox
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                    center
-                                    title='Punya'
-                                    checkedIcon='dot-circle-o'
-                                    uncheckedIcon='circle-o'
-                                //   checked={this.state.checked}
-                                />
-                                <CheckBox
-                                    containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                    center
-                                    title='Tidak Punya'
-                                    checkedIcon='dot-circle-o'
-                                    uncheckedIcon='circle-o'
-                                //   checked={this.state.checked}
-                                />
-                            </View>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>E - Mail</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginTop: 10 }}>Jasa Pengiriman Pribadi</Text>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
+                            <CheckBox
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                center
+                                title='Punya'
+                                checkedIcon='dot-circle-o'
+                                uncheckedIcon='circle-o'
+                            //   checked={this.state.checked}
+                            />
+                            <CheckBox
+                                containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
+                                center
+                                title='Tidak Punya'
+                                checkedIcon='dot-circle-o'
+                                uncheckedIcon='circle-o'
+                            //   checked={this.state.checked}
+                            />
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={{ width: wp('30%') }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>E - Mail</Text>
                             </View>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Input />
+                            <View style={{ flex: 1, marginTop: 20 }}>
+                                <TextInput
+                                    style={{ width: wp('55%'), color: '#aeaeae', alignSelf: 'flex-end', textAlign: 'right' }}
+                                    underlineColorAndroid='transparent'
+                                    textContentType='emailAddress'
+                                    value={this.state.text} />
                                 <TouchableHighlight>
-                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'red', textAlign: 'right' }}>'Verifikasi'</Text>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'red', alignSelf: 'flex-end' }}>{"<Verifikasi>"}</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Nomor Telepon</Text>
+                            <View style={{ flex: 1, paddingTop: 20 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Nomor Telepon</Text>
                             </View>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Input
-                                    keyboardType='numeric'
-                                />
+                            <View style={{ flex: 1, marginTop: 3 }}>
+                                <TextInput
+                                    style={{ width: wp('55%'), color: '#aeaeae', alignSelf: 'flex-end', textAlign: 'right' }}
+                                    underlineColorAndroid='transparent'
+                                    textContentType='emailAddress'
+                                    value={this.state.nohp} />
                             </View>
                         </View>
 
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Ganti Kata Sandi</Text>
+                            <View style={{ flex: 1, paddingTop: 20 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Ganti Kata Sandi</Text>
                             </View>
-                            <View style={{ flex: 1, padding: 15 }}>
-                                <Input />
+                            <View style={{ flex: 1 }}>
+                                <TextInput
+                                    style={{ width: wp('55%'), color: '#aeaeae', alignSelf: 'flex-end', textAlign: 'right' }}
+                                    underlineColorAndroid='transparent'
+                                    textContentType='password'
+                                    onChangeText={(pswd) => this.setState({pswd})} />
                             </View>
                         </View>
                         <View style={{ flex: 1 }}>
