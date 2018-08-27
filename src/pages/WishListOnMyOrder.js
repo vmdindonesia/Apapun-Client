@@ -202,7 +202,31 @@ export class WishlistOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View style={{
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 30 }}>
+                        <Image
+                            style={{
+                                width: '95%',
+                                height: '95%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/wishlist.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={{ flex: 1, height: 100, justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>WISHLIST KOSONG</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Anda bisa memasukan ide-ide kedalam</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>wishlist yang ada di IDEA MARKET atau</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>rancangan ide yang dipesan melalui</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>CUSTOM belum selesai otomatis akan</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>masuk disini.</Text>
+
+                    </View>
+
+
+                    {/* <View style={{
                         height: 140,
                         width: '100%',
                         // backgroundColor: 'blue',
@@ -434,7 +458,7 @@ export class WishlistOnMyOrderPage extends React.Component {
 
                         </View>
                     </View>
-
+ */}
 
 
 

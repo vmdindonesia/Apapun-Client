@@ -94,7 +94,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                             <View style={{ height: '50%', width: '94%', flexDirection: 'row' }}>
 
                                 <View style={{ width: '70%', justifyContent: 'center', }}>
-                                    <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black', textAlign: 'center' }}>ELEGANT FLANNEL</Text>
+                                    <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black', paddingLeft: 10 }}>ELEGANT FLANNEL</Text>
                                 </View>
 
                                 <View style={{ width: '30%', justifyContent: 'center', }}>
@@ -107,10 +107,10 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
                             <View style={{ height: '45%', width: '87%', flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
                                     style={{
-                                        width: 65,
-                                        height: 65,
+                                        width: 70,
+                                        height: 75,
                                     }}
-                                    resizeMode='stretch'
+                                    resizeMode='contain'
                                     source={require('./../assets/images/sempurna.png')}
                                 />
                                 <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', textAlign: 'center', paddingLeft: 10 }}>(10) Review</Text>
