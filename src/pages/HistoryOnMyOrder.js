@@ -218,7 +218,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                 }}>
 
 
-                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 50 }}>
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 27 }}>
                         <Image
                             style={{
                                 width: '95%',
