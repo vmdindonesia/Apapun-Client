@@ -239,7 +239,7 @@ export class OrderOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 50 }}>
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 25 }}>
                         <Image
                             style={{
                                 width: '95%',

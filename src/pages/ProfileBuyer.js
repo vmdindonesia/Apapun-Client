@@ -264,7 +264,7 @@ export class ProfileBuyerPage extends React.Component {
                         </View>
 
 
-                        <View style={styles.containerTh}>
+                        {/* <View style={styles.containerTh}>
                             <View style={{
                                 flexDirection: 'column',
                                 height: '100%', width: '100%',
@@ -281,15 +281,15 @@ export class ProfileBuyerPage extends React.Component {
                                     ke seluruh indonesia
                                     </Text>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
 
-                    <View style={styles.butin}>
+                    {/* <View style={styles.butin}>
                         <TouchableOpacity style={styles.buttonSignUp}
                             onPress={() => this.props.navigation.navigate('pengaturanBank')}>
                             <Text style={styles.signupButton}>Pengaturan</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ImageBackground >
             </ScrollView >
@@ -305,10 +305,11 @@ export class ProfileBuyerPage extends React.Component {
 const styles = StyleSheet.create({
     backgroundStyle: {
         width: '100%',
-        height: '53%',
+        height: '55%',
         // backgroundColor: 'gray',
         // zIndex: 0,
-        marginTop: -70
+        marginTop: -70,
+        marginBottom: 10
     },
     containerImage: {
         // flex: 1,

@@ -51,27 +51,31 @@ export class DetailTransaksiPage extends React.Component {
                         alignContent: 'center',
                         justifyContent: 'center',
                         // alignItems: 'center',
-                        heigh: '100%',
+                        height: '100%',
                         // backgroundColor: 'red'
                     }}>
-                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 20 }}>28 April 2015</Text>
+                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 15 }}>28 April 2015</Text>
                         <Text style={{
-                            color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 20
+                            color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 15
                         }}  >12:30 PM</Text>
 
                     </View>
+
+
+                    <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20, alignSelf: 'center' }} />
+
 
                     <View style={{
                         width: '65%',
                         justifyContent: 'center',
                         alignItems: 'center',
                         flexDirection: 'row',
-                        height: '100%',
+                        padding: 5,
+                        flex: 1,
                         // backgroundColor: 'red'
                     }}>
-                        <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20 }} />
-                        <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 20 }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
+                        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignContent: 'center' }}>
+                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 15 }}>Total apresiasi design anda bulan ini telah kami transfer</Text>
                         </View>
                     </View>
                 </View>
@@ -92,27 +96,30 @@ export class DetailTransaksiPage extends React.Component {
                         alignContent: 'center',
                         justifyContent: 'center',
                         // alignItems: 'center',
-                        heigh: '100%',
+                        height: '100%',
                         backgroundColor: 'white'
                     }}>
-                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 20 }}>15 April 2015</Text>
+                        <Text style={{ color: 'black', fontFamily: 'Quicksand-Bold', fontSize: 13, paddingTop: 5, paddingLeft: 15 }}>15 April 2015</Text>
                         <Text style={{
-                            color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 20
+                            color: 'black', fontFamily: 'Quicksand-Regular', fontSize: 13, paddingLeft: 15
                         }}  >1:25 PM</Text>
 
                     </View>
+
+                    <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20, alignSelf: 'center' }} />
 
                     <View style={{
                         width: '65%',
                         justifyContent: 'center',
                         alignItems: 'center',
                         flexDirection: 'row',
-                        height: '100%',
-                        backgroundColor: 'white'
+                        // height: '100%',
+                        backgroundColor: 'white',
+                        flex: 1,
                     }}>
-                        <View style={{ flexDirection: 'column', height: '50%', color: 'black', borderWidth: 1.5, borderColor: '#e5e5e5', marginLeft: 20 }} />
+
                         <View style={{ flex: 1, flexDirection: 'row', }}>
-                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 20 }}>Anda mendapatkan Rp. 100.000 dari desain anda <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>1ASKJG9KLASB</Text></Text>
+                            <Text style={{ color: 'black', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left', paddingLeft: 15 }}>Anda mendapatkan Rp. 100.000 dari desain anda <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>1ASKJG9KLASB</Text></Text>
                         </View>
                     </View>
                 </View>

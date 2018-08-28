@@ -61,9 +61,9 @@ export class EditProfileBuyerPage extends React.Component {
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Email</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
-                            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>galgadot@gmail.com</Text>
-                                <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', }}> {"<Verification>"}</Text>
+                            <View style={{ flexDirection: 'column', }}>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}>galgadot@gmail.com</Text>
+                                <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}> {"<Verification>"}</Text>
                             </View>
                         </View>
                     </View>
@@ -109,7 +109,7 @@ export class EditProfileBuyerPage extends React.Component {
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('ProfilePage')}
                     >
-                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'center',fontFamily: 'Quicksand-Bold', }}>Simpan</Text>
+                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontFamily: 'Quicksand-Bold', }}>Simpan</Text>
                     </TouchableOpacity>
                 </View>
 

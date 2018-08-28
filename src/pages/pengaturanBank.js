@@ -417,7 +417,7 @@ export class PengaturanBankPage extends React.Component {
                 ref={ref => this.scrollView = ref}
             >
                 <View style={{ flex: 1, height: 100, padding: 30, backgroundColor: '#eaeaea', justifyContent:'center' }}>
-                <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Bold', color: '9D9D9D', textAlign:'center' }}>Total apresiasi desain anda akan ditransfer 
+                <Text style={{ paddingLeft: 5, fontSize: 13, fontFamily: 'Quicksand-Regular', color: '9D9D9D', textAlign:'center' }}>Total apresiasi desain anda akan ditransfer 
                 ke akun bank yang telah Anda daftarkan  dan akan ditransfer setiap bulannya</Text>
                 </View>
 
