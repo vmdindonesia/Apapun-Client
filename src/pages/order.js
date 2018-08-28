@@ -707,10 +707,10 @@ export class OrderPage extends React.Component {
                 <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
                     <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
                 </View>
-                <ContainerSection>
+                <View>
                     {
                         dataCheckBoxSubMaterial.length === 0 || dataCheckBoxSubMaterial.length === undefined ?
-                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', marginLeft: 5, marginRight: 5 }}>
+                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey',  }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
                                     style={{ width: '100%', height: 170, }}
@@ -770,7 +770,7 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                     }
-                </ContainerSection>
+                </View>
 
                 <ContainerSection>
                     <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>

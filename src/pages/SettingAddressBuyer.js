@@ -16,6 +16,7 @@ export class SettingAddressBuyerPage extends React.Component {
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
         headerTitle: 'Pengaturan Alamat',
+        headerStyle: { marginBottom: 12.5 }
         // headerRight:
         //     <View style={{
         //         flexDirection: 'column', width: 50, height: '100%', marginRight: 15, justifyContent: 'center'
@@ -243,8 +244,12 @@ export class SettingAddressBuyerPage extends React.Component {
 
                 </View>
 
-                <View style={{ flex: 1, height: 45, marginLeft: 15, marginRight: 15, backgroundColor: 'black', borderRadius: 25, marginTop: 5 }}>
-                    <TouchableOpacity style={{ flex: 1, height: 30, marginLeft: 10, marginRight: 10, backgroundColor: 'black', borderRadius: 25, justifyContent: 'center' }}>
+                <View style={{ flex: 1, height: 45, marginLeft: 15, marginRight: 15, backgroundColor: 'black', borderRadius: 25 }}
+               
+                >
+                    <TouchableOpacity style={{ flex: 1, height: 30, marginLeft: 10, marginRight: 10, backgroundColor: 'black', borderRadius: 25, justifyContent: 'center' }}
+                        onPress={() => this.props.navigation.navigate('NewAddressOnProfile')}
+                    >
                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', textAlign: 'center' }}>Tambah Alamat</Text>
                     </TouchableOpacity>
 
@@ -274,7 +279,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'column',
-        marginTop: 20,
+        // marginTop: 7.5,
         height: 180,
         width: '90%',
         // alignItems: 'center',
@@ -283,7 +288,7 @@ const styles = StyleSheet.create({
         // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
-        marginBottom: 7.5
+        marginBottom: 12.5
     },
 
     containerSecondAddress: {
