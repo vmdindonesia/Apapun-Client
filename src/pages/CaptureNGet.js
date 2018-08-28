@@ -492,7 +492,7 @@ export class CaptureandgetPage extends React.Component {
                     marginBottom: 20
                 }}
                 // onPress={() => this.onValidation()}
-                onPress={() => this.props.navigation.navigate('FindingCrafter')}
+                onPress={() => this.props.navigation.navigate('FindingCrafterCng')}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Mencari Crafter</Text>
             </Button>

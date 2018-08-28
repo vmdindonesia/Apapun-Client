@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
-import { Container, Button } from '../components/common';
+import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 export class GambarPage extends React.Component {
@@ -21,12 +21,12 @@ export class GambarPage extends React.Component {
         super(props)
         this.state = {
             photo: [
+                'https://www.arsitag.com/proxy-s3-arsitagx-master-article/article-photo/117/xDesain-interior-ruang-tamu-dan-kamar-tidur-rumah-sederhana-yang-murah-namun-menawan-cover.jpg.pagespeed.ic.j16ohCgrU3.jpg',
+                'http://www.queenyqueen.com/wp-content/uploads/2017/03/Set-Meja-Makan-Minimalis.jpg',
+                'http://www.queenyqueen.com/wp-content/uploads/2017/11/Lemari-Pakaian-Telephone-6-300x300.jpg',
+                'http://www.queenyqueen.com/wp-content/uploads/2018/05/Cermin-Hias-Modern-300x300.jpg',
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
+
             ],
         }
     }
@@ -35,33 +35,29 @@ export class GambarPage extends React.Component {
         console.log(data, '098');
         return (
             <TouchableOpacity>
-                <View style={styles.card}>
-                    <View style={styles.thumbnailContainerStyle}>
-                        <Image
-                            style={styles.thumbnailStyle}
-                            source={{ uri: data.item }}
-                        />
-                    </View>
+
+                <View style={styles.thumbnailContainerStyle}>
+                    <Image
+                        style={styles.thumbnailStyle}
+                        source={{ uri: data.item }}
+                    />
                 </View>
+
             </TouchableOpacity>
         )
     }
 
     renderButton = () => {
-        // if (this.state.loading) {
-        //     return <Spinner size="small" />
-        // }
         return (
-            <Button
-                style={{
-                    backgroundColor: '#000',
-                    justifyContent: 'center',
-                    borderRadius: 30,
-                }}
-            // onPress={() => this.onValidation()}
-            >
-                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
-            </Button>
+            <View style={{ flex: 1, backgroundColor: '#000', borderRadius: 30 }}>
+                <TouchableOpacity>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', marginTop: 5 }}>
+                        <Image style={{ width: 25, height: 20, marginTop: 5 }} source={require('../assets/images/add_picture.png')} />
+                        <Text style={{ paddingLeft: 20, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold', marginTop: 7.5 }}>Tambah Gambar</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+
         )
     }
 
@@ -71,14 +67,14 @@ export class GambarPage extends React.Component {
                 <View style={{ width: '85%', height: 40, alignSelf: 'center', marginTop: 20 }}>
                     {this.renderButton()}
                 </View>
-                <View style={{ flex: 1, marginTop: 15, marginBottom: 15 }}>
+                <View style={{ flex: 1, marginTop: 15, marginBottom: 10 }}>
                     <FlatList
                         data={this.state.photo}
                         // contentContainerStyle={styles.list}
                         renderItem={this.renderProductItem.bind(this)}
                         showsHorizontalScrollIndicator={false}
                         horizontal={false}
-                        numColumns={2}
+                        numColumns={3}
                     />
                 </View>
             </View>
@@ -90,20 +86,13 @@ const styles = StyleSheet.create({
     thumbnailContainerStyle: {
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 8.5,
     },
     thumbnailStyle: {
         alignSelf: 'stretch',
-        height: hp ('26.5%'),
-        width: wp ('45%'),
+        height: hp('18%'),
+        width: wp('33.3%'),
         resizeMode: 'cover',
-        borderRadius: 4
     },
-    card: {
-        borderRadius: 4,
-        elevation: 2,
-        backgroundColor: '#FFF'
-    }
 })
 
 export default GambarPage;
