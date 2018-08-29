@@ -79,6 +79,7 @@ export class CrafterListPage extends React.Component {
                     width: '100%',
                     height: 50,
                     flexDirection: 'row',
+                    backgroundColor:'white',
                 }}>
                     <ScrollView
                         showsHorizontalScrollIndicator={false}
@@ -87,11 +88,11 @@ export class CrafterListPage extends React.Component {
                     >
                         <View
                             style={{
-                                width: 90,
+                                width: 100,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
                             }}>
                             <TouchableOpacity onPress={() => this.setState({ screen: 'BerandaCrafterPage' })}>
                                 <View style={screen === 'BerandaCrafterPage' ? tabContainerActive : tabContainer}>
@@ -103,7 +104,7 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                width: 90,
+                                width: 100,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',
@@ -119,7 +120,7 @@ export class CrafterListPage extends React.Component {
 
                         <View
                             style={{
-                                width: 170,
+                                width: 190,
                                 height: 50,
                                 flexDirection: 'row',
                                 alignItems: 'center',
@@ -167,16 +168,17 @@ const styles = StyleSheet.create({
     tabContainerActive: {
         height: 50,
         justifyContent: 'center',
-        borderBottomWidth: 2,
-        borderColor: 'red'
+        borderBottomWidth: 3,
+        borderColor: '#ef1c25'
     },
     tabContainer: {
         height: 50,
         justifyContent: 'center',
     },
     fontActive: {
-        fontFamily: 'Quicksand-Bold',
-        fontSize: 15
+        fontFamily: 'Quicksand-Regular',
+        fontSize: 15,
+        color:'black'
     },
     fontNotActive: {
         fontFamily: 'Quicksand-Regular',

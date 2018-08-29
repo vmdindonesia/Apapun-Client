@@ -55,7 +55,7 @@ export class CrafterOrderMenuPage extends React.Component {
                 <View style={{ flex: 1, height: 300, }}>
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchOrder', { type_order: 'Custom Order', categoryId: categoryId })}
+                            onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Custom Order', categoryId: categoryId })}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}

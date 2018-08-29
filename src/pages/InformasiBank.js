@@ -153,80 +153,68 @@ export class InformasiBankPage extends React.Component {
                         <Image style={{ height: 35, width: 35, borderRadius: 0, }}
                             source={require('./../assets/images/ic_wallet.png')}
                         />
-                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', paddingLeft: 10, alignItems: 'center' }}>
-                            Total Apresiasi Design Anda
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', paddingLeft: 10, alignItems: 'center' }}>
+                            Total Apresiasi Desain Anda
                         </Text>
                     </View>
 
-                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Regular', fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
                         Rp. 120.000
                     </Text>
                 </View>
 
-                <View style={{ flex: 1, height: 400, marginRight: 10, marginLeft: 10, marginTop: 10 }}>
+                <View style={{ flex: 1, height: 235, marginRight: 10, marginLeft: 10, marginTop: 10 }}>
 
                     <View style={{ flex: 1, flexDirection: 'row' }}>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Depan</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Depan</Text>
 
-                            <ContainerSection>
-                                <Input
-                                    placeholder='Gal '
-                                    editable={false}
-
-                                />
-                            </ContainerSection>
+                            <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gal</Text>
+                            </View>
 
                         </View>
 
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Belakang</Text>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nama Belakang</Text>
 
-                            <ContainerSection>
-                                <Input
-                                    placeholder='Gadot'
-                                    editable={false}
-                                />
-                            </ContainerSection>
+                            <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gadot</Text>
+                            </View>
 
                         </View>
 
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nomor Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nomor Rekening</Text>
 
-                        <ContainerSection>
-                            <Input
-                                placeholder='10942387'
-                                editable={false}
-                            />
-                        </ContainerSection>
+                        <View style={{ height: 40, width: '96%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>192BKS7SJ</Text>
+                        </View>
 
                     </View>
 
-                    <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Nama Bank</Text>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
 
-                        <ContainerSection>
-                            <Input
-                                placeholder='Mandiri'
-                                editable={false}
-                            />
-                        </ContainerSection>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Bank</Text>
 
-                    </View>
+                            <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Mandiri</Text>
+                            </View>
 
-                    <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Cabang</Text>
+                        </View>
 
-                        <ContainerSection>
-                            <Input
-                                placeholder='Jakarta'
-                                editable={false}
-                            />
-                        </ContainerSection>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Cabang</Text>
+
+                            <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>BSD</Text>
+                            </View>
+
+                        </View>
 
                     </View>
                 </View>
@@ -234,7 +222,7 @@ export class InformasiBankPage extends React.Component {
                 <View style={{ flex: 1, height: 600, marginRight: 10, marginLeft: 10, }}>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Profil Asli</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Foto Profil Asli</Text>
                         <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getPhotoProfile.bind(this)}> */}
@@ -260,7 +248,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>KTP</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>KTP</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getPhotoKTP.bind(this)}> */}
@@ -285,7 +273,7 @@ export class InformasiBankPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Foto Buku Rekening</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Foto Buku Rekening</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignContent: 'center', }}>
                             {/* <TouchableWithoutFeedback
                                 onPress={this.getBankBook.bind(this)}
@@ -334,14 +322,13 @@ export class InformasiBankPage extends React.Component {
 
                 <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
                     <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Password</Text>
+                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Password</Text>
 
-                        <ContainerSection>
-                            <Input
-                                placeholder='**********'
-                                editable={false}
-                            />
-                        </ContainerSection>
+
+                        <View style={{ height: 40, width: '96F%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>**********</Text>
+                        </View>
+
 
 
                     </View>

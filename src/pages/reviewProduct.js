@@ -29,12 +29,12 @@ export class ReviewProductPage extends React.Component {
                             Kami harap anda mendapatkan pesanan anda sesuai dengan yang anda inginkan. Silahkan tentukan rating anda terhadap crafter dan review agar crafter dapat menjadi lebih baik
                         </Text>
                     </View>
-                    <View style={{ width: '100%', height: '30%', flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View style={{ width: '100%', height: '30%', flexDirection: 'row', justifyContent: 'center'}}>
                         <View style={{ flex: 1 }}>
                             <Text style={styles.textMid}>Desain</Text>
                             <View>
                                 <Image
-                                    style={{ width: 130, height: 130, alignSelf: 'center', marginTop: 5 }}
+                                    style={{ width: 170, height: 150, alignSelf: 'center', marginTop: 5 }}
                                     source={require('./../assets/images/design1.jpg')}
                                     resizeMode='contain'
                                 />
@@ -44,7 +44,7 @@ export class ReviewProductPage extends React.Component {
                             <Text style={styles.textMid}>Hasil</Text>
                             <View>
                                 <Image
-                                    style={{ width: 130, height: 130, alignSelf: 'center', marginTop: 5 }}
+                                    style={{ width: 170, height: 150, alignSelf: 'center', marginTop: 5 }}
                                     source={require('./../assets/images/design1.jpg')}
                                     resizeMode='contain'
                                 />
@@ -108,9 +108,17 @@ export class ReviewProductPage extends React.Component {
                                 <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Cukup</Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalReview')}
+                        {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalReview')}
                         style={{
                             borderRadius: 25, height: 40, width: '85%', backgroundColor: 'white', justifyContent: 'center',
+                            margin: 27
+                        }}>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', color: '#e5e5e5' }}>Next</Text>
+                    </TouchableOpacity> */}
+
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate('FinalReview')}
+                        style={{
+                            borderRadius: 25, height: 40, width: '85%', backgroundColor: 'red', justifyContent: 'center',
                             margin: 27
                         }}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'center', color: 'white' }}>Next</Text>
@@ -147,7 +155,7 @@ const styles = StyleSheet.create({
     },
     textMid: {
         fontFamily: 'Quicksand-Bold',
-        color: '#FFD700',
+        color: 'red',
         textAlign: 'center',
         // padding: 10
     },

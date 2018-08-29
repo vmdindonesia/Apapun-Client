@@ -84,15 +84,16 @@ export class OrderOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 25,
-                                height: 26.5,
+                                width: 33,
+                                height: 24.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
-
+                                marginTop: 1.5
                             }}
                             source={require('./../assets/images/ic_sort.png')}
+                            resizeMode='contain'
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{ marginTop: 3, paddingTop: 2, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -120,7 +121,7 @@ export class OrderOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_filter.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
                     </TouchableOpacity>
                 </View>
@@ -233,14 +234,33 @@ export class OrderOnMyOrderPage extends React.Component {
                 }
 
 
-
-
-
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
                 }}>
-                    <TouchableOpacity
+
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 25 }}>
+                        <Image
+                            style={{
+                                width: '95%',
+                                height: '95%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/pesanan_saya.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={{ flex: 1, height: 65, justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>PESANAN SAYA KOSONG</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Yuk pesan di CUSTOM, CAPTURE N GET,</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>atau di IDEA MARKET sekarang.</Text>
+
+                    </View>
+
+
+                    {/* <TouchableOpacity
                         // onPress={() => this.pressBUtton()}
                         onPress={() => { this.props.navi.navigate('OrderWithTrack'); }}
                     >
@@ -347,7 +367,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular' , color: 'black'}}>Jumlah : (2)</Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (2)</Text>
                                     </View>
                                     <View style={{
                                         height: 50,
@@ -355,7 +375,7 @@ export class OrderOnMyOrderPage extends React.Component {
                                         // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'   }} >Rp. 1.500.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 1.500.000 </Text>
                                     </View>
                                 </View>
 
@@ -363,10 +383,10 @@ export class OrderOnMyOrderPage extends React.Component {
                             </View>
 
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
 
 
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => this.props.navi.navigate('OrderWithTrack')}
                     >
                         <View style={{
@@ -415,30 +435,26 @@ export class OrderOnMyOrderPage extends React.Component {
                                 <View style={{
                                     width: '100%',
                                     height: 100,
-                                    // backgroundColor: 'black'
-                                    // justifyContent: 'center',
                                     flexDirection: 'row'
                                 }}>
                                     <View style={{
                                         height: 100,
                                         width: '60%',
-                                        // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
                                         <View style={{ alignSelf: 'center' }}>
-                                            {/* <TouchableOpacity> */}
+                                           
                                             <Text style={{ fontSize: 13, color: 'red', fontFamily: 'Quicksand-Regular' }}>1934378UDJA9</Text>
                                             <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Bold', color: 'black' }}>Vans Shoes</Text>
                                             <Text style={{ fontSize: 13, paddingTop: 5, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Dari : </Text>
                                             <Text style={{ color: 'red', fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular' }}>Seija Company</Text>
-                                            {/* </TouchableOpacity> */}
+                                          
                                         </View>
 
                                     </View>
                                     <View style={{
                                         height: 100,
                                         width: '40%',
-                                        // backgroundColor: 'skyblue',
                                         justifyContent: 'center'
                                     }}>
                                         <Image
@@ -448,7 +464,6 @@ export class OrderOnMyOrderPage extends React.Component {
                                                 borderRadius: 100,
 
                                                 alignSelf: 'center',
-                                                // paddingTop:-15
                                             }}
                                             source={require('./../assets/images/ic_sending.png')}
                                         />
@@ -460,15 +475,12 @@ export class OrderOnMyOrderPage extends React.Component {
                                 <View style={{
                                     width: '100%',
                                     height: 50,
-                                    // backgroundColor: 'yellow',
                                     flexDirection: 'row',
                                     flex: 2
-                                    // justifyContent:'center'
                                 }}>
                                     <View style={{
                                         height: 50,
                                         width: '50%',
-                                        // backgroundColor: 'red',
                                         justifyContent: 'center'
                                     }}>
                                         <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'black' }}>Jumlah : (1)</Text>
@@ -476,17 +488,16 @@ export class OrderOnMyOrderPage extends React.Component {
                                     <View style={{
                                         height: 50,
                                         width: '50%',
-                                        // backgroundColor: 'blue',
                                         justifyContent: 'center',
                                     }}>
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black'  }} >Rp. 900.000 </Text>
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'black' }} >Rp. 900.000 </Text>
                                     </View>
                                 </View>
 
 
                             </View>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
 
                 </ScrollView>
 

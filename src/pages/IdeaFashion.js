@@ -56,7 +56,7 @@ export class IdeaFashionPage extends React.Component {
                         <TouchableWithoutFeedback
                             onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
-                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, height: 55, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Atasan Pria</Text>
@@ -160,7 +160,7 @@ export class IdeaFashionPage extends React.Component {
                         <TouchableWithoutFeedback
                         // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
-                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, height: 55, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Atasan Wanita</Text>
@@ -190,7 +190,7 @@ export class IdeaFashionPage extends React.Component {
                         <TouchableWithoutFeedback
                         // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
                         >
-                            <View style={{ flex: 1, height: 70, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
+                            <View style={{ flex: 1, height: 55, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>Aksesoris</Text>

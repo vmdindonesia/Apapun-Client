@@ -43,14 +43,14 @@ export class ProfileBuyerPage extends React.Component {
                             <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
 
                                 <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 25, fontFamily: 'Quicksand-Regular', color: 'black' }}>Gal Gadot</Text>
+                                    <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gal Gadot</Text>
                                 </View>
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
                                     <TouchableOpacity
                                         onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                        <View style={{ height: 45, width: 45, backgroundColor: 'red', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
-                                            <Image style={{ height: 15, width: 15, borderRadius: 0, }}
+                                        <View style={{ height: 50, width: 50, backgroundColor: '#ef1c25', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Image style={{ height: 18, width: 18, borderRadius: 0, }}
                                                 source={require('./../assets/images/pen_white.png')}
                                             />
                                         </View>
@@ -81,7 +81,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                         galgadot@gmail.com
                             </Text>
                                 </View>
@@ -89,7 +89,7 @@ export class ProfileBuyerPage extends React.Component {
                             </View>
 
 
-                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center' }}>
 
                                 <View style={{
                                     flexDirection: 'row',
@@ -109,7 +109,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', color: 'black' }}>
                                         081284485300
                             </Text>
                                 </View>
@@ -136,7 +136,7 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                         30 Januari 1995
                                     </Text>
                                 </View>
@@ -164,10 +164,10 @@ export class ProfileBuyerPage extends React.Component {
                                     height: '100%', width: '85%',
                                     // alignItems: 'center',
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
                                         Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                         Jalan Komodo
                                     </Text>
                                 </View>
@@ -177,7 +177,7 @@ export class ProfileBuyerPage extends React.Component {
 
 
 
-                        {/* <View style={styles.containerSecondForm}>
+                        <View style={styles.containerSecondForm}>
 
 
                             <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
@@ -206,21 +206,21 @@ export class ProfileBuyerPage extends React.Component {
                                     // alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
                                         Total Apresiasi Design Anda
                                      </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
                                         Rp.120.000
                                      </Text>
                                 </View>
 
                             </View>
 
-                        </View> */}
+                        </View>
 
 
 
-                        {/* <View style={styles.containerThirdForm}>
+                        <View style={styles.containerThirdForm}>
 
                             <View style={{
                                 flexDirection: 'row',
@@ -253,18 +253,18 @@ export class ProfileBuyerPage extends React.Component {
                                     justifyContent: 'center',
                                     marginBottom: 30
                                 }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left' }}>
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
                                         Total Design Anda
                                     </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', textAlign: 'left' }}>
-                                        3 Design
+                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
+                                        3 Desain
                                     </Text>
                                 </View>
                             </View>
-                        </View> */}
+                        </View>
 
 
-                        <View style={styles.containerTh}>
+                        {/* <View style={styles.containerTh}>
                             <View style={{
                                 flexDirection: 'column',
                                 height: '100%', width: '100%',
@@ -281,15 +281,15 @@ export class ProfileBuyerPage extends React.Component {
                                     ke seluruh indonesia
                                     </Text>
                             </View>
-                        </View>
+                        </View> */}
                     </View>
 
-                    <View style={styles.butin}>
+                    {/* <View style={styles.butin}>
                         <TouchableOpacity style={styles.buttonSignUp}
                             onPress={() => this.props.navigation.navigate('pengaturanBank')}>
                             <Text style={styles.signupButton}>Pengaturan</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ImageBackground >
             </ScrollView >
@@ -305,10 +305,11 @@ export class ProfileBuyerPage extends React.Component {
 const styles = StyleSheet.create({
     backgroundStyle: {
         width: '100%',
-        height: '53%',
-        // backgroundColor: 'grey'
+        height: '55%',
+        // backgroundColor: 'gray',
         // zIndex: 0,
-        marginTop: -70
+        marginTop: -70,
+        marginBottom: 10
     },
     containerImage: {
         // flex: 1,
@@ -390,6 +391,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderWidth: 0.5,
         borderColor: '#d6d7da',
+        // backgroundColor:'red'
     },
     containerTh: {
         borderRadius: 20,
@@ -402,7 +404,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 30,
         marginTop: 5,
-        height: 150,
+        height: 180,
         width: '90%',
         // alignItems: 'center',
         // zIndex: 2,
@@ -424,7 +426,7 @@ const styles = StyleSheet.create({
 
     },
     buttonSignUp: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 140,

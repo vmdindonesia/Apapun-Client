@@ -169,7 +169,7 @@ const styles = {
 	},
 	buttonSignUp: {
 		// marginTop: 60,
-		backgroundColor: 'red',
+		backgroundColor: '#ef1c25',
 		borderRadius: 20,
 		height: 40,
 		width: 110,

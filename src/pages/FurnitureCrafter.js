@@ -37,16 +37,17 @@ export class FurnitureCrafterPage extends React.Component {
                     style={styles.item}
                     source={{ uri: data.item }}
                 />
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Gal Gadot</Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color: 'black' }}>Gal Gadot</Text>
                 <View style={{ paddingTop: 5 }}>
                     <Image
                         style={{
                             height: 20,
-                            width: 20,
+                            width: 30,
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -82,7 +83,7 @@ export class FurnitureCrafterPage extends React.Component {
                         justifyContent: 'center'
                     }}>
                         <InputSearch
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>
@@ -94,30 +95,30 @@ export class FurnitureCrafterPage extends React.Component {
                     flexDirection: 'row',
                     justifyContent: 'center'
                 }}>
+                    <View style={{
+                        backgroundColor: '#e5e5e5',
+                        width: '100%',
+                        height: '100%',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                    }}>
                         <View style={{
-                            backgroundColor: '#e5e5e5',
-                            width: '100%',
-                            height: '100%',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
+                            height: 150, width: '100%', marginTop: 15,
+                            flexDirection: 'row', justifyContent: 'center', borderColor: 'gray',
+                            flex: 1, paddingLeft: 10, paddingRight: 10
                         }}>
-                            <View style={{
-                                height: 150, width: '100%', marginTop: 15,
-                                flexDirection: 'row', justifyContent: 'center', borderColor: 'gray',
-                                flex: 1, paddingLeft: 10, paddingRight: 10
-                            }}>
-                                <View style={{ flex: 1 }}>
-                                    <FlatList
-                                        data={this.state.photo}
-                                        horizontal
-                                        renderItem={this.renderCrafterFurniture.bind(this)}
-                                        showsHorizontalScrollIndicator={false}
-                                    />
-                                </View>
+                            <View style={{ flex: 1 }}>
+                                <FlatList
+                                    data={this.state.photo}
+                                    horizontal
+                                    renderItem={this.renderCrafterFurniture.bind(this)}
+                                    showsHorizontalScrollIndicator={false}
+                                />
                             </View>
                         </View>
                     </View>
                 </View>
+            </View>
         )
     }
 

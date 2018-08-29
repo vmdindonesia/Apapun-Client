@@ -436,11 +436,11 @@ export class OrderPage extends React.Component {
     renderSelectedMaterial(item, index) {
         console.log(item, 'ITEM SELECT MATERIAL');
         return (
-            <View style={{ flexDirection: 'row', marginTop: 10, marginRight: 5 }} key={index}>
-                <View style={{ height: 25, flexDirection: 'row', borderWidth: 1, borderRadius: 30, paddingLeft: 7, paddingRight: 7 }}>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.material_name}</Text>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}> - </Text>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.submaterial_name.length >= 12 ? `${item.submaterial_name.substring(0, 12)}...` : `${item.submaterial_name}`}</Text>
+            <View style={{ flexDirection: 'column', marginTop: 10, marginRight: 5 }} key={index}>
+                <View style={{ height: 35, backgroundColor: 'white', flexDirection: 'row', borderWidth: 1, borderColor: '#A9A9A9', borderRadius: 30, paddingLeft: 7, paddingRight: 7, }}>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{item.material_name}</Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}> - </Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{item.submaterial_name.length >= 12 ? `${item.submaterial_name.substring(0, 12)}...` : `${item.submaterial_name}`}</Text>
                 </View>
             </View>
         )
@@ -449,7 +449,7 @@ export class OrderPage extends React.Component {
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ marginRight: 5 }}>
+            <View key={index}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -463,7 +463,7 @@ export class OrderPage extends React.Component {
                         >
                             <Image
                                 source={itemPhoto}
-                                style={{ width: 85, height: 70 }}
+                                style={{ width: 70, height: 70, backgroundColor: 'pink' }}
                                 resizeMode='contain'
                             />
                         </TouchableOpacity>
@@ -493,7 +493,7 @@ export class OrderPage extends React.Component {
                 <Image
                     source={item.item}
                     style={{ width: '100%', height: 200 }}
-                    resizeMode='contain'
+                    resizeMode='stretch'
                 />
                 <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
                     <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
@@ -598,8 +598,10 @@ export class OrderPage extends React.Component {
                                 <Picker
                                     selectedValue={categoryProduct}
                                     onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
+                                    itemStyle={{fontFamily:"Quicksand-Regular", color:'black'}}
                                 >
-                                    <Picker.Item label='Pilih Kategori Produk' value='0' />
+                                    <Picker.Item label='Pilih Kategori Produk' value='0' 
+                                    />
                                     {this.renderKategori()}
                                 </Picker>
                             </View>
@@ -608,16 +610,16 @@ export class OrderPage extends React.Component {
                 </View>
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 15, marginTop: 7 }]}>Upload Design Anda</Text>
-                <ContainerSection>
+                <View>
                     {
                         this.state.photoTemp.length === 0 ?
-                            <View style={{ flex: 1, height: 374, backgroundColor: 'grey', }}>
+                            <View style={{ flex: 1, width: '100%', height: 374, backgroundColor: 'grey', }}>
                                 <Image
                                     source={require('../assets/images/create-design.jpg')}
                                     style={{ height: '100%', width: '100%' }}
                                     resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150 }}>
+                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 150, marginLeft: 35, marginRight: 35 }}>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular', justifyContent: 'center' }}>
                                         Semakin detail desain Anda, semakin besar kemungkinan crafter kami untuk lebih mudah mengerti dalam memenuhi permintaan Anda.
                                     </Text>
@@ -629,7 +631,7 @@ export class OrderPage extends React.Component {
                                             style={styles.button}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/logo-image.png')} />
+                                                <Image style={{ width: 25, height: 20, marginTop: 6 }} source={require('../assets/images/add_picture.png')} />
                                                 <Text style={{ paddingLeft: 20, fontSize: 13, color: 'white', marginTop: 6, fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
                                             </View>
                                         </TouchableOpacity>
@@ -648,7 +650,7 @@ export class OrderPage extends React.Component {
                                 />
                             </View>
                     }
-                </ContainerSection>
+                </View>
                 {
                     this.state.photoTemp.length > 0 ?
                         <View style={styles.containerFlatList}>
@@ -667,12 +669,9 @@ export class OrderPage extends React.Component {
                             <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
                                 <TouchableOpacity
                                     onPress={() => this.minusNumber()}
-                                    style={{ width: 25, height: 25, justifyContent: 'center', marginRight: 5 }}
+                                    style={{ width: 30, height: 30, justifyContent: 'center', marginRight: 5, backgroundColor: 'red', borderRadius: 5 }}
                                 >
-                                    <Image
-                                        style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
-                                        source={require('../assets/images/minus.png')}
-                                    />
+                                    <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-remove' />
                                 </TouchableOpacity>
                                 <View style={{ width: 60, height: 40 }}>
                                     <InputNumber
@@ -685,12 +684,9 @@ export class OrderPage extends React.Component {
                                 </View>
                                 <TouchableOpacity
                                     onPress={() => this.plusNumber()}
-                                    style={{ width: 25, height: 25, justifyContent: 'center', marginLeft: 5 }}
+                                    style={{ width: 30, height: 30, justifyContent: 'center', marginLeft: 5, backgroundColor: 'red', borderRadius: 5 }}
                                 >
-                                    <Image
-                                        style={{ width: 30, height: 30, borderRadius: 12.5, alignSelf: 'center' }}
-                                        source={require('../assets/images/plus.png')}
-                                    />
+                                    <Icon size={17.5} style={{ color: 'white', alignSelf: 'center' }} name='md-add' />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -711,18 +707,21 @@ export class OrderPage extends React.Component {
                 <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
                     <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Material</Text>
                 </View>
-                <ContainerSection>
+                <View>
                     {
                         dataCheckBoxSubMaterial.length === 0 || dataCheckBoxSubMaterial.length === undefined ?
-                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', marginLeft: 5, marginRight: 5 }}>
+                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey',  }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
                                     style={{ width: '100%', height: 170, }}
                                     resizeMode='cover'
                                 />
-                                <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', alignSelf: 'center', top: 25 }}>
+                                <View style={{ flex: 1, flexDirection: 'column', position: 'absolute', alignSelf: 'center', top: 25, }}>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
-                                        Pilih material yang sesuai untuk desain Anda
+                                        Pilih material yang sesuai untuk 
+                                    </Text>
+                                    <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
+                                     desain Anda
                                     </Text>
                                 </View>
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
@@ -751,8 +750,8 @@ export class OrderPage extends React.Component {
                                             style={styles.buttonsMaterial}
                                         >
                                             <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                <Image style={{ width: 20, height: 20, marginTop: 6 }} source={require('../assets/images/Material.png')} />
-                                                <Text style={{ paddingLeft: 20, fontSize: 13, color: 'red', marginTop: 6, fontFamily: 'Quicksand-Regular' }}>Tambah Material</Text>
+                                                <Image style={{ width: 25, height: 25, marginTop: 6 }} source={require('../assets/images/ic_material.png')} />
+                                                <Text style={{ paddingLeft: 15, fontSize: 13, color: 'red', marginTop: 8, fontFamily: 'Quicksand-Regular' }}>Tambah Material</Text>
                                             </View>
                                         </TouchableOpacity>
                                     </ContainerSection>
@@ -771,7 +770,7 @@ export class OrderPage extends React.Component {
                                 </View>
                             </View>
                     }
-                </ContainerSection>
+                </View>
 
                 <ContainerSection>
                     <View style={{ flex: 1, marginLeft: 10, marginRight: 10 }}>
@@ -851,10 +850,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerFlatList: {
-        paddingBottom: 5,
-        paddingRight: 5,
-        paddingLeft: 5,
-        paddingTop: 5,
+        paddingBottom: 3,
+        paddingRight: 3,
+        paddingLeft: 3,
+        paddingTop: 3,
     },
     pickerContainer: {
         flex: 1,
@@ -864,7 +863,8 @@ const styles = StyleSheet.create({
         borderColor: '#a9a9a9',
         borderRadius: 3,
         paddingLeft: 5,
-        borderWidth: 1
+        borderWidth: 1,
+        fontFamily:'Quicksand-Regular'
     },
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',
@@ -876,7 +876,7 @@ const styles = StyleSheet.create({
         // alignSelf: 'center'
     },
     pickerUnitStyle: {
-        width: 120,
+        width: 130,
         marginLeft: 3,
         borderColor: '#a9a9a9',
         borderRadius: 5,

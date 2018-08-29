@@ -43,13 +43,14 @@ export class HelpMenuPage extends React.Component {
                                 justifyContent: 'flex-end'
                             }}>
                                 <View style={{ marginBottom: 5, width: '95%', height: 40, justifyContent: 'center', alignSelf: 'center' }}>
-                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>Gal Gadot</Text></Text>
+                                    <Text style={{ color: 'white' }}> Hi! <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Gal Gadot</Text></Text>
                                     <Text style={{ color: 'white', paddingTop: 2.5, fontSize: 15, fontFamily: 'Quicksand-Regular' }}> Apa yang bisa kami bantu ? </Text>
                                 </View>
                                 <View style={{ width: '95%', height: 50, alignSelf: 'center' }}>
                                     <InputSearch
                                         // onFocus={() => navigate('FilterBefore')}
-                                        placeholder="Cari Pertanyaan atau Kata Kunci"
+                                        placeholder="    Cari Pertanyaan atau Kata Kunci"
+                                        style={{ fontFamily: 'Quicksand-Regular' }}
                                         icon="ic_search"
                                     />
                                 </View>
@@ -65,27 +66,27 @@ export class HelpMenuPage extends React.Component {
                         backgroundColor: '#e5e5e5'
                     }}>
                         <View style={{ height: 20, marginLeft: 10, marginRight: 10, marginBottom: 10, marginTop: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular' }}>FAQ</Text>
+                            <Text style={{ paddingLeft: 10, color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>FAQ</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 10, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Apa Itu Crafter ? </Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30, paddingRight: 30 }}>Apa Itu Crafter ? </Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Tidak Ada Yang Mau Mengambil Pesanan Saya</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30, paddingRight: 30 }}>Tidak Ada Yang Mau Mengambil Pesanan Saya</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Cara Menarik Hasil Jual Ide</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30, paddingRight: 30 }}>Cara Menarik Hasil Jual Ide</Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Bagaimana Cara Menjual Desain Saya</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30, paddingRight: 30 }}>Bagaimana Cara Menjual Desain Saya ? </Text>
                         </View>
 
                         <View style={{ flex: 1, backgroundColor: 'white', height: 50, marginLeft: 10, marginRight: 10, marginBottom: 10, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30 }}>Bagaimana Jika ID Saya Di Curi</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 30, paddingRight: 30 }}>Bagaimana Jika ID Saya Di Curi ? </Text>
                         </View>
                     </View>
 
@@ -98,7 +99,7 @@ export class HelpMenuPage extends React.Component {
                     }}>
 
                         <View>
-                            <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', paddingLeft: 20, color: 'black' }}>Topik</Text>
+                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', paddingLeft: 20, color: 'black' }}>Topik</Text>
                         </View>
                         <View style={{
                             flex: 2,
@@ -173,7 +174,7 @@ export class HelpMenuPage extends React.Component {
                     }} >
 
                         <View style={{ backgroundColor: 'white', height: 175, width: '80%', marginBottom: 10, marginTop: 10, marginBottom: 40, alignContent: 'center' }} >
-                            <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>BANTUAN KOMUNITAS</Text>
+                            <Text style={{ color: 'black', fontSize: 15, textAlign: 'center', fontFamily: 'Quicksand-Bold' }}>BANTUAN KOMUNITAS</Text>
                             <Text style={{ color: 'black', fontSize: 15, textAlign: 'center', marginTop: 10 }}>Punya pertanyaan dan ingin berdiskusi seputar aplikasi kami?
                              Ayo bergabung di Komunitas penggemar dan pengguna aplikasi kami di Indonesia dan dapatkan jawabannya. Punya
                              Jawaban? Bergabunglah dengan komunitas dan berikan bantuan</Text>
@@ -221,39 +222,25 @@ export class HelpMenuPage extends React.Component {
                     <View style={{
                         marginLeft: 10,
                         marginRight: 10,
-                        marginTop: 25,
+                        marginTop: 20,
                         flex: 2,
                         flexDirection: 'column',
                         backgroundColor: 'white',
                         height: 200,
                         alignItems: 'center',
-                        alignContent: 'center'
+                        alignContent: 'center',
+                        marginBottom: 10
                     }}>
                         <View style={{ height: 70, width: '90%', justifyContent: 'center', marginTop: 10 }}>
-                            <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Masih Perlu Bantuan ?</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Masih Perlu Bantuan ?</Text>
                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', textAlign: 'justify', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>silakan hubungi customer care kami yang dengan senang hari melayani dan membantu Anda
                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'red' }}> 24 Jam </Text>per harinya</Text>
 
                         </View>
 
-                        <View style={{ flex: 3, flexDirection: 'row', height: 60, width: '90%', marginBottom: 10 }}>
+                        <View style={{ flex: 2, flexDirection: 'row', height: 60, width: '90%', marginBottom: 10, }}>
 
-                            <View style={{ flex: 1, flexDirection: 'column', }} >
-
-                                <View style={{ height: 70, justifyContent: 'center', alignItems: 'center' }}>
-                                    <Image
-                                        style={{ height: 45, width: 45 }}
-                                        source={require('./../assets/images/ic_conversation.png')}
-                                    />
-                                </View>
-                                <TouchableOpacity>
-                                    <View style={{ height: 35, backgroundColor: '#ffc044', borderRadius: 100, marginLeft: 5, marginRight: 5, justifyContent: 'center' }}>
-                                        <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Chat</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-
-                            <View style={{ flex: 1, flexDirection: 'column', }} >
+                            <View style={{ flex: 1, flexDirection: 'column', marginRight: 5, marginLeft: 5 }} >
 
                                 <View style={{ height: 70, justifyContent: 'center', alignItems: 'center' }}>
                                     <Image
@@ -268,7 +255,7 @@ export class HelpMenuPage extends React.Component {
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={{ flex: 1, flexDirection: 'column', }} >
+                            <View style={{ flex: 1, flexDirection: 'column', marginRight: 5, marginLeft: 5 }} >
 
                                 <View style={{ height: 70, justifyContent: 'center', alignItems: 'center' }}>
                                     <Image

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, FlatList, ToastAndroid } from 'react-native';
-import { OrderForCrafterPage } from './orderForCrafter';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -51,33 +51,36 @@ export class searchOrderPage extends React.Component {
     renderOrderList = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity
-                //  onPress={() => this.props.navigation.navigate('OrderForCrafter')}
-                onPress={() => this.props.navigation.navigate('OrderForCrafter', { datas: data})}
-            >
-                <View style={styles.card}>
-                    <View style={styles.thumbnailContainerStyle}>
-                        <Image
-                            style={styles.thumbnailStyle}
-                            source={{ uri: 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg' }}
-                           // source={{ uri: `${IPSERVER}/ApapunStorages/images/download/` + data.item.ApapunImages[0].name }}
-                        />
-                    </View>
-                    <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
-                        <Image
-                            style={{ width: 20, height: 20 }}
-                            source={require('./../assets/images/location_icon.png')}
-                            resizeMode='contain'
-                        />
-                        <View style={{ flex: 1 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
-                            {/* <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunProvinces.name},</Text>
+            <View style={{ padding: 10 }}>
+                <TouchableOpacity
+                    //  onPress={() => this.props.navigation.navigate('OrderForCrafter')}
+                    onPress={() => this.props.navigation.navigate('OrderForCrafter', { datas: data })}
+                >
+                    <View style={styles.card}>
+                        <View style={styles.thumbnailContainerStyle}>
+                            <Image
+                                style={styles.thumbnailStyle}
+                                source={{ uri: 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg' }}
+                                resizeMode='cover'
+                            // source={{ uri: `${IPSERVER}/ApapunStorages/images/download/` + data.item.ApapunImages[0].name }}
+                            />
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
+                            <Image
+                                style={{ width: 20, height: 20 }}
+                                source={require('./../assets/images/location_icon.png')}
+                                resizeMode='contain'
+                            />
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
+                                {/* <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunProvinces.name},</Text>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunRegencies.name}</Text> */}
+                            </View>
                         </View>
                     </View>
-                </View>
-            </TouchableOpacity >
+                </TouchableOpacity >
+            </View>
         )
     }
 
@@ -142,28 +145,18 @@ export class searchOrderPage extends React.Component {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
         elevation: 2,
-        marginLeft: 5,
-        marginBottom: '2%',
         backgroundColor: '#FFF'
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 15,
-        marginBottom: 15,
         flex: 1
     },
     thumbnailStyle: {
-        // alignSelf: 'stretch',
         alignSelf: 'center',
-        height: 170,
-        width: 170,
-        resizeMode: 'cover',
+        height: hp ('26.5%'),
+        width: wp ('45%'),
         borderRadius: 4
     }
 })

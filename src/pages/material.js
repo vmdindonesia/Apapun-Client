@@ -144,11 +144,11 @@ export class MaterialPage extends React.Component {
     renderSelectedMaterial(item, index) {
         console.log(item, 'awdawdawdawd')
         return (
-            <View style={{ flexDirection: 'row', marginTop: 10, marginRight: 5 }}>
-                <View style={{ height: 25, flexDirection: 'row', borderWidth: 1, borderRadius: 30, paddingLeft: 7, paddingRight: 7 }}>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.material_name}</Text>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}> - </Text>
-                    <Text style={{ textAlign: 'center', marginTop: 3, fontSize: 13, fontFamily: 'Quicksand-Bold' }}>{item.submaterial_name.length >= 12 ? `${item.submaterial_name.substring(0, 12)}...` : `${item.submaterial_name}`}</Text>
+            <View style={{ flexDirection: 'column', marginTop: 10, marginRight: 5 }}>
+                <View style={{ height: 35, flexDirection: 'row', borderWidth: 1, backgroundColor: 'white', borderRadius: 30, borderColor: '#CACACA', paddingLeft: 7, paddingRight: 7, }}>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{item.material_name}</Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}> - </Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{item.submaterial_name.length >= 12 ? `${item.submaterial_name.substring(0, 12)}...` : `${item.submaterial_name}`}</Text>
                     <TouchableOpacity
                         onPress={() => this.deleteMaterial(item)}
                     >
@@ -213,7 +213,7 @@ export class MaterialPage extends React.Component {
         return (
             <Button
                 style={{
-                    backgroundColor: '#FF1000',
+                    backgroundColor: '#ef1c25',
                     justifyContent: 'center',
                     borderRadius: 30,
                     marginTop: 10
@@ -272,9 +272,9 @@ export class MaterialPage extends React.Component {
 
                 <Container>
                     <ContainerSection>
-                        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center', height: 45, backgroundColor: '#fff', borderWidth: 1, borderRadius: 25, marginTop: 10 }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center', height: 45, backgroundColor: '#fff', borderWidth: 1, borderColor: '#CACACA', borderRadius: 25, marginTop: 10 }}>
                             < InputSearch
-                                style={{ flex: 1 }}
+                                style={{ flex: 1, fontFamily: 'Quicksand-Regular' }}
                                 placeholder="Cari Material"
                                 icon="ic_search"
                                 onChangeText={val => this.onChangeAuto('searchMaterial', val)}
@@ -301,7 +301,7 @@ export class MaterialPage extends React.Component {
                             <ContainerSection>
                                 <View style={{ width: '100%', marginTop: 10 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Material</Text>
-                                    <View style={{ backgroundColor: '#fff', borderWidth: 1, borderRadius: 5, marginTop: 10 }}>
+                                    <View style={{ backgroundColor: '#fff', borderWidth: 1, borderColor: '#CACACA', borderRadius: 5, marginTop: 10 }}>
                                         <Picker
                                             selectedValue={dataSelectMaterial}
                                             onValueChange={v => this.onChangeMaterial('dataSelectMaterial', v)}
@@ -316,7 +316,7 @@ export class MaterialPage extends React.Component {
                             <ContainerSection>
                                 <View style={{ width: '100%', marginTop: 10 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Material</Text>
-                                    <View style={{ backgroundColor: '#fff', borderWidth: 1, borderRadius: 5, marginTop: 10 }}>
+                                    <View style={{ backgroundColor: '#fff', borderWidth: 1, borderColor: '#CACACA', borderRadius: 5, marginTop: 10 }}>
                                         <Picker
                                             selectedValue={dataSelectMaterial}
                                             onValueChange={v => this.onChangeMaterialAuto('dataSelectMaterial', v)}
@@ -333,7 +333,7 @@ export class MaterialPage extends React.Component {
                             <ContainerSection>
                                 <View style={{ width: '100%', marginTop: 10 }}>
                                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Sub - Material</Text>
-                                    <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderRadius: 5, borderWidth: 1, marginTop: 10 }}>
+                                    <View style={{ width: '100%', height: 200, backgroundColor: '#fff', borderColor: '#CACACA', borderRadius: 5, borderWidth: 1, marginTop: 10 }}>
                                         {
                                             dataSubMaterial.length === 0 ?
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

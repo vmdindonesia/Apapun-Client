@@ -49,7 +49,7 @@ export class editNoteOnCrafterMenuPage extends React.Component {
 
                 </View>
 
-                <View style={{ height: 50, margin: 20, borderRadius: 30, backgroundColor: 'red', justifyContent: 'center' }}>
+                <View style={{ height: 50, margin: 20, borderRadius: 30, backgroundColor: '#ef1c25', justifyContent: 'center' }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>Simpan</Text>
                 </View>
 

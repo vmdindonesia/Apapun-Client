@@ -28,7 +28,7 @@ export class DetailDeliveryPage extends React.Component {
         return (
             <Button
                 style={{
-                    backgroundColor: 'red',
+                    backgroundColor: '#ef1c25',
                     justifyContent: 'center',
                     borderRadius: 30,
                 }}

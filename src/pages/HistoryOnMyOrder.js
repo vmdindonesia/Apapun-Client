@@ -58,15 +58,16 @@ export class HistoryOnMyOrderPage extends React.Component {
 
                         <Image
                             style={{
-                                width: 25,
-                                height: 26.5,
+                                width: 33,
+                                height: 24.5,
                                 borderRadius: 0,
                                 alignSelf: 'center',
+                                marginTop: 1.5
 
                             }}
                             source={require('./../assets/images/ic_sort.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
+                        <Text style={{ marginTop: 3, paddingTop: 2, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
 
 
                     </TouchableOpacity>
@@ -94,7 +95,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                             }}
                             source={require('./../assets/images/ic_filter.png')}
                         />
-                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
+                        <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center' }}>Filter</Text>
 
                     </TouchableOpacity>
                 </View>
@@ -191,7 +192,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                                         </TouchableOpacity>
                                     </View>
 
-                                    <View style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
+                                    <View style={{ flex: 1, backgroundColor: '#ef1c25', justifyContent: 'center', margin: 10, borderRadius: 30 }}>
                                         <TouchableOpacity>
                                             <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'white', alignSelf: 'center' }}>Pasang Filter</Text>
                                         </TouchableOpacity>
@@ -216,7 +217,28 @@ export class HistoryOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View>
+
+                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 27 }}>
+                        <Image
+                            style={{
+                                width: '95%',
+                                height: '95%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={require('./../assets/images/history.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={{ flex: 1, height: 50, justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>HISTORY KOSONG</Text>
+                        <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Belum ada transaksi sebelumnya.</Text>
+
+                    </View>
+
+
+                    {/* <View>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'flex-end',
@@ -451,7 +473,7 @@ export class HistoryOnMyOrderPage extends React.Component {
 
                             </View>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                 </ScrollView>
 

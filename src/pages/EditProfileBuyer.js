@@ -30,7 +30,7 @@ export class EditProfileBuyerPage extends React.Component {
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
                         <Text style={{
-                            color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular',
+                            color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold',
                         }}>ID Akun</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                             <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Gal Gadot</Text>
@@ -38,39 +38,39 @@ export class EditProfileBuyerPage extends React.Component {
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Ganti Kata Sandi</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Ganti Password</Text>
                         {/* <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                             <Text style={{ color: '#e5e5e5', fontSize: 15, }}>Gal Gadot</Text>
                         </View> */}
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Jenis Kelamin</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Jenis Kelamin</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                             <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Female</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Tanggal Lahir</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Tanggal Lahir</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                             <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>14 Februari 1998</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Email</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Email</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
-                            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>galgadot@gmail.com</Text>
-                                <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', }}> {"<Verification>"}</Text>
+                            <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}>galgadot@gmail.com</Text>
+                                {/* <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}> {"<Verification>"}</Text> */}
                             </View>
                         </View>
                     </View>
 
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Nomor Telepon</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nomor Telepon</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>+62 8567847493</Text>
@@ -83,7 +83,7 @@ export class EditProfileBuyerPage extends React.Component {
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}
                             >
-                                <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Alamat</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Alamat</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -92,7 +92,7 @@ export class EditProfileBuyerPage extends React.Component {
 
                 <View style={{ flex: 1, height: 125, backgroundColor: 'white', paddingTop: 20 }}>
                     <View style={{ flex: 1, flexDirection: 'column', marginRight: 30, marginLeft: 30 }}>
-                        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Hubungkan Dengan Facebook</Text>
+                        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Hubungkan Dengan Facebook</Text>
                         <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center', paddingLeft: 25 }}>
                             <Image
                                 style={{ height: 42.5, width: 42.5, }}
@@ -105,11 +105,11 @@ export class EditProfileBuyerPage extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
+                <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: '#ef1c25', alignItems: 'center', justifyContent: 'center', marginRight: 30, marginLeft: 30, borderRadius: 100, alignItems: 'center', marginTop: 25 }}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('ProfilePage')}
                     >
-                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontWeight: 'bold', fontFamily: 'Quicksand-Regular', }}>Simpan</Text>
+                        <Text style={{ color: 'white', fontSize: 15, textAlign: 'center', fontFamily: 'Quicksand-Bold', }}>Simpan</Text>
                     </TouchableOpacity>
                 </View>
 

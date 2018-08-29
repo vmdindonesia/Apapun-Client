@@ -3,7 +3,7 @@ import {
     View, Text, ImageBackground, Image, Alert,
     TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
 } from 'react-native'
-import { ContainerSection } from '../components/common';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class MenuCrafterPage extends React.Component {
@@ -42,6 +42,13 @@ export class MenuCrafterPage extends React.Component {
                         source={require('./../assets/images/background_profile.jpeg')}
                         style={styles.backgroundStyle}
                     >
+                        <TouchableOpacity style={{ height: 70, width: 70, position: 'absolute', marginTop: 20 }}
+                            onPress={() => this.props.navigation.goBack()}
+                        >
+                            <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
+                                <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
+                            </View>
+                        </TouchableOpacity>
                         <View>
 
                             <View style={styles.containerImage}>
@@ -51,7 +58,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                     </ImageBackground >
-                    <View style={{ height: '100%', marginBottom: '55%' }}>
+                    <View style={{ height: '100%', paddingBottom: hp('35%') }}>
                         <View style={{ flex: 1 }}>
                             <View style={{ width: '100%' }} >
                                 <Text style={styles.textStyle}>Gal Gadot</Text>
@@ -61,100 +68,92 @@ export class MenuCrafterPage extends React.Component {
                             <Image
                                 style={styles.locationIcon}
                                 source={require('./../assets/images/location_icon.png')}
+                                resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Kalimantan Selatan</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 14 }]}>Kalimantan Selatan</Text>
                             </View>
                         </View>
                         <View style={{ width: '100%', flexDirection: 'row' }}>
                             <Image
                                 style={styles.emojiIcon}
                                 source={require('./../assets/images/Cukup.png')}
+                                resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
                                 <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: Cukup (35)</Text>
                             </View>
                         </View>
-                        <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 25 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
+                        <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>Lulusan S2 Interior Design di Singapura -
                         Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
                         </View>
-                        <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20 }}>
+                        <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
                             <TouchableOpacity
-                                onPress={() => this.props.navi.navigate('EditProfileCrafter')}
+                                onPress={() => this.props.navigation.navigate('EditProfileCrafter')}
                                 style={{
                                     backgroundColor: 'black', width: '100%', height: 40,
-                                    borderRadius: 15, justifyContent: 'center'
+                                    borderRadius: 30, justifyContent: 'center'
                                 }}
                             >
                                 <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 13, textAlign: 'center' }}>Edit Profil</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ width: '100%', marginTop: 10, height: '100%' }}>
+                        <View style={{ width: '100%', marginTop: 25, height: '100%' }}>
                             <View style={styles.card}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
-                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Gambar</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                            </View>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                    {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
+                                    <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gambar</Text>
+                                        <View style={{ flex: 1 }}>
+                                            <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu')}>
-                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Catatan</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                            </View>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu')}>
+                                    {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
+                                    <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Catatan</Text>
+                                        <View style={{ flex: 1 }}>
+                                            <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('UlasanOnCrafterProfile')}>
-                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Ulasan</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                            </View>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('UlasanOnCrafterProfile')}>
+                                    {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
+                                    <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Ulasan</Text>
+                                        <View style={{ flex: 1 }}>
+                                            <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('AkunBank')}>
-                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Akun Bank</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                            </View>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('AkunBank')}>
+                                    {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
+                                    <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Akun Bank</Text>
+                                        <View style={{ flex: 1 }}>
+                                            <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <ContainerSection>
-                                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('crafterMenuListOrder')}>
-                                        {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
-                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                            <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Pesanan Saya</Text>
-                                            <View style={{ flex: 1 }}>
-                                                <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
-                                            </View>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('crafterMenuListOrder')}>
+                                    {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
+                                    <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
+                                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Pesanan Saya</Text>
+                                        <View style={{ flex: 1 }}>
+                                            <Icon size={30} style={{ alignSelf: 'flex-end' }} name='md-arrow-dropright' />
                                         </View>
-                                    </TouchableWithoutFeedback>
-                                </ContainerSection>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                         </View>
                     </View>
@@ -180,7 +179,7 @@ const styles = StyleSheet.create({
     },
     containerImage: {
         justifyContent: 'flex-end',
-        top: 170,
+        top: 155,
         left: 15,
         position: 'absolute',
     },
@@ -188,31 +187,33 @@ const styles = StyleSheet.create({
         height: 155,
         width: 155,
         borderRadius: 100,
-        borderColor: 'white',
-        borderWidth: 3
+        borderColor: '#fff',
+        borderWidth: 5
     },
     textStyle: {
         marginTop: 10,
         marginLeft: '50%',
         fontFamily: 'Quicksand-Bold',
         fontSize: 15,
-        alignSelf: 'auto'
+        alignSelf: 'auto',
+        color: 'black'
     },
     textStyle2: {
-        marginTop: 10,
+        marginTop: 7,
         fontFamily: 'Quicksand-Regular',
         fontSize: 13,
         alignSelf: 'auto',
-        marginRight: 10
+        marginRight: 10,
+        color: 'black'
     },
     locationIcon: {
         marginLeft: '50%',
         height: 15,
         width: 10,
-        marginTop: 10
+        marginTop: 7
     },
     emojiIcon: {
-        marginLeft: '48%',
+        marginLeft: '48.5%',
         height: 20,
         width: 20,
         marginTop: 5

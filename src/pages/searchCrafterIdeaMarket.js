@@ -17,7 +17,12 @@ export class searchCrafterIdeaMarketPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Mencari Crafter'
+        headerTitle: 'Mencari Crafter',
+        headerStyle: {
+            elevation: 0,
+            borderBottomColor: 'white',
+            borderBottomWidth: 0
+        }
     });
 
     constructor(props) {
@@ -63,7 +68,7 @@ export class searchCrafterIdeaMarketPage extends React.Component {
                 flex: 1
             }}>
 
-                <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
+                <View style={{ width: '100%', height: 65, flexDirection: 'row', backgroundColor: 'white' }}>
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
                         <TouchableOpacity
@@ -98,7 +103,7 @@ export class searchCrafterIdeaMarketPage extends React.Component {
 
                     </View>
 
-                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '50%', alignSelf: 'center' }} />
+                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '50%', alignSelf: 'center', }} />
 
                     <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 

@@ -38,16 +38,17 @@ export class FashionCrafterPage extends React.Component {
                     style={styles.item}
                     source={{ uri: data.item }}
                 />
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Gal Gadot</Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color:'black' }}>Gal Gadot</Text>
                 <View style={{ paddingTop: 5 }}>
                     <Image
                         style={{
                             height: 20,
-                            width: 20,
+                            width: 30,
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -75,7 +76,7 @@ export class FashionCrafterPage extends React.Component {
                     }}>
                         <InputSearch
                             // onFocus={() => navigate('FilterBefore')}
-                            placeholder="Cari Crafter..."
+                            placeholder="     Cari Crafter..."
                             icon="ic_search"
                         />
                     </View>

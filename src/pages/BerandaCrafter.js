@@ -41,16 +41,17 @@ export class BerandaCrafterPage extends React.Component {
                     style={styles.item}
                     source={{ uri: data.item }}
                 />
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Gal Gadot</Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color: 'black' }}>Gal Gadot</Text>
                 <View style={{ paddingTop: 5 }}>
                     <Image
                         style={{
                             height: 20,
-                            width: 20,
+                            width: 30,
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -73,16 +74,17 @@ export class BerandaCrafterPage extends React.Component {
                     style={styles.item}
                     source={{ uri: data.item }}
                 />
-                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5 }}>Rasia</Text>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', fontSize: 13, marginTop: 5, color: 'black' }}>Raisa</Text>
                 <View style={{ paddingTop: 5 }}>
                     <Image
                         style={{
                             height: 20,
-                            width: 29,
+                            width: 30,
                             borderRadius: 0,
                             alignSelf: 'center'
                         }}
                         source={require('./../assets/images/Cukup.png')}
+                        resizeMode='contain'
                     />
                 </View>
             </TouchableOpacity>
@@ -98,19 +100,20 @@ export class BerandaCrafterPage extends React.Component {
                     <View style={{
                         backgroundColor: '#e5e5e5',
                         width: '100%',
-                        height: 50,
+                        height: 70,
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}>
                         <View style={{
                             width: '90%',
-                            height: 50,
+                            height: 60,
                             justifyContent: 'center'
                         }}>
                             <InputSearch
                                 // onFocus={() => navigate('FilterBefore')}
-                                placeholder="Cari Crafter..."
+                                placeholder="     Cari Crafter..."
+                                style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}
                                 icon="ic_search"
                             />
                         </View>
@@ -158,8 +161,8 @@ export class BerandaCrafterPage extends React.Component {
                                 height: '10%',
                                 width: '75%'
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15, }}>Profesional Crafter</Text>
-                                <Text style={{ color: 'black', fontSize: 13, paddingTop: 2, }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
+                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Profesional Crafter</Text>
+                                <Text style={{ color: 'black', fontSize: 13, paddingTop: 2, fontFamily: 'Quicksand-Regular', color: 'black' }}>Crafter ini sudah memiliki sejarah dalam keahlian crafting dibidangnya masing-masing</Text>
                             </View>
 
                             <View style={{
@@ -168,7 +171,7 @@ export class BerandaCrafterPage extends React.Component {
                             }}>
                                 <TouchableWithoutFeedback
                                     onPress={() => this.props.navi.navigate('')}>
-                                    <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15, }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Bold', paddingLeft: 15, }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>
@@ -202,14 +205,14 @@ export class BerandaCrafterPage extends React.Component {
                                 height: '5%',
                                 width: '75%'
                             }}>
-                                <Text style={{ paddingLeft: 5, fontSize: 15, fontWeight: 'bold' }}>Crafter On Debut</Text>
+                                <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Crafter On Debut</Text>
                             </View>
                             <View style={{
                                 height: '10%',
                                 width: '20%',
                             }}>
                                 <TouchableWithoutFeedback>
-                                    <Text style={{ color: 'red', fontSize: 13, fontWeight: 'bold', paddingLeft: 15 }}>See All</Text>
+                                    <Text style={{ color: 'red', fontSize: 13, fontFamily: 'Quicksand-Bold', paddingLeft: 15 }}>See All</Text>
                                 </TouchableWithoutFeedback>
                             </View>
                         </View>

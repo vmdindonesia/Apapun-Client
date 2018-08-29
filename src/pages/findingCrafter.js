@@ -20,7 +20,21 @@ export class FindingCrafterPage extends React.Component {
     headerTitle: 'Mencari Crafter',
     headerStyle: {
       elevation: 0
-    }
+    },
+    headerRight:
+      <View style={{
+        flexDirection: 'column', width: 50, height: '100%', marginRight: 10, justifyContent: 'center'
+      }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Dashboard')}
+        >
+          <Icon
+            size={27}
+            style={{ alignSelf: 'center', color: 'black' }} name='ios-home-outline'
+          />
+        </TouchableOpacity>
+      </View>
+
   });
 
   constructor(props) {
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Quicksand-Regular',
     paddingTop: 3,
-    color: 'red'
+    color: '#ef1c25'
   },
   imageActive: {
     width: 25,

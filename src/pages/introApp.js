@@ -95,7 +95,7 @@ export class IntroAppPage extends React.Component {
                                         });
                                     }}
                                 >
-                                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'red', textAlign: 'right' }}>NEXT</Text>
+                                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: '#ef1c25', textAlign: 'right' }}>NEXT</Text>
                                 </TouchableHighlight>
                             </View>
                         </View>

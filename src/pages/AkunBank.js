@@ -54,7 +54,8 @@ export class AkunBankPage extends React.Component {
           borderBottomWidth: 2,
           marginBottom: 3,
           // flex: 1,
-          borderColor: '#e5e5e5'
+          borderColor: '#e5e5e5',
+          backgroundColor: 'white'
         }}>
 
           <View
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     borderBottomWidth: 3,
-    borderColor: 'red'
+    borderColor: '#ef1c25'
   },
   tabText: {
     color: '#c6c6c6',

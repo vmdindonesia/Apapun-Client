@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Keyboard, Image, AsyncStorage, TouchableOpacity, ToastAndroid, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, ImageBackground, Keyboard, Image, Picker, TouchableOpacity, ToastAndroid, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, Spinner, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
-import { COLOR, IPSERVER } from '../shared/config';
+import { IPSERVER } from '../shared/config';
 import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import DateTimePicker from 'react-native-modal-datetime-picker';
@@ -60,8 +60,92 @@ export class RegistrationBuyerPage extends React.Component {
             gendermale: '',
             genderfemale: '',
             agree: false,
-            agreeterms: ''
+            agreeterms: '',
+            dataProvince: '',
+            dataRegency: '',
+            dataDistrict: ''
         };
+    }
+
+    componentDidMount() {
+        axios.get(`${IPSERVER}/ApapunProvinces/getProvinceAll`)
+            .then(response => {
+                console.log(response, 'Data Province');
+                this.setState({ dataProvince: response.data });
+            }).catch(error => {
+                console.log(error, 'Error Get Province');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
+    }
+
+    onChangeProvince = (name, value) => {
+        console.log(name, value, 'Province Selected');
+        this.setState({ [name]: value }, () => {
+            axios.post(`${IPSERVER}/ApapunRegencies/getRegenciesByProvinceId`, {
+                provinceId: value
+            })
+                .then(response => {
+                    console.log(response, 'Data Regency');
+                    this.setState({ dataRegency: response.data });
+                }).catch(error => {
+                    console.log(error, 'Error Get Regency');
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
+    }
+
+    onChangeRegency = (name, value) => {
+        console.log(name, value, 'Province Selected');
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+            axios.post(`${IPSERVER}/ApapunDistricts/getDistrictsByRegencyId`, {
+                regencyId: value
+            })
+                .then(response => {
+                    console.log(response, 'Data District');
+                    this.setState({ dataDistrict: response.data });
+                }).catch(error => {
+                    console.log(error, 'Error Get District');
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
+    }
+
+    onChangeDistrict = (name, value) => {
+        console.log(name, value, 'Province Selected');
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+        });
+    }
+
+    renderProvince = () => {
+        const renderProvince = this.state.dataProvince;
+        if (renderProvince) {
+            return renderProvince.map((data, index) => {
+                return <Picker.Item label={data.name} value={data.id} key={index} />
+            })
+        }
+        return <Picker.Item label='Tidak ada Province' value='0' />
+    }
+
+    renderRegency = () => {
+        const renderRegency = this.state.dataRegency;
+        if (renderRegency) {
+            return renderRegency.map((data, index) => {
+                return <Picker.Item label={data.name} value={data.id} key={index} />
+            })
+        }
+        return <Picker.Item label='Harap Pilih Provinsi Terlebih Dahulu' value='0' />
+    }
+
+    renderDistrict = () => {
+        const renderDistrict = this.state.dataDistrict;
+        if (renderDistrict) {
+            return renderDistrict.map((data, index) => {
+                return <Picker.Item label={data.name} value={data.id} key={index} />
+            })
+        }
+        return <Picker.Item label='Harap Pilih Kota Terlebih Dahulu' value='0' />
     }
 
     checkedMale = () => {
@@ -149,7 +233,6 @@ export class RegistrationBuyerPage extends React.Component {
             noPhone,
             email,
             birthDate,
-            birthPlace,
             gender,
             imageUri,
             province,
@@ -162,65 +245,60 @@ export class RegistrationBuyerPage extends React.Component {
         const validate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const validateEmail = validate.test(email);
 
-        switch (realm) {
+        switch (imageUri) {
             case '':
-                return ToastAndroid.show('Nama Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
+                return ToastAndroid.show('Foto Profile Tidak Boleh Kosong', ToastAndroid.SHORT);
             default:
-                switch (username) {
+                switch (realm) {
                     case '':
-                        return ToastAndroid.show('Username Tidak Boleh Kosong', ToastAndroid.SHORT);
+                        return ToastAndroid.show('Nama Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
                     default:
-                        switch (password) {
+                        switch (username) {
                             case '':
-                                return ToastAndroid.show('Password Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                return ToastAndroid.show('Username Tidak Boleh Kosong', ToastAndroid.SHORT);
                             default:
-                                switch (noPhone) {
+                                switch (gender) {
                                     case '':
-                                        return ToastAndroid.show('Nomor Telepon Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                        return ToastAndroid.show('Jenis Kelamin Tidak Boleh Kosong', ToastAndroid.SHORT);
                                     default:
-                                        switch (validateEmail) {
-                                            case false:
-                                                return ToastAndroid.show('Format Email Salah', ToastAndroid.SHORT);
+                                        switch (birthDate) {
+                                            case '':
+                                                return ToastAndroid.show('Tanggal Lahir Tidak Boleh Kosong', ToastAndroid.SHORT);
                                             default:
-                                                switch (birthDate) {
+                                                switch (password) {
                                                     case '':
-                                                        return ToastAndroid.show('Tanggal Lahir Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                        return ToastAndroid.show('Password Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                     default:
-                                                        switch (birthPlace) {
-                                                            case '':
-                                                                return ToastAndroid.show('Tempat Lahir Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                        switch (validateEmail) {
+                                                            case false:
+                                                                return ToastAndroid.show('Format Email Salah', ToastAndroid.SHORT);
                                                             default:
-                                                                switch (gender) {
+                                                                switch (noPhone) {
                                                                     case '':
-                                                                        return ToastAndroid.show('Jenis Kelamin Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                        return ToastAndroid.show('Nomor Telepon Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                     default:
-                                                                        switch (imageUri) {
+                                                                        switch (province) {
                                                                             case '':
-                                                                                return ToastAndroid.show('Foto Profile Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                return ToastAndroid.show('Provinse Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                             default:
                                                                                 switch (city) {
                                                                                     case '':
                                                                                         return ToastAndroid.show('Kota Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                                     default:
-                                                                                        switch (province) {
+                                                                                        switch (district) {
                                                                                             case '':
-                                                                                                return ToastAndroid.show('Provinse Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                                return ToastAndroid.show('Daerah Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                                             default:
-                                                                                                switch (district) {
+                                                                                                switch (addressTxt) {
                                                                                                     case '':
-                                                                                                        return ToastAndroid.show('Daerah Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                                        return ToastAndroid.show('Alamat Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
                                                                                                     default:
-                                                                                                        switch (addressTxt) {
-                                                                                                            case '':
-                                                                                                                return ToastAndroid.show('Alamat Lengkap Tidak Boleh Kosong', ToastAndroid.SHORT);
+                                                                                                        switch (agree) {
+                                                                                                            case false:
+                                                                                                                return ToastAndroid.show('Anda belum menyetujui Terms & Condition', ToastAndroid.SHORT);
                                                                                                             default:
-                                                                                                                switch (agree) {
-                                                                                                                    case false:
-                                                                                                                        return ToastAndroid.show('Anda belum menyetujui Terms & Condition', ToastAndroid.SHORT);
-                                                                                                                    default:
-                                                                                                                        this.setState({ loading: true });
-                                                                                                                        this.prosesRegistration();
-                                                                                                                }
+                                                                                                                this.setState({ loading: true });
+                                                                                                                this.prosesRegistration();
                                                                                                         }
                                                                                                 }
                                                                                         }
@@ -313,112 +391,6 @@ export class RegistrationBuyerPage extends React.Component {
         });
     }
 
-    queryProvinceSuggestion = (value) => {
-        this.setState({
-            province: value,
-            loadingAuto: true,
-            idProvince: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            axios.post(`${IPSERVER}/ApapunProvinces/getProvinceAuto`, {
-                keyword
-            })
-                .then(response => {
-                    console.log(response, 'Auto Province');
-                    const res = response.data;
-                    this.setState({ suggestionsProvince: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto Province');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsProvince: [] })
-        }
-    }
-
-    onProvinceSelected = (item) => {
-        this.setState({
-            suggestionsProvince: [],
-            idProvince: item.id,
-            province: item.name
-        })
-    }
-
-    queryRegenciesSuggestion = (value) => {
-        this.setState({
-            city: value,
-            loadingAuto: true,
-            idCity: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            const province_id = this.state.idProvince;
-            axios.post(`${IPSERVER}/ApapunRegencies/getRegenciesAuto`, {
-                keyword,
-                province_id
-            })
-                .then(response => {
-                    console.log(response, 'Auto City');
-                    const res = response.data;
-                    this.setState({ suggestionsRegencies: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto City');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsRegencies: [] })
-        }
-    }
-
-    onRegenciesSelected = (item) => {
-        this.setState({
-            suggestionsRegencies: [],
-            idCity: item.id,
-            city: item.name
-        })
-    }
-
-    queryDistrictSuggestion = (value) => {
-        this.setState({
-            district: value,
-            loadingAuto: true,
-            idDistrict: ''
-        })
-        console.log(value, 'Keyword nya');
-        if (value !== '') {
-            const keyword = value;
-            const regency_id = this.state.idCity;
-            axios.post(`${IPSERVER}/ApapunDistricts/getDistrictAuto`, {
-                keyword,
-                regency_id
-            })
-                .then(response => {
-                    console.log(response, 'Auto District');
-                    const res = response.data;
-                    this.setState({ suggestionsDistrict: res, loadingAuto: false })
-                })
-                .catch(error => {
-                    console.log(error, 'Error Auto District');
-                    this.setState({ loadingAuto: false })
-                })
-        } else {
-            this.setState({ suggestionsDistrict: [] })
-        }
-    }
-
-    onDistrictSelected = (item) => {
-        this.setState({
-            suggestionsDistrict: [],
-            idDistrict: item.id,
-            district: item.name
-        })
-    }
-
     renderButton = () => {
         if (this.state.loading) {
             return <Spinner size="small" />
@@ -489,12 +461,12 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 20, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Full Name</Text>
+                                    <Text style={styles.textStyle}>Nama Lengkap</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='Your Full Name'
+                                            placeholder=''
                                             value={realm}
                                             onChangeText={v => this.onChangeInput('realm', v)}
                                         />
@@ -509,7 +481,7 @@ export class RegistrationBuyerPage extends React.Component {
                                 <View>
                                     <ContainerSection>
                                         <Input
-                                            placeholder='Your Username'
+                                            placeholder=''
                                             value={username}
                                             onChangeText={v => this.onChangeInput('username', v)}
                                         />
@@ -519,7 +491,7 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 10, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Gender</Text>
+                                    <Text style={styles.textStyle}>Jenis Kelamin</Text>
                                 </View>
 
                                 <View style={styles.containerCheckBox}>
@@ -528,7 +500,8 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', }}
-                                            title='Male'
+                                            title='Laki Laki '
+                                            fontFamily='Quicksand-Regular'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             onPress={() => this.checkedMale()}
@@ -543,7 +516,8 @@ export class RegistrationBuyerPage extends React.Component {
                                     <View style={styles.checkBoxFemale}>
                                         <CheckBox
                                             containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                                            title='Female'
+                                            title='Perempuan'
+                                            fontFamily='Quicksand-Regular'
                                             checkedIcon='dot-circle-o'
                                             uncheckedIcon='circle-o'
                                             onPress={() => this.checkedFemale()}
@@ -557,11 +531,11 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ height: 90, paddingTop: 5, }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Birthday</Text>
+                                    <Text style={styles.textStyle}>Tanggal Lahir</Text>
                                 </View>
                                 <ContainerSection>
                                     <InputDate
-                                        placeholder='Your date of birthday'
+                                        // placeholder='Your date of birthday'
                                         value={viewBirthday}
                                         onChangeText={v => this.onChangeInput('viewBirthday', v)}
                                         onFocus={() => {
@@ -588,7 +562,7 @@ export class RegistrationBuyerPage extends React.Component {
                                             secureTextEntry={true}
                                             value={password}
                                             onChangeText={v => this.onChangeInput('password', v)}
-                                            placeholder='Your Password'
+                                        // placeholder='Your Password'
                                         />
                                     </ContainerSection>
                                 </View>
@@ -603,7 +577,7 @@ export class RegistrationBuyerPage extends React.Component {
                                         <Input
                                             value={email}
                                             onChangeText={v => this.onChangeInput('email', v)}
-                                            placeholder='Your Email'
+                                            placeholder=''
                                         />
                                     </ContainerSection>
                                 </View>
@@ -611,14 +585,14 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Phone Number</Text>
+                                    <Text style={styles.textStyle}>Nomor Telepon</Text>
                                 </View>
                                 <View>
                                     <ContainerSection>
                                         <InputNumber
                                             value={noPhone}
                                             onChangeText={v => this.onChangeInput('noPhone', v)}
-                                            placeholder='Your Hhone Number'
+                                            // placeholder='Y'
                                             keyboardType='numeric'
                                         />
                                     </ContainerSection>
@@ -627,18 +601,26 @@ export class RegistrationBuyerPage extends React.Component {
 
                             <View style={{ paddingTop: 5, height: 90 }}>
                                 <View >
-                                    <Text style={styles.textStyle}>Address</Text>
+                                    <Text style={styles.textStyle}>Alamat</Text>
                                 </View>
 
-                                <View>
-                                    <ContainerSection >
-                                        <Input
-                                            onFocus={() => {
-                                                this.setModalVisible(true);
-                                            }}
-                                            placeholder='please input your address'
-                                        />
-                                    </ContainerSection>
+                                <View style={{ height: 50 }}>
+                                    <TouchableOpacity style={{
+                                        marginTop: 4,
+                                        height: 48,
+                                        width: 263,
+                                        justifyContent: 'center',
+                                        alignSelf: 'center',
+                                        borderWidth: 1,
+                                        borderColor: '#a9a9a9',
+                                        borderRadius: 4,
+                                        paddingLeft: 7,
+                                        paddingRight: 7
+                                    }}
+                                        onPress={() => this.setModalVisible(true)}
+                                    >
+                                        <Text style={{ color: 'black' }}>{province ? 'Provinsi,' : ''} {city ? 'City,' : ''} {district ? 'District,' : ''} {addressTxt ? 'Address detail' : ''}</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
 
@@ -676,120 +658,86 @@ export class RegistrationBuyerPage extends React.Component {
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>Province</Text>
+                                                <Text style={styles.textStyle}>Provinsi</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <AutoComplete
-                                                        autoFocus
-                                                        suggestions={suggestionsProvince}
-                                                        placeholder="Your Province"
-                                                        onChangeText={text => this.queryProvinceSuggestion(text)}
-                                                        value={province}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1, height: 50 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsProvince && suggestionsProvince.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onProvinceSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
+                                                    <View style={{ flex: 1, width: '90%', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 5 }}>
+                                                        <View style={{
+                                                            flex: 1, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, justifyContent: 'center',
+                                                            backgroundColor: '#fff',
+                                                        }}>
+                                                            <Picker
+                                                                selectedValue={province}
+                                                                onValueChange={v => this.onChangeProvince('province', v)}
+                                                            >
+                                                                <Picker.Item label='Pilih Province' value='0' />
+                                                                {this.renderProvince()}
+                                                            </Picker>
+                                                        </View>
+                                                    </View>
                                                 </ContainerSection>
                                             </View>
                                         </View>
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>City</Text>
+                                                <Text style={styles.textStyle}>Kota</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <AutoComplete
-                                                        placeholder="Your City"
-                                                        suggestions={suggestionsRegencies}
-                                                        onChangeText={text => this.queryRegenciesSuggestion(text)}
-                                                        value={city}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsRegencies && suggestionsRegencies.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onRegenciesSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
+                                                    <View style={{ flex: 1, width: '90%', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 5 }}>
+                                                        <View style={{
+                                                            flex: 1, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, justifyContent: 'center',
+                                                            backgroundColor: '#fff',
+                                                        }}>
+                                                            <Picker
+                                                                selectedValue={city}
+                                                                onValueChange={v => this.onChangeRegency('city', v)}
+                                                            >
+                                                                <Picker.Item label='Pilih Kota' value='0' />
+                                                                {this.renderRegency()}
+                                                            </Picker>
+                                                        </View>
+                                                    </View>
                                                 </ContainerSection>
                                             </View>
                                         </View>
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>District</Text>
+                                                <Text style={styles.textStyle}>Kecamatan</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
-                                                    <AutoComplete
-                                                        placeholder="Your Distrcit"
-                                                        suggestions={suggestionsDistrict}
-                                                        onChangeText={text => this.queryDistrictSuggestion(text)}
-                                                        value={district}
-                                                        ref="input"
-                                                    >
-                                                        {
-                                                            loadingAuto ?
-                                                                <View style={{ flex: 1 }}>
-                                                                    <Spinner size='large' />
-                                                                </View>
-                                                                :
-                                                                suggestionsDistrict && suggestionsDistrict.map(item =>
-                                                                    <TouchableOpacity
-                                                                        key={item.id}
-                                                                        onPress={() => this.onDistrictSelected(item)}
-                                                                    >
-                                                                        <View style={styles.containerItemAutoSelect}>
-                                                                            <Text>{item.name}</Text>
-                                                                        </View>
-                                                                    </TouchableOpacity>
-                                                                )
-                                                        }
-                                                    </AutoComplete>
+                                                    <View style={{ flex: 1, width: '90%', flexDirection: 'row', justifyContent: 'flex-end', marginTop: 5 }}>
+                                                        <View style={{
+                                                            flex: 1, borderColor: '#e5e5e5', borderRadius: 5, borderWidth: 2, justifyContent: 'center',
+                                                            backgroundColor: '#fff',
+                                                        }}>
+                                                            <Picker
+                                                                selectedValue={district}
+                                                                onValueChange={v => this.onChangeDistrict('district', v)}
+                                                            >
+                                                                <Picker.Item label='Pilih Kecamatan' value='0' />
+                                                                {this.renderDistrict()}
+                                                            </Picker>
+                                                        </View>
+                                                    </View>
                                                 </ContainerSection>
                                             </View>
                                         </View>
 
                                         <View style={styles.textaddressModal}>
                                             <View >
-                                                <Text style={styles.textStyle}>Address Detail</Text>
+                                                <Text style={styles.textStyle}>Alamat Detail</Text>
                                             </View>
                                             <View>
                                                 <ContainerSection>
                                                     <Input
                                                         multiline={true}
                                                         numberOfLines={150}
-                                                        placeholder='Your detail address'
+                                                        placeholder=''
                                                         value={addressTxt}
                                                         onChangeText={v => this.onChangeInput('addressTxt', v)}
                                                     />
@@ -812,7 +760,7 @@ export class RegistrationBuyerPage extends React.Component {
                                                         });
                                                         this.setModalVisible(!this.state.isModalVisible);
                                                     }}>
-                                                    <Text style={styles.AddressTextCancel}>Cancel</Text>
+                                                    <Text style={styles.AddressTextCancel}>Batalkan</Text>
                                                 </TouchableHighlight>
                                             </View>
 
@@ -821,7 +769,7 @@ export class RegistrationBuyerPage extends React.Component {
                                                     onPress={() => {
                                                         this.setModalVisible(!this.state.isModalVisible);
                                                     }}>
-                                                    <Text style={styles.AddressTextSave}>Save</Text>
+                                                    <Text style={styles.AddressTextSave}>Simpan</Text>
                                                 </TouchableHighlight>
                                             </View>
 
@@ -882,7 +830,7 @@ const styles = StyleSheet.create({
     },
     buttonSignUp: {
         // marginTop: 60,
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 40,
         width: 110,
@@ -905,8 +853,8 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 5,
         fontSize: 15,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        // fontWeight: 'bold',
+        fontFamily: 'Quicksand-Bold'
     },
     containerCheckBox: {
         // marginLeft: 5,
@@ -949,8 +897,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 17,
-        fontWeight: 'bold',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Bold'
     },
     modalAddress: {
         width: '100%',
@@ -977,14 +924,14 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red'
     },
     AddressTextSave: {
-        fontWeight: 'bold',
-        color: 'red',
-        fontFamily: 'Quicksand-Regular'
+        // fontWeight: 'bold',
+        color: '#ef1c25',
+        fontFamily: 'Quicksand-Bold'
     },
     AddressTextCancel: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: 'black',
-        fontFamily: 'Quicksand-Regular'
+        fontFamily: 'Quicksand-Bold'
     }
 });
 

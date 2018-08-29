@@ -16,20 +16,21 @@ export class SettingAddressBuyerPage extends React.Component {
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
         headerTitle: 'Pengaturan Alamat',
-        headerRight:
-            <View style={{
-                flexDirection: 'column', width: 50, height: '100%', marginRight: 15, justifyContent: 'center'
-            }}>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('NewAddressOnProfile')}
-                >
-                    <Image
-                        style={{ height: 20, width: 20, alignSelf: 'center' }}
-                        source={require('./../assets/images/icon_plus.jpg')}
-                    />
-                    <Text style={{ fontSize: 10, color: 'black', textAlign: 'center' }}>Alamat Baru</Text>
-                </TouchableOpacity>
-            </View>
+        headerStyle: { marginBottom: 12.5 }
+        // headerRight:
+        //     <View style={{
+        //         flexDirection: 'column', width: 50, height: '100%', marginRight: 15, justifyContent: 'center'
+        //     }}>
+        //         <TouchableOpacity
+        //             onPress={() => navigation.navigate('NewAddressOnProfile')}
+        //         >
+        //             <Image
+        //                 style={{ height: 20, width: 20, alignSelf: 'center' }}
+        //                 source={require('./../assets/images/icon_plus.jpg')}
+        //             />
+        //             <Text style={{ fontSize: 10, color: 'black', textAlign: 'center' }}>Alamat Baru</Text>
+        //         </TouchableOpacity>
+        //     </View>
 
 
     });
@@ -38,7 +39,7 @@ export class SettingAddressBuyerPage extends React.Component {
     render() {
         return (
 
-            <View style={{ color: '#e5dede' }}>
+            <ScrollView style={{ flex: 1, color: '#eaeaea' }}>
 
 
                 <View style={styles.containerMainAddress}>
@@ -62,10 +63,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Home 1</Text>
+                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}> Home 1</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 15, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
+                                <Text style={{ fontSize: 15, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima : <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 
@@ -174,10 +175,10 @@ export class SettingAddressBuyerPage extends React.Component {
                             <View style={{
                                 paddingTop: 10
                             }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Office Tangerang</Text>
+                                <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}> Office Tangerang</Text>
                             </View>
                             <View>
-                                <Text style={{ fontSize: 13.5, paddingTop: 3, fontSize: 15, fontFamily: 'Quicksand-Regular', }}> Penerima :<Text style={{ fontWeight: 'bold', fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
+                                <Text style={{ fontSize: 13.5, paddingTop: 3, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}> Penerima :<Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
                             </View>
 
 
@@ -241,41 +242,21 @@ export class SettingAddressBuyerPage extends React.Component {
                     </View>
 
 
-                    {/* <View style={{
-                        width: '78%',
-                        height: 20,
-                        // backgroundColor: 'skyblue',
-                        alignSelf: 'center',
-                        marginTop: 5
+                </View>
 
-                    }}>
-                    
-
-                    </View> */}
-
-
-
+                <View style={{ flex: 1, height: 45, marginLeft: 15, marginRight: 15, backgroundColor: 'black', borderRadius: 25 }}
+               
+                >
+                    <TouchableOpacity style={{ flex: 1, height: 30, marginLeft: 10, marginRight: 10, backgroundColor: 'black', borderRadius: 25, justifyContent: 'center' }}
+                        onPress={() => this.props.navigation.navigate('NewAddressOnProfile')}
+                    >
+                        <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'white', textAlign: 'center' }}>Tambah Alamat</Text>
+                    </TouchableOpacity>
 
                 </View>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </View>
+            </ScrollView>
 
 
 
@@ -289,7 +270,7 @@ export class SettingAddressBuyerPage extends React.Component {
 const styles = StyleSheet.create({
 
     containerMainAddress: {
-        // flex: 1,
+        flex: 1,
         borderRadius: 20,
         backgroundColor: '#ffffff',
         shadowColor: 'black',
@@ -298,7 +279,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1.0,
         elevation: 3,
         flexDirection: 'column',
-        marginTop: 20,
+        // marginTop: 7.5,
         height: 180,
         width: '90%',
         // alignItems: 'center',
@@ -307,7 +288,7 @@ const styles = StyleSheet.create({
         // zIndex: 1,
         borderWidth: 0.5,
         borderColor: '#d6d7da',
-        marginBottom: 7.5
+        marginBottom: 12.5
     },
 
     containerSecondAddress: {

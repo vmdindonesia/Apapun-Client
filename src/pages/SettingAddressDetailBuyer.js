@@ -42,7 +42,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
 
                     <View style={{ flex: 1, }}>
                         <View >
-                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Nama Penerima</Text>
+                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Nama Penerima</Text>
                         </View>
                         <View>
                             <ContainerSection>
@@ -58,8 +58,8 @@ export class SettingAddressDetailBuyerPage extends React.Component {
 
                 <View style={{ flex: 1, height: 100, marginLeft: 15, marginRight: 15, marginTop: 5 }}>
                     <View >
-                        <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Simpan Alamat sebagai</Text>
-                        <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black' }} >alamat rumah, alamat kantor</Text>
+                        <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Simpan Alamat sebagai</Text>
+                        <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontSize: 13, color: '#9D9D9D' }} >(contoh : alamat rumah, alamat kantor...)</Text>
                     </View>
                     <View>
                         <ContainerSection>
@@ -73,7 +73,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
                 <View style={{ flex: 1, height: 330, marginLeft: 15, marginRight: 15, marginTop: 3 }}>
                     <View style={{ flex: 1, height: 80, marginTop: 3 }}>
                         <View >
-                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Provinsi</Text>
+                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Provinsi</Text>
                         </View>
                         <View>
                             <ContainerSection>
@@ -86,7 +86,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
 
                     <View style={{ flex: 1, height: 80, marginTop: 3 }}>
                         <View >
-                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Kota</Text>
+                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Kota</Text>
                         </View>
                         <View>
                             <ContainerSection>
@@ -99,7 +99,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
 
                     <View style={{ flex: 1, height: 80, marginTop: 3 }}>
                         <View >
-                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Kecamatan</Text>
+                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Kecamatan</Text>
                         </View>
                         <View>
                             <ContainerSection>
@@ -112,7 +112,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
 
                     <View style={{ flex: 1, height: 80, marginTop: 3 }}>
                         <View >
-                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Informasi Tambahan</Text>
+                            <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Informasi Tambahan</Text>
                         </View>
                         <View>
                             <ContainerSection>
@@ -129,7 +129,7 @@ export class SettingAddressDetailBuyerPage extends React.Component {
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', height: 100, marginLeft: 15, marginRight: 15 }}>
 
 
-                    <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15, color: 'black' }}>Atur sebagai Alamat Utama</Text>
+                    <Text style={{ paddingLeft: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Atur sebagai Alamat Utama</Text>
 
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', height: '100%' }}>
                         <SwitchToggle
@@ -150,17 +150,19 @@ export class SettingAddressDetailBuyerPage extends React.Component {
                             switchOn={this.state.mainAddress}
                             onPress={this.onPressMainAddress}
                             circleColorOff='white'
-                            circleColorOn='red'
+                            circleColorOn='#ef1c25'
                         />
                     </View>
                 </View>
 
-                <View style={{ flex: 1, justifyContent: 'center', height: 45, marginLeft: 20, marginTop: 10, marginRight: 20, borderRadius: 30, backgroundColor: 'red', alignContent: 'center' }}>
+                <View style={{ flex: 1, justifyContent: 'center', height: 45, marginLeft: 20, marginTop: 10, marginRight: 20, borderRadius: 30, backgroundColor: '#ef1c25', alignContent: 'center' }}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('SettingAddressBuyer')}>
                         <Text style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>SIMPAN</Text>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{ height: 30, flex: 1, }} />
 
             </ScrollView >
 
@@ -176,11 +178,11 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 5,
         fontSize: 12,
-        fontWeight: 'bold',
+
         fontFamily: 'Quicksand-Regular'
     },
     buttonJoin: {
-        backgroundColor: 'red',
+        backgroundColor: '#ef1c25',
         borderRadius: 20,
         height: 35,
         width: 180,

@@ -19,7 +19,7 @@ export class CrafterMyOrderPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Pesanan Saya',
+        headerTitle: 'Daftar Pesanan',
         headerStyle: {
             elevation: 0
         }
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         borderBottomWidth: 2,
-        borderColor: 'red'
+        borderColor: '#ef1c25'
     },
     tabContainer: {
         // backgroundColor: COLOR.element_a3,
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         // borderBottomWidth: 1,
     },
     fontActive: {
-        fontFamily: 'Quicksand-Bold',
+        fontFamily: 'Quicksand-Regular',
         fontSize: 15,
         color:'black'
     },

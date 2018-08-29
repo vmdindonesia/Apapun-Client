@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, Picker, AsyncStorage, TouchableOpacity, FlatList, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 // import axios from 'axios';
-import Swiper from 'react-native-swiper';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -64,7 +64,7 @@ export class ListTshirtPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ width: '100%', height: 100, backgroundColor: 'white' }}>
+                    <View style={{ width: wp('50%'), height: 100, backgroundColor: 'white' }}>
 
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
 
@@ -296,13 +296,10 @@ export class ListTshirtPage extends React.Component {
                 }
 
 
-
-
-
-
-                <View style={{ flex: 1, marginTop: 10, marginLeft: 10, marginRight: 10, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
+                <View style={{ flex: 1, marginTop: 10, backgroundColor: '#eaeaea' }}>
                     <FlatList
                         data={this.state.photo}
+                        showsVerticalScrollIndicator={false}
                         // contentContainerStyle={{ flex: 1 }}
                         renderItem={this.renderProductImage.bind(this)}
                         showsHorizontalScrollIndicator={false}
@@ -310,16 +307,6 @@ export class ListTshirtPage extends React.Component {
                         numColumns={2}
                     />
                 </View>
-
-
-
-
-
-
-
-
-
-
             </View >
         )
     }
@@ -340,16 +327,13 @@ const styles = StyleSheet.create({
     // },
     card: {
         borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-        elevation: 2,
-        margin: 5,
+        elevation: 3,
+        marginLeft: 5,
+        marginTop: 2, marginBottom: 2,
         marginBottom: '2%',
         backgroundColor: '#FFF',
         justifyContent: 'center',
-        width: '100%',
+        width: wp('48%'),
         flex: 1,
     },
     thumbnailContainerStyle: {
