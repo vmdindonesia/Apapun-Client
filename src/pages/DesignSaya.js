@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Animated, ImageBackground, Image, Picker, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, FlatList, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputSearch, InputDate } from '../components/common';
 // import axios from 'axios';
-import { COLOR } from '../shared/config';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class DesignSayaPage extends React.Component {
@@ -26,7 +25,7 @@ export class DesignSayaPage extends React.Component {
         this.state = {
             photo: [
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
+                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
             ],
             photos: [
                 'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
@@ -56,31 +55,30 @@ export class DesignSayaPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
+                    <View style={{ marginLeft: 10, flex: 1, marginBottom: 20 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color:'black' }}>
-                                My Own Table
+                            <Text style={{ textAlign: 'left', fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', alignSelf: 'center' }}>
+                                My Own Table </Text>
+                            <View style={{ flex: 1, marginLeft: 25 }}>
+                                <Image
+                                    style={{ width: 18, height: 18 }}
+                                    source={require('./../assets/images/Cukup.png')}
+                                    resizeMode='stretch'
+                                />
+                                <Text style={{ fontSize: 13, marginRight: '10%', paddingTop: '5%', fontFamily: 'Quicksand-Regular' }}>
+                                    (10)
                             </Text>
+                            </View>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'column', marginLeft: 150, top: -30 }}>
-                            <Image
-                                style={{ width: 18, height: 18 }}
-                                source={require('./../assets/images/Cukup.png')}
-                                resizeMode='stretch'
-                            />
-                            <Text style={{ fontSize: 13, marginRight: '10%', paddingTop: '5%', fontFamily: 'Quicksand-Regular' }}>
-                                (10)
-                            </Text>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, top: -10 }}>
-                            <Text style={{ fontSize: 13, marginLeft: '2%', fontFamily: 'Quicksand-Regular', color:'black' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginTop: 10 }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Total Apresiasi
                             </Text>
-                            <Text style={{ fontSize: 13, marginLeft: 10, fontFamily: 'Quicksand-Regular', color:'black' }}>
+                            <Text style={{ fontSize: 13, marginLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Terjual
                             </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginTop: 7, marginBottom: 10, top: -10 }}>
+                        <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginTop: 5 }}>
                             <Text style={{ fontSize: 13, marginLeft: '10%', fontFamily: 'Quicksand-Regular', color: 'red' }}>
                                 Rp. 20.000
                             </Text>
@@ -106,19 +104,19 @@ export class DesignSayaPage extends React.Component {
                             source={{ uri: data.item }}
                         />
                     </View>
-                    <View style={{ textAlign: 'center', marginTop: 10, flexDirection: 'column', flex: 1, marginBottom: 50 }}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular', color:'black' }}>
-                                Desain anda belum terdaftar
+                    <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={{ textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                                Desain belum terdaftar di Market
                             </Text>
                         </View>
-                    </View>
-                    <View style={styles.butin}>
                         <TouchableOpacity
-                            style={styles.buttonSignUp}
+                            style={{ marginBottom: 10, marginTop: 10 }}
                             onPress={() => this.props.navigation.navigate('SettingProduct')}
                         >
-                            <Text style={styles.signupButton}>Daftar</Text>
+                            <View style={styles.buttonSignUp}>
+                                <Text style={styles.signupButton}>Daftar</Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -136,27 +134,23 @@ export class DesignSayaPage extends React.Component {
         return (
             <View style={{
                 flex: 1,
-                // backgroundColor: '#eaeaea'
             }}>
 
 
                 <View style={{
-                    // marginTop: 5,
                     width: '100%',
-                    height: '17 %',
+                    height: '15%',
                     paddingTop: 10,
                     paddingBottom: 10,
-                    // flex : 1,
                     flexDirection: 'row',
-                    backgroundColor: 'white'
+                    backgroundColor: '#FFF'
                 }}>
-                    <TouchableOpacity style={{
-                        alignSelf: 'center', width: '50%',
-                        height: '100%',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        flexDirection: 'column',
-                    }}
+                    <TouchableOpacity
+                        style={{
+                            justifyContent: 'center',
+                            alignContent: 'center',
+                            flex: 1
+                        }}
                         onPress={() => this.setState({ sort: !this.state.sort, filter: false })}
                     >
 
@@ -171,24 +165,17 @@ export class DesignSayaPage extends React.Component {
                             source={require('./../assets/images/ic_sort.png')}
                         />
                         <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', textAlign: 'center' }}>Urutkan</Text>
-
-
                     </TouchableOpacity>
 
                     <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '70%', alignSelf: 'center' }} />
 
-
                     <TouchableOpacity style={{
-                        alignSelf: 'center', width: '50%',
-                        height: '100%',
-                        // backgroundColor: 'blue',
                         justifyContent: 'center',
                         alignContent: 'center',
-                        flexDirection: 'column'
+                        flex: 1
                     }}
                         onPress={() => this.setState({ filter: !this.state.filter, sort: false })}
                     >
-
                         <Image
                             style={{
                                 width: 18,
@@ -209,7 +196,7 @@ export class DesignSayaPage extends React.Component {
                         <TouchableWithoutFeedback
                             onPress={() => this.setState({ sort: false })}
                         >
-                            <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', zIndex: 1, marginTop: -100   }}>
+                            <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', zIndex: 1, marginTop: -100 }}>
 
                                 <View style={{ height: 55, justifyContent: 'center', alignItems: 'center', }}>
                                     <Text style={{ paddingTop: 5, fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Urutkan Berdasarkan</Text>
@@ -329,30 +316,22 @@ export class DesignSayaPage extends React.Component {
                         :
                         <View />
                 }
-
-
-
-
-                <ScrollView style={{ flex: 1, backgroundColor: '#eaeaea' }}>
-                    <View style={styles.containerCrafter}>
-                        <FlatList
-                            data={this.state.photo}
-                            renderItem={this.renderProductItem.bind(this)}
-                            showsHorizontalScrollIndicator={false}
-                            numColumns={2}
-                            horizontal={false}
-                        />
-                    </View>
-                    <View style={styles.containerCrafter}>
-                        <FlatList
-                            data={this.state.photos}
-                            renderItem={this.renderProdu.bind(this)}
-                            showsHorizontalScrollIndicator={false}
-                            numColumns={2}
-                            horizontal={false}
-                        />
-                    </View>
-                </ScrollView>
+                <View style={{ flex: 1, backgroundColor: '#eaeaea' }}>
+                    <FlatList
+                        data={this.state.photo}
+                        renderItem={this.renderProductItem.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        numColumns={2}
+                        horizontal={false}
+                    />
+                    <FlatList
+                        data={this.state.photos}
+                        renderItem={this.renderProdu.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        numColumns={2}
+                        horizontal={false}
+                    />
+                </View>
             </View>
         )
     }
@@ -376,28 +355,22 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: 'Quicksand-Reguler'
     },
-    card: {
-        borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-        elevation: 2,
-        marginLeft: 5,
-        marginBottom: '2%',
-        backgroundColor: '#FFF'
-    },
     cardi: {
         borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
         elevation: 2,
         marginLeft: 5,
-        marginBottom: '50%',
         backgroundColor: '#FFF',
-        zIndex: 1
+        justifyContent: 'center',
+        width: wp('48%'),
+    },
+    card: {
+        borderRadius: 4,
+        elevation: 3,
+        marginLeft: 5,
+        marginTop: 5,
+        backgroundColor: '#FFF',
+        justifyContent: 'center',
+        width: wp('48%'),
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
@@ -405,27 +378,20 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     thumbnailStyle: {
-        alignSelf: 'stretch',
-        height: 160,
-        width: 170,
-        resizeMode: 'cover',
+        alignSelf: 'center',
+        height: 120,
+        // flex: 1,
+        width: 160,
+        resizeMode: 'stretch',
         borderRadius: 4
-    },
-    containerCrafter: {
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center',
     },
     buttonSignUp: {
         backgroundColor: '#ef1c25',
         borderRadius: 20,
-        height: 40,
+        height: 30,
         width: 100,
-        marginTop: -50,
         justifyContent: 'center',
         alignSelf: 'center',
-        fontFamily: 'Quicksand-Regular'
-        // zIndex: 2
     }
 
 

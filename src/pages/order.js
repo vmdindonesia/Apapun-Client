@@ -449,7 +449,7 @@ export class OrderPage extends React.Component {
     renderProductItem = (itemPhoto, index) => {
         const { tempPhoto } = this.state
         return (
-            <View key={index} style={{ marginRight: 5 }}>
+            <View key={index}>
                 {
                     tempPhoto === true ?
                         <Image
@@ -463,7 +463,7 @@ export class OrderPage extends React.Component {
                         >
                             <Image
                                 source={itemPhoto}
-                                style={{ width: 85, height: 70 }}
+                                style={{ width: 70, height: 70, backgroundColor: 'pink' }}
                                 resizeMode='contain'
                             />
                         </TouchableOpacity>
