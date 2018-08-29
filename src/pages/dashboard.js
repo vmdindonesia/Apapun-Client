@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { ImageBackground, TouchableOpacity, FlatList, TouchableWithoutFeedback, BackHandler, Alert, AsyncStorage } from 'react-native';
+import { ImageBackground, TouchableOpacity, FlatList, TouchableWithoutFeedback, BackHandler, ToastAndroid, AsyncStorage } from 'react-native';
 import {
     View,
     Text,
     StyleSheet,
     Image,
+    RefreshControl,
     ScrollView
 } from 'react-native';
 import Swiper from 'react-native-swiper';
@@ -13,6 +14,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BubbleMenu from 'react-native-bubble-menu';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import axios from 'axios';
 
 
 export class DashboardPage extends React.Component {
@@ -29,6 +31,7 @@ export class DashboardPage extends React.Component {
             BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
         );
         this.state = {
+            loading: true,
             idCrafter: '',
             show: false,
             sideMenu: false,
@@ -41,7 +44,9 @@ export class DashboardPage extends React.Component {
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
                 'https://cdn.pixabay.com/photo/2016/04/28/00/28/shell-1357930_960_720.jpg',
-            ]
+            ],
+            dataDashboard: '',
+            dataMenuCrafterList: ''
         };
     }
 
@@ -53,7 +58,33 @@ export class DashboardPage extends React.Component {
             console.log(JSON.parse(value), 'Json Parse');
             const dataLogin = JSON.parse(value);
             if (value) {
+                console.log(dataLogin, 'XXX');
                 this.setState({ idCrafter: dataLogin.crafterId });
+                axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
+                    userId: dataLogin.userId
+                })
+                    .then(response => {
+                        console.log(response, 'Data Profile Dashboard');
+                        this.setState({ dataDashboard: response.data }, () => {
+                            console.log(this.state.dataDashboard, 'YYY');
+                            axios.get(`${IPSERVER}/ApapunCrafters/getTotalCrafter`)
+                                .then(response => {
+                                    console.log(response, 'Data Crafter List Dashboard');
+                                    this.setState({ dataMenuCrafterList: response.data }, () => {
+                                        this.setState({ loading: false });
+                                        console.log(this.state.dataMenuCrafterList, 'PPP');
+                                    });
+                                }).catch(error => {
+                                    console.log(error, 'Error Get Crafter List Dashboard');
+                                    this.setState({ loading: false });
+                                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                                });
+                        });
+                    }).catch(error => {
+                        console.log(error, 'Error Get Dashboard Profile');
+                        this.setState({ loading: false });
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                    });
             }
         });
     }
@@ -257,15 +288,32 @@ export class DashboardPage extends React.Component {
         return items;
     }
 
+    onRefresh() {
+        this.setState({
+            loading: true
+        }, () => {
+            this.setState({ loading: false });
+        });
+    }
+
     render() {
         const { statusMenu, orderStatus, show, idCrafter } = this.state;
+        // console.log(this.state.dataDashboard);
         return (
             <View style={{ flex: 1, backgroundColor: '#384058', alignItems: 'center' }}>
                 <ImageBackground
                     source={require('./../assets/images/back_home.png')}
                     style={styles.backgroundStyle}
                 >
-                    <ScrollView>
+
+                    <ScrollView
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={this.state.loading}
+                                onRefresh={this.onRefresh.bind(this)}
+                            />
+                        }
+                    >
 
                         <View style={styles.container}>
                             <View style={styles.containerSlide}>
@@ -312,131 +360,197 @@ export class DashboardPage extends React.Component {
                                 </Swiper>
                             </View>
 
+                            {
+                                this.state.loading ?
+                                    <View />
+                                    :
+                                    <View style={styles.containerDashboard}>
+                                        {
+                                            this.state.dataDashboard[1].crafter_name !== null ?
+                                                <Swiper
+                                                    style={styles.wrapper}
+                                                    showsPagination={false}
+                                                    showsButtons={false}
+                                                    dot={<View style={styles.formatSwiper} />}
+                                                >
+                                                    <View style={{ flexDirection: 'row' }}>
+                                                        <View style={styles.containerInsideProfileOne}>
+                                                            <View style={styles.containerPhoto}>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+                                                        </View>
 
-                            <View style={styles.containerDashboard}>
-                                <Swiper
-                                    style={styles.wrapper}
-                                    showsPagination={false}
-                                    showsButtons={false}
-                                    dot={<View style={styles.formatSwiper} />}
-                                >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={styles.containerInsideProfileOne}>
-                                            <View style={styles.containerPhoto}>
-                                                <View>
-                                                    <TouchableOpacity
-                                                        onPress={() => this.props.navigation.navigate('ProfilePage')}>
-                                                        <Image
-                                                            style={styles.profileImage}
-                                                            source={require('./../assets/images/profile.png')}
-                                                        />
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
+                                                        <View style={styles.containerInsideProfileTwo}>
+                                                            <View style={styles.containerUp}>
+                                                                <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
+                                                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[0].user_name}</Text>
+                                                                </View>
+                                                            </View>
 
-                                        <View style={styles.containerInsideProfileTwo}>
-                                            <View style={styles.containerUp}>
-                                                <View style={{ marginLeft: 10, marginTop: 15 }}>
-                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
-                                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Gal Gadot</Text>
-                                                </View>
-                                            </View>
+                                                            <View style={styles.containerMiddleProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 5 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_wallet.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[0].user_total_apresiasi ? this.state.dataDashboard[0].user_total_apresiasi : 0}</Text>
+                                                                    </View>
+                                                                </View>
 
-                                            <View style={styles.containerMiddleProfileTwo}>
-                                                <View style={{ marginLeft: 10, marginTop: 5 }}>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Image
-                                                            style={styles.icons}
-                                                            source={require('./../assets/images/ic_wallet.png')}
-                                                        />
+                                                            </View>
+
+                                                            <View style={styles.containerBottomProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_design.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Design Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>{this.state.dataDashboard[0].user_jml_desain} Design</Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+                                                        </View>
                                                     </View>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
-                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. 250.000</Text>
+
+                                                    <View style={{ flexDirection: 'row' }}>
+                                                        <View style={styles.containerInsideProfileOne}>
+                                                            <View style={styles.containerPhoto}>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[1].crafter_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+                                                        </View>
+
+                                                        <View style={styles.containerInsideProfileTwo}>
+                                                            <View style={styles.containerUp}>
+                                                                <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
+                                                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[1].crafter_name}</Text>
+                                                                </View>
+                                                            </View>
+
+                                                            <View style={styles.containerMiddleProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 5 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_wallet.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Pemasukan Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[1].crafter_jml_pemasukan ? this.state.dataDashboard[0].crafter_jml_pemasukan : 0}</Text>
+                                                                    </View>
+                                                                </View>
+
+                                                            </View>
+
+                                                            <View style={styles.containerBottomProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_design.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Pesanan Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>{this.state.dataDashboard[1].crafter_jml_pesanan} Pesanan</Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+                                                        </View>
                                                     </View>
-                                                </View>
+                                                </Swiper>
+                                                :
+                                                <Swiper
+                                                    style={styles.wrapper}
+                                                    showsPagination={false}
+                                                    showsButtons={false}
+                                                    dot={<View style={styles.formatSwiper} />}
+                                                >
+                                                    <View style={{ flexDirection: 'row' }}>
+                                                        <View style={styles.containerInsideProfileOne}>
+                                                            <View style={styles.containerPhoto}>
+                                                                <View>
+                                                                    <TouchableOpacity
+                                                                        onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                        <Image
+                                                                            style={styles.profileImage}
+                                                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
+                                                                        />
+                                                                    </TouchableOpacity>
+                                                                </View>
+                                                            </View>
+                                                        </View>
 
-                                            </View>
+                                                        <View style={styles.containerInsideProfileTwo}>
+                                                            <View style={styles.containerUp}>
+                                                                <View style={{ marginLeft: 10, marginTop: 15 }}>
+                                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Bold' }}>Hi, Welcome!</Text>
+                                                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 15 }}>{this.state.dataDashboard[0].user_name}</Text>
+                                                                </View>
+                                                            </View>
 
-                                            <View style={styles.containerBottomProfileTwo}>
-                                                <View style={{ marginLeft: 10, marginTop: 7 }}>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Image
-                                                            style={styles.icons}
-                                                            source={require('./../assets/images/ic_design.png')}
-                                                        />
+                                                            <View style={styles.containerMiddleProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 5 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_wallet.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Apresiasi Design Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. {this.state.dataDashboard[0].user_total_apresiasi ? this.state.dataDashboard[0].user_total_apresiasi : 0}</Text>
+                                                                    </View>
+                                                                </View>
+
+                                                            </View>
+
+                                                            <View style={styles.containerBottomProfileTwo}>
+                                                                <View style={{ marginLeft: 10, marginTop: 7 }}>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Image
+                                                                            style={styles.icons}
+                                                                            source={require('./../assets/images/ic_design.png')}
+                                                                        />
+                                                                    </View>
+                                                                    <View style={{ flex: 1 }}>
+                                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Design Anda</Text>
+                                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>{this.state.dataDashboard[0].user_jml_desain} Design</Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+                                                        </View>
                                                     </View>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Regular' }}>Total Design Anda</Text>
-                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>3 Design</Text>
-                                                    </View>
-                                                </View>
-                                            </View>
-
-
-                                        </View>
+                                                </Swiper>
+                                        }
                                     </View>
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={styles.containerInsideProfileOne}>
-                                            <View style={styles.containerPhoto}>
-                                                <View>
-                                                    <TouchableOpacity style={styles.button}
-                                                        onPress={() => this.props.navigation.navigate('ProfileCrafter')}>
-                                                        <Image
-                                                            style={styles.profileImage}
-                                                            source={require('./../assets/images/yukikato.jpg')}
-                                                        />
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-
-                                        <View style={styles.containerInsideProfileTwo}>
-                                            <View style={styles.containerUp}>
-                                                <View style={{ marginLeft: 10, marginTop: 15 }}>
-                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Hi, Welcome!</Text>
-                                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 15 }}>Yuki Kato</Text>
-                                                </View>
-                                            </View>
-
-                                            <View style={styles.containerMiddleProfileTwo}>
-                                                <View style={{ marginLeft: 10, marginTop: 5 }}>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Image
-                                                            style={styles.icons}
-                                                            source={require('./../assets/images/ic_wallet.png')}
-                                                        />
-                                                    </View>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12 }}>Total Apresiasi Design Anda</Text>
-                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white' }}>Rp. 250.000</Text>
-                                                    </View>
-                                                </View>
-
-                                            </View>
-
-                                            <View style={styles.containerBottomProfileTwo}>
-                                                <View style={{ marginLeft: 10, marginTop: 7 }}>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Image
-                                                            style={styles.icons}
-                                                            source={require('./../assets/images/ic_design.png')}
-                                                        />
-                                                    </View>
-                                                    <View style={{ flex: 1 }}>
-                                                        <Text style={{ color: 'grey', marginTop: 2, paddingLeft: 35, fontSize: 12, fontFamily: 'Quicksand-Bold' }}>Total Design Anda</Text>
-                                                        <Text style={{ color: 'grey', marginTop: 1, paddingLeft: 35, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Regular' }}>3 Design</Text>
-                                                    </View>
-                                                </View>
-                                            </View>
-
-
-                                        </View>
-                                    </View>
-
-                                </Swiper>
-                            </View>
+                            }
                             <View style={styles.containerUploadIdea}>
                                 <View style={{ flex: 1, flexDirection: 'row', }}>
                                     <View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
@@ -466,6 +580,7 @@ export class DashboardPage extends React.Component {
                                 </View>
                             </View>
                         </View>
+
                     </ScrollView>
 
                     {
@@ -681,7 +796,7 @@ export class DashboardPage extends React.Component {
                                                         {
                                                             orderStatus === 'default' ?
                                                                 <View style={{ flex: 1 }}>
-                                                                     <View style={{ height: hp('31.3%'), flexDirection: 'row', marginRight: 15, marginLeft: 15 }}>
+                                                                    <View style={{ height: hp('31.3%'), flexDirection: 'row', marginRight: 15, marginLeft: 15 }}>
                                                                         <View style={{ width: '50%', justifyContent: 'center', alignItems: 'center', }}>
                                                                             <Image
                                                                                 style={{ height: 200, width: 200, }}
@@ -742,7 +857,7 @@ export class DashboardPage extends React.Component {
                                                                             <View style={{ flex: 1 }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('6%') ,
+                                                                                        marginTop: hp('6%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 40,
@@ -808,7 +923,7 @@ export class DashboardPage extends React.Component {
                                                                             <View style={{ flex: 1 }}>
                                                                                 <TouchableOpacity
                                                                                     style={{
-                                                                                        marginTop: hp('6%') ,
+                                                                                        marginTop: hp('6%'),
                                                                                         backgroundColor: '#ef1c25',
                                                                                         borderRadius: 20,
                                                                                         height: 40,
@@ -1017,7 +1132,7 @@ export class DashboardPage extends React.Component {
                                                                             </View>
                                                                         </View>
                                                                     </View>
-                                                                    <View style={{ flex: 1, flexDirection: 'column',  marginRight: 10,}}>
+                                                                    <View style={{ flex: 1, flexDirection: 'column', marginRight: 10, }}>
                                                                         <View style={{ height: '25%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                                                                             <View style={{ width: '50%', flexDirection: 'row' }}>
                                                                                 <View style={{ marginLeft: 15 }}>
@@ -1028,7 +1143,7 @@ export class DashboardPage extends React.Component {
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
                                                                                     <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Fashion</Text>
-                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>1254 Crafter</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>{this.state.dataMenuCrafterList[0].jml_crafter} Crafter</Text>
                                                                                 </View>
                                                                             </View>
                                                                             <View style={{ width: '50%', flexDirection: 'row' }}>
@@ -1040,7 +1155,7 @@ export class DashboardPage extends React.Component {
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
                                                                                     <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Hobbies & Toys</Text>
-                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>199 Crafter</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>{this.state.dataMenuCrafterList[1].jml_crafter} Crafter</Text>
                                                                                 </View>
                                                                             </View>
                                                                         </View>
@@ -1054,7 +1169,7 @@ export class DashboardPage extends React.Component {
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
                                                                                     <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Furniture</Text>
-                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>723 Crafter</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>{this.state.dataMenuCrafterList[2].jml_crafter} Crafter</Text>
                                                                                 </View>
                                                                             </View>
                                                                             <View style={{ width: '50%', flexDirection: 'row' }}>
@@ -1066,7 +1181,7 @@ export class DashboardPage extends React.Component {
                                                                                 </View>
                                                                                 <View style={{ marginLeft: 20 }}>
                                                                                     <Text style={{ color: 'white', marginTop: 15, fontSize: 13 }}>Beauty</Text>
-                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>269 Crafter</Text>
+                                                                                    <Text style={{ color: '#d87115', marginTop: 1, fontSize: 13 }}>{this.state.dataMenuCrafterList[3].jml_crafter} Crafter</Text>
                                                                                 </View>
                                                                             </View>
                                                                         </View>
