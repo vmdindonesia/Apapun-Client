@@ -152,11 +152,11 @@ export class DashboardPage extends React.Component {
         return (
             <View key={index}>
                 <TouchableWithoutFeedback onPress={() => { }}>
-                    <View style={{ borderRadius: 4, elevation: 2, marginRight: 2, height: 110, flex: 1, marginTop: 10 }}>
+                    <View style={{ borderRadius: 4, elevation: 2, marginRight: 2, height: 85 }}>
                         <Image
                             style={styles.item}
                             source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${itemProduct.name}` }}
-                            resizeMode='contain'
+                            // resizeMode='contain'
                         />
                     </View>
                 </TouchableWithoutFeedback>
@@ -325,6 +325,7 @@ export class DashboardPage extends React.Component {
                                 onRefresh={this.onRefresh.bind(this)}
                             />
                         }
+                        showsVerticalScrollIndicator={false}
                     >
 
                         <View style={styles.container}>
@@ -384,6 +385,7 @@ export class DashboardPage extends React.Component {
                                                         style={styles.wrapper}
                                                         showsPagination={false}
                                                         showsButtons={false}
+                                                        loop={false}
                                                         dot={<View style={styles.formatSwiper} />}
                                                     >
                                                         <View style={{ flexDirection: 'row' }}>
@@ -564,7 +566,7 @@ export class DashboardPage extends React.Component {
                                             }
                                         </View>
                                         <View style={styles.containerUploadIdea}>
-                                            <View style={{ flex: 1, flexDirection: 'row', }}>
+                                            <View style={{ flexDirection: 'row' }}>
                                                 <View style={{ flexDirection: 'column', marginTop: 10, marginLeft: 20, }}>
                                                     <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Quicksand-Bold' }}>Idea Recently Upload</Text>
                                                     <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Checkout our friend new brilliant ideas</Text>
@@ -581,10 +583,10 @@ export class DashboardPage extends React.Component {
                                                     </TouchableOpacity>
                                                 </View>
                                             </View>
-                                            <View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: -85 }}>
+                                            <View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: 10 }}>
                                                 {
                                                     this.state.dataIdeaRecently.length === 0 ?
-                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>There's No Idea Recently Upload</Text>
+                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', justifyContent: 'center' }}>There's No Idea Recently Upload</Text>
                                                         :
                                                         <FlatList
                                                             data={this.state.dataIdeaRecently}
@@ -1491,7 +1493,7 @@ const styles = StyleSheet.create({
         height: 50
     },
     containerUploadIdea: {
-        flex: 1,
+        // flex: 1,
         borderRadius: 20,
         backgroundColor: 'rgba(0,0,0,0.8)',
         shadowColor: '#009',
@@ -1500,7 +1502,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 70,
         height: 160,
-        width: '95%'
+        width: wp('95%')
     },
     imageStyle: {
         resizeMode: 'cover'
