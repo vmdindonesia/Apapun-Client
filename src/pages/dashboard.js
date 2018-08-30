@@ -32,6 +32,7 @@ export class DashboardPage extends React.Component {
         );
         this.state = {
             loading: true,
+            idUser: '',
             idCrafter: '',
             show: false,
             sideMenu: false,
@@ -60,6 +61,9 @@ export class DashboardPage extends React.Component {
             const dataLogin = JSON.parse(value);
             if (value) {
                 console.log(dataLogin, 'XXX');
+                this.setState({ idUser: dataLogin.userId }, () => {
+                    console.log(this.state.idUser, 'ID USER');
+                })
                 this.setState({ idCrafter: dataLogin.crafterId });
                 axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
                     userId: dataLogin.userId
@@ -391,7 +395,9 @@ export class DashboardPage extends React.Component {
                                                                 <View style={styles.containerPhoto}>
                                                                     <View>
                                                                         <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                            onPress={() => this.props.navigation.navigate('ProfilePage', {
+                                                                                itemId: this.state.idUser
+                                                                            })}>
                                                                             <Image
                                                                                 style={styles.profileImage}
                                                                                 source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
@@ -584,7 +590,7 @@ export class DashboardPage extends React.Component {
                                             <View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: -85 }}>
                                                 {
                                                     this.state.dataIdeaRecently.length === 0 ?
-                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>There's No Idea Recently Upload</Text>
+                                                        <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>There's No Idea Recently Upload</Text>
                                                         :
                                                         <FlatList
                                                             data={this.state.dataIdeaRecently}
@@ -679,7 +685,7 @@ export class DashboardPage extends React.Component {
                                                 <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
                                                     <TouchableWithoutFeedback
                                                         onPress={() => {
-                                                            this.props.navigation.navigate('ProfilePage');
+                                                            this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
                                                             this.setState(({ show }) => ({
                                                                 show: !show,
                                                             }));

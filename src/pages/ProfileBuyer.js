@@ -1,270 +1,319 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { COLOR } from '../shared/config';
+import { View, Text, ImageBackground, ToastAndroid, Image, RefreshControl, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
 
 export class ProfileBuyerPage extends React.Component {
-
 
     static navigationOptions = ({ navigation }) => ({
         header: null
     });
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            userId: '',
+            dataProfile: ''
+        };
+    }
+
+    componentDidMount() {
+        console.log(this.props.navigation.state.params.itemId, 'Props Profile');
+        this.setState({ userId: this.props.navigation.state.params.itemId }, () => {
+            const { userId } = this.state;
+            axios.post(`${IPSERVER}/ApapunUsers/getUserProfile`, {
+                userId: userId
+            })
+                .then(response => {
+                    console.log(response, 'Data Profile');
+                    this.setState({ dataProfile: response.data }, () => {
+                        this.setState({ loading: false });
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Get Data Profile');
+                    this.setState({ loading: false });
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
+    }
+
+
+    onRefresh() {
+        this.setState({
+            loading: true
+        }, () => {
+            this.setState({ loading: false });
+        });
+    }
+
     render() {
+        const { loading } = this.state;
         return (
-
-            <ScrollView
-                style={{ flex: 1 }} >
-
-                <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
-                    onPress={() => this.props.navigation.goBack()}
-                >
-                    <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
-                        <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
-                    </View>
-                </TouchableOpacity>
-
-                <ImageBackground
-                    source={require('./../assets/images/background_profile_compressed.jpeg')}
-                    style={styles.backgroundStyle}
-                >
-
-                    <View style={{ zIndex: 0 }}>
-
-                        <View style={styles.containerImage}>
-                            <Image style={styles.containerPhoto}
-                                source={require('./../assets/images/profile.png')}
-                            />
-                        </View>
-
-                        <View style={styles.containerMainForm}>
-
-                            <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
-
-                                <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
-                                    <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gal Gadot</Text>
+            <View style={{ flex: 1 }}>
+                {
+                    loading ?
+                        <Spinner size="small" />
+                        :
+                        <ScrollView
+                            style={{ flex: 1 }}
+                            refreshControl={
+                                <RefreshControl
+                                    refreshing={this.state.loading}
+                                    onRefresh={this.onRefresh.bind(this)}
+                                />
+                            }
+                        >
+                            <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
+                                onPress={() => this.props.navigation.goBack()}
+                            >
+                                <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
+                                    <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
                                 </View>
+                            </TouchableOpacity>
 
-                                <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-                                    <TouchableOpacity
-                                        onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
-                                        <View style={{ height: 50, width: 50, backgroundColor: '#ef1c25', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
-                                            <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                                source={require('./../assets/images/pen_white.png')}
-                                            />
+                            <ImageBackground
+                                source={require('./../assets/images/background_profile_compressed.jpeg')}
+                                style={styles.backgroundStyle}
+                            >
+
+                                <View style={{ zIndex: 0 }}>
+
+                                    <View style={styles.containerImage}>
+                                        <Image style={styles.containerPhoto}
+                                            source={require('./../assets/images/profile.png')}
+                                        />
+                                    </View>
+
+                                    <View style={styles.containerMainForm}>
+
+                                        <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
+
+                                            <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
+                                                <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gal Gadot</Text>
+                                            </View>
+
+                                            <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+                                                <TouchableOpacity
+                                                    onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                                    <View style={{ height: 50, width: 50, backgroundColor: '#ef1c25', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                            source={require('./../assets/images/pen_white.png')}
+                                                        />
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
                                         </View>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
 
-                            <View style={{ width: '85%', borderColor: 'rgba(226, 226, 226, 0.2)', borderWidth: 1, marginTop: -5 }} />
+                                        <View style={{ width: '85%', borderColor: 'rgba(226, 226, 226, 0.2)', borderWidth: 1, marginTop: -5 }} />
 
 
-                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+                                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                        source={require('./../assets/images/envelope.png')}
-                                    />
-                                </View>
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                    source={require('./../assets/images/envelope.png')}
+                                                />
+                                            </View>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    // backgroundColor: 'skyblue', 
-                                    height: '100%', width: '85%',
-                                    alignItems: 'center',
-                                }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                        galgadot@gmail.com
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                // backgroundColor: 'skyblue', 
+                                                height: '100%', width: '85%',
+                                                alignItems: 'center',
+                                            }}>
+                                                <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                                                    galgadot@gmail.com
                             </Text>
-                                </View>
+                                            </View>
 
-                            </View>
+                                        </View>
 
 
-                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center' }}>
+                                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center' }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                        source={require('./../assets/images/telp_mainprof.png')}
-                                    />
-                                </View>
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                    source={require('./../assets/images/telp_mainprof.png')}
+                                                />
+                                            </View>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    // backgroundColor: 'skyblue', 
-                                    height: '100%', width: '85%',
-                                    alignItems: 'center',
-                                }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', color: 'black' }}>
-                                        081284485300
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                // backgroundColor: 'skyblue', 
+                                                height: '100%', width: '85%',
+                                                alignItems: 'center',
+                                            }}>
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', color: 'black' }}>
+                                                    081284485300
                             </Text>
-                                </View>
+                                            </View>
 
-                            </View>
+                                        </View>
 
-                            <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
+                                        <View style={{ flexDirection: 'row', height: 35, width: '85%', alignItems: 'center', }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                        source={require('./../assets/images/birthday_cake.png')}
-                                    />
-                                </View>
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                    source={require('./../assets/images/birthday_cake.png')}
+                                                />
+                                            </View>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    // backgroundColor: 'skyblue', 
-                                    height: '100%', width: '85%',
-                                    alignItems: 'center',
-                                }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                        30 Januari 1995
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                // backgroundColor: 'skyblue', 
+                                                height: '100%', width: '85%',
+                                                alignItems: 'center',
+                                            }}>
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                                                    30 Januari 1995
                                     </Text>
-                                </View>
+                                            </View>
 
-                            </View>
+                                        </View>
 
-                            <View style={{ flexDirection: 'row', height: 70, width: '85%', marginTop: 5 }}>
+                                        <View style={{ flexDirection: 'row', height: 70, width: '85%', marginTop: 5 }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    // alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Image style={{ height: 18, width: 18, borderRadius: 0, }}
-                                        source={require('./../assets/images/black_loc_mainprof.png')}
-                                    />
-                                </View>
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                // alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Image style={{ height: 18, width: 18, borderRadius: 0, }}
+                                                    source={require('./../assets/images/black_loc_mainprof.png')}
+                                                />
+                                            </View>
 
 
-                                <View style={{
-                                    flexDirection: 'column',
-                                    // backgroundColor: 'skyblue', 
-                                    height: '100%', width: '85%',
-                                    // alignItems: 'center',
-                                }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
-                                        Banten, Kabupaten Tangerang, Kelapa Dua
+                                            <View style={{
+                                                flexDirection: 'column',
+                                                // backgroundColor: 'skyblue', 
+                                                height: '100%', width: '85%',
+                                                // alignItems: 'center',
+                                            }}>
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
+                                                    Banten, Kabupaten Tangerang, Kelapa Dua
                                     </Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                        Jalan Komodo
+                                                <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                                                    Jalan Komodo
                                     </Text>
-                                </View>
+                                            </View>
 
-                            </View>
-                        </View>
-
-
-
-                        <View style={styles.containerSecondForm}>
+                                        </View>
+                                    </View>
 
 
-                            <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    alignItems: 'center',
-                                    // justifyContent: 'center'
-                                }}>
-                                    <TouchableWithoutFeedback>
-                                        <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('AkunBank')}>
-                                            <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                                source={require('./../assets/images/ic_wallet.png')}
-                                            />
-                                        </TouchableOpacity>
-                                    </TouchableWithoutFeedback>
-                                </View>
+                                    <View style={styles.containerSecondForm}>
 
-                                <View style={{
-                                    flexDirection: 'column',
-                                    // backgroundColor: 'skyblue',
-                                    height: '100%', width: '85%',
-                                    // alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
-                                        Total Apresiasi Design Anda
+
+                                        <View style={{ flexDirection: 'row', height: 70, width: '85%', }}>
+
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                alignItems: 'center',
+                                                // justifyContent: 'center'
+                                            }}>
+                                                <TouchableWithoutFeedback>
+                                                    <TouchableOpacity
+                                                        onPress={() => this.props.navigation.navigate('AkunBank')}>
+                                                        <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                                            source={require('./../assets/images/ic_wallet.png')}
+                                                        />
+                                                    </TouchableOpacity>
+                                                </TouchableWithoutFeedback>
+                                            </View>
+
+                                            <View style={{
+                                                flexDirection: 'column',
+                                                // backgroundColor: 'skyblue',
+                                                height: '100%', width: '85%',
+                                                // alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
+                                                    Total Apresiasi Design Anda
                                      </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
-                                        Rp.120.000
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
+                                                    Rp.120.000
                                      </Text>
-                                </View>
+                                            </View>
 
-                            </View>
+                                        </View>
 
-                        </View>
+                                    </View>
 
 
 
-                        <View style={styles.containerThirdForm}>
+                                    <View style={styles.containerThirdForm}>
 
-                            <View style={{
-                                flexDirection: 'row',
-                                //  backgroundColor: 'yellow', 
-                                height: 70, width: '85%',
-                            }}>
+                                        <View style={{
+                                            flexDirection: 'row',
+                                            //  backgroundColor: 'yellow', 
+                                            height: 70, width: '85%',
+                                        }}>
 
-                                <View style={{
-                                    flexDirection: 'row',
-                                    //  backgroundColor: 'blue',
-                                    height: '100%', width: '15%',
-                                    alignItems: 'center',
-                                    // justifyContent: 'center'
-                                }}>
-                                    <TouchableWithoutFeedback>
-                                        <TouchableOpacity
-                                            onPress={() => this.props.navigation.navigate('DesignSaya')}>
-                                            <Image style={{ height: 40, width: 40, borderRadius: 0, }}
-                                                source={require('./../assets/images/ic_design.png')}
-                                            />
-                                        </TouchableOpacity>
-                                    </TouchableWithoutFeedback>
-                                </View>
+                                            <View style={{
+                                                flexDirection: 'row',
+                                                //  backgroundColor: 'blue',
+                                                height: '100%', width: '15%',
+                                                alignItems: 'center',
+                                                // justifyContent: 'center'
+                                            }}>
+                                                <TouchableWithoutFeedback>
+                                                    <TouchableOpacity
+                                                        onPress={() => this.props.navigation.navigate('DesignSaya')}>
+                                                        <Image style={{ height: 40, width: 40, borderRadius: 0, }}
+                                                            source={require('./../assets/images/ic_design.png')}
+                                                        />
+                                                    </TouchableOpacity>
+                                                </TouchableWithoutFeedback>
+                                            </View>
 
-                                <View style={{
-                                    // flexDirection: 'column',
-                                    // backgroundColor: 'skyblue',
-                                    height: '100%', width: '85%',
-                                    // alignItems: 'center',
-                                    justifyContent: 'center',
-                                    marginBottom: 30
-                                }}>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
-                                        Total Design Anda
+                                            <View style={{
+                                                // flexDirection: 'column',
+                                                // backgroundColor: 'skyblue',
+                                                height: '100%', width: '85%',
+                                                // alignItems: 'center',
+                                                justifyContent: 'center',
+                                                marginBottom: 30
+                                            }}>
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
+                                                    Total Design Anda
                                     </Text>
-                                    <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
-                                        3 Desain
+                                                <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
+                                                    3 Desain
                                     </Text>
-                                </View>
-                            </View>
-                        </View>
+                                            </View>
+                                        </View>
+                                    </View>
 
 
-                        {/* <View style={styles.containerTh}>
+                                    {/* <View style={styles.containerTh}>
                             <View style={{
                                 flexDirection: 'column',
                                 height: '100%', width: '100%',
@@ -282,20 +331,19 @@ export class ProfileBuyerPage extends React.Component {
                                     </Text>
                             </View>
                         </View> */}
-                    </View>
+                                </View>
 
-                    {/* <View style={styles.butin}>
+                                {/* <View style={styles.butin}>
                         <TouchableOpacity style={styles.buttonSignUp}
                             onPress={() => this.props.navigation.navigate('pengaturanBank')}>
                             <Text style={styles.signupButton}>Pengaturan</Text>
                         </TouchableOpacity>
                     </View> */}
 
-                </ImageBackground >
-            </ScrollView >
-
-
-
+                            </ImageBackground >
+                        </ScrollView>
+                }
+            </View>
         );
     }
 

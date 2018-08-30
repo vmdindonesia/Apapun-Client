@@ -3,7 +3,7 @@ import { View, Text, Image, AsyncStorage, TouchableOpacity, ToastAndroid, Keyboa
 import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { COLOR } from '../shared/config';
+import OneSignal from 'react-native-onesignal';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { IPSERVER } from '../shared/config';
 
@@ -71,6 +71,11 @@ export class LoginPage extends React.Component {
 				console.log(response.data, 'Data Login');
 				const IdUser = response.data;
 				AsyncStorage.setItem('VMDDEVELOPER', JSON.stringify(IdUser), () => {
+					console.log(response.data.userId, 'KKK');
+					OneSignal.sendTags({ userid: response.data.userId });
+					OneSignal.getTags((receivedTags) => {
+						console.log(receivedTags, 'Get Tag');
+					});
 					const resetAction = StackActions.reset({
 						index: 0,
 						actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
