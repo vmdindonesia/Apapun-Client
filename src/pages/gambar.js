@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
+import { View, Text, Image, ToastAndroid, TouchableOpacity, ScrollView, StyleSheet, FlatList } from 'react-native'
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import ImagePicker from 'react-native-image-picker';
+import uuid from 'react-native-uuid';
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
 
 export class GambarPage extends React.Component {
 
@@ -20,15 +23,121 @@ export class GambarPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            photo: [
-                'https://www.arsitag.com/proxy-s3-arsitagx-master-article/article-photo/117/xDesain-interior-ruang-tamu-dan-kamar-tidur-rumah-sederhana-yang-murah-namun-menawan-cover.jpg.pagespeed.ic.j16ohCgrU3.jpg',
-                'http://www.queenyqueen.com/wp-content/uploads/2017/03/Set-Meja-Makan-Minimalis.jpg',
-                'http://www.queenyqueen.com/wp-content/uploads/2017/11/Lemari-Pakaian-Telephone-6-300x300.jpg',
-                'http://www.queenyqueen.com/wp-content/uploads/2018/05/Cermin-Hias-Modern-300x300.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-
-            ],
+            photo: '',
+            imageUri: '',
+            crafterId: ''
         }
+    }
+
+    componentDidMount() {
+        // console.log(this.props.navigation.state.params.itemId, 'Props Profile');
+        this.setState({
+            crafterId: this.props.navigation.state.params.crafter_Id
+        }, () => {
+            const { crafterId } = this.state;
+            axios.post(`${IPSERVER}/ApapunImages/getCrafterImage`, {
+                crafterId: crafterId
+            })
+                .then(response => {
+                    console.log(response, 'Data Profile');
+                    this.setState({ photo: response.data }, () => {
+                        console.log(this.state.photo, 'PPPP');
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Get Data Profile');
+                    this.setState({ loading: false });
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
+    }
+
+    tambahGambar() {
+        const options = {
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        }
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    imageUri: source
+                }, () => {
+                    const nameFile = 'IMG_' + uuid.v1();
+                    var body = new FormData();
+                    var photo = {
+                        uri: this.state.imageUri.uri,
+                        type: 'image/jpeg',
+                        name: nameFile.toUpperCase() + '.jpg'
+                    };
+                    body.append('photo', photo);
+                    console.log(body, 'Body Append');
+                    var request = new XMLHttpRequest();
+                    request.onreadystatechange = (e) => {
+                        if (request.readyState !== 4) {
+                            return;
+                        }
+
+                        if (request.status === 200) {
+                            console.log('success', request.responseText);
+                            this.onRefresh();
+                        } else {
+                            console.warn('error', request);
+                        }
+                    };
+
+                    axios.post(`${IPSERVER}/ApapunImages/CreateCrafterImage`, {
+                        crafterId: this.state.crafterId,
+                        name: nameFile.toUpperCase() + '.jpg'
+                    })
+                        .then(response => {
+                            console.log(response, 'Data Upload Image');
+                            request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
+                            request.send(body);
+                            // this.onRefresh();
+                        }).catch(error => {
+                            console.log(error, 'Error Upload Image');
+                            this.setState({ loading: false });
+                            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                        });
+                });
+            }
+        });
+    }
+
+    onRefresh() {
+        axios.post(`${IPSERVER}/ApapunImages/getCrafterImage`, {
+            crafterId: this.state.crafterId
+        })
+            .then(response => {
+                console.log(response, 'Data Profile');
+                this.setState({ photo: response.data }, () => {
+                    console.log(this.state.photo, 'PPPP');
+                });
+            }).catch(error => {
+                console.log(error, 'Error Get Data Profile');
+                this.setState({ loading: false });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
     renderProductItem = (data) => {
@@ -39,7 +148,7 @@ export class GambarPage extends React.Component {
                 <View style={styles.thumbnailContainerStyle}>
                     <Image
                         style={styles.thumbnailStyle}
-                        source={{ uri: data.item }}
+                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.name === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
                     />
                 </View>
 
@@ -50,7 +159,9 @@ export class GambarPage extends React.Component {
     renderButton = () => {
         return (
             <View style={{ flex: 1, backgroundColor: '#000', borderRadius: 30 }}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => { this.tambahGambar() }}
+                >
                     <View style={{ flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', marginTop: 5 }}>
                         <Image style={{ width: 25, height: 20, marginTop: 5 }} source={require('../assets/images/add_picture.png')} />
                         <Text style={{ paddingLeft: 20, fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold', marginTop: 7.5 }}>Tambah Gambar</Text>

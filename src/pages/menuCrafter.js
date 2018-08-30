@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, Alert,
-    TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet
+    TouchableOpacity, ScrollView, TouchableWithoutFeedback, StyleSheet, ToastAndroid
 } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -20,7 +20,8 @@ export class MenuCrafterPage extends React.Component {
             userId: '',
             crafterId: '',
             dataProfile: '',
-            dataCatetan: ''
+            dataCatetan: '',
+            rating: ''
         }
     }
 
@@ -44,7 +45,19 @@ export class MenuCrafterPage extends React.Component {
                             .then(response => {
                                 this.setState({ dataCatetan: response.data }, () => {
                                     console.log(this.state.dataCatetan, 'Data Catetan');
-                                    this.setState({ loading: false });
+                                    axios.post(`${IPSERVER}/ApapunReviews/getHighlightReviewByCrafterId`, {
+                                        crafterId: crafterId
+                                    })
+                                        .then(response => {
+                                            this.setState({ rating: response.data }, () => {
+                                                console.log(this.state.rating, 'Data Rating');
+                                                this.setState({ loading: false });
+                                            });
+                                        }).catch(error => {
+                                            console.log(error, 'Error Get Rating');
+                                            this.setState({ loading: false });
+                                            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                                        });
                                 });
                             }).catch(error => {
                                 console.log(error, 'Error Get Dashboard Profile');
@@ -126,7 +139,7 @@ export class MenuCrafterPage extends React.Component {
                                 resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: Cukup (35)</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: {this.state.rating.description} ({this.state.rating.jmlReview})</Text>
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
@@ -146,7 +159,7 @@ export class MenuCrafterPage extends React.Component {
                         </View>
                         <View style={{ width: '100%', marginTop: 25, height: '100%' }}>
                             <View style={styles.card}>
-                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar')}>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Gambar', { crafter_Id: this.state.crafterId })}>
                                     {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                     <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
                                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gambar</Text>
