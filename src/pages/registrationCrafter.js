@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, Modal, ToastAndroid } from 'react-native'
+import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableWithoutFeedback, Modal, ToastAndroid } from 'react-native'
 import { Container, ContainerSection, Spinner, Input } from '../components/common';
 import axios from 'axios';
 import { COLOR } from '../shared/config';
