@@ -143,7 +143,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'left', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataCatetan.length === 0 ? 'Title Note' : this.state.dataCatetan[0].subject}</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'left', marginLeft: 25, marginRight: 25, fontSize: 13, color: 'transparent' }}>{this.state.dataCatetan.length === 0 ? 'Title Note' : this.state.dataCatetan[0].subject}</Text>
                             <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataCatetan.length === 0 ? 'Note Crafter' : this.state.dataCatetan[0].note}</Text>
                         </View>
                         <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
