@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastAndroid, View, Text, TextInput, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { ToastAndroid, View, Keyboard, Text, TextInput, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 // import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Container, ContainerSection, Button, Input, InputNumber } from '../components/common';
@@ -14,10 +14,40 @@ export class addNoteOnCrafterMenuPage extends React.Component {
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
         headerTitle: 'Catatan',
-
     });
 
+    constructor(props) {
+        super(props)
 
+        this.state = {
+            subject: '',
+            note: '',
+            crafterId: ''
+        }
+    }
+
+    onValidation() {
+        const {
+            subject,
+            note
+        } = this.state;
+        Keyboard.dismiss();
+        switch (subject) {
+            case '':
+                return ToastAndroid.show('Title Catatan Tidak Boleh Kosong', ToastAndroid.SHORT);
+            default:
+                switch (note) {
+                    case '':
+                        return ToastAndroid.show('Deskripsi Tidak Boleh Kosong', ToastAndroid.SHORT);
+                    default:
+                        return this.addNote();
+                }
+        }
+    }
+
+    addNote() {
+        console.log('Add Note');
+    }
 
     render() {
         return (
