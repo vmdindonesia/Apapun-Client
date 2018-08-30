@@ -5,6 +5,8 @@ import {
 } from 'react-native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
 
 export class MenuCrafterPage extends React.Component {
 
@@ -14,6 +16,48 @@ export class MenuCrafterPage extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            userId: '',
+            crafterId: '',
+            dataProfile: '',
+            dataCatetan: ''
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.props.navigation.state.params.itemId, 'Props Profile');
+        this.setState({
+            userId: this.props.navigation.state.params.itemId,
+            crafterId: this.props.navigation.state.params.crafter_Id
+        }, () => {
+            const { userId, crafterId } = this.state;
+            axios.post(`${IPSERVER}/ApapunCrafters/getCrafterbyId`, {
+                userId: userId
+            })
+                .then(response => {
+                    console.log(response, 'Data Profile');
+                    this.setState({ dataProfile: response.data }, () => {
+                        console.log(this.state.dataProfile, 'PPPP');
+                        axios.post(`${IPSERVER}/ApapunCrafterNotes/getCrafterNote`, {
+                            crafterId: crafterId
+                        })
+                            .then(response => {
+                                this.setState({ dataCatetan: response.data }, () => {
+                                    console.log(this.state.dataCatetan, 'Data Catetan');
+                                    this.setState({ loading: false });
+                                });
+                            }).catch(error => {
+                                console.log(error, 'Error Get Dashboard Profile');
+                                this.setState({ loading: false });
+                                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                            });
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Get Data Profile');
+                    this.setState({ loading: false });
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
     }
 
     alert = (msg) => {
@@ -61,7 +105,7 @@ export class MenuCrafterPage extends React.Component {
                     <View style={{ height: '100%', paddingBottom: hp('35%') }}>
                         <View style={{ flex: 1 }}>
                             <View style={{ width: '100%' }} >
-                                <Text style={styles.textStyle}>Gal Gadot</Text>
+                                <Text style={styles.textStyle}>{this.state.dataProfile.crafterData === undefined ? 'Crafter Name' : this.state.dataProfile.crafterData[0].craftername}</Text>
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row' }}>
@@ -71,7 +115,7 @@ export class MenuCrafterPage extends React.Component {
                                 resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 14 }]}>Kalimantan Selatan</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 14 }]}>{this.state.dataProfile.crafterData === undefined ? 'Crafter Province' : this.state.dataProfile.crafterData[0].province_name}</Text>
                             </View>
                         </View>
                         <View style={{ width: '100%', flexDirection: 'row' }}>
@@ -85,8 +129,8 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>Lulusan S2 Interior Design di Singapura -
-                        Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'left', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataCatetan.length === 0 ? 'Title Note' : this.state.dataCatetan[0].subject}</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataCatetan.length === 0 ? 'Note Crafter' : this.state.dataCatetan[0].note}</Text>
                         </View>
                         <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
                             <TouchableOpacity

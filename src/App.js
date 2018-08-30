@@ -10,6 +10,7 @@ import {
   StyleSheet
 } from 'react-native';
 import OneSignal from 'react-native-onesignal';
+import numeral from 'numeral';
 import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
@@ -108,6 +109,7 @@ import { FinalReviewPage } from './pages/finalReview';
 import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
 import { NoteProfileCrafterPage } from './pages/noteProfileCrafter';
 import { ErrorConnectionPage } from './pages/ErrorConnection';
+
 console.disableYellowBox = true;
 
 // font
@@ -117,6 +119,22 @@ const customTextProps = {
   }
 }
 setCustomText(customTextProps)
+
+
+numeral.register('locale', 'id', {
+  delimiters: {
+    thousands: '.',
+    decimal: ','
+  },
+  ordinal: function (number) {
+    return number === 1 ? 'er' : 'ème';
+  },
+  currency: {
+    symbol: 'Rp'
+  }
+})
+numeral.locale('id')
+
 
 const Routes = createStackNavigator({
   StartScreen: {

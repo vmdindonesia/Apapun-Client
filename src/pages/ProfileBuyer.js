@@ -4,6 +4,8 @@ import axios from 'axios';
 import { IPSERVER } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
+import numeral from 'numeral';
+import moment from 'moment';
 
 export class ProfileBuyerPage extends React.Component {
 
@@ -16,7 +18,8 @@ export class ProfileBuyerPage extends React.Component {
         this.state = {
             loading: true,
             userId: '',
-            dataProfile: ''
+            dataProfile: '',
+            dataPresentase: '',
         };
     }
 
@@ -30,7 +33,19 @@ export class ProfileBuyerPage extends React.Component {
                 .then(response => {
                     console.log(response, 'Data Profile');
                     this.setState({ dataProfile: response.data }, () => {
-                        this.setState({ loading: false });
+                        axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
+                            userId: userId
+                        })
+                            .then(response => {
+                                this.setState({ dataPresentase: response.data }, () => {
+                                    console.log(this.state.dataPresentase, 'Data Presentase');
+                                    this.setState({ loading: false });
+                                });
+                            }).catch(error => {
+                                console.log(error, 'Error Get Dashboard Profile');
+                                this.setState({ loading: false });
+                                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                            });
                     });
                 }).catch(error => {
                     console.log(error, 'Error Get Data Profile');
@@ -131,8 +146,8 @@ export class ProfileBuyerPage extends React.Component {
                                                 alignItems: 'center',
                                             }}>
                                                 <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                                    galgadot@gmail.com
-                            </Text>
+                                                    {this.state.dataProfile.email}
+                                                </Text>
                                             </View>
 
                                         </View>
@@ -159,8 +174,8 @@ export class ProfileBuyerPage extends React.Component {
                                                 alignItems: 'center',
                                             }}>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black', color: 'black' }}>
-                                                    081284485300
-                            </Text>
+                                                    {this.state.dataProfile.phone}
+                                                </Text>
                                             </View>
 
                                         </View>
@@ -186,8 +201,8 @@ export class ProfileBuyerPage extends React.Component {
                                                 alignItems: 'center',
                                             }}>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                                    30 Januari 1995
-                                    </Text>
+                                                    {moment(this.state.dataProfile.birth_date).format('DD/MM/YYYY')}
+                                                </Text>
                                             </View>
 
                                         </View>
@@ -214,11 +229,8 @@ export class ProfileBuyerPage extends React.Component {
                                                 // alignItems: 'center',
                                             }}>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
-                                                    Banten, Kabupaten Tangerang, Kelapa Dua
-                                    </Text>
-                                                <Text style={{ fontSize: 15, paddingLeft: 10, paddingTop: 5, textAlign: 'left', fontFamily: 'Quicksand-Regular', color: 'black' }}>
-                                                    Jalan Komodo
-                                    </Text>
+                                                    {this.state.dataProfile.province}, {this.state.dataProfile.city}, {this.state.dataProfile.district}
+                                                </Text>
                                             </View>
 
                                         </View>
@@ -257,10 +269,10 @@ export class ProfileBuyerPage extends React.Component {
                                             }}>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
                                                     Total Apresiasi Design Anda
-                                     </Text>
+                                                </Text>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
-                                                    Rp.120.000
-                                     </Text>
+                                                    Rp. {numeral(this.state.dataPresentase[0].user_total_apresiasi).format('0,0')}
+                                                </Text>
                                             </View>
 
                                         </View>
@@ -304,10 +316,10 @@ export class ProfileBuyerPage extends React.Component {
                                             }}>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'left', color: 'black' }}>
                                                     Total Design Anda
-                                    </Text>
+                                                </Text>
                                                 <Text style={{ paddingLeft: 10, fontSize: 15, fontFamily: 'Quicksand-Bold', textAlign: 'left', color: 'black' }}>
-                                                    3 Desain
-                                    </Text>
+                                                    {numeral(this.state.dataPresentase[0].user_jml_desain).format('0,0')} Desain
+                                                </Text>
                                             </View>
                                         </View>
                                     </View>

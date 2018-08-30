@@ -457,7 +457,10 @@ export class DashboardPage extends React.Component {
                                                                 <View style={styles.containerPhoto}>
                                                                     <View>
                                                                         <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                            onPress={() => this.props.navigation.navigate('MenuCrafter', {
+                                                                                itemId: this.state.idUser,
+                                                                                crafter_Id: this.state.idCrafter
+                                                                            })}>
                                                                             <Image
                                                                                 style={styles.profileImage}
                                                                                 source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[1].crafter_image}` }}
