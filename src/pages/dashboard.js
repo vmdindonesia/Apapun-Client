@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BubbleMenu from 'react-native-bubble-menu';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios';
+import OneSignal from 'react-native-onesignal';
 
 
 export class DashboardPage extends React.Component {
@@ -53,6 +54,7 @@ export class DashboardPage extends React.Component {
     }
 
     componentDidMount() {
+        OneSignal.clearOneSignalNotifications();
         this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
             BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
         );
@@ -730,6 +732,7 @@ export class DashboardPage extends React.Component {
                                                                     }), () => {
                                                                         AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
                                                                             console.log(result, 'Logout');
+                                                                            OneSignal.deleteTag('userid');
                                                                             const resetAction = StackActions.reset({
                                                                                 index: 0,
                                                                                 actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
