@@ -21,6 +21,7 @@
     "react-native-image-picker": "^0.26.10",
     "react-native-image-view": "^2.0.5",
     "react-native-modal-datetime-picker": "^5.1.0",
+    "react-native-onesignal": "^3.2.6",
     "react-native-responsive-screen": "^1.1.6",
     "react-native-snap-carousel": "^3.7.2",
     "react-native-swiper": "^1.5.13",
