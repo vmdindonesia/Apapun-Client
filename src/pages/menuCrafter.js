@@ -96,8 +96,9 @@ export class MenuCrafterPage extends React.Component {
                         <View>
 
                             <View style={styles.containerImage}>
-                                <Image style={styles.containerPhoto}
-                                    source={require('./../assets/images/profile.png')}
+                                <Image
+                                    style={styles.containerPhoto}
+                                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataProfile.crafterData === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : this.state.dataProfile.crafterData[0].profile_image}` }}
                                 />
                             </View>
                         </View>
