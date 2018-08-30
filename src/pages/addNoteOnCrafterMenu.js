@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Keyboard, Text, TextInput, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-// import axios from 'axios';
+import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Container, ContainerSection, Button, Input, InputNumber } from '../components/common';
-
+import { IPSERVER } from '../shared/config';
 export class addNoteOnCrafterMenuPage extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
@@ -26,6 +26,18 @@ export class addNoteOnCrafterMenuPage extends React.Component {
         }
     }
 
+    onChange = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+        })
+    }
+
+    componentDidMount() {
+        this.setState({
+            crafterId: this.props.navigation.state.params.crafter_Id
+        });
+    }
+
     onValidation() {
         const {
             subject,
@@ -46,12 +58,39 @@ export class addNoteOnCrafterMenuPage extends React.Component {
     }
 
     addNote() {
-        console.log('Add Note');
+        axios.post(`${IPSERVER}/ApapunCrafterNotes/CreateCrafterNote`, {
+            crafterId: this.state.crafterId,
+            subject: this.state.subject,
+            note: this.state.note
+        })
+            .then(response => {
+                console.log(response, 'Sukses Note');
+                console.log(this.props)
+                this.props.navigation.goBack();
+            }).catch(error => {
+                console.log(error, 'Error Note');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
-    render() {
+    renderButton = () => {
+        if (this.state.loading) {
+            return <Spinner size="small" />
+        }
         return (
-
+            <Button
+                onPress={() => this.onValidation()}
+                style={{ backgroundColor: 'rgb(209, 0, 0)' }}
+            >
+                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
+                    Simpan
+				</Text>
+            </Button>
+        )
+    }
+    render() {
+        const { subject, note } = this.state;
+        return (
             <View style={{
                 flex: 1, backgroundColor: 'white', marginTop: 5
             }}>
@@ -62,7 +101,9 @@ export class addNoteOnCrafterMenuPage extends React.Component {
                     <View style={{ marginTop: 5 }}>
                         <ContainerSection>
                             <Input
-                                placeholder='silakan isi judul dari catatan'
+                                placeholder='Judul Catatan'
+                                onChangeText={val => this.onChange('subject', val)}
+                                value={subject}
                             />
                         </ContainerSection>
                     </View>
@@ -72,16 +113,16 @@ export class addNoteOnCrafterMenuPage extends React.Component {
                             <Input
                                 multiline={true}
                                 numberOfLines={5}
-                                placeholder='silakan isi deskripsi'
+                                placeholder='Deskripsi Catatan'
+                                onChangeText={val => this.onChange('note', val)}
+                                value={note}
                             />
                         </ContainerSection>
                     </View>
 
                 </View>
 
-                <View style={{ height: 50, margin: 20, borderRadius: 30, backgroundColor: '#ef1c25', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>Simpan</Text>
-                </View>
+                {this.renderButton()}
 
             </View>
         )
