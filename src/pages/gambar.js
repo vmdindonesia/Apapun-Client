@@ -3,6 +3,7 @@ import { View, Text, Image, ToastAndroid, TouchableOpacity, ScrollView, StyleShe
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import ImageView from 'react-native-image-view';
 import ImagePicker from 'react-native-image-picker';
 import uuid from 'react-native-uuid';
 import axios from 'axios';
@@ -143,8 +144,11 @@ export class GambarPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableOpacity>
-
+            <TouchableOpacity
+                onPress={() => { 
+                    this.renderModal(true, data.index, data.item.name) 
+                }}
+            >
                 <View style={styles.thumbnailContainerStyle}>
                     <Image
                         style={styles.thumbnailStyle}
@@ -172,6 +176,17 @@ export class GambarPage extends React.Component {
         )
     }
 
+    renderModal(status, index, images) {
+        console.log(status, index, images, '011');
+        <ImageView
+            glideAlways
+            images={images}
+            imageIndex={index}
+            animationType="fade"
+            isVisible={status}
+        />
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -188,6 +203,7 @@ export class GambarPage extends React.Component {
                         numColumns={3}
                     />
                 </View>
+                {this.renderModal()}
             </View>
         );
     }

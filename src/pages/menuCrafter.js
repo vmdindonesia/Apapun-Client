@@ -171,7 +171,7 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                             <View style={styles.card}>
                                 <TouchableWithoutFeedback
-                                    onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu', { crafter_Id: this.state.crafterId })}
+                                    onPress={() => this.props.navigation.navigate('Catatan', { crafter_Id: this.state.crafterId })}
                                 >
                                     {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                     <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>

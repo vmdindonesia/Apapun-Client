@@ -26,9 +26,9 @@ export class CatatanPage extends React.Component {
                     justifyContent: 'center',
                     borderRadius: 30,
                 }}
-            // onPress={() => this.onValidation()}
+                onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu')}
             >
-                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Tambah Gambar</Text>
+                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Tambah Catatan</Text>
             </Button>
         )
     }
@@ -41,12 +41,12 @@ export class CatatanPage extends React.Component {
                 </View>
                 <View style={{ width: '100%', height: 50, flexDirection: 'row', marginTop: 10, backgroundColor: '#fff', alignItems: 'center' }}>
                     <View style={{ flexDirection: 'column', flex: 1, paddingLeft: 15 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Alamat Workshop</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Alamat Workshop</Text>
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>13 Jan 2018</Text>
                     </View>
                     <View style={{
                         flexDirection: 'row', flex: 1, backgroundColor: '#fff',
-                        justifyContent: 'flex-end', paddingRight: 15
+                        justifyContent: 'flex-end', paddingRight: 25
                     }}>
                         <Image style={{ height: 20, width: 20, borderRadius: 0, marginRight: 15 }}
                             source={require('./../assets/images/pen_address.png')}
@@ -58,10 +58,10 @@ export class CatatanPage extends React.Component {
                 </View>
                 <View style={{ width: '100%', height: 50, backgroundColor: '#fff', flexDirection: 'row', marginTop: 5, alignItems: 'center' }}>
                     <View style={{ flexDirection: 'column', flex: 1, paddingLeft: 15 }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>General</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>General</Text>
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13 }}>13 Jan 2018</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', paddingRight: 15 }}>
+                    <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end', paddingRight: 25 }}>
                         <Image style={{ height: 20, width: 20, borderRadius: 0, marginRight: 15 }}
                             source={require('./../assets/images/pen_address.png')}
                         />

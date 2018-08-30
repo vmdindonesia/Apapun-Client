@@ -4,6 +4,8 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Container, ContainerSection, Button, Input, InputNumber } from '../components/common';
 import { IPSERVER } from '../shared/config';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 export class addNoteOnCrafterMenuPage extends React.Component {
 
     static navigationOptions = ({ navigation }) => ({
@@ -78,15 +80,15 @@ export class addNoteOnCrafterMenuPage extends React.Component {
             return <Spinner size="small" />
         }
         return (
-            <Button
-                onPress={() => this.onValidation()}
-                style={{ backgroundColor: 'rgb(209, 0, 0)' }}
-            >
-                <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>
-                    Simpan
-				</Text>
-            </Button>
+            <View style={{ width: wp('87%'), height: hp('6.5%'), backgroundColor: 'rgb(209, 0, 0)', borderRadius: 30, justifyContent: 'center', bottom: 25 }}>
+                <TouchableOpacity
+                    onPress={() => this.onValidation()}
+                >
+                    <Text style={{ textAlign: 'center', fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold' }}>Simpan</Text>
+                </TouchableOpacity>
+            </View>
         )
+
     }
     render() {
         const { subject, note } = this.state;
@@ -121,9 +123,9 @@ export class addNoteOnCrafterMenuPage extends React.Component {
                     </View>
 
                 </View>
-
+                <View style={{ alignSelf: 'center' }}>
                 {this.renderButton()}
-
+                </View>
             </View>
         )
     }
