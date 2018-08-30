@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BubbleMenu from 'react-native-bubble-menu';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios';
+import OneSignal from 'react-native-onesignal';
 
 
 export class DashboardPage extends React.Component {
@@ -32,6 +33,7 @@ export class DashboardPage extends React.Component {
         );
         this.state = {
             loading: true,
+            idUser: '',
             idCrafter: '',
             show: false,
             sideMenu: false,
@@ -52,6 +54,7 @@ export class DashboardPage extends React.Component {
     }
 
     componentDidMount() {
+        OneSignal.clearOneSignalNotifications();
         this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
             BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
         );
@@ -60,6 +63,9 @@ export class DashboardPage extends React.Component {
             const dataLogin = JSON.parse(value);
             if (value) {
                 console.log(dataLogin, 'XXX');
+                this.setState({ idUser: dataLogin.userId }, () => {
+                    console.log(this.state.idUser, 'ID USER');
+                })
                 this.setState({ idCrafter: dataLogin.crafterId });
                 axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
                     userId: dataLogin.userId
@@ -393,7 +399,9 @@ export class DashboardPage extends React.Component {
                                                                 <View style={styles.containerPhoto}>
                                                                     <View>
                                                                         <TouchableOpacity
-                                                                            onPress={() => this.props.navigation.navigate('ProfilePage')}>
+                                                                            onPress={() => this.props.navigation.navigate('ProfilePage', {
+                                                                                itemId: this.state.idUser
+                                                                            })}>
                                                                             <Image
                                                                                 style={styles.profileImage}
                                                                                 source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDashboard[0].user_image}` }}
@@ -681,7 +689,7 @@ export class DashboardPage extends React.Component {
                                                 <View style={{ height: 200, justifyContent: 'center', alignItems: 'center' }}>
                                                     <TouchableWithoutFeedback
                                                         onPress={() => {
-                                                            this.props.navigation.navigate('ProfilePage');
+                                                            this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
                                                             this.setState(({ show }) => ({
                                                                 show: !show,
                                                             }));
@@ -726,6 +734,7 @@ export class DashboardPage extends React.Component {
                                                                     }), () => {
                                                                         AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
                                                                             console.log(result, 'Logout');
+                                                                            OneSignal.deleteTag('userid');
                                                                             const resetAction = StackActions.reset({
                                                                                 index: 0,
                                                                                 actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],

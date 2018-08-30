@@ -9,6 +9,7 @@ import {
   View,
   StyleSheet
 } from 'react-native';
+import OneSignal from 'react-native-onesignal';
 import { setCustomText } from 'react-native-global-props';
 import { COLOR } from './shared/config';
 import { createStackNavigator } from 'react-navigation';
@@ -127,8 +128,8 @@ const Routes = createStackNavigator({
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
   },
-  ErrorConnection:{
-    screen:ErrorConnectionPage
+  ErrorConnection: {
+    screen: ErrorConnectionPage
   },
   FindingCrafter: {
     screen: FindingCrafterPage
@@ -142,7 +143,7 @@ const Routes = createStackNavigator({
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
-  
+
   ProfileCrafter: {
     screen: ProfileCrafterPage
   },
@@ -467,6 +468,47 @@ const Routes = createStackNavigator({
 
 class App extends Component<{}> {
 
+  componentWillMount() {
+    OneSignal.inFocusDisplaying(2);
+    OneSignal.init("30bdea8d-4ed0-4df2-8fcf-fc60cbe9893d");
+    OneSignal.checkPermissions((permissions) => {
+      console.log(permissions);
+    });
+  }
+
+  componentDidMount() {
+    console.log('App.JS');
+    OneSignal.init("30bdea8d-4ed0-4df2-8fcf-fc60cbe9893d");
+    OneSignal.checkPermissions((permissions) => {
+      console.log(permissions);
+    });
+    OneSignal.configure({});
+    OneSignal.addEventListener('received', this.onReceived);
+    OneSignal.addEventListener('opened', this.onOpened);
+    OneSignal.addEventListener('ids', this.onIds);
+  }
+
+  componentWillUnmount() {
+    OneSignal.removeEventListener('received', this.onReceived);
+    OneSignal.removeEventListener('opened', this.onOpened);
+    OneSignal.removeEventListener('ids', this.onIds);
+  }
+
+  onReceived(notification) {
+    OneSignal.inFocusDisplaying(2);
+    console.log('Notification received: ', notification);
+  }
+
+  onOpened(openResult) {
+    console.log('Message: ', openResult.notification.payload.body);
+    console.log('Data: ', openResult.notification.payload.additionalData);
+    console.log('isActive: ', openResult.notification.isAppInFocus);
+    console.log('openResult: ', openResult);
+  }
+
+  onIds(device) {
+    console.log('Device info: ', device);
+  }
 
   render() {
     return (
