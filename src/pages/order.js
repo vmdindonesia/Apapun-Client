@@ -463,7 +463,7 @@ export class OrderPage extends React.Component {
                         >
                             <Image
                                 source={itemPhoto}
-                                style={{ width: 70, height: 70, backgroundColor: 'pink' }}
+                                style={{ width: 70, height: 70, marginRight: 5 }}
                                 resizeMode='contain'
                             />
                         </TouchableOpacity>

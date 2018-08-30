@@ -67,7 +67,7 @@ export class GambarPage extends React.Component {
                 <View style={{ width: '85%', height: 40, alignSelf: 'center', marginTop: 20 }}>
                     {this.renderButton()}
                 </View>
-                <View style={{ flex: 1, marginTop: 15, marginBottom: 10 }}>
+                <View style={{ flex: 1, marginTop: 20, marginBottom: 10, marginLeft: 1.5, marginRight: 1.5 }}>
                     <FlatList
                         data={this.state.photo}
                         // contentContainerStyle={styles.list}
@@ -85,13 +85,16 @@ export class GambarPage extends React.Component {
 const styles = StyleSheet.create({
     thumbnailContainerStyle: {
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     thumbnailStyle: {
         alignSelf: 'stretch',
         height: hp('18%'),
         width: wp('33.3%'),
         resizeMode: 'cover',
+        marginBottom: 2.5,
+        marginRight: 2.5
+        // marginTop: 1.5
     },
 })
 
