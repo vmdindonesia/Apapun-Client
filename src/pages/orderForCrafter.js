@@ -95,7 +95,7 @@ export class OrderForCrafterPage extends React.Component {
                         <Swiper
                             style={styles.wrapper}
                             showsButtons={false}
-                            dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                            showsPagination={false}
                         >
                             <View style={styles.slide1}>
                                 <Image

@@ -43,7 +43,7 @@ export class CrafterMenuPage extends React.Component {
 
     return (
       <View style={menuContainerStyle}>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: 'row', backgroundColor: 'white', height: 60 }}>
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'CrafterOrderMenu' })}>
               <View style={screen === 'CrafterOrderMenu' ? tabContainerActive : tabContainer}>
@@ -52,11 +52,13 @@ export class CrafterMenuPage extends React.Component {
                   source={require('./../assets/images/List.png')}
                   resizeMode='stretch'
                 />
-                <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan</Text>
+                <Text style={screen === 'CrafterOrderMenu' ? tabTextActive : tabText}>Pesanan Saya</Text>
               </View>
             </TouchableNativeFeedback>
           </View>
-          <View style={{ borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
+
+          <View style={{ borderColor: '#ddd', borderRightWidth: 1, height: 30, alignSelf: 'center' }} />
+
           <View style={{ flex: 1 }}>
             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'menuCrafter' })}>
               <View style={screen === 'menuCrafter' ? tabContainerActive : tabContainer}>
@@ -80,24 +82,28 @@ export class CrafterMenuPage extends React.Component {
 
 const styles = StyleSheet.create({
   menuContainerStyle: {
-    flex: 1
+    flex: 1,
+
   },
   tabContainer: {
-    height: 60,
+    height: 55,
     justifyContent: 'center',
   },
   tabContainerActive: {
-    height: 60,
+    height: 55,
     justifyContent: 'center'
   },
   tabText: {
     textAlign: 'center',
-    fontSize: 15
+    fontSize: 15,
+    paddingTop: 3
   },
   tabTextActive: {
     textAlign: 'center',
     fontSize: 15,
-    fontFamily: 'Quicksand-Bold'
+    fontFamily: 'Quicksand-Regular',
+    paddingTop: 3,
+    color: 'black'
   },
 })
 export default CrafterMenuPage;

@@ -94,19 +94,18 @@ export class UlasanOnCrafterProfilePage extends React.Component {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, marginRight: 20, marginLeft: 20 }}>
 
-                    <View style={{ width: '60%', flexDirection: 'row', alignItems: 'center', }}>
-                        <View style={{ height: 65, width: 65, borderRadius: 100, backgroundColor: 'black' }}>
+                    <View style={{ width: '60%', flexDirection: 'row', alignItems: 'center' }}>
+                        {/* <View style={{ height: 65, width: 65, borderRadius: 100, backgroundColor: 'black' }}> */}
                             <Image
                                 style={{
-                                    width: 50,
-                                    height: 50,
-                                    alignSelf: 'center',
-                                    borderRadius: 50
+                                    width: 65,
+                                    height: 65,
+                                    borderRadius: 100
                                 }}
-                                resizeMode='stretch'
+                                // resizeMode='stretch'
                                 source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.profile_url === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.profile_url}` }}
                             />
-                        </View>
+                        {/* </View> */}
 
                         <View style={{ justifyContent: 'center', flex: 1 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', paddingLeft: 10 }}>{data.item.realm}</Text>
@@ -266,7 +265,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                         extraData={this.state}
                     />
                 </View>
-            </View >
+            </View>
         )
     }
 

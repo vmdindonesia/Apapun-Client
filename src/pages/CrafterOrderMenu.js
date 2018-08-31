@@ -13,7 +13,11 @@ export class CrafterOrderMenuPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Pesanan'
+        headerTitle: 'Pesanan',
+        headerStyle: {
+            shadowOpacity: 0,
+            elevation: 0,
+        }
     });
 
     constructor(props) {
@@ -52,19 +56,20 @@ export class CrafterOrderMenuPage extends React.Component {
         const { categoryId } = this.state
         return (
             <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
-                <View style={{ flex: 1, height: 300, }}>
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
+                <View style={{ flex: 1, height: 275, }}>
+
+                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
                             onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Custom Order', categoryId: categoryId })}
                         >
                             <ImageBackground
-                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
-                                source={require('./../assets/images/bg_custom.png')}
-                                resizeMode='cover'
+                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' , }}
+                                source={require('./../assets/images/bg_custom.png')} 
+                                resizeMode='stretch'
                             >
-                                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', flexDirection: 'column' }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'white', fontWeight: 'bold' }}>CUSTOM</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'red', fontWeight: 'bold' }}>123 Order</Text>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>CUSTOM</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>123 Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>
@@ -72,37 +77,36 @@ export class CrafterOrderMenuPage extends React.Component {
                     </View>
 
 
-
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
+                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
                             onPress={() => this.props.navi.navigate('searchOrder', { type_order: 'Capture n Get', categoryId: categoryId })}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
                                 source={require('./../assets/images/bg_CapturenGet.png')}
-                                resizeMode='cover'
+                                resizeMode='stretch'
                             >
-                                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center' }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'white', fontWeight: 'bold' }}>CAPTURE & GET</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'red', fontWeight: 'bold' }}>30 Order</Text>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>CAPTURE & GET</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>30 Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
+                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
                             onPress={() => this.props.navi.navigate('searchOrder', { type_order: 'Idea Market', categoryId: categoryId })}
                         >
                             <ImageBackground
-                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
+                                style={{ flex: 1, width: '100%', height: '100%', borderRadius: 100, flexDirection: 'row' }}
                                 source={require('./../assets/images/bg_market.png')}
-                                resizeMode='cover'
+                                resizeMode='stretch'
                             >
-                                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center' }}>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'white', fontWeight: 'bold' }}>MARKET</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Regular', color: 'red', fontWeight: 'bold' }}>23 Order</Text>
+                                <View style={{ flex: 1, justifyContent: 'center' }}>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>MARKET</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>23 Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>

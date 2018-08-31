@@ -8,7 +8,7 @@ export class ProductReadyToSendPage extends React.Component {
 
 
     static navigationOptions = {
-        headerTitle: 'Crafter Menu',
+        headerTitle: 'Pesanan Saya',
         headerStyle: {
             // shadowOpacity: 0,
             elevation: 0,
@@ -63,14 +63,14 @@ export class ProductReadyToSendPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View style={{ width: '100%', height: 220, marginTop: 12.5, backgroundColor: 'white', alignItems: 'center' }}>
+                    <View style={{ width: '100%', height: 210, marginTop: 12.5, backgroundColor: 'white', alignItems: 'center' }}>
 
                         <View style={{ width: '90%', height: 100, backgroundColor: 'white', justifyContent: 'center', alignContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', textAlign: 'center' }}>BARANG SIAP DIKIRM</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', textAlign: 'center', paddingTop: 5 }}>Silakan melakukan pengiriman dan masukan nomor resi pada kolom dibawah ini</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: '#737373', textAlign: 'center' }}>BARANG SIAP DIKIRM</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: '#737373', textAlign: 'center', paddingTop: 5 }}>Silakan melakukan pengiriman dan masukan nomor resi pada kolom dibawah ini : </Text>
                         </View>
 
-                        <View style={{ width: '95%', height: 50, backgroundColor: 'white', justifyContent: 'center', alignContent: 'center' }}>
+                        <View style={{ width: '90%', height: 40, backgroundColor: 'white', justifyContent: 'center', alignContent: 'center' }}>
                             <ContainerSection>
                                 <Input
                                     placeholder=''
@@ -78,19 +78,22 @@ export class ProductReadyToSendPage extends React.Component {
                             </ContainerSection>
                         </View>
 
-                        <View style={{ width: '97%', height: 50, backgroundColor: 'black', justifyContent: 'center', alignContent: 'center', marginTop: 10, borderRadius: 100 }}>
-                            <TouchableOpacity>
+                        <View style={{ width: '90%', height: 40, backgroundColor: 'black', justifyContent: 'center', alignContent: 'center', marginTop: 10, borderRadius: 100 }}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ThanksToOrderAfterSend')}
+                            >
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>Proses</Text>
                             </TouchableOpacity>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 250, marginTop: 12.5, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 250, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
+
                         <Swiper
                             // style={styles.wrapper}
                             showsButtons={false}
-                            dot={<View style={{ backgroundColor: '#FFFFFF', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3 }} />}
+                            showsPagination={false}
                         >
                             <View style={styles.slide1}>
                                 <Image
@@ -122,73 +125,77 @@ export class ProductReadyToSendPage extends React.Component {
 
                     </View>
 
-                    <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 55, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
 
-                        <View style={{ flex: 1, }}>
-                            <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Nama Produk</Text>
-                            </View>
+                        <View style={{ height: 50, flex: 1, marginRight: 10 }}>
                             <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='My Own Table'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Nama Produk</Text>
+                            </View>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>My Own Table</Text>
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, }}>
+                        <View style={{ height: 50, flex: 1 }}>
                             <View >
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Kategori</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
                             </View>
-                            <View>
-                                <ContainerSection>
-                                    <Input
-                                        placeholder='Furniture'
-                                        editable={false}
-                                    />
-                                </ContainerSection>
+                            <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>Furniture</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
+                    <View style={{ flex: 1, height: 50, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, alignItems: 'center' }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Jumlah yang dipesan</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Jumlah yang dipesan</Text>
 
-                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#aaaaaa' }}>
+                        <View style={{ marginLeft: 10, width: 25, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>1</Text>
                         </View>
 
 
-                        <View style={{ marginLeft: 3, width: 50, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#aaaaaa' }}>
+                        <View style={{ marginLeft: 3, width: 50, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 5, borderWidth: 2, borderColor: '#cbcbcb' }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>PCS</Text>
                         </View>
 
+
                     </View>
 
-                    <View style={{ flex: 1, height: 85, marginTop: 5, marginLeft: 10, marginRight: 10, }}>
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Material</Text>
+                    <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
 
-                        <View style={{ flex: 1, flexDirection: 'row', marginTop: 5 }}>
-
-                            <View style={{ marginLeft: 3, height: 80, width: 130, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 2, borderColor: '#aaaaaa' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}> Kayu - Red Wood</Text>
+                        <View style={{ flex: 1, }}>
+                            <View >
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Material</Text>
                             </View>
+                            <View style={{ flexDirection: 'row', }}>
+                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Kayu - RedWood</Text>
+                                </View>
 
-                            <View style={{ marginLeft: 3, height: 80, width: 120, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 2, borderColor: '#aaaaaa' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>Besi - Beton</Text>
+                                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Besi - Beton</Text>
+                                </View>
+
+
+
                             </View>
-
-                            <View style={{ marginLeft: 3, height: 80, width: 120, height: '60%', backgroundColor: 'white', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 2, borderColor: '#aaaaaa' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black' }}>Plastik - HDPE</Text>
-                            </View>
-
                         </View>
 
                     </View>
+
+                    <View style={{ flex: 1, justifyContent: 'center', marginLeft: 10, marginRight: 10, }}>
+
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Catatan Tambahan</Text>
+
+                        <View style={{ flex: 1, alignContent: 'center', justifyContent: 'center', marginTop: 5 }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 10, alignSelf: 'center', backgroundColor: 'white' }}>Dibagian atas meja tolong diberikan ukiran "cemara", bentuk
+    tulisan saya percayakan kepada anda. </Text>
+                        </View>
+
+                    </View>
+
 
                     <View style={{ height: 120, flex: 1, justifyContent: 'center', marginTop: 5, marginLeft: 10, marginRight: 10, }}>
 
@@ -210,25 +217,22 @@ export class ProductReadyToSendPage extends React.Component {
                             />
 
                             <View style={{ flex: 1, alignSelf: 'center', justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', paddingLeft: 15 }}>Pos Indonesia</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 15 }}>Pos Indonesia</Text>
                             </View>
                         </View>
 
                     </View>
 
-                    <View style={{ height: 150, flex: 1, justifyContent: 'center', marginTop: 10, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ flex: 1, justifyContent: 'center', marginTop: 13, marginLeft: 10, marginRight: 10, }}>
 
-                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 5 }}>Alamat Pengiriman</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Alamat Pengiriman</Text>
 
-                        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Home 1</Text>
-                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}> Penerima : <Text style={{ fontWeight: 'bold', fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Judy</Text> </Text>
-                        </View>
-
-                        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>(+62)<Text> 84485300 </Text></Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }}>Jl. Duri Kepa 4 No 5 </Text>
-                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingLeft: 10 }} >Kebon Jeruk, Jakarta Barat </Text>
+                        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5, justifyContent: 'center', padding: 10 }}>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black', }}>Home 1</Text>
+                            <Text style={{ fontSize: 13, paddingTop: 3, fontFamily: 'Quicksand-Regular', color: 'black', }}>Penerima : <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>Judy</Text> </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', paddingTop: 10 }}>(+62)<Text> 84485300 </Text></Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }}>Jl. Duri Kepa 4 No 5 </Text>
+                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', }} >Kebon Jeruk, Jakarta Barat </Text>
                         </View>
 
                     </View>
