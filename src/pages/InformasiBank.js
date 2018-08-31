@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, AsyncStorage, Image, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
-// import axios from 'axios';
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
+import numeral from 'numeral';
 import { COLOR } from '../shared/config';
 import { CheckBox } from 'react-native-elements';
 
@@ -17,9 +19,42 @@ export class InformasiBankPage extends React.Component {
             agree: false,
             pathPhotoProfil: null,
             pathPhotoKTP: null,
-            pathPhotoBankBook: null
-
+            pathPhotoBankBook: null,
+            dataAkun: '',
+            dataHighLight: ''
         };
+    }
+
+    componentDidMount() {
+        // console.log(this.props.navi.state.params.crafter_Id, 'Props Bank Inform');
+        AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
+            console.log(JSON.parse(value), 'Json Parse');
+            const dataLogin = JSON.parse(value);
+            if (value) {
+                axios.post(`${IPSERVER}/ApapunUsersBanks/getUserBankById`, {
+                    crafterId: this.props.navi.state.params.crafter_Id
+                })
+                    .then(response => {
+                        this.setState({ dataAkun: response.data }, () => {
+                            console.log(this.state.dataAkun, 'Data Bank');
+                            axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
+                                userId: dataLogin.userId
+                            })
+                                .then(response => {
+                                    this.setState({ dataHighLight: response.data }, () => {
+                                        console.log(this.state.dataHighLight, 'Data High Light');
+                                    });
+                                }).catch(error => {
+                                    console.log(error, 'Error Get Data High Light');
+                                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                                });
+                        });
+                    }).catch(error => {
+                        console.log(error, 'Error Get Data Bank');
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                    });
+            }
+        });
     }
 
     getPhotoProfile() {
@@ -158,8 +193,8 @@ export class InformasiBankPage extends React.Component {
                         </Text>
                     </View>
 
-                    <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
-                        Rp. 120.000
+                    <Text style={{ fontSize: 27, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
+                        Rp. {this.state.dataHighLight.length === 0 ? '-' : numeral(this.state.dataHighLight[0].user_total_apresiasi).format('0,0')}
                     </Text>
                 </View>
 
@@ -171,7 +206,7 @@ export class InformasiBankPage extends React.Component {
                             <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Depan</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gal</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>{this.state.dataAkun.nama_depan}</Text>
                             </View>
 
                         </View>
@@ -180,7 +215,7 @@ export class InformasiBankPage extends React.Component {
                             <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nama Belakang</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Gadot</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>{this.state.dataAkun.nama_belakang}</Text>
                             </View>
 
                         </View>
@@ -191,7 +226,7 @@ export class InformasiBankPage extends React.Component {
                         <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Nomor Rekening</Text>
 
                         <View style={{ height: 40, width: '96%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>192BKS7SJ</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>{this.state.dataAkun.accountHolderNumber === undefined ? '-' : this.state.dataAkun.accountHolderNumber}</Text>
                         </View>
 
                     </View>
@@ -202,7 +237,7 @@ export class InformasiBankPage extends React.Component {
                             <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black', flexDirection: 'row', justifyContent: 'center' }}>Nama Bank</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>Mandiri</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>{this.state.dataAkun.bankName === undefined ? '-' : this.state.dataAkun.bankName}</Text>
                             </View>
 
                         </View>
@@ -211,7 +246,7 @@ export class InformasiBankPage extends React.Component {
                             <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Cabang</Text>
 
                             <View style={{ height: 40, width: '92.5%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>BSD</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>{this.state.dataAkun.bankBranch === undefined ? '-' : this.state.dataAkun.bankBranch}</Text>
                             </View>
 
                         </View>
@@ -232,7 +267,7 @@ export class InformasiBankPage extends React.Component {
 
                                         <Image
                                             style={{ height: 165, width: 165, alignSelf: 'center' }}
-                                            source={require('./../assets/images/profile.png')}
+                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataAkun.fotoUrl === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : this.state.dataAkun.fotoUrl}` }}
                                         />
                                         :
                                         <Image
@@ -257,7 +292,7 @@ export class InformasiBankPage extends React.Component {
 
                                     <Image
                                         style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                        source={require('./../assets/images/ktp.jpg')}
+                                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataAkun.fotoUrl === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : this.state.dataAkun.ktpUrl}` }}
                                         resizeMode='stretch'
                                     />
                                     :
@@ -283,7 +318,7 @@ export class InformasiBankPage extends React.Component {
 
                                     <Image
                                         style={{ height: 160, width: '100%', alignSelf: 'center' }}
-                                        source={require('./../assets/images/rekening.jpg')}
+                                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataAkun.fotoUrl === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : this.state.dataAkun.rekeningUrl}` }}
                                         resizeMode='stretch'
                                     />
                                     :
@@ -299,64 +334,6 @@ export class InformasiBankPage extends React.Component {
 
                     </View>
                 </View>
-
-                {/* <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
-                    <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'black' }}>Kode Verifikasi</Text>
-                        <ContainerSection>
-                            <Input
-                                placeholder='silakan masukan kode verifikasi'
-
-                            />
-                        </ContainerSection>
-                    </View>
-                </View> */}
-
-                {/* <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10, }}>
-                    <TouchableOpacity style={{ flex: 1 }}>
-                        <View style={{ flex: 1, height: 10, backgroundColor: 'black', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
-                            <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>Kirim Kode Verifikasi</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View> */}
-
-                <View style={{ flex: 1, height: 80, marginRight: 10, marginLeft: 10 }}>
-                    <View style={{ flex: 1, }}>
-                        <Text style={{ paddingLeft: 5, fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Password</Text>
-
-
-                        <View style={{ height: 40, width: '96F%', backgroundColor: 'white', marginTop: 5, marginLeft: 5, justifyContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 15, paddingLeft: 5 }}>**********</Text>
-                        </View>
-
-
-
-                    </View>
-                </View>
-
-
-                {/* <View style={{ flex: 1, height: 50, marginRight: 10, marginLeft: 15, justifyContent: 'center' }}>
-
-                    <CheckBox
-                        containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
-                        title={<Text style={{ color: 'black', fontSize: 13, paddingLeft: 5, color: 'black' }}> Setuju dengan <Text style={{ textDecorationLine: 'underline', color: 'red', fontSize: 13 }}>Syarat & Ketentuan</Text>
-                        </Text>}
-                        onPress={() => this.checkedAgree()}
-                        checked={agree}
-                    />
-                </View> */}
-
-                {/* <View style={{ flex: 1, height: 80, marginRight: 5, marginLeft: 10, }}>
-                    <TouchableOpacity style={{ flex: 1 }}
-                        onPress={() => this.props.navigation.navigate('CrafterMenu')}
-                    >
-                        <View style={{ flex: 1, height: 10, backgroundColor: 'red', justifyContent: 'center', marginTop: 10, marginBottom: 20, borderRadius: 50 }}>
-                            <Text style={{ textAlign: 'center', fontSize: 15, fontFamily: 'Quicksand-Regular', fontWeight: 'bold', color: 'white' }}>OK</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View> */}
-
-
             </ScrollView >
         )
     }

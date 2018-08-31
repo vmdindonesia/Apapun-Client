@@ -7,6 +7,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import { IPSERVER } from '../shared/config';
+import { NavigationActions, StackActions } from 'react-navigation';
+
 
 export class MenuCrafterPage extends React.Component {
 
@@ -100,7 +102,16 @@ export class MenuCrafterPage extends React.Component {
                         style={styles.backgroundStyle}
                     >
                         <TouchableOpacity style={{ height: 70, width: 70, position: 'absolute', marginTop: 20 }}
-                            onPress={() => this.props.navigation.goBack()}
+                            onPress={() => {
+                                // this.props.navigation.goBack()
+                                const resetAction = StackActions.reset({
+                                    index: 0,
+                                    actions: [
+                                        NavigationActions.navigate({ routeName: 'Dashboard' }),
+                                    ],
+                                });
+                                this.props.navigation.dispatch(resetAction);
+                            }}
                         >
                             <View style={{ height: 45, width: 45, borderRadius: 100, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingLeft: 7.5, marginLeft: 25, }}>
                                 <Icon size={30} style={{ paddingLeft: 7.5, color: 'white' }} name='ios-arrow-back' />
@@ -194,7 +205,7 @@ export class MenuCrafterPage extends React.Component {
                                 </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('AkunBank')}>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('AkunBank', { crafter_Id: this.state.crafterId })}>
                                     {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                     <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
                                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Akun Bank</Text>
@@ -205,7 +216,7 @@ export class MenuCrafterPage extends React.Component {
                                 </TouchableWithoutFeedback>
                             </View>
                             <View style={styles.card}>
-                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('crafterMenuListOrder')}>
+                                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('crafterMenuListOrder', { crafter_Id: this.state.crafterId })}>
                                     {/* onPress={() => { this.setState({ imageExpanded: !imageExpanded }); console.log(this.state.imageExpanded, 'Request Klik') }} */}
                                     <View style={{ flex: 1, flexDirection: 'row', paddingRight: 15, paddingLeft: 15, alignItems: 'center' }}>
                                         <Text style={{ fontSize: 15, fontFamily: 'Quicksand-Bold', color: 'black' }}>Pesanan Saya</Text>

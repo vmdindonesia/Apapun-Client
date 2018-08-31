@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
-// import axios from 'axios';
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
+import numeral from 'numeral';
 import { COLOR } from '../shared/config';
 import { CheckBox } from 'react-native-elements';
 
@@ -10,6 +12,37 @@ export class DetailTransaksiPage extends React.Component {
     static navigationOptions = {
         header: null
     }
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataHighLight: ''
+        };
+    }
+
+    componentDidMount() {
+        // console.log(this.props.navi.state.params.crafter_Id, 'Props Bank Inform');
+        AsyncStorage.getItem('VMDDEVELOPER').then((value) => {
+            console.log(JSON.parse(value), 'Json Parse');
+            const dataLogin = JSON.parse(value);
+            if (value) {
+                console.log(this.state.dataAkun, 'Data Bank');
+                axios.post(`${IPSERVER}/ApapunUsers/getHighlightUser`, {
+                    userId: dataLogin.userId
+                })
+                    .then(response => {
+                        this.setState({ dataHighLight: response.data }, () => {
+                            console.log(this.state.dataHighLight, 'Data High Light');
+                        });
+                    }).catch(error => {
+                        console.log(error, 'Error Get Data High Light');
+                        return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                    });
+            }
+        });
+    }
+
     render() {
         return (
             <ScrollView
@@ -28,7 +61,7 @@ export class DetailTransaksiPage extends React.Component {
                     </View>
 
                     <Text style={{ fontSize: 27, margintop: 20, marginBottom: 20, textAlign: 'center', color: 'black', fontFamily: 'Quicksand-Bold' }}>
-                        Rp. 120.000
+                        Rp. {this.state.dataHighLight.length === 0 ? '-' : numeral(this.state.dataHighLight[0].user_total_apresiasi).format('0,0')}
                     </Text>
                 </View>
 
