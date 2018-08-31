@@ -25,7 +25,8 @@ export class UlasanOnCrafterProfilePage extends React.Component {
         this.state = {
             crafterId: '',
             dataCommentar: '',
-            dataTotal: ''
+            dataTotal: '',
+            loading: true,
         }
     }
 
@@ -44,14 +45,16 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                         })
                             .then(response => {
                                 console.log(response, 'Data Total')
-                                this.setState({ dataTotal: response.data });
+                                this.setState({ dataTotal: response.data, loading: false });
                             }).catch(error => {
                                 console.log(error, 'Error Total');
+                                this.setState({ loading: false })
                                 return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
                             });
                     });
                 }).catch(error => {
                     console.log(error, 'Error Commentar');
+                    this.setState({ loading: false })
                     return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
                 });
         });
@@ -72,6 +75,16 @@ export class UlasanOnCrafterProfilePage extends React.Component {
             </TouchableOpacity >
         )
     }
+
+    handleRefresh = () => {
+        console.log('Refresh');
+        this.setState({
+            loading: true
+        }, () => {
+            this.componentDidMount();
+        })
+    }
+
 
 
     renderCommentar = (data) => {
@@ -167,32 +180,10 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     }
 
     renderTotal = (data) => {
-        console.log(data, 'Total');
+        console.log(data.item.total, 'Total');
         return (
-            <View style={{ width: '100%', height: 30, flexDirection: 'row', backgroundColor: 'red' }}>
-                <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.rating === 1 ? data.item.jml_rating : 0})</Text>
-
-                </View>
-
-                <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
-
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.rating === 2 ? data.item.jml_rating : 0})</Text>
-
-                </View>
-
-                <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
-
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.rating === 3 ? data.item.jml_rating : 0})</Text>
-
-                </View>
-
-                <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
-
-                    <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.rating === 4 ? data.item.jml_rating : 0})</Text>
-
-                </View>
-
+            <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
+                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.total === null ? 0 : data.item.total})</Text>
             </View>
         )
     }
@@ -263,6 +254,9 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                     showsHorizontalScrollIndicator={false}
                     horizontal={false}
                     numColumns={4}
+                    extraData={this.state}
+                    refreshing={this.state.loading}
+                    onRefresh={() => this.handleRefresh()}
                 />
 
                 <View style={{ flex: 1, backgroundColor: 'red', flexDirection: 'row' }}>
