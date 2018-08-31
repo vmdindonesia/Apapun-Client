@@ -181,7 +181,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     renderTotal = (data) => {
         console.log(data.item.total, 'Total');
         return (
-            <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
+            <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white' }}>
                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.total === null ? 0 : data.item.total})</Text>
             </View>
         )
@@ -258,7 +258,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                     onRefresh={() => this.handleRefresh()}
                 />
 
-                <View style={{ flex: 1, backgroundColor: 'red', flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row' }}>
                     <FlatList
                         data={this.state.dataCommentar}
                         renderItem={this.renderCommentar.bind(this)}
