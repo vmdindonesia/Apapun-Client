@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, RefreshControl, ScrollView, Text, Picker, Keyboard, Linking, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
+import { AsyncStorage, RefreshControl, ScrollView, Text, Picker, StyleSheet, Linking, TouchableOpacity, View, Image, FlatList, Modal } from 'react-native';
 import { Container, ContainerSection, Input, Button, Spinner, InputNumber, InputSearchMaterial, InputSearch } from '../components/common';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
@@ -16,7 +16,12 @@ export class MaterialPage extends React.Component {
                     onPress={() => {
                         navigation.goBack();
                         navigation.setParams(params.dataMaterial);
-                        navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                        console.log(params.dataMaterial, 'JJJJ');
+                        if (params.dataMaterial === undefined) {
+                            navigation.state.params.onSelect({ dataCheckBoxSubMaterial: [] });
+                        } else {
+                            navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                        }
                         console.log(navigation, 'Props Material');
                     }}
                 >
@@ -98,18 +103,41 @@ export class MaterialPage extends React.Component {
     componentDidMount() {
         console.log(this.props.navigation, 'Data Params');
         if (this.props.navigation.state.params.dataSub) {
-            this.setState({ dataCheckBoxSubMaterial: this.props.navigation.state.params.dataSub }, () => {
-                console.log(this.state.dataCheckBoxSubMaterial, 'XXX');
+            this.setState({
+                dataCheckBoxSubMaterial: this.props.navigation.state.params.dataSub
+            }, () => {
+                this.props.navigation.setParams({
+                    dataMaterial: this.state.dataCheckBoxSubMaterial
+                });
+                axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+                    console.log(response, 'Response Material')
+                    this.setState({ dataMaterial: response.data }, () => {
+                        this.setState({ loading: false });
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Material');
+                    this.setState({ loading: false });
+                })
+            });
+        } else {
+            axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
+                console.log(response, 'Response Material')
+                this.setState({ dataMaterial: response.data }, () => {
+                    this.setState({ loading: false });
+                });
+            }).catch(error => {
+                console.log(error, 'Error Material');
+                this.setState({ loading: false });
             })
         }
-        axios.get(`${IPSERVER}/ApapunMaterials`).then(response => {
-            console.log(response, 'Response Material')
-            this.setState({ dataMaterial: response.data }, () => {
-                this.setState({ loading: false });
-            });
-        }).catch(error => {
-            console.log(error, 'Error Material');
-            this.setState({ loading: false });
+    }
+
+    handleRefresh = () => {
+        console.log('Refresh');
+        this.setState({
+            loading: true
+        }, () => {
+            this.componentDidMount();
         })
     }
 
@@ -168,9 +196,7 @@ export class MaterialPage extends React.Component {
             }}>
                 <View style={{ flex: 4, alignItems: 'flex-start', flexDirection: 'row' }}>
                     <CheckBox
-                        textStyle={{
-                            fontFamily: 'Quicksand-Bold'
-                        }}
+                        textStyle={styles.customFont}
                         containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent', marginLeft: -10 }}
                         checked={dataCheckBoxSubMaterial.includes(itemSubMaterial)}
                         onPress={() => this.checkedSubMaterial(itemSubMaterial)}
@@ -218,11 +244,26 @@ export class MaterialPage extends React.Component {
                     borderRadius: 30,
                     marginTop: 10
                 }}
+                // onPress={() => {
+                //     navigation.goBack();
+                //     navigation.setParams(params.dataMaterial);
+                //     console.log(params.dataMaterial, 'JJJJ');
+                //     if (params.dataMaterial === undefined) {
+                //         navigation.state.params.onSelect({ dataCheckBoxSubMaterial: [] });
+                //     } else {
+                //         navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                //     }
+                //     console.log(navigation, 'Props Material');
+                // }}
                 onPress={() => {
                     const { params = {} } = this.props.navigation.state;
                     this.props.navigation.goBack();
                     this.props.navigation.setParams(params.dataMaterial);
-                    this.props.navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                    if (params.dataMaterial === undefined) {
+                        this.props.navigation.state.params.onSelect({ dataCheckBoxSubMaterial: [] });
+                    } else {
+                        this.props.navigation.state.params.onSelect({ dataCheckBoxSubMaterial: params.dataMaterial });
+                    }
                 }}
 
             >
@@ -262,12 +303,12 @@ export class MaterialPage extends React.Component {
 
         return (
             <ScrollView
-                refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.loading}
-                        onRefresh={this.onRefresh.bind(this)}
-                    />
-                }
+            // refreshControl={
+            //     <RefreshControl
+            //         refreshing={this.state.loading}
+            //         onRefresh={this.onRefresh.bind(this)}
+            //     />
+            // }
             >
 
                 <Container>
@@ -292,6 +333,8 @@ export class MaterialPage extends React.Component {
                                 extraData={this.state}
                                 renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
                                 showsHorizontalScrollIndicator={false}
+                                refreshing={this.state.loading}
+                                onRefresh={() => this.handleRefresh()}
                             />
                         </View>
                     </ContainerSection>
@@ -362,5 +405,12 @@ export class MaterialPage extends React.Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    customFont: {
+        fontFamily: 'Quicksand-Bold',
+    },
+});
+
 
 export default MaterialPage;
