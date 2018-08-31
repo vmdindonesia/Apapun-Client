@@ -57,22 +57,21 @@ export class UlasanOnCrafterProfilePage extends React.Component {
         });
     }
 
-    renderProductImage = (data) => {
-        console.log(data, '098');
-        return (
-            <TouchableOpacity>
+    // renderProductImage = (data) => {
+    //     console.log(data, '098');
+    //     return (
+    //         <TouchableOpacity>
 
-                <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginRight: 5, marginBottom: 5, }}>
-                    <Image
-                        style={styles.thumbnailStyle}
-                        source={{ uri: data.item }}
-                    />
-                </View>
+    //             <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginRight: 5, marginBottom: 5, }}>
+    //                 <Image
+    //                     style={styles.thumbnailStyle}
+    //                     source={{ uri: data.item }}
+    //                 />
+    //             </View>
 
-            </TouchableOpacity >
-        )
-    }
-
+    //         </TouchableOpacity >
+    //     )
+    // }
 
     renderCommentar = (data) => {
         console.log(data, '098');
@@ -81,19 +80,18 @@ export class UlasanOnCrafterProfilePage extends React.Component {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, marginRight: 20, marginLeft: 20 }}>
 
-                    <View style={{ width: '60%', flexDirection: 'row', alignItems: 'center', }}>
-                        <View style={{ height: 65, width: 65, borderRadius: 100, backgroundColor: 'black' }}>
+                    <View style={{ width: '60%', flexDirection: 'row', alignItems: 'center' }}>
+                        {/* <View style={{ height: 65, width: 65, borderRadius: 100, backgroundColor: 'black' }}> */}
                             <Image
                                 style={{
-                                    width: 50,
-                                    height: 50,
-                                    alignSelf: 'center',
-                                    borderRadius: 50
+                                    width: 65,
+                                    height: 65,
+                                    borderRadius: 100
                                 }}
-                                resizeMode='stretch'
+                                // resizeMode='stretch'
                                 source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.profile_url === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.profile_url}` }}
                             />
-                        </View>
+                        {/* </View> */}
 
                         <View style={{ justifyContent: 'center', flex: 1 }}>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', paddingLeft: 10 }}>{data.item.realm}</Text>
@@ -169,7 +167,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     renderTotal = (data) => {
         console.log(data, 'Total');
         return (
-            <View style={{ width: '100%', height: 30, flexDirection: 'row', backgroundColor: 'red' }}>
+            <View style={{ width: '100%', height: 30, flexDirection: 'row' }}>
                 <View style={{ width: '25%', flexDirection: 'column', alignItems: 'center' }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'black', alignSelf: 'center' }}>({data.item.rating === 1 ? data.item.jml_rating : 0})</Text>
 
@@ -257,22 +255,23 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                     </View>
                 </View>
 
-                <FlatList
-                    data={this.state.dataTotal}
-                    renderItem={this.renderTotal.bind(this)}
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={false}
-                    numColumns={4}
-                />
-
-                <View style={{ flex: 1, backgroundColor: 'red', flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', backgroundColor: 'white' }}>
+                    <FlatList
+                        data={this.state.dataTotal}
+                        renderItem={this.renderTotal.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={false}
+                        numColumns={4}
+                    />
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row' }}>
                     <FlatList
                         data={this.state.dataCommentar}
                         renderItem={this.renderCommentar.bind(this)}
                         extraData={this.state}
                     />
                 </View>
-            </View >
+            </View>
         )
     }
 

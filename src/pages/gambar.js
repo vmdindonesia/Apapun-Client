@@ -26,7 +26,8 @@ export class GambarPage extends React.Component {
         this.state = {
             photo: '',
             imageUri: '',
-            crafterId: ''
+            crafterId: '',
+            isImageViewVisible: false
         }
     }
 
@@ -42,7 +43,7 @@ export class GambarPage extends React.Component {
                 .then(response => {
                     console.log(response, 'Data Profile');
                     this.setState({ photo: response.data }, () => {
-                        console.log(this.state.photo, 'PPPP');
+                        console.log(this.state.photo, 'YYYYYYYYY');
                     });
                 }).catch(error => {
                     console.log(error, 'Error Get Data Profile');
@@ -145,8 +146,11 @@ export class GambarPage extends React.Component {
         console.log(data, '098');
         return (
             <TouchableOpacity
-                onPress={() => { 
-                    this.renderModal(true, data.index, data.item.name) 
+                onPress={() => {
+                    this.setState({
+                        imageIndex: data.index,
+                        isImageViewVisible: true,
+                    })
                 }}
             >
                 <View style={styles.thumbnailContainerStyle}>
@@ -176,18 +180,9 @@ export class GambarPage extends React.Component {
         )
     }
 
-    renderModal(status, index, images) {
-        console.log(status, index, images, '011');
-        <ImageView
-            glideAlways
-            images={images}
-            imageIndex={index}
-            animationType="fade"
-            isVisible={status}
-        />
-    }
-
     render() {
+        const { isImageViewVisible, imageIndex } = this.state;
+
         return (
             <View style={{ flex: 1 }}>
                 <View style={{ width: '85%', height: 40, alignSelf: 'center', marginTop: 20 }}>
@@ -196,14 +191,25 @@ export class GambarPage extends React.Component {
                 <View style={{ flex: 1, marginTop: 20, marginBottom: 10, marginLeft: 1.5, marginRight: 1.5 }}>
                     <FlatList
                         data={this.state.photo}
-                        // contentContainerStyle={styles.list}
                         renderItem={this.renderProductItem.bind(this)}
                         showsHorizontalScrollIndicator={false}
                         horizontal={false}
                         numColumns={3}
                     />
                 </View>
-                {this.renderModal()}
+
+                {
+                    this.state.photo.length === 0 ?
+                        <View />
+                        :
+                        <ImageView
+                            glideAlways
+                            images={this.state.photo}
+                            imageIndex={imageIndex}
+                            animationType="fade"
+                            isVisible={isImageViewVisible}
+                        />
+                }
             </View>
         );
     }
