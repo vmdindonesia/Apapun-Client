@@ -784,7 +784,7 @@ export class OrderPage extends React.Component {
                                 <Picker.Item label='JNE Oke' value='JNE OK' />
                                 <Picker.Item label='TIKI Reguler' value='TIKI REG' />
                                 <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
-                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Gojek' value='Gojeg' />
                                 <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
