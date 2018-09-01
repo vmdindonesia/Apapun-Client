@@ -36,7 +36,7 @@ export class NewAddressOnProfilePage extends React.Component {
         return (
 
 
-            <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+            <ScrollView style={{ flex: 1, backgroundColor: 'white' }} showsVerticalScrollIndicator={false}>
 
                 <View style={{ flex: 1, height: 80, marginTop: 35, marginLeft: 15, marginRight: 15 }}>
 

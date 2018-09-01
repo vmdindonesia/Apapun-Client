@@ -23,7 +23,7 @@ export class IdeaMarketPage extends React.Component {
         return (
             <View style={{ flex: 1 }}>
 
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{ flex: 1, flexDirection: 'column', height: '100%', marginTop: 5, alignItems: 'center', marginLeft: 15, marginRight: 15,  }}>
                         <View style={{ flex: 1, height: 100, width: '100%', marginTop : 5 }}>
                             <TouchableOpacity

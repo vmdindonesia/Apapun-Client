@@ -44,7 +44,7 @@ export class CrafterInputResiPage extends React.Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={{ flex: 1, width: '100%', backgroundColor: '#fff', marginTop: 5, padding: 10 }}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, textAlign: 'center', marginTop: 5 }}>BARANG SIAP DIKIRIM</Text>

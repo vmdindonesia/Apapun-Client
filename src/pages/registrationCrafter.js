@@ -317,7 +317,7 @@ export class RegistrationCrafterPage extends React.Component {
             <ImageBackground
                 style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}
             >
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegister.bind(this)}>
                             <View>

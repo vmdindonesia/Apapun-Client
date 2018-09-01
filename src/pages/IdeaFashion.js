@@ -37,7 +37,7 @@ export class IdeaFashionPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#eaeaea' }}>
 
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white' }}>
 
                         <View style={{ flex: 1, height: 250, width: '100%', backgroundColor: 'skyblue' }}>

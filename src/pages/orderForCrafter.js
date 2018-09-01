@@ -89,7 +89,7 @@ export class OrderForCrafterPage extends React.Component {
         const { detailOrderData } = this.state;
         console.log(detailOrderData, 'Detail');
         return (
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={styles.containerSlide}>
                         <Swiper

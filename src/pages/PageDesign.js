@@ -236,6 +236,7 @@ export class PageDesignPage extends React.Component {
             <View style={{ flex: 1 }}>
                 <ScrollView
                     style={{ flex: 1 }}
+                    showsVerticalScrollIndicator={false}
                     scrollEventThrottle={16}
                     onScroll={Animated.event(
                         [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]

@@ -217,7 +217,8 @@ export class crafterMenuListOrderPage extends React.Component {
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
-                }}>
+                }}
+                showsVerticalScrollIndicator={false}>
                     <TouchableOpacity
                     // onPress={() => this.pressBUtton()}
                     // onPress={() => this.props.navi.navigate('OrderWithTrack')}

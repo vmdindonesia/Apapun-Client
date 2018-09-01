@@ -65,7 +65,7 @@ export class ProfileCrafterPage extends React.Component {
 
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView contentContainerStyle={{ position: 'absolute' }}>
+                <ScrollView contentContainerStyle={{ position: 'absolute' }} showsVerticalScrollIndicator={false}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
                         style={styles.backgroundStyle}

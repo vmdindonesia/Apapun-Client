@@ -94,7 +94,7 @@ export class MenuCrafterPage extends React.Component {
 
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
                         style={styles.backgroundStyle}

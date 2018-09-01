@@ -268,6 +268,7 @@ export class MaterialPage extends React.Component {
                         onRefresh={this.onRefresh.bind(this)}
                     />
                 }
+                showsVerticalScrollIndicator={false}
             >
 
                 <Container>

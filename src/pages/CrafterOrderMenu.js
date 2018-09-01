@@ -51,7 +51,7 @@ export class CrafterOrderMenuPage extends React.Component {
     render() {
         const { categoryId } = this.state
         return (
-            <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
+            <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }} showsVerticalScrollIndicator={false}>
                 <View style={{ flex: 1, height: 300, }}>
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}

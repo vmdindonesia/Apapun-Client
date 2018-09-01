@@ -72,7 +72,7 @@ export class SettingProductPage extends React.Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
                 <View style={{ flex: 1, marginLeft: 10, marginRight: 10, marginTop: 10 }}>
                     <View style={{ paddingLeft: 5 }}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Upload Gambar</Text>

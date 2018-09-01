@@ -84,7 +84,7 @@ export class CrafterListPage extends React.Component {
                     <ScrollView
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
-                        showsHorizontalScrollIndicator={false}
+                        showsVerticalScrollIndicator={false}
                     >
                         <View
                             style={{

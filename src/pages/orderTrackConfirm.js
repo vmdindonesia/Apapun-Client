@@ -22,7 +22,7 @@ export class OrderTrackConfirmPage extends React.Component {
         return (
             <View style={{ flexDirection: 'column' }}>
                 <View style={{ width: '100%', height: '88%' }}>
-                    <ScrollView>
+                    <ScrollView showsVerticalScrollIndicator={false}> 
                         <View style={styles.container}>
                             <View style={{ flex: 1 }}>
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, textAlign: 'center' }}>Konfirmasi Penerimaan</Text>

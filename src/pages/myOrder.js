@@ -74,7 +74,8 @@ export class MyOrderPage extends React.Component {
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
-                }}>
+                }}
+                showsVerticalScrollIndicator={false}>
 
                     <View style={{ flex: 1, height: 250, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
                         <Swiper

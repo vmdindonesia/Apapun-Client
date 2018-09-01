@@ -145,6 +145,7 @@ export class InformasiBankPage extends React.Component {
         return (
             <ScrollView
                 style={{ flex: 1, backgroundColor: '#eaeaea' }}
+                showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >

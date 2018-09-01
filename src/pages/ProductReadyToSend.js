@@ -61,7 +61,8 @@ export class ProductReadyToSendPage extends React.Component {
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
-                }}>
+                }}
+                showsVerticalScrollIndicator={false}>
 
                     <View style={{ width: '100%', height: 220, marginTop: 12.5, backgroundColor: 'white', alignItems: 'center' }}>
 

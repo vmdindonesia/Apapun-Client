@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, AsyncStorage, TouchableOpacity, ToastAndroid, Keyboard, ScrollView } from 'react-native'
-import { Container, ContainerSection, Button, InputLogin, Spinner, Input } from '../components/common';
+import { Button, Spinner, Input } from '../components/common';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import OneSignal from 'react-native-onesignal';
@@ -109,45 +109,47 @@ export class LoginPage extends React.Component {
 		const { email, password, loading } = this.state;
 		return (
 			<View style={styles.container}>
-				<Image
-					style={{ width: 220, height: 100, }}
-					source={require('./../assets/images/logotext.png')}
-					resizeMode='contain'
-				/>
-				<View style={{ width: '100%', height: 75 }}>
-					<Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 10 }}>HI, WELCOME!</Text>
-					<Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingTop: 10 }}>Silahkan masukan Email/ID akun yang sudah kamu daftarkan</Text>
-				</View>
-				<View style={styles.containerForm}>
-					<View style={{ width: '90%', height: 50 }}>
-						<Input
-							placeholder="Email or username"
-							icon="ic_username"
-							onChangeText={val => this.onChange('email', val)}
-							value={email}
-						/>
+				<ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false}>
+					<Image
+						style={{ width: 220, height: 100, }}
+						source={require('./../assets/images/logotext.png')}
+						resizeMode='contain'
+					/>
+					<View style={{ width: '100%', height: 75 }}>
+						<Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingTop: 10 }}>HI, WELCOME!</Text>
+						<Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingTop: 10 }}>Silahkan masukan Email/ID akun yang sudah kamu daftarkan</Text>
 					</View>
+					<View style={styles.containerForm}>
+						<View style={{ width: '90%', height: 50 }}>
+							<Input
+								placeholder="Email or username"
+								icon="ic_username"
+								onChangeText={val => this.onChange('email', val)}
+								value={email}
+							/>
+						</View>
 
-					<View style={{ width: '90%', height: 50, marginTop: 10 }}>
-						<Input
-							secureTextEntry
-							placeholder="Password"
-							icon="ic_password"
-							onChangeText={val => this.onChange('password', val)}
-							value={password}
-						/>
+						<View style={{ width: '90%', height: 50, marginTop: 10 }}>
+							<Input
+								secureTextEntry
+								placeholder="Password"
+								icon="ic_password"
+								onChangeText={val => this.onChange('password', val)}
+								value={password}
+							/>
+						</View>
 					</View>
-				</View>
-				{
-					loading ?
-						<Spinner size="small" />
-						:
-						<TouchableOpacity style={styles.buttonSignUp}
-							onPress={() => this.onLogin()}
-						>
-							<Text style={styles.signupButton}>Login</Text>
-						</TouchableOpacity>
-				}
+					{
+						loading ?
+							<Spinner size="small" />
+							:
+							<TouchableOpacity style={styles.buttonSignUp}
+								onPress={() => this.onLogin()}
+							>
+								<Text style={styles.signupButton}>Login</Text>
+							</TouchableOpacity>
+					}
+				</ScrollView>
 			</View>
 		)
 	}
@@ -173,7 +175,6 @@ const styles = {
 		borderColor: '#fff',
 	},
 	buttonSignUp: {
-		// marginTop: 60,
 		backgroundColor: '#ef1c25',
 		borderRadius: 20,
 		height: 40,
@@ -182,7 +183,6 @@ const styles = {
 		alignSelf: 'center',
 		zIndex: 4,
 		marginTop: -22.5,
-		marginBottom: -30
 	},
 	signupButton: {
 		textAlign: 'center',

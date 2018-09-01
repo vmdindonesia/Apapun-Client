@@ -23,6 +23,7 @@ export class ProductDetailNyaPage extends React.Component {
         return (
             <ScrollView
                 keyboardShouldPersistTaps="always"
+                showsVerticalScrollIndicator={false}
                 ref={ref => this.scrollView = ref}
             >
 

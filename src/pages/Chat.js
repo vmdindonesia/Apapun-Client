@@ -17,7 +17,7 @@ export class ChatPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
 
-                <ScrollView style={{ flex: 1 }}>
+                <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false} >
 
                     <View style={{ flex: 1, flexDirection: 'row', height: 90, }}>
                         <View style={{ height: '100%', width: '30%', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
