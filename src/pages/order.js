@@ -224,8 +224,8 @@ export class OrderPage extends React.Component {
                                                                     case "0":
                                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                                     default:
-                                                                        console.log('Sukses Semuanya');
-                                                                    // return this.prosesOrder();
+                                                                        // console.log('Sukses Semuanya');
+                                                                    return this.prosesOrder();
                                                                 }
                                                         }
                                                 }
