@@ -219,7 +219,7 @@ export class HistoryOnMyOrderPage extends React.Component {
                 showsVerticalScrollIndicator={false}>
 
 
-                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 27 }}>
+                    {/* <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 27 }}>
                         <Image
                             style={{
                                 width: '95%',
@@ -236,10 +236,10 @@ export class HistoryOnMyOrderPage extends React.Component {
                         <Text style={{ fontSize: 15, color: 'black', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>HISTORY KOSONG</Text>
                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Belum ada transaksi sebelumnya.</Text>
 
-                    </View>
+                    </View> */}
 
 
-                    {/* <View>
+                    <View>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'flex-end',
@@ -266,14 +266,18 @@ export class HistoryOnMyOrderPage extends React.Component {
                                 flexDirection: 'row',
                                 justifyContent: 'center',
                                 flex: 2,
-                                marginTop: 10
+                                marginTop: 10,
+                                
                             }}>
 
                                 <View style={{
                                     width: '40%',
                                     height: 130,
                                     // backgroundColor: 'skyblue',
-                                    alignSelf: 'center'
+                                    alignSelf: 'center',
+                                    borderWidth: 1,
+                                    borderColor: '#d6d7da',
+                                    elevation: 6,
                                 }}>
                                     <Image
                                         style={{
@@ -300,8 +304,9 @@ export class HistoryOnMyOrderPage extends React.Component {
                                     shadowOffset: { width: 10, heigth: 10 },
                                     shadowRadius: 5,
                                     shadowOpacity: 1.0,
-                                    // borderWidth: 0.5,
+                                    borderWidth: 1,
                                     borderColor: '#d6d7da',
+                                    elevation: 6,
                                 }}>
 
                                     <View style={{
@@ -309,7 +314,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                                         height: 120,
                                         // backgroundColor: 'black',
                                         justifyContent: 'center',
-                                        flexDirection: 'row'
+                                        flexDirection: 'row',
+                                        
                                     }}>
                                         <View style={{
                                             height: 120,
@@ -392,7 +398,10 @@ export class HistoryOnMyOrderPage extends React.Component {
                                     width: '40%',
                                     height: 130,
                                     // backgroundColor: 'skyblue',
-                                    alignSelf: 'center'
+                                    alignSelf: 'center',
+                                    borderWidth: 1,
+                                    borderColor: '#d6d7da',
+                                    elevation: 6,
                                 }}>
                                     <Image
                                         style={{
@@ -421,6 +430,9 @@ export class HistoryOnMyOrderPage extends React.Component {
                                     shadowOpacity: 1.0,
                                     // borderWidth: 0.5,
                                     borderColor: '#d6d7da',
+                                    borderWidth: 1,
+                                    borderColor: '#d6d7da',
+                                    elevation: 6,
                                 }}>
 
                                     <View style={{
@@ -474,7 +486,7 @@ export class HistoryOnMyOrderPage extends React.Component {
 
                             </View>
                         </TouchableOpacity>
-                    </View> */}
+                    </View>
 
                 </ScrollView>
 

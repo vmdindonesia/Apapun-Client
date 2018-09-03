@@ -137,14 +137,38 @@ numeral.locale('id')
 
 
 const Routes = createStackNavigator({
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  CrafterOrderMenu: {
+    screen: CrafterOrderMenuPage
+  },
   StartScreen: {
     screen: StartScreen
   },
-  Dashboard: {
-    screen: DashboardPage
-  },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
+  },
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
+  },
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
+  },
+  ProcessingProduct: {
+    screen: ProcessingProductPage
+  },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
   },
   ErrorConnection: {
     screen: ErrorConnectionPage
@@ -176,9 +200,6 @@ const Routes = createStackNavigator({
   },
   IdeaMarket: {
     screen: IdeaMarketPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
@@ -249,9 +270,7 @@ const Routes = createStackNavigator({
   ListKemeja: {
     screen: ListKemejaPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },

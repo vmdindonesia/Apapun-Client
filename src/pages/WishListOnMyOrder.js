@@ -203,7 +203,7 @@ export class WishlistOnMyOrderPage extends React.Component {
                 }}
                     showsVerticalScrollIndicator={false}>
 
-                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 30 }}>
+                    {/* <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 30 }}>
                         <Image
                             style={{
                                 width: '95%',
@@ -224,24 +224,30 @@ export class WishlistOnMyOrderPage extends React.Component {
                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>CUSTOM belum selesai otomatis akan</Text>
                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>masuk disini.</Text>
 
-                    </View>
+                    </View> */}
 
 
-                    {/* <View style={{
+                    <View style={{
                         height: 140,
                         width: '100%',
                         // backgroundColor: 'blue',
                         flexDirection: 'row',
                         justifyContent: 'center',
                         flex: 2,
-                        marginTop: 10
+                        marginTop: 10,
+
                     }}>
 
                         <View style={{
                             width: '37%',
                             height: 125,
                             // backgroundColor: 'skyblue',
-                            // alignSelf: 'center'
+                            // alignSelf: 'center',
+                            borderWidth: 1,
+                            borderColor: '#d6d7da',
+                            elevation: 6,
+
+
                         }}>
                             <Image
                                 style={{
@@ -271,7 +277,10 @@ export class WishlistOnMyOrderPage extends React.Component {
                             // borderWidth: 0.5,
                             borderColor: '#d6d7da',
                             zIndex: 1,
-                            marginTop: 5
+                            marginTop: 5,
+                            borderWidth: 1,
+                            borderColor: '#d6d7da',
+                            elevation: 6,
                         }}>
 
                             <View style={{
@@ -305,7 +314,10 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginLeft: -110,
                             marginTop: 100,
                             paddingRight: 10,
-                            marginRight: 10
+                            marginRight: 10,
+                            borderWidth: 2,
+                            borderColor: '#ef1c25',
+                            elevation: 6,
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 15, marginLeft: 7.5 }}
                                 onPress={() => this.props.navi.navigate('Captureandget')}
@@ -350,14 +362,18 @@ export class WishlistOnMyOrderPage extends React.Component {
                         flexDirection: 'row',
                         justifyContent: 'center',
                         flex: 2,
-                        marginTop: 10
+                        marginTop: 10,
+
                     }}>
 
                         <View style={{
                             width: '37%',
                             height: 125,
                             // backgroundColor: 'skyblue',
-                            // alignSelf: 'center'
+                            // alignSelf: 'center',
+                            borderWidth: 1,
+                            borderColor: '#d6d7da',
+                            elevation: 6,
                         }}>
                             <Image
                                 style={{
@@ -387,14 +403,18 @@ export class WishlistOnMyOrderPage extends React.Component {
                             // borderWidth: 0.5,
                             borderColor: '#d6d7da',
                             zIndex: 1,
-                            marginTop: 5
+                            marginTop: 5,
+                            borderWidth: 1,
+                            borderColor: '#d6d7da',
+                            elevation: 6,
                         }}>
 
                             <View style={{
                                 height: '100%',
                                 width: '100%',
                                 paddingLeft: 20,
-                                marginTop: 20
+                                marginTop: 20,
+
                                 // backgroundColor: 'red',
                                 // justifyContent: 'center'
                             }}>
@@ -421,7 +441,10 @@ export class WishlistOnMyOrderPage extends React.Component {
                             marginLeft: -110,
                             marginTop: 100,
                             paddingRight: 10,
-                            marginRight: 10
+                            marginRight: 10,
+                            borderWidth: 2,
+                            borderColor: '#ef1c25',
+                            elevation: 6,
                         }}>
                             <TouchableOpacity style={{ alignSelf: 'center', paddingRight: 15, marginLeft: 7.5 }}
                                 onPress={() => this.props.navi.navigate('')}
@@ -459,7 +482,7 @@ export class WishlistOnMyOrderPage extends React.Component {
 
                         </View>
                     </View>
- */}
+
 
 
 

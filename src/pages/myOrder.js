@@ -66,6 +66,22 @@ export class MyOrderPage extends React.Component {
         )
     }
 
+    _renderItem = (item, index) => {
+        const number = parseInt(item.index) + 1;
+        return (
+            <View>
+                <Image
+                    source={item.item}
+                    style={{ width: '100%', height: 200 }}
+                    resizeMode='stretch'
+                />
+                <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
+                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
+                </View>
+            </View>
+        )
+    }
+
     renderMaterial = (data) => {
         console.log(data, 'Data Material');
         return (
@@ -94,7 +110,7 @@ export class MyOrderPage extends React.Component {
                         showsVerticalScrollIndicator={false}>
 
                             <View style={{ flex: 1, height: 250, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
-                                <Swiper
+                                {/* <Swiper
                                     // style={styles.wrapper}
                                     showsButtons={false}
                                     showsPagination={false}
@@ -120,7 +136,15 @@ export class MyOrderPage extends React.Component {
 
                                         }
                                     </View>
-                                </Swiper>
+                                </Swiper> */}
+                                <Carousel
+                                    ref={(c) => { this._carousel = c; }}
+                                    data={this.state.photoTemp}
+                                    extraData={this.state}
+                                    renderItem={this._renderItem}
+                                    sliderWidth={sliderWidth}
+                                    itemWidth={itemWidth}
+                                />
                             </View>
 
                             <View style={{ flex: 1, height: 100, marginTop: 10, marginLeft: 10, marginRight: 10, }}>

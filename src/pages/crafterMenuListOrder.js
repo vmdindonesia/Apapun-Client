@@ -79,7 +79,10 @@ export class crafterMenuListOrderPage extends React.Component {
                         width: '35%',
                         height: 155,
                         // backgroundColor: 'skyblue',
-                        alignSelf: 'center'
+                        alignSelf: 'center',
+                        borderWidth: 2,
+                        borderColor: '#ef1c25',
+                        elevation: 6,
                     }}>
                         <Image
                             style={{
@@ -114,7 +117,10 @@ export class crafterMenuListOrderPage extends React.Component {
                             height: 85,
                             // backgroundColor: 'skyblue',
                             // justifyContent: 'center',
-                            flexDirection: 'row'
+                            flexDirection: 'row',
+                            borderWidth: 2,
+                            borderColor: '#ef1c25',
+                            elevation: 6,
                         }}>
                             <View style={{
                                 height: 100,
@@ -163,7 +169,7 @@ export class crafterMenuListOrderPage extends React.Component {
                             }}>
                                 <View style={{ margin: 5, borderRadius: 100, borderColor: 'gray', borderWidth: 2, flex: 1, justifyContent: 'center' }}>
                                     {/* <TouchableOpacity> */}
-                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'green', fontWeight: 'bold' }}>{data.status}</Text>
+                                    <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'green', fontWeight: 'bold' }}>{data.status}</Text>
                                     {/* </TouchableOpacity> */}
                                 </View>
                             </View>
