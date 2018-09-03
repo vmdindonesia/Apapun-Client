@@ -109,6 +109,7 @@ import { FinalReviewPage } from './pages/finalReview';
 import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
 import { NoteProfileCrafterPage } from './pages/noteProfileCrafter';
 import { ErrorConnectionPage } from './pages/ErrorConnection';
+import { ProcessingProductPage } from './pages/ProcessingProduct';
 
 console.disableYellowBox = true;
 
@@ -137,6 +138,18 @@ numeral.locale('id')
 
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
   },
@@ -145,9 +158,6 @@ const Routes = createStackNavigator({
   },
   CrafterOrderMenu: {
     screen: CrafterOrderMenuPage
-  },
-  StartScreen: {
-    screen: StartScreen
   },
   CrafterMyOrder: {
     screen: CrafterMyOrderPage
@@ -173,9 +183,6 @@ const Routes = createStackNavigator({
   ErrorConnection: {
     screen: ErrorConnectionPage
   },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
   SettingAddressBuyer: {
     screen: SettingAddressBuyerPage
   },
@@ -188,9 +195,6 @@ const Routes = createStackNavigator({
 
   ProfileCrafter: {
     screen: ProfileCrafterPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
   },
   ImagesProfileCrafter: {
     screen: ImagesProfileCrafterPage

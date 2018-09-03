@@ -162,7 +162,7 @@ export class DashboardPage extends React.Component {
                         <Image
                             style={styles.item}
                             source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${itemProduct.name}` }}
-                            // resizeMode='contain'
+                        // resizeMode='contain'
                         />
                     </View>
                 </TouchableWithoutFeedback>
@@ -597,7 +597,7 @@ export class DashboardPage extends React.Component {
                                             <View style={{ flex: 1, marginLeft: 20, paddingRight: 7, marginRight: 10, marginTop: 10 }}>
                                                 {
                                                     this.state.dataIdeaRecently.length === 0 ?
-                                                    <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', justifyContent: 'center' }}>There's No Idea Recently Upload</Text>
+                                                        <Text style={{ color: 'grey', fontSize: 13, fontFamily: 'Quicksand-Regular', textAlign: 'center', justifyContent: 'center' }}>There's No Idea Recently Upload</Text>
                                                         :
                                                         <FlatList
                                                             data={this.state.dataIdeaRecently}
@@ -714,7 +714,7 @@ export class DashboardPage extends React.Component {
                                                         <View style={{ height: 75, width: '50%', justifyContent: 'center', alignItems: 'center' }}>
                                                             <TouchableOpacity
                                                                 onPress={() => {
-                                                                    this.props.navigation.navigate('ProfilePage');
+                                                                    this.props.navigation.navigate('ProfilePage', { itemId: this.state.idUser });
                                                                     this.setState(({ show }) => ({
                                                                         show: !show,
                                                                     }));
@@ -1309,7 +1309,8 @@ export class DashboardPage extends React.Component {
                                                                                                                 this.setState(({ show }) => ({
                                                                                                                     show: !show,
                                                                                                                 }), () => {
-                                                                                                                    this.props.navigation.navigate('MenuCrafter');
+                                                                                                                    this.props.navigation.navigate('MenuCrafter', { itemId: this.state.idUser,
+                                                                                                                        crafter_Id: this.state.idCrafter });
                                                                                                                 });
                                                                                                             }}
                                                                                                         >
