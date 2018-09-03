@@ -377,6 +377,7 @@ export class crafterMenuListOrderPage extends React.Component {
                         <View />
                 }
 
+<<<<<<< Updated upstream
                 <FlatList
                     data={this.state.dataOrder}
                     renderItem={({ item, index }) => this.renderOrder(item, index)}
@@ -384,6 +385,161 @@ export class crafterMenuListOrderPage extends React.Component {
                     refreshing={this.state.loading}
                     onRefresh={() => this.handleRefresh()}
                 />
+=======
+
+                <ScrollView style={{
+                    backgroundColor: '#eaeaea',
+                    flex: 1
+                }}>
+                    <TouchableOpacity
+                    // onPress={() => this.pressBUtton()}
+                    // onPress={() => this.props.navi.navigate('OrderWithTrack')}
+                    >
+                        <View style={{
+                            height: 165,
+                            width: '100%',
+                            // backgroundColor: 'blue',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            flex: 2,
+                            marginTop: 10
+                        }}>
+
+                            <View style={{
+                                width: '35%',
+                                height: 155,
+                                // backgroundColor: 'skyblue',
+                                alignSelf: 'center'
+                            }}>
+                                <Image
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: 0,
+                                        alignSelf: 'center'
+                                    }}
+                                    source={require('./../assets/images/table1_example.jpg')}
+                                />
+                            </View>
+
+
+                            <View style={{
+                                width: '55%',
+                                height: 140,
+                                // backgroundColor: 'black',
+                                alignSelf: 'center',
+                                flexDirection: 'column',
+                                // flex: 1,
+                                // borderRadius: 20,
+                                backgroundColor: '#ffffff',
+                                // shadowColor: 'black',
+                                shadowOffset: { width: 10, heigth: 10 },
+                                shadowRadius: 5,
+                                shadowOpacity: 1.0,
+                                // borderWidth: 0.5,
+                                borderColor: '#d6d7da',
+                            }}>
+
+                                <View style={{
+                                    // flex: 1,
+                                    width: '100%',
+                                    height: 70,
+                                    // backgroundColor: 'skyblue',
+                                    // justifyContent: 'center',
+                                    flexDirection: 'row'
+                                }}>
+
+                                    <View style={{ padding: 7, paddingLeft: 7, flex: 1, }}>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Pesanan          :</Text>
+                                            <View style={{ flex: 1, flexDirection: 'row', }}>
+                                                <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold', color: 'black', }}> 199AGKJH87</Text>
+                                            </View>
+                                        </View>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Oleh  :</Text>
+                                            <View style={{ flex: 1, flexDirection: 'row', }}>
+                                                <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold', color: 'black', }}> Gal Gadot</Text>
+                                            </View>
+                                        </View>
+                                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Service Type   :</Text>
+                                            <View style={{ flex: 1, flexDirection: 'column', }}>
+                                                <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold', color: 'black', }}> Workshop</Text>
+                                                <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Bold', color: 'black', }}> (Adv.Custom)</Text>
+                                            </View>
+                                        </View>
+
+                                        {/* <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Oleh  :</Text>
+                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Service Type   :</Text> */}
+                                    </View>
+
+
+
+                                </View>
+
+
+                                <View style={{
+                                    width: '100%',
+                                    height: 45,
+                                    // backgroundColor: 'yellow',
+                                    flexDirection: 'row',
+                                    flex: 2,
+                                    // justifyContent:'center'
+                                }}>
+                                    <View style={{
+                                        height: '100%',
+                                        // width: '50%',
+                                        // backgroundColor: 'red',
+                                        justifyContent: 'center',
+                                        flex: 1
+                                    }}>
+                                        <View style={{ margin: 5, borderRadius: 100, borderColor: 'gray', borderWidth: 2, height: 43, width: 90, justifyContent: 'center' }}>
+                                            <TouchableOpacity>
+                                                <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'green', }}>OK</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                    <View style={{
+                                        // height: 50,
+                                        // width: '50%',
+                                        flex: 1,
+                                        // backgroundColor: 'blue',
+                                        justifyContent: 'center',
+                                    }}>
+                                        <TouchableOpacity>
+                                            <View style={{ backgroundColor: 'black', height: 40, width: 40, borderRadius: 100, justifyContent: 'center', }}>
+                                                <Image
+                                                    style={{
+                                                        width: 20,
+                                                        height: 20,
+                                                        borderRadius: 0,
+                                                        alignSelf: 'center',
+                                                    }}
+                                                    source={require('./../assets/images/Chat.png')}
+                                                />
+                                            </View>
+
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+
+
+                            </View>
+
+                        </View>
+                    </TouchableOpacity>
+
+
+
+
+                </ScrollView>
+
+
+
+
+
+>>>>>>> Stashed changes
             </View >
         )
     }

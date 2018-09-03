@@ -137,6 +137,15 @@ numeral.locale('id')
 
 
 const Routes = createStackNavigator({
+  crafterMenuListOrder: {
+    screen: crafterMenuListOrderPage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  CrafterOrderMenu: {
+    screen: CrafterOrderMenuPage
+  },
   StartScreen: {
     screen: StartScreen
   },
@@ -155,15 +164,11 @@ const Routes = createStackNavigator({
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-  CrafterOrderMenu: {
-    screen: CrafterOrderMenuPage
-  },
+
   Dashboard: {
     screen: DashboardPage
   },
-  CrafterMenu: {
-    screen: CrafterMenuPage
-  },
+
   searchOrder: {
     screen: searchOrderPage
   },
@@ -278,9 +283,7 @@ const Routes = createStackNavigator({
   ListKemeja: {
     screen: ListKemejaPage
   },
-  crafterMenuListOrder: {
-    screen: crafterMenuListOrderPage
-  },
+ 
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
