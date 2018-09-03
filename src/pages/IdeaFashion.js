@@ -24,14 +24,18 @@ export class IdeaFashionPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            ManUp: false
+            ManUp: false,
+            WomanUp: false,
+            Accesorris: false
         }
     }
 
     render() {
 
         const {
-            ManUp
+            ManUp,
+            WomanUp,
+            Accesorris,
         } = this.state
 
         return (
@@ -158,7 +162,7 @@ export class IdeaFashionPage extends React.Component {
                         }
 
                         <TouchableWithoutFeedback
-                        // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
+                            onPress={() => this.setState({ WomanUp: !this.state.WomanUp })}
                         >
                             <View style={{ flex: 1, height: 55, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
@@ -168,7 +172,7 @@ export class IdeaFashionPage extends React.Component {
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
                                     {
-                                        ManUp === true ?
+                                        WomanUp === true ?
                                             <Icon
                                                 size={30}
                                                 name='md-arrow-dropup'
@@ -187,8 +191,82 @@ export class IdeaFashionPage extends React.Component {
                             </View>
                         </TouchableWithoutFeedback>
 
+                        {
+                            WomanUp === true ?
+
+                                <View style={{ flex: 1, height: 170, flexDirection: 'row', backgroundColor: '#eaeaea' }}>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListTshirt')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_tshirt.jpg')}
+                                                    resizeMode='stretch'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kaos</Text>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListKemeja')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_dress.jpg')}
+                                                    resizeMode='cover'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Dress</Text>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListHoodie')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_hoodie.jpg')}
+                                                    resizeMode='cover'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Hoodie</Text>
+                                    </View>
+
+                                </View>
+                                :
+                                <View />
+
+                        }
+
                         <TouchableWithoutFeedback
-                        // onPress={() => this.setState({ ManUp: !this.state.ManUp })}
+                            onPress={() => this.setState({ Accesorris: !this.state.Accesorris })}
                         >
                             <View style={{ flex: 1, height: 55, marginRight: 10, marginLeft: 10, marginTop: 10, flexDirection: 'row' }}>
 
@@ -198,7 +276,7 @@ export class IdeaFashionPage extends React.Component {
 
                                 <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
                                     {
-                                        ManUp === true ?
+                                        Accesorris === true ?
                                             <Icon
                                                 size={30}
                                                 name='md-arrow-dropup'
@@ -216,6 +294,80 @@ export class IdeaFashionPage extends React.Component {
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
+                        {
+                            Accesorris === true ?
+
+                                <View style={{ flex: 1, height: 170, flexDirection: 'row', backgroundColor: '#eaeaea' }}>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListTshirt')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_tshirt.jpg')}
+                                                    resizeMode='stretch'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Kaos</Text>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListKemeja')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_dress.jpg')}
+                                                    resizeMode='cover'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Dress</Text>
+                                    </View>
+
+                                    <View style={{ flex: 1, backgroundColor: '#eaeaea', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ height: 110, width: 110, backgroundColor: 'black', borderRadius: 100 }}>
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('ListHoodie')}
+                                            >
+                                                <Image
+                                                    style={{
+                                                        // flex: 1,
+                                                        width: 110,
+                                                        height: 110,
+                                                        borderRadius: 100
+                                                        // backgroundColor: 'red'
+                                                    }}
+                                                    source={require('./../assets/images/woman_hoodie.jpg')}
+                                                    resizeMode='cover'
+                                                />
+                                            </TouchableWithoutFeedback>
+                                        </View>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'black', paddingTop: 7 }}>Hoodie</Text>
+                                    </View>
+
+                                </View>
+                                :
+                                <View />
+
+                        }
+
                     </View>
                 </ScrollView>
 

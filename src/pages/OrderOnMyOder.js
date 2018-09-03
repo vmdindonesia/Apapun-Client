@@ -239,7 +239,7 @@ export class OrderOnMyOrderPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 25 }}>
+                    {/* <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 25 }}>
                         <Image
                             style={{
                                 width: '95%',
@@ -257,10 +257,10 @@ export class OrderOnMyOrderPage extends React.Component {
                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center', paddingTop: 5 }}>Yuk pesan di CUSTOM, CAPTURE N GET,</Text>
                         <Text style={{ fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular', textAlign: 'center' }}>atau di IDEA MARKET sekarang.</Text>
 
-                    </View>
+                    </View> */}
 
 
-                    {/* <TouchableOpacity
+                    <TouchableOpacity
                         // onPress={() => this.pressBUtton()}
                         onPress={() => { this.props.navi.navigate('OrderWithTrack'); }}
                     >
@@ -278,7 +278,10 @@ export class OrderOnMyOrderPage extends React.Component {
                                 width: '37%',
                                 height: 155,
                                 backgroundColor: 'skyblue',
-                                alignSelf: 'center'
+                                alignSelf: 'center',
+                                borderWidth: 1,
+                                borderColor: '#d6d7da',
+                                elevation: 6,
                             }}>
                                 <Image
                                     style={{
@@ -295,18 +298,15 @@ export class OrderOnMyOrderPage extends React.Component {
                             <View style={{
                                 width: '55%',
                                 height: 150,
-                                // backgroundColor: 'white',
                                 alignSelf: 'center',
                                 flexDirection: 'column',
-                                // flex: 1,
-                                // borderRadius: 20,
                                 backgroundColor: '#ffffff',
-                                // shadowColor: 'black',
                                 shadowOffset: { width: 10, heigth: 10 },
                                 shadowRadius: 5,
                                 shadowOpacity: 1.0,
-                                // borderWidth: 0.5,
+                                borderWidth: 1,
                                 borderColor: '#d6d7da',
+                                elevation: 6,
                             }}>
 
                                 <View style={{
@@ -383,7 +383,7 @@ export class OrderOnMyOrderPage extends React.Component {
                             </View>
 
                         </View>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
 
 
                     {/* <TouchableOpacity
