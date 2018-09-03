@@ -99,7 +99,7 @@ export class ProfileBuyerPage extends React.Component {
 
                                     <View style={styles.containerImage}>
                                         <Image style={styles.containerPhoto}
-                                            source={require('./../assets/images/profile.png')}
+                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataProfile.profile_url}` }}
                                         />
                                     </View>
 
@@ -108,12 +108,12 @@ export class ProfileBuyerPage extends React.Component {
                                         <View style={{ flexDirection: 'row', height: 75, width: '85%', }}>
 
                                             <View style={{ flex: 1, height: 75, justifyContent: 'center', }}>
-                                                <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>Gal Gadot</Text>
+                                                <Text style={{ fontSize: 25, fontFamily: 'Quicksand-Bold', color: 'black' }}>{this.state.dataProfile.realm}</Text>
                                             </View>
 
                                             <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
                                                 <TouchableOpacity
-                                                    onPress={() => this.props.navigation.navigate('EditProfileBuyer')}>
+                                                    onPress={() => this.props.navigation.navigate('EditProfileBuyer', { userId: this.state.userId })}>
                                                     <View style={{ height: 50, width: 50, backgroundColor: '#ef1c25', borderRadius: 100, borderWidth: 2, borderColor: '#e5e5e5', justifyContent: 'center', alignItems: 'center' }}>
                                                         <Image style={{ height: 18, width: 18, borderRadius: 0, }}
                                                             source={require('./../assets/images/pen_white.png')}

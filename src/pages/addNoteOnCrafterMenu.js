@@ -24,7 +24,8 @@ export class addNoteOnCrafterMenuPage extends React.Component {
         this.state = {
             subject: '',
             note: '',
-            crafterId: ''
+            crafterId: '',
+            idNote: ''
         }
     }
 

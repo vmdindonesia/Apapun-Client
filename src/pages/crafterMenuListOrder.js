@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ToastAndroid, View, Text, Picker, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-// import axios from 'axios';
+import { ToastAndroid, View, Text, Picker, FlatList, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import axios from 'axios';
+import { IPSERVER } from '../shared/config';
 
 export class crafterMenuListOrderPage extends React.Component {
 
@@ -20,14 +21,177 @@ export class crafterMenuListOrderPage extends React.Component {
         this.state = {
             sort: false,
             filter: false,
-            StatusSearching: 'Pilih Status'
+            StatusSearching: 'Pilih Status',
+            dataOrder: '',
+            loading: true
         }
+    }
+
+    componentDidMount() {
+        console.log(this.props, 'Props Order Saya')
+        axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByCrafterId`, {
+            crafterId: this.props.navigation.state.params.crafter_Id
+        })
+            .then(response => {
+                this.setState({ dataOrder: response.data, loading: false }, () => {
+                    console.log(this.state.dataOrder, 'Data Order');
+                });
+            }).catch(error => {
+                console.log(error, 'Error Get Order');
+                this.setState({ loading: false });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
+    }
+
+    handleRefresh = () => {
+        console.log('Refresh');
+        this.setState({
+            loading: true
+        }, () => {
+            this.componentDidMount();
+        })
     }
 
     onChange = (name, value) => {
         this.setState({ [name]: value }, () => {
             console.log(this.state[name]);
         })
+    }
+
+    renderOrder = (data) => {
+        console.log(data, 'Data Order');
+        return (
+            <TouchableOpacity
+            // onPress={() => this.pressBUtton()}
+            // onPress={() => this.props.navi.navigate('OrderWithTrack')}
+            >
+                <View style={{
+                    height: 165,
+                    width: '100%',
+                    // backgroundColor: 'blue',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    flex: 2,
+                    marginTop: 10
+                }}>
+
+                    <View style={{
+                        width: '35%',
+                        height: 155,
+                        // backgroundColor: 'skyblue',
+                        alignSelf: 'center'
+                    }}>
+                        <Image
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: 0,
+                                alignSelf: 'center'
+                            }}
+                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.image_order === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.image_order}` }}
+                        />
+                    </View>
+
+                    <View style={{
+                        width: '55%',
+                        height: 140,
+                        // backgroundColor: 'black',
+                        alignSelf: 'center',
+                        flexDirection: 'column',
+                        // flex: 1,
+                        // borderRadius: 20,
+                        backgroundColor: '#ffffff',
+                        // shadowColor: 'black',
+                        shadowOffset: { width: 10, heigth: 10 },
+                        shadowRadius: 5,
+                        shadowOpacity: 1.0,
+                        // borderWidth: 0.5,
+                        borderColor: '#d6d7da',
+                    }}>
+
+                        <View style={{
+                            width: '100%',
+                            height: 85,
+                            // backgroundColor: 'skyblue',
+                            // justifyContent: 'center',
+                            flexDirection: 'row'
+                        }}>
+                            <View style={{
+                                height: 100,
+                                // width: '60%',
+                                // backgroundColor: 'red',
+                                // justifyContent: 'center',
+                                flex: 1
+                            }}>
+                                <View style={{ paddingTop: 15, paddingLeft: 10 }}>
+                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Pesanan          :</Text>
+                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Oleh  :</Text>
+                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Service Type   :</Text>
+                                </View>
+                            </View>
+
+                            <View style={{
+                                height: 100,
+                                flex: 1,
+                                // width: '40%',
+                                // backgroundColor: 'yellow',
+                                // justifyContent: 'center'
+                            }}>
+                                <View style={{ paddingTop: 13.5, paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>{data.order_id}</Text>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>{data.realm}</Text>
+                                    <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>{data.kategori}</Text>
+                                    {/* <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>(Adv.Custom)</Text> */}
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={{
+                            width: '100%',
+                            height: 45,
+                            // backgroundColor: 'yellow',
+                            flexDirection: 'row',
+                            flex: 2
+                            // justifyContent:'center'
+                        }}>
+                            <View style={{
+                                height: '100%',
+                                // width: '50%',
+                                // backgroundColor: 'red',
+                                justifyContent: 'center',
+                                flex: 1
+                            }}>
+                                <View style={{ margin: 5, borderRadius: 100, borderColor: 'gray', borderWidth: 2, flex: 1, justifyContent: 'center' }}>
+                                    {/* <TouchableOpacity> */}
+                                        <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'green', fontWeight: 'bold' }}>{data.status}</Text>
+                                    {/* </TouchableOpacity> */}
+                                </View>
+                            </View>
+                            <View style={{
+                                height: 50,
+                                // width: '50%',
+                                flex: 1,
+                                // backgroundColor: 'blue',
+                                justifyContent: 'center',
+                            }}>
+                                <TouchableOpacity>
+                                    <Image
+                                        style={{
+                                            width: 30,
+                                            height: 30,
+                                            borderRadius: 0,
+                                            // alignSelf: 'center'
+                                            marginLeft: 5
+                                        }}
+                                        source={require('./../assets/images/Chat.png')}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
     }
 
     render() {
@@ -213,161 +377,13 @@ export class crafterMenuListOrderPage extends React.Component {
                         <View />
                 }
 
-
-                <ScrollView style={{
-                    backgroundColor: '#eaeaea',
-                    flex: 1
-                }}
-                showsVerticalScrollIndicator={false}>
-                    <TouchableOpacity
-                    // onPress={() => this.pressBUtton()}
-                    // onPress={() => this.props.navi.navigate('OrderWithTrack')}
-                    >
-                        <View style={{
-                            height: 165,
-                            width: '100%',
-                            // backgroundColor: 'blue',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            flex: 2,
-                            marginTop: 10
-                        }}>
-
-                            <View style={{
-                                width: '35%',
-                                height: 155,
-                                // backgroundColor: 'skyblue',
-                                alignSelf: 'center'
-                            }}>
-                                <Image
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        borderRadius: 0,
-                                        alignSelf: 'center'
-                                    }}
-                                    source={require('./../assets/images/table1_example.jpg')}
-                                />
-                            </View>
-
-
-                            <View style={{
-                                width: '55%',
-                                height: 140,
-                                // backgroundColor: 'black',
-                                alignSelf: 'center',
-                                flexDirection: 'column',
-                                // flex: 1,
-                                // borderRadius: 20,
-                                backgroundColor: '#ffffff',
-                                // shadowColor: 'black',
-                                shadowOffset: { width: 10, heigth: 10 },
-                                shadowRadius: 5,
-                                shadowOpacity: 1.0,
-                                // borderWidth: 0.5,
-                                borderColor: '#d6d7da',
-                            }}>
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 85,
-                                    // backgroundColor: 'skyblue',
-                                    // justifyContent: 'center',
-                                    flexDirection: 'row'
-                                }}>
-                                    <View style={{
-                                        height: 100,
-                                        // width: '60%',
-                                        // backgroundColor: 'red',
-                                        // justifyContent: 'center',
-                                        flex: 1
-                                    }}>
-                                        <View style={{ paddingTop: 15, paddingLeft: 10 }}>
-                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Pesanan          :</Text>
-                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Dipesan Oleh  :</Text>
-                                            <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>Service Type   :</Text>
-                                        </View>
-
-                                    </View>
-
-                                    <View style={{
-                                        height: 100,
-                                        flex: 1,
-                                        // width: '40%',
-                                        // backgroundColor: 'yellow',
-                                        // justifyContent: 'center'
-                                    }}>
-                                        <View style={{ paddingTop: 13.5, paddingLeft: 5 }}>
-                                            <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>199AGKJH87</Text>
-                                            <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>Gal Gadot</Text>
-                                            <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>Workshop</Text>
-                                            <Text style={{ fontSize: 12, fontFamily: 'Quicksand-Regular', color: 'black', fontWeight: 'bold' }}>(Adv.Custom)</Text>
-                                        </View>
-
-                                    </View>
-
-
-                                </View>
-
-
-                                <View style={{
-                                    width: '100%',
-                                    height: 45,
-                                    // backgroundColor: 'yellow',
-                                    flexDirection: 'row',
-                                    flex: 2
-                                    // justifyContent:'center'
-                                }}>
-                                    <View style={{
-                                        height: '100%',
-                                        // width: '50%',
-                                        // backgroundColor: 'red',
-                                        justifyContent: 'center',
-                                        flex: 1
-                                    }}>
-                                        <View style={{ margin: 5, borderRadius: 100, borderColor: 'gray', borderWidth: 2, flex: 1, justifyContent: 'center' }}>
-                                            <TouchableOpacity>
-                                                <Text style={{ fontSize: 13, textAlign: 'center', fontFamily: 'Quicksand-Regular', color: 'green', fontWeight: 'bold' }}>OK</Text>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                    <View style={{
-                                        height: 50,
-                                        // width: '50%',
-                                        flex: 1,
-                                        // backgroundColor: 'blue',
-                                        justifyContent: 'center',
-                                    }}>
-                                        <TouchableOpacity>
-                                            <Image
-                                                style={{
-                                                    width: 30,
-                                                    height: 30,
-                                                    borderRadius: 0,
-                                                    // alignSelf: 'center'
-                                                    marginLeft: 5
-                                                }}
-                                                source={require('./../assets/images/Chat.png')}
-                                            />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-
-                            </View>
-
-                        </View>
-                    </TouchableOpacity>
-
-
-
-
-                </ScrollView>
-
-
-
-
-
+                <FlatList
+                    data={this.state.dataOrder}
+                    renderItem={({ item, index }) => this.renderOrder(item, index)}
+                    extraData={this.state}
+                    refreshing={this.state.loading}
+                    onRefresh={() => this.handleRefresh()}
+                />
             </View >
         )
     }

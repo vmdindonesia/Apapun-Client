@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableNativeFeedback, View, ScrollView, TouchableOpacity, Image, FlatList, ToastAndroid } from 'react-native';
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,7 +15,11 @@ export class searchOrderPage extends React.Component {
             >
                 <Icon size={30} style={{ marginLeft: 25, color: '#EF1C25' }} name='ios-arrow-back' />
             </TouchableOpacity>,
-        headerTitle: 'Crafter Menu'
+        headerTitle: 'Crafter Menu',
+        headerStyle: {
+            shadowOpacity: 0,
+            elevation: 0,
+        }
     });
 
     constructor(props) {
@@ -65,14 +69,14 @@ export class searchOrderPage extends React.Component {
                             // source={{ uri: `${IPSERVER}/ApapunStorages/images/download/` + data.item.ApapunImages[0].name }}
                             />
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', position: 'absolute', top: 135, left: 10 }} >
+                        <View style={{ flex: 1, height: 110, width: '100%', flexDirection: 'row', position: 'absolute', top: 135, backgroundColor: 'rgba(0,0,0,0.6)' }} >
                             <Image
-                                style={{ width: 20, height: 20 }}
+                                style={{ width: 15, height: 18, marginTop: 5, marginLeft: 10, marginRight: 5, marginTop: 7 }}
                                 source={require('./../assets/images/location_icon.png')}
                                 resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
-                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta,</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>DKI Jakarta</Text>
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>Jakarta Pusat</Text>
                                 {/* <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunProvinces.name},</Text>
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, color: 'white' }}>{data.item.ApapunUsersAddress.ApapunRegencies.name}</Text> */}
@@ -89,43 +93,9 @@ export class searchOrderPage extends React.Component {
         const { dataOrder } = this.state;
         return (
             <View style={{ flex: 1, }}>
-                <View style={{ width: '100%', height: 65, flexDirection: 'row', }}>
-                    <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
-                        <TouchableOpacity >
-                            <Image
-                                style={{
-                                    width: 23,
-                                    height: 23,
-                                    alignSelf: 'center'
-                                }}
-                                resizeMode='stretch'
-                                source={require('./../assets/images/List.png')}
-                            />
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Pesanan</Text>
-                        </TouchableOpacity>
 
-                    </View>
 
-                    <View style={{ flexDirection: 'column', borderColor: '#e5e5e5', borderWidth: 1, height: '60%', alignSelf: 'center' }} />
-
-                    <View style={{ width: '50%', flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
-
-                        <TouchableOpacity >
-                            <Image
-                                style={{
-                                    width: 22.5,
-                                    height: 22.5,
-                                    alignSelf: 'center'
-                                }}
-                                resizeMode='stretch'
-                                source={require('./../assets/images/ic_menu.png')}
-                            />
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontWeight: 'bold', fontSize: 13, color: 'black', paddingTop: 3 }}>Menu</Text>
-                        </TouchableOpacity>
-
-                    </View>
-                </View>
                 <View style={{ flex: 1, }}>
                     <FlatList
                         // data={dataOrder}
@@ -155,8 +125,8 @@ const styles = StyleSheet.create({
     },
     thumbnailStyle: {
         alignSelf: 'center',
-        height: hp ('26.5%'),
-        width: wp ('45%'),
+        height: hp('26.5%'),
+        width: wp('45%'),
         borderRadius: 4
     }
 })

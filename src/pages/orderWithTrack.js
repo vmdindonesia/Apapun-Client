@@ -35,6 +35,15 @@ export class OrderWithTrackPage extends React.Component {
                 <View style={{ width: '100%', height: '88%' }}>
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <View style={styles.container}>
+
+                            {/* <View style={{ flex: 1, backgroundColor: 'white', marginBottom: 5, height: 140, justifyContent: 'center' }}>
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, textAlign: 'center', color: '#737373' }}>KONFIRMASI PENERIMAAN</Text>
+                                <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: '#737373' }}>Pastikan anda sudah<Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'red' }}> menerima </Text>barangnya</Text>
+                                <TouchableOpacity style={{ width: '90%', height: 40, borderRadius: 25, backgroundColor: 'black', justifyContent: 'center', marginTop: 25, alignSelf: 'center' }}>
+                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 13, textAlign: 'center', }}>Barang Telah Diterima</Text>
+                                </TouchableOpacity>
+                            </View> */}
+
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginLeft: 15, marginRight: 15 }}>Pesanan: <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'red' }}>171227155OPQ</Text></Text>
                             <View style={{ flexDirection: 'row', marginTop: 15, height: 180, marginLeft: 10, marginRight: 10 }}>
                                 <View
@@ -92,6 +101,7 @@ export class OrderWithTrackPage extends React.Component {
 
                             <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 10, marginRight: 20, marginTop: 20, fontSize: 15 }}>Crafter</Text>
                             <View style={{ flex: 1, height: 120, flexDirection: 'row', backgroundColor: '#fff', marginTop: 5 }}>
+
                                 <View style={{ width: '40%', justifyContent: 'center' }}>
                                     <Image
                                         style={{ height: 100, width: 100, borderRadius: 100, borderColor: 'white', alignSelf: 'center' }}
@@ -102,7 +112,7 @@ export class OrderWithTrackPage extends React.Component {
 
 
                                 <View style={{ width: '60%', flexDirection: 'column', justifyContent: 'center' }}>
-                                    <View style={{ width: '100%', }} >
+                                    <View style={{ width: '100%' }} >
                                         <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', fontSize: 15 }}>Gal Gadot</Text>
                                     </View>
                                     <View style={{ flexDirection: 'row', marginTop: 5, alignContent: 'center', }}>
@@ -125,21 +135,41 @@ export class OrderWithTrackPage extends React.Component {
                                             <Text style={{ marginLeft: 7, fontSize: 13, color: 'black', fontFamily: 'Quicksand-Regular' }}>Rating:<Text style={{ fontFamily: 'Quicksand-Regular', color: 'red', fontSize: 13 }}> Cukup (35)</Text></Text>
                                         </View>
                                     </View>
+
+                                </View>
+
+                            </View>
+
+                            {/* <View style={{ flex: 1, height: 50, flexDirection: 'row', backgroundColor: 'white' }}>
+                                <TouchableOpacity style={{ flex: 1, height: 40, borderRadius: 25, backgroundColor: 'black', justifyContent: 'center', marginLeft: 15, marginRight: 15 }}>
+                                    <Text style={{ color: 'white', fontFamily: 'Quicksand-Bold', fontSize: 13, textAlign: 'center', padding: 5 }}>Log Chat</Text>
+                                </TouchableOpacity>
+                            </View> */}
+
+
+
+                            <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 15, marginLeft: 10, marginRight: 10 }}>
+
+                                <View style={{ flex: 1, }}>
+                                    <View >
+                                        <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 2 }}>Material</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Kayu - RedWood</Text>
+                                        </View>
+
+                                        <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
+                                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>Besi - Beton</Text>
+                                        </View>
+
+                                    </View>
                                 </View>
 
                             </View>
 
 
-
-
-
-
-
-
-
-
-
-                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 10, marginRight: 20, marginTop: 20, fontSize: 15 }}>Deskripsi Produk</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', color: 'black', marginLeft: 12, marginRight: 20, marginTop: 5, fontSize: 15 }}>Deskripsi Produk</Text>
                             <View style={{ flex: 1, backgroundColor: '#fff', marginTop: 5, marginLeft: 12, marginRight: 12 }}>
                                 <Text style={{ fontFamily: 'Quicksand-Regular', color: 'black', fontSize: 13, padding: 10 }}
                                 >Dibagian atas meja tolong diberikan ukiran "CEMARA", bentuk tulisan saya percayakan kepada anda.
@@ -186,9 +216,18 @@ export class OrderWithTrackPage extends React.Component {
                             <View style={{ flexDirection: 'row', marginTop: 20, marginRight: 17, marginLeft: 17 }}>
 
                                 <View style={{ flex: 1, }}>
-                                    <View
+                                    {/* <View
                                         style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
-                                    />
+                                    /> */}
+
+                                    {/* berubah warna jadi hijau dibawah ini */}
+
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: 'transparent', width: 40, height: 40, borderRadius: 100, backgroundColor: '#71B77B', alignSelf: 'center', justifyContent: 'center' }}
+                                    >
+                                        <Icon size={20} style={{ alignSelf: 'center', color: 'white' }} name='md-checkmark' />
+                                    </View>
+
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Proses Transaksi</Text>
                                 </View>
 
@@ -198,9 +237,19 @@ export class OrderWithTrackPage extends React.Component {
                                 />
 
                                 <View style={{ flex: 1, }}>
-                                    <View
+                                    {/* <View
                                         style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
-                                    />
+                                    /> */}
+
+                                    {/* berubah warna jadi hijau dibawah ini */}
+
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: 'transparent', width: 40, height: 40, borderRadius: 100, backgroundColor: '#71B77B', alignSelf: 'center', justifyContent: 'center' }}
+                                    >
+                                        <Icon size={20} style={{ alignSelf: 'center', color: 'white' }} name='md-checkmark' />
+                                    </View>
+
+
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Memproses Barang</Text>
                                 </View>
 
@@ -210,9 +259,18 @@ export class OrderWithTrackPage extends React.Component {
                                 />
 
                                 <View style={{ flex: 1, }}>
-                                    <View
+                                    {/* <View
                                         style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
-                                    />
+                                    /> */}
+
+                                    {/* berubah warna jadi hijau dibawah ini */}
+
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: 'transparent', width: 40, height: 40, borderRadius: 100, backgroundColor: '#71B77B', alignSelf: 'center', justifyContent: 'center' }}
+                                    >
+                                        <Icon size={20} style={{ alignSelf: 'center', color: 'white' }} name='md-checkmark' />
+                                    </View>
+
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Pengiriman</Text>
                                 </View>
 
@@ -222,9 +280,19 @@ export class OrderWithTrackPage extends React.Component {
                                 />
 
                                 <View style={{ flex: 1, }}>
-                                    <View
+                                    {/* <View
                                         style={{ borderWidth: 2, borderColor: '#c1bfbf', width: 40, height: 40, borderRadius: 100, backgroundColor: '#fff', alignSelf: 'center' }}
-                                    />
+                                    /> */}
+
+                                    {/* berubah warna jadi hijau dibawah ini */}
+
+                                    <View
+                                        style={{ borderWidth: 2, borderColor: 'transparent', width: 40, height: 40, borderRadius: 100, backgroundColor: '#71B77B', alignSelf: 'center', justifyContent: 'center' }}
+                                    >
+                                        <Icon size={20} style={{ alignSelf: 'center', color: 'white' }} name='md-checkmark' />
+                                    </View>
+
+
                                     <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: 'black', paddingTop: 7 }}>Barang Diterima</Text>
                                 </View>
                             </View>
@@ -359,6 +427,7 @@ export class OrderWithTrackPage extends React.Component {
                         <View style={{ flex: 1, height: 50, backgroundColor: 'eaeaea' }} />
                     </ScrollView>
                 </View>
+
                 <View style={{
                     width: '100%', height: '12%', backgroundColor: 'rgba(0, 0, 0, 0.9)', flexDirection: 'row', paddingTop: 20, paddingBottom: 10
                 }} >
@@ -417,7 +486,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // marginLeft: 10,
         // marginRight: 10,
-        marginTop: 20,
+        marginTop: 5,
         // backgroundColor: 'red'
     }
 });

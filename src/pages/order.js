@@ -85,6 +85,7 @@ export class OrderPage extends React.Component {
     }
 
     onSelect = data => {
+        console.log(data, 'WWW');
         this.setState(data, () => {
             console.log(this.state.dataCheckBoxSubMaterial, 'OOO');
         });
@@ -223,8 +224,8 @@ export class OrderPage extends React.Component {
                                                                     case "0":
                                                                         return ToastAndroid.show('Alamat tidak boleh kosong', ToastAndroid.SHORT);
                                                                     default:
-                                                                        console.log('Sukses Semuanya');
-                                                                    // return this.prosesOrder();
+                                                                        // console.log('Sukses Semuanya');
+                                                                    return this.prosesOrder();
                                                                 }
                                                         }
                                                 }
@@ -571,7 +572,7 @@ export class OrderPage extends React.Component {
             dataMaterial,
             dataSubMaterial
         } = this.state;
-
+        console.log(dataCheckBoxSubMaterial, 'LLLL');
         return (
             <ScrollView
                 style={styles.containerStyle}
@@ -599,9 +600,9 @@ export class OrderPage extends React.Component {
                                 <Picker
                                     selectedValue={categoryProduct}
                                     onValueChange={(v) => this.onChangePicker('categoryProduct', v)}
-                                    itemStyle={{fontFamily:"Quicksand-Regular", color:'black'}}
+                                    itemStyle={{ fontFamily: "Quicksand-Regular", color: 'black' }}
                                 >
-                                    <Picker.Item label='Pilih Kategori Produk' value='0' 
+                                    <Picker.Item label='Pilih Kategori Produk' value='0'
                                     />
                                     {this.renderKategori()}
                                 </Picker>
@@ -710,8 +711,8 @@ export class OrderPage extends React.Component {
                 </View>
                 <View>
                     {
-                        dataCheckBoxSubMaterial.length === 0 || dataCheckBoxSubMaterial.length === undefined ?
-                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey',  }}>
+                        dataCheckBoxSubMaterial.length === 0 ?
+                            <View style={{ flex: 1, height: 170, backgroundColor: 'grey', }}>
                                 <Image
                                     source={require('../assets/images/create-material.png')}
                                     style={{ width: '100%', height: 170, }}
@@ -719,10 +720,10 @@ export class OrderPage extends React.Component {
                                 />
                                 <View style={{ flex: 1, flexDirection: 'column', position: 'absolute', alignSelf: 'center', top: 25, }}>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
-                                        Pilih material yang sesuai untuk 
+                                        Pilih material yang sesuai untuk
                                     </Text>
                                     <Text style={{ fontSize: 15, color: 'white', textAlign: 'center', fontFamily: 'Quicksand-Regular' }}>
-                                     desain Anda
+                                        desain Anda
                                     </Text>
                                 </View>
                                 <View style={{ flex: 1, position: 'absolute', top: 100, alignItems: 'center', alignSelf: 'center' }}>
@@ -758,16 +759,14 @@ export class OrderPage extends React.Component {
                                     </ContainerSection>
                                 </View>
                                 <View style={{ flex: 1, flexWrap: 'wrap' }}>
-                                    {
-                                        <FlatList
-                                            data={dataCheckBoxSubMaterial}
-                                            extraData={this.state}
-                                            horizontal={false}
-                                            renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
-                                            showsHorizontalScrollIndicator={false}
-                                            numColumns={2}
-                                        />
-                                    }
+                                    <FlatList
+                                        data={dataCheckBoxSubMaterial}
+                                        extraData={this.state}
+                                        horizontal={false}
+                                        renderItem={({ item, index }) => this.renderSelectedMaterial(item, index)}
+                                        showsHorizontalScrollIndicator={false}
+                                        numColumns={2}
+                                    />
                                 </View>
                             </View>
                     }
@@ -786,7 +785,7 @@ export class OrderPage extends React.Component {
                                 <Picker.Item label='JNE Oke' value='JNE OK' />
                                 <Picker.Item label='TIKI Reguler' value='TIKI REG' />
                                 <Picker.Item label='POS Kilat Indonesia' value='POS KILAT' />
-                                <Picker.Item label='Gojek' value='Gojek' />
+                                <Picker.Item label='Gojek' value='Gojeg' />
                                 <Picker.Item label='Lainnya (Crafter memakai jasa pengirimannya sendiri)' value='LAIN NYA' />
                             </Picker>
                         </View>
@@ -865,7 +864,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         paddingLeft: 5,
         borderWidth: 1,
-        fontFamily:'Quicksand-Regular'
+        // fontFamily:'Quicksand-Regular'
     },
     pickerTextStyle: {
         fontFamily: 'Quicksand-Bold',

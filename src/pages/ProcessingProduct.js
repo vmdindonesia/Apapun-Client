@@ -4,7 +4,7 @@ import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, Touchab
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, InputNumber } from '../components/common';
 
-export class ThanksToOrderAfterSendPage extends React.Component {
+export class ProcessingProductPage extends React.Component {
 
 
     static navigationOptions = {
@@ -63,17 +63,25 @@ export class ThanksToOrderAfterSendPage extends React.Component {
                     flex: 1
                 }}>
 
-                    <View style={{ width: '100%', height: 220, marginTop: 12.5, backgroundColor: 'white', alignItems: 'center' }}>
+                    <View style={{ width: '100%', height: 175, marginTop: 12.5, backgroundColor: 'white', alignItems: 'center' }}>
 
-                        <View style={{ width: '85%', height: '100%', backgroundColor: 'white', justifyContent: 'center', alignContent: 'center' }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: '#737373', textAlign: 'center' }}>TERIMA KASIH ATAS KERJA KERASNYA</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: '#737373', textAlign: 'center', paddingTop: 5 }}>Silakan menunggu hasil review buyer mengenai produk Anda.</Text>
+                        <View style={{ width: '90%', height: 100, backgroundColor: 'white', justifyContent: 'center', alignContent: 'center' }}>
+                            <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: '#737373', textAlign: 'center' }}>MEMPROSES BARANG</Text>
+                            <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, textAlign: 'center', color: '#737373', paddingTop: 3 }}>Batas waktu Anda menyelesaikan pembuatan barang adalah <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 13, textAlign: 'center', color: 'red' }}> 11 Maret 2018 </Text></Text>
                         </View>
 
+                        <View style={{ width: '90%', height: 40, backgroundColor: 'black', justifyContent: 'center', alignContent: 'center', marginTop: 10, borderRadius: 100 }}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ThanksToOrderAfterSend')}
+                            >
+                                <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'white', textAlign: 'center' }}>Barang Telah Selesai</Text>
+                            </TouchableOpacity>
+                        </View>
 
                     </View>
 
-                    <View style={{ flex: 1, height: 250, marginTop: 12.5, marginLeft: 10, marginRight: 10 }}>
+                    <View style={{ flex: 1, height: 250, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
+
                         <Swiper
                             // style={styles.wrapper}
                             showsButtons={false}
@@ -83,14 +91,14 @@ export class ThanksToOrderAfterSendPage extends React.Component {
                                 <Image
                                     // style={styles.imageStyle}
                                     source={require('./../assets/images/swiperFirst.png')}
-                                    resizeMode='stretch'
+                                    resizeMode='cover'
                                 />
                             </View>
                             <View style={styles.slide2}>
                                 <Image
                                     // style={styles.imageStyle}
                                     source={require('./../assets/images/swiperSecond.png')}
-                                    resizeMode='stretch'
+                                    resizeMode='cover'
                                 />
                             </View>
                         </Swiper>
@@ -249,5 +257,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default ThanksToOrderAfterSendPage;
+export default ProcessingProductPage;
 

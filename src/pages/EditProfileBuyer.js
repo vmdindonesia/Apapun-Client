@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
-import { Container, ContainerSection, Button, Input, InputDate } from '../components/common';
-// import axios from 'axios';
-import { COLOR } from '../shared/config';
+import { Container, ContainerSection, Button, InputCustom, InputDate } from '../components/common';
+import axios from 'axios';
+import moment from 'moment';
+import { IPSERVER } from '../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -17,6 +18,43 @@ export class EditProfileBuyerPage extends React.Component {
             </TouchableOpacity>,
         headerTitle: 'Pengaturan Profil'
     });
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            userId: '',
+            dataProfile: '',
+            username: ''
+        };
+    }
+
+    componentDidMount() {
+        console.log(this.props.navigation.state.params.userId, 'Props Profile');
+        this.setState({ userId: this.props.navigation.state.params.userId }, () => {
+            const { userId } = this.state;
+            axios.post(`${IPSERVER}/ApapunUsers/getUserProfile`, {
+                userId: userId
+            })
+                .then(response => {
+                    console.log(response, 'Data Profile');
+                    this.setState({ dataProfile: response.data }, () => {
+                        this.setState({ loading: false });
+                        console.log(this.state.dataProfile, 'Data Profile 2');
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Get Data Profile');
+                    this.setState({ loading: false });
+                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
+        });
+    }
+
+    onChange = (name, value) => {
+        this.setState({ [name]: value }, () => {
+            console.log(this.state[name]);
+        })
+    }
 
     render() {
         return (
@@ -34,7 +72,11 @@ export class EditProfileBuyerPage extends React.Component {
                             color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold',
                         }}>ID Akun</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Gal Gadot</Text>
+                            {/* <InputCustom
+                                onChangeText={val => this.onChange('username', val)}
+                                value={this.state.dataProfile.username === undefined ? '-' : this.state.dataProfile.username}
+                            /> */}
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>{this.state.dataProfile.username}</Text>
                         </View>
                     </View>
 
@@ -48,14 +90,14 @@ export class EditProfileBuyerPage extends React.Component {
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Jenis Kelamin</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>Female</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>{this.state.dataProfile.gender}</Text>
                         </View>
                     </View>
 
                     <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: '#e5e5e5', flexDirection: 'row', alignItems: 'center', marginRight: 30, marginLeft: 30 }}>
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Tanggal Lahir</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
-                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>14 Februari 1998</Text>
+                            <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>{moment(this.state.dataProfile.birth_date).format('DD MMMM YYYY')}</Text>
                         </View>
                     </View>
 
@@ -63,7 +105,7 @@ export class EditProfileBuyerPage extends React.Component {
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Email</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
                             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}>galgadot@gmail.com</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}>{this.state.dataProfile.email}</Text>
                                 {/* <Text style={{ color: 'red', fontSize: 15, fontFamily: 'Quicksand-Regular', textAlign: 'right' }}> {"<Verification>"}</Text> */}
                             </View>
                         </View>
@@ -74,7 +116,7 @@ export class EditProfileBuyerPage extends React.Component {
                         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Bold', }}>Nomor Telepon</Text>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>+62 8567847493</Text>
+                                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Quicksand-Regular', }}>{this.state.dataProfile.phone}</Text>
                             </View>
                         </View>
                     </View>
