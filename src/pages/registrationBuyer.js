@@ -342,6 +342,9 @@ export class RegistrationBuyerPage extends React.Component {
         };
         body.append('photo', photo);
         var request = new XMLHttpRequest();
+        request.open('POST', `${IPSERVER}/ApapunStorageImages/imagesUpload`);
+        request.send(body);
+
         request.onreadystatechange = (e) => {
             if (request.readyState !== 4) {
                 return;
@@ -349,46 +352,41 @@ export class RegistrationBuyerPage extends React.Component {
 
             if (request.status === 200) {
                 console.log('success', request.responseText);
+                const profileUrl = nameFile.toUpperCase() + '.jpg';
+                axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
+                    realm,
+                    username,
+                    password,
+                    noPhone,
+                    email,
+                    birthDate,
+                    birthPlace,
+                    gender,
+                    profileUrl,
+                    emailverified,
+                    idProvince,
+                    idCity,
+                    idDistrict,
+                    location,
+                    addressTxt
+                }).then(response => {
+                    console.log(response);
+                    this.setState({ loading: false }, () => {
+                        const resetAction = StackActions.reset({
+                            index: 0,
+                            actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                        });
+                        this.props.navigation.dispatch(resetAction);
+                    });
+                    ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
+                }).catch(error => {
+                    console.log(error, 'Error Upload Foto');
+                    this.setState({ loading: false });
+                });
             } else {
                 console.warn('error', request);
             }
         };
-
-        const profileUrlFirst = 'IMG_' + uuid.v1();
-        const profileUrl = profileUrlFirst.toUpperCase() + '.jpg';
-        console.log(profileUrl, 'xxx');
-        axios.post(`${IPSERVER}/ApapunUsers/UserRegister`, {
-            realm,
-            username,
-            password,
-            noPhone,
-            email,
-            birthDate,
-            birthPlace,
-            gender,
-            profileUrl,
-            emailverified,
-            idProvince,
-            idCity,
-            idDistrict,
-            location,
-            addressTxt
-        }).then(response => {
-            console.log(response);
-            request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
-            request.send(body);
-            this.setState({ loading: false }, () => {
-                const resetAction = StackActions.reset({
-                    index: 0,
-                    actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
-                });
-                this.props.navigation.dispatch(resetAction);
-            });
-            ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
-        }).catch(error => {
-            console.log(error, 'Error Upload Foto');
-            this.setState({ loading: false });
-        });
     }
 
     renderButton = () => {

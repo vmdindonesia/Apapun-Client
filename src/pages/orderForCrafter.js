@@ -32,15 +32,26 @@ export class OrderForCrafterPage extends React.Component {
             ],
             // estimationTime: '',
             date: '',
-            detailOrderData: ''
+            detailOrderData: '',
+            kategory: ''
         }
     }
 
     componentDidMount() {
-        console.log(this.props.navigation.state.params.datas.item, 'Get params district');
+        console.log(this.props.navigation.state.params.datas, 'Get params order');
         const dataDetail = this.props.navigation.state.params.datas.item;
-        this.setState({ detailOrderData: dataDetail });
-        // console.log(detailOrderData, 'Get Detail Order');
+        this.setState({ detailOrderData: dataDetail }, () => {
+            if (this.state.detailOrderData.quantityProduct === "1") {
+                this.setState({ kategory: 'Fashion' })
+            } else if (this.state.detailOrderData.quantityProduct === "2") {
+                this.setState({ kategory: 'Lifestyle' });
+            } else if (this.state.detailOrderData.quantityProduct === "3") {
+                this.setState({ kategory: 'Furniture' });
+            } else if (this.state.detailOrderData.quantityProduct === "4") {
+                this.setState({ kategory: 'Beauty' });
+            }
+            console.log(this.state.detailOrderData, 'DATA ORDER DETAIL');
+        });
     }
 
     renderButton = () => {
@@ -66,7 +77,7 @@ export class OrderForCrafterPage extends React.Component {
     }
 
     renderProductItem = (data) => {
-        console.log(data, '098');
+        // console.log(data, '098');
         return (
             <View
                 style={{
@@ -85,9 +96,22 @@ export class OrderForCrafterPage extends React.Component {
         )
     }
 
+    renderMaterial = (data) => {
+        console.log(data, 'Data Material');
+        return (
+            <View style={{
+                marginTop: 3, height: 30, padding: 10, marginRight: 5,
+                borderWidth: 1, borderRadius: 35, justifyContent: 'center'
+            }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>{data.item.ApapunMaterial.materialName} : {data.item.ApapunSubmaterial.materialName}</Text>
+            </View>
+        )
+    }
+
     render() {
-        const { detailOrderData } = this.state;
+        const { detailOrderData, kategory } = this.state;
         console.log(detailOrderData, 'Detail');
+
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -133,8 +157,7 @@ export class OrderForCrafterPage extends React.Component {
                         <View style={{ flex: 1, marginTop: 3 }}>
                             <Input
                                 editable={false}
-                                value={detailOrderData.name_product}
-                            // onChangeText={v => this.onChangeInput('nameProduct', v)}
+                                value={detailOrderData.nameProduct}
                             />
                         </View>
                     </View>
@@ -146,8 +169,8 @@ export class OrderForCrafterPage extends React.Component {
                             Kategori </Text>
                         <View style={{ flex: 1, marginTop: 3, marginRight: 10 }}>
                             <Input
-                                value='ciledug'
-                            // onChangeText={v => this.onChangeInput('nameProduct', v)}
+                                editable={false}
+                                value={detailOrderData.ApapunSubKategoris === undefined ? '-' : detailOrderData.ApapunSubKategoris.ApapunKategoris.name}
                             />
                         </View>
                     </View>
@@ -161,38 +184,25 @@ export class OrderForCrafterPage extends React.Component {
                     <View style={{ marginTop: 10, marginLeft: 5, height: 40, width: '10%' }}>
                         <Input
                             editable={false}
-                            value='1'
-                        // onChangeText={v => this.onChangeInput('nameProduct', v)}
+                            value={detailOrderData.quantityProduct}
                         />
                     </View>
                     <View style={{ marginTop: 10, marginLeft: 5, height: 40, width: '15%' }}>
                         <Input
                             editable={false}
-                            value='PCS'
+                            value={detailOrderData.unitQuantity}
                         />
 
                     </View>
                 </View>
                 <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 5, fontSize: 15, marginLeft: 5 }}>Material</Text>
                 <View style={styles.containerForText}>
-                    <View style={{
-                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
-                    }}>
-                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
-                    </View>
-                    <View style={{
-                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
-                    }}>
-                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
-                    </View>
-                    <View style={{
-                        marginTop: 3, height: 30, padding: 10, marginRight: 5,
-                        borderWidth: 1, borderRadius: 35, justifyContent: 'center'
-                    }}>
-                        <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Regular', fontSize: 13 }}>Plastik : Kresek</Text>
-                    </View>
+                    <FlatList
+                        data={detailOrderData.ApapunOrderMaterial}
+                        horizontal
+                        renderItem={this.renderMaterial.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                    />
                 </View>
                 <Text style={{
                     fontFamily: 'Quicksand-Bold',
@@ -201,25 +211,114 @@ export class OrderForCrafterPage extends React.Component {
                     Catatan Tambahan </Text>
                 <View style={{ marginLeft: 5, marginRight: 5, backgroundColor: '#fff' }}>
                     <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5, marginTop: 5, marginRight: 5 }}>
-                        Di bagian atas meja tolong diberikan ukiran "CEMARA", bentuk tulisan saya percayakan kepada anda
-                        </Text>
+                        {detailOrderData.noteDelivery}
+                    </Text>
                 </View>
                 <Text style={{
                     fontFamily: 'Quicksand-Bold',
                     marginTop: 10, marginLeft: 5
                 }}>
                     Jasa Pengiriman </Text>
-                <View
-                    style={{ marginLeft: 5, marginRight: 5, flex: 1, flexDirection: 'row', backgroundColor: '#fff' }}>
-                    <Image
-                        style={{ marginTop: 10, marginBottom: 10, width: '40%', height: 70 }}
-                        source={require('../assets/images/pos-indonesia.png')}
-                        resizeMode='contain'
-                    />
-                    <Text style={{
-                        marginLeft: 10, marginTop: 35, flex: 1, fontFamily: 'Quicksand-Bold'
-                    }}>
-                        Pos Indonesia</Text>
+                <View style={{ marginLeft: 5, marginRight: 5, flex: 1, flexDirection: 'row', backgroundColor: '#fff' }}>
+                    {
+                        detailOrderData.length === 0 ?
+                            <View />
+                            :
+                            <View>
+                                {
+                                    detailOrderData.deliveryProvider === 'JNE REG' ?
+                                        <Image
+                                            style={{
+                                                height: 55,
+                                                width: 80,
+                                                marginLeft: 30,
+                                                alignSelf: 'center'
+                                            }}
+                                            source={require('./../assets/images/ic_jne.png')}
+                                        />
+                                        :
+                                        <View>
+                                            {
+                                                detailOrderData.deliveryProvider === 'JNE OK' ?
+                                                    <Image
+                                                        style={{
+                                                            height: 55,
+                                                            width: 80,
+                                                            marginLeft: 30,
+                                                            alignSelf: 'center'
+                                                        }}
+                                                        source={require('./../assets/images/ic_jne.png')}
+                                                    />
+                                                    :
+                                                    <View>
+                                                        {
+                                                            detailOrderData.deliveryProvider === 'TIKI REG' ?
+                                                                <Image
+                                                                    style={{
+                                                                        height: 55,
+                                                                        width: 80,
+                                                                        marginLeft: 30,
+                                                                        alignSelf: 'center'
+                                                                    }}
+                                                                    source={require('./../assets/images/ic_tiki.png')}
+                                                                />
+                                                                :
+                                                                <View>
+                                                                    {
+                                                                        detailOrderData.deliveryProvider === 'POS KILAT' ?
+                                                                            <Image
+                                                                                style={{
+                                                                                    height: 55,
+                                                                                    width: 80,
+                                                                                    marginLeft: 30,
+                                                                                    alignSelf: 'center'
+                                                                                }}
+                                                                                source={require('./../assets/images/ic_pos.png')}
+                                                                            />
+                                                                            :
+                                                                            <View>
+                                                                                {
+                                                                                    detailOrderData.deliveryProvider === 'Gojeg' ?
+                                                                                        <Image
+                                                                                            style={{
+                                                                                                height: 55,
+                                                                                                width: 80,
+                                                                                                marginLeft: 30,
+                                                                                                alignSelf: 'center'
+                                                                                            }}
+                                                                                            source={require('./../assets/images/ic_gojeg.png')}
+                                                                                        />
+                                                                                        :
+                                                                                        <View>
+                                                                                            {
+                                                                                                detailOrderData.deliveryProvider === 'LAIN NYA' ?
+                                                                                                    <Image
+                                                                                                        style={{
+                                                                                                            height: 55,
+                                                                                                            width: 80,
+                                                                                                            marginLeft: 30,
+                                                                                                            alignSelf: 'center'
+                                                                                                        }}
+                                                                                                        source={require('./../assets/images/ic_logo2.png')}
+                                                                                                    />
+                                                                                                    :
+                                                                                                    <View />
+                                                                                            }
+                                                                                        </View>
+                                                                                }
+                                                                            </View>
+                                                                    }
+                                                                </View>
+                                                        }
+                                                    </View>
+                                            }
+                                        </View>
+                                }
+                            </View>
+                    }
+                    <Text style={{ marginLeft: 10, marginTop: 35, flex: 1, fontFamily: 'Quicksand-Bold' }}>
+                        {detailOrderData.deliveryProvider}
+                    </Text>
                 </View>
                 <Text style={{
                     fontFamily: 'Quicksand-Bold',
@@ -227,10 +326,10 @@ export class OrderForCrafterPage extends React.Component {
                 }}>
                     Alamat Pengiriman </Text>
                 <View style={{ height: 120, backgroundColor: '#fff', marginLeft: 5, marginRight: 5, marginTop: 5 }}>
-                    <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5 }}>Home 1 {'\n'}</Text>
-                    <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold' }}>Judy {'\n'}{'\n'}</Text>
-                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>(+62) 8129676388 {'\n'}Jl. Kembang Ayu III blok E5 no.20 Perumahan Puri Indah,{'\n'}
-                            DKI Jakarta, JAKARTA BARAT, KEMBANGAN </Text></Text>
+                    <Text style={{ fontFamily: 'Quicksand-Bold', marginTop: 8, marginLeft: 5 }}>{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.type} {'\n'}</Text>
+                    <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>Penerima: <Text style={{ fontFamily: 'Quicksand-Bold' }}>{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.addressOwner} {'\n'}{'\n'}</Text>
+                        <Text style={{ fontFamily: 'Quicksand-Regular', marginLeft: 5 }}>{detailOrderData.ApapunUsers === undefined ? '-' : detailOrderData.ApapunUsers.noPhone} {'\n'}{detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.addressTxt},{'\n'}
+                            {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunProvinces.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunRegencies.name}, {detailOrderData.ApapunUsersAddress === undefined ? '-' : detailOrderData.ApapunUsersAddress.ApapunDistricts.name} </Text></Text>
                 </View>
                 <View style={{ flex: 1, marginTop: 10, marginLeft: 5, paddingRight: 5, paddingLeft: 5, backgroundColor: '#fff' }}>
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15 }}>Harga</Text>
@@ -254,7 +353,7 @@ export class OrderForCrafterPage extends React.Component {
                     <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, marginTop: 5 }}>Selesai Pembuatan</Text>
                     <ContainerSection>
                         <DatePicker
-                            style={{ flex: 1, fontSize: 15, fontFamily: 'Quicksand-Bold' }}
+                            style={{ flex: 1 }}
                             date={this.state.date}
                             showIcon={false}
                             androidMode='spinner'

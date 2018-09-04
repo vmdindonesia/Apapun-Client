@@ -9,6 +9,7 @@ import { CheckBox } from 'react-native-elements'
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
+import OneSignal from 'react-native-onesignal';
 
 export class RegistrationCrafterPage extends React.Component {
 
@@ -253,6 +254,8 @@ export class RegistrationCrafterPage extends React.Component {
         };
         body.append('photo', photo);
         var request = new XMLHttpRequest();
+        request.open('POST', `${IPSERVER}/ApapunStorageImages/imagesUpload`);
+        request.send(body);
         request.onreadystatechange = (e) => {
             if (request.readyState !== 4) {
                 return;
@@ -260,41 +263,41 @@ export class RegistrationCrafterPage extends React.Component {
 
             if (request.status === 200) {
                 console.log('success', request.responseText);
+                const profileImage = nameFile.toUpperCase() + '.jpg';
+                axios.post(`${IPSERVER}/ApapunCrafters/CrafterRegister`, {
+                    idUser,
+                    profileImage,
+                    craftername,
+                    categoryId,
+                    selfDeliveryService,
+                }).then(response => {
+                    console.log(response);
+                    this.setState({ loading: false }, () => {
+                        AsyncStorage.removeItem('VMDDEVELOPER', (result) => {
+                            console.log(result, 'Logout');
+                            OneSignal.deleteTag('userid');
+                            const resetAction = StackActions.reset({
+                                index: 0,
+                                actions: [NavigationActions.navigate({ routeName: 'MenuLogin' })],
+                            });
+                            this.props.navigation.dispatch(resetAction);
+                        });
+                    });
+                    ToastAndroid.show('Sukses Registrasi, Silahkan Login Kembali Demi Syncronisasi Data', ToastAndroid.SHORT);
+                }).catch(error => {
+                    console.log(error, 'Error Upload Foto');
+                    this.setState({ loading: false });
+                });
             } else {
                 console.warn('error', request);
             }
         };
 
-        const profileUrlFirst = 'IMG_' + uuid.v1();
-        const profileImage = profileUrlFirst.toUpperCase() + '.jpg';
-        console.log(profileImage, 'Format Name Image');
+        // const profileUrlFirst = 'IMG_' + uuid.v1();
+        // const profileImage = profileUrlFirst.toUpperCase() + '.jpg';
+        // console.log(profileImage, 'Format Name Image');
 
-        console.log(this.state, 'STATE REGISTER CRAFTER', profileImage);
-        axios.post(`${IPSERVER}/ApapunCrafters/CrafterRegister`, {
-            idUser,
-            profileImage,
-            craftername,
-            categoryId,
-            selfDeliveryService,
-        }).then(response => {
-            console.log(response);
-            request.open('POST', `${IPSERVER}/ApapunStorages/imagesUpload`);
-            request.send(body);
-            this.setState({ loading: false }, () => {
-                const resetAction = StackActions.reset({
-                    index: 1,
-                    actions: [
-                        NavigationActions.navigate({ routeName: 'MenuCrafter' }),
-                        NavigationActions.navigate({ routeName: 'pengaturanBank', params: { Namecrafter: this.state.craftername, idUser: this.state.idUser } }),
-                    ],
-                });
-                this.props.navigation.dispatch(resetAction);
-            });
-            ToastAndroid.show('Sukses Registrasi, Silahkan Login', ToastAndroid.SHORT);
-        }).catch(error => {
-            console.log(error, 'Error Upload Foto');
-            this.setState({ loading: false });
-        });
+        // console.log(this.state, 'STATE REGISTER CRAFTER', profileImage);
     }
 
     render() {

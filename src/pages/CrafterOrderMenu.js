@@ -24,14 +24,16 @@ export class CrafterOrderMenuPage extends React.Component {
         super(props)
         this.state = {
             dataCategoryCrafter: '',
-            categoryId: []
+            categoryId: [],
+            totalOrder: ''
         }
     }
 
     componentDidMount() {
         console.log('HI')
         AsyncStorage.getItem("VMDDEVELOPER").then((value) => {
-            const idCrafter = JSON.parse(value).crafterId; //24
+            const idCrafter = JSON.parse(value).crafterId;
+            const crafterId = JSON.parse(value).crafterId;
             console.log(idCrafter, 'ID Crafter')
             axios.post(`${IPSERVER}/ApapunCrafters/getCrafter`, { idCrafter }).then(response => {
                 for (let i = 0; i < response.data.length; i++) {
@@ -44,6 +46,14 @@ export class CrafterOrderMenuPage extends React.Component {
                         });
                     });
                 }
+                axios.post(`${IPSERVER}/ApapunOrders/getTotalOrderByJenis`, { crafterId }).then(response => {
+                    this.setState({ totalOrder: response.data }, () => {
+                        console.log(this.state.totalOrder, 'Total Order');
+                    });
+                }).catch(error => {
+                    console.log(error, 'Error Get Total Order');
+                    ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                });
             }).catch(error => {
                 console.log(error, 'Error Get Crafter');
                 ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
@@ -63,13 +73,13 @@ export class CrafterOrderMenuPage extends React.Component {
                             onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Custom Order', categoryId: categoryId })}
                         >
                             <ImageBackground
-                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' , }}
-                                source={require('./../assets/images/bg_custom.png')} 
+                                style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row', }}
+                                source={require('./../assets/images/bg_custom.png')}
                                 resizeMode='stretch'
                             >
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>CUSTOM</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>123 Order</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>{this.state.totalOrder.length === 0 ? '0' : this.state.totalOrder[0].jml} Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>
@@ -79,7 +89,7 @@ export class CrafterOrderMenuPage extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchOrder', { type_order: 'Capture n Get', categoryId: categoryId })}
+                            onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Capture n Get', categoryId: categoryId })}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', borderRadius: 100, flexDirection: 'row' }}
@@ -88,7 +98,7 @@ export class CrafterOrderMenuPage extends React.Component {
                             >
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>CAPTURE & GET</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>30 Order</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>{this.state.totalOrder.length === 0 ? '0' : this.state.totalOrder[2].jml} Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>
@@ -97,7 +107,7 @@ export class CrafterOrderMenuPage extends React.Component {
 
                     <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginLeft: 10, marginRight: 10, justifyContent: 'center', borderRadius: 10, }}>
                         <TouchableOpacity style={{ flex: 1 }}
-                            onPress={() => this.props.navi.navigate('searchOrder', { type_order: 'Idea Market', categoryId: categoryId })}
+                            onPress={() => this.props.navigation.navigate('searchOrder', { type_order: 'Idea Market', categoryId: categoryId })}
                         >
                             <ImageBackground
                                 style={{ flex: 1, width: '100%', height: '100%', borderRadius: 100, flexDirection: 'row' }}
@@ -106,7 +116,7 @@ export class CrafterOrderMenuPage extends React.Component {
                             >
                                 <View style={{ flex: 1, justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'white', }}>MARKET</Text>
-                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>23 Order</Text>
+                                    <Text style={{ fontSize: 15, paddingLeft: 10, fontFamily: 'Quicksand-Bold', color: 'red', }}>{this.state.totalOrder.length === 0 ? '0' : this.state.totalOrder[1].jml} Order</Text>
                                 </View>
                                 <View style={{ flex: 1 }} />
                             </ImageBackground>

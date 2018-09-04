@@ -22,22 +22,14 @@ export class MyOrderPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // screen: 'Custom'
-            photo: [
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-            ],
             dataDetailOrder: ''
         }
     }
 
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
-        const orderId = this.props.navi.state.params;
-        // const orderId = 'ORDER-17';
+        // const orderId = this.props.navi.state.params;
+        const orderId = 'ORDER-10';
         axios.post(`${IPSERVER}/ApapunOrders/getOrderById`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Order')
             this.setState({ dataDetailOrder: response.data, loading: false }, () => {
