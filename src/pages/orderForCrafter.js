@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, FlatList, Text, View, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Input, InputNumber, ContainerSection, InputDate, Button } from '../components/common';
 import Swiper from 'react-native-swiper';
 import DatePicker from 'react-native-datepicker'
 import { NavigationActions, StackActions } from 'react-navigation';
+import numeral from 'numeral';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Carousel from 'react-native-snap-carousel';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 
 export class OrderForCrafterPage extends React.Component {
 
@@ -21,37 +26,89 @@ export class OrderForCrafterPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            photo: [
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
-
-            ],
-            // estimationTime: '',
             date: '',
+            price: '',
             detailOrderData: '',
-            kategory: ''
+            orderId: '',
+            crafterId: '',
         }
     }
 
     componentDidMount() {
         console.log(this.props.navigation.state.params.datas, 'Get params order');
         const dataDetail = this.props.navigation.state.params.datas.item;
-        this.setState({ detailOrderData: dataDetail }, () => {
-            if (this.state.detailOrderData.quantityProduct === "1") {
-                this.setState({ kategory: 'Fashion' })
-            } else if (this.state.detailOrderData.quantityProduct === "2") {
-                this.setState({ kategory: 'Lifestyle' });
-            } else if (this.state.detailOrderData.quantityProduct === "3") {
-                this.setState({ kategory: 'Furniture' });
-            } else if (this.state.detailOrderData.quantityProduct === "4") {
-                this.setState({ kategory: 'Beauty' });
-            }
-            console.log(this.state.detailOrderData, 'DATA ORDER DETAIL');
+        this.setState({
+            detailOrderData: dataDetail,
+            orderId: dataDetail.orderId
+        }, () => {
+            AsyncStorage.getItem('VMDDEVELOPER', (err, result) => {
+                if (result) {
+                    const dataStorage = JSON.parse(result);
+                    console.log(dataStorage, 'Data Storage');
+                    this.setState({ crafterId: dataStorage.crafterId });
+                } else {
+                    console.log(err, 'Error Storage');
+                }
+            });
         });
+    }
+
+    onChangePrice = (name, value) => {
+        this.setState({ [name]: value });
+    }
+
+    onValidation() {
+        const {
+            price,
+            date
+        } = this.state;
+
+        switch (price) {
+            case 0:
+                return ToastAndroid.show('Harga Tidak Boleh Kosong atau Nol', ToastAndroid.SHORT);
+            case '':
+                return ToastAndroid.show('Harga Tidak Boleh Kosong atau Nol', ToastAndroid.SHORT);
+            default:
+                switch (date) {
+                    case '':
+                        return ToastAndroid.show('Tanggal Tidak Boleh Kosong', ToastAndroid.SHORT);
+                    default:
+                        this.onProgressBet();
+                }
+        }
+    }
+
+    onProgressBet() {
+        const {
+            price,
+            date,
+            crafterId,
+            orderId
+        } = this.state;
+
+        const priceDelivery = 0;
+        const description = 'Bet Crafter Custom Order';
+        const finishOrder = date;
+        axios.post(`${IPSERVER}/ApapunBets/CreateBet`, {
+            price,
+            priceDelivery,
+            crafterId,
+            description,
+            orderId,
+            finishOrder
+        }).then(response => {
+            console.log(response.data, 'Get Order');
+            this.setState({
+                loading: false
+            }, () => {
+                ToastAndroid.show('Success Bet! Thanks For Bet. Let Buyer for confirmation are you chooses.', ToastAndroid.SHORT);
+                this.props.navigation.goBack();
+            });
+        }).catch(error => {
+            console.log(error, 'Err Get Order');
+            this.setState({ loading: false });
+            ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        })
     }
 
     renderButton = () => {
@@ -69,7 +126,7 @@ export class OrderForCrafterPage extends React.Component {
                     marginRight: '15%',
                     marginBottom: 20
                 }}
-            // onPress={() => this.onValidation()}
+                onPress={() => this.onValidation()}
             >
                 <Text style={{ color: '#FFFFFF', fontFamily: 'Quicksand-Bold' }}>Ambil Pesanan</Text>
             </Button>
@@ -77,7 +134,7 @@ export class OrderForCrafterPage extends React.Component {
     }
 
     renderProductItem = (data) => {
-        // console.log(data, '098');
+        console.log(data, 'Image');
         return (
             <View
                 style={{
@@ -90,8 +147,25 @@ export class OrderForCrafterPage extends React.Component {
             >
                 <Image
                     style={styles.item}
-                    source={{ uri: data.item }}
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
                 />
+            </View>
+        )
+    }
+
+    _renderItem = (data, index) => {
+        console.log(data, 'Item Carousel');
+        const number = parseInt(data.index) + 1;
+        return (
+            <View>
+                <Image
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
+                    style={{ width: '100%', height: 200 }}
+                    resizeMode='stretch'
+                />
+                <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
+                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
+                </View>
             </View>
         )
     }
@@ -109,39 +183,30 @@ export class OrderForCrafterPage extends React.Component {
     }
 
     render() {
-        const { detailOrderData, kategory } = this.state;
-        console.log(detailOrderData, 'Detail');
-
+        const { detailOrderData, price, date } = this.state;
         return (
             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.containerSlide}>
-                        <Swiper
-                            style={styles.wrapper}
-                            showsButtons={false}
-                            showsPagination={false}
-                        >
-                            <View style={styles.slide1}>
-                                <Image
-                                    style={styles.imageStyle}
-                                    source={require('./../assets/images/swiperFirst.png')}
-                                    resizeMode='cover'
+                        {
+                            detailOrderData.length === 0 ?
+                                <View />
+                                :
+                                <Carousel
+                                    ref={(c) => { this._carousel = c; }}
+                                    data={detailOrderData.ApapunImages}
+                                    extraData={this.state}
+                                    renderItem={this._renderItem}
+                                    sliderWidth={sliderWidth}
+                                    itemWidth={itemWidth}
                                 />
-                            </View>
-                            <View style={styles.slide2}>
-                                <Image
-                                    style={styles.imageStyle}
-                                    source={require('./../assets/images/swiperSecond.png')}
-                                    resizeMode='cover'
-                                />
-                            </View>
-                        </Swiper>
+                        }
                     </View>
                 </View>
                 <View style={{ height: 110 }}>
                     <View style={{ flex: 1, marginLeft: 5 }}>
                         <FlatList
-                            data={this.state.photo}
+                            data={this.state.detailOrderData.ApapunImages}
                             horizontal
                             renderItem={this.renderProductItem.bind(this)}
                             showsHorizontalScrollIndicator={false}
@@ -343,9 +408,12 @@ export class OrderForCrafterPage extends React.Component {
                             <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 20, color: 'white', textAlign: 'center' }}>Rp</Text>
                         </View>
                         <View style={{ flex: 1, marginLeft: 10, marginRight: 5 }}>
+                            {/* price.toString() */}
                             <InputNumber
-                                // value={numberPcs.toString()}
-                                // onChangeText={val => this.onChange('numberPcs', val)}
+                                style={{ alignSelf: 'center', textAlign: 'center' }}
+                                value={numeral(parseInt(price, 0)).format('0,0')}
+                                placeholder="0"
+                                onChangeText={val => this.onChangePrice('price', val.replace(/\./g, ''))}
                                 keyboardType='numeric'
                             />
                         </View>
@@ -354,7 +422,7 @@ export class OrderForCrafterPage extends React.Component {
                     <ContainerSection>
                         <DatePicker
                             style={{ flex: 1 }}
-                            date={this.state.date}
+                            date={date}
                             showIcon={false}
                             androidMode='spinner'
                             placeholder="select date"

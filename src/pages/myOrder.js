@@ -32,8 +32,9 @@ export class MyOrderPage extends React.Component {
         const orderId = 'ORDER-10';
         axios.post(`${IPSERVER}/ApapunOrders/getOrderById`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Order')
-            this.setState({ dataDetailOrder: response.data, loading: false }, () => {
-                console.log(this.state.dataDetailOrder[0].nameProduct, 'XXX');
+            this.setState({ dataDetailOrder: response.data, }, () => {
+                this.setState({ loading: false })
+                //     console.log(this.state.dataDetailOrder[0].nameProduct, 'XXX');
             });
         }).catch(error => {
             console.log(error, 'Error Get Order');
@@ -50,7 +51,7 @@ export class MyOrderPage extends React.Component {
                 <View style={{ flex: 1, flexDirection: 'row', marginTop: 5, marginRight: 5, marginBottom: 5, }}>
                     <Image
                         style={styles.thumbnailStyle}
-                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.name}` }}
+                        source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.name === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.name}` }}
                     />
                 </View>
 
@@ -101,7 +102,7 @@ export class MyOrderPage extends React.Component {
                                                             console.log(data, 'Swiper SP');
                                                             <Image
                                                                 // style={styles.imageStyle}
-                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.name}` }}
+                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.name === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.name}` }}
                                                                 resizeMode='cover'
                                                             />
                                                         })
@@ -139,7 +140,7 @@ export class MyOrderPage extends React.Component {
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
                                     </View>
                                     <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunKategori.name}</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunSubKategoris.ApapunKategoris.name}</Text>
                                     </View>
                                 </View>
 
