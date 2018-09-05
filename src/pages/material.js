@@ -311,7 +311,7 @@ export class MaterialPage extends React.Component {
         } = this.state;
 
         return (
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <Container>
                     <ContainerSection>
                         <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center', height: 45, backgroundColor: '#fff', borderWidth: 1, borderColor: '#CACACA', borderRadius: 25, marginTop: 10 }}>

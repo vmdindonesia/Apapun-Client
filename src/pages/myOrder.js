@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ToastAndroid, View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, FlatList, ScrollView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
 import axios from 'axios';
+import Carousel from 'react-native-snap-carousel';
+import { sliderWidth, itemWidth } from '../shared/slider.styles';
 import Swiper from 'react-native-swiper';
 import { Container, ContainerSection, Button, Input, InputDate, Spinner } from '../components/common';
 import { IPSERVER } from './../shared/config'
@@ -59,12 +61,31 @@ export class MyOrderPage extends React.Component {
         )
     }
 
+    _renderItem = (item, index) => {
+        console.log(item, 'why')
+        const number = parseInt(item.index) + 1;
+        return (
+            <View>
+                <Image
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${item.item.name}` }}
+                    style={{ width: '100%', height: 200 }}
+                    resizeMode='stretch'
+                />
+                <View style={{ position: 'absolute', backgroundColor: 'rgba(22, 22, 22, 0.5)', width: 40, height: 40, borderRadius: 50, marginLeft: 15, marginTop: 10 }}>
+                    <Text style={{ textAlign: 'center', fontFamily: 'Quicksand-Bold', color: 'white', fontSize: 20, paddingTop: 8 }}>{number}</Text>
+                </View>
+            </View>
+        )
+    }
+
     renderMaterial = (data) => {
         console.log(data, 'Data Material');
         return (
-            <View style={{ flexDirection: 'row', }}>
-                <View style={{ height: 40, backgroundColor: 'white', borderRadius: 20, borderWidth: 1, margin: 5, justifyContent: 'center', borderWidth: 2, borderColor: '#b6b6b6', padding: 5 }}>
-                    <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', textAlign: 'center', padding: 5 }}>{data.ApapunMaterial.materialName} - {data.ApapunSubmaterial.materialName}</Text>
+            <View style={{ flexDirection: 'column', marginTop: 10, marginRight: 5 }} >
+                <View style={{ height: 35, backgroundColor: 'white', flexDirection: 'row', borderWidth: 1, borderColor: '#A9A9A9', borderRadius: 30, paddingLeft: 7, paddingRight: 7, }}>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{data.ApapunMaterial.materialName}</Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}> - </Text>
+                    <Text style={{ textAlign: 'center', marginTop: 8, fontSize: 13, fontFamily: 'Quicksand-Bold', color: 'black' }}>{data.ApapunSubmaterial.materialName}</Text>
                 </View>
             </View>
         )
@@ -83,37 +104,36 @@ export class MyOrderPage extends React.Component {
                         <ScrollView style={{
                             backgroundColor: '#eaeaea',
                             flex: 1
-                        }}>
+                        }}
+                            showsVerticalScrollIndicator={false}>
+                            <View style={{ flex: 1, height: 200, marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                                {
+                                    this.state.dataDetailOrder.length === 0 ?
+                                        <View />
+                                        :
+                                        <View>
+                                            {
+                                                // this.state.dataDetailOrder[0].ApapunImages.map((data) => {
+                                                //     console.log(data, 'Swiper SP');
+                                                //     <Image
+                                                //         // style={styles.imageStyle}
+                                                //         source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.name}` }}
+                                                //         resizeMode='cover'
+                                                //     />
+                                                // })
+                                                <Carousel
+                                                    ref={(c) => { this._carousel = c; }}
+                                                    data={this.state.dataDetailOrder.length === 0 ? this.state.dataDetailOrder : this.state.dataDetailOrder[0].ApapunImages}
+                                                    extraData={this.state}
+                                                    renderItem={this._renderItem}
+                                                    sliderWidth={sliderWidth}
+                                                    itemWidth={itemWidth}
+                                                />
+                                            }
+                                        </View>
 
-                            <View style={{ backgroundColor: 'red', flex: 1, height: 250, marginTop: 5, marginLeft: 10, marginRight: 10 }}>
-                                <Swiper
-                                    // style={styles.wrapper}
-                                    showsButtons={false}
-                                    showsPagination={false}
-                                >
-                                    <View style={styles.slide1}>
-                                        {
-                                            this.state.dataDetailOrder.length === 0 ?
-                                                <View />
-                                                :
-                                                <View>
-                                                    {
-                                                        this.state.dataDetailOrder[0].ApapunImages.map((data) => {
-                                                            console.log(data, 'Swiper SP');
-                                                            <Image
-                                                                // style={styles.imageStyle}
-                                                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.name === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.name}` }}
-                                                                resizeMode='cover'
-                                                            />
-                                                        })
-                                                    }
-                                                </View>
-
-                                        }
-                                    </View>
-                                </Swiper>
+                                }
                             </View>
-
                             <View style={{ flex: 1, height: 100, marginTop: 10, marginLeft: 10, marginRight: 10, }}>
                                 <FlatList
                                     data={this.state.dataDetailOrder.length === 0 ? this.state.dataDetailOrder : this.state.dataDetailOrder[0].ApapunImages}
@@ -162,9 +182,9 @@ export class MyOrderPage extends React.Component {
 
                             </View>
 
-                            <View style={{ flex: 1, height: 75, flexDirection: 'row', marginTop: 10, marginLeft: 10, marginRight: 10 }}>
+                            <View style={{ flex: 1, height: 75, flexDirection: 'row', marginLeft: 10, marginRight: 10 }}>
 
-                                <View style={{ flex: 1, }}>
+                                <View style={{ flex: 1 }}>
                                     <View >
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Material</Text>
                                     </View>
@@ -187,8 +207,8 @@ export class MyOrderPage extends React.Component {
 
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Catatan Tambahan</Text>
 
-                                <View style={{ flex: 1, alignContent: 'center', justifyContent: 'center', marginTop: 5 }}>
-                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 10, alignSelf: 'center', backgroundColor: 'white' }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].noteDelivery}</Text>
+                                <View style={{ flex: 1, backgroundColor: 'white', marginTop: 5 }}>
+                                    <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black', padding: 10 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].noteDelivery}</Text>
                                 </View>
 
                             </View>
@@ -198,13 +218,12 @@ export class MyOrderPage extends React.Component {
 
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Jasa Pengiriman</Text>
 
-
-                                <View style={{ flex: 1, marginTop: 5, backgroundColor: 'white', alignSelf: 'center', justifyContent: 'center', alignContent: 'center', flexDirection: 'row' }}>
+                                <View style={{ flex: 1, marginTop: 5, backgroundColor: 'white', flexDirection: 'row' }}>
                                     {
                                         this.state.dataDetailOrder.length === 0 ?
                                             <View />
                                             :
-                                            <View>
+                                            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                                                 {
                                                     this.state.dataDetailOrder[0].deliveryProvider === 'JNE REG' ?
                                                         <Image

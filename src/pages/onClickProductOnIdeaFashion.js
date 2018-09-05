@@ -37,7 +37,7 @@ export class onClickProductOnIdeaFashionPage extends React.Component {
         return (
             <View style={{ flex: 1 }}>
 
-                <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
+                <ScrollView style={{ flex: 1, backgroundColor: '#e5e5e5' }} showsVerticalScrollIndicator={false}>
 
                     <View style={{ flex: 1, height: 80, backgroundColor: 'transparent', flexDirection: 'row', alignItems: 'center', zIndex: 1, position: 'relative' }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>

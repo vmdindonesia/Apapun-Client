@@ -33,7 +33,7 @@ export class OrderWithTrackPage extends React.Component {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#eaeaea' }}>
                 <View style={{ width: '100%', height: '88%' }}>
-                    <ScrollView >
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <View style={styles.container}>
 
                             {/* <View style={{ flex: 1, backgroundColor: 'white', marginBottom: 5, height: 140, justifyContent: 'center' }}>

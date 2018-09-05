@@ -63,7 +63,7 @@ export class EditProfileCrafterPage extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView
-                    keyboardShouldPersistTaps="always"
+                    keyboardShouldPersistTaps="always" showsVerticalScrollIndicator={false}
                 >
                     <View style={{ flex: 1 }}>
                         <Image

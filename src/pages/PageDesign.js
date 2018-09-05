@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, Animated, TouchableWithoutFeedback, StatusBar, Modal } from 'react-native'
+import { View, Text, Dimensions, Image, AsyncStorage, TouchableOpacity, ScrollView, StyleSheet, Animated, Modal } from 'react-native'
 import { COLOR } from '../shared/config';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -236,6 +236,7 @@ export class PageDesignPage extends React.Component {
             <View style={{ flex: 1 }}>
                 <ScrollView
                     style={{ flex: 1 }}
+                    showsVerticalScrollIndicator={false}
                     scrollEventThrottle={16}
                     onScroll={Animated.event(
                         [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
@@ -334,14 +335,13 @@ const styles = StyleSheet.create({
         width: 450,
     },
     containerSecondForm: {
-        borderRadius: 20,
-        backgroundColor: '#ffffff',
+        // borderRadius: 20,
+        backgroundColor: '#fff',
         flexDirection: 'row',
         // top: hp('45%'),
-        bottom: hp('5%'),
+        // bottom: hp('5%'),
         height: 140,
-        width: '90%',
-        zIndex: 2,
+        flex: 1,
         // justifyContent: 'center',
         alignSelf: 'center',
         borderWidth: 0.5,

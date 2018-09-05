@@ -93,7 +93,7 @@ export class BerandaCrafterPage extends React.Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={{
                     flex: 1
                 }}>

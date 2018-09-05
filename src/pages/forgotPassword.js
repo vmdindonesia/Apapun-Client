@@ -91,7 +91,7 @@ export class ForgotPasswordPage extends React.Component {
 
         return (
 
-            <ScrollView keyboardShouldPersistTaps='always'>
+            <ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false} >
                 <View style={styles.container}>
                     <Image
                         style={{ width: 220, height: 100, }}

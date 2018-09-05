@@ -22,7 +22,8 @@ export class crafterMenuNotePage extends React.Component {
         return (
             <ScrollView style={{
                 flex: 1, backgroundColor: '#e5e5e5'
-            }}>
+            }}
+            showsVerticalScrollIndicator={false}>
 
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('addNoteOnCrafterMenu')}

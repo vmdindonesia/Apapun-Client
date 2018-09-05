@@ -90,21 +90,21 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     renderCommentar = (data) => {
         console.log(data, '098');
         return (
-            <View style={{ flex: 1, backgroundColor: 'white', marginTop: 12.5, marginLeft: 15, marginRight: 15 }}>
+            <View style={{ flex: 1, backgroundColor: 'white', marginTop: 10, marginLeft: 15, marginRight: 15 }}>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, marginRight: 20, marginLeft: 20 }}>
 
                     <View style={{ width: '60%', flexDirection: 'row', alignItems: 'center' }}>
                         {/* <View style={{ height: 65, width: 65, borderRadius: 100, backgroundColor: 'black' }}> */}
-                            <Image
-                                style={{
-                                    width: 65,
-                                    height: 65,
-                                    borderRadius: 100
-                                }}
-                                // resizeMode='stretch'
-                                source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.profile_url === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.profile_url}` }}
-                            />
+                        <Image
+                            style={{
+                                width: 65,
+                                height: 65,
+                                borderRadius: 100
+                            }}
+                            // resizeMode='stretch'
+                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.profile_url === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : data.item.profile_url}` }}
+                        />
                         {/* </View> */}
 
                         <View style={{ justifyContent: 'center', flex: 1 }}>
@@ -166,7 +166,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                         }
                     </View>
                 </View>
-                <View style={{ margin: 5, height: '80%', }}>
+                <View style={{ margin: 5, height: '80%' }}>
                     <View style={{}}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', paddingLeft: 10 }}>{data.item.title}</Text>
                     </View>
@@ -192,7 +192,7 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ width: '100%', height: 90, flexDirection: 'row', }}>
+                <View style={{ width: '100%', height: 85, flexDirection: 'row' }}>
                     <View style={{ width: '25%', flexDirection: 'column', backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
 
                         <Image
@@ -246,19 +246,19 @@ export class UlasanOnCrafterProfilePage extends React.Component {
                         <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', alignSelf: 'center', marginTop: 11 }}>Sempurna</Text>
                     </View>
                 </View>
-
-                <FlatList
-                    data={this.state.dataTotal}
-                    renderItem={this.renderTotal.bind(this)}
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={false}
-                    numColumns={4}
-                    extraData={this.state}
-                    refreshing={this.state.loading}
-                    onRefresh={() => this.handleRefresh()}
-                />
-
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ width: '100%', height: 20, backgroundColor: 'white' }}>
+                    <FlatList
+                        data={this.state.dataTotal}
+                        renderItem={this.renderTotal.bind(this)}
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={false}
+                        numColumns={4}
+                        extraData={this.state}
+                        refreshing={this.state.loading}
+                        onRefresh={() => this.handleRefresh()}
+                    />
+                </View>
+                <View style={{ flex: 1 }}>
                     <FlatList
                         data={this.state.dataCommentar}
                         renderItem={this.renderCommentar.bind(this)}

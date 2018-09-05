@@ -215,7 +215,8 @@ export class HistoryOnMyOrderPage extends React.Component {
                 <ScrollView style={{
                     backgroundColor: '#eaeaea',
                     flex: 1
-                }}>
+                }}
+                showsVerticalScrollIndicator={false}>
 
 
                     {/* <View style={{ flex: 1, height: 250, justifyContent: 'flex-end', marginTop: 27 }}>

@@ -96,7 +96,7 @@ export class MenuCrafterPage extends React.Component {
 
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <ImageBackground
                         source={require('./../assets/images/background_profile.jpeg')}
                         style={styles.backgroundStyle}
@@ -150,6 +150,7 @@ export class MenuCrafterPage extends React.Component {
                                 resizeMode='contain'
                             />
                             <View style={{ flex: 1 }}>
+                            {/* {console.log(this.state.rating.description, this.state.rating.jmlReview, 'rating')}; */}
                                 <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: {this.state.rating.description} ({this.state.rating.jmlReview})</Text>
                             </View>
                         </View>

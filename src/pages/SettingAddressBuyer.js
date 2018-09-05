@@ -39,7 +39,7 @@ export class SettingAddressBuyerPage extends React.Component {
     render() {
         return (
 
-            <ScrollView style={{ flex: 1, color: '#eaeaea' }}>
+            <ScrollView style={{ flex: 1, color: '#eaeaea' }} showsVerticalScrollIndicator={false} >
 
 
                 <View style={styles.containerMainAddress}>

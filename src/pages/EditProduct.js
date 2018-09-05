@@ -197,8 +197,7 @@ export class EditProductPage extends React.Component {
 
     render() {
         return (
-            <ScrollView
-            >
+            <ScrollView showsVerticalScrollIndicator={false}>
 
                 <Text style={[styles.pickerTextStyle, { marginLeft: 5, marginTop: 10 }]}>Upload Design Anda</Text>
                 <ContainerSection>

@@ -576,6 +576,7 @@ export class OrderPage extends React.Component {
         return (
             <ScrollView
                 style={styles.containerStyle}
+                showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >

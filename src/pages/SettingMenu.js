@@ -45,7 +45,7 @@ export class SettingManuPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#e5e5e5' }}>
 
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
 
                     <View style={{
                         flex: 1,

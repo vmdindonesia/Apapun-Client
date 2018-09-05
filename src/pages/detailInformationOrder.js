@@ -21,7 +21,7 @@ export class DetailInformationOrderPage extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView >
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.container}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', marginLeft: 15, marginRight: 15 }}>Pesanan: <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 15, color: 'red' }}>171227155OPQ</Text></Text>
                         <View style={{ flexDirection: 'row', marginTop: 15, height: 180, marginLeft: 10, marginRight: 10 }}>

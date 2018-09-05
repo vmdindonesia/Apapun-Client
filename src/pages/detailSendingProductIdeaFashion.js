@@ -78,7 +78,7 @@ export class detailsendingIdeaPage extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
 
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
 
                     <View style={{ flex: 1, height: 85, marginRight: 15, marginLeft: 15, marginTop: 15 }}>
 

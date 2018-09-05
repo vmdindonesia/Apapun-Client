@@ -110,6 +110,7 @@ import { RegisToIdeaMarketPage } from './pages/regisToIdeaMarket';
 import { NoteProfileCrafterPage } from './pages/noteProfileCrafter';
 import { ErrorConnectionPage } from './pages/ErrorConnection';
 import { ProcessingProductPage } from './pages/ProcessingProduct';
+
 console.disableYellowBox = true;
 
 // font
@@ -137,6 +138,18 @@ numeral.locale('id')
 
 
 const Routes = createStackNavigator({
+  StartScreen: {
+    screen: StartScreen
+  },
+  FindingCrafter: {
+    screen: FindingCrafterPage
+  },
+  Dashboard: {
+    screen: DashboardPage
+  },
+  MenuCrafter: {
+    screen: MenuCrafterPage
+  },
   crafterMenuListOrder: {
     screen: crafterMenuListOrderPage
   },
@@ -146,8 +159,8 @@ const Routes = createStackNavigator({
   CrafterOrderMenu: {
     screen: CrafterOrderMenuPage
   },
-  StartScreen: {
-    screen: StartScreen
+  CrafterMyOrder: {
+    screen: CrafterMyOrderPage
   },
   OrderWithTrack: {
     screen: OrderWithTrackPage
@@ -164,29 +177,8 @@ const Routes = createStackNavigator({
   clickProductOnCrafterMenu: {
     screen: clickProductOnCrafterMenuPage
   },
-
-  Dashboard: {
-    screen: DashboardPage
-  },
-
   searchOrder: {
     screen: searchOrderPage
-  },
-  ErrorConnection: {
-    screen: ErrorConnectionPage
-  },
-  OrderForCrafter: {
-    screen: OrderForCrafterPage
-  },
-  FindingCrafter: {
-    screen: FindingCrafterPage
-  },
-
-  OrderTrackConfirm: {
-    screen: OrderTrackConfirmPage
-  },
-  CrafterMyOrder: {
-    screen: CrafterMyOrderPage
   },
   ErrorConnection: {
     screen: ErrorConnectionPage
@@ -200,11 +192,9 @@ const Routes = createStackNavigator({
   BerandaCrafter: {
     screen: BerandaCrafterPage
   },
+
   ProfileCrafter: {
     screen: ProfileCrafterPage
-  },
-  MenuCrafter: {
-    screen: MenuCrafterPage
   },
   ImagesProfileCrafter: {
     screen: ImagesProfileCrafterPage
@@ -214,9 +204,6 @@ const Routes = createStackNavigator({
   },
   IdeaMarket: {
     screen: IdeaMarketPage
-  },
-  Dashboard: {
-    screen: DashboardPage
   },
   detailsendingIdeaPage: {
     screen: detailsendingIdeaPage
@@ -253,7 +240,9 @@ const Routes = createStackNavigator({
   Captureandget: {
     screen: CaptureandgetPage
   },
-
+  CrafterOrderMenu: {
+    screen: CrafterOrderMenuPage
+  },
   ReviewProduct: {
     screen: ReviewProductPage
   },
@@ -272,7 +261,9 @@ const Routes = createStackNavigator({
   DetailOrder: {
     screen: DetailOrderPage
   },
-
+  OrderWithTrack: {
+    screen: OrderWithTrackPage
+  },
 
   NotificationMenu: {
     screen: NotificationMenuPage
@@ -283,7 +274,7 @@ const Routes = createStackNavigator({
   ListKemeja: {
     screen: ListKemejaPage
   },
- 
+
   WhislistOnMyOrder: {
     screen: WishlistOnMyOrderPage
   },
@@ -327,7 +318,9 @@ const Routes = createStackNavigator({
   DetailInformationOrder: {
     screen: DetailInformationOrderPage
   },
-
+  OrderTrackConfirm: {
+    screen: OrderTrackConfirmPage
+  },
   OrderOnMyOrder: {
     screen: OrderOnMyOrderPage
   },
@@ -337,8 +330,23 @@ const Routes = createStackNavigator({
   searchCrafterIdeaMarket: {
     screen: searchCrafterIdeaMarketPage
   },
+  clickProductOnCrafterMenu: {
+    screen: clickProductOnCrafterMenuPage
+  },
   ListHoodie: {
     screen: ListHoodiePage
+  },
+  CrafterMenu: {
+    screen: CrafterMenuPage
+  },
+  ThanksToOrderAfterSend: {
+    screen: ThanksToOrderAfterSendPage
+  },
+  ProductReadyToSend: {
+    screen: ProductReadyToSendPage
+  },
+  searchOrder: {
+    screen: searchOrderPage
   },
   Gambar: {
     screen: GambarPage
@@ -398,7 +406,9 @@ const Routes = createStackNavigator({
   InformasiBank: {
     screen: InformasiBankPage
   },
-
+  OrderForCrafter: {
+    screen: OrderForCrafterPage
+  },
   IdeaBeauty: {
     screen: IdeaBeautyPage
   },

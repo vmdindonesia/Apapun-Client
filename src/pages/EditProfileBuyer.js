@@ -60,6 +60,7 @@ export class EditProfileBuyerPage extends React.Component {
         return (
             <ScrollView
                 style={{ backgroundColor: '#e5e5e5' }}
+                showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps="always"
                 ref={ref => this.scrollView = ref}
             >

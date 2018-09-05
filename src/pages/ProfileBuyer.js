@@ -80,6 +80,7 @@ export class ProfileBuyerPage extends React.Component {
                                     onRefresh={this.onRefresh.bind(this)}
                                 />
                             }
+                            showsVerticalScrollIndicator={false}
                         >
                             <TouchableOpacity style={{ zIndex: 6, height: 70, width: 70, marginTop: 20, }}
                                 onPress={() => this.props.navigation.goBack()}

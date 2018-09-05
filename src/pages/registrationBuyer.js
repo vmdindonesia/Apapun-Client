@@ -431,7 +431,7 @@ export class RegistrationBuyerPage extends React.Component {
         // console.log(this.state.imageUri, 'Image');
         return (
             <View style={{ width: '100%', height: '100%', backgroundColor: '#e8e8e8' }}>
-                <ScrollView keyboardShouldPersistTaps="always">
+                <ScrollView keyboardShouldPersistTaps="always" showsVerticalScrollIndicator={false}>
                     <View style={styles.containerImage}>
                         <TouchableWithoutFeedback onPress={this.selectPhotoRegisterBuyer.bind(this)}>
                             <View>
@@ -652,7 +652,7 @@ export class RegistrationBuyerPage extends React.Component {
                             }}>
                             <View style={{ marginTop: 50 }}>
                                 <View style={styles.modalAddress}>
-                                    <ScrollView>
+                                    <ScrollView showsVerticalScrollIndicator={false}>
 
                                         <View style={styles.textaddressModal}>
                                             <View >
