@@ -61,7 +61,7 @@ export class DesignSayaPage extends React.Component {
                                 My Own Table </Text>
                             <View style={{ flex: 1, marginLeft: 25 }}>
                                 <Image
-                                    style={{ width: 18, height: 18 }}
+                                    style={{ width: 25, height: 25 }}
                                     source={require('./../assets/images/Cukup.png')}
                                     resizeMode='stretch'
                                 />
@@ -74,7 +74,7 @@ export class DesignSayaPage extends React.Component {
                             <Text style={{ fontSize: 13, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Total Apresiasi
                             </Text>
-                            <Text style={{ fontSize: 13, marginLeft: 10, fontFamily: 'Quicksand-Regular', color: 'black' }}>
+                            <Text style={{ fontSize: 13, marginLeft: 30, fontFamily: 'Quicksand-Regular', color: 'black' }}>
                                 Terjual
                             </Text>
                         </View>
@@ -82,7 +82,7 @@ export class DesignSayaPage extends React.Component {
                             <Text style={{ fontSize: 13, marginLeft: '10%', fontFamily: 'Quicksand-Regular', color: 'red' }}>
                                 Rp. 20.000
                             </Text>
-                            <Text style={{ fontSize: 13, marginLeft: 30, fontFamily: 'Quicksand-Regular', color: 'red' }}>
+                            <Text style={{ fontSize: 13, marginLeft: 50, fontFamily: 'Quicksand-Regular', color: 'red' }}>
                                 10
                             </Text>
                         </View>

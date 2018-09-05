@@ -141,6 +141,9 @@ const Routes = createStackNavigator({
   StartScreen: {
     screen: StartScreen
   },
+  EditProfileCrafter: {
+    screen: EditProfileCrafterPage
+  },
   FindingCrafter: {
     screen: FindingCrafterPage
   },
@@ -439,9 +442,6 @@ const Routes = createStackNavigator({
   },
   Catatan: {
     screen: CatatanPage
-  },
-  EditProfileCrafter: {
-    screen: EditProfileCrafterPage
   },
   CrafterSent: {
     screen: CrafterSentPage

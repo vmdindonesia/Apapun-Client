@@ -61,23 +61,34 @@ export class EditProfileCrafterPage extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: '#E5E5E5' }}>
                 <ScrollView
                     keyboardShouldPersistTaps="always" showsVerticalScrollIndicator={false}
                 >
+                    <View style={{ flex: 1, backgroundColor: 'white', marginBottom: 20 }}>
+
                     <View style={{ flex: 1 }}>
                         <Image
-                            style={{ width: '100%', height: 150 }}
+                            style={{ width: '100%', height: 200 }}
                             source={require('./../assets/images/background_profile.jpeg')}
                             resizeMode='cover'
                         />
                     </View>
+                    <View style={{ height:30, width:30, alignSelf: 'flex-end', top: -180, right: 20, backgroundColor: '#000', borderRadius: 20 }}>
+                    <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate('SettingProduct')}>
+                            <Image
+                                style={{ width: 25, height: 25, alignSelf: 'center' }}
+                                source={require('./../assets/images/pen_white.png')}
+                            />
+                        </TouchableOpacity>
+                        </View>
                     <View style={styles.containerImage}>
                         <Image style={styles.containerPhoto}
                             source={require('./../assets/images/profile.png')}
                         />
                     </View>
-
+                       
                     <View style={{ flex: 1, marginTop: '25%', paddingLeft: 20, paddingRight: 20 }}>
                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>Nama sebagai Crafter</Text>
                         <View>
@@ -126,7 +137,7 @@ export class EditProfileCrafterPage extends React.Component {
                                 title='Punya'
                                 checkedIcon='dot-circle-o'
                                 uncheckedIcon='circle-o'
-                            //   checked={this.state.checked}
+                              checked={this.state.checked}
                             />
                             <CheckBox
                                 containerStyle={{ backgroundColor: 'transparent', borderColor: 'transparent' }}
@@ -134,9 +145,14 @@ export class EditProfileCrafterPage extends React.Component {
                                 title='Tidak Punya'
                                 checkedIcon='dot-circle-o'
                                 uncheckedIcon='circle-o'
-                            //   checked={this.state.checked}
+                              checked={this.state.checked}
                             />
                         </View>
+                        </View>
+                        </View>
+
+                        <View style={{ flex:1, backgroundColor: 'white' }}>
+                        <View style={{ flex: 1, paddingLeft: 20, paddingRight: 20 }}>
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                             <View style={{ width: wp('30%') }}>
                                 <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black' }}>E - Mail</Text>
@@ -180,7 +196,8 @@ export class EditProfileCrafterPage extends React.Component {
                         <View style={{ flex: 1 }}>
                             {this.renderButton()}
                         </View>
-                    </View>
+                        </View>
+                        </View>
                 </ScrollView>
             </View>
 
@@ -202,7 +219,7 @@ const styles = StyleSheet.create({
     },
     containerImage: {
         alignSelf: 'center',
-        marginTop: 70,
+        marginTop: 110,
         // left: 15,
         position: 'absolute',
     },
