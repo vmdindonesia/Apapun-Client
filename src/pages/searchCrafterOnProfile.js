@@ -26,11 +26,10 @@ export class searchCrafterOnProfilePage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            screen: 'ProfileCrafter', 
-            // dataOrder: ''
+            screen: 'ProfileCrafter',
+            dataProfile: ''
         }
     }
-
 
     renderScreen = () => {
         if (this.state.screen === 'myOrder') {
@@ -49,7 +48,7 @@ export class searchCrafterOnProfilePage extends React.Component {
 
         return (
             <View style={menuContainerStyle}>
-                <View style={{ flexDirection: 'row',backgroundColor: 'white' }}>
+                <View style={{ flexDirection: 'row', backgroundColor: 'white' }}>
                     <View style={{ flex: 1, backgroundColor: 'white' }}>
                         <TouchableNativeFeedback onPress={() => this.setState({ screen: 'myOrder' })}>
                             <View style={screen === 'myOrder' ? tabContainerActive : tabContainer}>
@@ -90,7 +89,7 @@ export class searchCrafterOnProfilePage extends React.Component {
 const styles = StyleSheet.create({
     menuContainerStyle: {
         flex: 1,
-        backgroundColor:'white'
+        backgroundColor: 'white'
     },
     tabContainer: {
         height: 55,

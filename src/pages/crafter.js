@@ -24,7 +24,7 @@ export class CrafterPage extends React.Component {
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
         // const orderId = this.props.navi.state.params;
-        const orderId = 'ORDER-10'
+        const orderId = 'ORDER-1'
         axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Bet')
             this.setState({ dataCrafterBet: response.data }, () => {
@@ -50,7 +50,7 @@ export class CrafterPage extends React.Component {
     renderProductItem = (data) => {
         console.log(data, '098');
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navi.navigate('searchCrafterOnProfile', { dataOrder: data })}>
                 <View style={styles.card}>
                     <View style={styles.thumbnailContainerStyle}>
                         <Image
@@ -65,13 +65,39 @@ export class CrafterPage extends React.Component {
                             </Text>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', marginRight: 7, }}>
-                            <Image
-                                style={{ width: 20, height: 27 }}
-                                source={require('./../assets/images/Cukup.png')}
-                                resizeMode='contain'
-                            />
+                            {
+                                data.item.ApapunCrafter.review === 'Buruk' ?
+                                    <Image
+                                        style={{ width: 20, height: 27 }}
+                                        source={require('./../assets/images/Buruk.png')}
+                                        resizeMode='contain'
+                                    />
+                                    :
+                                    data.item.ApapunCrafter.review === 'Cukup' ?
+                                        <Image
+                                            style={{ width: 20, height: 27 }}
+                                            source={require('./../assets/images/Cukup.png')}
+                                            resizeMode='contain'
+                                        />
+                                        :
+                                        data.item.ApapunCrafter.review === 'Bagus' ?
+                                            <Image
+                                                style={{ width: 20, height: 27 }}
+                                                source={require('./../assets/images/Bagus.png')}
+                                                resizeMode='contain'
+                                            />
+                                            :
+                                            data.item.ApapunCrafter.review === 'Sempurna' ?
+                                                <Image
+                                                    style={{ width: 20, height: 27 }}
+                                                    source={require('./../assets/images/sempurna.png')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                <View />
+                            }
                             <Text style={{ fontSize: 13, marginLeft: 7, fontFamily: 'Quicksand-Regular', color: 'black', marginTop: 5 }}>
-                                Buruk
+                                {data.item.ApapunCrafter.review}
                             </Text>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', marginRight: 10, marginBottom: 10 }}>

@@ -41,31 +41,7 @@ export class MenuCrafterPage extends React.Component {
                     console.log(response, 'Data Profile');
                     this.setState({ dataProfile: response.data }, () => {
                         console.log(this.state.dataProfile, 'PPPP');
-                        axios.post(`${IPSERVER}/ApapunCrafterNotes/getCrafterNote`, {
-                            crafterId: crafterId
-                        })
-                            .then(response => {
-                                this.setState({ dataCatetan: response.data }, () => {
-                                    console.log(this.state.dataCatetan, 'Data Catetan');
-                                    axios.post(`${IPSERVER}/ApapunReviews/getHighlightReviewByCrafterId`, {
-                                        crafterId: crafterId
-                                    })
-                                        .then(response => {
-                                            this.setState({ rating: response.data }, () => {
-                                                console.log(this.state.rating, 'Data Rating');
-                                                this.setState({ loading: false });
-                                            });
-                                        }).catch(error => {
-                                            console.log(error, 'Error Get Rating');
-                                            this.setState({ loading: false });
-                                            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
-                                        });
-                                });
-                            }).catch(error => {
-                                console.log(error, 'Error Get Dashboard Profile');
-                                this.setState({ loading: false });
-                                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
-                            });
+                        this.setState({ loading: false });
                     });
                 }).catch(error => {
                     console.log(error, 'Error Get Data Profile');
@@ -144,19 +120,48 @@ export class MenuCrafterPage extends React.Component {
                             </View>
                         </View>
                         <View style={{ width: '100%', flexDirection: 'row' }}>
-                            <Image
-                                style={styles.emojiIcon}
-                                source={require('./../assets/images/Cukup.png')}
-                                resizeMode='contain'
-                            />
+                            {
+                                this.state.dataProfile.crafterData === undefined ?
+                                    <View />
+                                    :
+
+                                    this.state.dataProfile.crafterData[0].review === 'Buruk' ?
+                                        <Image
+                                            style={styles.emojiIcon}
+                                            source={require('./../assets/images/Buruk.png')}
+                                            resizeMode='contain'
+                                        />
+                                        :
+                                        this.state.dataProfile.crafterData[0].review === 'Cukup' ?
+                                            <Image
+                                                style={styles.emojiIcon}
+                                                source={require('./../assets/images/Cukup.png')}
+                                                resizeMode='contain'
+                                            />
+                                            :
+                                            this.state.dataProfile.crafterData[0].review === 'Bagus' ?
+                                                <Image
+                                                    style={styles.emojiIcon}
+                                                    source={require('./../assets/images/Bagus.png')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                this.state.dataProfile.crafterData[0].review === 'Sempurna' ?
+                                                    <Image
+                                                        style={styles.emojiIcon}
+                                                        source={require('./../assets/images/sempurna.png')}
+                                                        resizeMode='contain'
+                                                    />
+                                                    :
+                                                    <View />
+                            }
                             <View style={{ flex: 1 }}>
-                            {/* {console.log(this.state.rating.description, this.state.rating.jmlReview, 'rating')}; */}
-                                <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: {this.state.rating.description} ({this.state.rating.jmlReview})</Text>
+                                <Text style={[styles.textStyle2, { marginLeft: 9 }]}>Rating: ({this.state.dataProfile.crafterData === undefined ? '-' : this.state.dataProfile.crafterData[0].review})</Text>
                             </View>
                         </View>
                         <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 30 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'left', marginLeft: 25, marginRight: 25, fontSize: 13, color: 'transparent' }}>{this.state.dataCatetan.length === 0 ? 'Title Note' : this.state.dataCatetan[0].subject}</Text>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataCatetan.length === 0 ? 'Note Crafter' : this.state.dataCatetan[0].note}</Text>
+                            {/* <Text style={{ fontFamily: 'Quicksand-Bold', textAlign: 'left', marginLeft: 25, marginRight: 25, fontSize: 13, color: 'transparent' }}>{this.state.dataCatetan.length === 0 ? 'Title Note' : this.state.dataCatetan[0].subject}</Text> */}
+                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 25, marginRight: 25, fontSize: 13, color: '#787878' }}>{this.state.dataProfile.crafterData === undefined ? '-' : this.state.dataProfile.crafterData[0].biodata}</Text>
                         </View>
                         <View style={{ width: '100%', height: 45, paddingLeft: 20, paddingRight: 20, marginTop: 30 }}>
                             <TouchableOpacity

@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
-    TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
+    TouchableOpacity, ScrollView, RefreshControl, FlatList, StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ImagesProfileCrafterPage } from './imagesProfileCrafter';
 import { UlasanOnCrafterProfilePage } from './UlasanOnCrafterProfile';
 import { NoteProfileCrafterPage } from './noteProfileCrafter';
+import { Spinner } from '../components/common';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
+import numeral from 'numeral';
+import moment from 'moment';
 
 export class ProfileCrafterPage extends React.Component {
 
@@ -34,12 +39,18 @@ export class ProfileCrafterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            screen: 'images'
+            loading: true,
+            screen: 'images',
+            dataDetail: ''
         }
     }
 
     componentDidMount() {
-        
+        console.log(this.props.navi.state.params, 'Props From Search Crafter Page');
+        this.setState({ dataDetail: this.props.navi.state.params.dataOrder }, () => {
+            console.log(this.state.dataDetail, 'Data Detail DidMount');
+            this.setState({ loading: false })
+        });
     }
 
     alert = (msg) => {
@@ -48,12 +59,20 @@ export class ProfileCrafterPage extends React.Component {
 
     renderScreen = () => {
         if (this.state.screen === 'images') {
-            return <ImagesProfileCrafterPage navi={this.props.navigation} />
+            return <ImagesProfileCrafterPage navi={this.props.navigation} naviparams={this.state.dataDetail.item} />
         } else if (this.state.screen === 'note') {
-            return <NoteProfileCrafterPage navi={this.props.navigation} />
+            return <NoteProfileCrafterPage navi={this.props.navigation} naviparams={this.state.dataDetail.item} />
         } else if (this.state.screen === 'ulasan') {
-            return <UlasanOnCrafterProfilePage navi={this.props.navigation} />
+            return <UlasanOnCrafterProfilePage navi={this.props.navigation} naviparams={this.state.dataDetail.item} />
         }
+    }
+
+    onRefresh() {
+        this.setState({
+            loading: false
+        }, () => {
+            this.componentDidMount();
+        })
     }
 
     render() {
@@ -63,82 +82,123 @@ export class ProfileCrafterPage extends React.Component {
         } = styles;
         const { screen } = this.state;
 
+        const {
+            dataDetail
+        } = this.state;
+
         return (
             <View style={{ flex: 1 }}>
-                <ScrollView contentContainerStyle={{ position: 'absolute' }} showsVerticalScrollIndicator={false}>
-                    <ImageBackground
-                        source={require('./../assets/images/background_profile.jpeg')}
-                        style={styles.backgroundStyle}
-                    >
-                        <View>
+                {
+                    this.state.loading ?
+                        <Spinner size="small" />
+                        :
+                        <ScrollView
+                            contentContainerStyle={{ position: 'absolute' }}
+                            showsVerticalScrollIndicator={false}
+                        >
+                            <ImageBackground
+                                source={require('./../assets/images/background_profile.jpeg')}
+                                style={styles.backgroundStyle}
+                            >
+                                <View>
 
-                            <View style={styles.containerImage}>
-                                <Image style={styles.containerPhoto}
-                                    source={require('./../assets/images/profile.png')}
-                                />
-                            </View>
-                        </View>
-                    </ImageBackground >
-                    <View style={{ flex: 1, height: '100%' }}>
-                        <View style={{ flex: 1 }}>
-                            <View style={{ width: '100%' }} >
-                                <Text style={styles.textStyle}>Gal Gadot</Text>
-                            </View>
-                        </View>
-                        <View style={{ flexDirection: 'row', flex: 1 }}>
-                            <Image
-                                style={styles.locationIcon}
-                                source={require('./../assets/images/location_icon.png')}
-                            />
-                            <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 10 }]}>Kalimantan Selatan</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Image
-                                style={styles.emojiIcon}
-                                source={require('./../assets/images/Cukup.png')}
-                                resizeMode='contain'
-                            />
-                            <View style={{ flex: 1 }}>
-                                <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: Cukup (35)</Text>
-                            </View>
-                        </View>
-                        <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 25 }}>
-                            <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13, color: 'black' }}>Lulusan S2 Interior Design di Singapura -
-                        Mendapatkan rekor MURI "Pembuat Meja dengan 10 Fungsi" - Pemenang Design Interior Awards 2017 - Resmi anggota ASEPHI</Text>
-                        </View>
+                                    <View style={styles.containerImage}>
+                                        <Image style={styles.containerPhoto}
+                                            source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${this.state.dataDetail.item.ApapunCrafter === undefined ? 'https://www.coastalsocks.com.ng/wp-content/uploads/2014/04/default-avatar.png' : this.state.dataDetail.item.ApapunCrafter.profileImage}` }}
+                                        />
+                                    </View>
+                                </View>
+                            </ImageBackground >
+                            <View style={{ flex: 1, height: '100%' }}>
+                                <View style={{ flex: 1 }}>
+                                    <View style={{ width: '100%' }} >
+                                        <Text style={styles.textStyle}>{this.state.dataDetail.item.ApapunCrafter === undefined ? '-' : this.state.dataDetail.item.ApapunCrafter.craftername}</Text>
+                                    </View>
+                                </View>
+                                <View style={{ flexDirection: 'row', flex: 1 }}>
+                                    <Image
+                                        style={styles.locationIcon}
+                                        source={require('./../assets/images/location_icon.png')}
+                                    />
+                                    <View style={{ flex: 1 }}>
+                                        <Text style={[styles.textStyle2, { marginLeft: 10 }]}>{this.state.dataDetail.item.ApapunCrafter === undefined ? '-' : this.state.dataDetail.item.ApapunCrafter.ApapunUsers.ApapunUsersAddress.ApapunProvinces.name}</Text>
+                                    </View>
+                                </View>
+                                <View style={{ flex: 1, flexDirection: 'row' }}>
+                                    {
+                                        this.state.dataDetail.item.ApapunCrafter === undefined ?
+                                            <View />
+                                            :
+                                            this.state.dataDetail.item.ApapunCrafter.review === 'Buruk' ?
+                                                <Image
+                                                    style={styles.emojiIcon}
+                                                    source={require('./../assets/images/Buruk.png')}
+                                                    resizeMode='contain'
+                                                />
+                                                :
+                                                this.state.dataDetail.item.ApapunCrafter.review === 'Cukup' ?
+                                                    <Image
+                                                        style={styles.emojiIcon}
+                                                        source={require('./../assets/images/Cukup.png')}
+                                                        resizeMode='contain'
+                                                    />
+                                                    :
+                                                    this.state.dataDetail.item.ApapunCrafter.review === 'Bagus' ?
+                                                        <Image
+                                                            style={styles.emojiIcon}
+                                                            source={require('./../assets/images/Bagus.png')}
+                                                            resizeMode='contain'
+                                                        />
+                                                        :
+                                                        this.state.dataDetail.item.ApapunCrafter.review === 'Sempurna' ?
+                                                            <Image
+                                                                style={styles.emojiIcon}
+                                                                source={require('./../assets/images/sempurna.png')}
+                                                                resizeMode='contain'
+                                                            />
+                                                            :
+                                                            <View />
+                                    }
+                                    <View style={{ flex: 1 }}>
+                                        <Text style={[styles.textStyle2, { marginLeft: 7 }]}>Rating: ({this.state.dataDetail.item.ApapunCrafter === undefined ? '-' : this.state.dataDetail.item.ApapunCrafter.review})</Text>
+                                    </View>
+                                </View>
+                                <View style={{ height: 60, justifyContent: 'center', flex: 1, marginTop: 25 }}>
+                                    <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13, color: 'black' }}>{this.state.dataDetail.item.ApapunCrafter === undefined ? '-' : this.state.dataDetail.item.ApapunCrafter.biodata}</Text>
+                                </View>
 
-                        <View style={{ flex: 1, width: '100%', marginTop: 10, height: '100%' }}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <View style={{ flex: 1, marginBottom: 10 }}>
-                                    <TouchableNativeFeedback onPress={() => this.setState({ screen: 'images' })}>
-                                        <View style={screen === 'images' ? tabContainerActive : tabContainer}>
-                                            <Text style={screen === 'images' ? tabTextActive : tabText}>Gambar</Text>
+                                <View style={{ flex: 1, width: '100%', marginTop: 10, height: '100%' }}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <View style={{ flex: 1, marginBottom: 10 }}>
+                                            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'images' })}>
+                                                <View style={screen === 'images' ? tabContainerActive : tabContainer}>
+                                                    <Text style={screen === 'images' ? tabTextActive : tabText}>Gambar</Text>
+                                                </View>
+                                            </TouchableNativeFeedback>
                                         </View>
-                                    </TouchableNativeFeedback>
-                                </View>
-                                <View style={{ flex: 1, marginBottom: 10 }}>
-                                    <TouchableNativeFeedback onPress={() => this.setState({ screen: 'note' })}>
-                                        <View style={screen === 'note' ? tabContainerActive : tabContainer}>
-                                            <Text style={screen === 'note' ? tabTextActive : tabText}>Catatan</Text>
+                                        <View style={{ flex: 1, marginBottom: 10 }}>
+                                            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'note' })}>
+                                                <View style={screen === 'note' ? tabContainerActive : tabContainer}>
+                                                    <Text style={screen === 'note' ? tabTextActive : tabText}>Catatan</Text>
+                                                </View>
+                                            </TouchableNativeFeedback>
                                         </View>
-                                    </TouchableNativeFeedback>
-                                </View>
-                                <View style={{ flex: 1, marginBottom: 10 }}>
-                                    <TouchableNativeFeedback onPress={() => this.setState({ screen: 'ulasan' })}>
-                                        <View style={screen === 'ulasan' ? tabContainerActive : tabContainer}>
-                                            <Text style={screen === 'ulasan' ? tabTextActive : tabText}>Ulasan</Text>
+                                        <View style={{ flex: 1, marginBottom: 10 }}>
+                                            <TouchableNativeFeedback onPress={() => this.setState({ screen: 'ulasan' })}>
+                                                <View style={screen === 'ulasan' ? tabContainerActive : tabContainer}>
+                                                    <Text style={screen === 'ulasan' ? tabTextActive : tabText}>Ulasan</Text>
+                                                </View>
+                                            </TouchableNativeFeedback>
                                         </View>
-                                    </TouchableNativeFeedback>
+                                    </View>
+                                    <View style={{ flex: 1 }}>
+                                        {this.renderScreen()}
+                                    </View>
                                 </View>
                             </View>
-                            <View style={{ flex: 1 }}>
-                                {this.renderScreen()}
-                            </View>
-                        </View>
-                    </View>
-                </ScrollView>
+                        </ScrollView>
+                }
+
                 {/* <View style={{ height: 60, flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.9)' }}>
                     <View style={{ width: '5%', height: '100%', justifyContent: 'center', alignItems: 'center', marginLeft: 3 }}>
                         <TouchableOpacity>
@@ -200,14 +260,14 @@ export class ProfileCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ width: '33%', height: '100%', justifyContent: 'center' }}>
-                        <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Harga Pesanan</Text>
+                        <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>HargaHarga Pesanan</Text>
                         <Text
                             style={{
                                 color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
                                 fontSize: 15
                             }}
-                        >Rp 860.000
-                                </Text>
+                        >Rp {this.state.dataDetail.item === undefined ? '-' : numeral(this.state.dataDetail.item.price).format('0,0')}
+                        </Text>
                     </View>
                     <View style={{ width: '33%', height: '100%', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Estimasi Selesai</Text>
@@ -216,8 +276,8 @@ export class ProfileCrafterPage extends React.Component {
                                 color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
                                 fontSize: 15
                             }}
-                        >27 Feb 18
-                                </Text>
+                        >{this.state.dataDetail.item === undefined ? '-' : moment(this.state.dataDetail.item.finishOrder).format('Do MMM YY')}
+                        </Text>
                     </View>
                     <View style={{ width: wp('20%'), height: '100%', alignItems: 'center', justifyContent: 'center' }}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')} >

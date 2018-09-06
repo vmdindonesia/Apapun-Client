@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
-    TouchableOpacity, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
+    ToastAndroid, ScrollView, TouchableWithoutFeedback, FlatList, StyleSheet
 } from 'react-native'
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
+
 
 export class ImagesProfileCrafterPage extends React.Component {
 
@@ -13,15 +16,26 @@ export class ImagesProfileCrafterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            photo: [
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg',
-                'http://animaster.com/wp-content/uploads/2018/02/after-10-12-art-design-college.jpg'
-            ]
+            photo: ''
         };
+    }
+
+    componentDidMount() {
+        console.log(this.props, 'Props Image');
+        axios.post(`${IPSERVER}/ApapunImages/getCrafterImage`, {
+            crafterId: this.props.naviparams.crafterId
+        })
+            .then(response => {
+                console.log(response, 'Data Profile');
+                this.setState({ photo: response.data }, () => {
+                    console.log(this.state.photo, 'PPPP');
+                    this.setState({ loading: false });
+                });
+            }).catch(error => {
+                console.log(error, 'Error Get Data Profile');
+                this.setState({ loading: false });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
     renderProductItem = (data) => {
@@ -51,13 +65,22 @@ export class ImagesProfileCrafterPage extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <FlatList
-                    data={this.state.photo}
-                    renderItem={this.renderProductItem.bind(this)}
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={false}
-                    numColumns={3}
-                />
+                {
+                    this.state.photo.length === 0 ?
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ textAlign: 'center' }}>Maaf, Belum ada Image</Text>
+                        </View>
+                        :
+                        <View style={{ flex: 1 }}>
+                            <FlatList
+                                data={this.state.photo}
+                                renderItem={this.renderProductItem.bind(this)}
+                                showsHorizontalScrollIndicator={false}
+                                horizontal={false}
+                                numColumns={3}
+                            />
+                        </View>
+                }
             </View>
         )
     }

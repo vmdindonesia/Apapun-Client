@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
+import { View, Text, FlatList, StyleSheet, ToastAndroid, TouchableWithoutFeedback } from 'react-native'
 import { ContainerSection, Card } from '../components/common';
 import Icon from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
+import { IPSERVER } from './../shared/config';
+
 
 export class NoteProfileCrafterPage extends React.Component {
 
@@ -12,61 +15,81 @@ export class NoteProfileCrafterPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            requestExpanded: false,
-            generalExpanded: false
+            loading: true,
+            expanded: false,
+            dataNote: ''
         }
     }
 
-    render() {
-        const { requestExpanded, generalExpanded } = this.state;
+    componentDidMount() {
+        console.log(this.props, 'Props Image');
+        axios.post(`${IPSERVER}/ApapunCrafterNotes/getCrafterNote`, {
+            crafterId: this.props.naviparams.crafterId
+        })
+            .then(response => {
+                console.log(response, 'Data Profile');
+                this.setState({ dataNote: response.data }, () => {
+                    console.log(this.state.dataNote, 'PPPP');
+                    this.setState({ loading: false });
+                });
+            }).catch(error => {
+                console.log(error, 'Error Get Rating');
+                this.setState({ loading: false });
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
+    }
+
+    renderNote = (data) => {
+        console.log(data, 'Data Note');
         return (
-            <View style={{ flex: 1, marginBottom: '10%' }}>
-                <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                    <View style={styles.card}>
-                        <ContainerSection>
-                            <TouchableWithoutFeedback onPress={() => { this.setState({ requestExpanded: !requestExpanded }); console.log(this.state.requestExpanded, 'Request Klik') }}>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>Alamat Workshop</Text>
-                                    <View style={{ flex: 1 }}>
-                                        <Icon size={30} style={{ alignSelf: 'flex-end' }} name={requestExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                    </View>
+            <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
+                <View style={styles.card}>
+                    <ContainerSection>
+                        <TouchableWithoutFeedback
+                            onPress={() => {
+                                this.setState({ expanded: !this.state.expanded });
+                                console.log(this.state.expanded, 'Request Klik')
+                            }}>
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>{data.item.subject}</Text>
+                                <View style={{ flex: 1 }}>
+                                    <Icon size={30} style={{ alignSelf: 'flex-end' }} name={this.state.expanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
                                 </View>
-                            </TouchableWithoutFeedback>
-                        </ContainerSection>
-                        {
-                            requestExpanded ?
-                                <View>
-                                    <Text>TANGERANG, Gading Serpong, Perumahan Cluster DALTON - Jl. Dalton Timur 2 no.19
-                                        Kota Tangerang Selatan - Serpong - Banten 081296128433
-                                </Text>
-                                </View>
-                                :
-                                <View />
-                        }
-                    </View>
-                </Card>
-                <Card style={{ borderBottomWidth: 1, borderColor: '#eaeaea' }}>
-                    <View style={styles.card}>
-                        <ContainerSection>
-                            <TouchableWithoutFeedback onPress={() => { this.setState({ generalExpanded: !generalExpanded }); console.log(this.state.generalExpanded, 'Request Klik') }}>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={{ fontSize: 18, fontFamily: 'Quicksand-Bold' }}>General</Text>
-                                    <View style={{ flex: 1 }}>
-                                        <Icon size={30} style={{ alignSelf: 'flex-end' }} name={generalExpanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'} />
-                                    </View>
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </ContainerSection>
-                        {
-                            generalExpanded ?
-                                <View>
-                                    <Text>Aku Cinta Kamu</Text>
-                                </View>
-                                :
-                                <View />
-                        }
-                    </View>
-                </Card>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </ContainerSection>
+                    {
+                        this.state.expanded ?
+                            <View>
+                                <Text>{data.item.note}</Text>
+                            </View>
+                            :
+                            <View />
+                    }
+                </View>
+            </Card>
+        )
+    }
+
+
+    render() {
+
+        return (
+            <View>
+                {
+                    this.state.dataNote.length === 0 ?
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ textAlign: 'center' }}>Maaf, Belum ada Image</Text>
+                        </View>
+                        :
+                        <View style={{ flex: 1, marginBottom: '10%' }}>
+                            <FlatList
+                                data={this.state.dataNote}
+                                renderItem={this.renderNote.bind(this)}
+                                extraData={this.state}
+                            />
+                        </View>
+                }
             </View>
         )
     }

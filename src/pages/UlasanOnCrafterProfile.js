@@ -31,33 +31,46 @@ export class UlasanOnCrafterProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            crafterId: this.props.navigation.state.params.crafter_Id
-        }, () => {
-            axios.post(`${IPSERVER}/ApapunReviews/getReviewByCrafterId`, {
-                crafterId: this.state.crafterId
-            })
-                .then(response => {
-                    console.log(response, 'Data Commentar')
-                    this.setState({ dataCommentar: response.data }, () => {
-                        axios.post(`${IPSERVER}/ApapunReviews/getTotalReviewByCrafterId`, {
-                            crafterId: this.state.crafterId
-                        })
-                            .then(response => {
-                                console.log(response, 'Data Total')
-                                this.setState({ dataTotal: response.data, loading: false });
-                            }).catch(error => {
-                                console.log(error, 'Error Total');
-                                this.setState({ loading: false })
-                                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
-                            });
-                    });
-                }).catch(error => {
-                    console.log(error, 'Error Commentar');
-                    this.setState({ loading: false })
-                    return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+        
+        if (this.props.navigation === undefined) {
+            this.setState({
+                crafterId: this.props.naviparams.crafterId
+            }, () => {
+                this.getUlasan();
+            });
+        } else {
+            this.setState({
+                crafterId: this.props.navigation.state.params.crafter_Id
+            }, () => {
+                this.getUlasan();
+            });
+        }
+    }
+
+    getUlasan() {
+        axios.post(`${IPSERVER}/ApapunReviews/getReviewByCrafterId`, {
+            crafterId: this.state.crafterId
+        })
+            .then(response => {
+                console.log(response, 'Data Commentar')
+                this.setState({ dataCommentar: response.data }, () => {
+                    axios.post(`${IPSERVER}/ApapunReviews/getTotalReviewByCrafterId`, {
+                        crafterId: this.state.crafterId
+                    })
+                        .then(response => {
+                            console.log(response, 'Data Total')
+                            this.setState({ dataTotal: response.data, loading: false });
+                        }).catch(error => {
+                            console.log(error, 'Error Total');
+                            this.setState({ loading: false })
+                            return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+                        });
                 });
-        });
+            }).catch(error => {
+                console.log(error, 'Error Commentar');
+                this.setState({ loading: false })
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
     }
 
     renderProductImage = (data) => {
