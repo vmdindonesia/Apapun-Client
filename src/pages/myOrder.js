@@ -31,7 +31,7 @@ export class MyOrderPage extends React.Component {
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
         // const orderId = this.props.navi.state.params;
-        const orderId = 'ORDER-10';
+        const orderId = 'ORDER-1';
         axios.post(`${IPSERVER}/ApapunOrders/getOrderById`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Order')
             this.setState({ dataDetailOrder: response.data, }, () => {

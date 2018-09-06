@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Spinner } from '../components/common';
 import { IPSERVER } from './../shared/config';
 import moment from 'moment';
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export class CrafterPage extends React.Component {
 
@@ -24,7 +24,7 @@ export class CrafterPage extends React.Component {
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
         // const orderId = this.props.navi.state.params;
-        const orderId = 'ORDER-10'
+        const orderId = 'ORDER-1'
         axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Bet')
             this.setState({ dataCrafterBet: response.data }, () => {
@@ -56,6 +56,7 @@ export class CrafterPage extends React.Component {
                         <Image
                             style={styles.thumbnailStyle}
                             source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.ApapunCrafter.profileImage}` }}
+                            resizeMode='cover'
                         />
                     </View>
                     <View style={{ marginLeft: 10, marginTop: 10, flexDirection: 'column', flex: 1 }}>
@@ -173,23 +174,24 @@ export class CrafterPage extends React.Component {
 
                                         </ScrollView>
 
-                                        <TouchableOpacity style={{ width: '95%', height: 40, backgroundColor: 'black', borderRadius: 50, justifyContent: 'center', alignSelf: 'center', marginBottom: 10, bottom: 0 }}>
-                                            <Text style={{ fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Batalkan Pesanan</Text>
-                                        </TouchableOpacity>
+                                        <View style={{ width: '90%', height: 40, backgroundColor: 'black', borderRadius: 50, justifyContent: 'center', alignSelf: 'center', marginTop: 20 }}>
+                                            <TouchableOpacity>
+                                                <Text style={{ fontSize: 15, color: 'white', fontFamily: 'Quicksand-Bold', textAlign: 'center' }}>Batalkan Pesanan</Text>
+                                            </TouchableOpacity>
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ flex: 1 }}>
-                                        <ScrollView>
-                                            <View style={styles.containerCrafter}>
-                                                <FlatList
-                                                    data={this.state.dataCrafterBet[0].ApapunBet}
-                                                    renderItem={this.renderProductItem.bind(this)}
-                                                    showsHorizontalScrollIndicator={false}
-                                                    numColumns={2}
-                                                    horizontal={false}
-                                                />
-                                            </View>
-                                        </ScrollView>
+                                        <View style={{ flex: 1, marginLeft: 10 }}>
+                                            <FlatList
+                                                data={this.state.dataCrafterBet[0].ApapunBet}
+                                                renderItem={this.renderProductItem.bind(this)}
+                                                showsHorizontalScrollIndicator={false}
+                                                showsVerticalScrollIndicator={false}
+                                                numColumns={2}
+                                                horizontal={false}
+                                            />
+                                        </View>
                                         <View style={styles.containerButton}>
                                             <TouchableOpacity style={[styles.buttonStop, { backgroundColor: 'orange' }]}>
                                                 <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Berhenti Mencari</Text>
@@ -217,12 +219,6 @@ export class CrafterPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    containerCrafter: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: 10
-
-    },
     containerBoxProfile: {
         marginLeft: 3,
         marginRight: 3,
@@ -270,16 +266,10 @@ const styles = StyleSheet.create({
     },
     card: {
         borderRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
         elevation: 2,
-        margin: 5,
-        marginBottom: '2%',
+        margin: 3,
         backgroundColor: '#FFF',
-        justifyContent: 'center',
-        width: '47%'
+        width: wp('46%')
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
@@ -288,9 +278,8 @@ const styles = StyleSheet.create({
     },
     thumbnailStyle: {
         alignSelf: 'center',
-        height: 170,
-        width: 170,
-        resizeMode: 'cover',
+        height: 150,
+        width: 150,
         borderRadius: 4
     },
 });
