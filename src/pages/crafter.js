@@ -3,6 +3,8 @@ import { StyleSheet, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedbac
 import axios from 'axios';
 import { Spinner } from '../components/common';
 import { IPSERVER } from './../shared/config';
+import moment from 'moment';
+
 
 export class CrafterPage extends React.Component {
 
@@ -86,6 +88,12 @@ export class CrafterPage extends React.Component {
                 </View>
             </TouchableWithoutFeedback>
         )
+    }
+
+    onDeleteOrder() {
+        const dateOrder = this.state.dataCrafterBet[0].createdAt;
+        const newDate = moment(dateOrder).format('YYYY-MM-DD HH:mm');
+        console.log(newDate, 'Data Pesanan');
     }
 
     render() {
@@ -193,7 +201,7 @@ export class CrafterPage extends React.Component {
                                                     'apakah anda yakin ingin membatalkan pesanannya?',
                                                     [
                                                         { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
-                                                        { text: 'OK', onPress: () => this.onDeleteBTN }, //ondelete blm dibuat
+                                                        { text: 'OK', onPress: () => this.onDeleteOrder() }, //ondelete blm dibuat
                                                     ],
                                                 )}>
                                                 <Text style={{ fontFamily: 'Quicksand-Bold', color: 'white' }}>Batalkan Pesanan</Text>
