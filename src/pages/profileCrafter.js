@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     View, Text, ImageBackground, Image, TouchableNativeFeedback, Alert,
-    TouchableOpacity, ScrollView, RefreshControl, FlatList, StyleSheet
+    TouchableOpacity, ScrollView, ToastAndroid, FlatList, StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ImagesProfileCrafterPage } from './imagesProfileCrafter';
@@ -13,6 +13,8 @@ import axios from 'axios';
 import { IPSERVER } from './../shared/config';
 import numeral from 'numeral';
 import moment from 'moment';
+import { NavigationActions, StackActions } from 'react-navigation';
+
 
 export class ProfileCrafterPage extends React.Component {
 
@@ -75,8 +77,35 @@ export class ProfileCrafterPage extends React.Component {
         })
     }
 
-    render() {
+    prosesDealBetCrafter() {
+        const orderId = this.state.dataDetail.item.orderId;
+        const crafterId = this.state.dataDetail.item.crafterId;
+        const status = 'Approve';
+        console.log(this.props, 'Props');
+        axios.post(`${IPSERVER}/ApapunBets/ApproveBet`, {
+            orderId,
+            crafterId,
+            status
+        })
+            .then(response => {
+                console.log(response, 'Sukses Bet Crafter Deal');
+                const resetAction = StackActions.reset({
+                    index: 1,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'CrafterMyOrder' }),
+                        NavigationActions.navigate({ routeName: 'PaymentMethod' }),
+                    ],
+                });
+                this.props.navi.dispatch(resetAction);
 
+                ToastAndroid.show('Sukses Proses order. Anda Harap Bayar DP untuk melanjutkan!', ToastAndroid.SHORT);
+            }).catch(error => {
+                console.log(error, 'Error Kategori');
+                return ToastAndroid.show('Connection Time Out, Server Maybe Down', ToastAndroid.SHORT);
+            });
+    }
+
+    render() {
         const {
             menuContainerStyle, tabContainer, tabContainerActive, tabText, tabTextActive
         } = styles;
@@ -245,7 +274,12 @@ export class ProfileCrafterPage extends React.Component {
                                 'Pesanan anda akan terkunci, apakah anda yakin?',
                                 [
                                     { text: 'Tidak', onPress: () => console.log('Cancel Pressed!') },
-                                    { text: 'Ya', onPress: () => this.props.navi.navigate('PaymentMethod') },
+                                    {
+                                        text: 'Ya', onPress: () => {
+                                            this.prosesDealBetCrafter();
+                                            // this.props.navi.navigate('PaymentMethod');
+                                        }
+                                    },
                                 ],
                             )}>
                             <Text style={{
