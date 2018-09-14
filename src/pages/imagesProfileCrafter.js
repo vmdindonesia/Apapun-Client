@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import axios from 'axios';
 import { IPSERVER } from './../shared/config';
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export class ImagesProfileCrafterPage extends React.Component {
 
@@ -44,19 +44,19 @@ export class ImagesProfileCrafterPage extends React.Component {
             <View style={{
                 borderRadius: 4,
                 elevation: 2,
-                marginLeft: 12,
+                marginLeft: wp('1%'),
                 marginBottom: '2%',
                 backgroundColor: '#FFF'
             }}>
                 <Image
                     style={{
-                        height: 100,
-                        width: 120,
+                        height: hp('15%'),
+                        width: wp('32%'),
                         borderRadius: 4,
                         alignSelf: 'stretch',
                         resizeMode: 'cover',
                     }}
-                    source={{ uri: data.item }}
+                    source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.item.name}` }}
                 />
             </View>
         )
@@ -67,7 +67,7 @@ export class ImagesProfileCrafterPage extends React.Component {
             <View style={{ flex: 1 }}>
                 {
                     this.state.photo.length === 0 ?
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, marginBottom: 10 }}>
                             <Text style={{ textAlign: 'center' }}>Maaf, Belum ada Image</Text>
                         </View>
                         :

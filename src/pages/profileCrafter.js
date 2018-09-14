@@ -93,7 +93,7 @@ export class ProfileCrafterPage extends React.Component {
                         <Spinner size="small" />
                         :
                         <ScrollView
-                            contentContainerStyle={{ position: 'absolute' }}
+                            // contentContainerStyle={{ position: 'absolute' }}
                             showsVerticalScrollIndicator={false}
                         >
                             <ImageBackground
@@ -167,7 +167,7 @@ export class ProfileCrafterPage extends React.Component {
                                     <Text style={{ fontFamily: 'Quicksand-Regular', textAlign: 'center', marginLeft: 15, marginRight: 15, fontSize: 13, color: 'black' }}>{this.state.dataDetail.item.ApapunCrafter === undefined ? '-' : this.state.dataDetail.item.ApapunCrafter.biodata}</Text>
                                 </View>
 
-                                <View style={{ flex: 1, width: '100%', marginTop: 10, height: '100%' }}>
+                                <View style={{ flex: 1, marginTop: 10 }}>
                                     <View style={{ flexDirection: 'row' }}>
                                         <View style={{ flex: 1, marginBottom: 10 }}>
                                             <TouchableNativeFeedback onPress={() => this.setState({ screen: 'images' })}>
@@ -260,7 +260,7 @@ export class ProfileCrafterPage extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ width: '33%', height: '100%', justifyContent: 'center' }}>
-                        <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>HargaHarga Pesanan</Text>
+                        <Text style={{ color: 'white', textAlign: 'center', fontSize: 13, fontFamily: 'Quicksand-Regular' }}>Harga Pesanan</Text>
                         <Text
                             style={{
                                 color: 'red', fontFamily: 'Quicksand-Bold', textAlign: 'center',
