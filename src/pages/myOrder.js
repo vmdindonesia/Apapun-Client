@@ -36,7 +36,7 @@ export class MyOrderPage extends React.Component {
             console.log(response.data, 'Response Get Order')
             this.setState({ dataDetailOrder: response.data, }, () => {
                 this.setState({ loading: false })
-                //     console.log(this.state.dataDetailOrder[0].nameProduct, 'XXX');
+                    console.log(this.state.dataDetailOrder, 'XXX');
             });
         }).catch(error => {
             console.log(error, 'Error Get Order');
@@ -113,14 +113,6 @@ export class MyOrderPage extends React.Component {
                                         :
                                         <View>
                                             {
-                                                // this.state.dataDetailOrder[0].ApapunImages.map((data) => {
-                                                //     console.log(data, 'Swiper SP');
-                                                //     <Image
-                                                //         // style={styles.imageStyle}
-                                                //         source={{ uri: `${IPSERVER}/ApapunStorageImages/images/download/${data.name}` }}
-                                                //         resizeMode='cover'
-                                                //     />
-                                                // })
                                                 <Carousel
                                                     ref={(c) => { this._carousel = c; }}
                                                     data={this.state.dataDetailOrder.length === 0 ? this.state.dataDetailOrder : this.state.dataDetailOrder[0].ApapunImages}
@@ -160,7 +152,7 @@ export class MyOrderPage extends React.Component {
                                         <Text style={{ fontFamily: 'Quicksand-Bold', fontSize: 15, color: 'black', }}>Kategori</Text>
                                     </View>
                                     <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', marginTop: 5 }}>
-                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunSubKategoris.ApapunKategoris.name}</Text>
+                                        <Text style={{ fontFamily: 'Quicksand-Regular', fontSize: 13, color: 'black', paddingLeft: 5 }}>{this.state.dataDetailOrder.length === 0 ? '-' : this.state.dataDetailOrder[0].ApapunKategori.name}</Text>
                                     </View>
                                 </View>
 

@@ -89,6 +89,7 @@ export class OrderForCrafterPage extends React.Component {
         const priceDelivery = 0;
         const description = 'Bet Crafter Custom Order';
         const finishOrder = date;
+        console.log(finishOrder, 'Date Finish')
         axios.post(`${IPSERVER}/ApapunBets/CreateBet`, {
             price,
             priceDelivery,
@@ -426,7 +427,7 @@ export class OrderForCrafterPage extends React.Component {
                             showIcon={false}
                             androidMode='spinner'
                             placeholder="select date"
-                            format="DD-MM-YYYY"
+                            format="YYYY-MM-DD"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
                             onDateChange={(date) => { this.setState({ date: date }) }}
