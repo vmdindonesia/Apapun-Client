@@ -23,8 +23,8 @@ export class CrafterPage extends React.Component {
 
     componentDidMount() {
         console.log(this.props.navi.state.params, 'Props From Order Page');
-        // const orderId = this.props.navi.state.params;
-        const orderId = 'ORDER-1'
+        const orderId = this.props.navi.state.params;
+        // const orderId = 'ORDER-1'
         axios.post(`${IPSERVER}/ApapunBets/getBetCrafterByOrder`, { orderId }).then(response => {
             console.log(response.data, 'Response Get Bet')
             this.setState({ dataCrafterBet: response.data }, () => {
